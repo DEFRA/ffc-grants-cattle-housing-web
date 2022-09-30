@@ -1,8 +1,8 @@
 environment: development
-name: ffc-grants-slurry-web
+name: ffc-grants-cattle-housing-web
 namespace: ffc-grants
 workstream: ffc-grants
-image: ffc-grants-slurry-web
+image: ffc-grants-cattle-housing-web
 
 labels: {}
 
@@ -12,12 +12,12 @@ appInsights:
 azureIdentity:
   clientID: not-a-real-clientID
   resourceID: not-a-real-resourceID
-  
+
 containerConfigMap:
-  name: ffc-grants-slurry-web-config-map
+  name: ffc-grants-cattle-housing-web-config-map
 
 containerSecret:
-  name: ffc-grants-slurry-web-container-secret
+  name: ffc-grants-cattle-housing-web-container-secret
   type: Opaque
 
 deployment:
@@ -43,7 +43,7 @@ container:
   redisPassword: redis
   cookiePassword: thisisnotarealpasswordthisisnotarealpassword
   redisPort: 6379
-  redisPartition: ffc-grants-slurry-web
+  redisPartition: ffc-grants-cattle-housing-web
   sessionCacheTTL: 1200000
   messageQueueHost: dummy
   contactDetailsQueueAddress: contact-details
@@ -86,4 +86,4 @@ ingress:
   class: nginx
   endpoint: ffc-grants-frontend
   server: example.com
-  path: /slurry-infrastructure
+  path: /cattle-housing

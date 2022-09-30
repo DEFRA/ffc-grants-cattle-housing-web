@@ -7,7 +7,7 @@ ignore:
       reason: no update available
       expires: '2022-12-02T10:22:20.985Z'
   SNYK-CC-K8S-6:
-    - ffc-grants-slurry-web > helm/templates/deployment.yaml:
+    - ffc-grants-cattle-housing-web > helm/templates/deployment.yaml:
         reason: no direct upgrade or patch available
         expires: '2022-03-21T11:23:27.474Z'
   SNYK-JS-AXIOS-1579269:

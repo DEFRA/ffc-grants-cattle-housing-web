@@ -1,5 +1,5 @@
 const Joi = require('joi')
-const urlPrefix = '/slurry-infrastructure'
+const urlPrefix = '/cattle-housing'
 const startPageUrl = '/start'
 const serviceEndDate = '2024/07/12'
 const serviceEndTime = '23:59:59'
