@@ -8,7 +8,7 @@ jest.mock('../../../../app/helpers/page-guard')
 const { guardPage } = require('../../../../app/helpers/page-guard')
 
 describe('Standardised Cost test', () => {
-  const varList = { }
+  const varList = {}
 
   beforeEach(() => {
     jest.clearAllMocks()
@@ -96,6 +96,6 @@ describe('Standardised Cost test', () => {
 
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(302)
-    expect(response.headers.location).toBe('/slurry-infrastructure/start')
+    expect(response.headers.location).toBe('/cattle-housing/start')
   })
 })

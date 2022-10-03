@@ -44,7 +44,7 @@ describe('Project Summary test', () => {
 
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(302)
-    expect(response.headers.location).toBe('/slurry-infrastructure/potential-amount')
+    expect(response.headers.location).toBe('/cattle-housing/potential-amount')
   })
 
   test('POST /project-summary route returns next page \'on change your items\'', async () => {
@@ -57,7 +57,7 @@ describe('Project Summary test', () => {
 
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(302)
-    expect(response.headers.location).toBe('/slurry-infrastructure/storage-type')
+    expect(response.headers.location).toBe('/cattle-housing/storage-type')
   })
 
   test('page loads with correct back link', async () => {
@@ -67,7 +67,7 @@ describe('Project Summary test', () => {
     }
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('<a href=\"/slurry-infrastructure/item-sizes-quantities\" class=\"govuk-back-link\">Back</a>')
+    expect(response.payload).toContain('<a href=\"/cattle-housing/item-sizes-quantities\" class=\"govuk-back-link\">Back</a>')
   })
 
   it('page redirects to start if no otherItems', async () => {
@@ -80,6 +80,6 @@ describe('Project Summary test', () => {
 
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(302)
-    expect(response.headers.location).toBe('/slurry-infrastructure/start')
+    expect(response.headers.location).toBe('/cattle-housing/start')
   })
 })
