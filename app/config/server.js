@@ -26,7 +26,7 @@ const schema = Joi.object({
   }),
   appInsights: {
     key: Joi.string(),
-    role: Joi.string().default('ffc-grants-slurry')
+    role: Joi.string().default('ffc-grants-cattle-housing')
   }
 })
 

@@ -158,7 +158,7 @@ const questionBank = {
           nextUrl: 'country',
           url: 'legal-status',
           baseUrl: 'legal-status',
-          preValidationKeys: ['applicantType'],
+          preValidationKeys: [],
           ineligibleContent: {
             messageContent: 'Your business does not have an eligible legal status.',
             details: {
@@ -261,7 +261,7 @@ const questionBank = {
           nextUrl: 'project-started',
           url: 'country',
           baseUrl: 'country',
-          preValidationKeys: ['legalStatus'],
+          preValidationKeys: [],
           ineligibleContent: {
             messageContent: 'This grant is only for projects in England.',
             insertText: { text: 'Scotland, Wales and Northern Ireland have other grants available.' },
@@ -311,7 +311,7 @@ const questionBank = {
           baseUrl: 'project-started',
           backUrl: 'country',
           nextUrl: 'tenancy',
-          preValidationKeys: ['inEngland'],
+          preValidationKeys: [],
           ineligibleContent: {
             messageContent: 'You cannot apply for a grant if you have already started work on the project.',
             insertText: { text: 'Starting the project or committing to any costs (such as placing orders) before you receive a funding agreement invalidates your application.' },
@@ -379,7 +379,7 @@ const questionBank = {
           baseUrl: 'tenancy',
           backUrl: 'project-started',
           nextUrl: 'system-type',
-          preValidationKeys: ['projectStart'],
+          preValidationKeys: [],
           fundingPriorities: '',
           type: 'single-answer',
           minAnswerCount: 1,
@@ -422,7 +422,7 @@ const questionBank = {
           url: 'tenancy-length',
           baseUrl: 'tenancy-length',
           backUrl: 'tenancy',
-          preValidationKeys: ['tenancy'],
+          preValidationKeys: [],
           nextUrl: 'system-type',
           type: 'single-answer',
           minAnswerCount: 1,
@@ -461,7 +461,7 @@ const questionBank = {
           order: 70,
           url: 'tenancy-length-condition',
           backUrl: 'tenancy-length',
-          preValidationKeys: ['tenancyLength'],
+          preValidationKeys: [],
           nextUrl: 'system-type',
           maybeEligible: true,
           maybeEligibleContent: {
@@ -486,7 +486,7 @@ const questionBank = {
             }
           },
           nextUrl: 'existing-storage-capacity',
-          preValidationKeys: ['tenancy'],
+          preValidationKeys: [],
           ineligibleContent: {
             messageContent: 'This grant is for farmers currently using a system that produces slurry.',
             messageLink: {
@@ -554,7 +554,7 @@ const questionBank = {
           backUrl: 'system-type',
           nextUrl: 'planned-storage-capacity',
           url: 'existing-storage-capacity',
-          preValidationKeys: ['systemType'],
+          preValidationKeys: [],
           ineligibleContent: {
             messageContent: `
             This grant is to get your serviceable storage levels to 6 months.`,
@@ -618,7 +618,7 @@ const questionBank = {
           backUrl: 'existing-storage-capacity',
           nextUrl: 'project-type',
           url: 'planned-storage-capacity',
-          preValidationKeys: ['existingStorageCapacity'],
+          preValidationKeys: [],
           type: 'single-answer',
           minAnswerCount: 1,
           ineligibleContent: {
@@ -676,7 +676,7 @@ const questionBank = {
           backUrl: 'planned-storage-capacity',
           nextUrl: 'cover',
           url: 'project-type',
-          preValidationKeys: ['plannedStorageCapacity'],
+          preValidationKeys: [],
           ineligibleContent: {
             messageContent: `
             This grant is only for: <br> 
@@ -749,7 +749,7 @@ const questionBank = {
           backUrl: 'project-type',
           nextUrl: 'estimated-grant',
           url: 'cover',
-          preValidationKeys: ['projectType'],
+          preValidationKeys: [],
           ineligibleContent: {
             messageContent: 'Grant-funded stores must have an impermeable cover unless the slurry is treated with acidification.',
             messageLink: {
@@ -804,7 +804,7 @@ const questionBank = {
           url: 'estimated-grant',
           backUrl: 'cover',
           nextUrl: 'standardised-grant-amounts',
-          preValidationKeys: ['cover'],
+          preValidationKeys: [],
           ga: [
             { dimension: 'cm2', value: { type: 'journey-time' } }
           ],
@@ -835,7 +835,7 @@ const questionBank = {
           hint: {
             text: 'Select one option'
           },
-          preValidationKeys: ['standardisedCostObject'],
+          preValidationKeys: [],
           type: 'single-answer',
           minAnswerCount: 1,
           validate: [
@@ -864,7 +864,7 @@ const questionBank = {
             }
           },
           fundingPriorities: '',
-          preValidationKeys: ['storageType'],
+          preValidationKeys: [],
           classes: 'govuk-input--width-10',
           id: 'storageCapacityIncrease',
           name: 'storageCapacityIncrease',
@@ -942,7 +942,7 @@ const questionBank = {
               elseUrl: 'cover-type'
             }
           },
-          preValidationKeys: ['storageType'],
+          preValidationKeys: [],
           suffix: { text: 'm³' },
           type: 'input',
           inputmode: 'numeric',
@@ -1024,7 +1024,7 @@ const questionBank = {
             }
           },
           url: 'cover-type',
-          preValidationKeys: ['serviceCapacityIncrease'],
+          preValidationKeys: [],
           hint: {
             text: 'Select one option'
           },
@@ -1076,7 +1076,7 @@ const questionBank = {
           baseUrl: 'cover-size',
           backUrl: 'cover-type',
           nextUrl: 'other-items',
-          preValidationKeys: ['coverType'],
+          preValidationKeys: [],
           suffix: { text: 'm²' },
           type: 'input',
           inputmode: 'numeric',
@@ -1172,7 +1172,7 @@ const questionBank = {
             text: 'Select all the items your project needs'
           },
           url: 'other-items',
-          preValidationKeys: ['serviceCapacityIncrease'],
+          preValidationKeys: [],
           type: 'multi-answer',
           minAnswerCount: 1,
           sidebar: {
@@ -1240,7 +1240,7 @@ const questionBank = {
           backUrl: 'other-items',
           nextUrl: 'project-summary',
           url: 'item-sizes-quantities',
-          preValidationKeys: ['otherItems'],
+          preValidationKeys: [],
           hint: {
             text: 'Enter the approximate size and quantities your project needs'
           },
@@ -1294,7 +1294,7 @@ const questionBank = {
           baseUrl: 'potential-amount',
           backUrl: 'project-summary',
           nextUrl: 'remaining-costs',
-          preValidationKeys: ['standardisedCostCalculated'],
+          preValidationKeys: [],
           grantInfo: {
             minGrant: 25000,
             maxGrant: 250000,
@@ -1326,7 +1326,7 @@ const questionBank = {
           baseUrl: 'remaining-costs',
           backUrl: 'potential-amount',
           nextUrl: 'planning-permission',
-          preValidationKeys: ['standardisedCostCalculated'],
+          preValidationKeys: [],
           ineligibleContent: {
             messageContent: `<p class="govuk-body">You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.</p>
             <div class="govuk-list govuk-list--bullet">
@@ -1393,7 +1393,7 @@ const questionBank = {
           baseUrl: 'planning-permission',
           backUrl: 'remaining-costs',
           nextUrl: 'planning-permission-evidence',
-          preValidationKeys: ['remainingCosts'],
+          preValidationKeys: [],
           ineligibleContent: {
             messageContent: 'Any planning permission must be in place by 31 January 2024.',
             messageLink: {
@@ -1444,7 +1444,7 @@ const questionBank = {
           backUrl: 'planning-permission',
           nextUrl: 'grid-reference',
           maybeEligible: true,
-          preValidationKeys: ['planningPermission'],
+          preValidationKeys: [],
           maybeEligibleContent: {
             messageHeader: 'You may be able to apply for a grant from this scheme',
             messageContent: 'Any planning permission must be in place by 31st December 2023.'
@@ -1462,7 +1462,7 @@ const questionBank = {
           baseUrl: 'planning-permission-evidence',
           backUrl: 'planning-permission',
           nextUrl: 'grid-reference',
-          preValidationKeys: ['planningPermission'],
+          preValidationKeys: [],
           type: 'multi-input',
           allFields: [
             {
@@ -1531,7 +1531,7 @@ const questionBank = {
               elseUrl: 'planning-permission-condition'
             }
           },
-          preValidationKeys: ['planningPermission'],
+          preValidationKeys: [],
           type: 'input',
           classes: 'govuk-input--width-10',
           label: {
@@ -1571,7 +1571,7 @@ const questionBank = {
           baseUrl: 'planning-permission-summary',
           backUrl: 'grid-reference',
           nextUrl: 'result-page',
-          preValidationKeys: ['gridReference'],
+          preValidationKeys: [],
           ineligibleContent: {},
           pageData: {
             planningPermissionLink: 'planning-permission',
@@ -1591,7 +1591,7 @@ const questionBank = {
           baseUrl: 'result-page',
           backUrl: 'planning-permission-summary',
           nextUrl: 'business-details',
-          preValidationKeys: ['gridReference'],
+          preValidationKeys: [],
           maybeEligible: true,
           maybeEligibleContent: {
             messageHeader: 'Your results',
@@ -1624,7 +1624,7 @@ const questionBank = {
           baseUrl: 'business-details',
           backUrl: 'result-page',
           nextUrl: 'applying',
-          preValidationKeys: ['gridReference'],
+          preValidationKeys: [],
           ga: [
             { dimension: 'cd1', value: { type: 'score', value: 'Eligible' } },
             { dimension: 'cm3', value: { type: 'journey-time' } }
@@ -1772,7 +1772,7 @@ const questionBank = {
           url: 'applying',
           baseUrl: 'applying',
           backUrl: 'business-details',
-          preValidationKeys: ['businessDetails'],
+          preValidationKeys: [],
           fundingPriorities: '',
           type: 'single-answer',
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
@@ -1805,7 +1805,7 @@ const questionBank = {
           url: 'applicant-details',
           baseUrl: 'applicant-details',
           nextUrl: 'check-details',
-          preValidationKeys: ['applying'],
+          preValidationKeys: [],
           backUrlObject: {
             dependentQuestionYarKey: 'applying',
             dependentAnswerKeysArray: ['applying-A2'],
@@ -2075,7 +2075,7 @@ const questionBank = {
           backUrl: 'applying',
           nextUrl: 'applicant-details',
           summaryPageUrl: 'check-details',
-          preValidationKeys: ['applying'],
+          preValidationKeys: [],
           ineligibleContent: {},
           fundingPriorities: '',
           type: 'multi-input',
@@ -2333,7 +2333,7 @@ const questionBank = {
           url: 'check-details',
           backUrl: 'applicant-details',
           nextUrl: 'confirm',
-          preValidationKeys: ['applying'],
+          preValidationKeys: [],
           ineligibleContent: {},
           pageData: {
             businessDetailsLink: 'business-details',
@@ -2352,7 +2352,7 @@ const questionBank = {
           url: 'confirm',
           backUrl: 'check-details',
           nextUrl: 'confirmation',
-          preValidationKeys: ['farmerDetails'],
+          preValidationKeys: [],
           maybeEligible: true,
           maybeEligibleContent: {
             messageHeader: 'Confirm and send',
@@ -2383,7 +2383,7 @@ const questionBank = {
           pageTitle: '',
           url: 'confirmation',
           baseUrl: 'confirmation',
-          preValidationKeys: ['farmerDetails'],
+          preValidationKeys: [],
           ga: [
             { dimension: 'cd2', value: { type: 'score' } },
             { dimension: 'cd5', value: { type: 'confirmationId' } },

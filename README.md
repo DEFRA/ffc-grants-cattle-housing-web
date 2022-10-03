@@ -1,6 +1,6 @@
-# FFC slurry Web
+# FFC cattle housing Web
 
-Web frontend for FTF slurry scheme
+Web frontend for FTF cattle housing scheme
 
 ## Licence
 

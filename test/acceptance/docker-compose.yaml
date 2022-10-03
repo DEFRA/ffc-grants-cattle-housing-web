@@ -2,7 +2,7 @@ version: "3.7"
 services:
   wdio-cucumber:
     build: .
-    image: wdio-cucumber
+    image: ffc-grants-cattle-housing-acceptance
     container_name: webdriver-cuke
     depends_on:
       - selenium
