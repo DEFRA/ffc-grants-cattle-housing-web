@@ -2,7 +2,7 @@
 const msgData = {
   grantScheme: {
     key: 'ADDVAL01',
-    name: 'Slurry Infrastructure Grant'
+    name: 'Cattle Housing Grant'
   },
   desirability: {
     questions: [
