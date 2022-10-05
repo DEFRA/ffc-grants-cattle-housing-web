@@ -96,6 +96,6 @@ describe('Standardised Cost test', () => {
 
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(302)
-    expect(response.headers.location).toBe('/cattle-housing/start')
+    expect(response.headers.location).toBe('/upgrading-cattle-housing/start')
   })
 })
