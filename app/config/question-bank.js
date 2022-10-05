@@ -1643,7 +1643,7 @@ const questionBank = {
                 classes: 'govuk-label'
               },
               hint: {
-                text: 'For example, Browns Hill Farm lagoon reservoir'
+                text: 'For example Browns Hill Farm calf housing project'
               },
               validate: [
                 {
@@ -1743,10 +1743,10 @@ const questionBank = {
             {
               yarKey: 'sbi',
               type: 'text',
-              title: 'Single Business Identifier (SBI)',
+              title: 'Single Business Identifier (SBI) - Optional',
               classes: 'govuk-input govuk-input--width-10',
               label: {
-                text: 'Single Business Identifier (SBI)',
+                text: 'Single Business Identifier (SBI) - Optional',
                 classes: 'govuk-label'
               },
               hint: {
