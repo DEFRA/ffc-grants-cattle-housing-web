@@ -107,11 +107,6 @@
               {% set diaplaySecondryBtn = true %}
               {% set secButtonText = 'Back to evidence summary' %}
             {% endif %}
-
-              {% if key === 'business-details' %}
-              {% set diaplaySecondryBtn = true %}
-              {% set secButtonText = 'Back to details' %}    
-            {% endif %}
           </div>
 
           {{ conditionalButtons(diaplaySecondryBtn, buttonText, secButtonText) }}
