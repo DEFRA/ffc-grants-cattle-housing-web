@@ -1819,6 +1819,9 @@ const questionBank = {
           minAnswerCount: '',
           maxAnswerCount: '',
           ga: [{ dimension: 'cd3', value: { type: 'yar', key: 'applying' } }],
+          hint: {
+            text: "Enter the farmer and farm business details"
+          },
           allFields: [
             {
               type: 'sub-heading',
@@ -1884,6 +1887,26 @@ const questionBank = {
                 {
                   type: 'NOT_EMPTY',
                   error: 'Enter your email address'
+                },
+                {
+                  type: 'REGEX',
+                  regex: EMAIL_REGEX,
+                  error: 'Enter an email address in the correct format, like name@example.com'
+                }
+              ]
+            },
+            {
+              yarKey: 'confirmEmailAddress',
+              type: 'email',
+              classes: 'govuk-input--width-20',
+              label: {
+                text: 'Confirm email address',
+                classes: 'govuk-label'
+              },
+              validate: [
+                {
+                  type: 'NOT_EMPTY',
+                  error: 'Confirm your email address'
                 },
                 {
                   type: 'REGEX',
