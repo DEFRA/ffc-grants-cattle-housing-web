@@ -14,7 +14,8 @@ const {
   LETTERS_AND_NUMBERS_REGEX,
   TWO_NUMBERS_EIGHT_CHARS,
   CHARS_MAX_50,
-  COMMA_EXCLUDE_REGEX
+  COMMA_EXCLUDE_REGEX,
+  ADDRESS_REGEX
 } = require('../helpers/regex')
 
 const { LIST_COUNTIES } = require('../helpers/all-counties')
@@ -1989,7 +1990,12 @@ const questionBank = {
               validate: [
                 {
                   type: 'NOT_EMPTY',
-                  error: 'Enter your building and street details'
+                  error: 'Enter your address line 1'
+                },
+                {
+                  type: 'REGEX',
+                  regex: ADDRESS_REGEX,
+                  error: 'Address must only include letters, numbers, hyphens and apostrophes'
                 }
               ]
             },
@@ -2000,7 +2006,14 @@ const questionBank = {
               label: {
                 html: 'Address line 2 (optional)',
                 classes: 'govuk-label'
-              }
+              },
+              validate: [
+                {
+                  type: 'REGEX',
+                  regex: ADDRESS_REGEX,
+                  error: 'Address must only include letters, numbers, hyphens and apostrophes'
+                }
+              ]
             },
             {
               yarKey: 'town',
