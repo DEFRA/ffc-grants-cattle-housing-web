@@ -33,6 +33,15 @@ const validateAnswerField = (value, validationType, details, payload) => {
       return true
     }
 
+    case 'CONFIRMATION_ANSWER': {
+      const selectedAnswer = value;
+      const {
+        parentFieldKey,
+      } = details
+      console.log('here: ', selectedAnswer, payload[parentFieldKey]);
+      return payload[parentFieldKey] === selectedAnswer;
+    }
+
     case 'COMBINATION_ANSWER': {
       const selectedAnswer = [value].flat()
       const {
