@@ -279,4 +279,31 @@ describe('Page: /applicant-details', () => {
     expect(postResponse.statusCode).toBe(302)
     expect(postResponse.headers.location).toBe('check-details')
   })
+
+  it('should validate email - confirmation mismatch', async () => {
+    const postOptions = {
+      method: 'POST',
+      url: `${global.__URLPREFIX__}/applicant-details`,
+      headers: { cookie: 'crumb=' + crumbToken },
+      payload: {
+        firstName: 'First Name',
+        lastName: 'Last Name',
+        businessName: 'Business Name',
+        emailAddress: 'test1@gmail.com',
+        confirmEmailAddress: 'test2@gmail.com',
+        mobileNumber: '07700 900 982',
+        address1: 'Address line 1',
+        address2: 'Address 2',
+        town: 'MyTown',
+        county: 'Devon',
+        postcode: 'AA1 1AA',
+        projectPostcode: 'AA1 1AA',
+        crumb: crumbToken
+      }
+    }
+
+    const postResponse = await global.__SERVER__.inject(postOptions)
+    expect(postResponse.statusCode).toBe(200)
+    expect(postResponse.payload).toContain('Enter an email address that matches')
+  })
 })
