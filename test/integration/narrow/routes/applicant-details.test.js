@@ -263,6 +263,7 @@ describe('Page: /applicant-details', () => {
         lastName: 'Last Name',
         businessName: 'Business Name',
         emailAddress: 'my1.email1@my2-domain2.com',
+        confirmEmailAddress: 'my1.email1@my2-domain2.com',
         mobileNumber: '07700 900 982',
         address1: 'Address line 1',
         address2: 'Address 2',
@@ -275,7 +276,7 @@ describe('Page: /applicant-details', () => {
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
-    expect(postResponse.statusCode).toBe(302)
+    expect(postResponse.statusCode).toBe(200)
     expect(postResponse.headers.location).toBe('check-details')
   })
 })
