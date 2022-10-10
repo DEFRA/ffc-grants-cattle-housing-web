@@ -72,8 +72,6 @@ const validateAnswerField = (value, validationType, details, payload) => {
 
     case 'CONFIRM_EMAIL': {
       const { confirmEmailAddress, emailAddress} = payload
-      console.log(confirmEmailAddress, 'confirmEmailAddress')
-      console.log(emailAddress, 'emailAddress')
       return ( confirmEmailAddress === emailAddress)
     }
     default:
