@@ -69,6 +69,13 @@ const validateAnswerField = (value, validationType, details, payload) => {
       const { max } = details
       return ([value].flat().length <= max)
     }
+
+    case 'CONFIRM_EMAIL': {
+      const { confirmEmailAddress, emailAddress} = payload
+      console.log(confirmEmailAddress, 'confirmEmailAddress')
+      console.log(emailAddress, 'emailAddress')
+      return ( confirmEmailAddress === emailAddress)
+    }
     default:
       return false
   }

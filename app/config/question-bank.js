@@ -1913,6 +1913,10 @@ const questionBank = {
                   type: 'REGEX',
                   regex: EMAIL_REGEX,
                   error: 'Enter an email address in the correct format, like name@example.com'
+                },
+                {
+                  type: 'CONFIRM_EMAIL',
+                  error: 'Enter an email address that matches'
                 }
               ]
             },
