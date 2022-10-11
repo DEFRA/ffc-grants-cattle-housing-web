@@ -2193,7 +2193,7 @@ const questionBank = {
                 },
                 {
                   type: 'CONFIRMATION_ANSWER',
-                  parentFieldKey: 'emailAddress',
+                  fieldsToCampare: ['emailAddress', 'confirmEmailAddress'],
                   error: 'Enter an email address that matches'
                 }
               ]

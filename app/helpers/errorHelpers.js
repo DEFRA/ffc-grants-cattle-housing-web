@@ -34,16 +34,12 @@ const validateAnswerField = (value, validationType, details, payload) => {
     }
 
     case 'CONFIRMATION_ANSWER': {
-      const selectedAnswer = value;
-      const {
-        parentFieldKey,
-      } = details
-      console.log('here: ', selectedAnswer, payload[parentFieldKey]);
-      return payload[parentFieldKey] === selectedAnswer;
+      const { fieldsToCampare } = details;
+      return payload[fieldsToCampare[0]] === payload[fieldsToCampare[1]];
     }
 
     case 'COMBINATION_ANSWER': {
-      const selectedAnswer = [value].flat()
+      const selectedAnswer = [ value ].flat()
       const {
         combinationObject: {
           questionKey: combinationQuestionKey,
@@ -52,8 +48,8 @@ const validateAnswerField = (value, validationType, details, payload) => {
       } = details
       const combinationanswers = combinationAnswerKeys.map(answerKey => getQuestionAnswer(combinationQuestionKey, answerKey))
 
-      if (selectedAnswer.includes(combinationanswers[0]) && selectedAnswer.length > 1) {
-        return selectedAnswer.every((answer, index) => answer === combinationanswers[index])
+      if (selectedAnswer.includes(combinationanswers[ 0 ]) && selectedAnswer.length > 1) {
+        return selectedAnswer.every((answer, index) => answer === combinationanswers[ index ])
       }
 
       return true
