@@ -2069,6 +2069,9 @@ const questionBank = {
           key: 'agent-details',
           order: 250,
           title: 'Agent’s details',
+          hint: {
+            text: 'Enter the agent and agent business details'
+          },
           pageTitle: '',
           url: 'agent-details',
           baseUrl: 'agent-details',
@@ -2176,11 +2179,31 @@ const questionBank = {
               ]
             },
             {
+              yarKey: 'confirmEmailAddress',
+              type: 'email',
+              classes: 'govuk-input--width-20',
+              label: {
+                text: 'Confirm Email Address',
+                classes: 'govuk-label'
+              },
+              validate: [
+                {
+                  type: 'NOT_EMPTY',
+                  error: 'Confirm your email address'
+                },
+                {
+                  type: 'CONFIRMATION_ANSWER',
+                  fieldsToCampare: ['emailAddress', 'confirmEmailAddress'],
+                  error: 'Enter an email address that matches'
+                }
+              ]
+            },
+            {
               yarKey: 'mobileNumber',
               type: 'tel',
               classes: 'govuk-input--width-10',
               label: {
-                text: 'Mobile number',
+                text: 'Mobile phone number',
                 classes: 'govuk-label'
               },
               hint: {

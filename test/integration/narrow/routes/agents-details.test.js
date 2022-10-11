@@ -25,7 +25,7 @@ describe('Page: /agent-details', () => {
     expect(response.payload).toContain('Last name')
     expect(response.payload).toContain('Contact details')
     expect(response.payload).toContain('Email address')
-    expect(response.payload).toContain('Mobile number')
+    expect(response.payload).toContain('Mobile phone number')
     expect(response.payload).toContain('Landline number')
     expect(response.payload).toContain('Business address')
     expect(response.payload).toContain('Address line 1')
@@ -49,6 +49,7 @@ describe('Page: /agent-details', () => {
     expect(postResponse.payload).toContain('Enter your last name')
     expect(postResponse.payload).toContain('Enter your business name')
     expect(postResponse.payload).toContain('Enter your email address')
+    expect(postResponse.payload).toContain('Confirm your email address')
     expect(postResponse.payload).toContain('Enter a mobile number (if you do not have a mobile, enter your landline number)')
     expect(postResponse.payload).toContain('Enter a landline number (if you do not have a landline, enter your mobile number)')
     expect(postResponse.payload).toContain('Enter your building and street details')
@@ -131,6 +132,23 @@ describe('Page: /agent-details', () => {
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
     expect(postResponse.payload).toContain('Enter an email address in the correct format, like name@example.com')
+  })
+
+  it('validate confirm email', async () => {
+    const postOptions = {
+      method: 'POST',
+      url: `${global.__URLPREFIX__}/agent-details`,
+      headers: { cookie: 'crumb=' + crumbToken },
+      payload: {
+        emailAddress: 'my@name.com',
+        confirmEmailAddress: 'my1@name.com',
+        crumb: crumbToken
+      }
+    }
+
+    const postResponse = await global.__SERVER__.inject(postOptions)
+    expect(postResponse.statusCode).toBe(200)
+    expect(postResponse.payload).toContain('Enter an email address that matches')
   })
 
   it('validate mobile (optional) - at least 10 characters', async () => {
@@ -262,6 +280,7 @@ describe('Page: /agent-details', () => {
         lastName: 'Last Name',
         businessName: 'Business Name',
         emailAddress: 'my1.email1@my2-domain2.com',
+        confirmEmailAddress: 'my1.email1@my2-domain2.com',
         mobileNumber: '07700 900 982',
         address1: 'Address line 1',
         address2: 'Address 2',
