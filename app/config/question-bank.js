@@ -1901,7 +1901,7 @@ const questionBank = {
               type: 'email',
               classes: 'govuk-input--width-20',
               label: {
-                text: 'Confirm email address',
+                text: 'Confirm Email Address',
                 classes: 'govuk-label'
               },
               validate: [
@@ -1910,12 +1910,8 @@ const questionBank = {
                   error: 'Confirm your email address'
                 },
                 {
-                  type: 'REGEX',
-                  regex: EMAIL_REGEX,
-                  error: 'Enter an email address in the correct format, like name@example.com'
-                },
-                {
-                  type: 'CONFIRM_EMAIL',
+                  type: 'CONFIRMATION_ANSWER',
+                  fieldsToCampare: ['emailAddress', 'confirmEmailAddress'],
                   error: 'Enter an email address that matches'
                 }
               ]
