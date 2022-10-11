@@ -14,7 +14,8 @@ const {
   LETTERS_AND_NUMBERS_REGEX,
   TWO_NUMBERS_EIGHT_CHARS,
   CHARS_MAX_50,
-  COMMA_EXCLUDE_REGEX
+  COMMA_EXCLUDE_REGEX,
+  ADDRESS_REGEX
 } = require('../helpers/regex')
 
 const { LIST_COUNTIES } = require('../helpers/all-counties')
@@ -1819,6 +1820,9 @@ const questionBank = {
           minAnswerCount: '',
           maxAnswerCount: '',
           ga: [{ dimension: 'cd3', value: { type: 'yar', key: 'applying' } }],
+          hint: {
+            text: "Enter the farmer and farm business details"
+          },
           allFields: [
             {
               type: 'sub-heading',
@@ -1889,6 +1893,26 @@ const questionBank = {
                   type: 'REGEX',
                   regex: EMAIL_REGEX,
                   error: 'Enter an email address in the correct format, like name@example.com'
+                }
+              ]
+            },
+            {
+              yarKey: 'confirmEmailAddress',
+              type: 'email',
+              classes: 'govuk-input--width-20',
+              label: {
+                text: 'Confirm Email Address',
+                classes: 'govuk-label'
+              },
+              validate: [
+                {
+                  type: 'NOT_EMPTY',
+                  error: 'Confirm your email address'
+                },
+                {
+                  type: 'CONFIRMATION_ANSWER',
+                  fieldsToCampare: ['emailAddress', 'confirmEmailAddress'],
+                  error: 'Enter an email address that matches'
                 }
               ]
             },
@@ -1966,7 +1990,12 @@ const questionBank = {
               validate: [
                 {
                   type: 'NOT_EMPTY',
-                  error: 'Enter your building and street details'
+                  error: 'Enter your address line 1'
+                },
+                {
+                  type: 'REGEX',
+                  regex: ADDRESS_REGEX,
+                  error: 'Address must only include letters, numbers, hyphens and apostrophes'
                 }
               ]
             },
@@ -1977,7 +2006,14 @@ const questionBank = {
               label: {
                 html: 'Address line 2 (optional)',
                 classes: 'govuk-label'
-              }
+              },
+              validate: [
+                {
+                  type: 'REGEX',
+                  regex: ADDRESS_REGEX,
+                  error: 'Address must only include letters, numbers, hyphens and apostrophes'
+                }
+              ]
             },
             {
               yarKey: 'town',
@@ -2069,6 +2105,9 @@ const questionBank = {
           key: 'agent-details',
           order: 250,
           title: 'Agent’s details',
+          hint: {
+            text: 'Enter the agent and agent business details'
+          },
           pageTitle: '',
           url: 'agent-details',
           baseUrl: 'agent-details',
@@ -2176,11 +2215,31 @@ const questionBank = {
               ]
             },
             {
+              yarKey: 'confirmEmailAddress',
+              type: 'email',
+              classes: 'govuk-input--width-20',
+              label: {
+                text: 'Confirm Email Address',
+                classes: 'govuk-label'
+              },
+              validate: [
+                {
+                  type: 'NOT_EMPTY',
+                  error: 'Confirm your email address'
+                },
+                {
+                  type: 'CONFIRMATION_ANSWER',
+                  fieldsToCampare: ['emailAddress', 'confirmEmailAddress'],
+                  error: 'Enter an email address that matches'
+                }
+              ]
+            },
+            {
               yarKey: 'mobileNumber',
               type: 'tel',
               classes: 'govuk-input--width-10',
               label: {
-                text: 'Mobile number',
+                text: 'Mobile phone number',
                 classes: 'govuk-label'
               },
               hint: {
