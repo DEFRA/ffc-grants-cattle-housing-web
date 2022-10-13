@@ -1,3 +1,6 @@
+require('dotenv').config()
+
+
 describe('polling.js', () => {
   const {
     POLLING_INTERVAL,
