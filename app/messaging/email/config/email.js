@@ -18,8 +18,8 @@ const result = schema.validate(config, {
 })
 
 // Throw if config is invalid
-if (result.error) { // NOSONAR 
-    throw new Error(`The email config is invalid. ${result.error.message}`) // NOSONAR
+if (result.error) { //NOSONAR 
+    throw new Error(`The email config is invalid. ${result.error.message}`) //NOSONAR
 }
 
 module.exports = result.value

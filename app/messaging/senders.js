@@ -4,11 +4,11 @@ const protectiveMonitoringServiceSendEvent = require('../services/protective-mon
 
 const contactDetailsSender = new MessageSender(msgCfg.contactDetailsQueue)
 const desirabilitySubmittedSender = new MessageSender(msgCfg.desirabilitySubmittedTopic)
-// NOSONAR
+//NOSONAR
 async function stop () {
   await contactDetailsSender.closeConnection()
   await desirabilitySubmittedSender.closeConnection()
-}// NOSONAR
+}//NOSONAR
 
 process.on('SIGTERM', async () => {
   await stop()
@@ -17,15 +17,15 @@ process.on('SIGTERM', async () => {
 
 process.on('SIGINT', async () => {
   await stop()
-  process.exit(0) // NOSONAR
-}) // NOSONAR
+  process.exit(0) //NOSONAR
+}) //NOSONAR
 
 async function sendMsg (sender, msgData, msgType, correlationId) {
   try {
     const msg = {
       body: msgData,
       type: msgType,
-      source: msgCfg.msgSrc, // NOSONAR
+      source: msgCfg.msgSrc, //NOSONAR
       correlationId
     }
     await sender.sendMessage(msg)
