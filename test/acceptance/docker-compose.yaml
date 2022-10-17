@@ -3,7 +3,7 @@ services:
   wdio-cucumber:
     build: .
     image: ffc-grants-cattle-housing-acceptance
-    container_name: webdriver-cuke-cattle
+    container_name: webdriver-cuke
     depends_on:
       - selenium
       - hub
@@ -17,4 +17,4 @@ services:
 
   hub:
     image: selenium/hub
-    container_name: selenium-hub-cattle
+    container_name: selenium-hub
