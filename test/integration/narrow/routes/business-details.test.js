@@ -40,7 +40,7 @@ describe('Page: /business-details', () => {
     expect(postResponse.payload).toContain('Enter a project name')
     expect(postResponse.payload).toContain('Enter a business name')
     expect(postResponse.payload).toContain('Enter the number of employees')
-    expect(postResponse.payload).toContain('Enter the Business turnover')
+    expect(postResponse.payload).toContain('Enter the business turnover')
   })
 
   it('user came from \'CHECK DETAILS\' page -> display <Back to details> button', async () => {
@@ -134,7 +134,7 @@ describe('Page: /business-details', () => {
     expect(postResponse.payload).toContain('Number must be between 1-9999999')
   })
 
-  it('should validate Business turnover - only digits', async () => {
+  it('should validate business turnover - only digits', async () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/business-details`,
@@ -150,7 +150,7 @@ describe('Page: /business-details', () => {
     expect(postResponse.payload).toContain('Business turnover must be a whole number, like 100000')
   })
 
-  it('should validate Business turnover - no spaces', async () => {
+  it('should validate business turnover - no spaces', async () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/business-details`,
@@ -166,7 +166,7 @@ describe('Page: /business-details', () => {
     expect(postResponse.payload).toContain('Business turnover must be a whole number, like 100000')
   })
 
-  it('should validate Business turnover - maximum value is 999999999', async () => {
+  it('should validate business turnover - maximum value is 999999999', async () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/business-details`,
@@ -182,7 +182,7 @@ describe('Page: /business-details', () => {
     expect(postResponse.payload).toContain('Number must be between 1-999999999')
   })
 
-  it('should validate Business turnover - minimum value is 1', async () => {
+  it('should validate business turnover - minimum value is 1', async () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/business-details`,

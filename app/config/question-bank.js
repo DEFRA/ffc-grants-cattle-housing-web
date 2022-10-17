@@ -1726,7 +1726,7 @@ const questionBank = {
               validate: [
                 {
                   type: 'NOT_EMPTY',
-                  error: 'Enter the Business turnover'
+                  error: 'Enter the business turnover'
                 },
                 {
                   type: 'REGEX',
