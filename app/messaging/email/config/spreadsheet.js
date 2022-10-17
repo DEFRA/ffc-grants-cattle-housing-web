@@ -28,8 +28,8 @@ const result = schema.validate(config, {
 })
 
 // Throw if config is invalid
-if (result.error) {
-    throw new Error(`The spreadsheet config is invalid. ${result.error.message}`)
+if (result.error) { // NOSONAR
+    throw new Error(`The spreadsheet config is invalid. ${result.error.message}`) // NOSONAR
 }
 
 module.exports = result.value
