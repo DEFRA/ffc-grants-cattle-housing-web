@@ -1720,18 +1720,18 @@ const questionBank = {
                 text: '£'
               },
               label: {
-                text: 'Business turnover',
+                text: 'Business turnover (£)',
                 classes: 'govuk-label'
               },
               validate: [
                 {
                   type: 'NOT_EMPTY',
-                  error: 'Enter the business turnover'
+                  error: 'Enter the Business turnover (£)'
                 },
                 {
                   type: 'REGEX',
                   regex: WHOLE_NUMBER_REGEX,
-                  error: 'Business turnover must be a whole number, like 100000'
+                  error: 'Business turnover (£) must be a whole number, like 100000'
                 },
                 {
                   type: 'MIN_MAX',
