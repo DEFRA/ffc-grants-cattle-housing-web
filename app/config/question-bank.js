@@ -1726,12 +1726,12 @@ const questionBank = {
               validate: [
                 {
                   type: 'NOT_EMPTY',
-                  error: 'Enter the Business turnover (£)'
+                  error: 'Enter the Business turnover'
                 },
                 {
                   type: 'REGEX',
                   regex: WHOLE_NUMBER_REGEX,
-                  error: 'Business turnover (£) must be a whole number, like 100000'
+                  error: 'Business turnover must be a whole number, like 100000'
                 },
                 {
                   type: 'MIN_MAX',
