@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 describe('Create submission messages', () => {
   const createSubmissionMsg = require('../../../../../app/messaging/email/create-submission-msg')
   const testTimeConstant = new Date(2022, 8, 18)
