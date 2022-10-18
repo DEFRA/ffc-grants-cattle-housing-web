@@ -6,10 +6,10 @@ const smallEmployeesNum = 50
 const mediumEmployeesNum = 250
 
 module.exports = {
-    microTurnover,
-    smallTurnover,
-    mediumTurnover,
-    microEmployeesNum,
-    smallEmployeesNum,
-    mediumEmployeesNum
+  microTurnover,
+  smallTurnover,
+  mediumTurnover,
+  microEmployeesNum,
+  smallEmployeesNum,
+  mediumEmployeesNum
 }

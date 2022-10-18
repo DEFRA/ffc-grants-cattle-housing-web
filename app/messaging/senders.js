@@ -17,7 +17,7 @@ process.on('SIGTERM', async () => {
 
 process.on('SIGINT', async () => {
   await stop()
-  process.exit(0) 
+  process.exit(0)
 })
 
 async function sendMsg (sender, msgData, msgType, correlationId) {

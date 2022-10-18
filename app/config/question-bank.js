@@ -1821,7 +1821,7 @@ const questionBank = {
           maxAnswerCount: '',
           ga: [{ dimension: 'cd3', value: { type: 'yar', key: 'applying' } }],
           hint: {
-            text: "Enter the farmer and farm business details"
+            text: 'Enter the farmer and farm business details'
           },
           allFields: [
             {
