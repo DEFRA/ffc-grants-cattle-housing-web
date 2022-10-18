@@ -12,6 +12,7 @@ describe('Create submission messages', () => {
 
   beforeEach(() => {
     jest.resetAllMocks()
+    jest.resetModules()
   })
 
   afterAll(() => {
