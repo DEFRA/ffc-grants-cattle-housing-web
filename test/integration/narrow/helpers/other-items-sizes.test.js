@@ -241,12 +241,12 @@ describe('Other Items Sizes Array Function', () => {
           {
             type: 'REGEX',
             regex: COMMA_EXCLUDE_REGEX,
-            error: `Size must only include numbers`
+            error: 'Size must only include numbers'
           },
           {
             type: 'REGEX',
             regex: DECIMAL_EXCLUDE_REGEX,
-            error: `Size must be between 1 and 9999999999`
+            error: 'Size must be between 1 and 9999999999'
           },
           {
             type: 'REGEX',
@@ -283,12 +283,12 @@ describe('Other Items Sizes Array Function', () => {
           {
             type: 'REGEX',
             regex: COMMA_EXCLUDE_REGEX,
-            error: `Quantity must only include numbers`
+            error: 'Quantity must only include numbers'
           },
           {
             type: 'REGEX',
             regex: DECIMAL_EXCLUDE_REGEX,
-            error: `Quantity must be between 1 and 9999999999`
+            error: 'Quantity must be between 1 and 9999999999'
           },
           {
             type: 'REGEX',
@@ -325,12 +325,12 @@ describe('Other Items Sizes Array Function', () => {
           {
             type: 'REGEX',
             regex: COMMA_EXCLUDE_REGEX,
-            error: `Quantity must only include numbers`
+            error: 'Quantity must only include numbers'
           },
           {
             type: 'REGEX',
             regex: DECIMAL_EXCLUDE_REGEX,
-            error: `Quantity must be between 1 and 9999999999`
+            error: 'Quantity must be between 1 and 9999999999'
           },
           {
             type: 'REGEX',
@@ -367,12 +367,12 @@ describe('Other Items Sizes Array Function', () => {
           {
             type: 'REGEX',
             regex: COMMA_EXCLUDE_REGEX,
-            error: `Quantity must only include numbers`
+            error: 'Quantity must only include numbers'
           },
           {
             type: 'REGEX',
             regex: DECIMAL_EXCLUDE_REGEX,
-            error: `Quantity must be between 1 and 9999999999`
+            error: 'Quantity must be between 1 and 9999999999'
           },
           {
             type: 'REGEX',
@@ -409,12 +409,12 @@ describe('Other Items Sizes Array Function', () => {
           {
             type: 'REGEX',
             regex: COMMA_EXCLUDE_REGEX,
-            error: `Quantity must only include numbers`
+            error: 'Quantity must only include numbers'
           },
           {
             type: 'REGEX',
             regex: DECIMAL_EXCLUDE_REGEX,
-            error: `Quantity must be between 1 and 9999999999`
+            error: 'Quantity must be between 1 and 9999999999'
           },
           {
             type: 'REGEX',
@@ -451,12 +451,12 @@ describe('Other Items Sizes Array Function', () => {
           {
             type: 'REGEX',
             regex: COMMA_EXCLUDE_REGEX,
-            error: `Size must only include numbers`
+            error: 'Size must only include numbers'
           },
           {
             type: 'REGEX',
             regex: DECIMAL_EXCLUDE_REGEX,
-            error: `Size must be between 1 and 9999999999`
+            error: 'Size must be between 1 and 9999999999'
           },
           {
             type: 'REGEX',
@@ -493,12 +493,12 @@ describe('Other Items Sizes Array Function', () => {
           {
             type: 'REGEX',
             regex: COMMA_EXCLUDE_REGEX,
-            error: `Size must only include numbers`
+            error: 'Size must only include numbers'
           },
           {
             type: 'REGEX',
             regex: DECIMAL_EXCLUDE_REGEX,
-            error: `Size must be between 1 and 9999999999`
+            error: 'Size must be between 1 and 9999999999'
           },
           {
             type: 'REGEX',
@@ -535,12 +535,12 @@ describe('Other Items Sizes Array Function', () => {
           {
             type: 'REGEX',
             regex: COMMA_EXCLUDE_REGEX,
-            error: `Size must only include numbers`
+            error: 'Size must only include numbers'
           },
           {
             type: 'REGEX',
             regex: DECIMAL_EXCLUDE_REGEX,
-            error: `Size must be between 1 and 9999999999`
+            error: 'Size must be between 1 and 9999999999'
           },
           {
             type: 'REGEX',
@@ -577,12 +577,12 @@ describe('Other Items Sizes Array Function', () => {
           {
             type: 'REGEX',
             regex: COMMA_EXCLUDE_REGEX,
-            error: `Size must only include numbers`
+            error: 'Size must only include numbers'
           },
           {
             type: 'REGEX',
             regex: DECIMAL_EXCLUDE_REGEX,
-            error: `Size must be between 1 and 9999999999`
+            error: 'Size must be between 1 and 9999999999'
           },
           {
             type: 'REGEX',
@@ -619,12 +619,12 @@ describe('Other Items Sizes Array Function', () => {
           {
             type: 'REGEX',
             regex: COMMA_EXCLUDE_REGEX,
-            error: `Size must only include numbers`
+            error: 'Size must only include numbers'
           },
           {
             type: 'REGEX',
             regex: DECIMAL_EXCLUDE_REGEX,
-            error: `Size must be between 1 and 9999999999`
+            error: 'Size must be between 1 and 9999999999'
           },
           {
             type: 'REGEX',
@@ -661,12 +661,12 @@ describe('Other Items Sizes Array Function', () => {
           {
             type: 'REGEX',
             regex: COMMA_EXCLUDE_REGEX,
-            error: `Quantity must only include numbers`
+            error: 'Quantity must only include numbers'
           },
           {
             type: 'REGEX',
             regex: DECIMAL_EXCLUDE_REGEX,
-            error: `Quantity must be between 1 and 9999999999`
+            error: 'Quantity must be between 1 and 9999999999'
           },
           {
             type: 'REGEX',
@@ -703,12 +703,12 @@ describe('Other Items Sizes Array Function', () => {
           {
             type: 'REGEX',
             regex: COMMA_EXCLUDE_REGEX,
-            error: `Quantity must only include numbers`
+            error: 'Quantity must only include numbers'
           },
           {
             type: 'REGEX',
             regex: DECIMAL_EXCLUDE_REGEX,
-            error: `Quantity must be between 1 and 9999999999`
+            error: 'Quantity must be between 1 and 9999999999'
           },
           {
             type: 'REGEX',
@@ -745,12 +745,12 @@ describe('Other Items Sizes Array Function', () => {
           {
             type: 'REGEX',
             regex: COMMA_EXCLUDE_REGEX,
-            error: `Quantity must only include numbers`
+            error: 'Quantity must only include numbers'
           },
           {
             type: 'REGEX',
             regex: DECIMAL_EXCLUDE_REGEX,
-            error: `Quantity must be between 1 and 9999999999`
+            error: 'Quantity must be between 1 and 9999999999'
           },
           {
             type: 'REGEX',
@@ -787,12 +787,12 @@ describe('Other Items Sizes Array Function', () => {
           {
             type: 'REGEX',
             regex: COMMA_EXCLUDE_REGEX,
-            error: `Quantity must only include numbers`
+            error: 'Quantity must only include numbers'
           },
           {
             type: 'REGEX',
             regex: DECIMAL_EXCLUDE_REGEX,
-            error: `Quantity must be between 1 and 9999999999`
+            error: 'Quantity must be between 1 and 9999999999'
           },
           {
             type: 'REGEX',

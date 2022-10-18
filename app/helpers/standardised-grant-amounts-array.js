@@ -1,6 +1,5 @@
 const { formatUKCurrency } = require('./data-formats')
 
-
 const getHintText = (answer, hintArray, counter) => {
   if (hintArray && hintArray[counter - 1]) {
     return `${hintArray[counter - 1]} <br/> (Grant amount: £${answer.amount} ${answer.unit})`

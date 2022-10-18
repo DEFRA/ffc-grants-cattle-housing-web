@@ -49,7 +49,7 @@ const formatTempObject = (item, keyTitle, suffixAndLengthValue, catagoryData) =>
   }
 }
 
-function suffixAndLengthGenerator(unit) {
+function suffixAndLengthGenerator (unit) {
   switch (unit) {
     case 'per cubic metre':
       return { unit: 'm³', length: 10 }
@@ -60,7 +60,7 @@ function suffixAndLengthGenerator(unit) {
   }
 }
 
-function keyGenerator(title) {
+function keyGenerator (title) {
   // format key name for NOT_EMPTY validation
   switch (title) {
     case 'Reception pit type':
@@ -72,14 +72,14 @@ function keyGenerator(title) {
   }
 }
 
-function getErrorUnit(catagory) {
+function getErrorUnit (catagory) {
   const volumeArray = ['cat-reception-pit-type', 'cat-pipework', 'cat-transfer-channels']
   const errorType = volumeArray.includes(catagory) ? 'Size' : 'Quantity'
 
   return { errorType: errorType }
 }
 
-function formatOtherItems(request) {
+function formatOtherItems (request) {
   const object = request.yar.get('standardisedCostObject')
   const otherItemsArray = [request.yar.get('otherItems')].flat()
   const listOfCatagories = ['cat-reception-pit-type', 'cat-pump-type', 'cat-pipework', 'cat-transfer-channels', 'cat-agitator', 'cat-safety-equipment']
