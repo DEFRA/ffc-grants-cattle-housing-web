@@ -19,7 +19,7 @@ describe('Create submission messages', () => {
   })
 
   test('As a farmer', async () => {
-    process.env.NODE_ENV = ''
+    process.env.NODE_ENV = 'production'
     const { farmerSubmission } = require('./test-helpers/farmer-submission')
     const { expectedOutcomeFarmer } = require('./test-helpers/expected-outcome-farmer')
 
@@ -29,6 +29,8 @@ describe('Create submission messages', () => {
   })
 
   test('As a farmer with micro turnover', async () => {
+    process.env.NODE_ENV = ''
+
     const { farmerSubmissionMicroTurnover } = require('./test-helpers/farmer-submission')
     const { expectedOutcomeFarmerMicro } = require('./test-helpers/expected-outcome-farmer')
 
