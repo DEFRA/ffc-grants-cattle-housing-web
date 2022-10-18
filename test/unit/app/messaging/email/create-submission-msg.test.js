@@ -4,6 +4,7 @@ describe('Create submission messages', () => {
   const todayStr = testTimeConstant.toLocaleDateString('en-GB')
   const sixMonthsLater = new Date(testTimeConstant)
   sixMonthsLater.setMonth(testTimeConstant.getMonth() + 6)
+  const OLD_ENV = process.env
 
   beforeAll(() => {
     jest.useFakeTimers('modern')
@@ -13,6 +14,7 @@ describe('Create submission messages', () => {
   beforeEach(() => {
     jest.resetAllMocks()
     jest.resetModules()
+    process.env = { ...OLD_ENV }
   })
 
   afterAll(() => {
