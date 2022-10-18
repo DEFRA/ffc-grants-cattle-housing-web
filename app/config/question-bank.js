@@ -1845,6 +1845,12 @@ const questionBank = {
                   type: 'REGEX',
                   regex: NAME_ONLY_REGEX,
                   error: 'Name must only include letters, hyphens and apostrophes'
+                },
+                {
+                  type: 'MIN_MAX_CHARS',
+                  min: 0,
+                  max: 100,
+                  error: 'Name must be 100 characters or fewer'
                 }
               ]
             },
@@ -1866,6 +1872,12 @@ const questionBank = {
                   type: 'REGEX',
                   regex: NAME_ONLY_REGEX,
                   error: 'Name must only include letters, hyphens and apostrophes'
+                },
+                {
+                  type: 'MIN_MAX_CHARS',
+                  min: 0,
+                  max: 100,
+                  error: 'Name must be 100 characters or fewer'
                 }
               ]
             },
@@ -2064,7 +2076,7 @@ const questionBank = {
               validate: [
                 {
                   type: 'NOT_EMPTY',
-                  error: 'Enter your business postcode, like AA1 1AA'
+                  error: 'Enter a postcode, like AA1 1AA'
                 },
                 {
                   type: 'REGEX',
@@ -2088,7 +2100,7 @@ const questionBank = {
               validate: [
                 {
                   type: 'NOT_EMPTY',
-                  error: 'Enter your project postcode, like AA1 1AA'
+                  error: 'Enter a postcode, like AA1 1AA'
                 },
                 {
                   type: 'REGEX',
@@ -2142,6 +2154,12 @@ const questionBank = {
                   type: 'REGEX',
                   regex: NAME_ONLY_REGEX,
                   error: 'Name must only include letters, hyphens and apostrophes'
+                },
+                {
+                  type: 'MIN_MAX_CHARS',
+                  min: 0,
+                  max: 100,
+                  error: 'Name must be 100 characters or fewer'
                 }
               ]
             },
@@ -2162,6 +2180,12 @@ const questionBank = {
                   type: 'REGEX',
                   regex: NAME_ONLY_REGEX,
                   error: 'Name must only include letters, hyphens and apostrophes'
+                },
+                {
+                  type: 'MIN_MAX_CHARS',
+                  min: 0,
+                  max: 100,
+                  error: 'Name must be 100 characters or fewer'
                 }
               ]
             },
