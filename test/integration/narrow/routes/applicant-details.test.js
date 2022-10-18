@@ -52,8 +52,8 @@ describe('Page: /applicant-details', () => {
     expect(postResponse.payload).toContain('Enter a landline number (if you do not have a landline, enter your mobile number)')
     expect(postResponse.payload).toContain('Enter your town')
     expect(postResponse.payload).toContain('Select your county')
-    expect(postResponse.payload).toContain('Enter your business postcode, like AA1 1AA')
-    expect(postResponse.payload).toContain('Enter your project postcode, like AA1 1AA')
+    expect(postResponse.payload).toContain('Enter a postcode, like AA1 1AA')
+    expect(postResponse.payload).toContain('Enter a postcode, like AA1 1AA')
   })
 
   it('user came from \'CHECK DETAILS\' page -> display <Back to details> button', async () => {
