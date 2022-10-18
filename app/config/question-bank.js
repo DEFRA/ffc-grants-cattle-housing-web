@@ -1821,7 +1821,7 @@ const questionBank = {
           maxAnswerCount: '',
           ga: [{ dimension: 'cd3', value: { type: 'yar', key: 'applying' } }],
           hint: {
-            text: "Enter the farmer and farm business details"
+            text: 'Enter the farmer and farm business details'
           },
           allFields: [
             {
@@ -1901,7 +1901,7 @@ const questionBank = {
               type: 'email',
               classes: 'govuk-input--width-20',
               label: {
-                text: 'Confirm Email Address',
+                text: 'Confirm email address',
                 classes: 'govuk-label'
               },
               validate: [
