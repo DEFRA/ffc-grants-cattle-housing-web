@@ -19,7 +19,7 @@ describe('Create submission messages', () => {
   })
 
   test('As a farmer', async () => {
-    process.env.NODE_ENV = 'production'
+    process.env.NODE_ENV = ''
     const { farmerSubmission } = require('./test-helpers/farmer-submission')
     const { expectedOutcomeFarmer } = require('./test-helpers/expected-outcome-farmer')
 
