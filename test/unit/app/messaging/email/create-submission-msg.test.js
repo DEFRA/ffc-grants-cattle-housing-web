@@ -1,9 +1,12 @@
+require('dotenv').config()
+
 describe('Create submission messages', () => {
   const createSubmissionMsg = require('../../../../../app/messaging/email/create-submission-msg')
   const testTimeConstant = new Date(2022, 8, 18)
   const todayStr = testTimeConstant.toLocaleDateString('en-GB')
   const sixMonthsLater = new Date(testTimeConstant)
   sixMonthsLater.setMonth(testTimeConstant.getMonth() + 6)
+  const OLD_ENV = process.env
 
   beforeAll(() => {
     jest.useFakeTimers('modern')
@@ -12,6 +15,8 @@ describe('Create submission messages', () => {
 
   beforeEach(() => {
     jest.resetAllMocks()
+    jest.resetModules()
+    process.env = { ...OLD_ENV }
   })
 
   afterAll(() => {
@@ -19,6 +24,7 @@ describe('Create submission messages', () => {
   })
 
   test('As a farmer', async () => {
+    process.env.NODE_ENV = 'production'
     const { farmerSubmission } = require('./test-helpers/farmer-submission')
     const { expectedOutcomeFarmer } = require('./test-helpers/expected-outcome-farmer')
 
@@ -28,6 +34,8 @@ describe('Create submission messages', () => {
   })
 
   test('As a farmer with micro turnover', async () => {
+    process.env.NODE_ENV = ''
+
     const { farmerSubmissionMicroTurnover } = require('./test-helpers/farmer-submission')
     const { expectedOutcomeFarmerMicro } = require('./test-helpers/expected-outcome-farmer')
 
@@ -39,6 +47,8 @@ describe('Create submission messages', () => {
   })
 
   test('As a farmer with small turnover', async () => {
+    process.env.NODE_ENV = 'production'
+
     const { farmerSubmissionSmallTurnover } = require('./test-helpers/farmer-submission')
     const { expectedOutcomeFarmerSmall } = require('./test-helpers/expected-outcome-farmer')
 
@@ -48,6 +58,8 @@ describe('Create submission messages', () => {
   })
 
   test('As a farmer with medium turnover', async () => {
+    process.env.NODE_ENV = 'production'
+
     const { farmerSubmissionMediumTurnover } = require('./test-helpers/farmer-submission')
     const { expectedOutcomeFarmerMedium } = require('./test-helpers/expected-outcome-farmer')
 
@@ -57,6 +69,8 @@ describe('Create submission messages', () => {
   })
 
   test('As an agent on a farmers behalf', async () => {
+    process.env.NODE_ENV = 'production'
+
     const agentSubmissionForFarmer = require('./test-helpers/agent-submission-for-farmer')
     const expectedOutcomeAgent = require('./test-helpers/expected-outcome-agent')
 
