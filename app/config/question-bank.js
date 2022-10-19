@@ -2219,7 +2219,7 @@ const questionBank = {
               type: 'email',
               classes: 'govuk-input--width-20',
               label: {
-                text: 'Confirm Email Address',
+                text: 'Confirm email address',
                 classes: 'govuk-label'
               },
               validate: [
