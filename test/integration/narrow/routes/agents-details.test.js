@@ -52,7 +52,7 @@ describe('Page: /agent-details', () => {
     expect(postResponse.payload).toContain('Confirm your email address')
     expect(postResponse.payload).toContain('Enter a mobile number (if you do not have a mobile, enter your landline number)')
     expect(postResponse.payload).toContain('Enter a landline number (if you do not have a landline, enter your mobile number)')
-    expect(postResponse.payload).toContain('Enter your building and street details')
+    expect(postResponse.payload).toContain('Enter your address line 1')
     expect(postResponse.payload).toContain('Enter your town')
     expect(postResponse.payload).toContain('Select your county')
     expect(postResponse.payload).toContain('Enter your postcode, like AA1 1AA')
