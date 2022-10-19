@@ -53,8 +53,8 @@ describe('Page: /applicant-details', () => {
     expect(postResponse.payload).toContain('Enter your town')
     expect(postResponse.payload).toContain('Select your county')
     expect(postResponse.payload).toContain('Enter your address line 1')
-    expect(postResponse.payload).toContain('Enter a postcode, like AA1 1AA')
-    expect(postResponse.payload).toContain('Enter a postcode, like AA1 1AA')
+    expect(postResponse.payload).toContain('Enter a business postcode, like AA1 1AA')
+    expect(postResponse.payload).toContain('Enter a project postcode, like AA1 1AA')
   })
 
   it('user came from \'CHECK DETAILS\' page -> display <Back to details> button', async () => {
@@ -235,7 +235,7 @@ describe('Page: /applicant-details', () => {
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Enter a postcode, like AA1 1AA')
+    expect(postResponse.payload).toContain('Enter a business postcode, like AA1 1AA')
   })
 
   it('validate project postcode - valid format', async () => {
@@ -251,7 +251,7 @@ describe('Page: /applicant-details', () => {
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Enter a postcode, like AA1 1AA')
+    expect(postResponse.payload).toContain('Enter a project postcode, like AA1 1AA')
   })
 
   it('store user response and redirect to /check-details', async () => {
