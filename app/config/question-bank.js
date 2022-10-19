@@ -2076,12 +2076,12 @@ const questionBank = {
               validate: [
                 {
                   type: 'NOT_EMPTY',
-                  error: 'Enter a postcode, like AA1 1AA'
+                  error: 'Enter a business postcode, like AA1 1AA'
                 },
                 {
                   type: 'REGEX',
                   regex: POSTCODE_REGEX,
-                  error: 'Enter a postcode, like AA1 1AA'
+                  error: 'Enter a business postcode, like AA1 1AA'
                 }
               ]
             },
@@ -2100,12 +2100,12 @@ const questionBank = {
               validate: [
                 {
                   type: 'NOT_EMPTY',
-                  error: 'Enter a postcode, like AA1 1AA'
+                  error: 'Enter a project postcode, like AA1 1AA'
                 },
                 {
                   type: 'REGEX',
                   regex: POSTCODE_REGEX,
-                  error: 'Enter a postcode, like AA1 1AA'
+                  error: 'Enter a project postcode, like AA1 1AA'
                 }
               ]
             }
