@@ -1,5 +1,4 @@
 const { sendDesirabilitySubmitted } = require('../senders')
-const cache = require('./index.js')
 const createMsg = require('./create-submission-msg')
 const appInsights = require('../../services/app-insights')
 
