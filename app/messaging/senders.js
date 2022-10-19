@@ -1,6 +1,6 @@
 const { MessageSender } = require('ffc-messaging')
 const msgCfg = require('../config/messaging')
-const protectiveMonitoringServiceSendEvent = require('../services/protective-monitoring-service')
+const protectiveMonitoringServiceSendEvent = require('../services/protective-monitoring-service-email')
 
 const contactDetailsSender = new MessageSender(msgCfg.contactDetailsQueue)
 const desirabilitySubmittedSender = new MessageSender(msgCfg.desirabilitySubmittedTopic)
@@ -36,9 +36,6 @@ async function sendMsg (sender, msgData, msgType, correlationId) {
 }
 
 module.exports = {
-  sendContactDetails: async function (contactDetailsData, correlationId) {
-    await sendMsg(contactDetailsSender, contactDetailsData, msgCfg.contactDetailsMsgType, correlationId)
-  },
   sendDesirabilitySubmitted: async function (desirabilitySubmittedData, correlationId) {
     await sendMsg(
       desirabilitySubmittedSender,
