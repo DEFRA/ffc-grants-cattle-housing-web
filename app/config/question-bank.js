@@ -2081,7 +2081,7 @@ const questionBank = {
                 {
                   type: 'REGEX',
                   regex: POSTCODE_REGEX,
-                  error: 'Enter a business postcode, like AA1 1AA'
+                  error: 'Enter a postcode, like AA1 1AA'
                 }
               ]
             },
@@ -2105,7 +2105,7 @@ const questionBank = {
                 {
                   type: 'REGEX',
                   regex: POSTCODE_REGEX,
-                  error: 'Enter a project postcode, like AA1 1AA'
+                  error: 'Enter a postcode, like AA1 1AA'
                 }
               ]
             }
@@ -2332,7 +2332,7 @@ const questionBank = {
               validate: [
                 {
                   type: 'NOT_EMPTY',
-                  error: 'Enter your building and street details'
+                  error: 'Enter your address line 1'
                 }
               ]
             },
