@@ -1411,7 +1411,7 @@ const questionBank = {
               content: [{
                 para: `You must have secured planning permission before you submit a full application.
 
-                      Any planning permission must be in place by 31 December 2023.`
+                       Any planning permission must be in place by 31 December 2023.`
               }]
             }]
           },
@@ -1432,12 +1432,12 @@ const questionBank = {
             },
             {
               key: 'planning-permission-A3',
-              value: 'Expected to have by 31 December 2023',
+              value: 'Should be in place by 31 January 2023',
               redirectUrl: 'planning-permission-condition'
             },
             {
               key: 'planning-permission-A4',
-              value: 'Will not have by 31 December 2023',
+              value: 'Will not have by 31 January 2023',
               notEligible: true
             }
           ],
