@@ -88,7 +88,7 @@ describe('Page: /planning-permission', () => {
     expect(postResponse.headers.location).toBe('project-started')
   })
 
-  it('user selects ineligible option `Will not have by 31 January 2023` and redirect to /project-start', async () => {
+  it('user selects ineligible option `Will not have by 31 January 2023` and display ineligible page', async () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/planning-permission`,
@@ -97,8 +97,7 @@ describe('Page: /planning-permission', () => {
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
-    expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.headers.location).toBe('planning-permission')
-    expect(response.payload).toContain('You cannot apply for a grant from this scheme')
+    expect(postResponse.payload).toContain('You cannot apply for a grant from this scheme')
+
   })
 })
