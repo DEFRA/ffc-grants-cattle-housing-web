@@ -59,7 +59,7 @@ describe('Page: /country', () => {
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
-    expect(postResponse.headers.location).toBe('project-started')
+    expect(postResponse.headers.location).toBe('planning-permission')
   })
 
   it('page loads with correct back link', async () => {
@@ -69,6 +69,6 @@ describe('Page: /country', () => {
     }
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('<a href=\"legal-status\" class=\"govuk-back-link\">Back</a>')
+    expect(response.payload).toContain('<a href=\"remaining-cost\" class=\"govuk-back-link\">Back</a>')
   })
 })

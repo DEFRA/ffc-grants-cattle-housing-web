@@ -1411,7 +1411,7 @@ const questionBank = {
               content: [{
                 para: `You must have secured planning permission before you submit a full application.
 
-                       Any planning permission must be in place by 31 December 2023.`
+                      Any planning permission must be in place by 31 December 2023.`
               }]
             }]
           },
