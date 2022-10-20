@@ -61,14 +61,4 @@ describe('Page: /country', () => {
     expect(postResponse.statusCode).toBe(302)
     expect(postResponse.headers.location).toBe('planning-permission')
   })
-  
-  it('page loads with correct back link', async () => {
-    const options = {
-      method: 'GET',
-      url: `${global.__URLPREFIX__}/country`
-    }
-    const response = await global.__SERVER__.inject(options)
-    expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('<a href=\"remaining-costs\" class=\"govuk-back-link\">Back</a>')
-  })
 })
