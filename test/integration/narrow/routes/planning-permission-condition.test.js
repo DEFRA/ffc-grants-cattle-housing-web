@@ -44,6 +44,5 @@ describe('Page: /planning-permission-condition', () => {
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
     expect(postResponse.headers.location).toBe('planning-permission-condition')
-    expect(response.payload).toContain('<a href=\"planning-permission\" class=\"govuk-back-link\" id=\"linkBack\">Back</a>')
   })
 })
