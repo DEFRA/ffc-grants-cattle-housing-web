@@ -97,7 +97,7 @@ describe('Page: /planning-permission', () => {
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
-    expect(postResponse.statusCode).toBe(302)
+    expect(postResponse.statusCode).toBe(200)
     expect(postResponse.headers.location).toBe('planning-permission')
     expect(response.payload).toContain('You cannot apply for a grant from this scheme')
   })

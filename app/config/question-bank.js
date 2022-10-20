@@ -250,173 +250,6 @@ const questionBank = {
           yarKey: 'legalStatus'
         },
         {
-          key: 'project-started',
-          order: 40,
-          title: 'Have you already started work on the project?',
-          pageTitle: '',
-          url: 'project-started',
-          baseUrl: 'project-started',
-          backUrl: 'planning-permission',
-          nextUrl: 'planning-permission-evidence',
-          preValidationKeys: [],
-          ineligibleContent: {
-            messageContent: 'You cannot apply for a grant if you have already started work on the project.',
-            insertText: { text: 'Starting the project or committing to any costs (such as placing orders) before you receive a funding agreement invalidates your application.' },
-            messageLink: {
-              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-              title: 'See other grants you may be eligible for.'
-            }
-          },
-          fundingPriorities: '',
-          type: 'single-answer',
-          minAnswerCount: 1,
-          sidebar: {
-            values: [{
-              heading: 'Eligibility',
-              content: [{
-                para: `
-                You will invalidate your application if you start the project or commit to any costs (such as placing orders) before you receive a funding agreement.
-                
-                Before you start the project, you can:`,
-                items: [
-                  'get quotes from suppliers',
-                  'apply for planning permission (this can take a long time)'
-                ]
-              }]
-            }]
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select the option that applies to your project'
-            }
-          ],
-          answers: [
-            {
-              key: 'project-started-A1',
-              value: 'Yes, preparatory work',
-              hint: {
-                text: 'For example, quotes from suppliers, applying for planning permission'
-              }
-            },
-            {
-              key: 'project-started-A2',
-              value: 'Yes, we have begun project work',
-              hint: {
-                text: 'For example, started construction work, signing contracts, placing orders'
-              },
-              notEligible: true
-            },
-            {
-              key: 'project-started-A3',
-              value: 'No, we have not done any work on this project yet'
-            }
-          ],
-          yarKey: 'projectStart'
-        },
-        {
-          key: 'tenancy',
-          order: 50,
-          title: 'Is the planned project on land the business owns?',
-          hint: {
-            text: 'The location of the slurry store'
-          },
-          pageTitle: '',
-          url: 'tenancy',
-          baseUrl: 'tenancy',
-          backUrl: 'legal-status',
-          nextUrl: 'system-type',
-          preValidationKeys: [],
-          fundingPriorities: '',
-          type: 'single-answer',
-          minAnswerCount: 1,
-          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
-          sidebar: {
-            values: [{
-              heading: 'Eligibility',
-              content: [{
-                para: 'You must own the land or have a tenancy in place for 5 years after the final grant payment.'
-              }]
-            }]
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select yes if the planned project is on land the business owns'
-            }
-          ],
-          answers: [
-            {
-              key: 'tenancy-A1',
-              value: 'Yes'
-            },
-            {
-              key: 'tenancy-A2',
-              value: 'No',
-              redirectUrl: 'tenancy-length'
-            }
-          ],
-          yarKey: 'tenancy'
-        },
-        {
-          key: 'tenancy-length',
-          order: 60,
-          title: 'Do you have a tenancy agreement for 5 years after the final grant payment?',
-          hint: {
-            text: 'The location of the slurry store'
-          },
-          pageTitle: '',
-          url: 'tenancy-length',
-          baseUrl: 'tenancy-length',
-          backUrl: 'tenancy',
-          preValidationKeys: [],
-          nextUrl: 'system-type',
-          type: 'single-answer',
-          minAnswerCount: 1,
-          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
-          sidebar: {
-            values: [{
-              heading: 'Eligibility',
-              content: [{
-                para: 'You must own the land or have a tenancy in place for 5 years after the final grant payment.',
-                items: []
-              }]
-            }]
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select yes if the land has a tenancy agreement in place for 5 years after the final grant payment.'
-            }
-          ],
-          answers: [
-            {
-              key: 'tenancy-length-A1',
-              value: 'Yes'
-            },
-            {
-              key: 'tenancy-length-A2',
-              value: 'No',
-              redirectUrl: 'tenancy-length-condition'
-            }
-          ],
-          yarKey: 'tenancyLength'
-        },
-        {
-          key: 'tenancy-length-condition',
-          title: 'You may be able to apply for a grant from this scheme',
-          order: 70,
-          url: 'tenancy-length-condition',
-          backUrl: 'tenancy-length',
-          preValidationKeys: [],
-          nextUrl: 'system-type',
-          maybeEligible: true,
-          maybeEligibleContent: {
-            messageHeader: 'You may be able to apply for a grant from this scheme',
-            messageContent: 'You will need to extend your tenancy agreement for 5 years after the final agreement.'
-          }
-        },
-        {
           key: 'system-type',
           order: 80,
           title: 'What is your current manure management system?',
@@ -1522,6 +1355,173 @@ const questionBank = {
               ]
             }],
           yarKey: 'PlanningPermissionEvidence'
+        },
+        {
+          key: 'project-started',
+          order: 151,
+          title: 'Have you already started work on the project?',
+          pageTitle: '',
+          url: 'project-started',
+          baseUrl: 'project-started',
+          backUrl: 'planning-permission',
+          nextUrl: 'tenancy',
+          preValidationKeys: [],
+          ineligibleContent: {
+            messageContent: 'You cannot apply for a grant if you have already started work on the project.',
+            insertText: { text: 'Starting the project or committing to any costs (such as placing orders) before you receive a funding agreement invalidates your application.' },
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
+            }
+          },
+          fundingPriorities: '',
+          type: 'single-answer',
+          minAnswerCount: 1,
+          sidebar: {
+            values: [{
+              heading: 'Eligibility',
+              content: [{
+                para: `
+                You will invalidate your application if you start the project or commit to any costs (such as placing orders) before you receive a funding agreement.
+                
+                Before you start the project, you can:`,
+                items: [
+                  'get quotes from suppliers',
+                  'apply for planning permission (this can take a long time)'
+                ]
+              }]
+            }]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select the option that applies to your project'
+            }
+          ],
+          answers: [
+            {
+              key: 'project-started-A1',
+              value: 'Yes, preparatory work',
+              hint: {
+                text: 'For example, quotes from suppliers, applying for planning permission'
+              }
+            },
+            {
+              key: 'project-started-A2',
+              value: 'Yes, we have begun project work',
+              hint: {
+                text: 'For example, started construction work, signing contracts, placing orders'
+              },
+              notEligible: true
+            },
+            {
+              key: 'project-started-A3',
+              value: 'No, we have not done any work on this project yet'
+            }
+          ],
+          yarKey: 'projectStart'
+        },
+        {
+          key: 'tenancy',
+          order: 152,
+          title: 'Is the planned project on land the business owns?',
+          hint: {
+            text: 'The location of the slurry store'
+          },
+          pageTitle: '',
+          url: 'tenancy',
+          baseUrl: 'tenancy',
+          backUrl: 'legal-status',
+          nextUrl: 'system-type',
+          preValidationKeys: [],
+          fundingPriorities: '',
+          type: 'single-answer',
+          minAnswerCount: 1,
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
+          sidebar: {
+            values: [{
+              heading: 'Eligibility',
+              content: [{
+                para: 'You must own the land or have a tenancy in place for 5 years after the final grant payment.'
+              }]
+            }]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if the planned project is on land the business owns'
+            }
+          ],
+          answers: [
+            {
+              key: 'tenancy-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'tenancy-A2',
+              value: 'No',
+              redirectUrl: 'tenancy-length'
+            }
+          ],
+          yarKey: 'tenancy'
+        },
+        {
+          key: 'tenancy-length',
+          order: 60,
+          title: 'Do you have a tenancy agreement for 5 years after the final grant payment?',
+          hint: {
+            text: 'The location of the slurry store'
+          },
+          pageTitle: '',
+          url: 'tenancy-length',
+          baseUrl: 'tenancy-length',
+          backUrl: 'tenancy',
+          preValidationKeys: [],
+          nextUrl: 'system-type',
+          type: 'single-answer',
+          minAnswerCount: 1,
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
+          sidebar: {
+            values: [{
+              heading: 'Eligibility',
+              content: [{
+                para: 'You must own the land or have a tenancy in place for 5 years after the final grant payment.',
+                items: []
+              }]
+            }]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if the land has a tenancy agreement in place for 5 years after the final grant payment.'
+            }
+          ],
+          answers: [
+            {
+              key: 'tenancy-length-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'tenancy-length-A2',
+              value: 'No',
+              redirectUrl: 'tenancy-length-condition'
+            }
+          ],
+          yarKey: 'tenancyLength'
+        },
+        {
+          key: 'tenancy-length-condition',
+          title: 'You may be able to apply for a grant from this scheme',
+          order: 70,
+          url: 'tenancy-length-condition',
+          backUrl: 'tenancy-length',
+          preValidationKeys: [],
+          nextUrl: 'system-type',
+          maybeEligible: true,
+          maybeEligibleContent: {
+            messageHeader: 'You may be able to apply for a grant from this scheme',
+            messageContent: 'You will need to extend your tenancy agreement for 5 years after the final agreement.'
+          }
         },
         {
           key: 'grid-reference',
