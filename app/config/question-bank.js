@@ -156,7 +156,7 @@ const questionBank = {
           title: 'What is the legal status of the business?',
           pageTitle: '',
           backUrl: 'applicant-type',
-          nextUrl: 'country',
+          nextUrl: 'tenancy',
           url: 'legal-status',
           baseUrl: 'legal-status',
           preValidationKeys: [],
@@ -250,68 +250,14 @@ const questionBank = {
           yarKey: 'legalStatus'
         },
         {
-          key: 'country',
-          order: 30,
-          title: 'Is the planned project in England?',
-          hint: {
-            text: 'The location of the slurry store'
-          },
-          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
-          pageTitle: '',
-          backUrl: 'legal-status',
-          nextUrl: 'project-started',
-          url: 'country',
-          baseUrl: 'country',
-          preValidationKeys: [],
-          ineligibleContent: {
-            messageContent: 'This grant is only for projects in England.',
-            insertText: { text: 'Scotland, Wales and Northern Ireland have other grants available.' },
-            messageLink: {
-              url: '',
-              title: ''
-            }
-          },
-          fundingPriorities: '',
-          type: 'single-answer',
-          minAnswerCount: 1,
-          sidebar: {
-            values: [{
-              heading: 'Eligibility',
-              content: [{
-                para: `This grant is only for projects in England.
-                
-                Scotland, Wales and Northern Ireland have other grants available.`
-              }]
-            }]
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select yes if the project is in England'
-            }
-          ],
-          answers: [
-            {
-              key: 'country-A1',
-              value: 'Yes'
-            },
-            {
-              key: 'country-A2',
-              value: 'No',
-              notEligible: true
-            }
-          ],
-          yarKey: 'inEngland'
-        },
-        {
           key: 'project-started',
           order: 40,
           title: 'Have you already started work on the project?',
           pageTitle: '',
           url: 'project-started',
           baseUrl: 'project-started',
-          backUrl: 'country',
-          nextUrl: 'tenancy',
+          backUrl: 'planning-permission',
+          nextUrl: 'planning-permission-evidence',
           preValidationKeys: [],
           ineligibleContent: {
             messageContent: 'You cannot apply for a grant if you have already started work on the project.',
@@ -378,7 +324,7 @@ const questionBank = {
           pageTitle: '',
           url: 'tenancy',
           baseUrl: 'tenancy',
-          backUrl: 'project-started',
+          backUrl: 'legal-status',
           nextUrl: 'system-type',
           preValidationKeys: [],
           fundingPriorities: '',
@@ -1326,7 +1272,7 @@ const questionBank = {
           url: 'remaining-costs',
           baseUrl: 'remaining-costs',
           backUrl: 'potential-amount',
-          nextUrl: 'planning-permission',
+          nextUrl: 'country',
           preValidationKeys: [],
           ineligibleContent: {
             messageContent: `<p class="govuk-body">You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.</p>
@@ -1386,14 +1332,68 @@ const questionBank = {
 
         },
         {
+          key: 'country',
+          order: 141,
+          title: 'Is the planned project in England?',
+          hint: {
+            text: 'The location of the slurry store'
+          },
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
+          pageTitle: '',
+          backUrl: 'remaining-costs',
+          nextUrl: 'planning-permission',
+          url: 'country',
+          baseUrl: 'country',
+          preValidationKeys: [],
+          ineligibleContent: {
+            messageContent: 'This grant is only for projects in England.',
+            insertText: { text: 'Scotland, Wales and Northern Ireland have other grants available.' },
+            messageLink: {
+              url: '',
+              title: ''
+            }
+          },
+          fundingPriorities: '',
+          type: 'single-answer',
+          minAnswerCount: 1,
+          sidebar: {
+            values: [{
+              heading: 'Eligibility',
+              content: [{
+                para: `This grant is only for projects in England.
+                
+                Scotland, Wales and Northern Ireland have other grants available.`
+              }]
+            }]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if the project is in England'
+            }
+          ],
+          answers: [
+            {
+              key: 'country-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'country-A2',
+              value: 'No',
+              notEligible: true
+            }
+          ],
+          yarKey: 'inEngland'
+        },
+        {
           key: 'planning-permission',
           order: 142,
           title: 'Does the project have planning permission?',
           pageTitle: '',
           url: 'planning-permission',
           baseUrl: 'planning-permission',
-          backUrl: 'remaining-costs',
-          nextUrl: 'planning-permission-evidence',
+          backUrl: 'country',
+          nextUrl: 'project-started',
           preValidationKeys: [],
           ineligibleContent: {
             messageContent: 'Any planning permission must be in place by 31 January 2024.',
@@ -1409,31 +1409,36 @@ const questionBank = {
             values: [{
               heading: 'Eligibility',
               content: [{
-                para: `Any planning permission must be in place by 31 December 2023. 
+                para: `You must have secured planning permission before you submit a full application.
 
-                      You must have applied for planning permission before you submit a full application.`
+                      Any planning permission must be in place by 31 December 2023.`
               }]
             }]
           },
           validate: [
             {
               type: 'NOT_EMPTY',
-              error: 'Select your project planning permission'
+              error: 'Select when the project will have project planning permission'
             }
           ],
           answers: [
             {
               key: 'planning-permission-A1',
-              value: 'Approved'
+              value: 'Not needed'
             },
             {
               key: 'planning-permission-A2',
-              value: 'Applied for but not yet approved'
+              value: 'Secured'
             },
             {
               key: 'planning-permission-A3',
-              value: 'Not yet applied for but expected to be in place by 31 December 2023',
+              value: 'Expected to have by 31 December 2023',
               redirectUrl: 'planning-permission-condition'
+            },
+            {
+              key: 'planning-permission-A4',
+              value: 'Will not have by 31 December 2023',
+              notEligible: true
             }
           ],
           yarKey: 'planningPermission'
@@ -1461,7 +1466,7 @@ const questionBank = {
           },
           url: 'planning-permission-evidence',
           baseUrl: 'planning-permission-evidence',
-          backUrl: 'planning-permission',
+          backUrl: 'project-started',
           nextUrl: 'grid-reference',
           preValidationKeys: [],
           type: 'multi-input',
