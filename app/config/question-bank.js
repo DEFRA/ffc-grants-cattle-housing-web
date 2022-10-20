@@ -1229,7 +1229,7 @@ const questionBank = {
           nextUrl: 'project-started',
           preValidationKeys: [],
           ineligibleContent: {
-            messageContent: 'Any planning permission must be in place by 31 January 2024.',
+            messageContent: 'Any planning permission must be in place by 31 January 2023.',
             messageLink: {
               url: 'https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments',
               title: 'See other grants you may be eligible for.'
@@ -1244,7 +1244,7 @@ const questionBank = {
               content: [{
                 para: `You must have secured planning permission before you submit a full application.
 
-                      Any planning permission must be in place by 31 December 2023.`
+                      Any planning permission must be in place by 31 January 2023.`
               }]
             }]
           },
@@ -1281,12 +1281,12 @@ const questionBank = {
           order: 145,
           url: 'planning-permission-condition',
           backUrl: 'planning-permission',
-          nextUrl: 'grid-reference',
+          nextUrl: 'project-started',
           maybeEligible: true,
           preValidationKeys: [],
           maybeEligibleContent: {
             messageHeader: 'You may be able to apply for a grant from this scheme',
-            messageContent: 'Any planning permission must be in place by 31st December 2023.'
+            messageContent: 'Any planning permission must be in place by 31 January 2023 (the end of the application window).'
           },
           yarKey: 'PlanningPermissionCondition'
         },
@@ -1365,6 +1365,14 @@ const questionBank = {
           baseUrl: 'project-started',
           backUrl: 'planning-permission',
           nextUrl: 'tenancy',
+          backUrlObject: {
+            dependentQuestionYarKey: 'planningPermission',
+            dependentAnswerKeysArray: ['planning-permission-A1', 'planning-permission-A2'],
+            urlOptions: {
+              thenUrl: 'planning-permission',
+              elseUrl: 'planning-permission-condition'
+            }
+          },
           preValidationKeys: [],
           ineligibleContent: {
             messageContent: 'You cannot apply for a grant if you have already started work on the project.',
@@ -1529,14 +1537,6 @@ const questionBank = {
           url: 'grid-reference',
           backUrl: 'planning-permission-evidence',
           nextUrl: 'planning-permission-summary',
-          backUrlObject: {
-            dependentQuestionYarKey: 'planningPermission',
-            dependentAnswerKeysArray: ['planning-permission-A1', 'planning-permission-A2'],
-            urlOptions: {
-              thenUrl: 'planning-permission-evidence',
-              elseUrl: 'planning-permission-condition'
-            }
-          },
           preValidationKeys: [],
           type: 'input',
           classes: 'govuk-input--width-10',
