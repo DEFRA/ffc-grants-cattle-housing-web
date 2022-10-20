@@ -21,7 +21,7 @@ describe('Page: /planning-permission-condition', () => {
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
-    expect(postResponse.headers.location).toBe('grid-reference')
+    expect(postResponse.headers.location).toBe('project-started')
   })
 
   it('should load the condition page with correct heading', async () => {
@@ -34,12 +34,16 @@ describe('Page: /planning-permission-condition', () => {
     expect(getResponse.payload).toContain('You may be able to apply for a grant from this scheme')
   })
   it('page loads with correct back link', async () => {
-    const options = {
-      method: 'GET',
-      url: `${global.__URLPREFIX__}/planning-permission-condition`
+    const postOptions = {
+      method: 'POST',
+      url: `${global.__URLPREFIX__}/planning-permission`,
+      headers: { cookie: 'crumb=' + crumbToken },
+      payload: { planningPermission: 'Should be in place by 31 January 2023', crumb: crumbToken }
     }
-    const response = await global.__SERVER__.inject(options)
-    expect(response.statusCode).toBe(200)
+
+    const postResponse = await global.__SERVER__.inject(postOptions)
+    expect(postResponse.statusCode).toBe(302)
+    expect(postResponse.headers.location).toBe('planning-permission-condition')
     expect(response.payload).toContain('<a href=\"planning-permission\" class=\"govuk-back-link\" id=\"linkBack\">Back</a>')
   })
 })
