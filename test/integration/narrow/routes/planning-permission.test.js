@@ -20,9 +20,10 @@ describe('Page: /planning-permission', () => {
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
     expect(response.payload).toContain('Does the project have planning permission?')
-    expect(response.payload).toContain('Approved')
-    expect(response.payload).toContain('Applied for but not yet approved')
-    expect(response.payload).toContain('Not yet applied for but expected to be in place by 31 December 2023')
+    expect(response.payload).toContain('Not needed')
+    expect(response.payload).toContain('Secured')
+    expect(response.payload).toContain('Should be in place by 31 January 2023')
+    expect(response.payload).toContain('Will not have by 31 January 2023')
   })
 
   it('no option selected -> show error message', async () => {
@@ -35,7 +36,7 @@ describe('Page: /planning-permission', () => {
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Select your project planning permission')
+    expect(postResponse.payload).toContain('Select when the project will have project planning permission')
   })
 
   it('user came from \'PLANNING PERMISSION SUMMARY\' page -> DO NOT display <Back to evidence summary> button', async () => {
@@ -51,12 +52,12 @@ describe('Page: /planning-permission', () => {
     expect(response.payload).not.toContain('Back to evidence summary')
   })
 
-  it('user selects conditional option: \'Not yet applied for but expected to be in place by 31 December 2023\' -> display conditional page', async () => {
+  it('user selects conditional option: \'Expected to have by 31 December 2023\' -> display conditional page', async () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/planning-permission`,
       headers: { cookie: 'crumb=' + crumbToken },
-      payload: { planningPermission: 'Not yet applied for but expected to be in place by 31 December 2023', crumb: crumbToken }
+      payload: { planningPermission: 'Should be in place by 31 January 2023', crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
@@ -79,11 +80,24 @@ describe('Page: /planning-permission', () => {
       method: 'POST',
       url: `${global.__URLPREFIX__}/planning-permission`,
       headers: { cookie: 'crumb=' + crumbToken },
-      payload: { planningPermission: 'Approved', crumb: crumbToken }
+      payload: { planningPermission: 'Secured', crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
-    expect(postResponse.headers.location).toBe('planning-permission-evidence')
+    expect(postResponse.headers.location).toBe('project-started')
+  })
+
+  it('user selects ineligible option `Will not have by 31 January 2023` and display ineligible page', async () => {
+    const postOptions = {
+      method: 'POST',
+      url: `${global.__URLPREFIX__}/planning-permission`,
+      headers: { cookie: 'crumb=' + crumbToken },
+      payload: { planningPermission: 'Will not have by 31 January 2023', crumb: crumbToken }
+    }
+
+    const postResponse = await global.__SERVER__.inject(postOptions)
+    expect(postResponse.payload).toContain('You cannot apply for a grant from this scheme')
+
   })
 })

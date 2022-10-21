@@ -69,7 +69,7 @@ describe('Page: /legal-status', () => {
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
-    expect(postResponse.headers.location).toBe('country')
+    expect(postResponse.headers.location).toBe('tenancy')
   })
 
   it('page loads with correct back link', async () => {
