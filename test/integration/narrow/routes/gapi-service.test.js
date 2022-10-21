@@ -53,7 +53,7 @@ afterEach(() => {
   jest.resetAllMocks()
 })
 
-xdescribe('get gapiService setup', () => {
+describe('get gapiService setup', () => {
   test('Should be defined', () => {
     expect(gapiService).toBeDefined()
   })
