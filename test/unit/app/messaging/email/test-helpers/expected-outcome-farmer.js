@@ -14,26 +14,14 @@ const expectedOutcomeFarmer = (testTimeConstant, sixMonthsLater, todayStr, numbe
         legalStatus: 'Sole trader',
         applicantType: 'pig',
         location: 'Yes',
-        systemType: 'Slurry-based system',
-        existingStorageCapacity: 'Less than 6 months',
-        plannedStorageCapacity: '6 months',
-        cover: 'Yes',
-        coverSize: 'Solid roof or lid with a flat deck or conical shape made from inflexible material such as fibreglass panels or polyester sheets m²',
-        itemSizeQuantities: 'Earth-bank lagoon with internal liner: 100 m³\nFixed flexible cover: 100 m³\nCentrifugal chopper pump: 10 item(s)\nSlurry store wall mixers with store capacity up to 8,000 cubic metre: 10 item(s) item(s)',
-        coverType: 'I already have an impermeable cover',
-        storageType: 'Above- ground steel slurry store',
-        planningAuthority: 'TEST',
-        planningReferenceNumber: 'TE01',
         planningPermission: 'Yes',
         projectPostcode: 'TE12ST',
         projectStart: 'Yes, preparatory work',
-        serviceCapacityIncrease: '',
         tenancy: 'Yes',
         isTenancyLength: 'Yes',
         tenancyLength: 'Yes',
         projectCost: '£NaN',
         potentialFunding: '£NaN',
-        gridReference: 'A1',
         projectName: 'Test Project',
         projectType: '',
         businessName: 'Test Business',
@@ -53,8 +41,8 @@ const expectedOutcomeFarmer = (testTimeConstant, sixMonthsLater, todayStr, numbe
     agentEmail: null,
     rpaEmail: null,
     spreadsheet: {
-      filename: 'FTF-Slurry Infrastructure_Test Project_Test Business_12345678_18-09-2022, 01:00.xlsx',
-      uploadLocation: `Farming Investment Fund/Farming Transformation Fund/${envStr}/Slurry Infrastructure/`,
+      filename: 'FTF-Cattle Housing_Test Project_Test Business_12345678_18-09-2022, 01:00.xlsx',
+      uploadLocation: `Farming Investment Fund/Farming Transformation Fund/${envStr}/Cattle Housing/`,
       worksheets: [
         {
           title: 'DORA DATA',
@@ -75,11 +63,11 @@ const expectedOutcomeFarmer = (testTimeConstant, sixMonthsLater, todayStr, numbe
               bold: false
             }, {
               row: 39,
-              values: ['', 'Sub scheme', 'FTF-Slurry Infrastructure'],
+              values: ['', 'Sub scheme', 'FTF-Cattle Housing'],
               bold: false
             }, {
               row: 43,
-              values: ['', 'Theme', 'Slurry Infrastructure Grants'],
+              values: ['', 'Theme', 'Cattle Housing Grants'],
               bold: false
             }, {
               row: 90,
@@ -126,26 +114,6 @@ const expectedOutcomeFarmer = (testTimeConstant, sixMonthsLater, todayStr, numbe
               values: ['', 'Tenancy for next 5 years', 'Yes'],
               bold: false
             }, {
-              row: 395,
-              values: ['', 'System Type', 'Slurry-based system'],
-              bold: false
-            }, {
-              row: 396,
-              values: ['', 'Existing Storage Capacity', 'Less than 6 months'],
-              bold: false
-            }, {
-              row: 397,
-              values: ['', 'Planned Storage Capacity', '6 months'],
-              bold: false
-            }, {
-              row: 398,
-              values: ['', 'Slurry Storage Improvement Method', ''],
-              bold: false
-            }, {
-              row: 399,
-              values: ['', 'Impermeable cover', 'Yes'],
-              bold: false
-            }, {
               row: 55,
               values: ['', 'Total project expenditure', 'undefined'],
               bold: false
@@ -165,18 +133,6 @@ const expectedOutcomeFarmer = (testTimeConstant, sixMonthsLater, todayStr, numbe
             }, {
               row: 346,
               values: ['', 'Planning Permission Status', 'Approved'],
-              bold: false
-            }, {
-              row: 400,
-              values: ['', 'Planning Authority', 'TEST'],
-              bold: false
-            }, {
-              row: 401,
-              values: ['', 'Planning Reference No', 'TE01'],
-              bold: false
-            }, {
-              row: 402,
-              values: ['', 'OS Grid Reference', 'A1'],
               bold: false
             }, {
               row: 366,

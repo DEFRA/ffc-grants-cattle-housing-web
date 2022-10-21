@@ -60,6 +60,6 @@ describe('Page: /tenancy-length', () => {
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
-    expect(postResponse.headers.location).toBe('system-type')
+    expect(postResponse.headers.location).toBe('cover')
   })
 })

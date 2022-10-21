@@ -47,7 +47,7 @@ describe('Page: /tenancy', () => {
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
-    expect(postResponse.headers.location).toBe('system-type')
+    expect(postResponse.headers.location).toBe('cover')
   })
 
   it('user selects \'No\' -> store user response and redirect to /tenancy-length', async () => {
@@ -69,6 +69,6 @@ describe('Page: /tenancy', () => {
     }
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('<a href=\"legal-status\" class=\"govuk-back-link\">Back</a>')
+    expect(response.payload).toContain('<a href=\"project-started\" class=\"govuk-back-link\">Back</a>')
   })
 })

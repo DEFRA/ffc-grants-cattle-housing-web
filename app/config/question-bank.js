@@ -156,7 +156,7 @@ const questionBank = {
           title: 'What is the legal status of the business?',
           pageTitle: '',
           backUrl: 'applicant-type',
-          nextUrl: 'tenancy',
+          nextUrl: 'country',
           url: 'legal-status',
           baseUrl: 'legal-status',
           preValidationKeys: [],
@@ -250,921 +250,6 @@ const questionBank = {
           yarKey: 'legalStatus'
         },
         {
-          key: 'system-type',
-          order: 80,
-          title: 'What is your current manure management system?',
-          pageTitle: '',
-          url: 'system-type',
-          baseUrl: 'system-type',
-          backUrlObject: {
-            dependentQuestionYarKey: 'tenancyLength',
-            dependentAnswerKeysArray: ['tenancy-length-A1'],
-            urlOptions: {
-              thenUrl: 'tenancy-length',
-              elseUrl: 'tenancy-length-condition',
-              nonDependentUrl: 'tenancy'
-            }
-          },
-          nextUrl: 'existing-storage-capacity',
-          preValidationKeys: [],
-          ineligibleContent: {
-            messageContent: 'This grant is for farmers currently using a system that produces slurry.',
-            messageLink: {
-              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-              title: 'See other grants you may be eligible for.'
-            }
-          },
-          fundingPriorities: '',
-          type: 'single-answer',
-          minAnswerCount: 1,
-          sidebar: {
-            values: [{
-              heading: 'Eligibility',
-              content: [{
-                para: `
-                This grant is for farmers currently using a system that produces slurry.
-                `,
-                items: []
-              }]
-            }],
-            details: {
-              summaryText: 'What is slurry?',
-              html: 'Slurry is a liquid organic manure produced by livestock (other than poultry) while in a yard or building. It includes animal bedding and water that drains from areas where animals are kept.'
-            }
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select your current manure management system'
-            }
-          ],
-          answers: [
-            {
-              key: 'system-type-A1',
-              value: 'Slurry-based system'
-            },
-            {
-              key: 'system-type-A2',
-              value: 'Farm-yard manure and slurry system'
-            },
-            {
-              key: 'system-type-A3',
-              value: 'Farm-yard manure system that does not produce slurry',
-              notEligible: true
-            },
-            {
-              key: 'system-type-A4',
-              value: 'I do not have a slurry system',
-              notEligible: true
-            }
-          ],
-          errorMessage: {
-            text: ''
-          },
-          yarKey: 'systemType'
-        },
-        {
-          key: 'existing-storage-capacity',
-          order: 90,
-          title: 'How many months’ slurry storage capacity do you have?',
-          hint: {
-            text: 'Based on your current animal numbers'
-          },
-          baseUrl: 'existing-storage-capacity',
-          backUrl: 'system-type',
-          nextUrl: 'planned-storage-capacity',
-          url: 'existing-storage-capacity',
-          preValidationKeys: [],
-          ineligibleContent: {
-            messageContent: `
-            This grant is to get your serviceable storage levels to 6 months.`,
-            messageLink: {
-              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-              title: 'See other grants you may be eligible for.'
-            }
-          },
-          type: 'single-answer',
-          minAnswerCount: 1,
-          sidebar: {
-            values: [{
-              heading: 'Eligibility',
-              content: [{
-                para: `
-                This grant is to get your serviceable storage levels to 6 months.
-
-                For example, if you have 4 months’ serviceable storage, we will fund another 2 months. If you have 2 months’ serviceable storage and increase to 12 months, we will fund 4 months.
-
-                Any capacity above 6 months is not covered by the grant.
-                `,
-                items: []
-              }]
-            }],
-            details: {
-              summaryText: 'When is a store no longer fit for purpose?',
-              html: 'A store is no longer fit for purpose if it has reached the end of its design life and may be susceptible to leaks or failure.'
-            }
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select existing storage capacity'
-            }
-          ],
-          answers: [
-            {
-              key: 'existing-storage-capacity-A1',
-              value: 'Less than 6 months'
-            },
-            {
-              key: 'existing-storage-capacity-A2',
-              value: 'Up to 6 months but it is no longer fit for purpose'
-            },
-            {
-              key: 'existing-storage-capacity-A3',
-              value: '6 months or more',
-              notEligible: true
-            }
-          ],
-          yarKey: 'existingStorageCapacity'
-        },
-        {
-          key: 'planned-storage-capacity',
-          order: 100,
-          title: 'How many months’ slurry storage capacity will you have after the project?',
-          hint: {
-            text: 'Based on your current animal numbers'
-          },
-          baseUrl: 'planned-storage-capacity',
-          backUrl: 'existing-storage-capacity',
-          nextUrl: 'project-type',
-          url: 'planned-storage-capacity',
-          preValidationKeys: [],
-          type: 'single-answer',
-          minAnswerCount: 1,
-          ineligibleContent: {
-            messageContent: 'This grant is to get your serviceable storage levels to 6 months.',
-            messageLink: {
-              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-              title: 'See other grants you might be eligible for.'
-            }
-          },
-          sidebar: {
-            values: [{
-              heading: 'Eligibility',
-              content: [{
-                para: `
-                This grant is to get your serviceable storage levels to 6 months.
-
-                For example, if you have 4 months’ serviceable storage, we will fund another 2 months. If you have 2 months’ serviceable storage and increase to 12 months, we will fund 4 months.
-
-                Any capacity above 6 months is not covered by the grant.
-
-                You must maintain at least 6 months’ capacity for the duration of the 5-year grant funding agreement.
-                `,
-                items: []
-              }]
-            }]
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select planned storage capacity'
-            }
-          ],
-          answers: [
-            {
-              key: 'planned-storage-capacity-A1',
-              value: '6 months'
-            },
-            {
-              key: 'planned-storage-capacity-A2',
-              value: 'More than 6 months '
-            },
-            {
-              key: 'planned-storage-capacity-A3',
-              value: 'Less than 6 months',
-              notEligible: true
-            }
-          ],
-          yarKey: 'plannedStorageCapacity'
-        },
-        {
-          key: 'project-type',
-          order: 110,
-          title: 'How will you increase your storage capacity?',
-          baseUrl: 'project-type',
-          backUrl: 'planned-storage-capacity',
-          nextUrl: 'cover',
-          url: 'project-type',
-          preValidationKeys: [],
-          ineligibleContent: {
-            messageContent: `
-            This grant is only for: <br> 
-            <ul class="govuk-list govuk-list--bullet">
-            <li>replacing an existing store that is no longer fit for purpose</li>
-            <li>adding a new store to increase existing capacity</li>
-            <li>expanding an existing store (for example, by adding an extra ring to a steel tank)</li>
-            </ul>
-            `,
-            messageLink: {
-              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-              title: 'See other grants you may be eligible for.'
-            }
-          },
-          type: 'single-answer',
-          minAnswerCount: 1,
-          sidebar: {
-            values: [{
-              heading: 'Eligibility',
-              content: [{
-                para: 'This grant is for:',
-                items: [
-                  'replacing an existing store that is no longer fit for purpose with a new store',
-                  'adding a new store to increase existing capacity',
-                  'expanding an existing store (for example, by adding an extra ring to a steel tank)'
-                ],
-                additionalPara: ''
-              }]
-            }],
-            details: {
-              summaryText: 'When is a store no longer fit for purpose?',
-              html: 'A store is no longer fit for purpose if it has reached the end of its design life and may be susceptible to leaks or failure.'
-            }
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select how you will increase your storage capacity'
-            }
-          ],
-          answers: [
-            {
-              key: 'project-type-A1',
-              value: 'Replace an existing store that is no longer fit for purpose with a new store'
-            },
-            {
-              key: 'project-type-A2',
-              value: 'Add a new store to increase existing capacity'
-            },
-            {
-              key: 'project-type-A3',
-              value: 'Expand an existing store'
-            },
-            {
-              value: 'divider'
-            },
-            {
-              key: 'project-type-A4',
-              value: 'None of the above',
-              notEligible: true
-            }
-          ],
-          yarKey: 'projectType'
-        },
-        {
-          key: 'cover',
-          order: 120,
-          title: 'Will the grant-funded store have an impermeable cover?',
-          baseUrl: 'cover',
-          backUrl: 'project-type',
-          nextUrl: 'estimated-grant',
-          url: 'cover',
-          preValidationKeys: [],
-          ineligibleContent: {
-            messageContent: 'Grant-funded stores must have an impermeable cover unless the slurry is treated with acidification.',
-            messageLink: {
-              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-              title: 'See other grants you might be eligible for.'
-            }
-          },
-          type: 'single-answer',
-          minAnswerCount: 1,
-          sidebar: {
-            values: [{
-              heading: 'Eligibility',
-              content: [{
-                para: `
-                Grant-funded stores must have an impermeable cover unless the slurry is treated with acidification.
-                
-                Slurry acidification systems are not eligible for funding through this grant.`,
-                items: []
-              }]
-            }],
-            details: {
-              summaryText: 'What is acidification?',
-              html: 'Acidification is the use of acid treatment to lower the pH value of slurry to stabilise ammonia emissions.'
-            }
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select impermeable cover option'
-            }
-          ],
-          answers: [
-            {
-              key: 'cover-A1',
-              value: 'Yes'
-            },
-            {
-              key: 'cover-A2',
-              value: 'Not needed, the slurry is treated with acidification'
-            },
-            {
-              key: 'cover-A3',
-              value: 'No',
-              notEligible: true
-            }
-          ],
-          yarKey: 'cover'
-        },
-        {
-          key: 'estimated-grant',
-          order: 180,
-          url: 'estimated-grant',
-          backUrl: 'cover',
-          nextUrl: 'standardised-grant-amounts',
-          preValidationKeys: [],
-          ga: [
-            { dimension: 'cm2', value: { type: 'journey-time' } }
-          ],
-          maybeEligible: true,
-          maybeEligibleContent: {
-            messageHeader: 'Estimate how much grant you could get',
-            messageContent: 'Add some information about the project (for example, type of store and capacity, type of cover and size, approximate size and quantity of other items you need) so we can estimate how much grant you could get.'
-          }
-        },
-        // Calls standardised cost page
-        {
-          key: 'storage-type',
-          order: 130,
-          costDataType: 'cat-storage',
-          title: 'What type of store do you want?',
-          baseUrl: 'storage-type',
-          backUrl: 'standardised-grant-amounts',
-          id: 'storageType',
-          nextUrlObject: {
-            dependentQuestionYarKey: 'projectType',
-            dependentAnswerKeysArray: ['project-type-A1'],
-            urlOptions: {
-              thenUrl: 'serviceable-capacity-increase-replace',
-              elseUrl: 'serviceable-capacity-increase-additional'
-            }
-          },
-          url: 'storage-type',
-          hint: {
-            text: 'Select one option'
-          },
-          preValidationKeys: [],
-          type: 'single-answer',
-          minAnswerCount: 1,
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Please select an option'
-            }
-          ],
-          answers: [],
-          yarKey: 'storageType'
-        },
-        {
-          key: 'serviceable-capacity-increase-replace',
-          order: 131,
-          title: '',
-          pageTitle: '',
-          url: 'serviceable-capacity-increase-replace',
-          baseUrl: 'serviceable-capacity-increase-replace',
-          backUrl: 'storage-type',
-          nextUrlObject: {
-            dependentQuestionYarKey: 'cover',
-            dependentAnswerKeysArray: ['cover-A2'],
-            urlOptions: {
-              thenUrl: 'other-items',
-              elseUrl: 'cover-type'
-            }
-          },
-          fundingPriorities: '',
-          preValidationKeys: [],
-          classes: 'govuk-input--width-10',
-          id: 'storageCapacityIncrease',
-          name: 'storageCapacityIncrease',
-          suffix: { text: 'm³' },
-          type: 'input',
-          inputmode: 'numeric',
-          pattern: '[0-9]*',
-          label: {
-            text: 'What estimated volume do you need to have 6 months’ serviceable storage?',
-            classes: 'govuk-label--l',
-            isPageHeading: true
-          },
-          hint: {
-            html: `
-            Use <a class="govuk-link" target="_blank" href="https://ahdb.org.uk/knowledge-library/slurry-wizard" rel="noopener noreferrer">Slurry Wizard</a> to help you calculate the difference between your current serviceable storage and 6 months’ serviceable storage, based on current animal numbers </br></br>
-            Enter estimated volume in cubic metres
-          `
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Enter the volume you need to have 6 months’ serviceable storage'
-            },
-            {
-              type: 'REGEX',
-              regex: COMMA_EXCLUDE_REGEX,
-              error: 'Volume must only include numbers'
-            },
-            {
-              type: 'REGEX',
-              regex: WHOLE_NUMBER_REGEX,
-              error: 'Volume must be a whole number'
-            },
-            {
-              type: 'MIN_MAX',
-              min: 1,
-              max: 9999999999,
-              error: 'Volume must be between 1-9999999999'
-            }
-          ],
-          sidebar: {
-            mainHeading: 'Your project items',
-            values: [
-              {
-                heading: 'Store',
-                content: [{
-                  para: '',
-                  items: [],
-                  dependentAnswerExceptThese: []
-                }]
-              }
-            ],
-            dependentYarKeys: ['storageType'],
-            dependentQuestionKeys: ['storage-type']
-          },
-          warning: {
-            html: 'This grant is to get your serviceable storage levels to 6 months. Any capacity above 6 months is not covered by the grant'
-          },
-          yarKey: 'serviceCapacityIncrease'
-        },
-        {
-          key: 'serviceable-capacity-increase-additional',
-          order: 132,
-          title: '',
-          pageTitle: '',
-          classes: 'govuk-input--width-10',
-          url: 'serviceable-capacity-increase-additional',
-          baseUrl: 'serviceable-capacity-increase-additional',
-          backUrl: 'storage-type',
-          nextUrlObject: {
-            dependentQuestionYarKey: 'cover',
-            dependentAnswerKeysArray: ['cover-A2'],
-            urlOptions: {
-              thenUrl: 'other-items',
-              elseUrl: 'cover-type'
-            }
-          },
-          preValidationKeys: [],
-          suffix: { text: 'm³' },
-          type: 'input',
-          inputmode: 'numeric',
-          pattern: '[0-9]*',
-          label: {
-            text: 'What estimated additional volume do you need to have 6 months’ serviceable storage?',
-            classes: 'govuk-label--l',
-            isPageHeading: true
-          },
-          hint: {
-            html: `
-            Use <a class="govuk-link" target="_blank" href="https://ahdb.org.uk/knowledge-library/slurry-wizard" rel="noopener noreferrer">Slurry Wizard</a> to help you calculate the difference between your current serviceable storage and 6 months’ serviceable storage, based on current animal numbers </br></br>
-            Enter estimated volume in cubic metres
-          `
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Enter the volume you need to have 6 months’ serviceable storage'
-            },
-            {
-              type: 'REGEX',
-              regex: COMMA_EXCLUDE_REGEX,
-              error: 'Volume must only include numbers'
-            },
-            {
-              type: 'REGEX',
-              regex: WHOLE_NUMBER_REGEX,
-              error: 'Volume must be a whole number'
-            },
-            {
-              type: 'MIN_MAX',
-              min: 1,
-              max: 9999999999,
-              error: 'Volume must be between 1-9999999999'
-            }
-          ],
-          sidebar: {
-            mainHeading: 'Your project items',
-            values: [
-              {
-                heading: 'Store',
-                content: [{
-                  para: '',
-                  items: [],
-                  dependentAnswerExceptThese: []
-                }]
-              }],
-            dependentQuestionKeys: ['storage-type']
-          },
-          warning: {
-            html: `This grant is to get your serviceable storage levels to 6 months.
-            For example, if you have 4 months’ serviceable storage, we will fund another 2 months.
-            </br> </br>
-            Any capacity above 6 months is not covered by the grant.`
-          },
-          yarKey: 'serviceCapacityIncrease'
-        },
-        {
-          key: 'cover-type',
-          order: 133,
-          costDataType: 'cat-cover-type',
-          title: 'What type of cover will you have?',
-          baseUrl: 'cover-type',
-          backUrlObject: {
-            dependentQuestionYarKey: 'projectType',
-            dependentAnswerKeysArray: ['project-type-A1'],
-            urlOptions: {
-              thenUrl: 'serviceable-capacity-increase-replace',
-              elseUrl: 'serviceable-capacity-increase-additional'
-            }
-          },
-          nextUrlObject: {
-            dependentQuestionYarKey: 'coverType',
-            dependentAnswerKeysArray: ['cover-type-A4'],
-            urlOptions: {
-              thenUrl: 'other-items',
-              elseUrl: 'cover-size'
-            }
-          },
-          url: 'cover-type',
-          preValidationKeys: [],
-          hint: {
-            text: 'Select one option'
-          },
-          type: 'single-answer',
-          sidebar: {
-            mainHeading: 'Your project items',
-            values: [
-              {
-                heading: 'Store',
-                content: [{
-                  para: '',
-                  items: [],
-                  dependentAnswerExceptThese: []
-                }]
-              }],
-            prefixSufix: [{
-              linkedPrefix: 'Increase: ',
-              linkedSufix: 'm³'
-            }],
-            linkedQuestionkey: ['serviceable-capacity-increase-replace'],
-            dependentQuestionKeys: ['storage-type']
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Please select an option'
-            }
-          ],
-          hintArray: ['Solid roof or lid with a flat deck or conical shape made from inflexible material such as fibreglass panels or polyester sheets', 'Taut skin made from flexible or pliant sheet material such as reinforced plastic sheeting or strong canvas', 'Flexible plastic sheet covers with some form of flotation or fixing to store sides to prevent movement'],
-          answers: [
-            {
-              value: 'divider'
-            },
-            {
-              key: 'cover-type-A4',
-              text: 'I already have an impermeable cover',
-              value: 'Not needed'
-            }
-          ],
-          yarKey: 'coverType'
-        },
-        {
-          key: 'cover-size',
-          order: 137,
-          title: '',
-          pageTitle: '',
-          classes: 'govuk-input--width-10',
-          url: 'cover-size',
-          baseUrl: 'cover-size',
-          backUrl: 'cover-type',
-          nextUrl: 'other-items',
-          preValidationKeys: [],
-          suffix: { text: 'm²' },
-          type: 'input',
-          inputmode: 'numeric',
-          pattern: '[0-9]*',
-          label: {
-            text: 'How big will the cover be?',
-            classes: 'govuk-label--l',
-            isPageHeading: true
-          },
-          hint: {
-            html: `
-            Enter the estimated surface area of the replacement, new or expanded store.
-
-            Enter size in metres squared.
-          `
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Enter the size of cover'
-            },
-            {
-              type: 'REGEX',
-              regex: COMMA_EXCLUDE_REGEX,
-              error: 'Cover size must only include numbers'
-            },
-            {
-              type: 'REGEX',
-              regex: WHOLE_NUMBER_REGEX,
-              error: 'Cover size must be a whole number'
-            },
-            {
-              type: 'MIN_MAX',
-              min: 1,
-              max: 9999999999,
-              error: 'Volume must be between 1-9999999999'
-            }
-          ],
-          sidebar: {
-            mainHeading: 'Your project items',
-            values: [
-              {
-                heading: 'Store',
-                content: [{
-                  para: '',
-                  items: [],
-                  dependentAnswerExceptThese: []
-                }]
-              },
-              {
-                heading: 'Cover',
-                content: [{
-                  para: '',
-                  items: [],
-                  dependentAnswerExceptThese: []
-                }]
-              }],
-            prefixSufix: [{
-              linkedPrefix: 'Increase: ',
-              linkedSufix: 'm³'
-            }],
-            linkedQuestionkey: ['serviceable-capacity-increase-replace'],
-            dependentQuestionKeys: ['storage-type', 'cover-type']
-          },
-          yarKey: 'coverSize'
-        },
-        {
-          key: 'other-items',
-          order: 139,
-          costDataType: 'other',
-          title: 'What other items do you need?',
-          baseUrl: 'other-items',
-          backUrlObject: {
-            dependentQuestionYarKey: 'coverType',
-            dependentAnswerKeysArray: ['cover-type-A4'],
-            urlOptions: {
-              thenUrl: 'cover-type',
-              elseUrl: 'cover-size',
-              nonDependentUrl: 'storage-type'
-
-            }
-          },
-          nextUrlObject: {
-            dependentQuestionYarKey: 'otherItems',
-            dependentAnswerKeysArray: ['other-items-A15'],
-            urlOptions: {
-              thenUrl: 'remaining-cost',
-              elseUrl: 'item-sizes-quantities'
-            }
-
-          },
-          hint: {
-            text: 'Select all the items your project needs'
-          },
-          url: 'other-items',
-          preValidationKeys: [],
-          type: 'multi-answer',
-          minAnswerCount: 1,
-          sidebar: {
-            mainHeading: 'Your project items',
-            values: [
-              {
-                heading: 'Store',
-                content: [{
-                  para: '',
-                  items: [],
-                  dependentAnswerExceptThese: []
-                }]
-              },
-              {
-                heading: 'Cover',
-                content: [{
-                  para: '',
-                  items: [],
-                  dependentAnswerExceptThese: []
-                }]
-              }],
-            prefixSufix: [{
-              linkedPrefix: 'Increase: ',
-              linkedSufix: 'm³'
-            },
-            {
-              linkedPrefix: 'Size: ',
-              linkedSufix: 'm²'
-            }],
-            linkedQuestionkey: ['serviceable-capacity-increase-replace', 'cover-size'],
-            dependentQuestionKeys: ['storage-type', 'cover-type']
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Please select an option'
-            },
-            {
-              type: 'STANDALONE_ANSWER',
-              error: 'You cannot select that combination of options',
-              standaloneObject: {
-                questionKey: 'other-items',
-                answerKey: 'other-items-A15'
-              }
-            }
-          ],
-          answers: [
-            {
-              value: 'divider'
-            },
-            {
-              key: 'other-items-A15',
-              value: 'None of the above',
-              redirectUrl: 'project-summary'
-            }
-          ],
-          yarKey: 'otherItems'
-        },
-        {
-          key: 'item-sizes-quantities',
-          order: 140,
-          costDataKey: 'other',
-          title: 'Item sizes and quantities',
-          baseUrl: 'item-sizes-quantities',
-          backUrl: 'other-items',
-          nextUrl: 'project-summary',
-          url: 'item-sizes-quantities',
-          preValidationKeys: [],
-          hint: {
-            text: 'Enter the approximate size and quantities your project needs'
-          },
-          type: 'multi-input',
-          sidebar: {
-            mainHeading: 'Your project items',
-            values: [
-              {
-                heading: 'Store',
-                content: [{
-                  para: '',
-                  items: [],
-                  dependentAnswerExceptThese: []
-                }]
-              },
-              {
-                heading: 'Cover',
-                content: [{
-                  para: '',
-                  items: [],
-                  dependentAnswerExceptThese: []
-                }]
-              },
-              {
-                heading: 'Other items',
-                content: [{
-                  para: '',
-                  items: [],
-                  dependentAnswerExceptThese: []
-                }]
-              }],
-            prefixSufix: [{
-              linkedPrefix: 'Increase: ',
-              linkedSufix: 'm³'
-            },
-            {
-              linkedPrefix: 'Size: ',
-              linkedSufix: 'm²'
-            }],
-            linkedQuestionkey: ['serviceable-capacity-increase-replace', 'cover-size'],
-            dependentQuestionKeys: ['storage-type', 'cover-type', 'other-items']
-          },
-          allFields: [],
-          yarKey: 'itemSizeQuantities'
-        },
-        // CALLS PROJECT SUMMARY
-        {
-          key: 'potential-amount',
-          order: 150,
-          url: 'potential-amount',
-          baseUrl: 'potential-amount',
-          backUrl: 'project-summary',
-          nextUrl: 'remaining-costs',
-          preValidationKeys: [],
-          grantInfo: {
-            minGrant: 25000,
-            maxGrant: 250000,
-            grantPercentage: '',
-            cappedGrant: true
-          },
-          ineligibleContent: {
-            messageContent: 'The minimum grant you can claim is £25,000.',
-            messageLink: {
-              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-              title: 'See other grants you may be eligible for.'
-            }
-          },
-          maybeEligible: true,
-          maybeEligibleContent: {
-            messageHeader: 'Potential grant funding',
-            messageContent: 'Based on the standardised grant amount for each item and the approximate size and quantities you entered, we estimate you could be eligible for a grant of £{{_calculatedGrant_}}',
-            warning: {
-              text: 'There’s no guarantee the project will receive a grant.'
-            }
-          }
-        },
-        {
-          key: 'remaining-costs',
-          order: 190,
-          title: 'Can you pay the remaining costs?',
-          pageTitle: '',
-          url: 'remaining-costs',
-          baseUrl: 'remaining-costs',
-          backUrl: 'potential-amount',
-          nextUrl: 'country',
-          preValidationKeys: [],
-          ineligibleContent: {
-            messageContent: `<p class="govuk-body">You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.</p>
-            <div class="govuk-list govuk-list--bullet">
-                  You can use:
-                  <ul>
-                    <li>loans</li>
-                    <li>overdrafts</li>
-                    <li>the Basic Payment Scheme</li>
-                  </ul>
-            </div>`,
-            messageLink: {
-              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-              title: 'See other grants you may be eligible for.'
-            }
-          },
-          fundingPriorities: '',
-          type: 'single-answer',
-          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
-          minAnswerCount: 1,
-          sidebar: {
-            values: [
-              {
-                heading: 'Eligibility',
-                content: [{
-                  para: `You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.
-                  
-                  You can use:`,
-                  items: [
-                    'loans',
-                    'overdrafts',
-                    'the Basic Payment Scheme'
-                  ]
-                }]
-              }
-            ]
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select if you can pay the remaining costs'
-            }
-          ],
-          answers: [
-            {
-              key: 'remaining-costs-A1',
-              value: 'Yes'
-
-            },
-            {
-              key: 'remaining-costs-A2',
-              value: 'No',
-              notEligible: true
-            }
-          ],
-          yarKey: 'remainingCosts'
-
-        },
-        {
           key: 'country',
           order: 141,
           title: 'Is the planned project in England?',
@@ -1173,7 +258,7 @@ const questionBank = {
           },
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           pageTitle: '',
-          backUrl: 'remaining-costs',
+          backUrl: 'legal-status',
           nextUrl: 'planning-permission',
           url: 'country',
           baseUrl: 'country',
@@ -1291,72 +376,6 @@ const questionBank = {
           yarKey: 'PlanningPermissionCondition'
         },
         {
-          key: 'planning-permission-evidence',
-          order: 150,
-          title: 'Your planning permission',
-          hint: {
-            text: 'Enter the name of your planning authority and your planning reference number'
-          },
-          url: 'planning-permission-evidence',
-          baseUrl: 'planning-permission-evidence',
-          backUrl: 'project-started',
-          nextUrl: 'grid-reference',
-          preValidationKeys: [],
-          type: 'multi-input',
-          allFields: [
-            {
-              yarKey: 'planningAuthority',
-              type: 'text',
-              classes: 'govuk-input--width-10',
-              label: {
-                text: 'Planning authority',
-                classes: 'govuk-label'
-              },
-              validate: [
-                {
-                  type: 'NOT_EMPTY',
-                  error: 'Enter planning authority'
-                },
-                {
-                  type: 'REGEX',
-                  regex: NAME_ONLY_REGEX,
-                  error: 'Planning authority must only contain letters, hyphens and spaces'
-                },
-                {
-                  type: 'REGEX',
-                  regex: CHARS_MAX_50,
-                  error: 'Planning authority must be 50 characters or fewer'
-                }
-              ]
-            },
-            {
-              yarKey: 'planningReferenceNumber',
-              type: 'text',
-              classes: 'govuk-input--width-10',
-              label: {
-                text: 'Planning reference number',
-                classes: 'govuk-label'
-              },
-              validate: [
-                {
-                  type: 'NOT_EMPTY',
-                  error: 'Enter planning reference number'
-                },
-                {
-                  type: 'REGEX',
-                  regex: CHARS_MAX_50,
-                  error: 'Planning reference number must be 50 characters of fewer'
-                },
-                {
-                  type: 'REGEX',
-                  regex: PLANNING_REFERENCE_NUMBER_REGEX,
-                  error: 'Planning reference number must only include letters, numbers and /'
-                }
-              ]
-            }],
-          yarKey: 'PlanningPermissionEvidence'
-        },
-        {
           key: 'project-started',
           order: 151,
           title: 'Have you already started work on the project?',
@@ -1439,8 +458,8 @@ const questionBank = {
           pageTitle: '',
           url: 'tenancy',
           baseUrl: 'tenancy',
-          backUrl: 'legal-status',
-          nextUrl: 'system-type',
+          backUrl: 'project-started',
+          nextUrl: 'cover',
           preValidationKeys: [],
           fundingPriorities: '',
           type: 'single-answer',
@@ -1485,7 +504,7 @@ const questionBank = {
           baseUrl: 'tenancy-length',
           backUrl: 'tenancy',
           preValidationKeys: [],
-          nextUrl: 'system-type',
+          nextUrl: 'cover',
           type: 'single-answer',
           minAnswerCount: 1,
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
@@ -1524,7 +543,7 @@ const questionBank = {
           url: 'tenancy-length-condition',
           backUrl: 'tenancy-length',
           preValidationKeys: [],
-          nextUrl: 'system-type',
+          nextUrl: 'cover',
           maybeEligible: true,
           maybeEligibleContent: {
             messageHeader: 'You may be able to apply for a grant from this scheme',
@@ -1532,70 +551,525 @@ const questionBank = {
           }
         },
         {
-          key: 'grid-reference',
-          order: 152,
-          url: 'grid-reference',
-          backUrl: 'planning-permission-evidence',
-          nextUrl: 'planning-permission-summary',
+          key: 'cover',
+          order: 120,
+          title: 'Will the grant-funded store have an impermeable cover?',
+          baseUrl: 'cover',
+          backUrl: 'tenancy',
+          nextUrl: 'estimated-grant',
+          url: 'cover',
           preValidationKeys: [],
-          type: 'input',
-          classes: 'govuk-input--width-10',
-          label: {
-            text: 'What is the OS grid reference for your slurry store?',
-            classes: 'govuk-label--l',
-            isPageHeading: true
+          ineligibleContent: {
+            messageContent: 'Grant-funded stores must have an impermeable cover unless the slurry is treated with acidification.',
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you might be eligible for.'
+            }
           },
-          hint: {
-            html: `Enter OS grid reference number, for example AB12478975 <br/><br/><br/>
-            OS grid reference number
-          `
+          type: 'single-answer',
+          minAnswerCount: 1,
+          sidebar: {
+            values: [{
+              heading: 'Eligibility',
+              content: [{
+                para: `
+                Grant-funded stores must have an impermeable cover unless the slurry is treated with acidification.
+                
+                Slurry acidification systems are not eligible for funding through this grant.`,
+                items: []
+              }]
+            }],
+            details: {
+              summaryText: 'What is acidification?',
+              html: 'Acidification is the use of acid treatment to lower the pH value of slurry to stabilise ammonia emissions.'
+            }
           },
           validate: [
             {
               type: 'NOT_EMPTY',
-              error: 'Enter OS Grid reference'
-            },
-            {
-              type: 'REGEX',
-              regex: LETTERS_AND_NUMBERS_REGEX,
-              error: 'First two characters should be letter following eight characters must be numbers'
-            },
-            {
-              type: 'REGEX',
-              regex: TWO_NUMBERS_EIGHT_CHARS,
-              error: 'OS Grid Reference must be two letters followed by 8 digits'
+              error: 'Select impermeable cover option'
             }
           ],
-          yarKey: 'gridReference'
+          answers: [
+            {
+              key: 'cover-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'cover-A2',
+              value: 'Not needed, the slurry is treated with acidification'
+            },
+            {
+              key: 'cover-A3',
+              value: 'No',
+              notEligible: true
+            }
+          ],
+          yarKey: 'cover'
         },
         {
-          key: 'planning-permission-summary',
-          order: 153,
-          title: 'Check your answers before getting your results',
-          pageTitle: 'planning-permission-summary',
-          url: 'planning-permission-summary',
-          baseUrl: 'planning-permission-summary',
-          backUrl: 'grid-reference',
+          key: 'estimated-grant',
+          order: 180,
+          url: 'estimated-grant',
+          backUrl: 'cover',
+          nextUrl: 'standardised-grant-amounts',
+          preValidationKeys: [],
+          ga: [
+            { dimension: 'cm2', value: { type: 'journey-time' } }
+          ],
+          maybeEligible: true,
+          maybeEligibleContent: {
+            messageHeader: 'Estimate how much grant you could get',
+            messageContent: 'Add some information about the project (for example, type of store and capacity, type of cover and size, approximate size and quantity of other items you need) so we can estimate how much grant you could get.'
+          }
+        },
+        // Calls standardised cost page
+        {
+          key: 'storage-type',
+          order: 130,
+          costDataType: 'cat-storage',
+          title: 'What type of store do you want?',
+          baseUrl: 'storage-type',
+          backUrl: 'standardised-grant-amounts',
+          id: 'storageType',
+          nextUrl: 'serviceable-capacity-increase-additional',
+          url: 'storage-type',
+          hint: {
+            text: 'Select one option'
+          },
+          preValidationKeys: [],
+          type: 'single-answer',
+          minAnswerCount: 1,
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Please select an option'
+            }
+          ],
+          answers: [],
+          yarKey: 'storageType'
+        },
+        {
+          key: 'serviceable-capacity-increase-additional',
+          order: 132,
+          title: '',
+          pageTitle: '',
+          classes: 'govuk-input--width-10',
+          url: 'serviceable-capacity-increase-additional',
+          baseUrl: 'serviceable-capacity-increase-additional',
+          backUrl: 'storage-type',
+          nextUrlObject: {
+            dependentQuestionYarKey: 'cover',
+            dependentAnswerKeysArray: ['cover-A2'],
+            urlOptions: {
+              thenUrl: 'other-items',
+              elseUrl: 'cover-type'
+            }
+          },
+          preValidationKeys: [],
+          suffix: { text: 'm³' },
+          type: 'input',
+          inputmode: 'numeric',
+          pattern: '[0-9]*',
+          label: {
+            text: 'What estimated additional volume do you need to have 6 months’ serviceable storage?',
+            classes: 'govuk-label--l',
+            isPageHeading: true
+          },
+          hint: {
+            html: `
+            Use <a class="govuk-link" target="_blank" href="https://ahdb.org.uk/knowledge-library/slurry-wizard" rel="noopener noreferrer">Slurry Wizard</a> to help you calculate the difference between your current serviceable storage and 6 months’ serviceable storage, based on current animal numbers </br></br>
+            Enter estimated volume in cubic metres
+          `
+          },
+          validate: [
+           
+          ],
+          sidebar: {
+            mainHeading: 'Your project items',
+            values: [
+              {
+                heading: 'Store',
+                content: [{
+                  para: '',
+                  items: [],
+                  dependentAnswerExceptThese: []
+                }]
+              }],
+            dependentQuestionKeys: ['storage-type']
+          },
+          warning: {
+            html: `This grant is to get your serviceable storage levels to 6 months.
+            For example, if you have 4 months’ serviceable storage, we will fund another 2 months.
+            </br> </br>
+            Any capacity above 6 months is not covered by the grant.`
+          },
+          yarKey: 'serviceCapacityIncrease'
+        },
+        {
+          key: 'cover-type',
+          order: 133,
+          costDataType: 'cat-cover-type',
+          title: 'What type of cover will you have?',
+          baseUrl: 'cover-type',
+          backUrl: 'serviceable-capacity-increase-additional',
+          nextUrlObject: {
+            dependentQuestionYarKey: 'coverType',
+            dependentAnswerKeysArray: ['cover-type-A4'],
+            urlOptions: {
+              thenUrl: 'other-items',
+              elseUrl: 'cover-size'
+            }
+          },
+          url: 'cover-type',
+          preValidationKeys: [],
+          hint: {
+            text: 'Select one option'
+          },
+          type: 'single-answer',
+          sidebar: {
+            mainHeading: 'Your project items',
+            values: [
+              {
+                heading: 'Store',
+                content: [{
+                  para: '',
+                  items: [],
+                  dependentAnswerExceptThese: []
+                }]
+              }],
+            prefixSufix: [{
+              linkedPrefix: 'Increase: ',
+              linkedSufix: 'm³'
+            }],
+            linkedQuestionkey: ['serviceable-capacity-increase-additional'],
+            dependentQuestionKeys: ['storage-type']
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Please select an option'
+            }
+          ],
+          hintArray: ['Solid roof or lid with a flat deck or conical shape made from inflexible material such as fibreglass panels or polyester sheets', 'Taut skin made from flexible or pliant sheet material such as reinforced plastic sheeting or strong canvas', 'Flexible plastic sheet covers with some form of flotation or fixing to store sides to prevent movement'],
+          answers: [
+            {
+              value: 'divider'
+            },
+            {
+              key: 'cover-type-A4',
+              text: 'I already have an impermeable cover',
+              value: 'Not needed'
+            }
+          ],
+          yarKey: 'coverType'
+        },
+        {
+          key: 'cover-size',
+          order: 137,
+          title: '',
+          pageTitle: '',
+          classes: 'govuk-input--width-10',
+          url: 'cover-size',
+          baseUrl: 'cover-size',
+          backUrl: 'cover-type',
+          nextUrl: 'other-items',
+          preValidationKeys: [],
+          suffix: { text: 'm²' },
+          type: 'input',
+          inputmode: 'numeric',
+          pattern: '[0-9]*',
+          label: {
+            text: 'How big will the cover be?',
+            classes: 'govuk-label--l',
+            isPageHeading: true
+          },
+          hint: {
+            html: `
+            Enter the estimated surface area of the replacement, new or expanded store.
+
+            Enter size in metres squared.
+          `
+          },
+          validate: [
+            
+          ],
+          sidebar: {
+            mainHeading: 'Your project items',
+            values: [
+              {
+                heading: 'Store',
+                content: [{
+                  para: '',
+                  items: [],
+                  dependentAnswerExceptThese: []
+                }]
+              },
+              {
+                heading: 'Cover',
+                content: [{
+                  para: '',
+                  items: [],
+                  dependentAnswerExceptThese: []
+                }]
+              }],
+            prefixSufix: [{
+              linkedPrefix: 'Increase: ',
+              linkedSufix: 'm³'
+            }],
+            linkedQuestionkey: ['serviceable-capacity-increase-additional'],
+            dependentQuestionKeys: ['storage-type', 'cover-type']
+          },
+          yarKey: 'coverSize'
+        },
+        {
+          key: 'other-items',
+          order: 139,
+          costDataType: 'other',
+          title: 'What other items do you need?',
+          baseUrl: 'other-items',
+          backUrlObject: {
+            dependentQuestionYarKey: 'coverType',
+            dependentAnswerKeysArray: ['cover-type-A4'],
+            urlOptions: {
+              thenUrl: 'cover-type',
+              elseUrl: 'cover-size',
+              nonDependentUrl: 'storage-type'
+
+            }
+          },
+          nextUrlObject: {
+            dependentQuestionYarKey: 'otherItems',
+            dependentAnswerKeysArray: ['other-items-A15'],
+            urlOptions: {
+              thenUrl: 'remaining-cost',
+              elseUrl: 'item-sizes-quantities'
+            }
+
+          },
+          hint: {
+            text: 'Select all the items your project needs'
+          },
+          url: 'other-items',
+          preValidationKeys: [],
+          type: 'multi-answer',
+          minAnswerCount: 1,
+          sidebar: {
+            mainHeading: 'Your project items',
+            values: [
+              {
+                heading: 'Store',
+                content: [{
+                  para: '',
+                  items: [],
+                  dependentAnswerExceptThese: []
+                }]
+              },
+              {
+                heading: 'Cover',
+                content: [{
+                  para: '',
+                  items: [],
+                  dependentAnswerExceptThese: []
+                }]
+              }],
+            prefixSufix: [{
+              linkedPrefix: 'Increase: ',
+              linkedSufix: 'm³'
+            },
+            {
+              linkedPrefix: 'Size: ',
+              linkedSufix: 'm²'
+            }],
+            linkedQuestionkey: ['serviceable-capacity-increase-additional', 'cover-size'],
+            dependentQuestionKeys: ['storage-type', 'cover-type']
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Please select an option'
+            },
+            {
+              type: 'STANDALONE_ANSWER',
+              error: 'You cannot select that combination of options',
+              standaloneObject: {
+                questionKey: 'other-items',
+                answerKey: 'other-items-A15'
+              }
+            }
+          ],
+          answers: [
+            {
+              value: 'divider'
+            },
+            {
+              key: 'other-items-A15',
+              value: 'None of the above',
+              redirectUrl: 'project-summary'
+            }
+          ],
+          yarKey: 'otherItems'
+        },
+        {
+          key: 'item-sizes-quantities',
+          order: 140,
+          costDataKey: 'other',
+          title: 'Item sizes and quantities',
+          baseUrl: 'item-sizes-quantities',
+          backUrl: 'other-items',
+          nextUrl: 'project-summary',
+          url: 'item-sizes-quantities',
+          preValidationKeys: [],
+          hint: {
+            text: 'Enter the approximate size and quantities your project needs'
+          },
+          type: 'multi-input',
+          sidebar: {
+            mainHeading: 'Your project items',
+            values: [
+              {
+                heading: 'Store',
+                content: [{
+                  para: '',
+                  items: [],
+                  dependentAnswerExceptThese: []
+                }]
+              },
+              {
+                heading: 'Cover',
+                content: [{
+                  para: '',
+                  items: [],
+                  dependentAnswerExceptThese: []
+                }]
+              },
+              {
+                heading: 'Other items',
+                content: [{
+                  para: '',
+                  items: [],
+                  dependentAnswerExceptThese: []
+                }]
+              }],
+            prefixSufix: [{
+              linkedPrefix: 'Increase: ',
+              linkedSufix: 'm³'
+            },
+            {
+              linkedPrefix: 'Size: ',
+              linkedSufix: 'm²'
+            }],
+            linkedQuestionkey: ['serviceable-capacity-increase-additional', 'cover-size'],
+            dependentQuestionKeys: ['storage-type', 'cover-type', 'other-items']
+          },
+          allFields: [],
+          yarKey: 'itemSizeQuantities'
+        },
+        // CALLS PROJECT SUMMARY
+        {
+          key: 'potential-amount',
+          order: 150,
+          url: 'potential-amount',
+          baseUrl: 'potential-amount',
+          backUrl: 'project-summary',
+          nextUrl: 'remaining-costs',
+          preValidationKeys: [],
+          grantInfo: {
+            minGrant: 25000,
+            maxGrant: 250000,
+            grantPercentage: '',
+            cappedGrant: true
+          },
+          ineligibleContent: {
+            messageContent: 'The minimum grant you can claim is £25,000.',
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
+            }
+          },
+          maybeEligible: true,
+          maybeEligibleContent: {
+            messageHeader: 'Potential grant funding',
+            messageContent: 'Based on the standardised grant amount for each item and the approximate size and quantities you entered, we estimate you could be eligible for a grant of £{{_calculatedGrant_}}',
+            warning: {
+              text: 'There’s no guarantee the project will receive a grant.'
+            }
+          }
+        },
+        {
+          key: 'remaining-costs',
+          order: 190,
+          title: 'Can you pay the remaining costs?',
+          pageTitle: '',
+          url: 'remaining-costs',
+          baseUrl: 'remaining-costs',
+          backUrl: 'potential-amount',
           nextUrl: 'result-page',
           preValidationKeys: [],
-          ineligibleContent: {},
-          pageData: {
-            planningPermissionLink: 'planning-permission',
-            planningPermissionEvidenceLink: 'planning-permission-evidence',
-            gridReferenceLink: 'grid-reference'
+          ineligibleContent: {
+            messageContent: `<p class="govuk-body">You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.</p>
+            <div class="govuk-list govuk-list--bullet">
+                  You can use:
+                  <ul>
+                    <li>loans</li>
+                    <li>overdrafts</li>
+                    <li>the Basic Payment Scheme</li>
+                  </ul>
+            </div>`,
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
+            }
           },
           fundingPriorities: '',
-          type: '',
+          type: 'single-answer',
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           minAnswerCount: 1,
-          answers: []
+          sidebar: {
+            values: [
+              {
+                heading: 'Eligibility',
+                content: [{
+                  para: `You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.
+                  
+                  You can use:`,
+                  items: [
+                    'loans',
+                    'overdrafts',
+                    'the Basic Payment Scheme'
+                  ]
+                }]
+              }
+            ]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select if you can pay the remaining costs'
+            }
+          ],
+          answers: [
+            {
+              key: 'remaining-costs-A1',
+              value: 'Yes'
+
+            },
+            {
+              key: 'remaining-costs-A2',
+              value: 'No',
+              notEligible: true
+            }
+          ],
+          yarKey: 'remainingCosts'
         },
+
         {
           key: 'result-page',
           order: 156,
           title: 'Your results',
           url: 'result-page',
           baseUrl: 'result-page',
-          backUrl: 'planning-permission-summary',
+          backUrl: 'remaining-costs',
           nextUrl: 'business-details',
           preValidationKeys: [],
           maybeEligible: true,

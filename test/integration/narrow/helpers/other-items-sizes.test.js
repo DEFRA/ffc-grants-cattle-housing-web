@@ -234,31 +234,6 @@ describe('Other Items Sizes Array Function', () => {
           classes: 'govuk-label--m'
         },
         validate: [
-          {
-            type: 'NOT_EMPTY',
-            error: 'Enter plastic reception pit size'
-          },
-          {
-            type: 'REGEX',
-            regex: COMMA_EXCLUDE_REGEX,
-            error: 'Size must only include numbers'
-          },
-          {
-            type: 'REGEX',
-            regex: DECIMAL_EXCLUDE_REGEX,
-            error: 'Size must be between 1 and 9999999999'
-          },
-          {
-            type: 'REGEX',
-            regex: WHOLE_NUMBER_REGEX,
-            error: 'Size must be a whole number'
-          },
-          {
-            type: 'MIN_MAX',
-            min: 1,
-            max: 9999999999,
-            error: 'Size must be between 1-9999999999'
-          }
         ]
       },
       {
@@ -276,31 +251,6 @@ describe('Other Items Sizes Array Function', () => {
           classes: 'govuk-label--m'
         },
         validate: [
-          {
-            type: 'NOT_EMPTY',
-            error: 'Enter pump quantity'
-          },
-          {
-            type: 'REGEX',
-            regex: COMMA_EXCLUDE_REGEX,
-            error: 'Quantity must only include numbers'
-          },
-          {
-            type: 'REGEX',
-            regex: DECIMAL_EXCLUDE_REGEX,
-            error: 'Quantity must be between 1 and 9999999999'
-          },
-          {
-            type: 'REGEX',
-            regex: WHOLE_NUMBER_REGEX,
-            error: 'Quantity must be a whole number'
-          },
-          {
-            type: 'MIN_MAX',
-            min: 1,
-            max: 9999,
-            error: 'Quantity must be between 1-9999'
-          }
         ]
       },
       {
@@ -318,31 +268,7 @@ describe('Other Items Sizes Array Function', () => {
           classes: 'govuk-label--m'
         },
         validate: [
-          {
-            type: 'NOT_EMPTY',
-            error: 'Enter pump quantity'
-          },
-          {
-            type: 'REGEX',
-            regex: COMMA_EXCLUDE_REGEX,
-            error: 'Quantity must only include numbers'
-          },
-          {
-            type: 'REGEX',
-            regex: DECIMAL_EXCLUDE_REGEX,
-            error: 'Quantity must be between 1 and 9999999999'
-          },
-          {
-            type: 'REGEX',
-            regex: WHOLE_NUMBER_REGEX,
-            error: 'Quantity must be a whole number'
-          },
-          {
-            type: 'MIN_MAX',
-            min: 1,
-            max: 9999,
-            error: 'Quantity must be between 1-9999'
-          }
+          
         ]
       },
       {
@@ -360,31 +286,7 @@ describe('Other Items Sizes Array Function', () => {
           classes: 'govuk-label--m'
         },
         validate: [
-          {
-            type: 'NOT_EMPTY',
-            error: 'Enter pump quantity'
-          },
-          {
-            type: 'REGEX',
-            regex: COMMA_EXCLUDE_REGEX,
-            error: 'Quantity must only include numbers'
-          },
-          {
-            type: 'REGEX',
-            regex: DECIMAL_EXCLUDE_REGEX,
-            error: 'Quantity must be between 1 and 9999999999'
-          },
-          {
-            type: 'REGEX',
-            regex: WHOLE_NUMBER_REGEX,
-            error: 'Quantity must be a whole number'
-          },
-          {
-            type: 'MIN_MAX',
-            min: 1,
-            max: 9999,
-            error: 'Quantity must be between 1-9999'
-          }
+          
         ]
       },
       {
@@ -402,31 +304,7 @@ describe('Other Items Sizes Array Function', () => {
           classes: 'govuk-label--m'
         },
         validate: [
-          {
-            type: 'NOT_EMPTY',
-            error: 'Enter pump quantity'
-          },
-          {
-            type: 'REGEX',
-            regex: COMMA_EXCLUDE_REGEX,
-            error: 'Quantity must only include numbers'
-          },
-          {
-            type: 'REGEX',
-            regex: DECIMAL_EXCLUDE_REGEX,
-            error: 'Quantity must be between 1 and 9999999999'
-          },
-          {
-            type: 'REGEX',
-            regex: WHOLE_NUMBER_REGEX,
-            error: 'Quantity must be a whole number'
-          },
-          {
-            type: 'MIN_MAX',
-            min: 1,
-            max: 9999,
-            error: 'Quantity must be between 1-9999'
-          }
+          
         ]
       },
       {
@@ -444,31 +322,7 @@ describe('Other Items Sizes Array Function', () => {
           classes: 'govuk-label--m'
         },
         validate: [
-          {
-            type: 'NOT_EMPTY',
-            error: 'Enter pipework size'
-          },
-          {
-            type: 'REGEX',
-            regex: COMMA_EXCLUDE_REGEX,
-            error: 'Size must only include numbers'
-          },
-          {
-            type: 'REGEX',
-            regex: DECIMAL_EXCLUDE_REGEX,
-            error: 'Size must be between 1 and 9999999999'
-          },
-          {
-            type: 'REGEX',
-            regex: WHOLE_NUMBER_REGEX,
-            error: 'Size must be a whole number'
-          },
-          {
-            type: 'MIN_MAX',
-            min: 1,
-            max: 9999999999,
-            error: 'Size must be between 1-9999999999'
-          }
+         
         ]
       },
       {
@@ -486,31 +340,7 @@ describe('Other Items Sizes Array Function', () => {
           classes: 'govuk-label--m'
         },
         validate: [
-          {
-            type: 'NOT_EMPTY',
-            error: 'Enter pipework size'
-          },
-          {
-            type: 'REGEX',
-            regex: COMMA_EXCLUDE_REGEX,
-            error: 'Size must only include numbers'
-          },
-          {
-            type: 'REGEX',
-            regex: DECIMAL_EXCLUDE_REGEX,
-            error: 'Size must be between 1 and 9999999999'
-          },
-          {
-            type: 'REGEX',
-            regex: WHOLE_NUMBER_REGEX,
-            error: 'Size must be a whole number'
-          },
-          {
-            type: 'MIN_MAX',
-            min: 1,
-            max: 9999999999,
-            error: 'Size must be between 1-9999999999'
-          }
+          
         ]
       },
       {
@@ -528,31 +358,7 @@ describe('Other Items Sizes Array Function', () => {
           classes: 'govuk-label--m'
         },
         validate: [
-          {
-            type: 'NOT_EMPTY',
-            error: 'Enter pipework size'
-          },
-          {
-            type: 'REGEX',
-            regex: COMMA_EXCLUDE_REGEX,
-            error: 'Size must only include numbers'
-          },
-          {
-            type: 'REGEX',
-            regex: DECIMAL_EXCLUDE_REGEX,
-            error: 'Size must be between 1 and 9999999999'
-          },
-          {
-            type: 'REGEX',
-            regex: WHOLE_NUMBER_REGEX,
-            error: 'Size must be a whole number'
-          },
-          {
-            type: 'MIN_MAX',
-            min: 1,
-            max: 9999999999,
-            error: 'Size must be between 1-9999999999'
-          }
+          
         ]
       },
       {
@@ -570,31 +376,7 @@ describe('Other Items Sizes Array Function', () => {
           classes: 'govuk-label--m'
         },
         validate: [
-          {
-            type: 'NOT_EMPTY',
-            error: 'Enter pipework size'
-          },
-          {
-            type: 'REGEX',
-            regex: COMMA_EXCLUDE_REGEX,
-            error: 'Size must only include numbers'
-          },
-          {
-            type: 'REGEX',
-            regex: DECIMAL_EXCLUDE_REGEX,
-            error: 'Size must be between 1 and 9999999999'
-          },
-          {
-            type: 'REGEX',
-            regex: WHOLE_NUMBER_REGEX,
-            error: 'Size must be a whole number'
-          },
-          {
-            type: 'MIN_MAX',
-            min: 1,
-            max: 9999999999,
-            error: 'Size must be between 1-9999999999'
-          }
+          
         ]
       },
       {
@@ -612,31 +394,7 @@ describe('Other Items Sizes Array Function', () => {
           classes: 'govuk-label--m'
         },
         validate: [
-          {
-            type: 'NOT_EMPTY',
-            error: 'Enter transfer channels size'
-          },
-          {
-            type: 'REGEX',
-            regex: COMMA_EXCLUDE_REGEX,
-            error: 'Size must only include numbers'
-          },
-          {
-            type: 'REGEX',
-            regex: DECIMAL_EXCLUDE_REGEX,
-            error: 'Size must be between 1 and 9999999999'
-          },
-          {
-            type: 'REGEX',
-            regex: WHOLE_NUMBER_REGEX,
-            error: 'Size must be a whole number'
-          },
-          {
-            type: 'MIN_MAX',
-            min: 1,
-            max: 9999999999,
-            error: 'Size must be between 1-9999999999'
-          }
+         
         ]
       },
       {
@@ -654,31 +412,7 @@ describe('Other Items Sizes Array Function', () => {
           classes: 'govuk-label--m'
         },
         validate: [
-          {
-            type: 'NOT_EMPTY',
-            error: 'Enter agitator quantity'
-          },
-          {
-            type: 'REGEX',
-            regex: COMMA_EXCLUDE_REGEX,
-            error: 'Quantity must only include numbers'
-          },
-          {
-            type: 'REGEX',
-            regex: DECIMAL_EXCLUDE_REGEX,
-            error: 'Quantity must be between 1 and 9999999999'
-          },
-          {
-            type: 'REGEX',
-            regex: WHOLE_NUMBER_REGEX,
-            error: 'Quantity must be a whole number'
-          },
-          {
-            type: 'MIN_MAX',
-            min: 1,
-            max: 9999,
-            error: 'Quantity must be between 1-9999'
-          }
+         
         ]
       },
       {
@@ -696,31 +430,7 @@ describe('Other Items Sizes Array Function', () => {
           classes: 'govuk-label--m'
         },
         validate: [
-          {
-            type: 'NOT_EMPTY',
-            error: 'Enter agitator quantity'
-          },
-          {
-            type: 'REGEX',
-            regex: COMMA_EXCLUDE_REGEX,
-            error: 'Quantity must only include numbers'
-          },
-          {
-            type: 'REGEX',
-            regex: DECIMAL_EXCLUDE_REGEX,
-            error: 'Quantity must be between 1 and 9999999999'
-          },
-          {
-            type: 'REGEX',
-            regex: WHOLE_NUMBER_REGEX,
-            error: 'Quantity must be a whole number'
-          },
-          {
-            type: 'MIN_MAX',
-            min: 1,
-            max: 9999,
-            error: 'Quantity must be between 1-9999'
-          }
+          
         ]
       },
       {
@@ -738,31 +448,7 @@ describe('Other Items Sizes Array Function', () => {
           classes: 'govuk-label--m'
         },
         validate: [
-          {
-            type: 'NOT_EMPTY',
-            error: 'Enter safety equipment quantity'
-          },
-          {
-            type: 'REGEX',
-            regex: COMMA_EXCLUDE_REGEX,
-            error: 'Quantity must only include numbers'
-          },
-          {
-            type: 'REGEX',
-            regex: DECIMAL_EXCLUDE_REGEX,
-            error: 'Quantity must be between 1 and 9999999999'
-          },
-          {
-            type: 'REGEX',
-            regex: WHOLE_NUMBER_REGEX,
-            error: 'Quantity must be a whole number'
-          },
-          {
-            type: 'MIN_MAX',
-            min: 1,
-            max: 9999,
-            error: 'Quantity must be between 1-9999'
-          }
+          
         ]
       },
       {
@@ -780,31 +466,7 @@ describe('Other Items Sizes Array Function', () => {
           classes: 'govuk-label--m'
         },
         validate: [
-          {
-            type: 'NOT_EMPTY',
-            error: 'Enter safety equipment quantity'
-          },
-          {
-            type: 'REGEX',
-            regex: COMMA_EXCLUDE_REGEX,
-            error: 'Quantity must only include numbers'
-          },
-          {
-            type: 'REGEX',
-            regex: DECIMAL_EXCLUDE_REGEX,
-            error: 'Quantity must be between 1 and 9999999999'
-          },
-          {
-            type: 'REGEX',
-            regex: WHOLE_NUMBER_REGEX,
-            error: 'Quantity must be a whole number'
-          },
-          {
-            type: 'MIN_MAX',
-            min: 1,
-            max: 9999999999,
-            error: 'Quantity must be between 1-9999999999'
-          }
+          
         ]
       }
 

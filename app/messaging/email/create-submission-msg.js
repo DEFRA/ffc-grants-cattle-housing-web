@@ -90,7 +90,7 @@ function getProjectItemsFormattedArray (itemSizeQuantities, otherItems, storageT
 function getSpreadsheetDetails (submission) {
   const today = new Date()
   const todayStr = today.toLocaleDateString('en-GB')
-  const schemeName = 'Slurry Infrastructure'
+  const schemeName = 'Cattle Housing'
   const subScheme = `FTF-${schemeName}`
 
   return {
@@ -101,7 +101,7 @@ function getSpreadsheetDetails (submission) {
       submission.confirmationId.trim(),
       today
     ),
-    uploadLocation: `Farming Investment Fund/Farming Transformation Fund/${spreadsheetConfig.uploadEnvironment}/Slurry Infrastructure/`,
+    uploadLocation: `Farming Investment Fund/Farming Transformation Fund/${spreadsheetConfig.uploadEnvironment}/Cattle Housing/`,
     worksheets: [
       {
         title: 'DORA DATA',
@@ -113,7 +113,7 @@ function getSpreadsheetDetails (submission) {
           generateRow(2, 'FA or OA', 'Outline Application'),
           generateRow(40, 'Scheme', 'Farming Transformation Fund'),
           generateRow(39, 'Sub scheme', subScheme),
-          generateRow(43, 'Theme', 'Slurry Infrastructure Grants'),
+          generateRow(43, 'Theme', 'Cattle Housing Grants'),
           generateRow(90, 'Project type', 'Slurry Store and Cover'),
           generateRow(41, 'Owner', 'RD'),
           generateRow(53, 'Business type', getBusinessTypeC53(submission.applicantType)),
@@ -124,19 +124,11 @@ function getSpreadsheetDetails (submission) {
           generateRow(376, 'Project Started', submission.projectStart),
           generateRow(342, 'Land owned by Farm', submission.tenancy),
           generateRow(343, 'Tenancy for next 5 years', submission.tenancyLength ?? ''),
-          generateRow(395, 'System Type', submission.systemType),
-          generateRow(396, 'Existing Storage Capacity', submission.existingStorageCapacity),
-          generateRow(397, 'Planned Storage Capacity', submission.plannedStorageCapacity),
-          generateRow(398, 'Slurry Storage Improvement Method', submission.projectType),
-          generateRow(399, 'Impermeable cover', submission.cover),
           generateRow(55, 'Total project expenditure', String(submission.itemsTotalValue).replace(/,/g, '')),
           generateRow(57, 'Grant rate', '50'),
           generateRow(56, 'Grant amount requested', submission.calculatedGrant),
           generateRow(345, 'Remaining Cost to Farmer', submission.remainingCost),
           generateRow(346, 'Planning Permission Status', getPlanningPermissionDoraValue(submission.planningPermission)),
-          generateRow(400, 'Planning Authority', submission.PlanningPermissionEvidence?.planningAuthority.toUpperCase() ?? ''),
-          generateRow(401, 'Planning Reference No', submission.PlanningPermissionEvidence?.planningReferenceNumber ?? ''),
-          generateRow(402, 'OS Grid Reference', submission.gridReference.toUpperCase()),
           generateRow(366, 'Date of OA decision', ''),
           generateRow(42, 'Project name', submission.businessDetails.projectName),
           generateRow(4, 'Single business identifier (SBI)', submission.businessDetails.sbi || '000000000'), // sbi is '' if not set so use || instead of ??
@@ -210,27 +202,15 @@ function getEmailDetails (submission, rpaEmail, isAgentEmail = false) {
       legalStatus: submission.legalStatus,
       applicantType: submission.applicantType ? [submission.applicantType].flat().join(', ') : ' ',
       location: submission.inEngland,
-      systemType: submission.systemType,
-      existingStorageCapacity: submission.existingStorageCapacity,
-      plannedStorageCapacity: submission.plannedStorageCapacity,
-      cover: submission.cover ?? ' ',
-      coverSize: submission.coverSize ? submission.coverSize.concat(' m²') : 'N/A',
-      itemSizeQuantities: submission.itemSizeQuantities ? displayObject(submission.itemSizeQuantities, [submission.otherItems].flat()).join('\n') : 'None selected',
-      coverType: submission.coverType || 'Not needed',
-      storageType: submission.storageType,
-      planningAuthority: submission.PlanningPermissionEvidence ? submission.PlanningPermissionEvidence.planningAuthority.toUpperCase() : ' ',
-      planningReferenceNumber: submission.PlanningPermissionEvidence ? submission.PlanningPermissionEvidence.planningReferenceNumber : ' ',
       planningPermission: submission.planningPermission,
       projectPostcode: submission.farmerDetails.projectPostcode,
       projectStart: submission.projectStart,
-      serviceCapacityIncrease: submission.serviceCapacityIncrease,
       tenancy: submission.tenancy,
       isTenancyLength: submission.tenancyLength ? 'Yes' : 'No',
       tenancyLength: submission.tenancyLength ?? ' ',
       projectCost: getCurrencyFormat(submission.itemsTotalValue),
       potentialFunding: getCurrencyFormat(submission.calculatedGrant),
       remainingCost: submission.remainingCosts,
-      gridReference: submission.gridReference.toUpperCase(),
       projectName: submission.businessDetails.projectName,
       projectType: submission.projectType,
       businessName: submission.businessDetails.businessName,

@@ -11,26 +11,14 @@ const expectedOutcomeAgent = (testTimeConstant, sixMonthsLater, todayStr) => ({
       legalStatus: 'Sole trader',
       applicantType: ' ',
       location: 'Yes',
-      systemType: 'Slurry-based system',
-      existingStorageCapacity: 'Less than 6 months',
-      plannedStorageCapacity: '6 months',
-      cover: ' ',
-      coverSize: 'N/A',
-      itemSizeQuantities: 'None selected',
-      coverType: 'Not needed',
-      storageType: 'Above- ground steel slurry store',
-      planningAuthority: ' ',
-      planningReferenceNumber: ' ',
       planningPermission: 'Yes',
       projectPostcode: 'TE12ST',
       projectStart: 'Yes, preparatory work',
-      serviceCapacityIncrease: '',
       tenancy: 'Yes',
       isTenancyLength: 'No',
       tenancyLength: ' ',
       projectCost: '£NaN',
       potentialFunding: '£NaN',
-      gridReference: 'A1',
       projectName: 'Test Project',
       projectType: '',
       businessName: 'Test Business',
@@ -57,26 +45,14 @@ const expectedOutcomeAgent = (testTimeConstant, sixMonthsLater, todayStr) => ({
       legalStatus: 'Sole trader',
       applicantType: ' ',
       location: 'Yes',
-      systemType: 'Slurry-based system',
-      existingStorageCapacity: 'Less than 6 months',
-      plannedStorageCapacity: '6 months',
-      cover: ' ',
-      coverSize: 'N/A',
-      itemSizeQuantities: 'None selected',
-      coverType: 'Not needed',
-      storageType: 'Above- ground steel slurry store',
-      planningAuthority: ' ',
-      planningReferenceNumber: ' ',
       planningPermission: 'Yes',
       projectPostcode: 'TE12ST',
       projectStart: 'Yes, preparatory work',
-      serviceCapacityIncrease: '',
       tenancy: 'Yes',
       isTenancyLength: 'No',
       tenancyLength: ' ',
       projectCost: '£NaN',
       potentialFunding: '£NaN',
-      gridReference: 'A1',
       projectName: 'Test Project',
       projectType: '',
       businessName: 'Test Business',
@@ -95,8 +71,8 @@ const expectedOutcomeAgent = (testTimeConstant, sixMonthsLater, todayStr) => ({
   },
   rpaEmail: null,
   spreadsheet: {
-    filename: 'FTF-Slurry Infrastructure_Test Project_Test Business_12345678_18-09-2022, 01:00.xlsx',
-    uploadLocation: `Farming Investment Fund/Farming Transformation Fund/${envStr}/Slurry Infrastructure/`,
+    filename: 'FTF-Cattle Housing_Test Project_Test Business_12345678_18-09-2022, 01:00.xlsx',
+    uploadLocation: `Farming Investment Fund/Farming Transformation Fund/${envStr}/Cattle Housing/`,
     worksheets: [
       {
         title: 'DORA DATA',
@@ -117,11 +93,11 @@ const expectedOutcomeAgent = (testTimeConstant, sixMonthsLater, todayStr) => ({
             bold: false
           }, {
             row: 39,
-            values: ['', 'Sub scheme', 'FTF-Slurry Infrastructure'],
+            values: ['', 'Sub scheme', 'FTF-Cattle Housing'],
             bold: false
           }, {
             row: 43,
-            values: ['', 'Theme', 'Slurry Infrastructure Grants'],
+            values: ['', 'Theme', 'Cattle Housing Grants'],
             bold: false
           }, {
             row: 90,
@@ -168,26 +144,6 @@ const expectedOutcomeAgent = (testTimeConstant, sixMonthsLater, todayStr) => ({
             values: ['', 'Tenancy for next 5 years', ''],
             bold: false
           }, {
-            row: 395,
-            values: ['', 'System Type', 'Slurry-based system'],
-            bold: false
-          }, {
-            row: 396,
-            values: ['', 'Existing Storage Capacity', 'Less than 6 months'],
-            bold: false
-          }, {
-            row: 397,
-            values: ['', 'Planned Storage Capacity', '6 months'],
-            bold: false
-          }, {
-            row: 398,
-            values: ['', 'Slurry Storage Improvement Method', ''],
-            bold: false
-          }, {
-            row: 399,
-            values: ['', 'Impermeable cover', undefined],
-            bold: false
-          }, {
             row: 55,
             values: ['', 'Total project expenditure', 'undefined'],
             bold: false
@@ -207,18 +163,6 @@ const expectedOutcomeAgent = (testTimeConstant, sixMonthsLater, todayStr) => ({
           }, {
             row: 346,
             values: ['', 'Planning Permission Status', 'Approved'],
-            bold: false
-          }, {
-            row: 400,
-            values: ['', 'Planning Authority', ''],
-            bold: false
-          }, {
-            row: 401,
-            values: ['', 'Planning Reference No', ''],
-            bold: false
-          }, {
-            row: 402,
-            values: ['', 'OS Grid Reference', 'A1'],
             bold: false
           }, {
             row: 366,

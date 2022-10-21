@@ -20,31 +20,7 @@ const formatTempObject = (item, keyTitle, suffixAndLengthValue, catagoryData) =>
       classes: 'govuk-label--m'
     },
     validate: [
-      {
-        type: 'NOT_EMPTY',
-        error: `Enter ${keyTitle} ${catagoryData.errorType.toLowerCase()}`
-      },
-      {
-        type: 'REGEX',
-        regex: COMMA_EXCLUDE_REGEX,
-        error: `${catagoryData.errorType} must only include numbers`
-      },
-      {
-        type: 'REGEX',
-        regex: DECIMAL_EXCLUDE_REGEX,
-        error: `${catagoryData.errorType} must be between 1 and 9999999999`
-      },
-      {
-        type: 'REGEX',
-        regex: WHOLE_NUMBER_REGEX,
-        error: `${catagoryData.errorType} must be a whole number`
-      },
-      {
-        type: 'MIN_MAX',
-        min: 1,
-        max: maxValue,
-        error: `${catagoryData.errorType} must be between 1-${maxValue}`
-      }
+     
     ]
   }
 }

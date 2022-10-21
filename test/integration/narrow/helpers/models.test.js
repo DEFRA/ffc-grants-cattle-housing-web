@@ -198,7 +198,7 @@ describe('Models', () => {
           linkedPrefix: 'Increase: ',
           linkedSufix: 'm³'
         }],
-        linkedQuestionkey: ['serviceable-capacity-increase-replace'],
+        linkedQuestionkey: ['serviceable-capacity-increase-additional'],
         dependentQuestionKeys: ['storage-type', 'cover-type']
       },
       score: '123',
@@ -245,7 +245,7 @@ describe('Models', () => {
         dependentQuestionKeys: [
           'storage-type', 'cover-type'
         ],
-        linkedQuestionkey: ['serviceable-capacity-increase-replace'],
+        linkedQuestionkey: ['serviceable-capacity-increase-additional'],
         mainHeading: 'Your project items',
         prefixSufix: [
           {
