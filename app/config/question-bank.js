@@ -156,7 +156,7 @@ const questionBank = {
           title: 'What is the legal status of the business?',
           pageTitle: '',
           backUrl: 'applicant-type',
-          nextUrl: 'country',
+          nextUrl: 'tenancy',
           url: 'legal-status',
           baseUrl: 'legal-status',
           preValidationKeys: [],
@@ -248,227 +248,6 @@ const questionBank = {
             }
           ],
           yarKey: 'legalStatus'
-        },
-        {
-          key: 'country',
-          order: 30,
-          title: 'Is the planned project in England?',
-          hint: {
-            text: 'The location of the slurry store'
-          },
-          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
-          pageTitle: '',
-          backUrl: 'legal-status',
-          nextUrl: 'project-started',
-          url: 'country',
-          baseUrl: 'country',
-          preValidationKeys: [],
-          ineligibleContent: {
-            messageContent: 'This grant is only for projects in England.',
-            insertText: { text: 'Scotland, Wales and Northern Ireland have other grants available.' },
-            messageLink: {
-              url: '',
-              title: ''
-            }
-          },
-          fundingPriorities: '',
-          type: 'single-answer',
-          minAnswerCount: 1,
-          sidebar: {
-            values: [{
-              heading: 'Eligibility',
-              content: [{
-                para: `This grant is only for projects in England.
-                
-                Scotland, Wales and Northern Ireland have other grants available.`
-              }]
-            }]
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select yes if the project is in England'
-            }
-          ],
-          answers: [
-            {
-              key: 'country-A1',
-              value: 'Yes'
-            },
-            {
-              key: 'country-A2',
-              value: 'No',
-              notEligible: true
-            }
-          ],
-          yarKey: 'inEngland'
-        },
-        {
-          key: 'project-started',
-          order: 40,
-          title: 'Have you already started work on the project?',
-          pageTitle: '',
-          url: 'project-started',
-          baseUrl: 'project-started',
-          backUrl: 'country',
-          nextUrl: 'tenancy',
-          preValidationKeys: [],
-          ineligibleContent: {
-            messageContent: 'You cannot apply for a grant if you have already started work on the project.',
-            insertText: { text: 'Starting the project or committing to any costs (such as placing orders) before you receive a funding agreement invalidates your application.' },
-            messageLink: {
-              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-              title: 'See other grants you may be eligible for.'
-            }
-          },
-          fundingPriorities: '',
-          type: 'single-answer',
-          minAnswerCount: 1,
-          sidebar: {
-            values: [{
-              heading: 'Eligibility',
-              content: [{
-                para: `
-                You will invalidate your application if you start the project or commit to any costs (such as placing orders) before you receive a funding agreement.
-                
-                Before you start the project, you can:`,
-                items: [
-                  'get quotes from suppliers',
-                  'apply for planning permission (this can take a long time)'
-                ]
-              }]
-            }]
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select the option that applies to your project'
-            }
-          ],
-          answers: [
-            {
-              key: 'project-started-A1',
-              value: 'Yes, preparatory work',
-              hint: {
-                text: 'For example, quotes from suppliers, applying for planning permission'
-              }
-            },
-            {
-              key: 'project-started-A2',
-              value: 'Yes, we have begun project work',
-              hint: {
-                text: 'For example, started construction work, signing contracts, placing orders'
-              },
-              notEligible: true
-            },
-            {
-              key: 'project-started-A3',
-              value: 'No, we have not done any work on this project yet'
-            }
-          ],
-          yarKey: 'projectStart'
-        },
-        {
-          key: 'tenancy',
-          order: 50,
-          title: 'Is the planned project on land the business owns?',
-          hint: {
-            text: 'The location of the slurry store'
-          },
-          pageTitle: '',
-          url: 'tenancy',
-          baseUrl: 'tenancy',
-          backUrl: 'project-started',
-          nextUrl: 'system-type',
-          preValidationKeys: [],
-          fundingPriorities: '',
-          type: 'single-answer',
-          minAnswerCount: 1,
-          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
-          sidebar: {
-            values: [{
-              heading: 'Eligibility',
-              content: [{
-                para: 'You must own the land or have a tenancy in place for 5 years after the final grant payment.'
-              }]
-            }]
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select yes if the planned project is on land the business owns'
-            }
-          ],
-          answers: [
-            {
-              key: 'tenancy-A1',
-              value: 'Yes'
-            },
-            {
-              key: 'tenancy-A2',
-              value: 'No',
-              redirectUrl: 'tenancy-length'
-            }
-          ],
-          yarKey: 'tenancy'
-        },
-        {
-          key: 'tenancy-length',
-          order: 60,
-          title: 'Do you have a tenancy agreement for 5 years after the final grant payment?',
-          hint: {
-            text: 'The location of the slurry store'
-          },
-          pageTitle: '',
-          url: 'tenancy-length',
-          baseUrl: 'tenancy-length',
-          backUrl: 'tenancy',
-          preValidationKeys: [],
-          nextUrl: 'system-type',
-          type: 'single-answer',
-          minAnswerCount: 1,
-          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
-          sidebar: {
-            values: [{
-              heading: 'Eligibility',
-              content: [{
-                para: 'You must own the land or have a tenancy in place for 5 years after the final grant payment.',
-                items: []
-              }]
-            }]
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select yes if the land has a tenancy agreement in place for 5 years after the final grant payment.'
-            }
-          ],
-          answers: [
-            {
-              key: 'tenancy-length-A1',
-              value: 'Yes'
-            },
-            {
-              key: 'tenancy-length-A2',
-              value: 'No',
-              redirectUrl: 'tenancy-length-condition'
-            }
-          ],
-          yarKey: 'tenancyLength'
-        },
-        {
-          key: 'tenancy-length-condition',
-          title: 'You may be able to apply for a grant from this scheme',
-          order: 70,
-          url: 'tenancy-length-condition',
-          backUrl: 'tenancy-length',
-          preValidationKeys: [],
-          nextUrl: 'system-type',
-          maybeEligible: true,
-          maybeEligibleContent: {
-            messageHeader: 'You may be able to apply for a grant from this scheme',
-            messageContent: 'You will need to extend your tenancy agreement for 5 years after the final agreement.'
-          }
         },
         {
           key: 'system-type',
@@ -1326,7 +1105,7 @@ const questionBank = {
           url: 'remaining-costs',
           baseUrl: 'remaining-costs',
           backUrl: 'potential-amount',
-          nextUrl: 'planning-permission',
+          nextUrl: 'country',
           preValidationKeys: [],
           ineligibleContent: {
             messageContent: `<p class="govuk-body">You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.</p>
@@ -1386,17 +1165,71 @@ const questionBank = {
 
         },
         {
+          key: 'country',
+          order: 141,
+          title: 'Is the planned project in England?',
+          hint: {
+            text: 'The location of the slurry store'
+          },
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
+          pageTitle: '',
+          backUrl: 'remaining-costs',
+          nextUrl: 'planning-permission',
+          url: 'country',
+          baseUrl: 'country',
+          preValidationKeys: [],
+          ineligibleContent: {
+            messageContent: 'This grant is only for projects in England.',
+            insertText: { text: 'Scotland, Wales and Northern Ireland have other grants available.' },
+            messageLink: {
+              url: '',
+              title: ''
+            }
+          },
+          fundingPriorities: '',
+          type: 'single-answer',
+          minAnswerCount: 1,
+          sidebar: {
+            values: [{
+              heading: 'Eligibility',
+              content: [{
+                para: `This grant is only for projects in England.
+                
+                Scotland, Wales and Northern Ireland have other grants available.`
+              }]
+            }]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if the project is in England'
+            }
+          ],
+          answers: [
+            {
+              key: 'country-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'country-A2',
+              value: 'No',
+              notEligible: true
+            }
+          ],
+          yarKey: 'inEngland'
+        },
+        {
           key: 'planning-permission',
           order: 142,
           title: 'Does the project have planning permission?',
           pageTitle: '',
           url: 'planning-permission',
           baseUrl: 'planning-permission',
-          backUrl: 'remaining-costs',
-          nextUrl: 'planning-permission-evidence',
+          backUrl: 'country',
+          nextUrl: 'project-started',
           preValidationKeys: [],
           ineligibleContent: {
-            messageContent: 'Any planning permission must be in place by 31 January 2024.',
+            messageContent: 'Any planning permission must be in place by 31 January 2023.',
             messageLink: {
               url: 'https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments',
               title: 'See other grants you may be eligible for.'
@@ -1409,31 +1242,36 @@ const questionBank = {
             values: [{
               heading: 'Eligibility',
               content: [{
-                para: `Any planning permission must be in place by 31 December 2023. 
+                para: `You must have secured planning permission before you submit a full application.
 
-                      You must have applied for planning permission before you submit a full application.`
+                      Any planning permission must be in place by 31 January 2023.`
               }]
             }]
           },
           validate: [
             {
               type: 'NOT_EMPTY',
-              error: 'Select your project planning permission'
+              error: 'Select when the project will have project planning permission'
             }
           ],
           answers: [
             {
               key: 'planning-permission-A1',
-              value: 'Approved'
+              value: 'Not needed'
             },
             {
               key: 'planning-permission-A2',
-              value: 'Applied for but not yet approved'
+              value: 'Secured'
             },
             {
               key: 'planning-permission-A3',
-              value: 'Not yet applied for but expected to be in place by 31 December 2023',
+              value: 'Should be in place by 31 January 2023',
               redirectUrl: 'planning-permission-condition'
+            },
+            {
+              key: 'planning-permission-A4',
+              value: 'Will not have by 31 January 2023',
+              notEligible: true
             }
           ],
           yarKey: 'planningPermission'
@@ -1443,12 +1281,12 @@ const questionBank = {
           order: 145,
           url: 'planning-permission-condition',
           backUrl: 'planning-permission',
-          nextUrl: 'grid-reference',
+          nextUrl: 'project-started',
           maybeEligible: true,
           preValidationKeys: [],
           maybeEligibleContent: {
             messageHeader: 'You may be able to apply for a grant from this scheme',
-            messageContent: 'Any planning permission must be in place by 31st December 2023.'
+            messageContent: 'Any planning permission must be in place by 31 January 2023 (the end of the application window).'
           },
           yarKey: 'PlanningPermissionCondition'
         },
@@ -1461,7 +1299,7 @@ const questionBank = {
           },
           url: 'planning-permission-evidence',
           baseUrl: 'planning-permission-evidence',
-          backUrl: 'planning-permission',
+          backUrl: 'project-started',
           nextUrl: 'grid-reference',
           preValidationKeys: [],
           type: 'multi-input',
@@ -1519,19 +1357,186 @@ const questionBank = {
           yarKey: 'PlanningPermissionEvidence'
         },
         {
+          key: 'project-started',
+          order: 151,
+          title: 'Have you already started work on the project?',
+          pageTitle: '',
+          url: 'project-started',
+          baseUrl: 'project-started',
+          backUrl: 'planning-permission',
+          nextUrl: 'tenancy',
+          backUrlObject: {
+            dependentQuestionYarKey: 'planningPermission',
+            dependentAnswerKeysArray: ['planning-permission-A1', 'planning-permission-A2'],
+            urlOptions: {
+              thenUrl: 'planning-permission',
+              elseUrl: 'planning-permission-condition'
+            }
+          },
+          preValidationKeys: [],
+          ineligibleContent: {
+            messageContent: 'You cannot apply for a grant if you have already started work on the project.',
+            insertText: { text: 'Starting the project or committing to any costs (such as placing orders) before you receive a funding agreement invalidates your application.' },
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
+            }
+          },
+          fundingPriorities: '',
+          type: 'single-answer',
+          minAnswerCount: 1,
+          sidebar: {
+            values: [{
+              heading: 'Eligibility',
+              content: [{
+                para: `
+                You will invalidate your application if you start the project or commit to any costs (such as placing orders) before you receive a funding agreement.
+                
+                Before you start the project, you can:`,
+                items: [
+                  'get quotes from suppliers',
+                  'apply for planning permission (this can take a long time)'
+                ]
+              }]
+            }]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select the option that applies to your project'
+            }
+          ],
+          answers: [
+            {
+              key: 'project-started-A1',
+              value: 'Yes, preparatory work',
+              hint: {
+                text: 'For example, quotes from suppliers, applying for planning permission'
+              }
+            },
+            {
+              key: 'project-started-A2',
+              value: 'Yes, we have begun project work',
+              hint: {
+                text: 'For example, started construction work, signing contracts, placing orders'
+              },
+              notEligible: true
+            },
+            {
+              key: 'project-started-A3',
+              value: 'No, we have not done any work on this project yet'
+            }
+          ],
+          yarKey: 'projectStart'
+        },
+        {
+          key: 'tenancy',
+          order: 152,
+          title: 'Is the planned project on land the business owns?',
+          hint: {
+            text: 'The location of the slurry store'
+          },
+          pageTitle: '',
+          url: 'tenancy',
+          baseUrl: 'tenancy',
+          backUrl: 'legal-status',
+          nextUrl: 'system-type',
+          preValidationKeys: [],
+          fundingPriorities: '',
+          type: 'single-answer',
+          minAnswerCount: 1,
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
+          sidebar: {
+            values: [{
+              heading: 'Eligibility',
+              content: [{
+                para: 'You must own the land or have a tenancy in place for 5 years after the final grant payment.'
+              }]
+            }]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if the planned project is on land the business owns'
+            }
+          ],
+          answers: [
+            {
+              key: 'tenancy-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'tenancy-A2',
+              value: 'No',
+              redirectUrl: 'tenancy-length'
+            }
+          ],
+          yarKey: 'tenancy'
+        },
+        {
+          key: 'tenancy-length',
+          order: 60,
+          title: 'Do you have a tenancy agreement for 5 years after the final grant payment?',
+          hint: {
+            text: 'The location of the slurry store'
+          },
+          pageTitle: '',
+          url: 'tenancy-length',
+          baseUrl: 'tenancy-length',
+          backUrl: 'tenancy',
+          preValidationKeys: [],
+          nextUrl: 'system-type',
+          type: 'single-answer',
+          minAnswerCount: 1,
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
+          sidebar: {
+            values: [{
+              heading: 'Eligibility',
+              content: [{
+                para: 'You must own the land or have a tenancy in place for 5 years after the final grant payment.',
+                items: []
+              }]
+            }]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if the land has a tenancy agreement in place for 5 years after the final grant payment.'
+            }
+          ],
+          answers: [
+            {
+              key: 'tenancy-length-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'tenancy-length-A2',
+              value: 'No',
+              redirectUrl: 'tenancy-length-condition'
+            }
+          ],
+          yarKey: 'tenancyLength'
+        },
+        {
+          key: 'tenancy-length-condition',
+          title: 'You may be able to apply for a grant from this scheme',
+          order: 70,
+          url: 'tenancy-length-condition',
+          backUrl: 'tenancy-length',
+          preValidationKeys: [],
+          nextUrl: 'system-type',
+          maybeEligible: true,
+          maybeEligibleContent: {
+            messageHeader: 'You may be able to apply for a grant from this scheme',
+            messageContent: 'You will need to extend your tenancy agreement for 5 years after the final agreement.'
+          }
+        },
+        {
           key: 'grid-reference',
           order: 152,
           url: 'grid-reference',
           backUrl: 'planning-permission-evidence',
           nextUrl: 'planning-permission-summary',
-          backUrlObject: {
-            dependentQuestionYarKey: 'planningPermission',
-            dependentAnswerKeysArray: ['planning-permission-A1', 'planning-permission-A2'],
-            urlOptions: {
-              thenUrl: 'planning-permission-evidence',
-              elseUrl: 'planning-permission-condition'
-            }
-          },
           preValidationKeys: [],
           type: 'input',
           classes: 'govuk-input--width-10',
