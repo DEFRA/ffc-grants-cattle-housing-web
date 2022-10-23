@@ -1169,7 +1169,7 @@ const questionBank = {
           order: 141,
           title: 'Is the planned project in England?',
           hint: {
-            text: 'The location of the slurry store'
+            text: 'The location of the cattle housing'
           },
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           pageTitle: '',
@@ -1434,7 +1434,7 @@ const questionBank = {
           order: 152,
           title: 'Is the planned project on land the business owns?',
           hint: {
-            text: 'The location of the slurry store'
+            text: 'The location of the cattle housing'
           },
           pageTitle: '',
           url: 'tenancy',
@@ -1478,7 +1478,7 @@ const questionBank = {
           order: 60,
           title: 'Do you have a tenancy agreement for 5 years after the final grant payment?',
           hint: {
-            text: 'The location of the slurry store'
+            text: 'The location of the cattle housing'
           },
           pageTitle: '',
           url: 'tenancy-length',
