@@ -5,7 +5,7 @@ const { guardPage } = require('../helpers/page-guard')
 const urlPrefix = require('../config/server').urlPrefix
 const viewTemplate = 'standardised-grant-amounts'
 const currentPath = `${urlPrefix}/${viewTemplate}`
-const nextPath = `${urlPrefix}/storage-type`
+const nextPath = `${urlPrefix}/remaining-costs`
 
 function createModel (data, _request) {
   const previousPath = `${urlPrefix}/estimated-grant`

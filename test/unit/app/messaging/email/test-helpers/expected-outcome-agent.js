@@ -17,8 +17,8 @@ const expectedOutcomeAgent = (testTimeConstant, sixMonthsLater, todayStr) => ({
       tenancy: 'Yes',
       isTenancyLength: 'No',
       tenancyLength: ' ',
-      projectCost: '£NaN',
-      potentialFunding: '£NaN',
+      // projectCost: '£NaN',
+      // potentialFunding: '£NaN',
       projectName: 'Test Project',
       projectType: '',
       businessName: 'Test Business',
@@ -31,7 +31,7 @@ const expectedOutcomeAgent = (testTimeConstant, sixMonthsLater, todayStr) => ({
       agentEmail: 'agent@site.com',
       contactConsent: 'No',
       scoreDate: (new Date(testTimeConstant)).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' }),
-      remainingCost: undefined,
+      // remainingCost: undefined,
       businessType: ''
     }
   },
@@ -51,8 +51,8 @@ const expectedOutcomeAgent = (testTimeConstant, sixMonthsLater, todayStr) => ({
       tenancy: 'Yes',
       isTenancyLength: 'No',
       tenancyLength: ' ',
-      projectCost: '£NaN',
-      potentialFunding: '£NaN',
+      // projectCost: '£NaN',
+      // potentialFunding: '£NaN',
       projectName: 'Test Project',
       projectType: '',
       businessName: 'Test Business',
@@ -66,7 +66,7 @@ const expectedOutcomeAgent = (testTimeConstant, sixMonthsLater, todayStr) => ({
       contactConsent: 'No',
       scoreDate: new Date(testTimeConstant).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' }),
       businessType: '',
-      remainingCost: undefined
+      // remainingCost: undefined
     }
   },
   rpaEmail: null,
@@ -120,14 +120,14 @@ const expectedOutcomeAgent = (testTimeConstant, sixMonthsLater, todayStr) => ({
             values: ['', 'Status of applicant', 'Sole trader'],
             bold: false
           }, {
-            row: 44,
-            values: [
-              '',
-              'Project Items',
-              'Above- ground steel slurry store~||'
-            ],
-            bold: false
-          }, {
+          //   row: 44,
+          //   values: [
+          //     '',
+          //     'Project Items',
+          //     'Above- ground steel slurry store~||'
+          //   ],
+          //   bold: false
+          // }, {
             row: 45,
             values: ['', 'Location of project (postcode)', 'TE12ST'],
             bold: false
@@ -144,23 +144,23 @@ const expectedOutcomeAgent = (testTimeConstant, sixMonthsLater, todayStr) => ({
             values: ['', 'Tenancy for next 5 years', ''],
             bold: false
           }, {
-            row: 55,
-            values: ['', 'Total project expenditure', 'undefined'],
-            bold: false
-          }, {
+          //   row: 55,
+          //   values: ['', 'Total project expenditure', 'undefined'],
+          //   bold: false
+          // }, {
             row: 57,
             values: ['', 'Grant rate', '50'],
             bold: false
           }, {
-            row: 56,
-            values: ['', 'Grant amount requested', undefined],
-            bold: false
-          },
-          {
-            row: 345,
-            values: ['', 'Remaining Cost to Farmer', 'Yes'],
-            bold: false
-          }, {
+          //   row: 56,
+          //   values: ['', 'Grant amount requested', undefined],
+          //   bold: false
+          // },
+          // {
+          //   row: 345,
+          //   values: ['', 'Remaining Cost to Farmer', 'Yes'],
+          //   bold: false
+          // }, {
             row: 346,
             values: ['', 'Planning Permission Status', 'Approved'],
             bold: false

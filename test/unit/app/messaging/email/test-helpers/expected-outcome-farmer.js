@@ -20,8 +20,8 @@ const expectedOutcomeFarmer = (testTimeConstant, sixMonthsLater, todayStr, numbe
         tenancy: 'Yes',
         isTenancyLength: 'Yes',
         tenancyLength: 'Yes',
-        projectCost: '£NaN',
-        potentialFunding: '£NaN',
+        // projectCost: '£NaN',
+        // potentialFunding: '£NaN',
         projectName: 'Test Project',
         projectType: '',
         businessName: 'Test Business',
@@ -34,7 +34,7 @@ const expectedOutcomeFarmer = (testTimeConstant, sixMonthsLater, todayStr, numbe
         agentEmail: ' ',
         contactConsent: 'Yes',
         scoreDate: testTimeConstant.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' }),
-        remainingCost: undefined,
+        // remainingCost: undefined,
         businessType: ''
       }
     },
@@ -90,14 +90,14 @@ const expectedOutcomeFarmer = (testTimeConstant, sixMonthsLater, todayStr, numbe
               values: ['', 'Status of applicant', 'Sole trader'],
               bold: false
             }, {
-              row: 44,
-              values: [
-                '',
-                'Project Items',
-                'Above- ground steel slurry store~|I already have an impermeable cover~Solid roof or lid with a flat deck or conical shape made from inflexible material such as fibreglass panels or polyester sheets|Earth-bank lagoon with internal liner~100~m³|Fixed flexible cover~100~m³|Centrifugal chopper pump~10~item(s)|Slurry store wall mixers with store capacity up to 8,000 cubic metre~10 item(s)~item(s)'
-              ],
-              bold: false
-            }, {
+            //   row: 44,
+            //   values: [
+            //     '',
+            //     'Project Items',
+            //     'Above- ground steel slurry store~|I already have an impermeable cover~Solid roof or lid with a flat deck or conical shape made from inflexible material such as fibreglass panels or polyester sheets|Earth-bank lagoon with internal liner~100~m³|Fixed flexible cover~100~m³|Centrifugal chopper pump~10~item(s)|Slurry store wall mixers with store capacity up to 8,000 cubic metre~10 item(s)~item(s)'
+            //   ],
+            //   bold: false
+            // }, {
               row: 45,
               values: ['', 'Location of project (postcode)', 'TE12ST'],
               bold: false
@@ -114,23 +114,23 @@ const expectedOutcomeFarmer = (testTimeConstant, sixMonthsLater, todayStr, numbe
               values: ['', 'Tenancy for next 5 years', 'Yes'],
               bold: false
             }, {
-              row: 55,
-              values: ['', 'Total project expenditure', 'undefined'],
-              bold: false
-            }, {
+            //   row: 55,
+            //   values: ['', 'Total project expenditure', 'undefined'],
+            //   bold: false
+            // }, {
               row: 57,
               values: ['', 'Grant rate', '50'],
               bold: false
             }, {
-              row: 56,
-              values: ['', 'Grant amount requested', undefined],
-              bold: false
-            },
-            {
-              row: 345,
-              values: ['', 'Remaining Cost to Farmer', 'Yes'],
-              bold: false
-            }, {
+            //   row: 56,
+            //   values: ['', 'Grant amount requested', undefined],
+            //   bold: false
+            // },
+            // {
+            //   row: 345,
+            //   values: ['', 'Remaining Cost to Farmer', 'Yes'],
+            //   bold: false
+            // }, {
               row: 346,
               values: ['', 'Planning Permission Status', 'Approved'],
               bold: false
