@@ -9,6 +9,7 @@ const { guardPage } = require('../helpers/page-guard')
 const { notUniqueSelection, uniqueSelection } = require('../helpers/utils')
 const senders = require('../messaging/senders')
 const createMsg = require('../messaging/create-msg')
+const emailFormatting = require('./../messaging/email/process-submission')
 const gapiService = require('../services/gapi-service')
 const { startPageUrl } = require('../config/server')
 const { ALL_QUESTIONS } = require('../config/question-bank')
@@ -55,7 +56,8 @@ const getPage = async (question, request, h) => {
       }
       confirmationId = getConfirmationId(request.yar.id)
       try {
-        await senders.sendContactDetails(createMsg.getAllDetails(request, confirmationId), request.yar.id)
+        const emailData = await emailFormatting({ body: createMsg.getAllDetails(request, confirmationId) }, request.yar.id)
+        await senders.sendDesirabilitySubmitted(emailData, request.yar.id) // replace with sendDesirabilitySubmitted, and replace first param with call to function in process-submission
         await gapiService.sendDimensionOrMetrics(request, [{
           dimensionOrMetric: gapiService.dimensions.CONFIRMATION,
           value: confirmationId

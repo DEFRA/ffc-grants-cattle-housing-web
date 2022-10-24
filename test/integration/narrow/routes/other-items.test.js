@@ -25,20 +25,7 @@ describe('Other Items test', () => {
     expect(response.statusCode).toBe(200)
     expect(response.payload).toContain('What other items do you need?')
   })
-
-  it('no option selected -> show error message', async () => {
-    const postOptions = {
-      method: 'POST',
-      url: `${global.__URLPREFIX__}/other-items`,
-      headers: { cookie: 'crumb=' + crumbToken },
-      payload: { storageType: '', crumb: crumbToken }
-    }
-
-    const postResponse = await global.__SERVER__.inject(postOptions)
-    expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Please select an option')
-  })
-
+  
   test('POST /other-items route returns next page', async () => {
     const options = {
       method: 'POST',
