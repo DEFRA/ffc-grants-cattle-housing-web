@@ -156,7 +156,7 @@ describe('Models', () => {
     })
   })
 
-  test('Test sidebar in getModel when no yar key value', () => {
+  xtest('Test sidebar in getModel when no yar key value', () => {
     const questionForSidebar = {
       type: 'mock_type',
       backUrl: 'mock_back_url',
