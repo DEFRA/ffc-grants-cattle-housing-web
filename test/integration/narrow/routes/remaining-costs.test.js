@@ -59,20 +59,10 @@ describe('Page: /remaining-costs', () => {
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
-    expect(postResponse.headers.location).toBe('country')
+    expect(postResponse.headers.location).toBe('result-page')
   })
 
   it('page loads with correct back link', async () => {
-    const postOptions = {
-      method: 'POST',
-      url: `${global.__URLPREFIX__}/project-type`,
-      headers: { cookie: 'crumb=' + crumbToken },
-      payload: { projectType: 'Add a new store to increase existing capacity', crumb: crumbToken }
-    }
-
-    const postResponse = await global.__SERVER__.inject(postOptions)
-    expect(postResponse.statusCode).toBe(302)
-
     const options = {
       method: 'GET',
       url: `${global.__URLPREFIX__}/remaining-costs`
