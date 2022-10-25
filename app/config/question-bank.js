@@ -1578,14 +1578,12 @@ const questionBank = {
           maybeEligibleContent: {
             messageHeader: 'Confirm and send',
             messageContent: `I confirm that, to the best of my knowledge, the details I have provided are correct.</br></br>
-            I understand the project’s eligibility and estimated grant amount is based on the answers I provided.</br></br>
+            I understand the project’s eligibility and score is based on the answers I provided.</br></br>
             I am aware that the information I submit will be:</br>
             <ul>
               <li>checked by the RPA</li>
-              <li>passed to Natural England so they can contact me to provide advice on my project</li>
-              <li>passed to the Environment Agency so that they are aware of my planned project</li>
+              <li>shared with the Environment Agency so that they can check the details of my planned project</li>
             </ul></br>
-            I am aware that if my project is successful, details of my full application will be shared with the Environment Agency so they can provide assurance on the project location and store design.</br></br>
             I am happy to be contacted by Defra and RPA (or third-party on their behalf) about my application.</br></br>
             So that we can continue to improve our services and schemes, we may wish to contact you in the future. Please confirm if you are happy for us, or a third-party working for us, to contact you.`
           },
