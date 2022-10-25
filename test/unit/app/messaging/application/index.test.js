@@ -19,7 +19,7 @@ describe('application messaging tests', () => {
 
     expect(message).toEqual(receiveMessageRes)
     expect(receiveMessage).toHaveBeenCalledTimes(1)
-    expect(receiveMessage).toHaveBeenCalledWith(sessionId, costResponseQueue)
+    expect(receiveMessage).toHaveBeenCalledWith(sessionId, scoreResponseQueue)
     expect(sendMessage).toHaveBeenCalledTimes(1)
     expect(sendMessage).toHaveBeenCalledWith({}, fetchScoreRequestMsgType, scoreRequestQueue, { sessionId })
   })
