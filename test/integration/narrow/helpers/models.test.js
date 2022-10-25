@@ -2,7 +2,16 @@ jest.mock('../../../../app/helpers/utils', () => {
   const original = jest.requireActual('../../../../app/helpers/utils')
   return {
     ...original,
-    allAnswersSelected: jest.fn()
+    allAnswersSelected: jest.fn(),
+    getQuestionByKey: jest.fn().mockReturnValue({
+      yarKey: 'testYarKey',
+      answers: [
+        {
+          key: 'testKey',
+          value: 'testValue'
+        }
+      ]
+    })
   }
 })
 const { allAnswersSelected } = require('../../../../app/helpers/utils')
@@ -156,7 +165,7 @@ describe('Models', () => {
     })
   })
 
-  xtest('Test sidebar in getModel when no yar key value', () => {
+  test('Test sidebar in getModel when no yar key value', () => {
     const questionForSidebar = {
       type: 'mock_type',
       backUrl: 'mock_back_url',
