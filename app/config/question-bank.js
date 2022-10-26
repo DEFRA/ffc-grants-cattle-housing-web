@@ -1578,14 +1578,12 @@ const questionBank = {
           maybeEligibleContent: {
             messageHeader: 'Confirm and send',
             messageContent: `I confirm that, to the best of my knowledge, the details I have provided are correct.</br></br>
-            I understand the project’s eligibility and estimated grant amount is based on the answers I provided.</br></br>
+            I understand the project’s eligibility and score is based on the answers I provided.</br></br>
             I am aware that the information I submit will be:</br>
             <ul>
               <li>checked by the RPA</li>
-              <li>passed to Natural England so they can contact me to provide advice on my project</li>
-              <li>passed to the Environment Agency so that they are aware of my planned project</li>
+              <li>shared with the Environment Agency so that they can check the details of my planned project</li>
             </ul></br>
-            I am aware that if my project is successful, details of my full application will be shared with the Environment Agency so they can provide assurance on the project location and store design.</br></br>
             I am happy to be contacted by Defra and RPA (or third-party on their behalf) about my application.</br></br>
             So that we can continue to improve our services and schemes, we may wish to contact you in the future. Please confirm if you are happy for us, or a third-party working for us, to contact you.`
           },
@@ -1628,8 +1626,8 @@ const questionBank = {
             <a class="govuk-link" title="Send email to RPA" target="_blank" rel="noopener noreferrer" href="mailto:ftf@rpa.gov.uk">FTF@rpa.gov.uk</a><br/><br/>
             
             <h2 class="govuk-heading-m">What happens next</h2>
-            <p>1. RPA will be in touch when the full application period opens to tell you if your project is invited to submit a full application form.</p>
-            <p>2. If you submit an application, RPA will assess whether it is eligible and meets the rules of the grant.</p>
+            <p>1. RPA will be in touch when the full application period opens. They will tell you if your project scored well enough to get the full application form.</p>
+            <p>2. If you submit an application, RPA will assess it against other projects and value for money. You will not automatically get a grant. The grant is expected to be highly competitive and you are competing against other projects.</p>
             <p>3. If your application is successful, you’ll be sent a funding agreement and can begin work on the project.</p>
             `,
             warning: {
@@ -1639,7 +1637,7 @@ const questionBank = {
             <p>Before you start the project, you can:</p>
             <ul>
               <li>get quotes from suppliers</li>
-              <li>apply for planning permission</li>
+              <li>apply for planning permission or an abstraction licence</li>
             </ul>
             <p class="govuk-body"><a class="govuk-link" href="${process.env.SURVEY_LINK}" target="_blank" rel="noopener noreferrer">What do you think of this service?</a></p>
             `

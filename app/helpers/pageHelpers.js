@@ -3,7 +3,7 @@ const { setOptionsLabel } = require('../helpers/answer-options')
 const { getYarValue, setYarValue } = require('../helpers/session')
 
 const getConfirmationId = (guid) => {
-  const prefix = 'SI'
+  const prefix = 'UCH'
   return `${prefix}-${guid.substr(0, 3)}-${guid.substr(3, 3)}`.toUpperCase()
 }
 
