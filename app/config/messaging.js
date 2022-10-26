@@ -14,13 +14,13 @@ const messageConfigSchema = Joi.object({
     type: Joi.string(),
     ...sharedConfigSchema
   },
-  costRequestQueue: {
-    address: Joi.string().default('costRequestQueue'),
+  scoreRequestQueue: {
+    address: Joi.string().default('scoreRequestQueue'),
     type: Joi.string(),
     ...sharedConfigSchema
   },
-  costResponseQueue: {
-    address: Joi.string().default('costResponseQueue'),
+  scoreResponseQueue: {
+    address: Joi.string().default('scoreResponseQueue'),
     type: Joi.string(),
     ...sharedConfigSchema
   },
@@ -30,7 +30,7 @@ const messageConfigSchema = Joi.object({
     ...sharedConfigSchema
   },
   desirabilitySubmittedMsgType: Joi.string(),
-  fetchCostRequestMsgType: Joi.string(),
+  fetchScoreRequestMsgType: Joi.string(),
   eligibilityAnswersMsgType: Joi.string(),
   contactDetailsMsgType: Joi.string(),
   msgSrc: Joi.string()
@@ -52,13 +52,13 @@ const config = {
     type: 'queue',
     ...sharedConfig
   },
-  costRequestQueue: {
-    address: process.env.COST_REQUEST_QUEUE_ADDRESS,
+  scoreRequestQueue: {
+    address: process.env.SCORE_REQUEST_QUEUE_ADDRESS,
     type: 'queue',
     ...sharedConfig
   },
-  costResponseQueue: {
-    address: process.env.COST_RESPONSE_QUEUE_ADDRESS,
+  scoreResponseQueue: {
+    address: process.env.SCORE_RESPONSE_QUEUE_ADDRESS,
     type: 'queue',
     ...sharedConfig
   },
@@ -68,7 +68,7 @@ const config = {
     ...sharedConfig
   },
   desirabilitySubmittedMsgType: `${msgTypePrefix}.slurry.desirability.notification`,
-  fetchCostRequestMsgType: `${msgTypePrefix}.fetch.cost.request`,
+  fetchScoreRequestMsgType: `${msgTypePrefix}.fetch.score.request`,
   eligibilityAnswersMsgType: `${msgTypePrefix}.slurry.eligibility.details`,
   contactDetailsMsgType: `${msgTypePrefix}.slurry.contact.details`,
   msgSrc: 'ffc-grants-cattle-housing-web'

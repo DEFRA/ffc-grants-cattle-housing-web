@@ -60,8 +60,8 @@ container:
   serviceEndDate: dummy
   serviceEndTime: dummy
   surveyLink: dummy
-  costRequestQueueAddress: ffc-grants-slurry-cost-details-req
-  costResponseQueueAddress: ffc-grants-slurry-cost-details-res
+  scoreRequestQueueAddress: ffc-grants-desirability-scoring-req
+  scoreResponseQueueAddress: ffc-grants-desirability-scoring-res
   desirabilitySubmittedTopicAddress: desirability-submitted
   notifyEmailTemplate: dummy-template
   worksheetProtectPassword:
