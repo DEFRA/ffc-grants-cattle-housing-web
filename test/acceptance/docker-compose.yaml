@@ -17,4 +17,4 @@ services:
 
   hub:
     image: selenium/hub
-    container_name: selenium-hub
+    container_name: selenium-hub-1
