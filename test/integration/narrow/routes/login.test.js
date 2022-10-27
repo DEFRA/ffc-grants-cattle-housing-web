@@ -65,18 +65,4 @@ describe('login page', () => {
         expect(postResponse.statusCode).toBe(302)
         expect(postResponse.headers.location).toBe('start')
     })
-
-    // handler
-    xit('redirect to /start when entering correct details', async () => {
-        const postOptions = {
-            method: 'POST',
-            url: `${global.__URLPREFIX__}/login`,
-            payload: { username: 'some conscent', password: 'password', crumb: crumbToken },
-            headers: { cookie: 'crumb=' + crumbToken }
-        }
-        const postResponse = await global.__SERVER__.inject(postOptions)
-        expect(postResponse.statusCode).toBe(302)
-        expect(postResponse.headers.location).toBe('start')
-    })
-
 })
