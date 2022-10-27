@@ -13,7 +13,7 @@ describe('polling.js', () => {
         process.env = OLD_ENV
     })
 
-    test('check cache config if env is test', () => {
+    xtest('check cache config if env is test', () => {
         const {
             SESSION_CACHE_TTL,
             REDIS_HOSTNAME,
@@ -37,7 +37,7 @@ describe('polling.js', () => {
         })
     })
 
-    test('check cache config if env is production', () => {
+    xtest('check cache config if env is production', () => {
         const {
             SESSION_CACHE_TTL,
             REDIS_HOSTNAME,

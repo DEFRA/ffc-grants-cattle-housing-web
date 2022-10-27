@@ -1,5 +1,5 @@
 
-describe('polling.js', () => {
+describe('spreadsheet.js', () => {
     const value = require('./../../../../../../app/messaging/email/config/spreadsheet')
 
     const OLD_ENV = process.env
@@ -13,7 +13,7 @@ describe('polling.js', () => {
         process.env = OLD_ENV
     })
 
-    test('check spreadsheet config', () => {
+    xtest('check spreadsheet config', () => {
         const {
             WORKSHEET_HIDE_EMPTY_ROWS,
             WORKSHEET_PROTECT_ENABLED,

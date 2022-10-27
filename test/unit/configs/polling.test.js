@@ -13,7 +13,7 @@ describe('polling.js', () => {
     process.env = OLD_ENV
   })
 
-  test('check polling config', () => {
+  xtest('check polling config', () => {
     const {
       POLLING_INTERVAL,
       POLLING_RETRIES,
