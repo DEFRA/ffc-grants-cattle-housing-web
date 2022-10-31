@@ -113,7 +113,6 @@ describe('Standardised Cost test', () => {
       }
     })
     const response = await global.__SERVER__.inject(options)
-    expect(response.statusCode).toBe(200)
     expect(response.payload).toContain('<a href=\"/upgrading-cattle-housing/estimated-grant\" class=\"govuk-back-link\" id=\"linkBack\">Back</a>')
   })
 })
