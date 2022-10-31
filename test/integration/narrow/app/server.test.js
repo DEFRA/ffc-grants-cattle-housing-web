@@ -1,4 +1,3 @@
-const Hapi = require('@hapi/hapi');
 const createServer = require('../../../../app/server');
 
 const mockRegisterSpy = jest.fn();
