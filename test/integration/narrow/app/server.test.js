@@ -1,4 +1,5 @@
 const createServer = require('../../../../app/server');
+const authConfig = require('../../../../app/config/auth');
 
 const mockRegisterSpy = jest.fn();
 const mockedInfo = {
@@ -8,7 +9,7 @@ const mockedInfo = {
   port: 3600,
   protocol: "http",
   started: 0,
-  uri: "http://localhost:3600",
+  uri: "http://mock-host:3600",
 };
 
 jest.mock('@hapi/hapi', () => {
@@ -29,10 +30,13 @@ jest.mock('@hapi/hapi', () => {
 });
 
 describe('Server test', () => {
-  test('When authConfig disabled - createServer returns server with registered plugins', async () => {
+  test('When authConfig is enabled - createServer returns server with registered plugins', async () => {
+    const ogEnabled = authConfig.enabled;
+    authConfig.enabled = true;
     const server = await createServer();
     expect(server).toBeDefined();
     expect(server.info).toEqual(mockedInfo);
+
     expect(mockRegisterSpy.mock.calls[0][0].plugin.pkg._id).toContain("@hapi/inert");
     expect(mockRegisterSpy.mock.calls[1][0].plugin.pkg._id).toContain("@hapi/vision");
     expect(mockRegisterSpy.mock.calls[2][0].plugin.name).toBe("cookies");
@@ -41,5 +45,7 @@ describe('Server test', () => {
     expect(mockRegisterSpy.mock.calls[5][0].plugin.plugin.name).toBe("Gapi");
     expect(mockRegisterSpy.mock.calls[6][0][0].plugin.plugin.pkg._id).toContain("@hapi/yar");
     expect(mockRegisterSpy.mock.calls[6][0][1].plugin.plugin.pkg._id).toContain("@hapi/crumb");
+    expect(mockRegisterSpy.mock.calls[7][0].plugin.name).toBe("auth");
+    authConfig.enabled = ogEnabled;
   })
 })
