@@ -35,7 +35,7 @@ describe('Page: /project-started', () => {
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Select the option that applies to your project')
+    expect(postResponse.payload).toContain('Select whether you have started work on the project')
   })
 
   it('user selects ineligible option: \'Yes, we have begun project work\' -> display ineligible page', async () => {
