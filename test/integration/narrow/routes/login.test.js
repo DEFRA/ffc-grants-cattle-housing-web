@@ -36,6 +36,7 @@ describe('login page', () => {
         const postResponse = await global.__SERVER__.inject(postOptions)
         expect(postResponse.statusCode).toBe(200)
         expect(postResponse.payload).toBe('ok')
+        expect(() => require('../../../app/routes/login')).toThrow()
     })
 
     it('login with incorrect details goes to fail action', async () => {
@@ -64,5 +65,4 @@ describe('login page', () => {
         expect(postResponse.statusCode).toBe(302)
         expect(postResponse.headers.location).toBe('start')
     })
-
 })
