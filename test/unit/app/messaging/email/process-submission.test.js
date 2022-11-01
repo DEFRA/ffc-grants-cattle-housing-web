@@ -1,4 +1,19 @@
-xdescribe('Process submission', () => {
+const { expectationFailed } = require('@hapi/wreck/node_modules/@hapi/boom')
+
+const { sendDesirabilitySubmitted } = require('../../../../../app/messaging/senders')
+jest.mock('../../../../../app/messaging/senders')
+
+const createMessageMock = require('../../../../../app/messaging/email/create-submission-msg')
+jest.mock('../../../../../app/messaging/email/create-submission-msg')
+
+const processSubmission = require('../../../../../app/messaging/email/process-submission')
+
+const contactDetailsReceiver = jest.mock()
+
+const appInsightsMock = require('../../../../../app/services/app-insights')
+jest.mock('../../../../../app/services/app-insights')
+
+describe('Process submission', () => {
   beforeEach(() => {
     jest.clearAllMocks()
   })
@@ -11,39 +26,38 @@ xdescribe('Process submission', () => {
   }
 
   test('Successful path', async () => {
-    const processSubmission = require('../../../../../app/messaging/email/process-submission')
 
-    const contactDetailsReceiver = jest.mock()
     contactDetailsReceiver.completeMessage = jest.fn()
 
-    const createMessageMock = require('../../../../../app/messaging/email/create-submission-msg')
-
-    jest.mock('../../../../../app/messaging/email/create-submission-msg')
     createMessageMock.mockReturnValue(true)
-
-    const { sendDesirabilitySubmitted } = require('../../../../../app/messaging/senders')
-    jest.mock('../../../../../app/messaging/senders')
 
     sendDesirabilitySubmitted.mockResolvedValue(true)
 
-    // expect used to be related to index.js
+    processSubmission(msg)
 
+    expect(createMessageMock).toHaveBeenCalledTimes(1)
+
+    expect(sendDesirabilitySubmitted).toHaveBeenCalledTimes(1)
+
+    // expect used to be related to index.js
     
   })
 
   test('Error path', async () => {
-    const processSubmission = require('../../../../../app/messaging/email/process-submission')
     processSubmission.completeMessage = jest.fn()
 
-    const contactDetailsReceiver = jest.mock()
-    contactDetailsReceiver.abandonMessage = jest.fn()
+    createMessageMock.mockReturnValue(true)
 
-    const appInsightsMock = require('../../../../../app/services/app-insights')
-    jest.mock('../../../../../app/services/app-insights')
+    sendDesirabilitySubmitted.mockImplementation(() => {
+      throw new Error();
+    });
+
     appInsightsMock.logException = jest.fn()
 
-    processSubmission(msg, contactDetailsReceiver)
+    processSubmission(msg)
         // expect used to be related to index.js
+
+    expect(appInsightsMock.logException).toHaveBeenCalledTimes(1)
 
 
   })

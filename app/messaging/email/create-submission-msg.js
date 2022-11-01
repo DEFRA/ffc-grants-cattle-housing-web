@@ -65,27 +65,27 @@ const getPlanningPermissionDoraValue = (planningPermission) => {
   }
 }
 
-function getProjectItemsFormattedArray (itemSizeQuantities, otherItems, storageType, storageCapacity, coverType, coverSize) {
-  const projectItems = []
-  if (otherItems[0] !== 'None of the above') {
-    let unit
-    Object.values(itemSizeQuantities).forEach((itemSizeQuantity, index) => {
-      unit = getItemUnit(otherItems[index].toLowerCase())
-      projectItems.push(`${otherItems[index]}~${itemSizeQuantity}~${unit}`)
-    })
-  } else {
-    projectItems.push('')
-  }
+// function getProjectItemsFormattedArray (itemSizeQuantities, otherItems, storageType, storageCapacity, coverType, coverSize) {
+//   const projectItems = []
+//   if (otherItems[0] !== 'None of the above') {
+//     let unit
+//     Object.values(itemSizeQuantities).forEach((itemSizeQuantity, index) => {
+//       unit = getItemUnit(otherItems[index].toLowerCase())
+//       projectItems.push(`${otherItems[index]}~${itemSizeQuantity}~${unit}`)
+//     })
+//   } else {
+//     projectItems.push('')
+//   }
 
-  if (coverType && coverType !== 'Not needed') {
-    projectItems.unshift(`${coverType}~${coverSize}`)
-  } else {
-    projectItems.unshift('')
-  }
+//   if (coverType && coverType !== 'Not needed') {
+//     projectItems.unshift(`${coverType}~${coverSize}`)
+//   } else {
+//     projectItems.unshift('')
+//   }
 
-  projectItems.unshift(`${storageType}~${storageCapacity}`)
-  return projectItems.join('|')
-}
+//   projectItems.unshift(`${storageType}~${storageCapacity}`)
+//   return projectItems.join('|')
+// }
 
 function getSpreadsheetDetails (submission) {
   const today = new Date()
@@ -166,9 +166,9 @@ function getSpreadsheetDetails (submission) {
   }
 }
 
-function getCurrencyFormat (amount) {
-  return Number(amount).toLocaleString('en-US', { minimumFractionDigits: 0, style: 'currency', currency: 'GBP' })
-}
+// function getCurrencyFormat (amount) {
+//   return Number(amount).toLocaleString('en-US', { minimumFractionDigits: 0, style: 'currency', currency: 'GBP' })
+// }
 
 const getItemUnit = (otherItem) => {
   if (otherItem.includes('pump') || otherItem.includes('slurry store')) {
@@ -180,15 +180,15 @@ const getItemUnit = (otherItem) => {
   }
 }
 
-function displayObject (itemSizeQuantities, otherItems) {
-  let unit
-  const projectItems = Object.values(itemSizeQuantities).map((itemSizeQuantity, index) => {
-    unit = getItemUnit(otherItems[index].toLowerCase())
-    return `${otherItems[index]}: ${itemSizeQuantity} ${unit}`
-  })
-  console.log(projectItems)
-  return projectItems
-}
+// function displayObject (itemSizeQuantities, otherItems) {
+//   let unit
+//   const projectItems = Object.values(itemSizeQuantities).map((itemSizeQuantity, index) => {
+//     unit = getItemUnit(otherItems[index].toLowerCase())
+//     return `${otherItems[index]}: ${itemSizeQuantity} ${unit}`
+//   })
+//   console.log(projectItems)
+//   return projectItems
+// }
 
 function getEmailDetails (submission, rpaEmail, isAgentEmail = false) {
   const email = isAgentEmail ? submission.agentsDetails.emailAddress : submission.farmerDetails.emailAddress
