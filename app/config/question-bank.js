@@ -422,7 +422,7 @@ const questionBank = {
           validate: [
             {
               type: 'NOT_EMPTY',
-              error: 'Select whether you have started work on the project'
+              error: 'Select the option that applies to your project'
             }
           ],
           answers: [
