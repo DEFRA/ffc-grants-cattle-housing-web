@@ -4,6 +4,7 @@ const { getYarValue } = require('../helpers/session')
 const { formatOtherItems } = require('./../helpers/other-items-sizes')
 
 const { validateAnswerField, checkInputError } = require('../helpers/errorHelpers')
+const MULTI_INPUT = 'multi-input';
 
 const customiseErrorText = (value, currentQuestion, errorList, h, request) => {
   const { yarKey, type, conditionalKey, conditionalLabelData } = currentQuestion
@@ -11,12 +12,12 @@ const customiseErrorText = (value, currentQuestion, errorList, h, request) => {
 
   if (conditionalKey) {
     const conditionalFieldError = errorList.find(thisErrorHref => thisErrorHref.href.includes(conditionalKey))?.text
-    const conditionalFieldValue = (type === 'multi-input') ? getYarValue(request, yarKey)[conditionalKey] : getYarValue(request, conditionalKey)
+    const conditionalFieldValue = (type === MULTI_INPUT) ? getYarValue(request, yarKey)[conditionalKey] : getYarValue(request, conditionalKey)
     conditionalHtml = getHtml(conditionalKey, conditionalLabelData, conditionalFieldValue, conditionalFieldError)
   }
   const baseModel = getModel(value, currentQuestion, request, conditionalHtml)
 
-  if (type === 'multi-input') {
+  if (type === MULTI_INPUT) {
     const baseModelItems = baseModel.items.map(thisItem => {
       const matchingErrorHref = errorList.find(thisErrorHref => thisErrorHref.href.includes(thisItem.id))
 
