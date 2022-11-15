@@ -55,5 +55,4 @@ function desirability(userInput) {
 
 module.exports = desirability
 
-// update file to be in line with water/sent via session queue
-// also, update questions in content-mapping
+// WILL NEED TO UPDATE TO BE CATTLE HOUSING, AND IN JSON FILE IN CONTENT-MAPPING TOO
