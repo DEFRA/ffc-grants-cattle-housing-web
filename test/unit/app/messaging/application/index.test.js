@@ -1,4 +1,4 @@
-const { getStandardisedCosts } = require('../../../../../app/messaging/application')
+const { getUserScore } = require('../../../../../app/messaging/application')
 const { scoreRequestQueue, scoreResponseQueue, fetchScoreRequestMsgType } = require('../../../../../app/config/messaging.js')
 
 jest.mock('../../../../../app/messaging')
@@ -15,12 +15,24 @@ describe('application messaging tests', () => {
     const receiveMessageRes = { id: 1 }
     receiveMessage.mockResolvedValue(receiveMessageRes)
 
-    const message = await getStandardisedCosts(sessionId)
+    const message = await getUserScore({}, sessionId)
 
     expect(message).toEqual(receiveMessageRes)
     expect(receiveMessage).toHaveBeenCalledTimes(1)
     expect(receiveMessage).toHaveBeenCalledWith(sessionId, scoreResponseQueue)
     expect(sendMessage).toHaveBeenCalledTimes(1)
-    expect(sendMessage).toHaveBeenCalledWith({}, fetchScoreRequestMsgType, scoreRequestQueue, { sessionId })
+    expect(sendMessage).toHaveBeenCalledWith({
+      desirability: {
+        overallRating:  {
+          band: null,
+          score: null,
+        },
+        questions: [],
+      },
+      grantScheme: {
+      key: 'ADDVAL01',
+      name: 'cattle-housing',
+    },
+   }, fetchScoreRequestMsgType, scoreRequestQueue, { sessionId })
   })
 })
