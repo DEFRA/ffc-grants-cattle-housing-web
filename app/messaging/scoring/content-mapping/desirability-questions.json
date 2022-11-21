@@ -1,0 +1,26 @@
+{  
+  "productsProcessed": [
+    {
+    "key": "products-processed",
+    "title": "What type of produce is being processed?",  
+    "answers": {
+      "products-processed-A1": "Arable produce",
+      "products-processed-A2": "Horticultural produce",
+      "products-processed-A3": "Dairy or meat produce",
+      "products-processed-A5": "Fodder produce",
+      "products-processed-A6": "Non-edible produce",
+      "products-processed-A7": "Fibre produce"    
+    }
+  }
+  ],
+  "country": [
+    {
+      "key": "country",
+      "title": "Is the planned project in England?",
+      "answers": {
+        "country-A1": "Yes",
+        "country-A2": "No"
+      }
+    }
+  ]
+}
