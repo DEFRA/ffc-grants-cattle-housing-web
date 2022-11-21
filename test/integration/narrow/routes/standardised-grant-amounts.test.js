@@ -1,11 +1,15 @@
 const { crumbToken } = require('./test-helper')
 
 jest.mock('../../../../app/messaging/application')
-const { getStandardisedCosts } = require('../../../../app/messaging/application')
 const messaging = require('../../../../app/messaging/application')
 
 jest.mock('../../../../app/helpers/page-guard')
 const { guardPage } = require('../../../../app/helpers/page-guard')
+
+
+jest.mock('../../../../app/messaging/create-msg')
+const { getDesirabilityAnswers } = require('../../../../app/messaging/create-msg')
+
 
 describe('Standardised Cost test', () => {
   const varList = {}
@@ -28,9 +32,12 @@ describe('Standardised Cost test', () => {
       url: `${global.__URLPREFIX__}/standardised-grant-amounts`
     }
 
-    getStandardisedCosts.mockResolvedValue({
+    getDesirabilityAnswers.mockReturnValue({
       costData: 'success'
     })
+
+    jest.spyOn(messaging, 'getUserScore').mockImplementation(() => { return 'hello' })
+
 
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
@@ -42,9 +49,11 @@ describe('Standardised Cost test', () => {
       url: `${global.__URLPREFIX__}/standardised-grant-amounts`
     }
 
-    getStandardisedCosts.mockResolvedValue({
+    getDesirabilityAnswers.mockReturnValue({
       costData: 'fail'
     })
+
+    jest.spyOn(messaging, 'getUserScore').mockImplementation(() => { throw new Error() })
 
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
@@ -56,19 +65,29 @@ describe('Standardised Cost test', () => {
       url: `${global.__URLPREFIX__}/standardised-grant-amounts`
     }
 
-    getStandardisedCosts.mockRejectedValue('hello')
+    getDesirabilityAnswers.mockReturnValue({
+      costData: 'fail'
+    })
+
+
+    jest.spyOn(messaging, 'getUserScore').mockImplementation(() => { throw new Error() })
 
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
   })
 
-  test('GET /stanbdardised-costs returns error 500 if getstandardisedCosts throws error', async () => {
+  test('GET /stanbdardised-costs returns error 500 if getDesirabilityAnswers throws error', async () => {
     const options = {
       method: 'GET',
       url: `${global.__URLPREFIX__}/standardised-grant-amounts`
     }
 
-    jest.spyOn(messaging, 'getStandardisedCosts').mockImplementation(() => { throw new Error() })
+    getDesirabilityAnswers.mockReturnValue({
+      costData: 'fail'
+    })
+
+
+    jest.spyOn(messaging, 'getUserScore').mockImplementation(() => { throw new Error() })
 
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
@@ -107,7 +126,7 @@ describe('Standardised Cost test', () => {
       url: `${global.__URLPREFIX__}/standardised-grant-amounts`
     }
 
-    getStandardisedCosts.mockResolvedValue({
+    getDesirabilityAnswers.mockResolvedValue({
       costData: 'success',
       data: {
         desirability: {
