@@ -254,7 +254,7 @@ const questionBank = {
           order: 141,
           title: 'Is the planned project in England?',
           hint: {
-            text: 'The location of the cattle housing'
+            text: 'The location of the calf housing'
           },
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           pageTitle: '',
@@ -314,7 +314,7 @@ const questionBank = {
           nextUrl: 'project-started',
           preValidationKeys: [],
           ineligibleContent: {
-            messageContent: 'Any planning permission must be in place by 31 January 2023.',
+            messageContent: 'Any planning permission must be in place by 31 January 2024 (the end of the application window).',
             messageLink: {
               url: 'https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments',
               title: 'See other grants you may be eligible for.'
@@ -329,7 +329,7 @@ const questionBank = {
               content: [{
                 para: `You must have secured planning permission before you submit a full application.
 
-                      Any planning permission must be in place by 31 January 2023.`
+                        Any planning permission must be in place by 31 January 2024.`
               }]
             }]
           },
@@ -371,7 +371,7 @@ const questionBank = {
           preValidationKeys: [],
           maybeEligibleContent: {
             messageHeader: 'You may be able to apply for a grant from this scheme',
-            messageContent: 'Any planning permission must be in place by 31 January 2023 (the end of the application window).'
+            messageContent: 'Any planning permission must be in place by 31 January 2024 (the end of the application window).'
           },
           yarKey: 'PlanningPermissionCondition'
         },
@@ -497,7 +497,7 @@ const questionBank = {
           order: 60,
           title: 'Do you have a tenancy agreement for 5 years after the final grant payment?',
           hint: {
-            text: 'The location of the cattle housing'
+            text: 'The location of the calf housing'
           },
           pageTitle: '',
           url: 'tenancy-length',
@@ -547,7 +547,7 @@ const questionBank = {
           maybeEligible: true,
           maybeEligibleContent: {
             messageHeader: 'You may be able to apply for a grant from this scheme',
-            messageContent: 'You will need to extend your tenancy agreement for 5 years after the final agreement.'
+            messageContent: 'You will need to extend your tenancy agreement for 5 years after the final grant payment.'
           }
         },
         {
