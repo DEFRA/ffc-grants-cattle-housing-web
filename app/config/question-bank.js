@@ -350,12 +350,12 @@ const questionBank = {
             },
             {
               key: 'planning-permission-A3',
-              value: 'Should be in place by 31 January 2023',
+              value: 'Should be in place by 31 January 2024',
               redirectUrl: 'planning-permission-condition'
             },
             {
               key: 'planning-permission-A4',
-              value: 'Will not have by 31 January 2023',
+              value: 'Will not have by 31 January 2024',
               notEligible: true
             }
           ],
