@@ -93,7 +93,7 @@ describe('Page: /planning-permission', () => {
       method: 'POST',
       url: `${global.__URLPREFIX__}/planning-permission`,
       headers: { cookie: 'crumb=' + crumbToken },
-      payload: { planningPermission: 'Will not have by 31 January 2023', crumb: crumbToken }
+      payload: { planningPermission: 'Will not have by 31 January 2024', crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
