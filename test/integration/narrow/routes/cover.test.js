@@ -17,7 +17,7 @@ describe('Page: /cover', () => {
   it('page loads successfully, with all the options', async () => {
     const options = {
       method: 'GET',
-      url: `${global.__URLPREFIX__}/cover`
+      url: `${global.__URLPREFIX__}/project`
     }
 
     const response = await global.__SERVER__.inject(options)
@@ -31,7 +31,7 @@ describe('Page: /cover', () => {
   it('no option selected -> show error message', async () => {
     const postOptions = {
       method: 'POST',
-      url: `${global.__URLPREFIX__}/cover`,
+      url: `${global.__URLPREFIX__}/project`,
       headers: { cookie: 'crumb=' + crumbToken },
       payload: { crumb: crumbToken }
     }
@@ -44,7 +44,7 @@ describe('Page: /cover', () => {
   it('user selects ineligible option: \'No\' -> display ineligible page', async () => {
     const postOptions = {
       method: 'POST',
-      url: `${global.__URLPREFIX__}/cover`,
+      url: `${global.__URLPREFIX__}/project`,
       headers: { cookie: 'crumb=' + crumbToken },
       payload: { cover: 'No', crumb: crumbToken }
     }
@@ -56,7 +56,7 @@ describe('Page: /cover', () => {
   it('user selects eligible option -> store user response and redirect to /standard-costs', async () => {
     const postOptions = {
       method: 'POST',
-      url: `${global.__URLPREFIX__}/cover`,
+      url: `${global.__URLPREFIX__}/project`,
       headers: { cookie: 'crumb=' + crumbToken },
       payload: { cover: 'Yes', crumb: crumbToken }
     }
@@ -69,7 +69,7 @@ describe('Page: /cover', () => {
   it('page loads with correct back link', async () => {
     const options = {
       method: 'GET',
-      url: `${global.__URLPREFIX__}/cover`
+      url: `${global.__URLPREFIX__}/project`
     }
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
