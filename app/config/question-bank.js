@@ -453,7 +453,7 @@ const questionBank = {
           order: 152,
           title: 'Is the planned project on land the business owns?',
           hint: {
-            text: 'The location of the cattle housing'
+            text: 'The location of the calf housing'
           },
           pageTitle: '',
           url: 'tenancy',
