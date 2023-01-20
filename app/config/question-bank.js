@@ -453,13 +453,13 @@ const questionBank = {
           order: 152,
           title: 'Is the planned project on land the business owns?',
           hint: {
-            text: 'The location of the cattle housing'
+            text: 'The location of the calf housing'
           },
           pageTitle: '',
           url: 'tenancy',
           baseUrl: 'tenancy',
           backUrl: 'project-started',
-          nextUrl: 'cover',
+          nextUrl: 'project',
           preValidationKeys: [],
           fundingPriorities: '',
           type: 'single-answer',
@@ -554,10 +554,10 @@ const questionBank = {
           key: 'cover',
           order: 120,
           title: 'Will the grant-funded store have an impermeable cover?',
-          baseUrl: 'cover',
+          baseUrl: 'project',
           backUrl: 'tenancy',
           nextUrl: 'estimated-grant',
-          url: 'cover',
+          url: 'project',
           preValidationKeys: [],
           ineligibleContent: {
             messageContent: 'Grant-funded stores must have an impermeable cover unless the slurry is treated with acidification.',
