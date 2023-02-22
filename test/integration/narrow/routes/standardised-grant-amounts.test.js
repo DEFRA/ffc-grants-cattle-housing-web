@@ -92,7 +92,7 @@ describe('Standardised Cost test', () => {
       url: `${global.__URLPREFIX__}/standardised-grant-amounts`
     }
 
-    // guardPage.mockResolvedValue(true)
+    guardPage.mockResolvedValue(true)
 
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(302)
