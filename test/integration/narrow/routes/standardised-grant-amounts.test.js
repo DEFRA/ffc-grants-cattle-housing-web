@@ -86,13 +86,13 @@ describe('Standardised Cost test', () => {
     expect(response.statusCode).toBe(302)
   })
 
-  test('page redirects to start if no cover', async () => {
+  test('page redirects to start if no project', async () => {
     const options = {
       method: 'GET',
       url: `${global.__URLPREFIX__}/standardised-grant-amounts`
     }
 
-    guardPage.mockResolvedValue(true)
+    // guardPage.mockResolvedValue(true)
 
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(302)
