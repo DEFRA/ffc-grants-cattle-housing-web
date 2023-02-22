@@ -504,7 +504,7 @@ const questionBank = {
           baseUrl: 'tenancy-length',
           backUrl: 'tenancy',
           preValidationKeys: [],
-          nextUrl: 'cover',
+          nextUrl: 'project',
           type: 'single-answer',
           minAnswerCount: 1,
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
@@ -543,7 +543,7 @@ const questionBank = {
           url: 'tenancy-length-condition',
           backUrl: 'tenancy-length',
           preValidationKeys: [],
-          nextUrl: 'cover',
+          nextUrl: 'project',
           maybeEligible: true,
           maybeEligibleContent: {
             messageHeader: 'You may be able to apply for a grant from this scheme',
