@@ -26,12 +26,12 @@ module.exports = [{
     }
   },
   handler: async (request, h, _err) => {
-    const preValidationKeys = ['cover']
-    const isRedirect = guardPage(request, preValidationKeys, null)
+    // const preValidationKeys = ['project']
+    // const isRedirect = guardPage(request, preValidationKeys, null)
 
-    if (isRedirect) {
-      return h.redirect(startPageUrl)
-    }
+    // if (isRedirect) {
+    //   return h.redirect(startPageUrl)
+    // }
 
     try {
       console.log('Sending session message .....')
