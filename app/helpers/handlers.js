@@ -142,6 +142,11 @@ const getPage = async (question, request, h) => {
       }
       return h.view('evidence-summary', evidenceSummaryModel)
     }
+    case 'project': {
+      if(getYarValue(request,'tenancy') ==='Yes'){
+        setYarValue(request, 'tenancyLength', null)
+      }
+    }
     case 'score':
     case 'business-details':
     case 'agent-details':

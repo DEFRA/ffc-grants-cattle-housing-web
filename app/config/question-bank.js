@@ -560,16 +560,89 @@ const questionBank = {
           }
         },
         {
-          key: 'cover',
-          order: 120,
-          title: 'Will the grant-funded store have an impermeable cover?',
+          key: 'project',
+          order: 80,
+          title: 'What is your project?',
           baseUrl: 'project',
           backUrl: 'tenancy',
-          nextUrl: 'estimated-grant',
+          nextUrl: 'calf-weight',
           url: 'project',
+          backUrlObject: {
+            dependentQuestionYarKey: 'tenancyLength',
+            dependentAnswerKeysArray: ['tenancy-length-A1'],
+            urlOptions: {
+              thenUrl: 'tenancy-length',
+              elseUrl: 'tenancy-length-condition',
+              nonDependentUrl:'tenancy'
+            }
+          },
           preValidationKeys: [],
           ineligibleContent: {
-            messageContent: 'Grant-funded stores must have an impermeable cover unless the slurry is treated with acidification.',
+            messageContent: `
+                <div class="govuk-list govuk-list--bullet">
+                <p class="govuk-body">This grant is for:</p>
+                      <ul>
+                        <li>building new calf housing</li>
+                        <li>refurbishing or extending existing calf housing</li>
+                      </ul>
+                </div>`,
+          messageLink: {
+            url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+            title: 'See other grants you might be eligible for.'
+          }
+          },
+          type: 'single-answer',
+          minAnswerCount: 1,
+          sidebar: {
+            values: [{
+              heading: 'Eligibility',
+              content: [{
+                para: `This grant is for:`,
+                items: ['building new calf housing', 'refurbishing or extending existing calf housing']
+              }]
+            }]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select the option that applies to you'
+            }
+          ],
+          answers: [
+            {
+              key: 'project-A1',
+              value: 'Building new calf housing '
+            },
+            {
+              key: 'project-A2',
+              value: 'Refurbishing or extending existing calf housing'
+            },
+            {
+              key: 'project-A3',
+              value: 'Something else',
+              notEligible: true
+            }
+          ],
+          yarKey: 'project'
+        },
+        {
+          key: 'calf-weight',
+          order: 90,
+          title: 'What will be the weight of the largest calf?',
+          baseUrl: 'calf-weight',
+          backUrl: 'project',
+          nextUrl: 'estimated-grant',
+          url: 'calf-weight',
+          preValidationKeys: [],
+          ineligibleContent: {
+              messageContent: `<p class="govuk-body">This grant is for:</p>
+              <div class="govuk-list govuk-list--bullet">
+                    You can use:
+                    <ul>
+                      <li>building new calf housing</li>
+                      <li>refurbishing or extending existing calf housing</li>
+                    </ul>
+              </div>`,
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you might be eligible for.'
@@ -581,46 +654,40 @@ const questionBank = {
             values: [{
               heading: 'Eligibility',
               content: [{
-                para: `
-                Grant-funded stores must have an impermeable cover unless the slurry is treated with acidification.
-                
-                Slurry acidification systems are not eligible for funding through this grant.`,
-                items: []
+                para: `This grant is for:`,
+                items: ['building new calf housing', 'refurbishing or extending existing calf housing']
               }]
-            }],
-            details: {
-              summaryText: 'What is acidification?',
-              html: 'Acidification is the use of acid treatment to lower the pH value of slurry to stabilise ammonia emissions.'
-            }
+            }]
           },
           validate: [
             {
               type: 'NOT_EMPTY',
-              error: 'Select impermeable cover option'
+              error: 'Select the option that applies to you'
             }
           ],
           answers: [
             {
-              key: 'cover-A1',
-              value: 'Yes'
+              key: 'project-A1',
+              value: 'Building new calf housing '
             },
             {
-              key: 'cover-A2',
-              value: 'Not needed, the slurry is treated with acidification'
+              key: 'project-A2',
+              value: 'Refurbishing or extending existing calf housing'
             },
             {
-              key: 'cover-A3',
-              value: 'No',
+              key: 'project-A3',
+              value: 'Something else',
               notEligible: true
             }
           ],
-          yarKey: 'cover'
+          yarKey: 'calfWeight'
+        
         },
         {
           key: 'estimated-grant',
           order: 180,
           url: 'estimated-grant',
-          backUrl: 'cover',
+          backUrl: 'calf-weight',
           nextUrl: 'standardised-grant-amounts',
           preValidationKeys: [],
           ga: [
@@ -664,6 +731,7 @@ const questionBank = {
             }
           }
         },
+        
         {
           key: 'remaining-costs',
           order: 190,
