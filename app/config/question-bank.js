@@ -103,9 +103,12 @@ const questionBank = {
             values: [{
               heading: 'Eligibility',
               content: [{
-                para: `This grant is for pig, beef or dairy farmers.
-                
-                Poultry, arable-only, contractors and horticultural growers are not currently eligible.`
+                para: `This grant is for:`,
+                items: [
+                  `building new calf housing`,
+                  `refurbishing or extending existing calf housing`,
+                ],
+                additionalPara: `A calf is up to 6 months of age.`
               }]
             }]
           },
@@ -129,15 +132,15 @@ const questionBank = {
           answers: [
             {
               key: 'applicant-type-A1',
-              value: 'Pig'
+              value: 'Dairy farmer'
             },
             {
               key: 'applicant-type-A2',
-              value: 'Beef'
+              value: 'Beef farmer'
             },
             {
               key: 'applicant-type-A3',
-              value: 'Dairy'
+              value: 'Mixed farmer (cattle and arable)'
             },
             {
               value: 'divider'
