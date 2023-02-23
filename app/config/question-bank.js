@@ -92,8 +92,14 @@ const questionBank = {
           backUrl: 'start',
           nextUrl: 'legal-status',
           ineligibleContent: {
-            messageContent: `This grant is for pig, beef or dairy farmers. <br/> <br/> 
-            <div class="govuk-inset-text">Poultry, arable-only, contractors and horticultural growers are not currently eligible.</div>`,
+            messageContent: `
+            This grant is for:</br>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>building new calf housing</li>
+              <li>refurbishing or extending existing calf housing</li>
+            </ul>
+            <div class="govuk-inset-text">A calf is up to 6 months of age.</div>
+            `,
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
