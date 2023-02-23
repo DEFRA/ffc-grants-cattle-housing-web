@@ -25,25 +25,32 @@ const getUrl = (urlObject, url, request, secBtn, currentUrl) => {
   if (!urlObject) {
     return secBtn ? secBtnPath : url
   }
-  const { dependentQuestionYarKey, dependentAnswerKeysArray, urlOptions } = urlObject
-  const { thenUrl, elseUrl, nonDependentUrl } = urlOptions
 
-  const dependentAnswer = getYarValue(request, dependentQuestionYarKey)
-
-  const selectThenUrl = ALL_QUESTIONS.find(thisQuestion => (
+  
+      const { dependentQuestionYarKey, dependentAnswerKeysArray, urlOptions, nonDependentAnswerKeysArray = [] } = urlObject
+      const { thenUrl, elseUrl, nonDependentUrl } = urlOptions
+    
+      const dependentAnswer = getYarValue(request, dependentQuestionYarKey)
+    
+      const selectThenUrl = checkAnswerExist (dependentQuestionYarKey, dependentAnswer, dependentAnswerKeysArray)
+      const isNonDependantAnswer = checkAnswerExist(dependentQuestionYarKey, dependentAnswer, nonDependentAnswerKeysArray)
+      console.log('selectThenUrl', selectThenUrl)
+      const selectedElseUrl = (dependentAnswer && !isNonDependantAnswer)  ? elseUrl : nonDependentUrl
+    
+      return selectThenUrl ? thenUrl : selectedElseUrl
+    
+}
+const checkAnswerExist = (dependentQuestionYarKey, dependentAnswer, yarKeysToCheck ) => {
+  return ALL_QUESTIONS.find(thisQuestion => (
     thisQuestion.yarKey === dependentQuestionYarKey &&
     thisQuestion.answers &&
     thisQuestion.answers.some(answer => (
       !!dependentAnswer &&
-      dependentAnswerKeysArray.includes(answer.key) &&
+      yarKeysToCheck.includes(answer.key) &&
       dependentAnswer.includes(answer.value)
     ))
   ))
-  const selectedElseUrl = dependentAnswer ? elseUrl : nonDependentUrl
-
-  return selectThenUrl ? thenUrl : selectedElseUrl
 }
-
 module.exports = {
   getUrl
 }

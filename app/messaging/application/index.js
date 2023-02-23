@@ -1,12 +1,13 @@
 const { sendMessage, receiveMessage } = require('../')
-const { scoreRequestQueue, fetchScoreRequestMsgType, scoreResponseQueue } = require('../../config/messaging.js')
-
+const { scoreRequestQueue, fetchCostRequestMsgType, costResponseQueue } = require('../../config/messaging.js')
+// temporarily changed to fetchCostrequestMsgType from fetchScoreRequestMsgType
+// temporarily changed to costResponseQueue from scoreResponseQueue
 async function getStandardisedCosts (sessionId) {
   console.log('[MADE IT TO MESSAGE]', sessionId)
-  await sendMessage({ }, fetchScoreRequestMsgType, scoreRequestQueue, { sessionId })
+  await sendMessage({ }, fetchCostRequestMsgType, scoreRequestQueue, { sessionId })
 
   console.log('[FINISHED SENDING MESSAGE MOVING TO RECEIVING]')
-  return receiveMessage(sessionId, scoreResponseQueue)
+  return receiveMessage(sessionId, costResponseQueue)
 }
 
 module.exports = {

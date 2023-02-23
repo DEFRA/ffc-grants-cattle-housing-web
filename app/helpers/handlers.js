@@ -147,7 +147,7 @@ const getPage = async (question, request, h) => {
         setYarValue(request, 'tenancyLength', null)
       }
     }
-    case 'housed-individually': {
+    // case 'housed-individually': {
     //   console.log('---------- BEFORE ----------')
     //   console.log(',,,,,,,,,,,,,,,,,,,,,,,,,3', getYarValue(request,'livingSpace3m2'))
     //   console.log(',,,,,,,,,,,,,,,,,,,,,,,,,4', getYarValue(request,'livingSpace4m2'))
@@ -164,7 +164,7 @@ const getPage = async (question, request, h) => {
     //   console.log(',,,,,,,,,,,,,,,,,,,,,,,,,3', getYarValue(request,'livingSpace3m2'))
     //   console.log(',,,,,,,,,,,,,,,,,,,,,,,,,4', getYarValue(request,'livingSpace4m2'))
     //   console.log(',,,,,,,,,,,,,,,,,,,,,,,,,5', getYarValue(request,'livingSpace5m2'))
-    }
+    // }
     case 'living-space-3m2': {
       setYarValue(request, 'livingSpace4m2', null)
       setYarValue(request, 'livingSpace5m2', null)

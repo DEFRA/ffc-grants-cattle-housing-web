@@ -822,11 +822,12 @@ const questionBank = {
           title: 'Will calves over 7 days old be housed individually?',
           baseUrl: 'housed-individually',
           backUrlObject: {
-            dependentQuestionYarKey: 'livingSpace4m2',
-            dependentAnswerKeysArray: ['living-space-4m2-A1'],
+            dependentQuestionYarKey: 'calfWeight',
+            dependentAnswerKeysArray: ['calf-weight-A1'],
+            nonDependentAnswerKeysArray : ['calf-weight-A3'],
             urlOptions: {
-              thenUrl: 'living-space-4m2',
-              elseUrl: 'living-space-3m2',
+              thenUrl: 'living-space-3m2',
+              elseUrl: 'living-space-4m2',
               nonDependentUrl:'living-space-5m2'
             }
           },
