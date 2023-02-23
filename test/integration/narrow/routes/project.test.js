@@ -1,9 +1,11 @@
 const { crumbToken } = require('./test-helper')
 
-describe('Page: /cover', () => {
+describe('Page: /project', () => {
   const varList = {
     legalStatus: 'randomData',
-    projectType: 'fakeData'
+    projectType: 'fakeData',
+    tenancy : 'Yes',
+    tenancyLength: null
   }
 
   jest.mock('../../../../app/helpers/session', () => ({
@@ -22,10 +24,9 @@ describe('Page: /cover', () => {
 
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('Will the grant-funded store have an impermeable cover?')
-    expect(response.payload).toContain('Yes')
-    expect(response.payload).toContain('Not needed, the slurry is treated with acidification')
-    expect(response.payload).toContain('No')
+    expect(response.payload).toContain('What is your project?')
+    expect(response.payload).toContain('Refurbishing or extending existing calf housing')
+    expect(response.payload).toContain('Something else')
   })
 
   it('no option selected -> show error message', async () => {
@@ -38,41 +39,55 @@ describe('Page: /cover', () => {
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Select impermeable cover option')
+    expect(postResponse.payload).toContain('Select the option that applies to you')
   })
 
-  it('user selects ineligible option: \'No\' -> display ineligible page', async () => {
+  it('user selects ineligible option: \'Something else\' -> display ineligible page', async () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/project`,
       headers: { cookie: 'crumb=' + crumbToken },
-      payload: { cover: 'No', crumb: crumbToken }
+      payload: { project: 'Something else', crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.payload).toContain('You cannot apply for a grant from this scheme')
   })
 
-  it('user selects eligible option -> store user response and redirect to /standard-costs', async () => {
+  it('user selects eligible option -> store user response and redirect to /calf-weight', async () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/project`,
       headers: { cookie: 'crumb=' + crumbToken },
-      payload: { cover: 'Yes', crumb: crumbToken }
+      payload: { project: 'Building new calf housing', crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
-    expect(postResponse.headers.location).toBe('estimated-grant')
+    expect(postResponse.headers.location).toBe('calf-weight')
   })
 
-  it('page loads with correct back link', async () => {
+  it('page loads with correct back link when tenancy-length page`s answer is Yes', async () => {
+    varList.tenancy = 'No'
+    varList.tenancyLength = 'Yes'
     const options = {
       method: 'GET',
       url: `${global.__URLPREFIX__}/project`
     }
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('<a href=\"tenancy\" class=\"govuk-back-link\">Back</a>')
+    expect(response.payload).toContain('<a href=\"tenancy-length\" class=\"govuk-back-link\">Back</a>')
+  })
+
+  it('page loads with correct back link when tenancy-length page`s answer is No', async () => {
+    varList.tenancy = 'No'
+    varList.tenancyLength = 'No'
+    const options = {
+      method: 'GET',
+      url: `${global.__URLPREFIX__}/project`
+    }
+    const response = await global.__SERVER__.inject(options)
+    expect(response.statusCode).toBe(200)
+    expect(response.payload).toContain('<a href=\"tenancy-length-condition\" class=\"govuk-back-link\">Back</a>')
   })
 })
