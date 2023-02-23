@@ -143,9 +143,39 @@ const getPage = async (question, request, h) => {
       return h.view('evidence-summary', evidenceSummaryModel)
     }
     case 'project': {
-      if(getYarValue(request,'tenancy') ==='Yes'){
+      if(getYarValue(request,'tenancy') === 'Yes'){
         setYarValue(request, 'tenancyLength', null)
       }
+    }
+    case 'housed-individually': {
+    //   console.log('---------- BEFORE ----------')
+    //   console.log(',,,,,,,,,,,,,,,,,,,,,,,,,3', getYarValue(request,'livingSpace3m2'))
+    //   console.log(',,,,,,,,,,,,,,,,,,,,,,,,,4', getYarValue(request,'livingSpace4m2'))
+    //   console.log(',,,,,,,,,,,,,,,,,,,,,,,,,5', getYarValue(request,'livingSpace5m2'))
+    //   if(getYarValue(request,'livingSpace4m2') === 'Yes'){
+    //     setYarValue(request, 'livingSpace3m2', null)
+    //     setYarValue(request, 'livingSpace5m2', null)
+      // }
+      // if(getYarValue(request,'livingSpace3m2') === 'Yes'){
+      //   setYarValue(request, 'livingSpace4m2', 'No')
+      //   setYarValue(request, 'livingSpace5m2', null)
+      // }
+    //   console.log('---------- AFTER ----------')
+    //   console.log(',,,,,,,,,,,,,,,,,,,,,,,,,3', getYarValue(request,'livingSpace3m2'))
+    //   console.log(',,,,,,,,,,,,,,,,,,,,,,,,,4', getYarValue(request,'livingSpace4m2'))
+    //   console.log(',,,,,,,,,,,,,,,,,,,,,,,,,5', getYarValue(request,'livingSpace5m2'))
+    }
+    case 'living-space-3m2': {
+      setYarValue(request, 'livingSpace4m2', null)
+      setYarValue(request, 'livingSpace5m2', null)
+    }
+    case 'living-space-4m2': {
+      setYarValue(request, 'livingSpace3m2', null)
+      setYarValue(request, 'livingSpace5m2', null)
+    }
+    case 'living-space-5m2': {
+      setYarValue(request, 'livingSpace3m2', null)
+      setYarValue(request, 'livingSpace4m2', null)
     }
     case 'score':
     case 'business-details':
