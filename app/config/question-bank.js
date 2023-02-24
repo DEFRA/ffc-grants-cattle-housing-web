@@ -886,6 +886,181 @@ const questionBank = {
           ],
           yarKey: 'housedIndividually'
         },
+
+        // {
+        //   key: 'structure',
+        //   order: 130,
+        //   title: 'What type of structure is your building?',
+        //   hint: {
+        //     text: 'Not including straw bedding and social contact'
+        //   },
+        //   pageTitle: '',
+        //   url: 'structure',
+        //   baseUrl: 'structure',
+        //   backUrl: 'enrichment',
+        //   nextUrl: 'drainage-slope',
+        //   preValidationKeys: [],
+        //   ineligibleContent: {
+        //   messageContent: `<p class="govuk-body">Each pair or group of calves must have at least one enrichment item, such as:</p>
+        //   <div class="govuk-list govuk-list--bullet">
+        //         <ul>
+        //           <li>brushes</li>
+        //           <li>hanging balls</li>
+        //         </ul>
+        //   </div>
+        // <div class="govuk-inset-text">This does not include straw bedding and social contact.</div>`,
+        //   messageLink: {
+        //     url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+        //     title: 'See other grants you may be eligible for.'
+        //   }
+        // },
+        //   type: 'single-answer',
+        //   minAnswerCount: 1,
+        // sidebar: {
+        //   values: [
+        //     {
+        //       heading: 'Eligibility',
+        //       content: [{
+        //         para: `All buildings must be permanent structures.`,
+        //         items: [
+        //           'brushes',
+        //           'hanging balls'
+        //         ]
+        //       }]
+        //     }
+        //   ]
+        // },
+        //   validate: [
+        //     {
+        //       type: 'NOT_EMPTY',
+        //       error: 'Select the option that applies to you'
+        //     }
+        //   ],
+        //   answers: [
+        //     {
+        //       key: 'structure-A1',
+        //       value: 'A-frame building'
+        //     },
+        //     {
+        //       key: 'structure-A2',
+        //       value: 'Mono-pitch building '
+        //     },
+        //     {
+        //       key: 'structure-A3',
+        //       value: 'A permanent open-sided structure with igloos/hutches',
+        //     },
+        //     {
+        //       key: 'structure-A4',
+        //       value: 'Other',
+        //       notEligible: true
+        //     }
+        //   ],
+        //   yarKey: 'structure'
+        // },
+        // {
+        //   key: 'drainage-slope',
+        //   order: 140,
+        //   title: 'Will the floor in bedded areas slope towards a drain or drainage channel?',
+        //   hint: {
+        //     text: 'The floor must have at least 5% gradient'
+        //   },
+        //   classes: 'govuk-radios--inline govuk-fieldset__legend--l',
+        //   pageTitle: '',
+        //   backUrl: 'structure',
+        //   nextUrl: 'draught-protection',
+        //   url: 'drainage-slope',
+        //   baseUrl: 'drainage-slope',
+        //   preValidationKeys: [],
+        //   ineligibleContent: {
+        //     messageContent: 'This grant is only for projects in England.',
+        //     insertText: { text: 'Scotland, Wales and Northern Ireland have other grants available.' },
+        //     messageLink: {
+        //       url: '',
+        //       title: ''
+        //     }
+        //   },
+        //   fundingPriorities: '',
+        //   type: 'single-answer',
+        //   minAnswerCount: 1,
+        //   sidebar: {
+        //     values: [{
+        //       heading: 'Eligibility',
+        //       content: [{
+        //         para: `The building must have sloped flooring with a 1 in 20 (5%) gradient in bedded areas that slopes towards a drain or drainage channel.`
+        //       }]
+        //     }]
+        //   },
+        //   validate: [
+        //     {
+        //       type: 'NOT_EMPTY',
+        //       error: 'Select yes if the floor in bedded areas slope towards a drain or drainage channel'
+        //     }
+        //   ],
+        //   answers: [
+        //     {
+        //       key: 'drainage-slope-A1',
+        //       value: 'Yes'
+        //     },
+        //     {
+        //       key: 'drainage-slope-A2',
+        //       value: 'No',
+        //       notEligible: true
+        //     }
+        //   ],
+        //   yarKey: 'drainageSlope'
+        // },
+        // {
+        //   key: 'draught-protection',
+        //   order: 150,
+        //   title: 'Will calves be protected from draughts?',
+        //   classes: 'govuk-radios--inline govuk-fieldset__legend--l',
+        //   pageTitle: '',
+        //   backUrl: 'drainage-slope',
+        //   nextUrl: '?',
+        //   url: 'draught-protection',
+        //   baseUrl: 'draught-protection',
+        //   preValidationKeys: [],
+        //   ineligibleContent: {
+        //     messageContent: 'All projects must have external calf-height solid walls/barriers to keep out draughts. ',
+        //     insertText: { text: 'For igloos/hutches adjacent to a permanent open-sided structure, this may mean adding solid sides to the outside pens.' },
+        //     messageLink: {
+        //       url: '',
+        //       title: ''
+        //     }
+        //   },
+        //   fundingPriorities: '',
+        //   type: 'single-answer',
+        //   minAnswerCount: 1,
+        //   sidebar: {
+        //     values: [{
+        //       heading: 'Eligibility',
+        //       content: [{
+        //         para: `All projects must have external calf-height solid walls/barriers to keep out draughts. 
+
+        //                For igloos/hutches adjacent to a permanent open-sided structure, this may mean adding solid sides to the outside pens.`
+        //       }]
+        //     }]
+        //   },
+        //   validate: [
+        //     {
+        //       type: 'NOT_EMPTY',
+        //       error: 'Select yes if the calves will be protected from draughts'
+        //     }
+        //   ],
+        //   answers: [
+        //     {
+        //       key: 'drainage-slope-A1',
+        //       value: 'Yes'
+        //     },
+        //     {
+        //       key: 'drainage-slope-A2',
+        //       value: 'No',
+        //       notEligible: true
+        //     }
+        //   ],
+        //   yarKey: 'drainageSlope'
+        // },
+
         {
           key: 'estimated-grant',
           order: 180,
