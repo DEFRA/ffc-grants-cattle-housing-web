@@ -631,8 +631,10 @@ const questionBank = {
           title: 'What will be the weight of the largest calf?',
           baseUrl: 'calf-weight',
           backUrl: 'project',
-          nextUrl: 'estimated-grant',
           url: 'calf-weight',
+          hint: {
+            text: 'A calf is up to 6 months of age'
+          },
           preValidationKeys: [],
           ineligibleContent: {
               messageContent: `<p class="govuk-body">This grant is for:</p>
@@ -654,8 +656,12 @@ const questionBank = {
             values: [{
               heading: 'Eligibility',
               content: [{
-                para: `This grant is for:`,
-                items: ['building new calf housing', 'refurbishing or extending existing calf housing']
+                para: `
+                      A calf is up to 6 months of age
+                      
+                      There must be a minimum floor area of:
+                      `,
+                items: ['2m² per calf when largest calf is 100kg or under', '4m² per calf when largest calf is between 100kg and 150kg', '5m² per calf when largest calf is over 150kg']
               }]
             }]
           },
@@ -667,27 +673,224 @@ const questionBank = {
           ],
           answers: [
             {
-              key: 'project-A1',
-              value: 'Building new calf housing '
+              key: 'calf-weight-A1',
+              value: '100kg or under',
+              redirectUrl: 'living-space-3m2'
             },
             {
-              key: 'project-A2',
-              value: 'Refurbishing or extending existing calf housing'
+              key: 'calf-weight-A2',
+              value: 'Refurbishing or extending existing calf housing',
+              redirectUrl: 'living-space-4m2',
             },
             {
-              key: 'project-A3',
-              value: 'Something else',
-              notEligible: true
+              key: 'calf-weight-A3',
+              value: 'Over 150kg',
+              redirectUrl: 'living-space-5m2'
             }
           ],
           yarKey: 'calfWeight'
-        
+        },
+        {
+          key: 'living-space-3m2',
+          order: 100,
+          title: 'Will each calf have at least 3m² living space?',
+          baseUrl: 'living-space-3m2',
+          backUrl: 'calf-weight',
+          nextUrl: 'housed-individually',
+          url: 'living-space-3m2',
+          preValidationKeys: [],
+          type: 'single-answer',
+          minAnswerCount: 1,
+          ineligibleContent: {
+            messageContent: `<p class="govuk-body">Calves weighing up to 100kg must have at least 3m² living space</p>`,
+            messageLink: {
+            url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+            title: 'See other grants you might be eligible for.'
+          }
+          },
+          sidebar: {
+            values: [{
+              heading: 'Eligibility',
+              content: [{
+                para: `Calves weighing up to 100kg must have at least 3m² living space.`,
+              }]
+            }]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if each calf will have at least 3m² living space'
+            }
+          ],
+          answers: [
+            {
+              key: 'living-space-3m2-A1',
+              value: 'Yes',
+            },
+            {
+              key: 'living-space-3m2-A2',
+              value: 'No',
+              notEligible: true,
+            }
+          ],
+          yarKey: 'livingSpace3m2'
+        },
+        {
+          key: 'living-space-4m2',
+          order: 100,
+          title: 'Will each calf have at least 4m² living space?',
+          baseUrl: 'living-space-4m2',
+          backUrl: 'calf-weight',
+          nextUrl: 'housed-individually',
+          url: 'living-space-4m2',
+          preValidationKeys: [],
+          type: 'single-answer',
+          minAnswerCount: 1,
+          ineligibleContent: {
+            messageContent: `<p class="govuk-body">Calves weighing up to 100kg must have at least 4m² living space</p>`,
+            messageLink: {
+            url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+            title: 'See other grants you might be eligible for.'
+          }
+          },
+          sidebar: {
+            values: [{
+              heading: 'Eligibility',
+              content: [{
+                para: `Calves weighing up to 100kg must have at least 4m² living space.`,
+              }]
+            }]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if each calf will have at least 4m² living space'
+            }
+          ],
+          answers: [
+            {
+              key: 'living-space-4m2-A1',
+              value: 'Yes',
+            },
+            {
+              key: 'living-space-4m2-A2',
+              value: 'No',
+              notEligible: true,
+            }
+          ],
+          yarKey: 'livingSpace4m2'
+        },
+        {
+          key: 'living-space-5m2',
+          order: 100,
+          title: 'Will each calf have at least 5m² living space?',
+          baseUrl: 'living-space-5m2',
+          backUrl: 'calf-weight',
+          nextUrl: 'housed-individually',
+          url: 'living-space-5m2',
+          preValidationKeys: [],
+          type: 'single-answer',
+          minAnswerCount: 1,
+          ineligibleContent: {
+            messageContent: `<p class="govuk-body">Calves weighing up to 100kg must have at least 5m² living space</p>`,
+            messageLink: {
+            url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+            title: 'See other grants you might be eligible for.'
+          }
+          },
+          sidebar: {
+            values: [{
+              heading: 'Eligibility',
+              content: [{
+                para: `Calves weighing up to 100kg must have at least 5m² living space.`,
+              }]
+            }]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if each calf will have at least 5m² living space'
+            }
+          ],
+          answers: [
+            {
+              key: 'living-space-5m2-A1',
+              value: 'Yes',
+            },
+            {
+              key: 'living-space-5m2-A2',
+              value: 'No',
+              notEligible: true,
+            }
+          ],
+          yarKey: 'livingSpace5m2'
+        },
+        {
+          key: 'housed-individually',
+          order: 110,
+          title: 'Will calves over 7 days old be housed individually?',
+          baseUrl: 'housed-individually',
+          backUrlObject: {
+            dependentQuestionYarKey: 'calfWeight',
+            dependentAnswerKeysArray: ['calf-weight-A1'],
+            nonDependentAnswerKeysArray : ['calf-weight-A3'],
+            urlOptions: {
+              thenUrl: 'living-space-3m2',
+              elseUrl: 'living-space-4m2',
+              nonDependentUrl:'living-space-5m2'
+            }
+          },
+          url: 'housed-individually',
+          nextUrl:'estimated-grant',
+          preValidationKeys: [],
+          ineligibleContent: {
+              messageContent: `<p class="govuk-body">Calves can only be housed individually in exceptional circumstances (for example, illness or no other calves of similar age).</p>`,
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you might be eligible for.'
+            }
+          },
+          type: 'single-answer',
+          minAnswerCount: 1,
+          sidebar: {
+            values: [{
+              heading: 'Eligibility',
+              content: [{
+                para: `Calves can only be housed individually in exceptional circumstances (for example, illness or no other calves of similar age).`,
+              }]
+            }]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select the option that applies to you'
+            }
+          ],
+          answers: [
+            {
+              key: 'housed-individually-A1',
+              value: 'Yes',
+              notEligible: true
+            },
+            {
+              key: 'housed-individually-A2',
+              value: 'No'
+            },
+            {
+              key: 'housed-individually-A3',
+              value: 'Only in exceptional circumstance',
+              hint:{
+                html:'For example illness, no other calves of similar age'
+              },
+            }
+          ],
+          yarKey: 'housedIndividually'
         },
         {
           key: 'estimated-grant',
           order: 180,
           url: 'estimated-grant',
-          backUrl: 'calf-weight',
+          backUrl: 'housed-individually',
           nextUrl: 'standardised-grant-amounts',
           preValidationKeys: [],
           ga: [
