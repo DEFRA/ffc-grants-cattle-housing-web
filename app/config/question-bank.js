@@ -873,7 +873,6 @@ const questionBank = {
               hint:{
                 html:'For example illness, no other calves of similar age'
               },
-              notEligible: true
             }
           ],
           yarKey: 'housedIndividually'
