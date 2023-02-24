@@ -34,7 +34,6 @@ const getUrl = (urlObject, url, request, secBtn, currentUrl) => {
     
       const selectThenUrl = checkAnswerExist (dependentQuestionYarKey, dependentAnswer, dependentAnswerKeysArray)
       const isNonDependantAnswer = checkAnswerExist(dependentQuestionYarKey, dependentAnswer, nonDependentAnswerKeysArray)
-      console.log('selectThenUrl', selectThenUrl)
       const selectedElseUrl = (dependentAnswer && !isNonDependantAnswer)  ? elseUrl : nonDependentUrl
     
       return selectThenUrl ? thenUrl : selectedElseUrl
