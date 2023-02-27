@@ -4,8 +4,7 @@ describe('Page: /draine-slope', () => {
 const varList = {
     legalStatus: 'randomData',
     projectType: 'fakeData',
-    tenancy : 'Yes',
-    tenancyLength: null
+    structure:'A-frame building'
 }
 
 jest.mock('../../../../app/helpers/session', () => ({
@@ -67,13 +66,15 @@ it('user selects eligible option -> store user response and redirect to /draught
     expect(postResponse.headers.location).toBe('draught-protection')
 })
 
-it('page loads with correct back link', async () => {
+it('page loads with correct back link when conditional is choosen in structure page', async () => {
+    varList.structure ='Other'
+    varList.structureEligibility = 'Yes'
     const options = {
     method: 'GET',
     url: `${global.__URLPREFIX__}/drainage-slope`
     }
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('<a href=\"structure\" class=\"govuk-back-link\">Back</a>')
+    expect(response.payload).toContain('<a href=\"structure-eligibility\" class=\"govuk-back-link\">Back</a>')
 })
 })

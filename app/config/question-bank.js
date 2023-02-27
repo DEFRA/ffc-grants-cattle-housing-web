@@ -964,8 +964,8 @@ const questionBank = {
             title: 'See other grants you may be eligible for.'
           }
         },
-          type: 'single-answer',
-          minAnswerCount: 1,
+        type: 'single-answer',
+        minAnswerCount: 1,
         sidebar: {
           values: [
             {
@@ -1002,10 +1002,58 @@ const questionBank = {
             {
               key: 'structure-A4',
               value: 'Other',
-              notEligible: true
+              redirectUrl:'structure-eligibility'
             }
           ],
           yarKey: 'structure'
+        },
+        {
+          key: 'structure-eligibility',
+          order: 135,
+          title: 'Does your building structure meet the eligibility criteria?',
+          hint: {
+            html: `<div class:"govuk-hint">
+            All buildings must:</br></br>
+            <li>be permanent structures</li>
+            <li>have adequate drainage</li>
+            <li>protect calves from draughts with solid walls/barriers to calf height</li>
+            </div>`
+          },
+          pageTitle: '',
+          backUrl: 'structure',
+          nextUrl: 'drainage-slope',
+          url: 'structure-eligibility',
+          baseUrl: 'structure-eligibility',
+          preValidationKeys: [],
+          ineligibleContent: {
+            messageContent: 'This grant is only for projects in England.',
+            insertText: { text: 'Scotland, Wales and Northern Ireland have other grants available.' },
+            messageLink: {
+              url: '',
+              title: ''
+            }
+          },
+          fundingPriorities: '',
+          type: 'single-answer',
+          minAnswerCount: 1,
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if your building structure meets the eligibility criteria'
+            }
+          ],
+          answers: [
+            {
+              key: 'structure-eligibility-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'structure-eligibility-A2',
+              value: 'No',
+              notEligible: true
+            },
+          ],
+          yarKey: 'structureEligibility'
         },
         {
           key: 'drainage-slope',
@@ -1016,7 +1064,14 @@ const questionBank = {
           },
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           pageTitle: '',
-          backUrl: 'structure',
+          backUrlObject: {
+            dependentQuestionYarKey: 'structure',
+            dependentAnswerKeysArray: [ 'structure-A2','structure-A3','structure-A3' ],
+            urlOptions: {
+              thenUrl: 'structure',
+              elseUrl: 'structure-eligibility'
+            }
+          },
           nextUrl: 'draught-protection',
           url: 'drainage-slope',
           baseUrl: 'drainage-slope',

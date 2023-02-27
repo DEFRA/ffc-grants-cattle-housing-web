@@ -64,6 +64,18 @@ it('user selects eligible option -> store user response and redirect to /drainag
     expect(postResponse.statusCode).toBe(302)
     expect(postResponse.headers.location).toBe('drainage-slope')
 })
+it('user selects conditional option -> store user response and redirect to /structure-eligibility', async () => {
+    const postOptions = {
+    method: 'POST',
+    url: `${global.__URLPREFIX__}/structure`,
+    headers: { cookie: 'crumb=' + crumbToken },
+    payload: { structure: 'Other', crumb: crumbToken }
+    }
+
+    const postResponse = await global.__SERVER__.inject(postOptions)
+    expect(postResponse.statusCode).toBe(302)
+    expect(postResponse.headers.location).toBe('structure-eligibility')
+})
 
 it('page loads with correct back link', async () => {
     const options = {
