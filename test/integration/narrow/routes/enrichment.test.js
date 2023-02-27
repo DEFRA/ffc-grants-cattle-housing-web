@@ -57,7 +57,7 @@ describe('Page: /enrichment', () => {
 		expect(postResponse.payload).toContain('You cannot apply for a grant from this scheme')
 	})
 
-	it('user selects eligible option -> store user response and redirect to /estimated-grant', async () => {  // TODO: change to the correct next route once the page is ready
+	it('user selects eligible option -> store user response and redirect to /structure', async () => {  // TODO: change to the correct next route once the page is ready
 		const postOptions = {
 			method: 'POST',
 			url: `${global.__URLPREFIX__}/enrichment`,
@@ -67,6 +67,6 @@ describe('Page: /enrichment', () => {
 
 		const postResponse = await global.__SERVER__.inject(postOptions)
 		expect(postResponse.statusCode).toBe(302)
-		expect(postResponse.headers.location).toBe('estimated-grant')
+		expect(postResponse.headers.location).toBe('structure')
 	})
 })

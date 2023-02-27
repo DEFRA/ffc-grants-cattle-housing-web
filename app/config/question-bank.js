@@ -618,6 +618,9 @@ const questionBank = {
               value: 'Refurbishing or extending existing calf housing'
             },
             {
+              value: 'divider'
+            },
+            {
               key: 'project-A3',
               value: 'Something else',
               notEligible: true
@@ -991,7 +994,7 @@ const questionBank = {
           baseUrl: 'enrichment',
           url: 'enrichment',
           backUrl: 'isolate-calves',
-          nextUrl: 'estimated-grant',
+          nextUrl: 'structure',
           preValidationKeys: [ 'isolateCalves' ],
           ineligibleContent: {
             messageContent: `Each pair or group of calves must have at least one enrichment item, such as:
@@ -1041,10 +1044,309 @@ const questionBank = {
           yarKey: 'enrichment'
         },
         {
+          key: 'structure',
+          order: 130,
+          title: 'What type of structure is your building?',
+          hint: {
+            text: 'Not including straw bedding and social contact'
+          },
+          pageTitle: '',
+          url: 'structure',
+          baseUrl: 'structure',
+          backUrl: 'isolate-calves',
+          nextUrl: 'drainage-slope',
+          preValidationKeys: [],
+          ineligibleContent: {
+          messageContent: `<p class="govuk-body">Each pair or group of calves must have at least one enrichment item, such as:</p>
+          <div class="govuk-list govuk-list--bullet">
+                <ul>
+                  <li>brushes</li>
+                  <li>hanging balls</li>
+                </ul>
+          </div>
+        <div class="govuk-inset-text">This does not include straw bedding and social contact.</div>`,
+          messageLink: {
+            url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+            title: 'See other grants you may be eligible for.'
+          }
+        },
+        type: 'single-answer',
+        minAnswerCount: 1,
+        sidebar: {
+          values: [
+            {
+              heading: 'Eligibility',
+              content: [{
+                para: `All buildings must be permanent structures.`,
+                items: [
+                  'brushes',
+                  'hanging balls'
+                ]
+              }]
+            }
+          ]
+        },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select the option that applies to you'
+            }
+          ],
+          answers: [
+            {
+              key: 'structure-A1',
+              value: 'A-frame building'
+            },
+            {
+              key: 'structure-A2',
+              value: 'Mono-pitch building'
+            },
+            {
+              key: 'structure-A3',
+              value: 'A permanent open-sided structure with igloos/hutches',
+            },
+            {
+              key: 'structure-A4',
+              value: 'Other',
+              redirectUrl:'structure-eligibility'
+            }
+          ],
+          yarKey: 'structure'
+        },
+        {
+          key: 'structure-eligibility',
+          order: 135,
+          title: 'Does your building structure meet the eligibility criteria?',
+          hint: {
+            html: `<div class:"govuk-hint">
+            All buildings must:</br></br>
+            <li>be permanent structures</li>
+            <li>have adequate drainage</li>
+            <li>protect calves from draughts with solid walls/barriers to calf height</li>
+            </div>`
+          },
+          pageTitle: '',
+          backUrl: 'structure',
+          nextUrl: 'drainage-slope',
+          url: 'structure-eligibility',
+          baseUrl: 'structure-eligibility',
+          preValidationKeys: [],
+          ineligibleContent: {
+            messageContent: 'This grant is only for projects in England.',
+            insertText: { text: 'Scotland, Wales and Northern Ireland have other grants available.' },
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
+            }
+          },
+          fundingPriorities: '',
+          type: 'single-answer',
+          minAnswerCount: 1,
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if your building structure meets the eligibility criteria'
+            }
+          ],
+          answers: [
+            {
+              key: 'structure-eligibility-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'structure-eligibility-A2',
+              value: 'No',
+              notEligible: true
+            },
+          ],
+          yarKey: 'structureEligibility'
+        },
+        {
+          key: 'drainage-slope',
+          order: 140,
+          title: 'Will the floor in bedded areas slope towards a drain or drainage channel?',
+          hint: {
+            text: 'The floor must have at least 5% gradient'
+          },
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
+          pageTitle: '',
+          backUrlObject: {
+            dependentQuestionYarKey: 'structure',
+            dependentAnswerKeysArray: [ 'structure-A2','structure-A3','structure-A3' ],
+            urlOptions: {
+              thenUrl: 'structure',
+              elseUrl: 'structure-eligibility'
+            }
+          },
+          nextUrl: 'draught-protection',
+          url: 'drainage-slope',
+          baseUrl: 'drainage-slope',
+          preValidationKeys: [],
+          ineligibleContent: {
+            messageContent: 'The building must have sloped flooring with a 1 in 20 (5%) gradient in bedded areas that slopes towards a drain or drainage channel. ',
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
+            }
+          },
+          fundingPriorities: '',
+          type: 'single-answer',
+          minAnswerCount: 1,
+          sidebar: {
+            values: [{
+              heading: 'Eligibility',
+              content: [{
+                para: `The building must have sloped flooring with a 1 in 20 (5%) gradient in bedded areas that slopes towards a drain or drainage channel.`
+              }]
+            }]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if the floor in bedded areas slope towards a drain or drainage channel'
+            }
+          ],
+          answers: [
+            {
+              key: 'drainage-slope-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'drainage-slope-A2',
+              value: 'No',
+              notEligible: true
+            }
+          ],
+          yarKey: 'drainageSlope'
+        },
+        {
+          key: 'draught-protection',
+          order: 150,
+          title: 'Will calves be protected from draughts?',
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
+          pageTitle: '',
+          backUrl: 'drainage-slope',
+          nextUrl: 'additional-items',
+          url: 'draught-protection',
+          baseUrl: 'draught-protection',
+          preValidationKeys: [],
+          ineligibleContent: {
+            messageContent: 'All projects must have external calf-height solid walls/barriers to keep out draughts. ',
+            insertText: { text: 'For igloos/hutches adjacent to a permanent open-sided structure, this may mean adding solid sides to the outside pens.' },
+            messageLink: {
+              url: '',
+              title: ''
+            }
+          },
+          fundingPriorities: '',
+          type: 'single-answer',
+          minAnswerCount: 1,
+          sidebar: {
+            values: [{
+              heading: 'Eligibility',
+              content: [{
+                para: `All projects must have external calf-height solid walls/barriers to keep out draughts. 
+
+                      For igloos/hutches adjacent to a permanent open-sided structure, this may mean adding solid sides to the outside pens.`
+              }]
+            }]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if the calves will be protected from draughts'
+            }
+          ],
+          answers: [
+            {
+              key: 'drainage-slope-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'drainage-slope-A2',
+              value: 'No',
+              notEligible: true
+            }
+          ],
+          yarKey: 'drainageSlope'
+        },
+        {
+          key: 'additional-items',
+          order: 160,
+          title: 'Will the building have these items?',
+          hint: {
+            html: `<div class:"govuk-hint">
+            The building must have:</br></br>
+            <li>a minimum and maximum thermometer</li>
+            <li>a humidity sensor</li>
+            <li>at least 2 IP66 sockets in the building</li>
+            <li>access to a water supply</li>
+            </div>`
+          },
+          pageTitle: '',
+          backUrl: 'draught-protection',
+          nextUrl: 'estimated-grant',
+          url: 'additional-items',
+          baseUrl: 'additional-items',
+          preValidationKeys: [],
+          sidebar: {
+            values: [
+              {
+                heading: 'Eligibility',
+                content: [ {
+                  para: `The building must have:`,
+                  items: [
+                    'a minimum and maximum thermometer',
+                    'a humidity sensor',
+                    'at least 2 IP66 sockets in the building',
+                    'access to a water supply'
+                  ]
+                } ]
+              }
+            ]
+          },
+          ineligibleContent: {
+            messageContent: `<p class="govuk-body">The building must have:</p>
+            <div class="govuk-list govuk-list--bullet">
+                  <ul>
+                    <li>a minimum and maximum thermometer</li>
+                    <li>a humidity sensor</li>
+                    <li>at least 2 IP66 sockets in the building</li>
+                    <li>access to a water supply</li>
+                  </ul>
+            </div>`,
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
+            }
+          },
+          fundingPriorities: '',
+          type: 'single-answer',
+          minAnswerCount: 1,
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if the building will have these items'
+            }
+          ],
+          answers: [
+            {
+              key: 'additional-items-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'additional-items-A2',
+              value: 'No',
+              notEligible: true
+            },
+          ],
+          yarKey: 'additionalItems'
+        },
+        {
           key: 'estimated-grant',
           order: 180,
           url: 'estimated-grant',
-          backUrl: 'housed-individually',
+          backUrl: 'additional-items',
           nextUrl: 'standardised-grant-amounts',
           preValidationKeys: [],
           ga: [
