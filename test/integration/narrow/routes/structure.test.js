@@ -40,7 +40,7 @@ it('no option selected -> show error message', async () => {
     expect(postResponse.payload).toContain('Select the option that applies to you')
 })
 
-it('user selects ineligible option: \'Other\' -> display ineligible page', async () => {
+it('user selects redirect option: \'Other\' -> display structure-eligibility page', async () => {
     const postOptions = {
     method: 'POST',
     url: `${global.__URLPREFIX__}/structure`,
@@ -49,7 +49,8 @@ it('user selects ineligible option: \'Other\' -> display ineligible page', async
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
-    expect(postResponse.payload).toContain('You cannot apply for a grant from this scheme')
+    expect(postResponse.statusCode).toBe(302)
+    expect(postResponse.headers.location).toBe('structure-eligibility')
 })
 
 it('user selects eligible option -> store user response and redirect to /drainage-slope', async () => {
