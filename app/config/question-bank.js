@@ -890,11 +890,12 @@ const questionBank = {
           key: 'isolate-calves',
           order: 120,
           title: 'Will there be facilities to temporarily isolate sick calves?',
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           baseUrl: 'isolate-calves',
           url: 'isolate-calves',
           backUrl: 'housed-individually',
           // nextUrl: 'concrete-flooring',
-          nextUrl: 'estimated-grant',  // TODO: change to 'concrete-flooring' once the page is ready
+          nextUrl: 'enrichment',  // TODO: change to 'concrete-flooring' once the page is ready
           preValidationKeys: [ 'housedIndividually' ],
           ineligibleContent: {
             messageContent: 'The building must have facilities to temporarily isolate sick calves (for example, a temporary pen erected in an existing pen to isolate a sick calf).',
@@ -918,7 +919,7 @@ const questionBank = {
           validate: [
             {
               type: 'NOT_EMPTY',
-              error: 'Select the option that applies to you'
+              error: 'Select yes if there will be facilities to temporarily isolate sick calves'
             }
           ],
           answers: [
@@ -933,6 +934,111 @@ const questionBank = {
             }
           ],
           yarKey: 'isolateCalves'
+        },
+        // for later - Sal
+        // {
+        //   key: 'concrete-flooring',
+        //   order: 130,
+        //   title: 'Will the calf housing have solid concrete flooring?',
+        //   baseUrl: 'concrete-flooring',
+        //   url: 'concrete-flooring',
+        //   backUrl: 'isolate-calves',
+        //   nextUrl: 'estimated-grant',
+        //   preValidationKeys: [ 'isolateCalves' ],
+        //   ineligibleContent: {
+        //     messageContent: 'The calf housing must have solid concrete flooring.',
+        //     insertText: { text: 'It cannot have slatted or hardcore flooring.' },
+        //     messageLink: {
+        //       url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+        //       title: 'It cannot have slatted or hardcore flooring.'
+        //     }
+        //   },
+        //   type: 'single-answer',
+        //   minAnswerCount: 1,
+        //   sidebar: {
+        //     values: [ {
+        //       heading: 'Eligibility',
+        //       content: [ {
+        //         para: `The calf housing must have solid concrete flooring.`,
+        //         additionalPara: `It cannot have slatted or hardcore flooring.`,
+        //       } ],
+        //     } ]
+        //   },
+        //   validate: [
+        //     {
+        //       type: 'NOT_EMPTY',
+        //       error: 'Select the option that applies to you'
+        //     }
+        //   ],
+        //   answers: [
+        //     {
+        //       key: 'concrete-flooring-A1',
+        //       value: 'Yes',
+        //     },
+        //     {
+        //       key: 'concrete-flooring-A2',
+        //       value: 'No',
+        //       notEligible: true
+        //     }
+        //   ],
+        //   yarKey: 'concreteFlooring'
+        // },
+        {
+          key: 'enrichment',
+          order: 140,
+          title: 'Will there be at least one enrichment item per pair or group of calves?',
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
+          baseUrl: 'enrichment',
+          url: 'enrichment',
+          backUrl: 'isolate-calves',
+          nextUrl: 'estimated-grant',
+          preValidationKeys: [ 'isolateCalves' ],
+          ineligibleContent: {
+            messageContent: `Each pair or group of calves must have at least one enrichment item, such as:
+                            <ul class="govuk-list govuk-list--bullet">
+                              <li>brushes</li>
+                              <li>hanging balls</li>
+                            </ul>`,
+            insertText: {
+              text: 'This does not include straw bedding and social contact.' },
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'It cannot have slatted or hardcore flooring.'
+            }
+          },
+          type: 'single-answer',
+          minAnswerCount: 1,
+          sidebar: {
+            values: [ {
+              heading: 'Eligibility',
+              content: [ {
+                para: `Each pair or group of calves must have at least one enrichment item, such as:`,
+                items: [
+                  'brushes',
+                  'hanging balls',
+                ],
+                additionalPara: `This does not include straw bedding and social contact.`,
+              } ],
+            } ]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if there will be at least one enrichment item per pair or group of calves'
+            }
+          ],
+          answers: [
+            {
+              key: 'enrichment-A1',
+              value: 'Yes',
+            },
+            {
+              key: 'enrichment-A2',
+              value: 'No',
+              notEligible: true
+            }
+          ],
+          yarKey: 'enrichment'
         },
         {
           key: 'estimated-grant',
