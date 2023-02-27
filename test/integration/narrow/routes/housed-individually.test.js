@@ -56,7 +56,7 @@ it('user selects ineligible option: \'Yes\' -> display ineligible page', async (
     expect(postResponse.payload).toContain('You cannot apply for a grant from this scheme')
 })
 
-it('user selects eligible option -> store user response and redirect to /estimated-grant', async () => {
+    it('user selects eligible option -> store user response and redirect to /isolate-calves', async () => {
     const postOptions = {
     method: 'POST',
     url: `${global.__URLPREFIX__}/housed-individually`,
@@ -66,7 +66,7 @@ it('user selects eligible option -> store user response and redirect to /estimat
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
-    expect(postResponse.headers.location).toBe('estimated-grant')
+    expect(postResponse.headers.location).toBe('isolate-calves')
 })
 
 it('page loads with correct back link when calf-weight  page`s answer is 100kg or under', async () => {
