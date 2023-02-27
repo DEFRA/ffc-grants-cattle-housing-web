@@ -39,7 +39,7 @@ it('no option selected -> show error message', async () => {
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Select the option that applies to you')
+    expect(postResponse.payload).toContain('Select yes if the calves will be protected from draughts')
 })
 
 it('user selects ineligible option: \'No \' -> display ineligible page', async () => {
@@ -64,7 +64,7 @@ it('user selects eligible option -> store user response and redirect to /calf-we
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
-    expect(postResponse.headers.location).toBe('calf-weight')
+    expect(postResponse.headers.location).toBe('estimated-grant')
 })
 
 it('page loads with correct back link', async () => {

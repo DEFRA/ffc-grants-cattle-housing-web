@@ -86,7 +86,7 @@ const questionBank = {
             text: 'Select all that apply'
           },
           pageTitle: '',
-          ga: [{ journeyStart: true }],
+          ga: [ { journeyStart: true } ],
           url: 'applicant-type',
           baseUrl: 'applicant-type',
           backUrl: 'start',
@@ -106,17 +106,17 @@ const questionBank = {
             }
           },
           sidebar: {
-            values: [{
+            values: [ {
               heading: 'Eligibility',
-              content: [{
+              content: [ {
                 para: `This grant is for:`,
                 items: [
                   `building new calf housing`,
                   `refurbishing or extending existing calf housing`,
                 ],
                 additionalPara: `A calf is up to 6 months of age.`
-              }]
-            }]
+              } ]
+            } ]
           },
           fundingPriorities: 'Improve the environment',
           type: 'multi-answer',
@@ -188,13 +188,13 @@ const questionBank = {
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
-            values: [{
+            values: [ {
               heading: 'Eligibility',
-              content: [{
+              content: [ {
                 para: 'Public organisations and local authorities cannot apply for this grant.',
                 items: []
-              }]
-            }]
+              } ]
+            } ]
           },
           validate: [
             {
@@ -284,14 +284,14 @@ const questionBank = {
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
-            values: [{
+            values: [ {
               heading: 'Eligibility',
-              content: [{
+              content: [ {
                 para: `This grant is only for projects in England.
                 
                 Scotland, Wales and Northern Ireland have other grants available.`
-              }]
-            }]
+              } ]
+            } ]
           },
           validate: [
             {
@@ -333,14 +333,14 @@ const questionBank = {
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
-            values: [{
+            values: [ {
               heading: 'Eligibility',
-              content: [{
+              content: [ {
                 para: `You must have secured planning permission before you submit a full application.
 
                         Any planning permission must be in place by 31 January 2024.`
-              }]
-            }]
+              } ]
+            } ]
           },
           validate: [
             {
@@ -395,7 +395,7 @@ const questionBank = {
           nextUrl: 'tenancy',
           backUrlObject: {
             dependentQuestionYarKey: 'planningPermission',
-            dependentAnswerKeysArray: ['planning-permission-A1', 'planning-permission-A2'],
+            dependentAnswerKeysArray: [ 'planning-permission-A1', 'planning-permission-A2' ],
             urlOptions: {
               thenUrl: 'planning-permission',
               elseUrl: 'planning-permission-condition'
@@ -414,9 +414,9 @@ const questionBank = {
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
-            values: [{
+            values: [ {
               heading: 'Eligibility',
-              content: [{
+              content: [ {
                 para: `
                 You will invalidate your application if you start the project or commit to any costs (such as placing orders) before you receive a funding agreement.
                 
@@ -425,8 +425,8 @@ const questionBank = {
                   'get quotes from suppliers',
                   'apply for planning permission (this can take a long time)'
                 ]
-              }]
-            }]
+              } ]
+            } ]
           },
           validate: [
             {
@@ -475,12 +475,12 @@ const questionBank = {
           minAnswerCount: 1,
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           sidebar: {
-            values: [{
+            values: [ {
               heading: 'Eligibility',
-              content: [{
+              content: [ {
                 para: 'You must own the land or have a tenancy in place for 5 years after the final grant payment.'
-              }]
-            }]
+              } ]
+            } ]
           },
           validate: [
             {
@@ -518,13 +518,13 @@ const questionBank = {
           minAnswerCount: 1,
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           sidebar: {
-            values: [{
+            values: [ {
               heading: 'Eligibility',
-              content: [{
+              content: [ {
                 para: 'You must own the land or have a tenancy in place for 5 years after the final grant payment.',
                 items: []
-              }]
-            }]
+              } ]
+            } ]
           },
           validate: [
             {
@@ -569,11 +569,11 @@ const questionBank = {
           url: 'project',
           backUrlObject: {
             dependentQuestionYarKey: 'tenancyLength',
-            dependentAnswerKeysArray: ['tenancy-length-A1'],
+            dependentAnswerKeysArray: [ 'tenancy-length-A1' ],
             urlOptions: {
               thenUrl: 'tenancy-length',
               elseUrl: 'tenancy-length-condition',
-              nonDependentUrl:'tenancy'
+              nonDependentUrl: 'tenancy'
             }
           },
           preValidationKeys: [],
@@ -586,21 +586,21 @@ const questionBank = {
                         <li>refurbishing or extending existing calf housing</li>
                       </ul>
                 </div>`,
-          messageLink: {
-            url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-            title: 'See other grants you might be eligible for.'
-          }
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you might be eligible for.'
+            }
           },
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
-            values: [{
+            values: [ {
               heading: 'Eligibility',
-              content: [{
+              content: [ {
                 para: `This grant is for:`,
-                items: ['building new calf housing', 'refurbishing or extending existing calf housing']
-              }]
-            }]
+                items: [ 'building new calf housing', 'refurbishing or extending existing calf housing' ]
+              } ]
+            } ]
           },
           validate: [
             {
@@ -616,6 +616,9 @@ const questionBank = {
             {
               key: 'project-A2',
               value: 'Refurbishing or extending existing calf housing'
+            },
+            {
+              value: 'divider'
             },
             {
               key: 'project-A3',
@@ -637,7 +640,7 @@ const questionBank = {
           },
           preValidationKeys: [],
           ineligibleContent: {
-              messageContent: `<p class="govuk-body">This grant is for:</p>
+            messageContent: `<p class="govuk-body">This grant is for:</p>
               <div class="govuk-list govuk-list--bullet">
                     You can use:
                     <ul>
@@ -653,17 +656,17 @@ const questionBank = {
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
-            values: [{
+            values: [ {
               heading: 'Eligibility',
-              content: [{
+              content: [ {
                 para: `
                       A calf is up to 6 months of age
                       
                       There must be a minimum floor area of:
                       `,
-                items: ['2m² per calf when largest calf is 100kg or under', '4m² per calf when largest calf is between 100kg and 150kg', '5m² per calf when largest calf is over 150kg']
-              }]
-            }]
+                items: [ '2m² per calf when largest calf is 100kg or under', '4m² per calf when largest calf is between 100kg and 150kg', '5m² per calf when largest calf is over 150kg' ]
+              } ]
+            } ]
           },
           validate: [
             {
@@ -704,17 +707,17 @@ const questionBank = {
           ineligibleContent: {
             messageContent: `<p class="govuk-body">Calves weighing up to 100kg must have at least 3m² living space</p>`,
             messageLink: {
-            url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-            title: 'See other grants you might be eligible for.'
-          }
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you might be eligible for.'
+            }
           },
           sidebar: {
-            values: [{
+            values: [ {
               heading: 'Eligibility',
-              content: [{
+              content: [ {
                 para: `Calves weighing up to 100kg must have at least 3m² living space.`,
-              }]
-            }]
+              } ]
+            } ]
           },
           validate: [
             {
@@ -749,17 +752,17 @@ const questionBank = {
           ineligibleContent: {
             messageContent: `<p class="govuk-body">Calves weighing up to 100kg must have at least 4m² living space</p>`,
             messageLink: {
-            url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-            title: 'See other grants you might be eligible for.'
-          }
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you might be eligible for.'
+            }
           },
           sidebar: {
-            values: [{
+            values: [ {
               heading: 'Eligibility',
-              content: [{
+              content: [ {
                 para: `Calves weighing up to 100kg must have at least 4m² living space.`,
-              }]
-            }]
+              } ]
+            } ]
           },
           validate: [
             {
@@ -794,17 +797,17 @@ const questionBank = {
           ineligibleContent: {
             messageContent: `<p class="govuk-body">Calves weighing up to 100kg must have at least 5m² living space</p>`,
             messageLink: {
-            url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-            title: 'See other grants you might be eligible for.'
-          }
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you might be eligible for.'
+            }
           },
           sidebar: {
-            values: [{
+            values: [ {
               heading: 'Eligibility',
-              content: [{
+              content: [ {
                 para: `Calves weighing up to 100kg must have at least 5m² living space.`,
-              }]
-            }]
+              } ]
+            } ]
           },
           validate: [
             {
@@ -832,19 +835,19 @@ const questionBank = {
           baseUrl: 'housed-individually',
           backUrlObject: {
             dependentQuestionYarKey: 'calfWeight',
-            dependentAnswerKeysArray: ['calf-weight-A1'],
-            nonDependentAnswerKeysArray : ['calf-weight-A3'],
+            dependentAnswerKeysArray: [ 'calf-weight-A1' ],
+            nonDependentAnswerKeysArray: [ 'calf-weight-A3' ],
             urlOptions: {
               thenUrl: 'living-space-3m2',
               elseUrl: 'living-space-4m2',
-              nonDependentUrl:'living-space-5m2'
+              nonDependentUrl: 'living-space-5m2'
             }
           },
           url: 'housed-individually',
-          nextUrl:'estimated-grant',
+          nextUrl: 'isolate-calves',
           preValidationKeys: [],
           ineligibleContent: {
-              messageContent: `<p class="govuk-body">Calves can only be housed individually in exceptional circumstances (for example, illness or no other calves of similar age).</p>`,
+            messageContent: `<p class="govuk-body">Calves can only be housed individually in exceptional circumstances (for example, illness or no other calves of similar age).</p>`,
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you might be eligible for.'
@@ -853,12 +856,12 @@ const questionBank = {
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
-            values: [{
+            values: [ {
               heading: 'Eligibility',
-              content: [{
+              content: [ {
                 para: `Calves can only be housed individually in exceptional circumstances (for example, illness or no other calves of similar age).`,
-              }]
-            }]
+              } ]
+            } ]
           },
           validate: [
             {
@@ -879,193 +882,239 @@ const questionBank = {
             {
               key: 'housed-individually-A3',
               value: 'Only in exceptional circumstance',
-              hint:{
-                html:'For example illness, no other calves of similar age'
+              hint: {
+                html: 'For example illness, no other calves of similar age'
               },
             }
           ],
           yarKey: 'housedIndividually'
         },
+        {
+          key: 'isolate-calves',
+          order: 120,
+          title: 'Will there be facilities to temporarily isolate sick calves?',
+          baseUrl: 'isolate-calves',
+          url: 'isolate-calves',
+          backUrl: 'housed-individually',
+          // nextUrl: 'concrete-flooring',
+          nextUrl: 'structure',  // TODO: change to 'concrete-flooring' once the page is ready
+          preValidationKeys: [ 'housedIndividually' ],
+          ineligibleContent: {
+            messageContent: 'The building must have facilities to temporarily isolate sick calves (for example, a temporary pen erected in an existing pen to isolate a sick calf).',
+            insertText: { text: 'Sick calves may need to be temporarily isolated to prevent spreading disease.' },
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you might be eligible for.'
+            }
+          },
+          type: 'single-answer',
+          minAnswerCount: 1,
+          sidebar: {
+            values: [ {
+              heading: 'Eligibility',
+              content: [ {
+                para: `The calf housing must have solid concrete flooring.`,
+                additionalPara: `It cannot have slatted or hardcore flooring.`,
+              } ]
+            } ]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select the option that applies to you'
+            }
+          ],
+          answers: [
+            {
+              key: 'isolate-calves-A1',
+              value: 'Yes',
+            },
+            {
+              key: 'isolate-calves-A2',
+              value: 'No',
+              notEligible: true
+            }
+          ],
+          yarKey: 'isolateCalves'
+        },
+        {
+          key: 'structure',
+          order: 130,
+          title: 'What type of structure is your building?',
+          hint: {
+            text: 'Not including straw bedding and social contact'
+          },
+          pageTitle: '',
+          url: 'structure',
+          baseUrl: 'structure',
+          backUrl: 'enrichment',
+          nextUrl: 'drainage-slope',
+          preValidationKeys: [],
+          ineligibleContent: {
+          messageContent: `<p class="govuk-body">Each pair or group of calves must have at least one enrichment item, such as:</p>
+          <div class="govuk-list govuk-list--bullet">
+                <ul>
+                  <li>brushes</li>
+                  <li>hanging balls</li>
+                </ul>
+          </div>
+        <div class="govuk-inset-text">This does not include straw bedding and social contact.</div>`,
+          messageLink: {
+            url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+            title: 'See other grants you may be eligible for.'
+          }
+        },
+          type: 'single-answer',
+          minAnswerCount: 1,
+        sidebar: {
+          values: [
+            {
+              heading: 'Eligibility',
+              content: [{
+                para: `All buildings must be permanent structures.`,
+                items: [
+                  'brushes',
+                  'hanging balls'
+                ]
+              }]
+            }
+          ]
+        },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select the option that applies to you'
+            }
+          ],
+          answers: [
+            {
+              key: 'structure-A1',
+              value: 'A-frame building'
+            },
+            {
+              key: 'structure-A2',
+              value: 'Mono-pitch building'
+            },
+            {
+              key: 'structure-A3',
+              value: 'A permanent open-sided structure with igloos/hutches',
+            },
+            {
+              key: 'structure-A4',
+              value: 'Other',
+              notEligible: true
+            }
+          ],
+          yarKey: 'structure'
+        },
+        {
+          key: 'drainage-slope',
+          order: 140,
+          title: 'Will the floor in bedded areas slope towards a drain or drainage channel?',
+          hint: {
+            text: 'The floor must have at least 5% gradient'
+          },
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
+          pageTitle: '',
+          backUrl: 'structure',
+          nextUrl: 'draught-protection',
+          url: 'drainage-slope',
+          baseUrl: 'drainage-slope',
+          preValidationKeys: [],
+          ineligibleContent: {
+            messageContent: 'This grant is only for projects in England.',
+            insertText: { text: 'Scotland, Wales and Northern Ireland have other grants available.' },
+            messageLink: {
+              url: '',
+              title: ''
+            }
+          },
+          fundingPriorities: '',
+          type: 'single-answer',
+          minAnswerCount: 1,
+          sidebar: {
+            values: [{
+              heading: 'Eligibility',
+              content: [{
+                para: `The building must have sloped flooring with a 1 in 20 (5%) gradient in bedded areas that slopes towards a drain or drainage channel.`
+              }]
+            }]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if the floor in bedded areas slope towards a drain or drainage channel'
+            }
+          ],
+          answers: [
+            {
+              key: 'drainage-slope-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'drainage-slope-A2',
+              value: 'No',
+              notEligible: true
+            }
+          ],
+          yarKey: 'drainageSlope'
+        },
+        {
+          key: 'draught-protection',
+          order: 150,
+          title: 'Will calves be protected from draughts?',
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
+          pageTitle: '',
+          backUrl: 'drainage-slope',
+          nextUrl: 'estimated-grant',
+          url: 'draught-protection',
+          baseUrl: 'draught-protection',
+          preValidationKeys: [],
+          ineligibleContent: {
+            messageContent: 'All projects must have external calf-height solid walls/barriers to keep out draughts. ',
+            insertText: { text: 'For igloos/hutches adjacent to a permanent open-sided structure, this may mean adding solid sides to the outside pens.' },
+            messageLink: {
+              url: '',
+              title: ''
+            }
+          },
+          fundingPriorities: '',
+          type: 'single-answer',
+          minAnswerCount: 1,
+          sidebar: {
+            values: [{
+              heading: 'Eligibility',
+              content: [{
+                para: `All projects must have external calf-height solid walls/barriers to keep out draughts. 
 
-        // {
-        //   key: 'structure',
-        //   order: 130,
-        //   title: 'What type of structure is your building?',
-        //   hint: {
-        //     text: 'Not including straw bedding and social contact'
-        //   },
-        //   pageTitle: '',
-        //   url: 'structure',
-        //   baseUrl: 'structure',
-        //   backUrl: 'enrichment',
-        //   nextUrl: 'drainage-slope',
-        //   preValidationKeys: [],
-        //   ineligibleContent: {
-        //   messageContent: `<p class="govuk-body">Each pair or group of calves must have at least one enrichment item, such as:</p>
-        //   <div class="govuk-list govuk-list--bullet">
-        //         <ul>
-        //           <li>brushes</li>
-        //           <li>hanging balls</li>
-        //         </ul>
-        //   </div>
-        // <div class="govuk-inset-text">This does not include straw bedding and social contact.</div>`,
-        //   messageLink: {
-        //     url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-        //     title: 'See other grants you may be eligible for.'
-        //   }
-        // },
-        //   type: 'single-answer',
-        //   minAnswerCount: 1,
-        // sidebar: {
-        //   values: [
-        //     {
-        //       heading: 'Eligibility',
-        //       content: [{
-        //         para: `All buildings must be permanent structures.`,
-        //         items: [
-        //           'brushes',
-        //           'hanging balls'
-        //         ]
-        //       }]
-        //     }
-        //   ]
-        // },
-        //   validate: [
-        //     {
-        //       type: 'NOT_EMPTY',
-        //       error: 'Select the option that applies to you'
-        //     }
-        //   ],
-        //   answers: [
-        //     {
-        //       key: 'structure-A1',
-        //       value: 'A-frame building'
-        //     },
-        //     {
-        //       key: 'structure-A2',
-        //       value: 'Mono-pitch building'
-        //     },
-        //     {
-        //       key: 'structure-A3',
-        //       value: 'A permanent open-sided structure with igloos/hutches',
-        //     },
-        //     {
-        //       key: 'structure-A4',
-        //       value: 'Other',
-        //       notEligible: true
-        //     }
-        //   ],
-        //   yarKey: 'structure'
-        // },
-        // {
-        //   key: 'drainage-slope',
-        //   order: 140,
-        //   title: 'Will the floor in bedded areas slope towards a drain or drainage channel?',
-        //   hint: {
-        //     text: 'The floor must have at least 5% gradient'
-        //   },
-        //   classes: 'govuk-radios--inline govuk-fieldset__legend--l',
-        //   pageTitle: '',
-        //   backUrl: 'structure',
-        //   nextUrl: 'draught-protection',
-        //   url: 'drainage-slope',
-        //   baseUrl: 'drainage-slope',
-        //   preValidationKeys: [],
-        //   ineligibleContent: {
-        //     messageContent: 'This grant is only for projects in England.',
-        //     insertText: { text: 'Scotland, Wales and Northern Ireland have other grants available.' },
-        //     messageLink: {
-        //       url: '',
-        //       title: ''
-        //     }
-        //   },
-        //   fundingPriorities: '',
-        //   type: 'single-answer',
-        //   minAnswerCount: 1,
-        //   sidebar: {
-        //     values: [{
-        //       heading: 'Eligibility',
-        //       content: [{
-        //         para: `The building must have sloped flooring with a 1 in 20 (5%) gradient in bedded areas that slopes towards a drain or drainage channel.`
-        //       }]
-        //     }]
-        //   },
-        //   validate: [
-        //     {
-        //       type: 'NOT_EMPTY',
-        //       error: 'Select yes if the floor in bedded areas slope towards a drain or drainage channel'
-        //     }
-        //   ],
-        //   answers: [
-        //     {
-        //       key: 'drainage-slope-A1',
-        //       value: 'Yes'
-        //     },
-        //     {
-        //       key: 'drainage-slope-A2',
-        //       value: 'No',
-        //       notEligible: true
-        //     }
-        //   ],
-        //   yarKey: 'drainageSlope'
-        // },
-        // {
-        //   key: 'draught-protection',
-        //   order: 150,
-        //   title: 'Will calves be protected from draughts?',
-        //   classes: 'govuk-radios--inline govuk-fieldset__legend--l',
-        //   pageTitle: '',
-        //   backUrl: 'drainage-slope',
-        //   nextUrl: '?',
-        //   url: 'draught-protection',
-        //   baseUrl: 'draught-protection',
-        //   preValidationKeys: [],
-        //   ineligibleContent: {
-        //     messageContent: 'All projects must have external calf-height solid walls/barriers to keep out draughts. ',
-        //     insertText: { text: 'For igloos/hutches adjacent to a permanent open-sided structure, this may mean adding solid sides to the outside pens.' },
-        //     messageLink: {
-        //       url: '',
-        //       title: ''
-        //     }
-        //   },
-        //   fundingPriorities: '',
-        //   type: 'single-answer',
-        //   minAnswerCount: 1,
-        //   sidebar: {
-        //     values: [{
-        //       heading: 'Eligibility',
-        //       content: [{
-        //         para: `All projects must have external calf-height solid walls/barriers to keep out draughts. 
-
-        //                For igloos/hutches adjacent to a permanent open-sided structure, this may mean adding solid sides to the outside pens.`
-        //       }]
-        //     }]
-        //   },
-        //   validate: [
-        //     {
-        //       type: 'NOT_EMPTY',
-        //       error: 'Select yes if the calves will be protected from draughts'
-        //     }
-        //   ],
-        //   answers: [
-        //     {
-        //       key: 'drainage-slope-A1',
-        //       value: 'Yes'
-        //     },
-        //     {
-        //       key: 'drainage-slope-A2',
-        //       value: 'No',
-        //       notEligible: true
-        //     }
-        //   ],
-        //   yarKey: 'drainageSlope'
-        // },
-
+                      For igloos/hutches adjacent to a permanent open-sided structure, this may mean adding solid sides to the outside pens.`
+              }]
+            }]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if the calves will be protected from draughts'
+            }
+          ],
+          answers: [
+            {
+              key: 'drainage-slope-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'drainage-slope-A2',
+              value: 'No',
+              notEligible: true
+            }
+          ],
+          yarKey: 'drainageSlope'
+        },
         {
           key: 'estimated-grant',
           order: 180,
           url: 'estimated-grant',
-          backUrl: 'housed-individually',
+          backUrl: 'drainage-slope',
           nextUrl: 'standardised-grant-amounts',
           preValidationKeys: [],
           ga: [
@@ -1109,7 +1158,7 @@ const questionBank = {
             }
           }
         },
-        
+
         {
           key: 'remaining-costs',
           order: 190,
@@ -1143,7 +1192,7 @@ const questionBank = {
             values: [
               {
                 heading: 'Eligibility',
-                content: [{
+                content: [ {
                   para: `You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.
                   
                   You can use:`,
@@ -1152,7 +1201,7 @@ const questionBank = {
                     'overdrafts',
                     'the Basic Payment Scheme'
                   ]
-                }]
+                } ]
               }
             ]
           },
@@ -1402,7 +1451,7 @@ const questionBank = {
           preValidationKeys: [],
           backUrlObject: {
             dependentQuestionYarKey: 'applying',
-            dependentAnswerKeysArray: ['applying-A2'],
+            dependentAnswerKeysArray: [ 'applying-A2' ],
             urlOptions: {
               thenUrl: 'agent-details',
               elseUrl: 'applying'
@@ -1412,7 +1461,7 @@ const questionBank = {
           type: 'multi-input',
           minAnswerCount: '',
           maxAnswerCount: '',
-          ga: [{ dimension: 'cd3', value: { type: 'yar', key: 'applying' } }],
+          ga: [ { dimension: 'cd3', value: { type: 'yar', key: 'applying' } } ],
           hint: {
             text: 'Enter the farmer and farm business details'
           },
@@ -1516,7 +1565,7 @@ const questionBank = {
                 },
                 {
                   type: 'CONFIRMATION_ANSWER',
-                  fieldsToCampare: ['emailAddress', 'confirmEmailAddress'],
+                  fieldsToCampare: [ 'emailAddress', 'confirmEmailAddress' ],
                   error: 'Enter an email address that matches'
                 }
               ]
@@ -1536,7 +1585,7 @@ const questionBank = {
                 {
                   type: 'NOT_EMPTY_EXTRA',
                   error: 'Enter a mobile number (if you do not have a mobile, enter your landline number)',
-                  extraFieldsToCheck: ['landlineNumber']
+                  extraFieldsToCheck: [ 'landlineNumber' ]
                 },
                 {
                   type: 'REGEX',
@@ -1566,7 +1615,7 @@ const questionBank = {
                 {
                   type: 'NOT_EMPTY_EXTRA',
                   error: 'Enter a landline number (if you do not have a landline, enter your mobile number)',
-                  extraFieldsToCheck: ['mobileNumber']
+                  extraFieldsToCheck: [ 'mobileNumber' ]
                 },
                 {
                   type: 'REGEX',
@@ -1846,7 +1895,7 @@ const questionBank = {
                 },
                 {
                   type: 'CONFIRMATION_ANSWER',
-                  fieldsToCampare: ['emailAddress', 'confirmEmailAddress'],
+                  fieldsToCampare: [ 'emailAddress', 'confirmEmailAddress' ],
                   error: 'Enter an email address that matches'
                 }
               ]
@@ -1866,7 +1915,7 @@ const questionBank = {
                 {
                   type: 'NOT_EMPTY_EXTRA',
                   error: 'Enter a mobile number (if you do not have a mobile, enter your landline number)',
-                  extraFieldsToCheck: ['landlineNumber']
+                  extraFieldsToCheck: [ 'landlineNumber' ]
                 },
                 {
                   type: 'REGEX',
@@ -1896,7 +1945,7 @@ const questionBank = {
                 {
                   type: 'NOT_EMPTY_EXTRA',
                   error: 'Enter a landline number (if you do not have a landline, enter your mobile number)',
-                  extraFieldsToCheck: ['mobileNumber']
+                  extraFieldsToCheck: [ 'mobileNumber' ]
                 },
                 {
                   type: 'REGEX',
@@ -2114,7 +2163,7 @@ questionBank.sections.forEach(({ questions }) => {
 const ALL_URLS = []
 ALL_QUESTIONS.forEach(item => ALL_URLS.push(item.url))
 
-const YAR_KEYS = ['itemsTotalValue', 'remainingCost', 'calculatedGrant']
+const YAR_KEYS = [ 'itemsTotalValue', 'remainingCost', 'calculatedGrant' ]
 ALL_QUESTIONS.forEach(item => YAR_KEYS.push(item.yarKey))
 module.exports = {
   questionBank,
