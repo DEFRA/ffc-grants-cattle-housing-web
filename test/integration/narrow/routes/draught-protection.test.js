@@ -54,7 +54,7 @@ it('user selects ineligible option: \'No \' -> display ineligible page', async (
     expect(postResponse.payload).toContain('You cannot apply for a grant from this scheme')
 })
 
-it('user selects eligible option -> store user response and redirect to /calf-weight', async () => {
+it('user selects eligible option -> store user response and redirect to /additional-items', async () => {
     const postOptions = {
     method: 'POST',
     url: `${global.__URLPREFIX__}/draught-protection`,
@@ -64,7 +64,7 @@ it('user selects eligible option -> store user response and redirect to /calf-we
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
-    expect(postResponse.headers.location).toBe('estimated-grant')
+    expect(postResponse.headers.location).toBe('additional-items')
 })
 
 it('page loads with correct back link', async () => {

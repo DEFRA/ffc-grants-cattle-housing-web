@@ -1226,7 +1226,7 @@ const questionBank = {
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           pageTitle: '',
           backUrl: 'drainage-slope',
-          nextUrl: 'estimated-grant',
+          nextUrl: 'additional-items',
           url: 'draught-protection',
           baseUrl: 'draught-protection',
           preValidationKeys: [],
@@ -1271,10 +1271,82 @@ const questionBank = {
           yarKey: 'drainageSlope'
         },
         {
+          key: 'additional-items',
+          order: 160,
+          title: 'Will the building have these items?',
+          hint: {
+            html: `<div class:"govuk-hint">
+            The building must have:</br></br>
+            <li>a minimum and maximum thermometer</li>
+            <li>a humidity sensor</li>
+            <li>at least 2 IP66 sockets in the building</li>
+            <li>access to a water supply</li>
+            </div>`
+          },
+          pageTitle: '',
+          backUrl: 'draught-protection',
+          nextUrl: 'estimated-grant',
+          url: 'additional-items',
+          baseUrl: 'additional-items',
+          preValidationKeys: [],
+          sidebar: {
+            values: [
+              {
+                heading: 'Eligibility',
+                content: [ {
+                  para: `The building must have:`,
+                  items: [
+                    'a minimum and maximum thermometer',
+                    'a humidity sensor',
+                    'at least 2 IP66 sockets in the building',
+                    'access to a water supply'
+                  ]
+                } ]
+              }
+            ]
+          },
+          ineligibleContent: {
+            messageContent: `<p class="govuk-body">The building must have:</p>
+            <div class="govuk-list govuk-list--bullet">
+                  <ul>
+                    <li>a minimum and maximum thermometer</li>
+                    <li>a humidity sensor</li>
+                    <li>at least 2 IP66 sockets in the building</li>
+                    <li>access to a water supply</li>
+                  </ul>
+            </div>`,
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
+            }
+          },
+          fundingPriorities: '',
+          type: 'single-answer',
+          minAnswerCount: 1,
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if the building will have these items'
+            }
+          ],
+          answers: [
+            {
+              key: 'additional-items-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'additional-items-A2',
+              value: 'No',
+              notEligible: true
+            },
+          ],
+          yarKey: 'additionalItems'
+        },
+        {
           key: 'estimated-grant',
           order: 180,
           url: 'estimated-grant',
-          backUrl: 'draught-protection',
+          backUrl: 'additional-items',
           nextUrl: 'standardised-grant-amounts',
           preValidationKeys: [],
           ga: [
