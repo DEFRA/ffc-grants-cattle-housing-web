@@ -841,7 +841,7 @@ const questionBank = {
             }
           },
           url: 'housed-individually',
-          nextUrl: 'estimated-grant',
+          nextUrl: 'isolate-calves',
           preValidationKeys: [],
           ineligibleContent: {
             messageContent: `<p class="govuk-body">Calves can only be housed individually in exceptional circumstances (for example, illness or no other calves of similar age).</p>`,
@@ -893,11 +893,12 @@ const questionBank = {
           baseUrl: 'isolate-calves',
           url: 'isolate-calves',
           backUrl: 'housed-individually',
-          nextUrl: 'concrete-flooring',
+          // nextUrl: 'concrete-flooring',
+          nextUrl: 'estimated-grant',  // TODO: change to 'concrete-flooring' once the page is ready
           preValidationKeys: [ 'housedIndividually' ],
           ineligibleContent: {
-            messageContent: `The building must have facilities to temporarily isolate sick calves (for example, a temporary pen erected in an existing pen to isolate a sick calf).`,
-            insertText: 'Sick calves may need to be temporarily isolated to prevent spreading disease.',
+            messageContent: 'The building must have facilities to temporarily isolate sick calves (for example, a temporary pen erected in an existing pen to isolate a sick calf).',
+            insertText: { text: 'Sick calves may need to be temporarily isolated to prevent spreading disease.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you might be eligible for.'
