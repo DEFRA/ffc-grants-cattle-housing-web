@@ -66,7 +66,8 @@ describe('Page: /isolate-calves', () => {
 
 		const postResponse = await global.__SERVER__.inject(postOptions)
 		expect(postResponse.statusCode).toBe(302)
-		expect(postResponse.headers.location).toBe('enrichment') // TODO: change to 'concrete-flooring' once the page is ready
+		expect(postResponse.headers.location).toBe('enrichment') 
+		// TODO: change to 'concrete-flooring' once the page is ready
 		// expect(postResponse.headers.location).toBe('concrete-flooring')
 	})
 })

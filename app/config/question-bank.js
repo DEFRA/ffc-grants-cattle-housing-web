@@ -1135,8 +1135,8 @@ const questionBank = {
             messageContent: 'This grant is only for projects in England.',
             insertText: { text: 'Scotland, Wales and Northern Ireland have other grants available.' },
             messageLink: {
-              url: '',
-              title: ''
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
             }
           },
           fundingPriorities: '',
@@ -1183,11 +1183,10 @@ const questionBank = {
           baseUrl: 'drainage-slope',
           preValidationKeys: [],
           ineligibleContent: {
-            messageContent: 'This grant is only for projects in England.',
-            insertText: { text: 'Scotland, Wales and Northern Ireland have other grants available.' },
+            messageContent: 'The building must have sloped flooring with a 1 in 20 (5%) gradient in bedded areas that slopes towards a drain or drainage channel. ',
             messageLink: {
-              url: '',
-              title: ''
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
             }
           },
           fundingPriorities: '',
