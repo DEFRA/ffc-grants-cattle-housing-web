@@ -943,7 +943,7 @@ const questionBank = {
         //     },
         //     {
         //       key: 'structure-A2',
-        //       value: 'Mono-pitch building '
+        //       value: 'Mono-pitch building'
         //     },
         //     {
         //       key: 'structure-A3',
