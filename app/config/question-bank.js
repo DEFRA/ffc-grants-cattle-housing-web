@@ -1172,7 +1172,7 @@ const questionBank = {
           pageTitle: '',
           backUrlObject: {
             dependentQuestionYarKey: 'structure',
-            dependentAnswerKeysArray: [ 'structure-A2','structure-A3','structure-A3' ],
+            dependentAnswerKeysArray: [ 'structure-A1','structure-A2','structure-A3' ],
             urlOptions: {
               thenUrl: 'structure',
               elseUrl: 'structure-eligibility'
