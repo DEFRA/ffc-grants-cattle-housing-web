@@ -1245,9 +1245,9 @@ const questionBank = {
             values: [{
               heading: 'Eligibility',
               content: [{
-                para: `All projects must have external calf-height solid walls/barriers to keep out draughts. 
+                para: `All projects must have permanent external calf-height solid walls/barriers to keep out drafts.
 
-                      For igloos/hutches adjacent to a permanent open-sided structure, this may mean adding solid sides to the outside pens.`
+                      For a permanent open-sided structure with igloos/hutches, this may mean adding permanent solid sides to the outside pens (hay bales are not sufficient).`
               }]
             }]
           },
