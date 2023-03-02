@@ -28,6 +28,7 @@ describe('Page: /enrichment', () => {
 		const response = await global.__SERVER__.inject(options)
 		expect(response.statusCode).toBe(200)
 		expect(response.payload).toContain('Will there be at least one enrichment item per pair or group of calves?')
+		expect(response.payload).toContain('Not including straw bedding and social contact')
 		expect(response.payload).toContain('Yes')
 		expect(response.payload).toContain('No')
 	})
