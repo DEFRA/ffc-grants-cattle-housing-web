@@ -1000,7 +1000,7 @@ const questionBank = {
           nextUrl: 'structure',
           preValidationKeys: [ 'isolateCalves' ],
           ineligibleContent: {
-            messageContent: `Each pair or group of calves must have at least one enrichment item (for example brushes or hanging balls).`,
+            messageContent: 'Each pair or group of calves must have at least one enrichment item (for example brushes or hanging balls).',
             insertText: {
               text: 'This does not include straw bedding and social contact.'
             },
