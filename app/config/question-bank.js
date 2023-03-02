@@ -990,6 +990,9 @@ const questionBank = {
           key: 'enrichment',
           order: 140,
           title: 'Will there be at least one enrichment item per pair or group of calves?',
+          hint: {
+            text: 'Not including straw bedding and social contact'
+          },
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           baseUrl: 'enrichment',
           url: 'enrichment',
@@ -997,16 +1000,13 @@ const questionBank = {
           nextUrl: 'structure',
           preValidationKeys: [ 'isolateCalves' ],
           ineligibleContent: {
-            messageContent: `Each pair or group of calves must have at least one enrichment item, such as:
-                            <ul class="govuk-list govuk-list--bullet">
-                              <li>brushes</li>
-                              <li>hanging balls</li>
-                            </ul>`,
+            messageContent: 'Each pair or group of calves must have at least one enrichment item (for example brushes or hanging balls).',
             insertText: {
-              text: 'This does not include straw bedding and social contact.' },
+              text: 'This does not include straw bedding and social contact.'
+            },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-              title: 'It cannot have slatted or hardcore flooring.'
+              title: 'See other grants you may be eligible for.'
             }
           },
           type: 'single-answer',
@@ -1015,12 +1015,8 @@ const questionBank = {
             values: [ {
               heading: 'Eligibility',
               content: [ {
-                para: `Each pair or group of calves must have at least one enrichment item, such as:`,
-                items: [
-                  'brushes',
-                  'hanging balls',
-                ],
-                additionalPara: `This does not include straw bedding and social contact.`,
+                para: `Each pair or group of calves must have at least one enrichment item (for example brushes or hanging balls).`,
+                additionalPara: `The grant will fund off-the-shelf items for cattle. Other enrichment items (for example cardboard boxes) are not funded.`,
               } ],
             } ]
           },
