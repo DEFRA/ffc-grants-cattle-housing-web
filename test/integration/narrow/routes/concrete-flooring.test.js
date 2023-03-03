@@ -72,7 +72,7 @@ describe('Page: /concrete-flooring', () => {
     it('page loads with correct back link', async () => {
         const options = {
         method: 'GET',
-        url: `${global.__URLPREFIX__}/isolate-calves`
+        url: `${global.__URLPREFIX__}/concrete-flooring`
         }
         const response = await global.__SERVER__.inject(options)
         expect(response.statusCode).toBe(200)
