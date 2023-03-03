@@ -833,6 +833,9 @@ const questionBank = {
           order: 110,
           title: 'Will calves over 7 days old be housed individually?',
           baseUrl: 'housed-individually',
+          url: 'housed-individually',
+          nextUrl: 'isolate-calves',
+          preValidationKeys: [],
           backUrlObject: {
             dependentQuestionYarKey: 'calfWeight',
             dependentAnswerKeysArray: [ 'calf-weight-A1' ],
@@ -843,9 +846,6 @@ const questionBank = {
               nonDependentUrl: 'living-space-5m2'
             }
           },
-          url: 'housed-individually',
-          nextUrl: 'isolate-calves',
-          preValidationKeys: [],
           ineligibleContent: {
             messageContent: `<p class="govuk-body">Calves can only be housed individually in exceptional circumstances (for example, illness or no other calves of similar age).</p>`,
             messageLink: {
@@ -897,9 +897,8 @@ const questionBank = {
           baseUrl: 'isolate-calves',
           url: 'isolate-calves',
           backUrl: 'housed-individually',
-          // nextUrl: 'concrete-flooring',
-          nextUrl: 'enrichment',  // TODO: change to 'concrete-flooring' once the page is ready
-          preValidationKeys: [ 'housedIndividually' ],
+          nextUrl: 'straw-bedding',
+          preValidationKeys: [],
           ineligibleContent: {
             messageContent: 'The building must have facilities to temporarily isolate sick calves (for example, a temporary pen erected in an existing pen to isolate a sick calf).',
             insertText: { text: 'Sick calves may need to be temporarily isolated to prevent spreading disease.' },
@@ -938,54 +937,98 @@ const questionBank = {
           ],
           yarKey: 'isolateCalves'
         },
-        // for later - Sal
-        // {
-        //   key: 'concrete-flooring',
-        //   order: 130,
-        //   title: 'Will the calf housing have solid concrete flooring?',
-        //   baseUrl: 'concrete-flooring',
-        //   url: 'concrete-flooring',
-        //   backUrl: 'isolate-calves',
-        //   nextUrl: 'estimated-grant',
-        //   preValidationKeys: [ 'isolateCalves' ],
-        //   ineligibleContent: {
-        //     messageContent: 'The calf housing must have solid concrete flooring.',
-        //     insertText: { text: 'It cannot have slatted or hardcore flooring.' },
-        //     messageLink: {
-        //       url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-        //       title: 'It cannot have slatted or hardcore flooring.'
-        //     }
-        //   },
-        //   type: 'single-answer',
-        //   minAnswerCount: 1,
-        //   sidebar: {
-        //     values: [ {
-        //       heading: 'Eligibility',
-        //       content: [ {
-        //         para: `The calf housing must have solid concrete flooring.`,
-        //         additionalPara: `It cannot have slatted or hardcore flooring.`,
-        //       } ],
-        //     } ]
-        //   },
-        //   validate: [
-        //     {
-        //       type: 'NOT_EMPTY',
-        //       error: 'Select the option that applies to you'
-        //     }
-        //   ],
-        //   answers: [
-        //     {
-        //       key: 'concrete-flooring-A1',
-        //       value: 'Yes',
-        //     },
-        //     {
-        //       key: 'concrete-flooring-A2',
-        //       value: 'No',
-        //       notEligible: true
-        //     }
-        //   ],
-        //   yarKey: 'concreteFlooring'
-        // },
+        {
+          key: 'straw-bedding',
+          order: 125,
+          title: 'Will the calf housing have straw bedding?',
+          baseUrl: 'straw-bedding',
+          url: 'straw-bedding',
+          backUrl: 'isolate-calves',
+          nextUrl: 'concrete-flooring',
+          preValidationKeys: [],
+          ineligibleContent: {
+            messageContent: 'The calf housing must have straw bedding (using cereal straw).',
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
+            }
+          },
+          type: 'single-answer',
+          minAnswerCount: 1,
+          sidebar: {
+            values: [ {
+              heading: 'Eligibility',
+              content: [ {
+                para: `The calf housing must have straw bedding (using cereal straw).`
+              } ],
+            } ]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if the calf housing will have straw bedding'
+            }
+          ],
+          answers: [
+            {
+              key: 'straw-bedding-A1',
+              value: 'Yes',
+            },
+            {
+              key: 'straw-bedding-A2',
+              value: 'No',
+              notEligible: true
+            }
+          ],
+          yarKey: 'strawBedding'
+        },
+        {
+          key: 'concrete-flooring',
+          order: 130,
+          title: 'Will the calf housing have solid concrete flooring?',
+          baseUrl: 'concrete-flooring',
+          url: 'concrete-flooring',
+          backUrl: 'straw-bedding',
+          nextUrl: 'enrichment',
+          preValidationKeys: [ 'strawBedding' ],
+          ineligibleContent: {
+            messageContent: 'The calf housing must have solid concrete flooring.',
+            insertText: { text: 'It cannot have slatted or hardcore flooring.' },
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
+            }
+          },
+          type: 'single-answer',
+          minAnswerCount: 1,
+          sidebar: {
+            values: [ {
+              heading: 'Eligibility',
+              content: [ {
+                para: `The calf housing must have solid concrete flooring.`,
+                additionalPara: `It cannot have slatted or hardcore flooring.`,
+              } ],
+            } ]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if the calf housing will have solid concrete flooring'
+            }
+          ],
+          answers: [
+            {
+              key: 'concrete-flooring-A1',
+              value: 'Yes',
+            },
+            {
+              key: 'concrete-flooring-A2',
+              value: 'No',
+              notEligible: true
+            }
+          ],
+          yarKey: 'concreteFlooring'
+        },
         {
           key: 'enrichment',
           order: 140,
@@ -996,9 +1039,9 @@ const questionBank = {
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           baseUrl: 'enrichment',
           url: 'enrichment',
-          backUrl: 'isolate-calves',
+          backUrl: 'concrete-flooring',
           nextUrl: 'structure',
-          preValidationKeys: [ 'isolateCalves' ],
+          preValidationKeys: [ 'concreteFlooring' ],
           ineligibleContent: {
             messageContent: 'Each pair or group of calves must have at least one enrichment item (for example brushes or hanging balls).',
             insertText: {
@@ -1049,7 +1092,7 @@ const questionBank = {
           pageTitle: '',
           url: 'structure',
           baseUrl: 'structure',
-          backUrl: 'isolate-calves',
+          backUrl: 'enrichment',
           nextUrl: 'drainage-slope',
           preValidationKeys: [],
           ineligibleContent: {

@@ -1,6 +1,6 @@
 const { crumbToken } = require('./test-helper')
 
-describe('Page: /enrichment', () => {
+describe('Page: /concrete-flooring', () => {
 	const varList = {
 		legalStatus: 'randomData',
 		projectType: 'fakeData',
@@ -8,7 +8,6 @@ describe('Page: /enrichment', () => {
 		tenancyLength: null,
 		calfWeight: '100kg or under',
 		housedIndividually: 'Yes',
-		isolateCalves: 'Yes',
 	}
 
 	jest.mock('../../../../app/helpers/session', () => ({
@@ -22,13 +21,12 @@ describe('Page: /enrichment', () => {
 	it('page loads successfully, with all the options', async () => {
 		const options = {
 			method: 'GET',
-			url: `${global.__URLPREFIX__}/enrichment`
+			url: `${global.__URLPREFIX__}/concrete-flooring`
 		}
 
 		const response = await global.__SERVER__.inject(options)
 		expect(response.statusCode).toBe(200)
-		expect(response.payload).toContain('Will there be at least one enrichment item per pair or group of calves?')
-		expect(response.payload).toContain('Not including straw bedding and social contact')
+		expect(response.payload).toContain('Will the calf housing have solid concrete flooring?')
 		expect(response.payload).toContain('Yes')
 		expect(response.payload).toContain('No')
 	})
@@ -36,48 +34,48 @@ describe('Page: /enrichment', () => {
 	it('no option selected -> show error message', async () => {
 		const postOptions = {
 			method: 'POST',
-			url: `${global.__URLPREFIX__}/enrichment`,
+			url: `${global.__URLPREFIX__}/concrete-flooring`,
 			headers: { cookie: 'crumb=' + crumbToken },
 			payload: { crumb: crumbToken }
 		}
 
 		const postResponse = await global.__SERVER__.inject(postOptions)
 		expect(postResponse.statusCode).toBe(200)
-		expect(postResponse.payload).toContain('Select yes if there will be at least one enrichment item per pair or group of calves')
+		expect(postResponse.payload).toContain('Select yes if the calf housing will have solid concrete flooring')
 	})
 
 	it('user selects ineligible option: \'No\' -> display ineligible page', async () => {
 		const postOptions = {
 			method: 'POST',
-			url: `${global.__URLPREFIX__}/enrichment`,
+			url: `${global.__URLPREFIX__}/concrete-flooring`,
 			headers: { cookie: 'crumb=' + crumbToken },
-			payload: { enrichment: 'No', crumb: crumbToken }
+			payload: { concreteFlooring: 'No', crumb: crumbToken }
 		}
 
 		const postResponse = await global.__SERVER__.inject(postOptions)
 		expect(postResponse.payload).toContain('You cannot apply for a grant from this scheme')
 	})
 
-	it('user selects eligible option -> store user response and redirect to /structure', async () => {  // TODO: change to the correct next route once the page is ready
+	it('user selects eligible option -> store user response and redirect to /enrichment', async () => {
 		const postOptions = {
 			method: 'POST',
-			url: `${global.__URLPREFIX__}/enrichment`,
+			url: `${global.__URLPREFIX__}/concrete-flooring`,
 			headers: { cookie: 'crumb=' + crumbToken },
-			payload: { enrichment: 'Yes',  crumb: crumbToken }
+			payload: { concreteFlooring: 'Yes', crumb: crumbToken }
 		}
 
 		const postResponse = await global.__SERVER__.inject(postOptions)
 		expect(postResponse.statusCode).toBe(302)
-		expect(postResponse.headers.location).toBe('structure')
+		expect(postResponse.headers.location).toBe('enrichment')
 	})
 
-	it('page loads with correct back link', async () => {
+    it('page loads with correct back link', async () => {
         const options = {
         method: 'GET',
-        url: `${global.__URLPREFIX__}/enrichment`
+        url: `${global.__URLPREFIX__}/concrete-flooring`
         }
         const response = await global.__SERVER__.inject(options)
         expect(response.statusCode).toBe(200)
-        expect(response.payload).toContain('<a href=\"concrete-flooring\" class=\"govuk-back-link\">Back</a>')
+        expect(response.payload).toContain('<a href=\"straw-bedding\" class=\"govuk-back-link\">Back</a>')
     })
 })
