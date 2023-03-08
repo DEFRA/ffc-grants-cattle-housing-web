@@ -659,15 +659,12 @@ const questionBank = {
           sidebar: {
             values: [ {
               heading: 'Eligibility',
-              content: [ {
-                para: `
-                      A calf is up to 6 months of age
-                      
-                      There must be a minimum floor area of:
-                      `,
-                items: [ '2m² per calf when largest calf is 100kg or under', '4m² per calf when largest calf is between 100kg and 150kg', '5m² per calf when largest calf is over 150kg' ]
-              } ]
-            } ]
+              content: [{
+                para: `There must be a minimum floor area of:`,
+                items: [ '2m² per calf when largest calf is 100kg or under', '4m² per calf when largest calf is between 100kg and 150kg', '5m² per calf when largest calf is over 150kg' ],
+                additionalPara: `A calf is up to 6 months of age.`
+              }]
+            },]
           },
           validate: [
             {
@@ -683,7 +680,7 @@ const questionBank = {
             },
             {
               key: 'calf-weight-A2',
-              value: 'Refurbishing or extending existing calf housing',
+              value: 'Between 100kg and 150kg',
               redirectUrl: 'living-space-4m2',
             },
             {
@@ -705,19 +702,27 @@ const questionBank = {
           preValidationKeys: [],
           type: 'single-answer',
           minAnswerCount: 1,
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           ineligibleContent: {
-            messageContent: `<p class="govuk-body">Calves weighing up to 100kg must have at least 3m² living space</p>`,
+            messageContent: `Calves weighing up to 100kg must have at least 3m² living space`,
+            insertText: { text: 'This includes the lying, standing and feeding/drinking areas.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you might be eligible for.'
-            }
+            },
+            additionalPara: `The required space-per-calf for each group or pair may change over time so the housing design should account for this.`
           },
           sidebar: {
             values: [ {
               heading: 'Eligibility',
-              content: [ {
-                para: `Calves weighing up to 100kg must have at least 3m² living space.`,
-              } ]
+              content: [{
+                para: `
+                Calves weighing up to 100kg must have at least 3m² living space.
+
+                This includes the lying, standing and feeding/drinking areas.
+
+                The required space-per-calf for each group or pair may change over time so the housing design should account for this.  `,
+              }]
             } ]
           },
           validate: [
@@ -741,7 +746,7 @@ const questionBank = {
         },
         {
           key: 'living-space-4m2',
-          order: 100,
+          order: 104,
           title: 'Will each calf have at least 4m² living space?',
           baseUrl: 'living-space-4m2',
           backUrl: 'calf-weight',
@@ -750,18 +755,26 @@ const questionBank = {
           preValidationKeys: [],
           type: 'single-answer',
           minAnswerCount: 1,
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           ineligibleContent: {
-            messageContent: `<p class="govuk-body">Calves weighing up to 100kg must have at least 4m² living space</p>`,
+            messageContent: `Calves weighing between 100kg and 150kg must have at least 4m² living space.`,
+            insertText: { text: 'This includes the lying, standing and feeding/drinking areas.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you might be eligible for.'
-            }
+            },
+            additionalPara: `The required space-per-calf for each group or pair may change over time so the housing design should account for this.`
           },
           sidebar: {
             values: [ {
               heading: 'Eligibility',
               content: [ {
-                para: `Calves weighing up to 100kg must have at least 4m² living space.`,
+                para: `
+                      Calves weighing between 100kg and 150kg must have at least 4m² living space.
+
+                      This includes the lying, standing and feeding/drinking areas.
+
+                      The required space-per-calf for each group or pair may change over time so the housing design should account for this.`,
               } ]
             } ]
           },
@@ -786,7 +799,7 @@ const questionBank = {
         },
         {
           key: 'living-space-5m2',
-          order: 100,
+          order: 107,
           title: 'Will each calf have at least 5m² living space?',
           baseUrl: 'living-space-5m2',
           backUrl: 'calf-weight',
@@ -795,18 +808,25 @@ const questionBank = {
           preValidationKeys: [],
           type: 'single-answer',
           minAnswerCount: 1,
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           ineligibleContent: {
-            messageContent: `<p class="govuk-body">Calves weighing up to 100kg must have at least 5m² living space</p>`,
+            messageContent: `Calves weighing over 150kg must have at least 5m² living space.`,
+            insertText: { text: 'This includes the lying, standing and feeding/drinking areas.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you might be eligible for.'
-            }
+            },
+            additionalPara: `The required space-per-calf for each group or pair may change over time so the housing design should account for this.`
           },
           sidebar: {
             values: [ {
               heading: 'Eligibility',
               content: [ {
-                para: `Calves weighing up to 100kg must have at least 5m² living space.`,
+                para: `Calves weighing over 150kg must have at least 5m² living space.
+
+                      This includes the lying, standing and feeding/drinking areas.
+                
+                      The required space-per-calf for each group or pair may change over time so the housing design should account for this.  `,
               } ]
             } ]
           },
