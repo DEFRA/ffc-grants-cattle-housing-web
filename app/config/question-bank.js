@@ -701,19 +701,27 @@ const questionBank = {
           preValidationKeys: [],
           type: 'single-answer',
           minAnswerCount: 1,
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           ineligibleContent: {
-            messageContent: `<p class="govuk-body">Calves weighing up to 100kg must have at least 3m² living space</p>`,
+            messageContent: `Calves weighing up to 100kg must have at least 3m² living space`,
+            insertText: { text: 'This includes the lying, standing and feeding/drinking areas.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you might be eligible for.'
-            }
+            },
+            additionalPara: `The required space-per-calf for each group or pair may change over time so the housing design should account for this.`
           },
           sidebar: {
             values: [ {
               heading: 'Eligibility',
-              content: [ {
-                para: `Calves weighing up to 100kg must have at least 3m² living space.`,
-              } ]
+              content: [{
+                para: `
+                Calves weighing up to 100kg must have at least 3m² living space.
+
+                This includes the lying, standing and feeding/drinking areas.
+
+                The required space-per-calf for each group or pair may change over time so the housing design should account for this.  `,
+              }]
             } ]
           },
           validate: [
@@ -746,6 +754,7 @@ const questionBank = {
           preValidationKeys: [],
           type: 'single-answer',
           minAnswerCount: 1,
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           ineligibleContent: {
             messageContent: `<p class="govuk-body">Calves weighing up to 100kg must have at least 4m² living space</p>`,
             messageLink: {
@@ -791,6 +800,7 @@ const questionBank = {
           preValidationKeys: [],
           type: 'single-answer',
           minAnswerCount: 1,
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           ineligibleContent: {
             messageContent: `<p class="govuk-body">Calves weighing up to 100kg must have at least 5m² living space</p>`,
             messageLink: {

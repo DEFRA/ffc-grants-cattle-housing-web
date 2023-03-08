@@ -38,7 +38,11 @@
       {% if warning %} 
         {{ govukWarningText(warning) }}
       {% endif %}
-
+      
+      {% if additionalPara %}
+          <p class="govuk-body">{{ additionalPara  | striptags(true) | escape | nl2br }}</p>
+      {% endif %}
+      
       {% if messageLink %}
         <p class="govuk-body"><a href="{{messageLink.url}}" class="govuk-link">{{messageLink.title}}</a></p>
       {% endif %}
