@@ -658,15 +658,12 @@ const questionBank = {
           sidebar: {
             values: [ {
               heading: 'Eligibility',
-              content: [ {
-                para: `
-                      A calf is up to 6 months of age
-                      
-                      There must be a minimum floor area of:
-                      `,
-                items: [ '2m² per calf when largest calf is 100kg or under', '4m² per calf when largest calf is between 100kg and 150kg', '5m² per calf when largest calf is over 150kg' ]
-              } ]
-            } ]
+              content: [{
+                para: `There must be a minimum floor area of:`,
+                items: [ '2m² per calf when largest calf is 100kg or under', '4m² per calf when largest calf is between 100kg and 150kg', '5m² per calf when largest calf is over 150kg' ],
+                additionalPara: `A calf is up to 6 months of age.`
+              }]
+            },]
           },
           validate: [
             {
@@ -682,7 +679,7 @@ const questionBank = {
             },
             {
               key: 'calf-weight-A2',
-              value: 'Refurbishing or extending existing calf housing',
+              value: 'Between 100kg and 150kg',
               redirectUrl: 'living-space-4m2',
             },
             {
