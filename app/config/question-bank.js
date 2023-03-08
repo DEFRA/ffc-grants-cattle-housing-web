@@ -10,6 +10,7 @@ const {
   PHONE_REGEX,
   EMAIL_REGEX,
   ONLY_TEXT_REGEX,
+  ONLY_DIGITS_REGEX,
   PLANNING_REFERENCE_NUMBER_REGEX,
   LETTERS_AND_NUMBERS_REGEX,
   TWO_NUMBERS_EIGHT_CHARS,
@@ -1673,10 +1674,58 @@ const questionBank = {
                   error: 'SBI number must have 9 characters, like 011115678'
                 }
               ]
+            },
+            {
+              yarKey: 'calvingSystem',
+              type: 'select',
+              title: 'Calving system (optional)',
+              classes: 'govuk-input--width-10',
+              label: {
+                text: 'Calving system (optional)',
+                classes: 'govuk-label'
+              },
+              answers: [
+                'Year round',
+                'Spring block',
+                'Autumn block',
+                'Other'
+              ],
+              // validate: [
+              //   {
+              //     type: 'NOT_EMPTY',
+              //     error: 'Select your calving system'
+              //   }
+              // ]
+            },
+            {
+              yarKey: 'calvesNumber',
+              type: 'text',
+              title: 'Number of calves (optional)',
+              classes: 'govuk-input--width-4',
+              label: {
+                text: 'Number of calves (optional)',
+                classes: 'govuk-label'
+              },
+              hint: {
+                text: 'Maximum number of calves housed annually after project'
+              },
+              validate: [
+                
+                {
+                  type: 'REGEX',
+                  regex: WHOLE_NUMBER_REGEX,
+                  error: [ 'Number of calves must be a whole number', 'Number of calves should only include numbers' ]
+                },
+                {
+                  type: 'MIN_MAX',
+                  min: 1,
+                  max: 9999999,
+                  error: 'Number must be between 1-9999999'
+                }
+              ]
             }
           ],
           yarKey: 'businessDetails'
-
         },
         {
           key: 'applying',
