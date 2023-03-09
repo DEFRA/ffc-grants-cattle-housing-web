@@ -1710,12 +1710,6 @@ const questionBank = {
                 'Autumn block',
                 'Other'
               ],
-              // validate: [
-              //   {
-              //     type: 'NOT_EMPTY',
-              //     error: 'Select your calving system'
-              //   }
-              // ]
             },
             {
               yarKey: 'calvesNumber',
