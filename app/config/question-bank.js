@@ -1109,9 +1109,6 @@ const questionBank = {
           key: 'structure',
           order: 130,
           title: 'What type of structure is your building?',
-          hint: {
-            text: 'Not including straw bedding and social contact'
-          },
           pageTitle: '',
           url: 'structure',
           baseUrl: 'structure',

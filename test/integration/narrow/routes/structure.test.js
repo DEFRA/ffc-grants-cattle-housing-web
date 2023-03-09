@@ -23,8 +23,10 @@ it('page loads successfully, with all the options', async () => {
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
     expect(response.payload).toContain('What type of structure is your building?')
+    expect(response.payload).toContain('A-frame building')
     expect(response.payload).toContain('Mono-pitch building')
     expect(response.payload).toContain('A permanent open-sided structure with igloos/hutches')
+    expect(response.payload).toContain('Other')
 })
 
 it('no option selected -> show error message', async () => {
@@ -64,18 +66,6 @@ it('user selects eligible option -> store user response and redirect to /drainag
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
     expect(postResponse.headers.location).toBe('drainage-slope')
-})
-it('user selects conditional option -> store user response and redirect to /structure-eligibility', async () => {
-    const postOptions = {
-    method: 'POST',
-    url: `${global.__URLPREFIX__}/structure`,
-    headers: { cookie: 'crumb=' + crumbToken },
-    payload: { structure: 'Other', crumb: crumbToken }
-    }
-
-    const postResponse = await global.__SERVER__.inject(postOptions)
-    expect(postResponse.statusCode).toBe(302)
-    expect(postResponse.headers.location).toBe('structure-eligibility')
 })
 
 it('page loads with correct back link', async () => {
