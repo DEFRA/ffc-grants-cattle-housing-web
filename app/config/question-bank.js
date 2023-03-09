@@ -1407,7 +1407,6 @@ const questionBank = {
           preValidationKeys: [],
           ineligibleContent: {
             messageContent: 'The building have fitted lighting of at least 50 lux.',
-            insertText: { text: 'For igloos/hutches adjacent to a permanent open-sided structure, this may mean adding solid sides to the outside pens.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
