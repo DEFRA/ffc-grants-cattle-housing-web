@@ -1013,6 +1013,7 @@ const questionBank = {
           backUrl: 'straw-bedding',
           nextUrl: 'enrichment',
           preValidationKeys: [ 'strawBedding' ],
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           ineligibleContent: {
             messageContent: 'The calf housing must have solid concrete flooring.',
             insertText: { text: 'It cannot have slatted or hardcore flooring.' },
