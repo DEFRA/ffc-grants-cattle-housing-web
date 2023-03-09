@@ -1135,13 +1135,9 @@ const questionBank = {
             values: [
               {
                 heading: 'Eligibility',
-                content: [ {
-                  para: `All buildings must be permanent structures.`,
-                  items: [
-                    'brushes',
-                    'hanging balls'
-                  ]
-                } ]
+                content: [{
+                  para: `All buildings must be permanent structures.`
+                }]
               }
             ]
           },
