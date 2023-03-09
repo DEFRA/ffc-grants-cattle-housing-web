@@ -1013,6 +1013,7 @@ const questionBank = {
           backUrl: 'straw-bedding',
           nextUrl: 'enrichment',
           preValidationKeys: [ 'strawBedding' ],
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           ineligibleContent: {
             messageContent: 'The calf housing must have solid concrete flooring.',
             insertText: { text: 'It cannot have slatted or hardcore flooring.' },
@@ -1108,9 +1109,6 @@ const questionBank = {
           key: 'structure',
           order: 130,
           title: 'What type of structure is your building?',
-          hint: {
-            text: 'Not including straw bedding and social contact'
-          },
           pageTitle: '',
           url: 'structure',
           baseUrl: 'structure',
@@ -1137,13 +1135,9 @@ const questionBank = {
             values: [
               {
                 heading: 'Eligibility',
-                content: [ {
-                  para: `All buildings must be permanent structures.`,
-                  items: [
-                    'brushes',
-                    'hanging balls'
-                  ]
-                } ]
+                content: [{
+                  para: `All buildings must be permanent structures.`
+                }]
               }
             ]
           },
@@ -1338,15 +1332,14 @@ const questionBank = {
           hint: {
             html: `<div class:"govuk-hint">
             The building must have:</br></br>
-            <li>a minimum and maximum thermometer</li>
-            <li>a humidity sensor</li>
+            <li>access to a water supplyr</li>
             <li>at least 2 IP66 sockets in the building</li>
-            <li>access to a water supply</li>
+            <li>temperature and humidity data loggers (capable of autonomously recording temperature/humidity over a defined period and storing data to view later)</li>
             </div>`
           },
           pageTitle: '',
           backUrl: 'draught-protection',
-          nextUrl: 'estimated-grant',
+          nextUrl: 'lighting',
           url: 'additional-items',
           baseUrl: 'additional-items',
           preValidationKeys: [],
@@ -1357,10 +1350,9 @@ const questionBank = {
                 content: [ {
                   para: `The building must have:`,
                   items: [
-                    'a minimum and maximum thermometer',
-                    'a humidity sensor',
+                    'access to a water supply',
                     'at least 2 IP66 sockets in the building',
-                    'access to a water supply'
+                    'temperature and humidity data loggers (capable of autonomously recording temperature/humidity over a defined period and storing data to view later)'
                   ]
                 } ]
               }
@@ -1370,10 +1362,9 @@ const questionBank = {
             messageContent: `<p class="govuk-body">The building must have:</p>
             <div class="govuk-list govuk-list--bullet">
                   <ul>
-                    <li>a minimum and maximum thermometer</li>
-                    <li>a humidity sensor</li>
+                    <li>access to a water supplyr</li>
                     <li>at least 2 IP66 sockets in the building</li>
-                    <li>access to a water supply</li>
+                    <li>temperature and humidity data loggers (capable of autonomously recording temperature/humidity over a defined period and storing data to view later)</li>
                   </ul>
             </div>`,
             messageLink: {
@@ -1402,6 +1393,55 @@ const questionBank = {
             },
           ],
           yarKey: 'additionalItems'
+        },
+        {
+          key: 'lighting',
+          order: 170,
+          title: 'Will the building have fitted lighting of at least 50 lux?',
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
+          pageTitle: '',
+          backUrl: 'additional-items',
+          nextUrl: 'estimated-grant',
+          url: 'lighting',
+          baseUrl: 'lighting',
+          preValidationKeys: [],
+          ineligibleContent: {
+            messageContent: 'The building have fitted lighting of at least 50 lux.',
+            insertText: { text: 'For igloos/hutches adjacent to a permanent open-sided structure, this may mean adding solid sides to the outside pens.' },
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
+            }
+          },
+          fundingPriorities: '',
+          type: 'single-answer',
+          minAnswerCount: 1,
+          sidebar: {
+            values: [ {
+              heading: 'Eligibility',
+              content: [{
+                para: `The building have fitted lighting of at least 50 lux.`
+              }]
+            }]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if the building will have fitted lighting of at least 50 lux'
+            }
+          ],
+          answers: [
+            {
+              key: 'lighting-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'lighting-A2',
+              value: 'No',
+              notEligible: true
+            }
+          ],
+          yarKey: 'lighting'
         },
         {
           key: 'estimated-grant',

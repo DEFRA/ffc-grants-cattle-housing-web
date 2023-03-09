@@ -80,8 +80,8 @@ it('page loads with correct back link when calf-weight  page`s answer is 100kg o
     expect(response.payload).toContain('<a href=\"living-space-3m2\" class=\"govuk-back-link\">Back</a>')
 })
 
-it('page loads with correct back link when calf-weight  page`s answer is 100kg or under', async () => {
-    varList.calfWeight = 'Refurbishing or extending existing calf housing'
+it('page loads with correct back link when calf-weight  page`s answer is Between 100kg and 150kg', async () => {
+    varList.calfWeight = 'Between 100kg and 150kg'
     const options = {
     method: 'GET',
     url: `${global.__URLPREFIX__}/housed-individually`
@@ -90,7 +90,7 @@ it('page loads with correct back link when calf-weight  page`s answer is 100kg o
     expect(response.statusCode).toBe(200)
     expect(response.payload).toContain('<a href=\"living-space-4m2\" class=\"govuk-back-link\">Back</a>')
 })
-it('page loads with correct back link when calf-weight  page`s answer is 100kg or under', async () => {
+it('page loads with correct back link when calf-weight  page`s answer is Over 150kg', async () => {
     varList.calfWeight = 'Over 150kg'
     const options = {
     method: 'GET',
