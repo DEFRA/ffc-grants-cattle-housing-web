@@ -1730,11 +1730,15 @@ const questionBank = {
                 text: 'Maximum number of calves housed annually after project'
               },
               validate: [
-                
+                {
+                  type: 'REGEX',
+                  regex: ONLY_DIGITS_REGEX,
+                  error: 'Number of calves should only include numbers'
+                },
                 {
                   type: 'REGEX',
                   regex: WHOLE_NUMBER_REGEX,
-                  error: [ 'Number of calves must be a whole number', 'Number of calves should only include numbers' ]
+                  error: 'Number of calves must be a whole number', 
                 },
                 {
                   type: 'MIN_MAX',
