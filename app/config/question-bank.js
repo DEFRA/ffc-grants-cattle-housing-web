@@ -659,12 +659,12 @@ const questionBank = {
           sidebar: {
             values: [ {
               heading: 'Eligibility',
-              content: [{
+              content: [ {
                 para: `There must be a minimum floor area of:`,
                 items: [ '2m² per calf when largest calf is 100kg or under', '4m² per calf when largest calf is between 100kg and 150kg', '5m² per calf when largest calf is over 150kg' ],
                 additionalPara: `A calf is up to 6 months of age.`
-              }]
-            },]
+              } ]
+            }, ]
           },
           validate: [
             {
@@ -715,14 +715,14 @@ const questionBank = {
           sidebar: {
             values: [ {
               heading: 'Eligibility',
-              content: [{
+              content: [ {
                 para: `
                 Calves weighing up to 100kg must have at least 3m² living space.
 
                 This includes the lying, standing and feeding/drinking areas.
 
                 The required space-per-calf for each group or pair may change over time so the housing design should account for this.  `,
-              }]
+              } ]
             } ]
           },
           validate: [
@@ -962,6 +962,7 @@ const questionBank = {
           key: 'straw-bedding',
           order: 125,
           title: 'Will the calf housing have straw bedding?',
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           baseUrl: 'straw-bedding',
           url: 'straw-bedding',
           backUrl: 'isolate-calves',
@@ -1117,7 +1118,7 @@ const questionBank = {
           nextUrl: 'drainage-slope',
           preValidationKeys: [],
           ineligibleContent: {
-          messageContent: `<p class="govuk-body">Each pair or group of calves must have at least one enrichment item, such as:</p>
+            messageContent: `<p class="govuk-body">Each pair or group of calves must have at least one enrichment item, such as:</p>
           <div class="govuk-list govuk-list--bullet">
                 <ul>
                   <li>brushes</li>
@@ -1125,27 +1126,27 @@ const questionBank = {
                 </ul>
           </div>
         <div class="govuk-inset-text">This does not include straw bedding and social contact.</div>`,
-          messageLink: {
-            url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-            title: 'See other grants you may be eligible for.'
-          }
-        },
-        type: 'single-answer',
-        minAnswerCount: 1,
-        sidebar: {
-          values: [
-            {
-              heading: 'Eligibility',
-              content: [{
-                para: `All buildings must be permanent structures.`,
-                items: [
-                  'brushes',
-                  'hanging balls'
-                ]
-              }]
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
             }
-          ]
-        },
+          },
+          type: 'single-answer',
+          minAnswerCount: 1,
+          sidebar: {
+            values: [
+              {
+                heading: 'Eligibility',
+                content: [ {
+                  para: `All buildings must be permanent structures.`,
+                  items: [
+                    'brushes',
+                    'hanging balls'
+                  ]
+                } ]
+              }
+            ]
+          },
           validate: [
             {
               type: 'NOT_EMPTY',
@@ -1168,7 +1169,7 @@ const questionBank = {
             {
               key: 'structure-A4',
               value: 'Other',
-              redirectUrl:'structure-eligibility'
+              redirectUrl: 'structure-eligibility'
             }
           ],
           yarKey: 'structure'
@@ -1232,7 +1233,7 @@ const questionBank = {
           pageTitle: '',
           backUrlObject: {
             dependentQuestionYarKey: 'structure',
-            dependentAnswerKeysArray: [ 'structure-A1','structure-A2','structure-A3' ],
+            dependentAnswerKeysArray: [ 'structure-A1', 'structure-A2', 'structure-A3' ],
             urlOptions: {
               thenUrl: 'structure',
               elseUrl: 'structure-eligibility'
@@ -1253,12 +1254,12 @@ const questionBank = {
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
-            values: [{
+            values: [ {
               heading: 'Eligibility',
-              content: [{
+              content: [ {
                 para: `The building must have sloped flooring with a 1 in 20 (5%) gradient in bedded areas that slopes towards a drain or drainage channel.`
-              }]
-            }]
+              } ]
+            } ]
           },
           validate: [
             {
@@ -1302,14 +1303,14 @@ const questionBank = {
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
-            values: [{
+            values: [ {
               heading: 'Eligibility',
-              content: [{
+              content: [ {
                 para: `All projects must have permanent external calf-height solid walls/barriers to keep out drafts.
 
                       For a permanent open-sided structure with igloos/hutches, this may mean adding permanent solid sides to the outside pens (hay bales are not sufficient).`
-              }]
-            }]
+              } ]
+            } ]
           },
           validate: [
             {
