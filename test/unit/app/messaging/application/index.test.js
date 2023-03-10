@@ -15,7 +15,7 @@ describe('application messaging tests', () => {
     const receiveMessageRes = { id: 1 }
     receiveMessage.mockResolvedValue(receiveMessageRes)
 
-    const message = await getUserScore({country: 'Yes', testingValue: 'no'}, sessionId)
+    const message = await getUserScore({inEngland: 'Yes', testingValue: 'no'}, sessionId)
 
     expect(message).toEqual(receiveMessageRes)
     expect(receiveMessage).toHaveBeenCalledTimes(1)
@@ -33,15 +33,15 @@ describe('application messaging tests', () => {
               {
                 input: [
                   {
-                    key: 'country-A1',
+                    key: 'inEngland-A1',
                     value: 'Yes'
                   }
                 ],
-                key: 'country',
+                key: 'inEngland',
                 title: 'Is the planned project in England?'
               }
             ],
-            key: 'country',
+            key: 'inEngland',
             rating: {
               band: null,
               importance: null,
@@ -51,7 +51,7 @@ describe('application messaging tests', () => {
         ],
       },
       grantScheme: {
-      key: 'ADDVAL01',
+      key: 'CALF01',
       name: 'cattle-housing',
     },
    }, fetchScoreRequestMsgType, scoreRequestQueue, { sessionId })

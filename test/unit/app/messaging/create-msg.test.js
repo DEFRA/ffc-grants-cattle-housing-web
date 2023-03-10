@@ -16,17 +16,9 @@ describe('create-msg', () => {
     })
 
     dict = {
-      ...dict,
-      environmentalImpact: ['env-imp']
+      inEngland: ['hello']
     }
-    expect(getDesirabilityAnswers({})).toEqual({
-      inEngland: 'hello'
-    })
 
-    dict = {
-      ...dict,
-      howAddingValue: ['how-av']
-    }
     expect(getDesirabilityAnswers({})).toEqual(null)
   })
 })

@@ -22,8 +22,8 @@ function getDesirabilityAnswers (request) {
     
     const val = {
       inEngland: getYarValue(request, 'inEngland'),
-      
     }
+    
     const result = desirabilityAnswersSchema.validate(val, {
       abortEarly: false
     })
