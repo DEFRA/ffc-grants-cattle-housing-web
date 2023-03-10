@@ -95,4 +95,4 @@ ingress:
   class: nginx
   endpoint: ffc-grants-frontend
   server: example.com
-  path: /upgrading-cattle-housing
+  path: /upgrading-calf-housing

@@ -10,7 +10,7 @@ describe('urls.js', () => {
 
     let urlObject = null
     let secBtn = 'Back to score'
-    expect(getUrl(urlObject, 'mock-url', {}, secBtn, '')).toEqual('/upgrading-cattle-housing/score')
+    expect(getUrl(urlObject, 'mock-url', {}, secBtn, '')).toEqual('/upgrading-calf-housing/score')
 
     secBtn = ''
     expect(getUrl(urlObject, 'mock-url', {}, secBtn, '')).toEqual('mock-url')
