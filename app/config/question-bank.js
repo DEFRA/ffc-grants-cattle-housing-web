@@ -661,8 +661,7 @@ const questionBank = {
               heading: 'Eligibility',
               content: [ {
                 para: `There must be a minimum floor area of:`,
-                items: [ '2m² per calf when largest calf is 100kg or under', '4m² per calf when largest calf is between 100kg and 150kg', '5m² per calf when largest calf is over 150kg' ],
-                additionalPara: `A calf is up to 6 months of age.`
+                items: [ '3m² per calf when largest calf is 100kg or under', '4m² per calf when largest calf is between 100kg and 150kg', '5m² per calf when largest calf is over 150kg' ]
               } ]
             }, ]
           },
@@ -1406,7 +1405,7 @@ const questionBank = {
           baseUrl: 'lighting',
           preValidationKeys: [],
           ineligibleContent: {
-            messageContent: 'The building have fitted lighting of at least 50 lux.',
+            messageContent: 'The building must have fitted lighting of at least 50 lux.',
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -1419,7 +1418,7 @@ const questionBank = {
             values: [ {
               heading: 'Eligibility',
               content: [{
-                para: `The building have fitted lighting of at least 50 lux.`
+                para: `The building must have fitted lighting of at least 50 lux.`
               }]
             }]
           },
