@@ -1,5 +1,3 @@
-const { expectationFailed } = require('@hapi/wreck/node_modules/@hapi/boom')
-
 const { sendDesirabilitySubmitted } = require('../../../../../app/messaging/senders')
 jest.mock('../../../../../app/messaging/senders')
 
