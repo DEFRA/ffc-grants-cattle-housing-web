@@ -39,10 +39,10 @@ module.exports = [{
       console.log('Sending session message .....')
       const desirabilityAnswers = getDesirabilityAnswers(request)
 
-      const result = await getUserScore(desirabilityAnswers, request.yar.id)
-      console.log(result, '[THIS IS RESULT WE GOT BACK]')
-      // call the function in messaging/score
-      request.yar.set('standardisedCostObject', result)
+      // const result = await getUserScore(desirabilityAnswers, request.yar.id)
+      // console.log(result, '[THIS IS RESULT WE GOT BACK]')
+      // // call the function in messaging/score
+      // request.yar.set('standardisedCostObject', result)
 
       // temp removal from createModel: in catagories: result.data.desirability.catagories
       return h.view(viewTemplate, createModel({ catagories: [] }, request))

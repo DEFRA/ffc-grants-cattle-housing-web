@@ -1,4 +1,4 @@
 module.exports = [{
-  key: 'ADDVAL01',
+  key: 'CALF01',
   name: 'cattle-housing'
 }]

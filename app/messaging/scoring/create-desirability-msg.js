@@ -1,6 +1,6 @@
 const grantSchemeConfig = require('./config/grant-scheme')
-const { desirabilityQuestions: questionContent } = require('./content-mapping')
-const desirabilityQuestions = ['country']
+const { desirabilityInputQuestionMapping, desirabilityQuestions: questionContent } = require('./content-mapping')
+const desirabilityQuestions = ['inEngland']
 function getUserAnswer(answers, userInput) {
     if (answers) {
         return [userInput].flat().map(answer =>
@@ -12,12 +12,13 @@ function getUserAnswer(answers, userInput) {
 
 function getDesirabilityDetails(questionKey, userInput) {
     const content = questionContent[questionKey]
+
     return {
-        key: content[0].key,
+        key: questionKey,
         answers: content.map(({ key, title, answers }) => ({
             key,
             title,
-            input: getUserAnswer(answers, userInput[questionKey])
+            input: getUserAnswer(answers, userInput[desirabilityInputQuestionMapping[key]])
         })),
         rating: {
             score: null,
@@ -28,22 +29,13 @@ function getDesirabilityDetails(questionKey, userInput) {
 }
 
 function desirability(userInput) {
-    const key = 'ADDVAL01'
-    const validKeys = desirabilityQuestions
-    const grantScheme = grantSchemeConfig.filter(g => g.key === key)[0]
-    const answeredQuestions = []
-    validKeys.forEach(questionKey => {
-        if (userInput[questionKey]) {
-            answeredQuestions.push(getDesirabilityDetails(questionKey, userInput))
-        }
-    })
     return {
         grantScheme: {
-            key: grantScheme.key,
-            name: grantScheme.name
+            key: grantSchemeConfig.key,
+            name: grantSchemeConfig.name
         },
         desirability: {
-            questions: answeredQuestions,
+            questions: desirabilityQuestions.map(questionKey => getDesirabilityDetails(questionKey, userInput)),
             overallRating: {
                 score: null,
                 band: null
@@ -53,5 +45,3 @@ function desirability(userInput) {
 }
 
 module.exports = desirability
-
-// WILL NEED TO UPDATE TO BE CATTLE HOUSING, AND IN JSON FILE IN CONTENT-MAPPING TOO
