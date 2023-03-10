@@ -31,8 +31,8 @@ function getDesirabilityDetails(questionKey, userInput) {
 function desirability(userInput) {
     return {
         grantScheme: {
-            key: grantSchemeConfig.key,
-            name: grantSchemeConfig.name
+            key: grantSchemeConfig[0].key,
+            name: grantSchemeConfig[0].name
         },
         desirability: {
             questions: desirabilityQuestions.map(questionKey => getDesirabilityDetails(questionKey, userInput)),

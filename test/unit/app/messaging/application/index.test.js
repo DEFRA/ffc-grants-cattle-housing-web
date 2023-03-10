@@ -15,7 +15,7 @@ describe('application messaging tests', () => {
     const receiveMessageRes = { id: 1 }
     receiveMessage.mockResolvedValue(receiveMessageRes)
 
-    const message = await getUserScore({inEngland: 'Yes', testingValue: 'no'}, sessionId)
+    const message = await getUserScore({inEngland: 'Yes'}, sessionId)
 
     expect(message).toEqual(receiveMessageRes)
     expect(receiveMessage).toHaveBeenCalledTimes(1)
