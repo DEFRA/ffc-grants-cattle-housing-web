@@ -28,7 +28,7 @@ module.exports = [{
     }
   },
   handler: async (request, h, _err) => {
-    const preValidationKeys = ['cover']
+    const preValidationKeys = ['project']
     const isRedirect = guardPage(request, preValidationKeys, null)
 
     if (isRedirect) {
@@ -44,7 +44,8 @@ module.exports = [{
       // call the function in messaging/score
       request.yar.set('standardisedCostObject', result)
 
-      return h.view(viewTemplate, createModel({ catagories: result.data.desirability.catagories }, request))
+      // temp removal from createModel: in catagories: result.data.desirability.catagories
+      return h.view(viewTemplate, createModel({ catagories: [] }, request))
     } catch (error) {
       console.log(error)
       return h.view('500').takeover()

@@ -37,14 +37,14 @@ describe('Server test', () => {
     expect(server).toBeDefined();
     expect(server.info).toEqual(mockedInfo);
 
-    expect(mockRegisterSpy.mock.calls[0][0].plugin.pkg._id).toContain("@hapi/inert");
-    expect(mockRegisterSpy.mock.calls[1][0].plugin.pkg._id).toContain("@hapi/vision");
+    expect(mockRegisterSpy.mock.calls[0][0].plugin.pkg.name).toContain("@hapi/inert");
+    expect(mockRegisterSpy.mock.calls[1][0].plugin.pkg.name).toContain("@hapi/vision");
     expect(mockRegisterSpy.mock.calls[2][0].plugin.name).toBe("cookies");
     expect(mockRegisterSpy.mock.calls[3][0].plugin.name).toBe("error-pages");
     expect(mockRegisterSpy.mock.calls[4][0].plugin.plugin.name).toBe("header");
     expect(mockRegisterSpy.mock.calls[5][0].plugin.plugin.name).toBe("Gapi");
-    expect(mockRegisterSpy.mock.calls[6][0][0].plugin.plugin.pkg._id).toContain("@hapi/yar");
-    expect(mockRegisterSpy.mock.calls[6][0][1].plugin.plugin.pkg._id).toContain("@hapi/crumb");
+    expect(mockRegisterSpy.mock.calls[6][0][0].plugin.plugin.pkg.name).toContain("@hapi/yar");
+    expect(mockRegisterSpy.mock.calls[6][0][1].plugin.plugin.pkg.name).toContain("@hapi/crumb");
     expect(mockRegisterSpy.mock.calls[7][0].plugin.name).toBe("auth");
     authConfig.enabled = ogEnabled;
   })

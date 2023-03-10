@@ -17,4 +17,9 @@ ignore:
     - ffc-messaging > @azure/identity > @azure/msal-node > axios:
         reason: no update available
         expires: '2021-10-02T10:22:20.986Z'
+  SNYK-JS-FASTXMLPARSER-3325616:
+    - '*':
+        reason: None Given
+        expires: 2023-03-22T11:41:56.464Z
+        created: 2023-02-20T11:41:56.471Z
 patch: {}

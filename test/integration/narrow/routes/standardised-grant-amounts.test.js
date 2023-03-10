@@ -105,7 +105,7 @@ describe('Standardised Cost test', () => {
     expect(response.statusCode).toBe(302)
   })
 
-  test('page redirects to start if no cover', async () => {
+  test('page redirects to start if no project', async () => {
     const options = {
       method: 'GET',
       url: `${global.__URLPREFIX__}/standardised-grant-amounts`
@@ -115,7 +115,7 @@ describe('Standardised Cost test', () => {
 
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(302)
-    expect(response.headers.location).toBe('/upgrading-cattle-housing/start')
+    expect(response.headers.location).toBe('/upgrading-calf-housing/start')
   })
 
   // Fails in jenkins
@@ -136,6 +136,6 @@ describe('Standardised Cost test', () => {
     })
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('<a href=\"/upgrading-cattle-housing/estimated-grant\" class=\"govuk-back-link\" id=\"linkBack\">Back</a>')
+    expect(response.payload).toContain('<a href=\"/upgrading-calf-housing/estimated-grant\" class=\"govuk-back-link\" id=\"linkBack\">Back</a>')
   })
 })

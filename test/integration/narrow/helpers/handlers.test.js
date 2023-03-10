@@ -35,7 +35,7 @@ describe('Get & Post Handlers', () => {
     mockH = { redirect: jest.fn() }
 
     await getHandler(question)({}, mockH)
-    expect(mockH.redirect).toHaveBeenCalledWith('/upgrading-cattle-housing/start')
+    expect(mockH.redirect).toHaveBeenCalledWith('/upgrading-calf-housing/start')
   })
 
   test('is eligible if calculated grant = min grant - whether grant is capped or not', async () => {
@@ -48,6 +48,6 @@ describe('Get & Post Handlers', () => {
     mockH = { redirect: jest.fn() }
 
     await getHandler(question)({}, mockH)
-    expect(mockH.redirect).toHaveBeenCalledWith('/upgrading-cattle-housing/start')
+    expect(mockH.redirect).toHaveBeenCalledWith('/upgrading-calf-housing/start')
   })
 })
