@@ -1,6 +1,8 @@
-const { getStandardisedCosts } = require('../messaging/application')
+const { getUserScore } = require('../messaging/application')
 const { startPageUrl } = require('../config/server')
 const { guardPage } = require('../helpers/page-guard')
+const { getDesirabilityAnswers } = require('./../messaging/create-msg')
+
 
 const urlPrefix = require('../config/server').urlPrefix
 const viewTemplate = 'standardised-grant-amounts'
@@ -35,9 +37,11 @@ module.exports = [{
 
     try {
       console.log('Sending session message .....')
+      const desirabilityAnswers = getDesirabilityAnswers(request)
 
-      // const result = await getStandardisedCosts(request.yar.id)
+      // const result = await getUserScore(desirabilityAnswers, request.yar.id)
       // console.log(result, '[THIS IS RESULT WE GOT BACK]')
+      // // call the function in messaging/score
       // request.yar.set('standardisedCostObject', result)
 
       // temp removal from createModel: in catagories: result.data.desirability.catagories
