@@ -99,8 +99,8 @@ const questionBank = {
               <li>building new calf housing</li>
               <li>refurbishing or extending existing calf housing</li>
             </ul>
-            <div class="govuk-inset-text">A calf is up to 6 months of age.</div>
             `,
+            insertText: {text: 'A calf is up to 6 months of age.'},
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -661,8 +661,7 @@ const questionBank = {
               heading: 'Eligibility',
               content: [ {
                 para: `There must be a minimum floor area of:`,
-                items: [ '2m² per calf when largest calf is 100kg or under', '4m² per calf when largest calf is between 100kg and 150kg', '5m² per calf when largest calf is over 150kg' ],
-                additionalPara: `A calf is up to 6 months of age.`
+                items: [ '3m² per calf when largest calf is 100kg or under', '4m² per calf when largest calf is between 100kg and 150kg', '5m² per calf when largest calf is over 150kg' ]
               } ]
             }, ]
           },
@@ -1070,6 +1069,7 @@ const questionBank = {
             insertText: {
               text: 'This does not include straw bedding and social contact.'
             },
+            additionalPara: `The grant will fund off-the-shelf items for cattle. Other enrichment items (for example cardboard boxes) are not funded.`,
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -1117,13 +1117,13 @@ const questionBank = {
           preValidationKeys: [],
           ineligibleContent: {
             messageContent: `<p class="govuk-body">Each pair or group of calves must have at least one enrichment item, such as:</p>
-          <div class="govuk-list govuk-list--bullet">
-                <ul>
-                  <li>brushes</li>
-                  <li>hanging balls</li>
-                </ul>
-          </div>
-        <div class="govuk-inset-text">This does not include straw bedding and social contact.</div>`,
+                              <div class="govuk-list govuk-list--bullet">
+                                    <ul>
+                                      <li>brushes</li>
+                                      <li>hanging balls</li>
+                                    </ul>
+                              </div>`,
+            insertText: { text: 'This does not include straw bedding and social contact.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -1135,9 +1135,9 @@ const questionBank = {
             values: [
               {
                 heading: 'Eligibility',
-                content: [{
-                  para: `All buildings must be permanent structures.`
-                }]
+                content: [ {
+                  para: `All buildings must be permanent structures.`,
+                } ]
               }
             ]
           },
@@ -1406,7 +1406,7 @@ const questionBank = {
           baseUrl: 'lighting',
           preValidationKeys: [],
           ineligibleContent: {
-            messageContent: 'The building have fitted lighting of at least 50 lux.',
+            messageContent: 'The building must have fitted lighting of at least 50 lux.',
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -1418,10 +1418,10 @@ const questionBank = {
           sidebar: {
             values: [ {
               heading: 'Eligibility',
-              content: [{
-                para: `The building have fitted lighting of at least 50 lux.`
-              }]
-            }]
+              content: [ {
+                para: `The building must have fitted lighting of at least 50 lux.`
+              } ]
+            } ]
           },
           validate: [
             {
@@ -1772,7 +1772,7 @@ const questionBank = {
                 {
                   type: 'REGEX',
                   regex: WHOLE_NUMBER_REGEX,
-                  error: 'Number of calves must be a whole number', 
+                  error: 'Number of calves must be a whole number',
                 },
                 {
                   type: 'MIN_MAX',
