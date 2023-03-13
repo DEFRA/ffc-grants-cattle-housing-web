@@ -1499,7 +1499,7 @@ const questionBank = {
           url: 'remaining-costs',
           baseUrl: 'remaining-costs',
           backUrl: 'standardised-grant-amounts',
-          nextUrl: 'result-page',
+          nextUrl: 'environmental-impact',
           preValidationKeys: [],
           ineligibleContent: {
             messageContent: `<p class="govuk-body">You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.</p>
@@ -1559,12 +1559,97 @@ const questionBank = {
         },
 
         {
+          key: 'environmental-impact',
+          order: 10,
+          title: 'How will the building minimise environmental impact?',
+          hint: {
+            text: 'Select all that apply'
+          },
+          pageTitle: '',
+          url: 'environmental-impact',
+          baseUrl: 'environmental-impact',
+          backUrl: 'remaining-costs',
+          // backurl object could be commented in or amended when the pages are ready.
+          // backUrlObject: {
+          //   dependentQuestionYarKey: 'calfWeight',
+          //   dependentAnswerKeysArray: [ 'calf-weight-A1' ],
+          //   nonDependentAnswerKeysArray: [ 'calf-weight-A3' ],
+          //   urlOptions: {
+          //     thenUrl: 'floor-space-under100kg',
+          //     elseUrl: 'floor-space-100kg-150kg',
+          //     nonDependentUrl: 'floor-space-over150kg'
+          //   }
+          // },
+          nextUrl: 'result-page',
+          // nextUrl: 'sustainable-materials',
+          ineligibleContent: {
+            messageContent: `
+            This grant is for:</br>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>building new calf housing</li>
+              <li>refurbishing or extending existing calf housing</li>
+            </ul>
+            <div class="govuk-inset-text">A calf is up to 6 months of age.</div>
+            `,
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
+            }
+          },
+          sidebar: {
+            values: [ {
+              heading: 'Funding priorities',
+              content: [ {
+                para: `RPA wants to fund buildings that enhance environmental sustainability and help meet government environmental targets.
+
+                      Solar PV panels are not funded through the grant but applicants intending to use them will get a higher score.`
+              } ]
+            } ]
+          },
+          fundingPriorities: '',
+          type: 'multi-answer',
+          minAnswerCount: 1,
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select how your building will minimise environmental impact'
+            },
+            {
+              type: 'STANDALONE_ANSWER',
+              error: 'You cannot select that combination of options',
+              standaloneObject: {
+                questionKey: 'environmental-impact',
+                answerKey: 'environmental-impact-A3'
+              }
+            }
+          ],
+          answers: [
+            {
+              key: 'environmental-impact-A1',
+              value: 'Solar PV panels on the roof of the building'
+            },
+            {
+              key: 'environmental-impact-A2',
+              value: 'Collect and store rainwater'
+            },
+            {
+              value: 'divider'
+            },
+            {
+              key: 'environmental-impact-A3',
+              value: 'None of the above',
+              notEligible: true
+            }
+          ],
+          yarKey: 'environmentalImpact'
+        },
+        {
           key: 'result-page',
           order: 156,
           title: 'Your results',
           url: 'result-page',
           baseUrl: 'result-page',
-          backUrl: 'remaining-costs',
+          backUrl: 'environmental-impact',
           nextUrl: 'business-details',
           preValidationKeys: [],
           maybeEligible: true,
