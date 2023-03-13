@@ -27,20 +27,6 @@ describe('Page: /potential-amount', () => {
     expect(response.payload).toContain(eligiblePageText)
   })
 
-  // it('page loads successfully, with all the inEligible options', async () => {
-  //   varList.calculatedGrant = 5000
-  //   varList.projectCost = 5000
-  //   const options = {
-  //     method: 'GET',
-  //     url: `${global.__URLPREFIX__}/potential-amount`
-  //   }
-
-  //   const response = await global.__SERVER__.inject(options)
-  //   expect(response.statusCode).toBe(200)
-  //   expect(response.payload).toContain('You cannot apply for a grant from this scheme')
-  //   expect(response.payload).toContain(inEligiblePageText)
-  // })
-
   it('should redirect to /remaining-costs when user press continue', async () => {
     const postOptions = {
       method: 'POST',
