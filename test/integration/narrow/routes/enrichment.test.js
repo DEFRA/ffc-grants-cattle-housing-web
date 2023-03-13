@@ -56,6 +56,9 @@ describe('Page: /enrichment', () => {
 
 		const postResponse = await global.__SERVER__.inject(postOptions)
 		expect(postResponse.payload).toContain('You cannot apply for a grant from this scheme')
+		expect(postResponse.payload).toContain('Each pair or group of calves must have at least one enrichment item (for example brushes or hanging balls).')
+		expect(postResponse.payload).toContain('This does not include straw bedding and social contact.')
+		expect(postResponse.payload).toContain('The grant will fund off-the-shelf items for cattle. Other enrichment items (for example cardboard boxes) are not funded.')
 	})
 
 	it('user selects eligible option -> store user response and redirect to /structure', async () => {  // TODO: change to the correct next route once the page is ready
