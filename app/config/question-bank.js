@@ -1607,20 +1607,6 @@ const questionBank = {
           backUrl: 'project-cost',
           nextUrl: 'remaining-costs',
           preValidationKeys: [],
-          // grantInfo: {
-          //   minGrant: MIN_GRANT,
-          //   maxGrant: MAX_GRANT,
-          //   grantPercentage: GRANT_PERCENTAGE,
-          //   cappedGrant: true
-          // },
-          // ineligibleContent: {
-          //   messageContent: 'You can only apply for a grant of up to 40% of the estimated costs.',
-          //   insertText: { text: 'The minimum grant you can apply for this project is £20,000 (40% of 50,000). The maximum grant is £500,000.' },
-          //   messageLink: {
-          //     url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-          //     title: 'See other grants you may be eligible for.'
-          //   }
-          // },
           maybeEligible: true,
           maybeEligibleContent: {
             messageHeader: 'Potential grant funding',
@@ -1633,23 +1619,26 @@ const questionBank = {
         {
           key: 'remaining-costs',
           order: 190,
-          title: 'Can you pay the remaining costs?',
+          title: 'Can you pay the remaining costs of £{{_remainingCost_}}?',
           pageTitle: '',
           url: 'remaining-costs',
           baseUrl: 'remaining-costs',
-          backUrl: 'standardised-grant-amounts',
+          backUrl: 'potential-amount',
           nextUrl: 'result-page',
           preValidationKeys: [],
           ineligibleContent: {
-            messageContent: `<p class="govuk-body">You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.</p>
-            <div class="govuk-list govuk-list--bullet">
-                  You can use:
-                  <ul>
+            messageContent: '<p class="govuk-body">You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.</p>',
+            insertText: {
+              html: `
+                  <p>You can use:</p>
+                  <ul class="govuk-list--bullet">
                     <li>loans</li>
                     <li>overdrafts</li>
                     <li>the Basic Payment Scheme</li>
+                    <li>agri-environment schemes such as the Countryside Stewardship Scheme</li>
                   </ul>
-            </div>`,
+            </span>`
+            },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -1670,7 +1659,8 @@ const questionBank = {
                   items: [
                     'loans',
                     'overdrafts',
-                    'the Basic Payment Scheme'
+                    'the Basic Payment Scheme',
+                    'agri-environment schemes such as the Countryside Stewardship Scheme'
                   ]
                 } ]
               }
