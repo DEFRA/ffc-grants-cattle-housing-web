@@ -1531,6 +1531,12 @@ const questionBank = {
           nextUrl: 'potential-amount',
           fundingPriorities: '',
           preValidationKeys: [],
+          grantInfo: {
+            minGrant: MIN_GRANT,
+            maxGrant: MAX_GRANT,
+            grantPercentage: GRANT_PERCENTAGE,
+            cappedGrant: true
+          },
           type: 'input',
           prefix: {
             text: '£'
@@ -1550,7 +1556,7 @@ const questionBank = {
           validate: [
             {
               type: 'NOT_EMPTY',
-              error: 'Enter the estimated cost for the items'
+              error: 'Enter a whole number with a maximum of 7 digits'
             },
             {
               type: 'REGEX',
@@ -1565,11 +1571,8 @@ const questionBank = {
             }
           ],
           ineligibleContent: {
-            messageContent:
-              'You can only apply for a grant of up to 40% of the estimated costs. ',
-            insertText: {
-              text: 'The minimum grant you can apply for is £35,000 (40% of £87,500). The maximum grant is £500,000.'
-            },
+            messageContent: 'You can only apply for a grant of up to 40% of the estimated costs.',
+            insertText: { text: 'The minimum grant you can apply for this project is £20,000 (40% of 50,000). The maximum grant is £500,000.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -1604,19 +1607,20 @@ const questionBank = {
           backUrl: 'project-cost',
           nextUrl: 'remaining-costs',
           preValidationKeys: [],
-          grantInfo: {
-            minGrant: MIN_GRANT,
-            maxGrant: MAX_GRANT,
-            grantPercentage: GRANT_PERCENTAGE,
-            cappedGrant: true
-          },
-          ineligibleContent: {
-            messageContent: 'The minimum grant you can claim is £25,000.',
-            messageLink: {
-              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-              title: 'See other grants you may be eligible for.'
-            }
-          },
+          // grantInfo: {
+          //   minGrant: MIN_GRANT,
+          //   maxGrant: MAX_GRANT,
+          //   grantPercentage: GRANT_PERCENTAGE,
+          //   cappedGrant: true
+          // },
+          // ineligibleContent: {
+          //   messageContent: 'You can only apply for a grant of up to 40% of the estimated costs.',
+          //   insertText: { text: 'The minimum grant you can apply for this project is £20,000 (40% of 50,000). The maximum grant is £500,000.' },
+          //   messageLink: {
+          //     url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+          //     title: 'See other grants you may be eligible for.'
+          //   }
+          // },
           maybeEligible: true,
           maybeEligibleContent: {
             messageHeader: 'Potential grant funding',
