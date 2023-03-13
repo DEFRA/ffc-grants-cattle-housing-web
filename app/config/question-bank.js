@@ -1547,12 +1547,6 @@ const questionBank = {
               <p>Enter amount, for example 95,000<p/>
               `
           },
-          grantInfo: {
-            minGrant: MIN_GRANT,
-            maxGrant: MAX_GRANT,
-            grantPercentage: GRANT_PERCENTAGE,
-            cappedGrant: true
-          },
           validate: [
             {
               type: 'NOT_EMPTY',
@@ -1602,20 +1596,18 @@ const questionBank = {
           answers: [],
           yarKey: 'projectCost'
         },
-        // Calls standardised cost page
-        // CALLS PROJECT SUMMARY
         {
           key: 'potential-amount',
-          order: 150,
+          order: 162,
           url: 'potential-amount',
           baseUrl: 'potential-amount',
-          backUrl: 'project-summary',
+          backUrl: 'project-cost',
           nextUrl: 'remaining-costs',
           preValidationKeys: [],
           grantInfo: {
-            minGrant: 25000,
-            maxGrant: 250000,
-            grantPercentage: '',
+            minGrant: MIN_GRANT,
+            maxGrant: MAX_GRANT,
+            grantPercentage: GRANT_PERCENTAGE,
             cappedGrant: true
           },
           ineligibleContent: {
@@ -1628,13 +1620,12 @@ const questionBank = {
           maybeEligible: true,
           maybeEligibleContent: {
             messageHeader: 'Potential grant funding',
-            messageContent: 'Based on the standardised grant amount for each item and the approximate size and quantities you entered, we estimate you could be eligible for a grant of £{{_calculatedGrant_}}',
+            messageContent: `You may be able to apply for a grant of up to £{{_calculatedGrant_}}, based on the estimated cost of £{{_projectCost_}}.`,
             warning: {
               text: 'There’s no guarantee the project will receive a grant.'
             }
           }
         },
-
         {
           key: 'remaining-costs',
           order: 190,
