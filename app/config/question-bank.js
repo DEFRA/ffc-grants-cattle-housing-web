@@ -1080,8 +1080,8 @@ const questionBank = {
             values: [ {
               heading: 'Eligibility',
               content: [ {
-                para: `Each pair or group of calves must have at least one enrichment item (for example brushes or hanging balls).`,
-                additionalPara: `The grant will fund off-the-shelf items for cattle. Other enrichment items (for example cardboard boxes) are not funded.`,
+                para: 'Each pair or group of calves must have at least one enrichment item (for example brushes or hanging balls).',
+                additionalPara: 'The grant will fund off-the-shelf items for cattle. Other enrichment items (for example cardboard boxes) are not funded.',
               } ],
             } ]
           },
@@ -1322,7 +1322,7 @@ const questionBank = {
               notEligible: true
             }
           ],
-          yarKey: 'drainageSlope'
+          yarKey: 'draughtProtection'
         },
         {
           key: 'additional-items',
@@ -1400,7 +1400,7 @@ const questionBank = {
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           pageTitle: '',
           backUrl: 'additional-items',
-          nextUrl: 'estimated-grant',
+          nextUrl: 'roof-solar-PV',
           url: 'lighting',
           baseUrl: 'lighting',
           preValidationKeys: [],
@@ -1441,6 +1441,76 @@ const questionBank = {
           ],
           yarKey: 'lighting'
         },
+        {
+          key: 'roof-solar-PV',
+          order: 160,
+          title: 'Is the roof able to support solar PV panels?',
+          hint: {
+            html: `<div class:"govuk-hint">
+            The roof must be able to support solar PV panels, allowing for potential use in the future, unless:</br></br>
+            <li>the building is listed or on a world heritage site</li>
+            <li> you're upgrading an existing building and would not otherwise make changes to the roof </li>
+            <li>the roof faces only north or is heavily shaded </li>
+            <li>the roof does not have 20m2 of clear roof space </li>
+            <li>the roof has a pitch less than 15 degrees or greater than 50 degrees</li>
+            </div>`
+          },
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
+          pageTitle: '',
+          backUrl: 'lighting',
+          nextUrl: 'lighting',
+          url: 'roof-solar-PV',
+          baseUrl: 'roof-solar-PV',
+          preValidationKeys: [],
+          sidebar: {
+            values: [{
+              heading: 'Eligibility',
+              content: [ {
+                para: 'The roof must be able to support solar PV panels, allowing for potential use in the future.',
+                additionalPara: 'Structural calculations by a building expert, contractor or structural engineer need to be provided at full application.',
+              }],
+            }],
+            details: {
+              summaryText: 'What the grant will fund',
+              html: '<p>The cost of purchasing or installing solar PV panels is not funded by this grant.</p> <p>Structural assessment and certification of a building’s capacity to structurally support solar panels is funded.</p>'
+            }
+          },
+          ineligibleContent: {
+            messageContent: `<p class="govuk-body">The building must have:</p>
+            <div class="govuk-list govuk-list--bullet">
+                  <ul>
+                    <li>access to a water supplyr</li>
+                    <li>at least 2 IP66 sockets in the building</li>
+                    <li>temperature and humidity data loggers (capable of autonomously recording temperature/humidity over a defined period and storing data to view later)</li>
+                  </ul>
+            </div>`,
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
+            }
+          },
+          fundingPriorities: '',
+          type: 'single-answer',
+          minAnswerCount: 1,
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if the building will have these items'
+            }
+          ],
+          answers: [
+            {
+              key: 'roof-solar-PV-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'roof-solar-PV-A2',
+              value: 'No',
+              notEligible: true
+            },
+          ],
+          yarKey: 'roofSolarPV'
+        },        
         {
           key: 'estimated-grant',
           order: 180,
