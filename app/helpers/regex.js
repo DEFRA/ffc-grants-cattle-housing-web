@@ -15,13 +15,14 @@ const PHONE_REGEX = /^\+?[0-9\[\s\(\)\]\-]{10,}$/
 const EMAIL_REGEX = /^\w+([.-](\w+))*@[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*(\.[a-zA-Z]{2,5})+$/
 const ADDRESS_REGEX = /^[a-zA-Z0-9' -]*$/
 const ONLY_TEXT_REGEX = /^[a-zA-Z\s]+$/
-// const ONLY_DIGITS_REGEX = /^[0-9]+$/
 const ONLY_DIGITS_AND_FLOATS_REGEX = /[+-]?([0-9]*[.])?[0-9]+/
 const PLANNING_REFERENCE_NUMBER_REGEX = /^[a-zA-Z0-9\/]{1,50}$/
 const LETTERS_AND_NUMBERS_REGEX = /^[a-zA-Z0-9]{1,10}$/
 const TWO_NUMBERS_EIGHT_CHARS = /^[a-zA-Z]{2}\d{8}$/
 const COMMA_EXCLUDE_REGEX = /^[^,]*(?!,)$/g // check
 const DECIMAL_EXCLUDE_REGEX = /^[^.]*(?!.)$/g // check
+const PROJECT_COST_REGEX = /^[1-9]\d*$/
+
 
 module.exports = {
   CURRENCY_FORMAT,
@@ -46,5 +47,6 @@ module.exports = {
   DIGITS_MAX_10,
   COMMA_EXCLUDE_REGEX,
   DECIMAL_EXCLUDE_REGEX,
-  ADDRESS_REGEX
+  ADDRESS_REGEX,
+  PROJECT_COST_REGEX
 }
