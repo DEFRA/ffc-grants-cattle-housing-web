@@ -11,7 +11,7 @@ module.exports = async function (msg) {
     // Get details from cache regarding desirability score
     // const desirabilityScore = await cache.getDesirabilityScore(correlationId)
 
-    console.log('MADE IT TO DETAILS', submissionDetails, 'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW')
+    console.log('MADE IT TO DETAILS', submissionDetails)
     const msgOut = createMsg(submissionDetails, desirabilityScore)
 
     await sendDesirabilitySubmitted(msgOut, correlationId)

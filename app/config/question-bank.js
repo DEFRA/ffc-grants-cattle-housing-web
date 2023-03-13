@@ -1339,6 +1339,7 @@ const questionBank = {
           pageTitle: '',
           backUrl: 'draught-protection',
           nextUrl: 'lighting',
+          nextUrl: 'roof-solar-PV',
           url: 'additional-items',
           baseUrl: 'additional-items',
           preValidationKeys: [],
@@ -1406,6 +1407,47 @@ const questionBank = {
           preValidationKeys: [],
           ineligibleContent: {
             messageContent: 'The building must have fitted lighting of at least 50 lux.',
+          key: 'roof-solar-PV',
+          order: 162,
+          title: 'Is the roof able to support solar PV panels?',
+          hint: {
+            html: `<div class:"govuk-hint">
+            The roof must be able to support solar PV panels, allowing for potential use in the future, unless: <br/><br/>
+            <li> the building is listed or on a world heritage site </li>
+            <li> you're upgrading an existing building and would not otherwise make changes to the roof </li>
+            <li> the roof faces only north or is heavily shaded </li>
+            <li> the roof does not have 20m<sup>2</sup> of clear roof space </li>
+            <li> the roof has a pitch less than 15 degrees or greater than 50 degrees </li>
+            </div>`
+          },
+          pageTitle: '',
+          backUrl: 'additional-items',
+          nextUrl: 'project-cost',
+          url: 'roof-solar-PV',
+          baseUrl: 'roof-solar-PV',
+          preValidationKeys: [],
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
+          sidebar: {
+            values: [ {
+              heading: 'Eligibility',
+              content: [ {
+                para: 'The roof must be able to support solar PV panels, allowing for potential use in the future.',
+                additionalPara: 'Structural calculations by a building expert, contractor or structural engineer need to be provided at full application.',
+              }],
+            }],
+            details: {
+              summaryText: 'What the grant will fund',
+              html: `The cost of purchasing or installing solar PV panels is not funded by this grant. <br/><br/>Structural assessment and certification of a building’s capacity to structurally support solar panels is funded.`
+            }
+          },
+          ineligibleContent: {
+            messageContent: `<div class="govuk-body"> The roof must be able to support solar PV panels, allowing for potential use in the future, unless: <br/><br/>
+                  <li> the building is listed or on a world heritage site </li>
+                  <li> you're upgrading an existing building and would not otherwise make changes to the roof </li>
+                  <li> the roof faces only north or is heavily shaded </li>
+                  <li> the roof does not have 20m<sup>2</sup> of clear roof space </li>
+                  <li> the roof has a pitch less than 15 degrees or greater than 50 degrees </li>
+            </div>`,
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -1426,6 +1468,10 @@ const questionBank = {
             {
               type: 'NOT_EMPTY',
               error: 'Select yes if the building will have fitted lighting of at least 50 lux'
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if the roof is able to support solar PV panels'
             }
           ],
           answers: [
@@ -1441,6 +1487,18 @@ const questionBank = {
           ],
           yarKey: 'lighting'
         },
+              key: 'roof-solar-PV-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'roof-solar-PV-A2',
+              value: 'No',
+              notEligible: true
+            },
+          ],
+          yarKey: 'roofSolarPV'
+        },
+
         {
           key: 'estimated-grant',
           order: 180,
