@@ -2461,13 +2461,11 @@ const questionBank = {
             messageHeader: 'Confirm and send',
             messageContent: `I confirm that, to the best of my knowledge, the details I have provided are correct.</br></br>
             I understand the project’s eligibility and score is based on the answers I provided.</br></br>
-            I am aware that the information I submit will be:</br>
-            <ul>
-              <li>checked by the RPA</li>
-              <li>shared with the Environment Agency so that they can check the details of my planned project</li>
-            </ul></br>
+            I am aware that the information I submit will be checked by the RPA.</br></br>
             I am happy to be contacted by Defra and RPA (or third-party on their behalf) about my application.</br></br>
-            So that we can continue to improve our services and schemes, we may wish to contact you in the future. Please confirm if you are happy for us, or a third-party working for us, to contact you.`
+            Defra may wish to contact you to understand your experience of applying for the scheme.</br></br>
+            Please confirm if you are happy for us to contact you to 
+            take part in optional research activities to help us improve our programmes and delivery.`
           },
           answers: [
             {
