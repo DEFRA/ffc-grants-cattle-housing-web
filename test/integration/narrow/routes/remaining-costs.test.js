@@ -1,7 +1,7 @@
 const { crumbToken } = require('./test-helper')
 
 describe('Page: /remaining-costs', () => {
-  const varList = { projectCost: '1234567', calculatedGrant: '312000', remainingCost = '740740.20'  }
+  const varList = { projectCost: '1234567', calculatedGrant: '312000', remainingCost: 740740.20  }
 
   jest.mock('../../../../app/helpers/session', () => ({
     setYarValue: (request, key, value) => null,
@@ -19,7 +19,7 @@ describe('Page: /remaining-costs', () => {
 
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('Can you pay the remaining costs of £468,000?')
+    expect(response.payload).toContain('Can you pay the remaining costs of £740,740.20?')
     expect(response.payload).toContain('Yes')
     expect(response.payload).toContain('No')
   })
