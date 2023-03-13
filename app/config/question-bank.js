@@ -106,8 +106,8 @@ const questionBank = {
               <li>building new calf housing</li>
               <li>refurbishing or extending existing calf housing</li>
             </ul>
-            <div class="govuk-inset-text">A calf is up to 6 months of age.</div>
             `,
+            insertText: {text: 'A calf is up to 6 months of age.'},
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -1076,6 +1076,7 @@ const questionBank = {
             insertText: {
               text: 'This does not include straw bedding and social contact.'
             },
+            additionalPara: `The grant will fund off-the-shelf items for cattle. Other enrichment items (for example cardboard boxes) are not funded.`,
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -1123,13 +1124,13 @@ const questionBank = {
           preValidationKeys: [],
           ineligibleContent: {
             messageContent: `<p class="govuk-body">Each pair or group of calves must have at least one enrichment item, such as:</p>
-          <div class="govuk-list govuk-list--bullet">
-                <ul>
-                  <li>brushes</li>
-                  <li>hanging balls</li>
-                </ul>
-          </div>
-        <div class="govuk-inset-text">This does not include straw bedding and social contact.</div>`,
+                              <div class="govuk-list govuk-list--bullet">
+                                    <ul>
+                                      <li>brushes</li>
+                                      <li>hanging balls</li>
+                                    </ul>
+                              </div>`,
+            insertText: { text: 'This does not include straw bedding and social contact.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -1141,9 +1142,9 @@ const questionBank = {
             values: [
               {
                 heading: 'Eligibility',
-                content: [{
-                  para: `All buildings must be permanent structures.`
-                }]
+                content: [ {
+                  para: `All buildings must be permanent structures.`,
+                } ]
               }
             ]
           },
@@ -1423,10 +1424,10 @@ const questionBank = {
           sidebar: {
             values: [ {
               heading: 'Eligibility',
-              content: [{
+              content: [ {
                 para: `The building must have fitted lighting of at least 50 lux.`
-              }]
-            }]
+              } ]
+            } ]
           },
           validate: [
             {
@@ -1900,7 +1901,7 @@ const questionBank = {
                 {
                   type: 'REGEX',
                   regex: WHOLE_NUMBER_REGEX,
-                  error: 'Number of calves must be a whole number', 
+                  error: 'Number of calves must be a whole number',
                 },
                 {
                   type: 'MIN_MAX',
@@ -2589,13 +2590,11 @@ const questionBank = {
             messageHeader: 'Confirm and send',
             messageContent: `I confirm that, to the best of my knowledge, the details I have provided are correct.</br></br>
             I understand the project’s eligibility and score is based on the answers I provided.</br></br>
-            I am aware that the information I submit will be:</br>
-            <ul>
-              <li>checked by the RPA</li>
-              <li>shared with the Environment Agency so that they can check the details of my planned project</li>
-            </ul></br>
+            I am aware that the information I submit will be checked by the RPA.</br></br>
             I am happy to be contacted by Defra and RPA (or third-party on their behalf) about my application.</br></br>
-            So that we can continue to improve our services and schemes, we may wish to contact you in the future. Please confirm if you are happy for us, or a third-party working for us, to contact you.`
+            Defra may wish to contact you to understand your experience of applying for the scheme.</br></br>
+            Please confirm if you are happy for us to contact you to 
+            take part in optional research activities to help us improve our programmes and delivery.`
           },
           answers: [
             {

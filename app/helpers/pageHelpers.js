@@ -124,7 +124,7 @@ const getConsentOptionalData = (consentOptional) => {
     items: setOptionsLabel(consentOptional,
       [{
         value: 'CONSENT_OPTIONAL',
-        text: '(Optional) I consent to being contacted about improvement services'
+        text: '(Optional) I consent to being contacted.'
       }]
     )
   }
