@@ -16,8 +16,15 @@ const {
   TWO_NUMBERS_EIGHT_CHARS,
   CHARS_MAX_50,
   COMMA_EXCLUDE_REGEX,
-  ADDRESS_REGEX
+  ADDRESS_REGEX,
+  PROJECT_COST_REGEX
 } = require('../helpers/regex')
+
+const {
+  MIN_GRANT,
+  MAX_GRANT,
+  GRANT_PERCENTAGE
+} = require('../helpers/grant-details')
 
 const { LIST_COUNTIES } = require('../helpers/all-counties')
 
@@ -1514,20 +1521,86 @@ const questionBank = {
           yarKey: 'roofSolarPV'
         },        
         {
-          key: 'estimated-grant',
-          order: 180,
-          url: 'estimated-grant',
-          backUrl: 'lighting',
-          nextUrl: 'standardised-grant-amounts',
+          key: 'project-cost',
+          order: 161,
+          pageTitle: '',
+          classes: 'govuk-input--width-10',
+          url: 'project-cost',
+          baseUrl: 'project-cost',
+          backUrl: 'roof-solar-PV',
+          nextUrl: 'potential-amount',
+          fundingPriorities: '',
           preValidationKeys: [],
-          ga: [
-            { dimension: 'cm2', value: { type: 'journey-time' } }
+          type: 'input',
+          prefix: {
+            text: '£'
+          },
+          label: {
+            text: 'What is the total estimated cost of the calf housing?',
+            classes: 'govuk-label--l',
+            isPageHeading: true
+          },
+          hint: {
+            html: `
+              <p>You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £20,000 (40% of 50,000). The maximum grant is £500,000.<p/>
+              <p>Do not include VAT.<p/>
+              <p>Enter amount, for example 95,000<p/>
+              `
+          },
+          grantInfo: {
+            minGrant: MIN_GRANT,
+            maxGrant: MAX_GRANT,
+            grantPercentage: GRANT_PERCENTAGE,
+            cappedGrant: true
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Enter the estimated cost for the items'
+            },
+            {
+              type: 'REGEX',
+              regex: PROJECT_COST_REGEX,
+              error: 'Enter a whole number with a maximum of 7 digits'
+            },
+            {
+              type: 'MIN_MAX_CHARS',
+              min: 1,
+              max: 7,
+              error: 'Enter a whole number with a maximum of 7 digits'
+            }
           ],
-          maybeEligible: true,
-          maybeEligibleContent: {
-            messageHeader: 'Estimate how much grant you could get',
-            messageContent: 'Add some information about the project (for example, type of store and capacity, type of cover and size, approximate size and quantity of other items you need) so we can estimate how much grant you could get.'
-          }
+          ineligibleContent: {
+            messageContent:
+              'You can only apply for a grant of up to 40% of the estimated costs. ',
+            insertText: {
+              text: 'The minimum grant you can apply for is £35,000 (40% of £87,500). The maximum grant is £500,000.'
+            },
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
+            }
+          },
+          sidebar: {
+            values: [{
+              heading: 'What the grant will fund',
+              content: [ {
+                para: 'Movable items (for example buckets) and ongoing costs (for example straw) will not be funded.'
+              }],
+            }],
+            details: {
+              summaryText: 'What the grant will fund',
+              html: `This grant is for:<br/><br/>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>structures, including concrete flooring, walls, roofs, structural reinforcement and drainage facilities</li>
+                <li>fixtures, including calf accommodation pens, calf isolation facilities, draught protection, ventilation systems, washing facilities and automatic calf feeders</li>
+                <li>fittings, including temperature and humidity data loggers, heat lamps and enrichment items</li>
+                <li>one-off utility costs such as the alteration of electricity or water supply to allow the building installation or upgrade</li>
+              </ul>`
+            }
+          },
+          answers: [],
+          yarKey: 'projectCost'
         },
         // Calls standardised cost page
         // CALLS PROJECT SUMMARY
