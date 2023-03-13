@@ -1458,7 +1458,7 @@ const questionBank = {
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           pageTitle: '',
           backUrl: 'lighting',
-          nextUrl: 'lighting',
+          nextUrl: 'project-cost',
           url: 'roof-solar-PV',
           baseUrl: 'roof-solar-PV',
           preValidationKeys: [],
@@ -1476,12 +1476,14 @@ const questionBank = {
             }
           },
           ineligibleContent: {
-            messageContent: `<p class="govuk-body">The building must have:</p>
+            messageContent: `<p class="govuk-body">The roof must be able to support solar PV panels, allowing for potential use in the future, unless:</p>
             <div class="govuk-list govuk-list--bullet">
                   <ul>
-                    <li>access to a water supplyr</li>
-                    <li>at least 2 IP66 sockets in the building</li>
-                    <li>temperature and humidity data loggers (capable of autonomously recording temperature/humidity over a defined period and storing data to view later)</li>
+                    <li>the building is listed or on a world heritage site</li>
+                    <li>you're upgrading an existing building and would not otherwise make changes to the roof</li>
+                    <li>the roof faces only north or is heavily shaded</li>
+                    <li>the roof does not have 20m<sup>2</sup> of clear roof space</li>
+                    <li>the roof has a pitch less than 15 degrees or greater than 50 degrees</li>
                   </ul>
             </div>`,
             messageLink: {
@@ -1495,7 +1497,7 @@ const questionBank = {
           validate: [
             {
               type: 'NOT_EMPTY',
-              error: 'Select yes if the building will have these items'
+              error: 'Select yes if the roof is able to support solar PV panels'
             }
           ],
           answers: [
