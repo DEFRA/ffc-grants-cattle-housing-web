@@ -1314,16 +1314,16 @@ const questionBank = {
           ],
           answers: [
             {
-              key: 'drainage-slope-A1',
+              key: 'draught-protection-A1',
               value: 'Yes'
             },
             {
-              key: 'drainage-slope-A2',
+              key: 'draught-protection-A2',
               value: 'No',
               notEligible: true
             }
           ],
-          yarKey: 'drainageSlope'
+          yarKey: 'draughtProtection'
         },
         {
           key: 'additional-items',
@@ -1560,7 +1560,7 @@ const questionBank = {
 
         {
           key: 'environmental-impact',
-          order: 10,
+          order: 200,
           title: 'How will the building minimise environmental impact?',
           hint: {
             text: 'Select all that apply'
@@ -1580,8 +1580,7 @@ const questionBank = {
           //     nonDependentUrl: 'floor-space-over150kg'
           //   }
           // },
-          nextUrl: 'result-page',
-          // nextUrl: 'sustainable-materials',
+          nextUrl: 'sustainable-materials',
           ineligibleContent: {
             messageContent: `
             This grant is for:</br>
@@ -1644,12 +1643,182 @@ const questionBank = {
           yarKey: 'environmentalImpact'
         },
         {
+          key: 'sustainable-materials',
+          order: 210,
+          title: 'Will your building use sustainable materials?',
+          hint: {
+            text: 'Select all that apply'
+          },
+          pageTitle: '',
+          url: 'sustainable-materials',
+          baseUrl: 'sustainable-materials',
+          backUrl: 'environmental-impact',
+          nextUrl: 'introducing-innovation',
+          ineligibleContent: {
+            messageContent: `
+            This grant is for:</br>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>building new calf housing</li>
+              <li>refurbishing or extending existing calf housing</li>
+            </ul>
+            <div class="govuk-inset-text">A calf is up to 6 months of age.</div>
+            `,
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
+            }
+          },
+          sidebar: {
+            values: [ {
+              heading: 'Funding priorities',
+              content: [ {
+                para: `RPA wants to fund buildings that use sustainable materials.`,
+              } ]
+            } ]
+          },
+          fundingPriorities: '',
+          type: 'multi-answer',
+          minAnswerCount: 1,
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select if your building will use sustainable materials'
+            },
+            {
+              type: 'STANDALONE_ANSWER',
+              error: 'You cannot select that combination of options',
+              standaloneObject: {
+                questionKey: 'sustainable-materials',
+                answerKey: 'sustainable-materials-A5'
+              }
+            }
+          ],
+          answers: [
+            {
+              key: 'sustainable-materials-A1',
+              value: 'Low carbon concrete'
+            },
+            {
+              key: 'sustainable-materials-A2',
+              value: 'Reclaimed or second-hand materials'
+            },
+            {
+              key: 'sustainable-materials-A3',
+              value: 'Sustainability sourced wood or materials'
+            },
+            {
+              key: 'sustainable-materials-A4',
+              value: 'Something else'
+            },
+            {
+              value: 'divider'
+            },
+            {
+              key: 'sustainable-materials-A5',
+              value: 'None of the above',
+              notEligible: true
+            }
+          ],
+          yarKey: 'sustainableMaterials'
+        },
+        {
+          key: 'introducing-innovation',
+          order: 10,
+          title: 'Is your project introducing innovation?',
+          hint: {
+            html: `Collaborations, technologies or techniques that are new to your farm
+                  <p> Select all that apply</p> `
+          },
+          pageTitle: '',
+          url: 'introducing-innovation',
+          baseUrl: 'introducing-innovation',
+          backUrl: 'sustainable-materials',
+          nextUrl: 'result-page',
+          ineligibleContent: {
+            messageContent: `
+            This grant is for:</br>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>building new calf housing</li>
+              <li>refurbishing or extending existing calf housing</li>
+            </ul>
+            <div class="govuk-inset-text">A calf is up to 6 months of age.</div>
+            `,
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
+            }
+          },
+          sidebar: {
+            values: [ {
+              heading: 'Funding priorities',
+              content: [ {
+                para: `RPA wants to fund projects that introduce innovation, such as:`,
+                items: [
+                  'technology',
+                  'collaboration',
+                  'techniques'
+                ]
+              } ]
+            } ]
+          },
+          fundingPriorities: '',
+          type: 'multi-answer',
+          minAnswerCount: 1,
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select how your project is introducing innovation'
+            },
+            {
+              type: 'STANDALONE_ANSWER',
+              error: 'You cannot select that combination of options',
+              standaloneObject: {
+                questionKey: 'introducing-innovation',
+                answerKey: 'introducing-innovation-A4'
+              }
+            }
+          ],
+          answers: [
+            {
+              key: 'introducing-innovation-A1',
+              value: 'Technology',
+              hint: {
+                text: 'For example, advance ventilation control systems, veterinary technology equipment'
+              }
+            },
+            {
+              key: 'introducing-innovation-A2',
+              value: 'Collaboration',
+              hint: {
+                text: 'For example, partnerships with educational institutions, other farmers or the local community '
+              }
+            },
+            {
+              key: 'introducing-innovation-A3',
+              value: 'Techniques',
+              hint: {
+                text: 'For example, data recording or digital techniques, pain management techniques'
+              }
+            },
+            {
+              value: 'divider'
+            },
+            {
+              key: 'introducing-innovation-A4',
+              value: 'None of the above',
+              notEligible: true
+            }
+          ],
+          yarKey: 'introducingInnovation'
+        },
+
+        {
           key: 'result-page',
           order: 156,
           title: 'Your results',
           url: 'result-page',
           baseUrl: 'result-page',
-          backUrl: 'environmental-impact',
+          backUrl: 'introducing-innovation',
           nextUrl: 'business-details',
           preValidationKeys: [],
           maybeEligible: true,
