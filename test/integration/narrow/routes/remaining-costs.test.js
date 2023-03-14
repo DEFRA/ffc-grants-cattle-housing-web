@@ -59,7 +59,7 @@ describe('Page: /remaining-costs', () => {
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
-    expect(postResponse.headers.location).toBe('result-page')
+    expect(postResponse.headers.location).toBe('environmental-impact')
   })
 
   it('page loads with correct back link', async () => {

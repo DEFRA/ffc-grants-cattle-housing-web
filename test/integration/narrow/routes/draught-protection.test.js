@@ -47,7 +47,7 @@ it('user selects ineligible option: \'No \' -> display ineligible page', async (
     method: 'POST',
     url: `${global.__URLPREFIX__}/draught-protection`,
     headers: { cookie: 'crumb=' + crumbToken },
-    payload: { drainageSlope: 'No', crumb: crumbToken }
+    payload: { draughtProtection: 'No', crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
@@ -59,7 +59,7 @@ it('user selects eligible option -> store user response and redirect to /additio
     method: 'POST',
     url: `${global.__URLPREFIX__}/draught-protection`,
     headers: { cookie: 'crumb=' + crumbToken },
-    payload: { drainageSlope: 'Yes', crumb: crumbToken }
+    payload: { draughtProtection: 'Yes', crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
