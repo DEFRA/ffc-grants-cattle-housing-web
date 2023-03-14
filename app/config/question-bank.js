@@ -1335,6 +1335,7 @@ const questionBank = {
           key: 'additional-items',
           order: 160,
           title: 'Will the building have these items?',
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           hint: {
             html: `<div class:"govuk-hint">
             The building must have:</br></br>
@@ -1368,7 +1369,7 @@ const questionBank = {
             messageContent: `<p class="govuk-body">The building must have:</p>
             <div class="govuk-list govuk-list--bullet">
                   <ul>
-                    <li>access to a water supplyr</li>
+                    <li>access to a water supply</li>
                     <li>at least 2 IP66 sockets in the building</li>
                     <li>temperature and humidity data loggers (capable of autonomously recording temperature/humidity over a defined period and storing data to view later)</li>
                   </ul>
