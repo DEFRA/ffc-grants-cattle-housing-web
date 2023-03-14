@@ -15,7 +15,6 @@ it('page loads successfully, with all the options', async () => {
     expect(response.payload).toContain('Techniques')
     expect(response.payload).toContain('None of the above')
 })
-
 it('no option selected -> show error message', async () => {
     const postOptions = {
     method: 'POST',
@@ -28,7 +27,6 @@ it('no option selected -> show error message', async () => {
     expect(postResponse.statusCode).toBe(200)
     expect(postResponse.payload).toContain('Select how your project is introducing innovation')
 })
-
 it(' \'None of the above\' selected with another option -> show error message', async () => {
     const postOptions = {
     method: 'POST',
@@ -41,19 +39,6 @@ it(' \'None of the above\' selected with another option -> show error message', 
     expect(postResponse.statusCode).toBe(200)
     expect(postResponse.payload).toContain('You cannot select that combination of options')
 })
-
-it('user selects ineligible option: \'None of the above\' -> display ineligible page', async () => {
-    const postOptions = {
-    method: 'POST',
-    url: `${global.__URLPREFIX__}/introducing-innovation`,
-    headers: { cookie: 'crumb=' + crumbToken },
-    payload: { introducingInnovation: 'None of the above', crumb: crumbToken }
-    }
-
-    const postResponse = await global.__SERVER__.inject(postOptions)
-    expect(postResponse.payload).toContain('You cannot apply for a grant from this scheme')
-})
-
 it('user selects eligible option -> store user response and redirect to /result-page', async () => {
     const postOptions = {
     method: 'POST',

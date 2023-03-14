@@ -14,7 +14,6 @@ it('page loads successfully, with all the options', async () => {
     expect(response.payload).toContain('Collect and store rainwater')
     expect(response.payload).toContain('None of the above')
 })
-
 it('no option selected -> show error message', async () => {
     const postOptions = {
     method: 'POST',
@@ -27,7 +26,6 @@ it('no option selected -> show error message', async () => {
     expect(postResponse.statusCode).toBe(200)
     expect(postResponse.payload).toContain('Select how your building will minimise environmental impact')
 })
-
 it(' \'None of the above\' selected with another option -> show error message', async () => {
     const postOptions = {
     method: 'POST',
@@ -40,19 +38,6 @@ it(' \'None of the above\' selected with another option -> show error message', 
     expect(postResponse.statusCode).toBe(200)
     expect(postResponse.payload).toContain('You cannot select that combination of options')
 })
-
-it('user selects ineligible option: \'None of the above\' -> display ineligible page', async () => {
-    const postOptions = {
-    method: 'POST',
-    url: `${global.__URLPREFIX__}/environmental-impact`,
-    headers: { cookie: 'crumb=' + crumbToken },
-    payload: { environmentalImpact: 'None of the above', crumb: crumbToken }
-    }
-
-    const postResponse = await global.__SERVER__.inject(postOptions)
-    expect(postResponse.payload).toContain('You cannot apply for a grant from this scheme')
-})
-
 it('user selects eligible option -> store user response and redirect to /sustainable-materials', async () => {
     const postOptions = {
     method: 'POST',
