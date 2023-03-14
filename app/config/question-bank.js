@@ -1683,37 +1683,33 @@ const questionBank = {
               html: `<div>
                         <div>
                         <h3>Low carbon concrete</h3>
-                        <p>Alternatives to Ordinary Portland Cement that have higher embodied CO2</p>
-                        <ul class="govuk-list govuk-list--bullet">
-                          <li>lower carbon aggregates (GGBS, MLS, fly ash, silica fume, pozzalana)</li>
-                          <li>ortland Limestone Cements</li>
-                          <li>low-cement-concreate with a cement content of less than 10%</li>
-                        </ul>
+                          <p>Alternatives to Ordinary Portland Cement that have higher embodied CO2</p>
+                            <ul class="govuk-list govuk-list--bullet">
+                              <li>lower carbon aggregates (GGBS, MLS, fly ash, silica fume, pozzalana)</li>
+                              <li>ortland Limestone Cements</li>
+                              <li>low-cement-concreate with a cement content of less than 10%</li>
+                            </ul>
                         </div>
                         <div>
-                        <h3>Steel replacement products</h3>
-                        <ul class="govuk-list govuk-list--bullet">
-                          <li>Fibre reinforced polymer (FRP)</li>
-                          <li>Resin pilling</li>
-                          <li>Carbon fibre</li>
-                        </ul>
+                          <h3>Steel replacement products</h3>
+                            <ul class="govuk-list govuk-list--bullet">
+                              <li>Fibre reinforced polymer (FRP)</li>
+                              <li>Resin pilling</li>
+                              <li>Carbon fibre</li>
+                            </ul>
                         </div>
-
                         <div>
-                        <h3>Sustainably sourced timber</h3>
-                        <p>Timber certified by FSC, PEFC, SFI, or CSA</p>
+                          <h3>Sustainably sourced timber</h3>
+                          <p>Timber certified by FSC, PEFC, SFI, or CSA</p>
                         </div>
-
                         <div>
-                        <h3>Reused materials already on site</h3>
-                        <p>(for example wooden cladding, fencing, pen dividers)</p>
+                          <h3>Reused materials already on site</h3>
+                          <p>(for example wooden cladding, fencing, pen dividers)</p>
                         </div>
-
                         <div>
-                        <h3>Reused or secondhand materials from elsewhere</h3>
-                        <p>Supplier quote must include a statement that the item has not been previously purchased with public funding, is fit for purpose and is expected to last at least 5 years </p>
+                          <h3>Reused or secondhand materials from elsewhere</h3>
+                          <p>Supplier quote must include a statement that the item has not been previously purchased with public funding, is fit for purpose and is expected to last at least 5 years</p>
                         </div>
-
                         <div>
                           <h3>Recycled materials</h3>
                           <p>Materials with a recycled content of more than 40%</p>
