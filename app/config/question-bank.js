@@ -1557,7 +1557,6 @@ const questionBank = {
           ],
           yarKey: 'remainingCosts'
         },
-
         {
           key: 'environmental-impact',
           order: 200,
@@ -1581,20 +1580,6 @@ const questionBank = {
           //   }
           // },
           nextUrl: 'sustainable-materials',
-          ineligibleContent: {
-            messageContent: `
-            This grant is for:</br>
-            <ul class="govuk-list govuk-list--bullet">
-              <li>building new calf housing</li>
-              <li>refurbishing or extending existing calf housing</li>
-            </ul>
-            <div class="govuk-inset-text">A calf is up to 6 months of age.</div>
-            `,
-            messageLink: {
-              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-              title: 'See other grants you may be eligible for.'
-            }
-          },
           sidebar: {
             values: [ {
               heading: 'Funding priorities',
@@ -1636,8 +1621,7 @@ const questionBank = {
             },
             {
               key: 'environmental-impact-A3',
-              value: 'None of the above',
-              notEligible: true
+              value: 'None of the above'
             }
           ],
           yarKey: 'environmentalImpact'
@@ -1654,20 +1638,6 @@ const questionBank = {
           baseUrl: 'sustainable-materials',
           backUrl: 'environmental-impact',
           nextUrl: 'introducing-innovation',
-          ineligibleContent: {
-            messageContent: `
-            This grant is for:</br>
-            <ul class="govuk-list govuk-list--bullet">
-              <li>building new calf housing</li>
-              <li>refurbishing or extending existing calf housing</li>
-            </ul>
-            <div class="govuk-inset-text">A calf is up to 6 months of age.</div>
-            `,
-            messageLink: {
-              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-              title: 'See other grants you may be eligible for.'
-            }
-          },
           sidebar: {
             values: [ {
               heading: 'Funding priorities',
@@ -1768,15 +1738,14 @@ const questionBank = {
             },
             {
               key: 'sustainable-materials-A8',
-              value: 'None of the above',
-              notEligible: true
+              value: 'None of the above'
             }
           ],
           yarKey: 'sustainableMaterials'
         },
         {
           key: 'introducing-innovation',
-          order: 10,
+          order: 220,
           title: 'Is your project introducing innovation?',
           hint: {
             html: `Collaborations, technologies or techniques that are new to your farm
@@ -1787,20 +1756,6 @@ const questionBank = {
           baseUrl: 'introducing-innovation',
           backUrl: 'sustainable-materials',
           nextUrl: 'result-page',
-          ineligibleContent: {
-            messageContent: `
-            This grant is for:</br>
-            <ul class="govuk-list govuk-list--bullet">
-              <li>building new calf housing</li>
-              <li>refurbishing or extending existing calf housing</li>
-            </ul>
-            <div class="govuk-inset-text">A calf is up to 6 months of age.</div>
-            `,
-            messageLink: {
-              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-              title: 'See other grants you may be eligible for.'
-            }
-          },
           sidebar: {
             values: [ {
               heading: 'Funding priorities',
@@ -1858,8 +1813,7 @@ const questionBank = {
             },
             {
               key: 'introducing-innovation-A4',
-              value: 'None of the above',
-              notEligible: true
+              value: 'None of the above'
             }
           ],
           yarKey: 'introducingInnovation'
@@ -1867,7 +1821,7 @@ const questionBank = {
 
         {
           key: 'result-page',
-          order: 156,
+          order: 230,
           title: 'Your results',
           url: 'result-page',
           baseUrl: 'result-page',
@@ -1899,7 +1853,7 @@ const questionBank = {
         /// ////// ***************** After Score  ************************************/////////////////////
         {
           key: 'business-details',
-          order: 220,
+          order: 240,
           title: 'Business details',
           pageTitle: '',
           url: 'business-details',
@@ -2094,7 +2048,7 @@ const questionBank = {
         },
         {
           key: 'applying',
-          order: 230,
+          order: 250,
           title: 'Who is applying for this grant?',
           pageTitle: '',
           url: 'applying',
@@ -2127,7 +2081,7 @@ const questionBank = {
         },
         {
           key: 'farmer-details',
-          order: 240,
+          order: 260,
           title: 'Applicant’s details',
           pageTitle: '',
           url: 'applicant-details',
@@ -2442,7 +2396,7 @@ const questionBank = {
         },
         {
           key: 'agent-details',
-          order: 250,
+          order: 270,
           title: 'Agent’s details',
           hint: {
             text: 'Enter the agent and agent business details'
@@ -2737,7 +2691,7 @@ const questionBank = {
         },
         {
           key: 'check-details',
-          order: 260,
+          order: 280,
           title: 'Check your details',
           pageTitle: 'Check details',
           url: 'check-details',
@@ -2758,7 +2712,7 @@ const questionBank = {
         {
           key: 'confirm',
           title: 'Confirm and send',
-          order: 270,
+          order: 290,
           url: 'confirm',
           backUrl: 'check-details',
           nextUrl: 'confirmation',
@@ -2784,7 +2738,7 @@ const questionBank = {
         },
         {
           key: 'reference-number',
-          order: 280,
+          order: 300,
           title: 'Details submitted',
           pageTitle: '',
           url: 'confirmation',
