@@ -1294,11 +1294,7 @@ const questionBank = {
           preValidationKeys: [],
           ineligibleContent: {
             messageContent: 'All projects must have external calf-height solid walls/barriers to keep out draughts. ',
-            insertText: { text: 'For igloos/hutches adjacent to a permanent open-sided structure, this may mean adding solid sides to the outside pens.' },
-            messageLink: {
-              url: '',
-              title: ''
-            }
+            insertText: { text: 'For igloos/hutches adjacent to a permanent open-sided structure, this may mean adding solid sides to the outside pens.' }
           },
           fundingPriorities: '',
           type: 'single-answer',
