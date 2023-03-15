@@ -16,8 +16,15 @@ const {
   TWO_NUMBERS_EIGHT_CHARS,
   CHARS_MAX_50,
   COMMA_EXCLUDE_REGEX,
-  ADDRESS_REGEX
+  ADDRESS_REGEX,
+  PROJECT_COST_REGEX
 } = require('../helpers/regex')
+
+const {
+  MIN_GRANT,
+  MAX_GRANT,
+  GRANT_PERCENTAGE
+} = require('../helpers/grant-details')
 
 const { LIST_COUNTIES } = require('../helpers/all-counties')
 
@@ -1081,8 +1088,8 @@ const questionBank = {
             values: [ {
               heading: 'Eligibility',
               content: [ {
-                para: `Each pair or group of calves must have at least one enrichment item (for example brushes or hanging balls).`,
-                additionalPara: `The grant will fund off-the-shelf items for cattle. Other enrichment items (for example cardboard boxes) are not funded.`,
+                para: 'Each pair or group of calves must have at least one enrichment item (for example brushes or hanging balls).',
+                additionalPara: 'The grant will fund off-the-shelf items for cattle. Other enrichment items (for example cardboard boxes) are not funded.',
               } ],
             } ]
           },
@@ -1301,7 +1308,6 @@ const questionBank = {
               heading: 'Eligibility',
               content: [ {
                 para: `All projects must have permanent external calf-height solid walls/barriers to keep out drafts.
-
                       For a permanent open-sided structure with igloos/hutches, this may mean adding permanent solid sides to the outside pens (hay bales are not sufficient).`
               } ]
             } ]
@@ -1323,7 +1329,7 @@ const questionBank = {
               notEligible: true
             }
           ],
-          yarKey: 'drainageSlope'
+          yarKey: 'draughtProtection'
         },
         {
           key: 'additional-items',
@@ -1401,7 +1407,7 @@ const questionBank = {
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           pageTitle: '',
           backUrl: 'additional-items',
-          nextUrl: 'estimated-grant',
+          nextUrl: 'roof-solar-PV',
           url: 'lighting',
           baseUrl: 'lighting',
           preValidationKeys: [],
@@ -1443,48 +1449,168 @@ const questionBank = {
           yarKey: 'lighting'
         },
         {
-          key: 'estimated-grant',
-          order: 180,
-          url: 'estimated-grant',
+          key: 'roof-solar-PV',
+          order: 160,
+          title: 'Is the roof able to support solar PV panels?',
+          hint: {
+            html: `<div class:"govuk-hint">
+            The roof must be able to support solar PV panels, allowing for potential use in the future, unless:</br></br>
+            <li>the building is listed or on a world heritage site</li>
+            <li> you're upgrading an existing building and would not otherwise make changes to the roof </li>
+            <li>the roof faces only north or is heavily shaded </li>
+            <li>the roof does not have 20m2 of clear roof space </li>
+            <li>the roof has a pitch less than 15 degrees or greater than 50 degrees</li>
+            </div>`
+          },
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
+          pageTitle: '',
           backUrl: 'lighting',
-          nextUrl: 'standardised-grant-amounts',
+          nextUrl: 'project-cost',
+          url: 'roof-solar-PV',
+          baseUrl: 'roof-solar-PV',
           preValidationKeys: [],
-          ga: [
-            { dimension: 'cm2', value: { type: 'journey-time' } }
-          ],
-          maybeEligible: true,
-          maybeEligibleContent: {
-            messageHeader: 'Estimate how much grant you could get',
-            messageContent: 'Add some information about the project (for example, type of store and capacity, type of cover and size, approximate size and quantity of other items you need) so we can estimate how much grant you could get.'
-          }
-        },
-        // Calls standardised cost page
-        // CALLS PROJECT SUMMARY
-        {
-          key: 'potential-amount',
-          order: 150,
-          url: 'potential-amount',
-          baseUrl: 'potential-amount',
-          backUrl: 'project-summary',
-          nextUrl: 'remaining-costs',
-          preValidationKeys: [],
-          grantInfo: {
-            minGrant: 25000,
-            maxGrant: 250000,
-            grantPercentage: '',
-            cappedGrant: true
+          sidebar: {
+            values: [{
+              heading: 'Eligibility',
+              content: [ {
+                para: 'The roof must be able to support solar PV panels, allowing for potential use in the future.',
+                additionalPara: 'Structural calculations by a building expert, contractor or structural engineer need to be provided at full application.',
+              }],
+            }],
+            details: {
+              summaryText: 'What the grant will fund',
+              html: '<p>The cost of purchasing or installing solar PV panels is not funded by this grant.</p> <p>Structural assessment and certification of a building’s capacity to structurally support solar panels is funded.</p>'
+            }
           },
           ineligibleContent: {
-            messageContent: 'The minimum grant you can claim is £25,000.',
+            messageContent: `<p class="govuk-body">The roof must be able to support solar PV panels, allowing for potential use in the future, unless:</p>
+            <div class="govuk-list govuk-list--bullet">
+                  <ul>
+                    <li>the building is listed or on a world heritage site</li>
+                    <li>you're upgrading an existing building and would not otherwise make changes to the roof</li>
+                    <li>the roof faces only north or is heavily shaded</li>
+                    <li>the roof does not have 20m<sup>2</sup> of clear roof space</li>
+                    <li>the roof has a pitch less than 15 degrees or greater than 50 degrees</li>
+                  </ul>
+            </div>`,
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
             }
           },
+          fundingPriorities: '',
+          type: 'single-answer',
+          minAnswerCount: 1,
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if the roof is able to support solar PV panels'
+            }
+          ],
+          answers: [
+            {
+              key: 'roof-solar-PV-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'roof-solar-PV-A2',
+              value: 'No',
+              notEligible: true
+            },
+          ],
+          yarKey: 'roofSolarPV'
+        },        
+        {
+          key: 'project-cost',
+          order: 161,
+          pageTitle: '',
+          classes: 'govuk-input--width-10',
+          url: 'project-cost',
+          baseUrl: 'project-cost',
+          backUrl: 'roof-solar-PV',
+          nextUrl: 'potential-amount',
+          fundingPriorities: '',
+          preValidationKeys: [],
+          grantInfo: {
+            minGrant: MIN_GRANT,
+            maxGrant: MAX_GRANT,
+            grantPercentage: GRANT_PERCENTAGE,
+            cappedGrant: true
+          },
+          type: 'input',
+          prefix: {
+            text: '£'
+          },
+          label: {
+            text: 'What is the total estimated cost of the calf housing?',
+            classes: 'govuk-label--l',
+            isPageHeading: true
+          },
+          hint: {
+            html: `
+              <p>You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £20,000 (40% of 50,000). The maximum grant is £500,000.<p/>
+              <p>Do not include VAT.<p/>
+              <p>Enter amount, for example 95,000<p/>
+              `
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Enter a whole number with a maximum of 7 digits'
+            },
+            {
+              type: 'REGEX',
+              regex: PROJECT_COST_REGEX,
+              error: 'Enter a whole number with a maximum of 7 digits'
+            },
+            {
+              type: 'MIN_MAX_CHARS',
+              min: 1,
+              max: 7,
+              error: 'Enter a whole number with a maximum of 7 digits'
+            }
+          ],
+          ineligibleContent: {
+            messageContent: 'You can only apply for a grant of up to 40% of the estimated costs.',
+            insertText: { text: 'The minimum grant you can apply for this project is £20,000 (40% of 50,000). The maximum grant is £500,000.' },
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
+            }
+          },
+          sidebar: {
+            values: [{
+              heading: 'What the grant will fund',
+              content: [ {
+                para: 'Movable items (for example buckets) and ongoing costs (for example straw) will not be funded.'
+              }],
+            }],
+            details: {
+              summaryText: 'What the grant will fund',
+              html: `This grant is for:<br/><br/>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>structures, including concrete flooring, walls, roofs, structural reinforcement and drainage facilities</li>
+                <li>fixtures, including calf accommodation pens, calf isolation facilities, draught protection, ventilation systems, washing facilities and automatic calf feeders</li>
+                <li>fittings, including temperature and humidity data loggers, heat lamps and enrichment items</li>
+                <li>one-off utility costs such as the alteration of electricity or water supply to allow the building installation or upgrade</li>
+              </ul>`
+            }
+          },
+          answers: [],
+          yarKey: 'projectCost'
+        },
+        {
+          key: 'potential-amount',
+          order: 162,
+          url: 'potential-amount',
+          baseUrl: 'potential-amount',
+          backUrl: 'project-cost',
+          nextUrl: 'remaining-costs',
+          preValidationKeys: [],
           maybeEligible: true,
           maybeEligibleContent: {
             messageHeader: 'Potential grant funding',
-            messageContent: 'Based on the standardised grant amount for each item and the approximate size and quantities you entered, we estimate you could be eligible for a grant of £{{_calculatedGrant_}}',
+            messageContent: `You may be able to apply for a grant of up to £{{_calculatedGrant_}}, based on the estimated cost of £{{_projectCost_}}.`,
             warning: {
               text: 'There’s no guarantee the project will receive a grant.'
             }
@@ -1493,23 +1619,26 @@ const questionBank = {
         {
           key: 'remaining-costs',
           order: 190,
-          title: 'Can you pay the remaining costs?',
+          title: 'Can you pay the remaining costs of £{{_remainingCost_}}?',
           pageTitle: '',
           url: 'remaining-costs',
           baseUrl: 'remaining-costs',
-          backUrl: 'standardised-grant-amounts',
+          backUrl: 'potential-amount',
           nextUrl: 'result-page',
           preValidationKeys: [],
           ineligibleContent: {
-            messageContent: `<p class="govuk-body">You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.</p>
-            <div class="govuk-list govuk-list--bullet">
-                  You can use:
-                  <ul>
+            messageContent: '<p class="govuk-body">You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.</p>',
+            insertText: {
+              html: `
+                  <p>You can use:</p>
+                  <ul class="govuk-list--bullet">
                     <li>loans</li>
                     <li>overdrafts</li>
                     <li>the Basic Payment Scheme</li>
+                    <li>agri-environment schemes such as the Countryside Stewardship Scheme</li>
                   </ul>
-            </div>`,
+            </span>`
+            },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -1530,7 +1659,8 @@ const questionBank = {
                   items: [
                     'loans',
                     'overdrafts',
-                    'the Basic Payment Scheme'
+                    'the Basic Payment Scheme',
+                    'agri-environment schemes such as the Countryside Stewardship Scheme'
                   ]
                 } ]
               }

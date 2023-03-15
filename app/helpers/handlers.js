@@ -34,16 +34,16 @@ const getPage = async (question, request, h) => {
   let confirmationId = ''
 
   if (question.grantInfo) {
-    const { calculatedGrant, remainingCost } = getGrantValues(getYarValue(request, 'itemsTotalValue'), question.grantInfo)
+    const { calculatedGrant, remainingCost } = getGrantValues(getYarValue(request, 'projectCost'), question.grantInfo)
     setYarValue(request, 'calculatedGrant', calculatedGrant)
     setYarValue(request, 'remainingCost', remainingCost)
   }
 
-  if (url === 'potential-amount' && (!getGrantValues(getYarValue(request, 'itemsTotalValue'), question.grantInfo).isEligible)) {
-    const NOT_ELIGIBLE = { ...question.ineligibleContent, backUrl }
-    gapiService.sendEligibilityEvent(request, 'true')
-    return h.view('not-eligible', NOT_ELIGIBLE)
-  }
+  // if (url === 'project-cost' && (!getGrantValues(getYarValue(request, 'projectCost'), question.grantInfo).isEligible)) {
+  //   const NOT_ELIGIBLE = { ...question.ineligibleContent, backUrl }
+  //   gapiService.sendEligibilityEvent(request, 'true')
+  //   return h.view('not-eligible', NOT_ELIGIBLE)
+  // }
 
   if (question.maybeEligible) {
     let { maybeEligibleContent } = question
@@ -233,40 +233,84 @@ const showPostPage = (currentQuestion, request, h) => {
 
   if (thisAnswer?.notEligible) {
     gapiService.sendEligibilityEvent(request, !!thisAnswer?.notEligible)
-    if (thisAnswer?.alsoMaybeEligible) {
-      const {
-        dependentQuestionKey,
-        dependentQuestionYarKey,
-        uniqueAnswer,
-        notUniqueAnswer,
-        maybeEligibleContent
-      } = thisAnswer.alsoMaybeEligible
+    // if (thisAnswer?.alsoMaybeEligible) {
+    //   const {
+    //     dependentQuestionKey,
+    //     dependentQuestionYarKey,
+    //     uniqueAnswer,
+    //     notUniqueAnswer,
+    //     maybeEligibleContent
+    //   } = thisAnswer.alsoMaybeEligible
 
-      const prevAnswer = getYarValue(request, dependentQuestionYarKey)
+    //   const prevAnswer = getYarValue(request, dependentQuestionYarKey)
+    //   const dependentQuestion = ALL_QUESTIONS.find(thisQuestion => (
+    //     thisQuestion.key === dependentQuestionKey &&
+    //     thisQuestion.yarKey === dependentQuestionYarKey
+    //   ))
 
-      const dependentQuestion = ALL_QUESTIONS.find(thisQuestion => (
-        thisQuestion.key === dependentQuestionKey &&
-        thisQuestion.yarKey === dependentQuestionYarKey
-      ))
+    //   let dependentAnswer
+    //   let openMaybeEligible
 
-      let dependentAnswer
-      let openMaybeEligible
+    //   if (notUniqueAnswer) {
+    //     dependentAnswer = dependentQuestion.answers.find(({ key }) => (key === notUniqueAnswer)).value
+    //     openMaybeEligible = notUniqueSelection(prevAnswer, dependentAnswer)
+    //   } else if (uniqueAnswer) {
+    //     dependentAnswer = dependentQuestion.answers.find(({ key }) => (key === uniqueAnswer)).value
+    //     openMaybeEligible = uniqueSelection(prevAnswer, dependentAnswer)
+    //   }
 
-      if (notUniqueAnswer) {
-        dependentAnswer = dependentQuestion.answers.find(({ key }) => (key === notUniqueAnswer)).value
-        openMaybeEligible = notUniqueSelection(prevAnswer, dependentAnswer)
-      } else if (uniqueAnswer) {
-        dependentAnswer = dependentQuestion.answers.find(({ key }) => (key === uniqueAnswer)).value
-        openMaybeEligible = uniqueSelection(prevAnswer, dependentAnswer)
-      }
+    //   if (openMaybeEligible) {
+    //     maybeEligibleContent.title = currentQuestion.title
+    //     const { url } = currentQuestion
+    //     const MAYBE_ELIGIBLE = { ...maybeEligibleContent, url, backUrl: baseUrl }
+    //     return h.view('maybe-eligible', MAYBE_ELIGIBLE)
+    //   }
+    // }
 
-      if (openMaybeEligible) {
-        maybeEligibleContent.title = currentQuestion.title
-        const { url } = currentQuestion
-        const MAYBE_ELIGIBLE = { ...maybeEligibleContent, url, backUrl: baseUrl }
-        return h.view('maybe-eligible', MAYBE_ELIGIBLE)
-      }
-    }
+    return h.view('not-eligible', NOT_ELIGIBLE)
+  } else if (thisAnswer?.redirectUrl) {
+    return h.redirect(thisAnswer?.redirectUrl)
+  }
+
+
+
+  if (thisAnswer?.notEligible || (yarKey === 'projectCost' ? !getGrantValues(payload[Object.keys(payload)[0]], currentQuestion.grantInfo).isEligible : null)) {
+    gapiService.sendEligibilityEvent(request, !!thisAnswer?.notEligible)
+
+    // if (thisAnswer?.alsoMaybeEligible) {
+    //   const {
+    //     dependentQuestionKey,
+    //     dependentQuestionYarKey,
+    //     uniqueAnswer,
+    //     notUniqueAnswer,
+    //     maybeEligibleContent
+    //   } = thisAnswer.alsoMaybeEligible
+
+    //   const prevAnswer = getYarValue(request, dependentQuestionYarKey)
+
+    //   const dependentQuestion = ALL_QUESTIONS.find(thisQuestion => (
+    //     thisQuestion.key === dependentQuestionKey &&
+    //     thisQuestion.yarKey === dependentQuestionYarKey
+    //   ))
+
+    //   let dependentAnswer
+    //   let openMaybeEligible
+
+    //   if (notUniqueAnswer) {
+    //     dependentAnswer = dependentQuestion.answers.find(({ key }) => (key === notUniqueAnswer)).value
+    //     openMaybeEligible = notUniqueSelection(prevAnswer, dependentAnswer)
+    //   } else if (uniqueAnswer) {
+    //     dependentAnswer = dependentQuestion.answers.find(({ key }) => (key === uniqueAnswer)).value
+    //     openMaybeEligible = uniqueSelection(prevAnswer, dependentAnswer)
+    //   }
+
+    //   if (openMaybeEligible) {
+    //     maybeEligibleContent.title = currentQuestion.title
+    //     const { url } = currentQuestion
+    //     const MAYBE_ELIGIBLE = { ...maybeEligibleContent, url, backUrl: baseUrl }
+    //     return h.view('maybe-eligible', MAYBE_ELIGIBLE)
+    //   }
+    // }
 
     return h.view('not-eligible', NOT_ELIGIBLE)
   } else if (thisAnswer?.redirectUrl) {
