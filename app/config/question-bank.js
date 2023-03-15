@@ -940,8 +940,8 @@ const questionBank = {
             values: [ {
               heading: 'Eligibility',
               content: [ {
-                para: `The calf housing must have solid concrete flooring.`,
-                additionalPara: `It cannot have slatted or hardcore flooring.`,
+                para: `The building must have facilities to temporarily isolate sick calves (for example, a temporary pen erected in an existing pen to isolate a sick calf).`,
+                additionalPara: `Sick calves may need to be temporarily isolated to prevent spreading disease.`,
               } ]
             } ]
           },
