@@ -22,6 +22,7 @@ const TWO_NUMBERS_EIGHT_CHARS = /^[a-zA-Z]{2}\d{8}$/
 const COMMA_EXCLUDE_REGEX = /^[^,]*(?!,)$/g // check
 const DECIMAL_EXCLUDE_REGEX = /^[^.]*(?!.)$/g // check
 const PROJECT_COST_REGEX = /^[1-9]\d*$/
+const FLOOR_SPACE_REGEX = /^[1-9]\d*$/
 
 
 module.exports = {
@@ -48,5 +49,6 @@ module.exports = {
   COMMA_EXCLUDE_REGEX,
   DECIMAL_EXCLUDE_REGEX,
   ADDRESS_REGEX,
-  PROJECT_COST_REGEX
+  PROJECT_COST_REGEX,
+  FLOOR_SPACE_REGEX
 }

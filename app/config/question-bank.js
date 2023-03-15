@@ -17,7 +17,8 @@ const {
   CHARS_MAX_50,
   COMMA_EXCLUDE_REGEX,
   ADDRESS_REGEX,
-  PROJECT_COST_REGEX
+  PROJECT_COST_REGEX,
+  FLOOR_SPACE_REGEX
 } = require('../helpers/regex')
 
 const {
@@ -1624,7 +1625,7 @@ const questionBank = {
           url: 'remaining-costs',
           baseUrl: 'remaining-costs',
           backUrl: 'potential-amount',
-          nextUrl: 'environmental-impact',
+          nextUrl: 'permanent-sick-pen',
           preValidationKeys: [],
           ineligibleContent: {
             messageContent: '<p class="govuk-body">You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.</p>',
@@ -1687,6 +1688,130 @@ const questionBank = {
           yarKey: 'remainingCosts'
         },
         {
+          key: 'permanent-sick-pen',
+          order: 194,
+          title: 'Will your building have a permanent sick pen with separate air space?',
+          hint: {
+            text: 'Select all that apply'
+          },
+          pageTitle: '',
+          preValidationKeys: ['calfWeight'],
+          url: 'permanent-sick-pen',
+          baseUrl: 'permanent-sick-pen',
+          // backUrl: ' moisture-control',
+          backUrl: 'remaining-costs',
+          nextUrlObject: {
+            dependentQuestionYarKey: 'calfWeight',
+            dependentAnswerKeysArray: [ 'calf-weight-A1' ],
+            nonDependentAnswerKeysArray: [ 'calf-weight-A3' ],
+            urlOptions: {
+              thenUrl: 'floor-space-under100kg',
+              elseUrl: 'floor-space-100kg-150kg',
+              nonDependentUrl: 'floor-space-over150kg'
+            }
+          },
+          sidebar: {
+            values: [ {
+              heading: 'Funding Priorities',
+              content: [ {
+                para: `RPA wants to fund buildings that go beyond the regulatory baseline and have a permanent sick pen and separate air space.
+
+                      To create a separate air space, the area must have solid walls up to ceiling height blocking it from calf housing.`,
+
+              } ]
+            } ]
+          },
+          fundingPriorities: '',
+          type: 'multi-answer',
+          minAnswerCount: 1,
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select if your building will have a permanent sick pen with separate air space'
+            },
+            {
+              type: 'STANDALONE_ANSWER',
+              error: 'You cannot select that combination of options',
+              standaloneObject: {
+                questionKey: 'permanent-sick-pen',
+                answerKey: 'permanent-sick-pen-A3'
+              }
+            }
+          ],
+          answers: [
+            {
+              key: 'permanent-sick-pen-A1',
+              value: 'A permanent sick pen'
+            },
+            {
+              key: 'permanent-sick-pen-A2',
+              value: 'Separate air space'
+            },
+            {
+              value: 'divider'
+            },
+            {
+              key: 'permanent-sick-pen-A3',
+              value: 'None of the above',
+            }
+          ],
+          yarKey: 'permanentSickPen'
+        },
+        {
+          key: 'floor-space-under100kg',
+          order: 195,
+          pageTitle: '',
+          classes: 'govuk-input--width-5',
+          url: 'floor-space-under100kg',
+          baseUrl: 'floor-space-under100kg',
+          backUrl: 'permanent-sick-pen',
+          nextUrl: 'environmental-impact',
+          fundingPriorities: '',
+          preValidationKeys: [],
+          type: 'input',
+          suffix: {
+            text: 'm²'
+          },
+          label: {
+            text: 'How much space will each calf have?',
+            classes: 'govuk-label--l',
+            isPageHeading: true
+          },
+          hint: {
+            text:'Enter floor area in square meters (m²), for example 5m²'
+          },
+          warning: {
+            text: 'There must be a minimum floor area of 3m² per calf when largest calf is 100kg or under. '
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Enter how much space each calf will have'
+            },
+            {
+              type: 'REGEX',
+              regex: FLOOR_SPACE_REGEX,
+              error: 'Floor space must be a whole number'
+            },
+            {
+              type: 'MIN_MAX_CHARS',
+              min: 1,
+              max: 5,
+              error: 'Number must be between 1-99999'
+            }
+          ],
+          sidebar: {
+            values: [{
+              heading: 'Funding priorities',
+              content: [ {
+                para: 'RPA wants to fund projects that go beyond the regulatory baseline and provide more than the minimum floor area.'
+              }],
+            }]
+          },
+          answers: [],
+          yarKey: 'floorSpaceUnder100kg'
+        },
+        {
           key: 'environmental-impact',
           order: 200,
           title: 'How will the building minimise environmental impact?',
@@ -1696,18 +1821,16 @@ const questionBank = {
           pageTitle: '',
           url: 'environmental-impact',
           baseUrl: 'environmental-impact',
-          backUrl: 'remaining-costs',
-          // backurl object could be commented in or amended when the pages are ready.
-          // backUrlObject: {
-          //   dependentQuestionYarKey: 'calfWeight',
-          //   dependentAnswerKeysArray: [ 'calf-weight-A1' ],
-          //   nonDependentAnswerKeysArray: [ 'calf-weight-A3' ],
-          //   urlOptions: {
-          //     thenUrl: 'floor-space-under100kg',
-          //     elseUrl: 'floor-space-100kg-150kg',
-          //     nonDependentUrl: 'floor-space-over150kg'
-          //   }
-          // },
+          backUrlObject: {
+            dependentQuestionYarKey: 'calfWeight',
+            dependentAnswerKeysArray: [ 'calf-weight-A1' ],
+            nonDependentAnswerKeysArray: [ 'calf-weight-A3' ],
+            urlOptions: {
+              thenUrl: 'floor-space-under100kg',
+              elseUrl: 'floor-space-100kg-150kg',
+              nonDependentUrl: 'floor-space-over150kg'
+            }
+          },
           nextUrl: 'sustainable-materials',
           sidebar: {
             values: [ {
