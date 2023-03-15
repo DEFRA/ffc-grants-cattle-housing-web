@@ -1781,7 +1781,7 @@ const questionBank = {
             text:'Enter floor area in square meters (m²), for example 5m²'
           },
           warning: {
-            text: 'There must be a minimum floor area of 3m² per calf when largest calf is 100kg or under. '
+            text: 'There must be a minimum floor area of 3m² per calf when largest calf is 100kg or under.'
           },
           validate: [
             {
@@ -1810,6 +1810,114 @@ const questionBank = {
           },
           answers: [],
           yarKey: 'floorSpaceUnder100kg'
+        },
+        {
+          key: 'floor-space-100kg-150kg',
+          order: 196,
+          pageTitle: '',
+          classes: 'govuk-input--width-5',
+          url: 'floor-space-100kg-150kg',
+          baseUrl: 'floor-space-100kg-150kg',
+          backUrl: 'permanent-sick-pen',
+          nextUrl: 'environmental-impact',
+          fundingPriorities: '',
+          preValidationKeys: [],
+          type: 'input',
+          suffix: {
+            text: 'm²'
+          },
+          label: {
+            text: 'How much space will each calf have?',
+            classes: 'govuk-label--l',
+            isPageHeading: true
+          },
+          hint: {
+            text:'Enter floor area in square meters (m²), for example 5m²'
+          },
+          warning: {
+            text: 'There must be a minimum floor area of 4m2 per calf when the largest calf is between 100kg and 150kg.'
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Enter how much space each calf will have'
+            },
+            {
+              type: 'REGEX',
+              regex: FLOOR_SPACE_REGEX,
+              error: 'Floor space must be a whole number'
+            },
+            {
+              type: 'MIN_MAX_CHARS',
+              min: 1,
+              max: 5,
+              error: 'Number must be between 1-99999'
+            }
+          ],
+          sidebar: {
+            values: [{
+              heading: 'Funding priorities',
+              content: [ {
+                para: 'RPA wants to fund projects that go beyond the regulatory baseline and provide more than the minimum floor area.'
+              }],
+            }]
+          },
+          answers: [],
+          yarKey: 'floorSpace100kg150kg'
+        },
+        {
+          key: 'floor-space-over150kg',
+          order: 195,
+          pageTitle: '',
+          classes: 'govuk-input--width-5',
+          url: 'floor-space-over150kg',
+          baseUrl: 'floor-space-over150kg',
+          backUrl: 'permanent-sick-pen',
+          nextUrl: 'environmental-impact',
+          fundingPriorities: '',
+          preValidationKeys: [],
+          type: 'input',
+          suffix: {
+            text: 'm²'
+          },
+          label: {
+            text: 'How much space will each calf have?',
+            classes: 'govuk-label--l',
+            isPageHeading: true
+          },
+          hint: {
+            text:'Enter floor area in square meters (m²), for example 5m²'
+          },
+          warning: {
+            text: 'There must be a minimum floor area of 5m2 per calf when largest calf is over 150kg'
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Enter how much space each calf will have'
+            },
+            {
+              type: 'REGEX',
+              regex: FLOOR_SPACE_REGEX,
+              error: 'Floor space must be a whole number'
+            },
+            {
+              type: 'MIN_MAX_CHARS',
+              min: 1,
+              max: 5,
+              error: 'Number must be between 1-99999'
+            }
+          ],
+          sidebar: {
+            values: [{
+              heading: 'Funding priorities',
+              content: [ {
+                para: 'RPA wants to fund projects that go beyond the regulatory baseline and provide more than the minimum floor area.'
+              }],
+            }]
+          },
+          answers: [],
+          yarKey: 'floorSpaceOver150kg'
         },
         {
           key: 'environmental-impact',
