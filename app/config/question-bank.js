@@ -1693,7 +1693,7 @@ const questionBank = {
           url: 'housing',
           baseUrl: 'housing',
           backUrl: 'remaining-costs',
-          nextUrl: 'disease-transmission',
+          nextUrl: 'result-page', // todo: change to disease-transmission later
           preValidationKeys: [ 'remainingCosts' ],
           pageTitle: '',
           title: 'Are you moving from individually housing calves over 7 days old to pair or group housing?',
