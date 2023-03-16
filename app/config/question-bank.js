@@ -1686,7 +1686,48 @@ const questionBank = {
           ],
           yarKey: 'remainingCosts'
         },
-
+        {
+          key: 'housing',
+          order: 151,
+          url: 'housing',
+          baseUrl: 'housing',
+          backUrl: 'remaining-costs',
+          nextUrl: 'disease-transmission',
+          preValidationKeys: [ 'remainingCosts' ],
+          pageTitle: '',
+          title: 'Are you moving from individually housing calves over 7 days old to pair or group housing?',
+          fundingPriorities: 'RPA wants to fund projects that move from individually housing calves to pair or group housing.',
+          type: 'single-answer',
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
+          minAnswerCount: 1,
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if you are moving from individually housed calves over 7 days old to pair or group housing'
+            }
+          ],
+          answers: [
+            {
+              key: 'housing-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'housing-A2',
+              value: 'No',
+            }
+          ],
+          sidebar: {
+            values: [
+              {
+                heading: 'Funding Priorities',
+                content: [ {
+                  para: `RPA wants to fund projects that move from individually housing calves to pair or group housing.`
+                } ]
+              }
+            ]
+          },
+          yarKey: 'housing'
+        },
         {
           key: 'result-page',
           order: 156,
