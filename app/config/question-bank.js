@@ -2007,45 +2007,7 @@ const questionBank = {
                       You should consult building experts for advice on building materials to ensure they are fit for purpose.`,
                 items:[]
               }],
-            } ],
-            details: {
-              summaryText: 'Acceptable sustainable materials',
-              html: `<div>
-                        <div>
-                        <h3>Low carbon concrete</h3>
-                          <p>Alternatives to Ordinary Portland Cement that have higher embodied CO2</p>
-                            <ul class="govuk-list govuk-list--bullet">
-                              <li>lower carbon aggregates (GGBS, MLS, fly ash, silica fume, pozzalana)</li>
-                              <li>ortland Limestone Cements</li>
-                              <li>low-cement-concreate with a cement content of less than 10%</li>
-                            </ul>
-                        </div>
-                        <div>
-                          <h3>Steel replacement products</h3>
-                            <ul class="govuk-list govuk-list--bullet">
-                              <li>Fibre reinforced polymer (FRP)</li>
-                              <li>Resin pilling</li>
-                              <li>Carbon fibre</li>
-                            </ul>
-                        </div>
-                        <div>
-                          <h3>Sustainably sourced timber</h3>
-                          <p>Timber certified by FSC, PEFC, SFI, or CSA</p>
-                        </div>
-                        <div>
-                          <h3>Reused materials already on site</h3>
-                          <p>(for example wooden cladding, fencing, pen dividers)</p>
-                        </div>
-                        <div>
-                          <h3>Reused or secondhand materials from elsewhere</h3>
-                          <p>Supplier quote must include a statement that the item has not been previously purchased with public funding, is fit for purpose and is expected to last at least 5 years</p>
-                        </div>
-                        <div>
-                          <h3>Recycled materials</h3>
-                          <p>Materials with a recycled content of more than 40%</p>
-                        </div>
-                      </div>`
-            },
+            } ]
           },
           fundingPriorities: '',
           type: 'multi-answer',
@@ -2060,44 +2022,57 @@ const questionBank = {
               error: 'You cannot select that combination of options',
               standaloneObject: {
                 questionKey: 'sustainable-materials',
-                answerKey: 'sustainable-materials-A8'
+                answerKey: 'sustainable-materials-A7'
               }
             }
           ],
           answers: [
             {
               key: 'sustainable-materials-A1',
-              value: 'Low carbon concrete'
+              value: 'Low carbon concrete',
+              hint: {
+                text:'Alternatives to Ordinary Portland Cement that have higher embodied CO2 (for example, lower carbon aggregates, Portland Limestone Cements or low-cement-concrete)'
+              }
             },
             {
               key: 'sustainable-materials-A2',
-              value: 'Steel replacement products'
+              value: 'Steel replacement products',
+              hint: {
+                text:'Fibre reinforced polymer (FRP), resin pilling, carbon fibre'
+              }
             },
             {
               key: 'sustainable-materials-A3',
-              value: 'Sustainably sourced timber'
+              value: 'Sustainably sourced timber',
+              hint: {
+                text:'Timber certified by FSC, PEFC, SFI, or CSA'
+              }
             },
             {
               key: 'sustainable-materials-A4',
-              value: 'Reused materials already on site'
+              value: 'Reused or secondhand materials from elsewhere',
+              hint: {
+                text:`Wooden cladding, fencing, pen dividers if sourced on site. If elsewhere,
+                      a supplier quote must include a statement that the item has not been previously purchased with public funding, 
+                      is fit for purpose and is expected to last at least 5 years`
+              }
             },
             {
               key: 'sustainable-materials-A5',
-              value: 'Reused or secondhand materials from elsewhere'
+              value: 'Recycled materials',
+              hint: {
+                text:'Materials with a recycled content of more than 40%'
+              }
             },
             {
               key: 'sustainable-materials-A6',
-              value: 'Recycled materials'
-            },
-            {
-              key: 'sustainable-materials-A7',
               value: 'Something else'
             },
             {
               value: 'divider'
             },
             {
-              key: 'sustainable-materials-A8',
+              key: 'sustainable-materials-A7',
               value: 'None of the above'
             }
           ],
