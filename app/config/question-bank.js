@@ -95,7 +95,7 @@ const questionBank = {
             text: 'Select all that apply'
           },
           pageTitle: '',
-          ga: [ { journeyStart: true } ],
+          ga: [{ journeyStart: true }],
           url: 'applicant-type',
           baseUrl: 'applicant-type',
           backUrl: 'start',
@@ -108,24 +108,24 @@ const questionBank = {
               <li>refurbishing or extending existing calf housing</li>
             </ul>
             `,
-            insertText: {text: 'A calf is up to 6 months of age.'},
+            insertText: { text: 'A calf is up to 6 months of age.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
             }
           },
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Eligibility',
-              content: [ {
-                para: `This grant is for:`,
+              content: [{
+                para: 'This grant is for:',
                 items: [
-                  `building new calf housing`,
-                  `refurbishing or extending existing calf housing`,
+                  'building new calf housing',
+                  'refurbishing or extending existing calf housing'
                 ],
-                additionalPara: `A calf is up to 6 months of age.`
-              } ]
-            } ]
+                additionalPara: 'A calf is up to 6 months of age.'
+              }]
+            }]
           },
           fundingPriorities: 'Improve the environment',
           type: 'multi-answer',
@@ -197,13 +197,13 @@ const questionBank = {
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Eligibility',
-              content: [ {
+              content: [{
                 para: 'Public organisations and local authorities cannot apply for this grant.',
                 items: []
-              } ]
-            } ]
+              }]
+            }]
           },
           validate: [
             {
@@ -293,14 +293,14 @@ const questionBank = {
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Eligibility',
-              content: [ {
+              content: [{
                 para: `This grant is only for projects in England.
                 
                 Scotland, Wales and Northern Ireland have other grants available.`
-              } ]
-            } ]
+              }]
+            }]
           },
           validate: [
             {
@@ -342,14 +342,14 @@ const questionBank = {
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Eligibility',
-              content: [ {
+              content: [{
                 para: `You must have secured planning permission before you submit a full application.
 
                         Any planning permission must be in place by 31 January 2024.`
-              } ]
-            } ]
+              }]
+            }]
           },
           validate: [
             {
@@ -404,7 +404,7 @@ const questionBank = {
           nextUrl: 'tenancy',
           backUrlObject: {
             dependentQuestionYarKey: 'planningPermission',
-            dependentAnswerKeysArray: [ 'planning-permission-A1', 'planning-permission-A2' ],
+            dependentAnswerKeysArray: ['planning-permission-A1', 'planning-permission-A2'],
             urlOptions: {
               thenUrl: 'planning-permission',
               elseUrl: 'planning-permission-condition'
@@ -423,9 +423,9 @@ const questionBank = {
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Eligibility',
-              content: [ {
+              content: [{
                 para: `
                 You will invalidate your application if you start the project or commit to any costs (such as placing orders) before you receive a funding agreement.
                 
@@ -434,8 +434,8 @@ const questionBank = {
                   'get quotes from suppliers',
                   'apply for planning permission (this can take a long time)'
                 ]
-              } ]
-            } ]
+              }]
+            }]
           },
           validate: [
             {
@@ -484,12 +484,12 @@ const questionBank = {
           minAnswerCount: 1,
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Eligibility',
-              content: [ {
+              content: [{
                 para: 'You must own the land or have a tenancy in place for 5 years after the final grant payment.'
-              } ]
-            } ]
+              }]
+            }]
           },
           validate: [
             {
@@ -527,13 +527,13 @@ const questionBank = {
           minAnswerCount: 1,
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Eligibility',
-              content: [ {
+              content: [{
                 para: 'You must own the land or have a tenancy in place for 5 years after the final grant payment.',
                 items: []
-              } ]
-            } ]
+              }]
+            }]
           },
           validate: [
             {
@@ -578,7 +578,7 @@ const questionBank = {
           url: 'project',
           backUrlObject: {
             dependentQuestionYarKey: 'tenancyLength',
-            dependentAnswerKeysArray: [ 'tenancy-length-A1' ],
+            dependentAnswerKeysArray: ['tenancy-length-A1'],
             urlOptions: {
               thenUrl: 'tenancy-length',
               elseUrl: 'tenancy-length-condition',
@@ -603,13 +603,13 @@ const questionBank = {
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Eligibility',
-              content: [ {
-                para: `This grant is for:`,
-                items: [ 'building new calf housing', 'refurbishing or extending existing calf housing' ]
-              } ]
-            } ]
+              content: [{
+                para: 'This grant is for:',
+                items: ['building new calf housing', 'refurbishing or extending existing calf housing']
+              }]
+            }]
           },
           validate: [
             {
@@ -665,13 +665,13 @@ const questionBank = {
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Eligibility',
-              content: [ {
-                para: `There must be a minimum floor area of:`,
-                items: [ '3m² per calf when largest calf is 100kg or under', '4m² per calf when largest calf is between 100kg and 150kg', '5m² per calf when largest calf is over 150kg' ]
-              } ]
-            }, ]
+              content: [{
+                para: 'There must be a minimum floor area of:',
+                items: ['3m² per calf when largest calf is 100kg or under', '4m² per calf when largest calf is between 100kg and 150kg', '5m² per calf when largest calf is over 150kg']
+              }]
+            }]
           },
           validate: [
             {
@@ -688,7 +688,7 @@ const questionBank = {
             {
               key: 'calf-weight-A2',
               value: 'Between 100kg and 150kg',
-              redirectUrl: 'living-space-4m2',
+              redirectUrl: 'living-space-4m2'
             },
             {
               key: 'calf-weight-A3',
@@ -711,26 +711,26 @@ const questionBank = {
           minAnswerCount: 1,
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           ineligibleContent: {
-            messageContent: `Calves weighing up to 100kg must have at least 3m² living space`,
+            messageContent: 'Calves weighing up to 100kg must have at least 3m² living space',
             insertText: { text: 'This includes the lying, standing and feeding/drinking areas.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you might be eligible for.'
             },
-            additionalPara: `The required space-per-calf for each group or pair may change over time so the housing design should account for this.`
+            additionalPara: 'The required space-per-calf for each group or pair may change over time so the housing design should account for this.'
           },
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Eligibility',
-              content: [ {
+              content: [{
                 para: `
                 Calves weighing up to 100kg must have at least 3m² living space.
 
                 This includes the lying, standing and feeding/drinking areas.
 
-                The required space-per-calf for each group or pair may change over time so the housing design should account for this.  `,
-              } ]
-            } ]
+                The required space-per-calf for each group or pair may change over time so the housing design should account for this.  `
+              }]
+            }]
           },
           validate: [
             {
@@ -741,12 +741,12 @@ const questionBank = {
           answers: [
             {
               key: 'living-space-3m2-A1',
-              value: 'Yes',
+              value: 'Yes'
             },
             {
               key: 'living-space-3m2-A2',
               value: 'No',
-              notEligible: true,
+              notEligible: true
             }
           ],
           yarKey: 'livingSpace3m2'
@@ -764,26 +764,26 @@ const questionBank = {
           minAnswerCount: 1,
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           ineligibleContent: {
-            messageContent: `Calves weighing between 100kg and 150kg must have at least 4m² living space.`,
+            messageContent: 'Calves weighing between 100kg and 150kg must have at least 4m² living space.',
             insertText: { text: 'This includes the lying, standing and feeding/drinking areas.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you might be eligible for.'
             },
-            additionalPara: `The required space-per-calf for each group or pair may change over time so the housing design should account for this.`
+            additionalPara: 'The required space-per-calf for each group or pair may change over time so the housing design should account for this.'
           },
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Eligibility',
-              content: [ {
+              content: [{
                 para: `
                       Calves weighing between 100kg and 150kg must have at least 4m² living space.
 
                       This includes the lying, standing and feeding/drinking areas.
 
-                      The required space-per-calf for each group or pair may change over time so the housing design should account for this.`,
-              } ]
-            } ]
+                      The required space-per-calf for each group or pair may change over time so the housing design should account for this.`
+              }]
+            }]
           },
           validate: [
             {
@@ -794,12 +794,12 @@ const questionBank = {
           answers: [
             {
               key: 'living-space-4m2-A1',
-              value: 'Yes',
+              value: 'Yes'
             },
             {
               key: 'living-space-4m2-A2',
               value: 'No',
-              notEligible: true,
+              notEligible: true
             }
           ],
           yarKey: 'livingSpace4m2'
@@ -817,25 +817,25 @@ const questionBank = {
           minAnswerCount: 1,
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           ineligibleContent: {
-            messageContent: `Calves weighing over 150kg must have at least 5m² living space.`,
+            messageContent: 'Calves weighing over 150kg must have at least 5m² living space.',
             insertText: { text: 'This includes the lying, standing and feeding/drinking areas.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you might be eligible for.'
             },
-            additionalPara: `The required space-per-calf for each group or pair may change over time so the housing design should account for this.`
+            additionalPara: 'The required space-per-calf for each group or pair may change over time so the housing design should account for this.'
           },
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Eligibility',
-              content: [ {
+              content: [{
                 para: `Calves weighing over 150kg must have at least 5m² living space.
 
                       This includes the lying, standing and feeding/drinking areas.
                 
-                      The required space-per-calf for each group or pair may change over time so the housing design should account for this.  `,
-              } ]
-            } ]
+                      The required space-per-calf for each group or pair may change over time so the housing design should account for this.  `
+              }]
+            }]
           },
           validate: [
             {
@@ -846,12 +846,12 @@ const questionBank = {
           answers: [
             {
               key: 'living-space-5m2-A1',
-              value: 'Yes',
+              value: 'Yes'
             },
             {
               key: 'living-space-5m2-A2',
               value: 'No',
-              notEligible: true,
+              notEligible: true
             }
           ],
           yarKey: 'livingSpace5m2'
@@ -866,8 +866,8 @@ const questionBank = {
           preValidationKeys: [],
           backUrlObject: {
             dependentQuestionYarKey: 'calfWeight',
-            dependentAnswerKeysArray: [ 'calf-weight-A1' ],
-            nonDependentAnswerKeysArray: [ 'calf-weight-A3' ],
+            dependentAnswerKeysArray: ['calf-weight-A1'],
+            nonDependentAnswerKeysArray: ['calf-weight-A3'],
             urlOptions: {
               thenUrl: 'living-space-3m2',
               elseUrl: 'living-space-4m2',
@@ -875,7 +875,7 @@ const questionBank = {
             }
           },
           ineligibleContent: {
-            messageContent: `<p class="govuk-body">Calves can only be housed individually in exceptional circumstances (for example, illness or no other calves of similar age).</p>`,
+            messageContent: '<p class="govuk-body">Calves can only be housed individually in exceptional circumstances (for example, illness or no other calves of similar age).</p>',
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you might be eligible for.'
@@ -884,12 +884,12 @@ const questionBank = {
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Eligibility',
-              content: [ {
-                para: `Calves can only be housed individually in exceptional circumstances (for example, illness or no other calves of similar age).`,
-              } ]
-            } ]
+              content: [{
+                para: 'Calves can only be housed individually in exceptional circumstances (for example, illness or no other calves of similar age).'
+              }]
+            }]
           },
           validate: [
             {
@@ -912,7 +912,7 @@ const questionBank = {
               value: 'Only in exceptional circumstance',
               hint: {
                 html: 'For example illness, no other calves of similar age'
-              },
+              }
             }
           ],
           yarKey: 'housedIndividually'
@@ -938,13 +938,13 @@ const questionBank = {
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Eligibility',
-              content: [ {
-                para: `The calf housing must have solid concrete flooring.`,
-                additionalPara: `It cannot have slatted or hardcore flooring.`,
-              } ]
-            } ]
+              content: [{
+                para: 'The building must have facilities to temporarily isolate sick calves (for example, a temporary pen erected in an existing pen to isolate a sick calf).',
+                additionalPara: 'Sick calves may need to be temporarily isolated to prevent spreading disease.'
+              }]
+            }]
           },
           validate: [
             {
@@ -955,7 +955,7 @@ const questionBank = {
           answers: [
             {
               key: 'isolate-calves-A1',
-              value: 'Yes',
+              value: 'Yes'
             },
             {
               key: 'isolate-calves-A2',
@@ -985,12 +985,12 @@ const questionBank = {
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Eligibility',
-              content: [ {
-                para: `The calf housing must have straw bedding (using cereal straw).`
-              } ],
-            } ]
+              content: [{
+                para: 'The calf housing must have straw bedding (using cereal straw).'
+              }]
+            }]
           },
           validate: [
             {
@@ -1001,7 +1001,7 @@ const questionBank = {
           answers: [
             {
               key: 'straw-bedding-A1',
-              value: 'Yes',
+              value: 'Yes'
             },
             {
               key: 'straw-bedding-A2',
@@ -1019,7 +1019,7 @@ const questionBank = {
           url: 'concrete-flooring',
           backUrl: 'straw-bedding',
           nextUrl: 'enrichment',
-          preValidationKeys: [ 'strawBedding' ],
+          preValidationKeys: ['strawBedding'],
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           ineligibleContent: {
             messageContent: 'The calf housing must have solid concrete flooring.',
@@ -1032,13 +1032,13 @@ const questionBank = {
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Eligibility',
-              content: [ {
-                para: `The calf housing must have solid concrete flooring.`,
-                additionalPara: `It cannot have slatted or hardcore flooring.`,
-              } ],
-            } ]
+              content: [{
+                para: 'The calf housing must have solid concrete flooring.',
+                additionalPara: 'It cannot have slatted or hardcore flooring.'
+              }]
+            }]
           },
           validate: [
             {
@@ -1049,7 +1049,7 @@ const questionBank = {
           answers: [
             {
               key: 'concrete-flooring-A1',
-              value: 'Yes',
+              value: 'Yes'
             },
             {
               key: 'concrete-flooring-A2',
@@ -1071,13 +1071,13 @@ const questionBank = {
           url: 'enrichment',
           backUrl: 'concrete-flooring',
           nextUrl: 'structure',
-          preValidationKeys: [ 'concreteFlooring' ],
+          preValidationKeys: ['concreteFlooring'],
           ineligibleContent: {
             messageContent: 'Each pair or group of calves must have at least one enrichment item (for example brushes or hanging balls).',
             insertText: {
               text: 'This does not include straw bedding and social contact.'
             },
-            additionalPara: `The grant will fund off-the-shelf items for cattle. Other enrichment items (for example cardboard boxes) are not funded.`,
+            additionalPara: 'The grant will fund off-the-shelf items for cattle. Other enrichment items (for example cardboard boxes) are not funded.',
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -1086,13 +1086,13 @@ const questionBank = {
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Eligibility',
-              content: [ {
+              content: [{
                 para: 'Each pair or group of calves must have at least one enrichment item (for example brushes or hanging balls).',
-                additionalPara: 'The grant will fund off-the-shelf items for cattle. Other enrichment items (for example cardboard boxes) are not funded.',
-              } ],
-            } ]
+                additionalPara: 'The grant will fund off-the-shelf items for cattle. Other enrichment items (for example cardboard boxes) are not funded.'
+              }]
+            }]
           },
           validate: [
             {
@@ -1103,7 +1103,7 @@ const questionBank = {
           answers: [
             {
               key: 'enrichment-A1',
-              value: 'Yes',
+              value: 'Yes'
             },
             {
               key: 'enrichment-A2',
@@ -1143,9 +1143,9 @@ const questionBank = {
             values: [
               {
                 heading: 'Eligibility',
-                content: [ {
-                  para: `All buildings must be permanent structures.`,
-                } ]
+                content: [{
+                  para: 'All buildings must be permanent structures.'
+                }]
               }
             ]
           },
@@ -1166,7 +1166,7 @@ const questionBank = {
             },
             {
               key: 'structure-A3',
-              value: 'A permanent open-sided structure with igloos/hutches',
+              value: 'A permanent open-sided structure with igloos/hutches'
             },
             {
               key: 'structure-A4',
@@ -1220,7 +1220,7 @@ const questionBank = {
               key: 'structure-eligibility-A2',
               value: 'No',
               notEligible: true
-            },
+            }
           ],
           yarKey: 'structureEligibility'
         },
@@ -1235,7 +1235,7 @@ const questionBank = {
           pageTitle: '',
           backUrlObject: {
             dependentQuestionYarKey: 'structure',
-            dependentAnswerKeysArray: [ 'structure-A1', 'structure-A2', 'structure-A3' ],
+            dependentAnswerKeysArray: ['structure-A1', 'structure-A2', 'structure-A3'],
             urlOptions: {
               thenUrl: 'structure',
               elseUrl: 'structure-eligibility'
@@ -1256,12 +1256,12 @@ const questionBank = {
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Eligibility',
-              content: [ {
-                para: `The building must have sloped flooring with a 1 in 20 (5%) gradient in bedded areas that slopes towards a drain or drainage channel.`
-              } ]
-            } ]
+              content: [{
+                para: 'The building must have sloped flooring with a 1 in 20 (5%) gradient in bedded areas that slopes towards a drain or drainage channel.'
+              }]
+            }]
           },
           validate: [
             {
@@ -1305,13 +1305,13 @@ const questionBank = {
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Eligibility',
-              content: [ {
+              content: [{
                 para: `All projects must have permanent external calf-height solid walls/barriers to keep out drafts.
                       For a permanent open-sided structure with igloos/hutches, this may mean adding permanent solid sides to the outside pens (hay bales are not sufficient).`
-              } ]
-            } ]
+              }]
+            }]
           },
           validate: [
             {
@@ -1354,14 +1354,14 @@ const questionBank = {
             values: [
               {
                 heading: 'Eligibility',
-                content: [ {
-                  para: `The building must have:`,
+                content: [{
+                  para: 'The building must have:',
                   items: [
                     'access to a water supply',
                     'at least 2 IP66 sockets in the building',
                     'temperature and humidity data loggers (capable of autonomously recording temperature/humidity over a defined period and storing data to view later)'
                   ]
-                } ]
+                }]
               }
             ]
           },
@@ -1397,7 +1397,7 @@ const questionBank = {
               key: 'additional-items-A2',
               value: 'No',
               notEligible: true
-            },
+            }
           ],
           yarKey: 'additionalItems'
         },
@@ -1423,12 +1423,12 @@ const questionBank = {
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Eligibility',
-              content: [ {
-                para: `The building must have fitted lighting of at least 50 lux.`
-              } ]
-            } ]
+              content: [{
+                para: 'The building must have fitted lighting of at least 50 lux.'
+              }]
+            }]
           },
           validate: [
             {
@@ -1459,7 +1459,7 @@ const questionBank = {
             <li>the building is listed or on a world heritage site</li>
             <li> you're upgrading an existing building and would not otherwise make changes to the roof </li>
             <li>the roof faces only north or is heavily shaded </li>
-            <li>the roof does not have 20m2 of clear roof space </li>
+            <li>the roof does not have 20m<sup>2</sup> of clear roof space </li>
             <li>the roof has a pitch less than 15 degrees or greater than 50 degrees</li>
             </div>`
           },
@@ -1473,10 +1473,10 @@ const questionBank = {
           sidebar: {
             values: [{
               heading: 'Eligibility',
-              content: [ {
+              content: [{
                 para: 'The roof must be able to support solar PV panels, allowing for potential use in the future.',
-                additionalPara: 'Structural calculations by a building expert, contractor or structural engineer need to be provided at full application.',
-              }],
+                additionalPara: 'Structural calculations by a building expert, contractor or structural engineer need to be provided at full application.'
+              }]
             }],
             details: {
               summaryText: 'What the grant will fund',
@@ -1517,10 +1517,10 @@ const questionBank = {
               key: 'roof-solar-PV-A2',
               value: 'No',
               notEligible: true
-            },
+            }
           ],
           yarKey: 'roofSolarPV'
-        },        
+        },
         {
           key: 'project-cost',
           order: 161,
@@ -1582,9 +1582,9 @@ const questionBank = {
           sidebar: {
             values: [{
               heading: 'What the grant will fund',
-              content: [ {
+              content: [{
                 para: 'Movable items (for example buckets) and ongoing costs (for example straw) will not be funded.'
-              }],
+              }]
             }],
             details: {
               summaryText: 'What the grant will fund',
@@ -1611,7 +1611,7 @@ const questionBank = {
           maybeEligible: true,
           maybeEligibleContent: {
             messageHeader: 'Potential grant funding',
-            messageContent: `You may be able to apply for a grant of up to £{{_calculatedGrant_}}, based on the estimated cost of £{{_projectCost_}}.`,
+            messageContent: 'You may be able to apply for a grant of up to £{{_calculatedGrant_}}, based on the estimated cost of £{{_projectCost_}}.',
             warning: {
               text: 'There’s no guarantee the project will receive a grant.'
             }
@@ -1653,7 +1653,7 @@ const questionBank = {
             values: [
               {
                 heading: 'Eligibility',
-                content: [ {
+                content: [{
                   para: `You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.
                   
                   You can use:`,
@@ -1663,7 +1663,7 @@ const questionBank = {
                     'the Basic Payment Scheme',
                     'agri-environment schemes such as the Countryside Stewardship Scheme'
                   ]
-                } ]
+                }]
               }
             ]
           },
@@ -2345,7 +2345,7 @@ const questionBank = {
                 'Spring block',
                 'Autumn block',
                 'Other'
-              ],
+              ]
             },
             {
               yarKey: 'calvesNumber',
@@ -2368,7 +2368,7 @@ const questionBank = {
                 {
                   type: 'REGEX',
                   regex: WHOLE_NUMBER_REGEX,
-                  error: 'Number of calves must be a whole number',
+                  error: 'Number of calves must be a whole number'
                 },
                 {
                   type: 'MIN_MAX',
@@ -2425,7 +2425,7 @@ const questionBank = {
           preValidationKeys: [],
           backUrlObject: {
             dependentQuestionYarKey: 'applying',
-            dependentAnswerKeysArray: [ 'applying-A2' ],
+            dependentAnswerKeysArray: ['applying-A2'],
             urlOptions: {
               thenUrl: 'agent-details',
               elseUrl: 'applying'
@@ -2435,7 +2435,7 @@ const questionBank = {
           type: 'multi-input',
           minAnswerCount: '',
           maxAnswerCount: '',
-          ga: [ { dimension: 'cd3', value: { type: 'yar', key: 'applying' } } ],
+          ga: [{ dimension: 'cd3', value: { type: 'yar', key: 'applying' } }],
           hint: {
             text: 'Enter the farmer and farm business details'
           },
@@ -2539,7 +2539,7 @@ const questionBank = {
                 },
                 {
                   type: 'CONFIRMATION_ANSWER',
-                  fieldsToCampare: [ 'emailAddress', 'confirmEmailAddress' ],
+                  fieldsToCampare: ['emailAddress', 'confirmEmailAddress'],
                   error: 'Enter an email address that matches'
                 }
               ]
@@ -2559,7 +2559,7 @@ const questionBank = {
                 {
                   type: 'NOT_EMPTY_EXTRA',
                   error: 'Enter a mobile number (if you do not have a mobile, enter your landline number)',
-                  extraFieldsToCheck: [ 'landlineNumber' ]
+                  extraFieldsToCheck: ['landlineNumber']
                 },
                 {
                   type: 'REGEX',
@@ -2589,7 +2589,7 @@ const questionBank = {
                 {
                   type: 'NOT_EMPTY_EXTRA',
                   error: 'Enter a landline number (if you do not have a landline, enter your mobile number)',
-                  extraFieldsToCheck: [ 'mobileNumber' ]
+                  extraFieldsToCheck: ['mobileNumber']
                 },
                 {
                   type: 'REGEX',
@@ -2869,7 +2869,7 @@ const questionBank = {
                 },
                 {
                   type: 'CONFIRMATION_ANSWER',
-                  fieldsToCampare: [ 'emailAddress', 'confirmEmailAddress' ],
+                  fieldsToCampare: ['emailAddress', 'confirmEmailAddress'],
                   error: 'Enter an email address that matches'
                 }
               ]
@@ -2889,7 +2889,7 @@ const questionBank = {
                 {
                   type: 'NOT_EMPTY_EXTRA',
                   error: 'Enter a mobile number (if you do not have a mobile, enter your landline number)',
-                  extraFieldsToCheck: [ 'landlineNumber' ]
+                  extraFieldsToCheck: ['landlineNumber']
                 },
                 {
                   type: 'REGEX',
@@ -2919,7 +2919,7 @@ const questionBank = {
                 {
                   type: 'NOT_EMPTY_EXTRA',
                   error: 'Enter a landline number (if you do not have a landline, enter your mobile number)',
-                  extraFieldsToCheck: [ 'mobileNumber' ]
+                  extraFieldsToCheck: ['mobileNumber']
                 },
                 {
                   type: 'REGEX',
@@ -3135,7 +3135,7 @@ questionBank.sections.forEach(({ questions }) => {
 const ALL_URLS = []
 ALL_QUESTIONS.forEach(item => ALL_URLS.push(item.url))
 
-const YAR_KEYS = [ 'itemsTotalValue', 'remainingCost', 'calculatedGrant' ]
+const YAR_KEYS = ['itemsTotalValue', 'remainingCost', 'calculatedGrant']
 ALL_QUESTIONS.forEach(item => YAR_KEYS.push(item.yarKey))
 module.exports = {
   questionBank,
