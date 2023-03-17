@@ -1371,7 +1371,7 @@ const questionBank = {
             <div class="govuk-list govuk-list--bullet">
                   <ul>
                     <li>access to a water supply</li>
-                    <li>at least 2 IP66 sockets in the building</li>
+                    <li>at least 2 IP66 electrical sockets in the building</li>
                     <li>temperature and humidity data loggers (capable of autonomously recording temperature/humidity over a defined period and storing data to view later)</li>
                   </ul>
             </div>`,
