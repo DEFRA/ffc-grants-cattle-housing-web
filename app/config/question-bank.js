@@ -1339,7 +1339,7 @@ const questionBank = {
           hint: {
             html: `<div class:"govuk-hint">
             The building must have:</br></br>
-            <li>access to a water supplyr</li>
+            <li>access to a water supply</li>
             <li>at least 2 IP66 sockets in the building</li>
             <li>temperature and humidity data loggers (capable of autonomously recording temperature/humidity over a defined period and storing data to view later)</li>
             </div>`
