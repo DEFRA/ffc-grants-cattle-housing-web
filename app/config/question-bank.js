@@ -155,7 +155,7 @@ const questionBank = {
             },
             {
               key: 'applicant-type-A3',
-              value: 'Mixed farmer (cattle and arable)'
+              value: 'Mixed farmer (for example cattle and arable)'
             },
             {
               value: 'divider'
