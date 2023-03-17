@@ -1406,6 +1406,9 @@ const questionBank = {
           key: 'lighting',
           order: 170,
           title: 'Will the building have fitted lighting of at least 50 lux?',
+          hint: {
+            text:"Lux is the International System of Units (SI) unit of illuminance (it is equal to one lumen per square metre)."
+          },
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           pageTitle: '',
           backUrl: 'additional-items',
