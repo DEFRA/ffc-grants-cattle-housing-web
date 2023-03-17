@@ -1592,7 +1592,7 @@ const questionBank = {
               html: `This grant is for:<br/><br/>
               <ul class="govuk-list govuk-list--bullet">
                 <li>structures, including concrete flooring, walls, roofs, structural reinforcement and drainage facilities</li>
-                <li>fixtures, including calf accommodation pens, calf isolation facilities, draught protection, ventilation systems, washing facilities and automatic calf feeders</li>
+                <li>fixtures, including calf accommodation pens, calf isolation facilities, gates, draught protection, ventilation systems, washing facilities and automatic calf feeders</li>
                 <li>fittings, including temperature and humidity data loggers, heat lamps and enrichment items</li>
                 <li>one-off utility costs such as the alteration of electricity or water supply to allow the building installation or upgrade</li>
               </ul>`
