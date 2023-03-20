@@ -1195,8 +1195,14 @@ const questionBank = {
           baseUrl: 'structure-eligibility',
           preValidationKeys: [],
           ineligibleContent: {
-            messageContent: 'This grant is only for projects in England.',
-            insertText: { text: 'Scotland, Wales and Northern Ireland have other grants available.' },
+            messageContent: `<p class="govuk-body">All buildings must:</p>
+            <div class="govuk-list govuk-list--bullet">
+                  <ul>
+                    <li>be permanent structures</li>
+                    <li>have adequate drainage</li>
+                    <li>protect calves from draughts with solid walls/barriers to calf height</li>
+                  </ul>
+            </div>`,
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
