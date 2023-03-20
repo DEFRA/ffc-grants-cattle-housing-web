@@ -39,11 +39,12 @@ const getPage = async (question, request, h) => {
     setYarValue(request, 'remainingCost', remainingCost)
   }
 
-  // if (url === 'project-cost' && (!getGrantValues(getYarValue(request, 'projectCost'), question.grantInfo).isEligible)) {
-  //   const NOT_ELIGIBLE = { ...question.ineligibleContent, backUrl }
-  //   gapiService.sendEligibilityEvent(request, 'true')
-  //   return h.view('not-eligible', NOT_ELIGIBLE)
-  // }
+  if (url === 'potential-amount' && (!getGrantValues(getYarValue(request, 'projectCost'), question.grantInfo).isEligible)) {
+    const NOT_ELIGIBLE = { ...question.ineligibleContent, backUrl }
+    gapiService.sendEligibilityEvent(request, 'true')
+    return h.view('not-eligible', NOT_ELIGIBLE)
+  }
+  
 
   if (question.maybeEligible) {
     let { maybeEligibleContent } = question
