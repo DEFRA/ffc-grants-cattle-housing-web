@@ -1778,6 +1778,50 @@ const questionBank = {
           yarKey: 'calfGroupSize'
         },
         {
+          key: 'number-of-calves',
+          order: 153,
+          url: 'number-of-calves',
+          baseUrl: 'number-of-calves',
+          backUrl: 'group-size',
+          nextUrl: 'automatic-calf-feeder',
+          preValidationKeys: [ 'calfGroupSize' ],
+          pageTitle: '',
+          title: 'What will be the maximum number of calves in the calf housing?',
+          fundingPriorities: '',
+          type: 'single-answer',
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select what will be the maximum number of calves housed in the calf housing'
+            }
+          ],
+          answers: [
+            {
+              key: 'number-of-calves-A1',
+              value: '2 to 50'
+            },
+            {
+              key: 'number-of-calves-A2',
+              value: '51 to 100'
+            },
+            {
+              key: 'number-of-calves-A3',
+              value: 'Over 100'
+            }
+          ],
+          sidebar: {
+            values: [
+              {
+                heading: 'Funding Priorities',
+                content: [ {
+                  para: `RPA wants to fund projects that house 50 calves or fewer in a single air space.`,
+                } ]
+              }
+            ]
+          },
+          yarKey: 'numberOfCalves'
+        },
+        {
           key: 'result-page',
           order: 156,
           title: 'Your results',
