@@ -1730,6 +1730,54 @@ const questionBank = {
           yarKey: 'housing'
         },
         {
+          key: 'calf-group-size',
+          order: 152,
+          url: 'group-size',
+          baseUrl: 'group-size',
+          backUrl: 'housing',
+          nextUrl: 'number-of-calves',
+          preValidationKeys: [ 'housing' ],
+          pageTitle: '',
+          title: 'What will be the average calf group size for calves over 7 days old?',
+          fundingPriorities: '',
+          type: 'single-answer',
+          sidebar: {
+            values: [
+              {
+                heading: 'Funding Priorities',
+                content: [ {
+                  para: `RPA wants to fund projects that increase social interaction for calves, with a preference for groups of 4 to 8, followed by groups with fewer than 13 calves.`,
+                } ]
+              }
+            ]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select what size the average calf group will be for calves over 7 days old'
+            }
+          ],
+          answers: [
+            {
+              key: 'calf-group-size-A1',
+              value: '2 to 3'
+            },
+            {
+              key: 'calf-group-size-A2',
+              value: '4 to 8'
+            },
+            {
+              key: 'calf-group-size-A3',
+              value: '9 to 12'
+            },
+            {
+              key: 'calf-group-size-A4',
+              value: '13 or more'
+            }
+          ],
+          yarKey: 'calfGroupSize'
+        },
+        {
           key: 'result-page',
           order: 156,
           title: 'Your results',
