@@ -1822,6 +1822,58 @@ const questionBank = {
           yarKey: 'numberOfCalves'
         },
         {
+          key: 'automatic-calf-feeder',
+          order: 154,
+          url: 'automatic-calf-feeder',
+          baseUrl: 'automatic-calf-feeder',
+          backUrl: 'number-of-calves',
+          nextUrl: 'moisture-control',
+          preValidationKeys: [ 'numberOfCalves' ],
+          pageTitle: '',
+          title: 'How many calves will you have per automatic feeder?',
+          fundingPriorities: '',
+          type: 'single-answer',
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select how many calves you will have per automatic calf feeder'
+            }
+          ],
+          answers: [
+            {
+              key: 'automatic-calf-feeder-A1',
+              value: '1 to 4'
+            },
+            {
+              key: 'automatic-calf-feeder-A2',
+              value: '5 to 8'
+            },
+            {
+              key: 'automatic-calf-feeder-A3',
+              value: '9 to 12'
+            },
+            {
+              key: 'automatic-calf-feeder-A4',
+              value: '13 or more'
+            },
+            {
+              key: 'automatic-calf-feeder-A5',
+              value: 'We do not use an automatic feeder'
+            }
+          ],
+          sidebar: {
+            values: [
+              {
+                heading: 'Funding Priorities',
+                content: [ {
+                  para: `RPA wants to fund projects that have a smaller number of calves per feeder.`,
+                } ]
+              }
+            ]
+          },
+          yarKey: 'automaticCalfFeeder'
+        },
+        {
           key: 'result-page',
           order: 156,
           title: 'Your results',
