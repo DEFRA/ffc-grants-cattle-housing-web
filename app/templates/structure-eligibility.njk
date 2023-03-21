@@ -1,0 +1,76 @@
+{% extends '.layout.njk' %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "./components/macro.njk" import crumbToken %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+{% block beforeContent %}
+    {{ govukBackLink({
+    text: "Back",
+    href: backUrl,
+	attributes: {id: 'linkBack'}
+    }) }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-body">
+    
+<div class="govuk-form-group">
+<fieldset class="govuk-fieldset" aria-describedby="structure-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+    <h1 class="govuk-fieldset__heading">
+        Does your building structure meet the eligibility criteria?
+    </h1>
+    </legend>
+    <div id="structure-hint" class="govuk-hint">
+        All buildings must:</br>
+        <ul>
+            <li>be permanent structures</li>
+            <li>have adequate drainage</li>
+            <li>protect calves from draughts with solid walls/barriers to calf height</li>
+        </ul>
+    </div>
+    <div class="govuk-radios" data-module="govuk-radios">
+    <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="structure-1" name="structure" type="radio" value="text" data-aria-controls="conditional-structure-1">
+        <label class="govuk-label govuk-radios__label" for="structure-1">
+        Yes
+        </label>
+    </div>
+    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-structure-1">
+        {# <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200"> #}
+        <div class="govuk-form-group">
+        <label class="govuk-label" for="structure-by-text">
+            Describe the building structure
+        </label>
+        <textarea class="govuk-textarea govuk-js-character-count" id="structure-by-text" name="structure-by-text" rows="5" aria-describedby="more-detail-hint"></textarea>
+        <div id="with-hint-info" class="govuk-hint govuk-character-count__message">You can enter up to 25 characters</div>
+        </div>
+        </div>
+    </div>
+        <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="structure-2" name="structure" type="radio" value="text" data-aria-controls="conditional-structure-2">
+        <label class="govuk-label govuk-radios__label" for="structure-2">No</label>
+    {# </div> #}
+    </div>
+    </fieldset>
+    </div>
+
+</div>
+
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form method="POST" action="{{ formActionPage }}" autocomplete="off" novalidate>
+        {{ crumbToken(crumb)}}
+        {{ govukButton({
+            text: "Continue",
+            attributes: {id: "btnContinue"}
+        }) }}
+        </form>
+
+</div>
+{% endblock %}

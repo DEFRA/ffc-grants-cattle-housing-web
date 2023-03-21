@@ -1177,58 +1177,71 @@ const questionBank = {
           yarKey: 'structure'
         },
         {
+          // key: 'structure-eligibility',
+          // order: 135,
+          // title: 'Does your building structure meet the eligibility criteria?',
+          // hint: {
+            // html: `<div class:"govuk-hint">
+            // All buildings must:</br></br>
+            // <li>be permanent structures</li>
+            // <li>have adequate drainage</li>
+            // <li>protect calves from draughts with solid walls/barriers to calf height</li>
+            // </div>`
+          // },
+          // pageTitle: '',
+          // backUrl: 'structure',
+          // nextUrl: 'drainage-slope',
+          // url: 'structure-eligibility',
+          // baseUrl: 'structure-eligibility',
+          // preValidationKeys: [],
+          // ineligibleContent: {
+          //   messageContent: `<p class="govuk-body">All buildings must:</p>
+          //   <div class="govuk-list govuk-list--bullet">
+          //         <ul>
+          //           <li>be permanent structures</li>
+          //           <li>have adequate drainage</li>
+          //           <li>protect calves from draughts with solid walls/barriers to calf height</li>
+          //         </ul>
+          //   </div>`,
+          //   messageLink: {
+          //     url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+          //     title: 'See other grants you may be eligible for.'
+          //   }
+          // },
+          // fundingPriorities: '',
+          // type: 'single-answer',
+          // minAnswerCount: 1,
+          // validate: [
+          //   {
+          //     type: 'NOT_EMPTY',
+          //     error: 'Select yes if your building structure meets the eligibility criteria'
+          //   }
+          // ],
+          // answers: [
+          //   {
+          //     key: 'structure-eligibility-A1',
+          //     value: 'Yes'
+          //   },
+          //   {
+          //     key: 'structure-eligibility-A2',
+          //     value: 'No',
+          //     notEligible: true
+          //   }
+          // ],
           key: 'structure-eligibility',
-          order: 135,
-          title: 'Does your building structure meet the eligibility criteria?',
-          hint: {
-            html: `<div class:"govuk-hint">
-            All buildings must:</br></br>
-            <li>be permanent structures</li>
-            <li>have adequate drainage</li>
-            <li>protect calves from draughts with solid walls/barriers to calf height</li>
-            </div>`
-          },
-          pageTitle: '',
+          order: 260,
+          title: 'structure-eligibility',
+          pageTitle: 'structure-eligibility',
+          url: 'structure-eligibility',
           backUrl: 'structure',
           nextUrl: 'drainage-slope',
-          url: 'structure-eligibility',
-          baseUrl: 'structure-eligibility',
           preValidationKeys: [],
-          ineligibleContent: {
-            messageContent: `<p class="govuk-body">All buildings must:</p>
-            <div class="govuk-list govuk-list--bullet">
-                  <ul>
-                    <li>be permanent structures</li>
-                    <li>have adequate drainage</li>
-                    <li>protect calves from draughts with solid walls/barriers to calf height</li>
-                  </ul>
-            </div>`,
-            messageLink: {
-              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-              title: 'See other grants you may be eligible for.'
-            }
-          },
+          ineligibleContent: {},
           fundingPriorities: '',
-          type: 'single-answer',
+          type: '',
           minAnswerCount: 1,
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select yes if your building structure meets the eligibility criteria'
-            }
-          ],
-          answers: [
-            {
-              key: 'structure-eligibility-A1',
-              value: 'Yes'
-            },
-            {
-              key: 'structure-eligibility-A2',
-              value: 'No',
-              notEligible: true
-            }
-          ],
-          yarKey: 'structureEligibility'
+          answers: [],
+          yarKey: 'structureEligibility',
         },
         {
           key: 'drainage-slope',
