@@ -51,12 +51,12 @@ describe('Page: /automatic-calf-feeder', () => {
 		expect(postResponse.payload).toContain('Select how many calves you will have per automatic calf feeder')
 	});
 
-	it('user selects eligible option: \'Yes\' -> Advances to /moisture-control', async () => {
+	it('user selects eligible option: \'1 to 4\' -> Advances to /moisture-control', async () => {
 		const postOptions = {
 			method: 'POST',
 			url: `${global.__URLPREFIX__}/automatic-calf-feeder`,
 			headers: { cookie: 'crumb=' + crumbToken },
-			payload: { automaticCalfFeeder: 'Yes', crumb: crumbToken }
+			payload: { automaticCalfFeeder: '1 to 4', crumb: crumbToken }
 		}
 
 		const postResponse = await global.__SERVER__.inject(postOptions)
