@@ -62,7 +62,7 @@ describe('Page: /moisture-control', () => {
 
 		const postResponse = await global.__SERVER__.inject(postOptions)
 		expect(postResponse.statusCode).toBe(302)
-		expect(postResponse.headers.location).toBe(`result-page`) // TODO: update to permanent-sick-pen it's when ready
+		expect(postResponse.headers.location).toBe(`permanent-sick-pen`)
 	});
 
 	it('user selects eligible option: \'None of the above\' -> Advances to /permanent-sick-pen ', async () => {
@@ -75,7 +75,7 @@ describe('Page: /moisture-control', () => {
 
 		const postResponse = await global.__SERVER__.inject(postOptions)
 		expect(postResponse.statusCode).toBe(302)
-		expect(postResponse.headers.location).toBe(`result-page`) // TODO: update to permanent-sick-pen it's when ready
+		expect(postResponse.headers.location).toBe(`permanent-sick-pen`)
 	});
 
 	it('JS is disabled and user selects ineligible option: \'None of the above\' with another option -> show error message', async () => {

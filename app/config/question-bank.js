@@ -17,7 +17,8 @@ const {
   CHARS_MAX_50,
   COMMA_EXCLUDE_REGEX,
   ADDRESS_REGEX,
-  PROJECT_COST_REGEX
+  PROJECT_COST_REGEX,
+  FLOOR_SPACE_REGEX
 } = require('../helpers/regex')
 
 const {
@@ -140,28 +141,32 @@ const questionBank = {
               error: 'You cannot select that combination of options',
               standaloneObject: {
                 questionKey: 'applicant-type',
-                answerKey: 'applicant-type-A4'
+                answerKey: 'applicant-type-A5'
               }
             }
           ],
           answers: [
             {
               key: 'applicant-type-A1',
-              value: 'Dairy farmer'
+              value: 'Dairy'
             },
             {
               key: 'applicant-type-A2',
-              value: 'Beef farmer'
+              value: 'Beef'
             },
             {
               key: 'applicant-type-A3',
-              value: 'Mixed farmer (cattle and arable)'
+              value: 'Dairy and other livestock or arable'
+            },
+            {
+              key: 'applicant-type-A4',
+              value: 'Beef and other livestock or arable'
             },
             {
               value: 'divider'
             },
             {
-              key: 'applicant-type-A4',
+              key: 'applicant-type-A5',
               value: 'None of the above',
               notEligible: true
             }
@@ -1295,7 +1300,7 @@ const questionBank = {
           preValidationKeys: [],
           ineligibleContent: {
             messageContent: 'All projects must have permanent external calf-height solid walls/barriers to keep out drafts.',
-            insertText: { text: 'For a permanent open-sided structure with igloos/hutches, this may mean adding permanent solid sides to the outside pens (hay bales are not sufficient).'},
+            insertText: { text: 'For a permanent open-sided structure with igloos/hutches, this may mean adding permanent solid sides to the outside pens (straw bales are not sufficient).'},
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -1309,7 +1314,8 @@ const questionBank = {
               heading: 'Eligibility',
               content: [{
                 para: `All projects must have permanent external calf-height solid walls/barriers to keep out drafts.
-                      For a permanent open-sided structure with igloos/hutches, this may mean adding permanent solid sides to the outside pens (hay bales are not sufficient).`
+
+                      For a permanent open-sided structure with igloos/hutches, this may mean adding permanent solid sides to the outside pens (straw bales are not sufficient).`
               }]
             }]
           },
@@ -1321,11 +1327,11 @@ const questionBank = {
           ],
           answers: [
             {
-              key: 'drainage-slope-A1',
+              key: 'draught-protection-A1',
               value: 'Yes'
             },
             {
-              key: 'drainage-slope-A2',
+              key: 'draught-protection-A2',
               value: 'No',
               notEligible: true
             }
@@ -1341,7 +1347,7 @@ const questionBank = {
             html: `<div class:"govuk-hint">
             The building must have:</br></br>
             <li>access to a water supply</li>
-            <li>at least 2 IP66 sockets in the building</li>
+            <li>at least 2 IP66 electrical sockets in the building</li>
             <li>temperature and humidity data loggers (capable of autonomously recording temperature/humidity over a defined period and storing data to view later)</li>
             </div>`
           },
@@ -1359,7 +1365,7 @@ const questionBank = {
                   para: 'The building must have:',
                   items: [
                     'access to a water supply',
-                    'at least 2 IP66 sockets in the building',
+                    'at least 2 IP66 electrical sockets in the building',
                     'temperature and humidity data loggers (capable of autonomously recording temperature/humidity over a defined period and storing data to view later)'
                   ]
                 }]
@@ -1371,7 +1377,7 @@ const questionBank = {
             <div class="govuk-list govuk-list--bullet">
                   <ul>
                     <li>access to a water supply</li>
-                    <li>at least 2 IP66 sockets in the building</li>
+                    <li>at least 2 IP66 electrical sockets in the building</li>
                     <li>temperature and humidity data loggers (capable of autonomously recording temperature/humidity over a defined period and storing data to view later)</li>
                   </ul>
             </div>`,
@@ -1406,6 +1412,9 @@ const questionBank = {
           key: 'lighting',
           order: 170,
           title: 'Will the building have fitted lighting of at least 50 lux?',
+          hint: {
+            text:"Lux is the International System of Units (SI) unit of illuminance (it is equal to one lumen per square metre)."
+          },
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           pageTitle: '',
           backUrl: 'additional-items',
@@ -1592,7 +1601,7 @@ const questionBank = {
               html: `This grant is for:<br/><br/>
               <ul class="govuk-list govuk-list--bullet">
                 <li>structures, including concrete flooring, walls, roofs, structural reinforcement and drainage facilities</li>
-                <li>fixtures, including calf accommodation pens, calf isolation facilities, draught protection, ventilation systems, washing facilities and automatic calf feeders</li>
+                <li>fixtures, including calf accommodation pens, calf isolation facilities, gates, draught protection, ventilation systems, washing facilities and automatic calf feeders</li>
                 <li>fittings, including temperature and humidity data loggers, heat lamps and enrichment items</li>
                 <li>one-off utility costs such as the alteration of electricity or water supply to allow the building installation or upgrade</li>
               </ul>`
@@ -1894,7 +1903,7 @@ const questionBank = {
           url: 'moisture-control',
           baseUrl: 'moisture-control',
           backUrl: 'automatic-calf-feeder',
-          nextUrl: 'result-page', // TODO: update to permanent-sick-pen 
+          nextUrl: 'permanent-sick-pen',
           preValidationKeys: [ 'automaticCalfFeeder' ],
           pageTitle: '',
           title: 'How will your building control moisture?',
@@ -1949,12 +1958,477 @@ const questionBank = {
           yarKey: 'moistureControl'
         },
         {
+          key: 'permanent-sick-pen',
+          order: 194,
+          title: 'Will your building have a permanent sick pen with separate air space?',
+          hint: {
+            text: 'Select all that apply'
+          },
+          pageTitle: '',
+          preValidationKeys: ['calfWeight'],
+          url: 'permanent-sick-pen',
+          baseUrl: 'permanent-sick-pen',
+          backUrl: 'moisture-control',
+          nextUrlObject: {
+            dependentQuestionYarKey: 'calfWeight',
+            dependentAnswerKeysArray: [ 'calf-weight-A1' ],
+            nonDependentAnswerKeysArray: [ 'calf-weight-A3' ],
+            urlOptions: {
+              thenUrl: 'floor-space-under100kg',
+              elseUrl: 'floor-space-100kg-150kg',
+              nonDependentUrl: 'floor-space-over150kg'
+            }
+          },
+          sidebar: {
+            values: [ {
+              heading: 'Funding Priorities',
+              content: [ {
+                para: `RPA wants to fund buildings that go beyond the regulatory baseline and have a permanent sick pen and separate air space.
+
+                      To create a separate air space, the area must have solid walls up to ceiling height blocking it from calf housing.`,
+
+              } ]
+            } ]
+          },
+          fundingPriorities: '',
+          type: 'multi-answer',
+          minAnswerCount: 1,
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select if your building will have a permanent sick pen with separate air space'
+            },
+            {
+              type: 'STANDALONE_ANSWER',
+              error: 'You cannot select that combination of options',
+              standaloneObject: {
+                questionKey: 'permanent-sick-pen',
+                answerKey: 'permanent-sick-pen-A3'
+              }
+            }
+          ],
+          answers: [
+            {
+              key: 'permanent-sick-pen-A1',
+              value: 'A permanent sick pen'
+            },
+            {
+              key: 'permanent-sick-pen-A2',
+              value: 'Separate air space'
+            },
+            {
+              value: 'divider'
+            },
+            {
+              key: 'permanent-sick-pen-A3',
+              value: 'None of the above',
+            }
+          ],
+          yarKey: 'permanentSickPen'
+        },
+        {
+          key: 'floor-space-under100kg',
+          order: 195,
+          pageTitle: '',
+          classes: 'govuk-input--width-5',
+          url: 'floor-space-under100kg',
+          baseUrl: 'floor-space-under100kg',
+          backUrl: 'permanent-sick-pen',
+          nextUrl: 'environmental-impact',
+          fundingPriorities: '',
+          preValidationKeys: [],
+          type: 'input',
+          suffix: {
+            text: 'm²'
+          },
+          label: {
+            text: 'How much space will each calf have?',
+            classes: 'govuk-label--l',
+            isPageHeading: true
+          },
+          hint: {
+            text:'Enter floor area in square meters (m²), for example 5m²'
+          },
+          warning: {
+            text: 'There must be a minimum floor area of 3m² per calf when largest calf is 100kg or under.'
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Enter how much space each calf will have'
+            },
+            {
+              type: 'REGEX',
+              regex: FLOOR_SPACE_REGEX,
+              error: 'Floor space must be a whole number'
+            },
+            {
+              type: 'MIN_MAX_CHARS',
+              min: 1,
+              max: 5,
+              error: 'Number must be between 1-99999'
+            }
+          ],
+          sidebar: {
+            values: [{
+              heading: 'Funding priorities',
+              content: [ {
+                para: 'RPA wants to fund projects that go beyond the regulatory baseline and provide more than the minimum floor area.'
+              }],
+            }]
+          },
+          answers: [],
+          yarKey: 'floorSpaceUnder100kg'
+        },
+        {
+          key: 'floor-space-100kg-150kg',
+          order: 196,
+          pageTitle: '',
+          classes: 'govuk-input--width-5',
+          url: 'floor-space-100kg-150kg',
+          baseUrl: 'floor-space-100kg-150kg',
+          backUrl: 'permanent-sick-pen',
+          nextUrl: 'environmental-impact',
+          fundingPriorities: '',
+          preValidationKeys: [],
+          type: 'input',
+          suffix: {
+            text: 'm²'
+          },
+          label: {
+            text: 'How much space will each calf have?',
+            classes: 'govuk-label--l',
+            isPageHeading: true
+          },
+          hint: {
+            text:'Enter floor area in square meters (m²), for example 5m²'
+          },
+          warning: {
+            text: 'There must be a minimum floor area of 4m2 per calf when the largest calf is between 100kg and 150kg.'
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Enter how much space each calf will have'
+            },
+            {
+              type: 'REGEX',
+              regex: FLOOR_SPACE_REGEX,
+              error: 'Floor space must be a whole number'
+            },
+            {
+              type: 'MIN_MAX_CHARS',
+              min: 1,
+              max: 5,
+              error: 'Number must be between 1-99999'
+            }
+          ],
+          sidebar: {
+            values: [{
+              heading: 'Funding priorities',
+              content: [ {
+                para: 'RPA wants to fund projects that go beyond the regulatory baseline and provide more than the minimum floor area.'
+              }],
+            }]
+          },
+          answers: [],
+          yarKey: 'floorSpace100kg150kg'
+        },
+        {
+          key: 'floor-space-over150kg',
+          order: 195,
+          pageTitle: '',
+          classes: 'govuk-input--width-5',
+          url: 'floor-space-over150kg',
+          baseUrl: 'floor-space-over150kg',
+          backUrl: 'permanent-sick-pen',
+          nextUrl: 'environmental-impact',
+          fundingPriorities: '',
+          preValidationKeys: [],
+          type: 'input',
+          suffix: {
+            text: 'm²'
+          },
+          label: {
+            text: 'How much space will each calf have?',
+            classes: 'govuk-label--l',
+            isPageHeading: true
+          },
+          hint: {
+            text:'Enter floor area in square meters (m²), for example 5m²'
+          },
+          warning: {
+            text: 'There must be a minimum floor area of 5m2 per calf when largest calf is over 150kg'
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Enter how much space each calf will have'
+            },
+            {
+              type: 'REGEX',
+              regex: FLOOR_SPACE_REGEX,
+              error: 'Floor space must be a whole number'
+            },
+            {
+              type: 'MIN_MAX_CHARS',
+              min: 1,
+              max: 5,
+              error: 'Number must be between 1-99999'
+            }
+          ],
+          sidebar: {
+            values: [{
+              heading: 'Funding priorities',
+              content: [ {
+                para: 'RPA wants to fund projects that go beyond the regulatory baseline and provide more than the minimum floor area.'
+              }],
+            }]
+          },
+          answers: [],
+          yarKey: 'floorSpaceOver150kg'
+        },
+        {
+          key: 'environmental-impact',
+          order: 200,
+          title: 'How will the building minimise environmental impact?',
+          hint: {
+            text: 'Select all that apply'
+          },
+          pageTitle: '',
+          url: 'environmental-impact',
+          baseUrl: 'environmental-impact',
+          backUrlObject: {
+            dependentQuestionYarKey: 'calfWeight',
+            dependentAnswerKeysArray: [ 'calf-weight-A1' ],
+            nonDependentAnswerKeysArray: [ 'calf-weight-A3' ],
+            urlOptions: {
+              thenUrl: 'floor-space-under100kg',
+              elseUrl: 'floor-space-100kg-150kg',
+              nonDependentUrl: 'floor-space-over150kg'
+            }
+          },
+          nextUrl: 'sustainable-materials',
+          sidebar: {
+            values: [ {
+              heading: 'Funding priorities',
+              content: [ {
+                para: `RPA wants to fund buildings that enhance environmental sustainability and help meet government environmental targets.
+
+                      Solar PV panels are not funded through the grant but applicants intending to use them will get a higher score.`
+              } ]
+            } ]
+          },
+          fundingPriorities: '',
+          type: 'multi-answer',
+          minAnswerCount: 1,
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select how your building will minimise environmental impact'
+            },
+            {
+              type: 'STANDALONE_ANSWER',
+              error: 'You cannot select that combination of options',
+              standaloneObject: {
+                questionKey: 'environmental-impact',
+                answerKey: 'environmental-impact-A3'
+              }
+            }
+          ],
+          answers: [
+            {
+              key: 'environmental-impact-A1',
+              value: 'Solar PV panels on the roof of the building'
+            },
+            {
+              key: 'environmental-impact-A2',
+              value: 'Collect and store rainwater'
+            },
+            {
+              value: 'divider'
+            },
+            {
+              key: 'environmental-impact-A3',
+              value: 'None of the above'
+            }
+          ],
+          yarKey: 'environmentalImpact'
+        },
+        {
+          key: 'sustainable-materials',
+          order: 210,
+          title: 'Will your building use sustainable materials?',
+          hint: {
+            text: 'Select all that apply'
+          },
+          pageTitle: '',
+          url: 'sustainable-materials',
+          baseUrl: 'sustainable-materials',
+          backUrl: 'environmental-impact',
+          nextUrl: 'introducing-innovation',
+          sidebar: {
+            values: [ {
+              heading: 'Funding priorities',
+              content: [ {
+                para: `RPA wants to fund buildings that use sustainable materials.
+
+                      You should consult building experts for advice on building materials to ensure they are fit for purpose.`,
+                items:[]
+              }],
+            } ]
+          },
+          fundingPriorities: '',
+          type: 'multi-answer',
+          minAnswerCount: 1,
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select if your building will use sustainable materials'
+            },
+            {
+              type: 'STANDALONE_ANSWER',
+              error: 'You cannot select that combination of options',
+              standaloneObject: {
+                questionKey: 'sustainable-materials',
+                answerKey: 'sustainable-materials-A7'
+              }
+            }
+          ],
+          answers: [
+            {
+              key: 'sustainable-materials-A1',
+              value: 'Low carbon concrete',
+              hint: {
+                text:'Alternatives to Ordinary Portland Cement that have higher embodied CO2 (for example, lower carbon aggregates, Portland Limestone Cements or low-cement-concrete)'
+              }
+            },
+            {
+              key: 'sustainable-materials-A2',
+              value: 'Steel replacement products',
+              hint: {
+                text:'Fibre reinforced polymer (FRP), resin pilling, carbon fibre'
+              }
+            },
+            {
+              key: 'sustainable-materials-A3',
+              value: 'Sustainably sourced timber',
+              hint: {
+                text:'Timber certified by FSC, PEFC, SFI, or CSA'
+              }
+            },
+            {
+              key: 'sustainable-materials-A4',
+              value: 'Reused or secondhand materials from elsewhere',
+              hint: {
+                text:`Wooden cladding, fencing, pen dividers if sourced on site. If elsewhere,
+                      a supplier quote must include a statement that the item has not been previously purchased with public funding, 
+                      is fit for purpose and is expected to last at least 5 years`
+              }
+            },
+            {
+              key: 'sustainable-materials-A5',
+              value: 'Recycled materials',
+              hint: {
+                text:'Materials with a recycled content of more than 40%'
+              }
+            },
+            {
+              key: 'sustainable-materials-A6',
+              value: 'Something else'
+            },
+            {
+              value: 'divider'
+            },
+            {
+              key: 'sustainable-materials-A7',
+              value: 'None of the above'
+            }
+          ],
+          yarKey: 'sustainableMaterials'
+        },
+        {
+          key: 'introducing-innovation',
+          order: 220,
+          title: 'Is your project introducing innovation?',
+          hint: {
+            html: `Collaborations, technologies or techniques that are new to your farm
+                  <p> Select all that apply</p> `
+          },
+          pageTitle: '',
+          url: 'introducing-innovation',
+          baseUrl: 'introducing-innovation',
+          backUrl: 'sustainable-materials',
+          nextUrl: 'result-page',
+          sidebar: {
+            values: [ {
+              heading: 'Funding priorities',
+              content: [ {
+                para: `RPA wants to fund projects that introduce innovation, such as:`,
+                items: [
+                  'technology',
+                  'collaboration',
+                  'techniques'
+                ]
+              } ]
+            } ]
+          },
+          fundingPriorities: '',
+          type: 'multi-answer',
+          minAnswerCount: 1,
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select how your project is introducing innovation'
+            },
+            {
+              type: 'STANDALONE_ANSWER',
+              error: 'You cannot select that combination of options',
+              standaloneObject: {
+                questionKey: 'introducing-innovation',
+                answerKey: 'introducing-innovation-A4'
+              }
+            }
+          ],
+          answers: [
+            {
+              key: 'introducing-innovation-A1',
+              value: 'Technology',
+              hint: {
+                text: 'For example, advance ventilation control systems, veterinary technology equipment'
+              }
+            },
+            {
+              key: 'introducing-innovation-A2',
+              value: 'Collaboration',
+              hint: {
+                text: 'For example, partnerships with educational institutions, other farmers or the local community '
+              }
+            },
+            {
+              key: 'introducing-innovation-A3',
+              value: 'Techniques',
+              hint: {
+                text: 'For example, data recording or digital techniques, pain management techniques'
+              }
+            },
+            {
+              value: 'divider'
+            },
+            {
+              key: 'introducing-innovation-A4',
+              value: 'None of the above'
+            }
+          ],
+          yarKey: 'introducingInnovation'
+        },
+        {
           key: 'result-page',
-          order: 156,
+          order: 230,
           title: 'Your results',
           url: 'result-page',
           baseUrl: 'result-page',
-          backUrl: 'remaining-costs',
+          backUrl: 'introducing-innovation',
           nextUrl: 'business-details',
           preValidationKeys: [],
           maybeEligible: true,
@@ -1982,7 +2456,7 @@ const questionBank = {
         /// ////// ***************** After Score  ************************************/////////////////////
         {
           key: 'business-details',
-          order: 220,
+          order: 240,
           title: 'Business details',
           pageTitle: '',
           url: 'business-details',
@@ -2177,7 +2651,7 @@ const questionBank = {
         },
         {
           key: 'applying',
-          order: 230,
+          order: 250,
           title: 'Who is applying for this grant?',
           pageTitle: '',
           url: 'applying',
@@ -2210,7 +2684,7 @@ const questionBank = {
         },
         {
           key: 'farmer-details',
-          order: 240,
+          order: 260,
           title: 'Applicant’s details',
           pageTitle: '',
           url: 'applicant-details',
@@ -2525,7 +2999,7 @@ const questionBank = {
         },
         {
           key: 'agent-details',
-          order: 250,
+          order: 270,
           title: 'Agent’s details',
           hint: {
             text: 'Enter the agent and agent business details'
@@ -2820,7 +3294,7 @@ const questionBank = {
         },
         {
           key: 'check-details',
-          order: 260,
+          order: 280,
           title: 'Check your details',
           pageTitle: 'Check details',
           url: 'check-details',
@@ -2841,7 +3315,7 @@ const questionBank = {
         {
           key: 'confirm',
           title: 'Confirm and send',
-          order: 270,
+          order: 290,
           url: 'confirm',
           backUrl: 'check-details',
           nextUrl: 'confirmation',
@@ -2867,7 +3341,7 @@ const questionBank = {
         },
         {
           key: 'reference-number',
-          order: 280,
+          order: 300,
           title: 'Details submitted',
           pageTitle: '',
           url: 'confirmation',

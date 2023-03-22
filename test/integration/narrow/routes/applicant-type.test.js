@@ -10,9 +10,10 @@ describe('Page: /applicant-type', () => {
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
     expect(response.payload).toContain('What type of farmer are you?')
-    expect(response.payload).toContain('Dairy farmer')
-    expect(response.payload).toContain('Beef farmer')
-    expect(response.payload).toContain('Mixed farmer (cattle and arable)')
+    expect(response.payload).toContain('Dairy')
+    expect(response.payload).toContain('Beef')
+    expect(response.payload).toContain('Dairy and other livestock or arable')
+    expect(response.payload).toContain('Beef and other livestock or arable')
     expect(response.payload).toContain('None of the above')
   })
 
