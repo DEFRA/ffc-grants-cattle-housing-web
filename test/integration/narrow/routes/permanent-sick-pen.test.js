@@ -23,9 +23,10 @@ it('page loads successfully, with all the options', async () => {
 
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('Will your building have a permanent sick pen with separate air space?')
+    expect(response.payload).toContain('What type of sick pen will your building have?')
     expect(response.payload).toContain('A permanent sick pen')
-    expect(response.payload).toContain('Separate air space')
+    expect(response.payload).toContain('A separate air space')
+    expect(response.payload).toContain('A permanent heat source')
     expect(response.payload).toContain('None of the above')
 })
 it('no option selected -> show error message', async () => {
@@ -45,7 +46,7 @@ it(' \'None of the above\' selected with another option -> show error message', 
     method: 'POST',
     url: `${global.__URLPREFIX__}/permanent-sick-pen`,
     headers: { cookie: 'crumb=' + crumbToken },
-    payload: { permanentSickPen: ['None of the above', 'Separate air space'], crumb: crumbToken }
+    payload: { permanentSickPen: ['None of the above', 'A separate air space'], crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
@@ -57,7 +58,7 @@ it('user selects eligible option -> store user response and redirect to /floor-s
     method: 'POST',
     url: `${global.__URLPREFIX__}/permanent-sick-pen`,
     headers: { cookie: 'crumb=' + crumbToken },
-    payload: { permanentSickPen: ['Separate air space'], crumb: crumbToken }
+    payload: { permanentSickPen: ['A separate air space'], crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
@@ -70,7 +71,7 @@ it('user selects eligible option -> store user response and redirect to /floor-s
     method: 'POST',
     url: `${global.__URLPREFIX__}/permanent-sick-pen`,
     headers: { cookie: 'crumb=' + crumbToken },
-    payload: { permanentSickPen: ['Separate air space'], crumb: crumbToken }
+    payload: { permanentSickPen: ['A separate air space'], crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
@@ -83,7 +84,7 @@ it('user selects eligible option  -> store user response and redirect to /floor-
     method: 'POST',
     url: `${global.__URLPREFIX__}/permanent-sick-pen`,
     headers: { cookie: 'crumb=' + crumbToken },
-    payload: { permanentSickPen: ['Separate air space'], crumb: crumbToken }
+    payload: { permanentSickPen: ['A separate air space'], crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)

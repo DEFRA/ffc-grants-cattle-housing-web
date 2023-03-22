@@ -1960,7 +1960,7 @@ const questionBank = {
         {
           key: 'permanent-sick-pen',
           order: 194,
-          title: 'Will your building have a permanent sick pen with separate air space?',
+          title: 'What type of sick pen will your building have?',
           hint: {
             text: 'Select all that apply'
           },
@@ -1983,9 +1983,9 @@ const questionBank = {
             values: [ {
               heading: 'Funding Priorities',
               content: [ {
-                para: `RPA wants to fund buildings that go beyond the regulatory baseline and have a permanent sick pen and separate air space.
-
-                      To create a separate air space, the area must have solid walls up to ceiling height blocking it from calf housing.`,
+                para: `RPA wants to fund buildings that go beyond the regulatory baseline by having:`,
+                      items:['a permanent sick pen','a separate air space','a permanent heat source'],
+                      additionalPara: 'To create a separate air space, the area must have solid walls up to ceiling height blocking it from the calf housing.'
 
               } ]
             } ]
@@ -2003,7 +2003,7 @@ const questionBank = {
               error: 'You cannot select that combination of options',
               standaloneObject: {
                 questionKey: 'permanent-sick-pen',
-                answerKey: 'permanent-sick-pen-A3'
+                answerKey: 'permanent-sick-pen-A4'
               }
             }
           ],
@@ -2014,13 +2014,17 @@ const questionBank = {
             },
             {
               key: 'permanent-sick-pen-A2',
-              value: 'Separate air space'
+              value: 'A separate air space'
+            },
+            {
+              key: 'permanent-sick-pen-A3',
+              value: 'A permanent heat source'
             },
             {
               value: 'divider'
             },
             {
-              key: 'permanent-sick-pen-A3',
+              key: 'permanent-sick-pen-A4',
               value: 'None of the above',
             }
           ],
