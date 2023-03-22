@@ -27,6 +27,7 @@ const {
   GRANT_PERCENTAGE
 } = require('../helpers/grant-details')
 
+
 const { LIST_COUNTIES } = require('../helpers/all-counties')
 
 /**
@@ -1617,6 +1618,20 @@ const questionBank = {
           backUrl: 'project-cost',
           nextUrl: 'remaining-costs',
           preValidationKeys: [],
+          grantInfo: {
+            minGrant: MIN_GRANT,
+            maxGrant: MAX_GRANT,
+            grantPercentage: GRANT_PERCENTAGE,
+            cappedGrant: true
+          },
+          ineligibleContent: {
+            messageContent: 'You can only apply for a grant of up to 40% of the estimated costs.',
+            insertText: { text: 'The minimum grant you can apply for this project is £20,000 (40% of 50,000). The maximum grant is £500,000.' },
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
+            }
+          },
           maybeEligible: true,
           maybeEligibleContent: {
             messageHeader: 'Potential grant funding',

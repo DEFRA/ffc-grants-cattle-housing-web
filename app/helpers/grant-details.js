@@ -6,5 +6,4 @@ module.exports = {
   MIN_GRANT,
   MAX_GRANT,
   GRANT_PERCENTAGE,
-  
 }
