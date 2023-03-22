@@ -1295,7 +1295,7 @@ const questionBank = {
           preValidationKeys: [],
           ineligibleContent: {
             messageContent: 'All projects must have permanent external calf-height solid walls/barriers to keep out drafts.',
-            insertText: { text: 'For a permanent open-sided structure with igloos/hutches, this may mean adding permanent solid sides to the outside pens (hay bales are not sufficient).'},
+            insertText: { text: 'For a permanent open-sided structure with igloos/hutches, this may mean adding permanent solid sides to the outside pens (straw bales are not sufficient).'},
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -1309,7 +1309,8 @@ const questionBank = {
               heading: 'Eligibility',
               content: [{
                 para: `All projects must have permanent external calf-height solid walls/barriers to keep out drafts.
-                      For a permanent open-sided structure with igloos/hutches, this may mean adding permanent solid sides to the outside pens (hay bales are not sufficient).`
+                
+                      For a permanent open-sided structure with igloos/hutches, this may mean adding permanent solid sides to the outside pens (straw bales are not sufficient).`
               }]
             }]
           },
