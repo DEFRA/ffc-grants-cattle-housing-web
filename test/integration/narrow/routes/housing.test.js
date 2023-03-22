@@ -56,7 +56,7 @@ describe('Page: /housing', () => {
 
 		const postResponse = await global.__SERVER__.inject(postOptions)
 		expect(postResponse.statusCode).toBe(302)
-		expect(postResponse.headers.location).toBe('result-page') // todo: change to disease-transmission later
+		expect(postResponse.headers.location).toBe('group-size') // todo: change to disease-transmission later
 		// expect(postResponse.headers.location).toBe('disease-transmission')
 	});
 
@@ -70,7 +70,7 @@ describe('Page: /housing', () => {
 
 		const postResponse = await global.__SERVER__.inject(postOptions)
 		expect(postResponse.statusCode).toBe(302)
-		expect(postResponse.headers.location).toBe('result-page') // todo: change to disease-transmission later
+		expect(postResponse.headers.location).toBe('group-size') // todo: change to disease-transmission later
 		// expect(postResponse.headers.location).toBe('disease-transmission')
 	})
 });
