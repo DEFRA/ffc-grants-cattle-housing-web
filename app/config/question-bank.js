@@ -1625,7 +1625,7 @@ const questionBank = {
           url: 'remaining-costs',
           baseUrl: 'remaining-costs',
           backUrl: 'potential-amount',
-          nextUrl: 'result-page',
+          nextUrl: 'housing',
           preValidationKeys: [],
           ineligibleContent: {
             messageContent: '<p class="govuk-body">You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.</p>',
@@ -1693,7 +1693,7 @@ const questionBank = {
           url: 'housing',
           baseUrl: 'housing',
           backUrl: 'remaining-costs',
-          nextUrl: 'result-page', // todo: change to disease-transmission later
+          nextUrl: 'group-size', // todo: change to disease-transmission later
           preValidationKeys: [ 'remainingCosts' ],
           pageTitle: '',
           title: 'Are you moving from individually housing calves over 7 days old to pair or group housing?',
@@ -1872,6 +1872,66 @@ const questionBank = {
             ]
           },
           yarKey: 'automaticCalfFeeder'
+        },
+        {
+          key: 'moisture-control',
+          order: 155,
+          url: 'moisture-control',
+          baseUrl: 'moisture-control',
+          backUrl: 'automatic-calf-feeder',
+          nextUrl: 'result-page', // TODO: update to permanent-sick-pen 
+          preValidationKeys: [ 'automaticCalfFeeder' ],
+          pageTitle: '',
+          title: 'How will your building control moisture?',
+          fundingPriorities: '',
+          type: 'multi-answer',
+          minAnswerCount: 1,
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select how your building will control moisture'
+            },
+            {
+              type: 'STANDALONE_ANSWER',
+              error: 'You cannot select that combination of options',
+              standaloneObject: {
+                questionKey: 'moisture-control',
+                answerKey: 'moisture-control-A4'
+              }
+            }
+          ],
+          answers: [
+            {
+              key: 'moisture-control-A1',
+              value: 'A drain or drainage channel inside the pen'
+            },
+            {
+              key: 'moisture-control-A2',
+              value: 'Positioning drinking areas near drainage and away from bedding'
+            },
+            {
+              key: 'moisture-control-A3',
+              value: 'A separate preparation or washing area'
+            },
+            {
+              value: 'divider'
+            },
+            {
+              key: 'moisture-control-A4',
+              value: 'None of the above'
+            }
+          ],
+          sidebar: {
+            values: [
+              {
+                heading: 'Funding Priorities',
+                content: [ {
+                  para: `RPA wants to fund projects that go beyond the regulatory baseline to control building moisture.`,
+                } ]
+              }
+            ]
+          },
+          yarKey: 'moistureControl'
         },
         {
           key: 'result-page',
