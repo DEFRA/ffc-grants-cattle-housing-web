@@ -1629,7 +1629,7 @@ const questionBank = {
           url: 'remaining-costs',
           baseUrl: 'remaining-costs',
           backUrl: 'potential-amount',
-          nextUrl: 'permanent-sick-pen',
+          nextUrl: 'housing',
           preValidationKeys: [],
           ineligibleContent: {
             messageContent: '<p class="govuk-body">You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.</p>',
@@ -1692,6 +1692,252 @@ const questionBank = {
           yarKey: 'remainingCosts'
         },
         {
+          key: 'housing',
+          order: 151,
+          url: 'housing',
+          baseUrl: 'housing',
+          backUrl: 'remaining-costs',
+          nextUrl: 'group-size', // todo: change to disease-transmission later
+          preValidationKeys: [ 'remainingCosts' ],
+          pageTitle: '',
+          title: 'Are you moving from individually housing calves over 7 days old to pair or group housing?',
+          fundingPriorities: 'RPA wants to fund projects that move from individually housing calves to pair or group housing.',
+          type: 'single-answer',
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
+          minAnswerCount: 1,
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if you are moving from individually housed calves over 7 days old to pair or group housing'
+            }
+          ],
+          answers: [
+            {
+              key: 'housing-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'housing-A2',
+              value: 'No',
+            }
+          ],
+          sidebar: {
+            values: [
+              {
+                heading: 'Funding Priorities',
+                content: [ {
+                  para: `RPA wants to fund projects that move from individually housing calves to pair or group housing.`
+                } ]
+              }
+            ]
+          },
+          yarKey: 'housing'
+        },
+        {
+          key: 'calf-group-size',
+          order: 152,
+          url: 'group-size',
+          baseUrl: 'group-size',
+          backUrl: 'housing',
+          nextUrl: 'number-of-calves',
+          preValidationKeys: [ 'housing' ],
+          pageTitle: '',
+          title: 'What will be the average calf group size for calves over 7 days old?',
+          fundingPriorities: '',
+          type: 'single-answer',
+          sidebar: {
+            values: [
+              {
+                heading: 'Funding Priorities',
+                content: [ {
+                  para: `RPA wants to fund projects that increase social interaction for calves, with a preference for groups of 4 to 8, followed by groups with fewer than 13 calves.`,
+                } ]
+              }
+            ]
+          },
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select what size the average calf group will be for calves over 7 days old'
+            }
+          ],
+          answers: [
+            {
+              key: 'calf-group-size-A1',
+              value: '2 to 3'
+            },
+            {
+              key: 'calf-group-size-A2',
+              value: '4 to 8'
+            },
+            {
+              key: 'calf-group-size-A3',
+              value: '9 to 12'
+            },
+            {
+              key: 'calf-group-size-A4',
+              value: '13 or more'
+            }
+          ],
+          yarKey: 'calfGroupSize'
+        },
+        {
+          key: 'number-of-calves',
+          order: 153,
+          url: 'number-of-calves',
+          baseUrl: 'number-of-calves',
+          backUrl: 'group-size',
+          nextUrl: 'automatic-calf-feeder',
+          preValidationKeys: [ 'calfGroupSize' ],
+          pageTitle: '',
+          title: 'What will be the maximum number of calves in the calf housing?',
+          fundingPriorities: '',
+          type: 'single-answer',
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select what will be the maximum number of calves housed in the calf housing'
+            }
+          ],
+          answers: [
+            {
+              key: 'number-of-calves-A1',
+              value: '2 to 50'
+            },
+            {
+              key: 'number-of-calves-A2',
+              value: '51 to 100'
+            },
+            {
+              key: 'number-of-calves-A3',
+              value: 'Over 100'
+            }
+          ],
+          sidebar: {
+            values: [
+              {
+                heading: 'Funding Priorities',
+                content: [ {
+                  para: `RPA wants to fund projects that house 50 calves or fewer in a single air space.`,
+                } ]
+              }
+            ]
+          },
+          yarKey: 'numberOfCalves'
+        },
+        {
+          key: 'automatic-calf-feeder',
+          order: 154,
+          url: 'automatic-calf-feeder',
+          baseUrl: 'automatic-calf-feeder',
+          backUrl: 'number-of-calves',
+          nextUrl: 'moisture-control',
+          preValidationKeys: [ 'numberOfCalves' ],
+          pageTitle: '',
+          title: 'How many calves will you have per automatic feeder?',
+          fundingPriorities: '',
+          type: 'single-answer',
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select how many calves you will have per automatic calf feeder'
+            }
+          ],
+          answers: [
+            {
+              key: 'automatic-calf-feeder-A1',
+              value: '1 to 4'
+            },
+            {
+              key: 'automatic-calf-feeder-A2',
+              value: '5 to 8'
+            },
+            {
+              key: 'automatic-calf-feeder-A3',
+              value: '9 to 12'
+            },
+            {
+              key: 'automatic-calf-feeder-A4',
+              value: '13 or more'
+            },
+            {
+              key: 'automatic-calf-feeder-A5',
+              value: 'We do not use an automatic feeder'
+            }
+          ],
+          sidebar: {
+            values: [
+              {
+                heading: 'Funding Priorities',
+                content: [ {
+                  para: `RPA wants to fund projects that have a smaller number of calves per feeder.`,
+                } ]
+              }
+            ]
+          },
+          yarKey: 'automaticCalfFeeder'
+        },
+        {
+          key: 'moisture-control',
+          order: 155,
+          url: 'moisture-control',
+          baseUrl: 'moisture-control',
+          backUrl: 'automatic-calf-feeder',
+          nextUrl: 'permanent-sick-pen',
+          preValidationKeys: [ 'automaticCalfFeeder' ],
+          pageTitle: '',
+          title: 'How will your building control moisture?',
+          fundingPriorities: '',
+          type: 'multi-answer',
+          minAnswerCount: 1,
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select how your building will control moisture'
+            },
+            {
+              type: 'STANDALONE_ANSWER',
+              error: 'You cannot select that combination of options',
+              standaloneObject: {
+                questionKey: 'moisture-control',
+                answerKey: 'moisture-control-A4'
+              }
+            }
+          ],
+          answers: [
+            {
+              key: 'moisture-control-A1',
+              value: 'A drain or drainage channel inside the pen'
+            },
+            {
+              key: 'moisture-control-A2',
+              value: 'Positioning drinking areas near drainage and away from bedding'
+            },
+            {
+              key: 'moisture-control-A3',
+              value: 'A separate preparation or washing area'
+            },
+            {
+              value: 'divider'
+            },
+            {
+              key: 'moisture-control-A4',
+              value: 'None of the above'
+            }
+          ],
+          sidebar: {
+            values: [
+              {
+                heading: 'Funding Priorities',
+                content: [ {
+                  para: `RPA wants to fund projects that go beyond the regulatory baseline to control building moisture.`,
+                } ]
+              }
+            ]
+          },
+          yarKey: 'moistureControl'
+        },
+        {
           key: 'permanent-sick-pen',
           order: 194,
           title: 'Will your building have a permanent sick pen with separate air space?',
@@ -1702,8 +1948,7 @@ const questionBank = {
           preValidationKeys: ['calfWeight'],
           url: 'permanent-sick-pen',
           baseUrl: 'permanent-sick-pen',
-          // backUrl: 'moisture-control',
-          backUrl: 'remaining-costs',
+          backUrl: 'moisture-control',
           nextUrlObject: {
             dependentQuestionYarKey: 'calfWeight',
             dependentAnswerKeysArray: [ 'calf-weight-A1' ],
