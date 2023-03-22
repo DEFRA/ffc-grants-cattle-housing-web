@@ -17,8 +17,7 @@ const {
   CHARS_MAX_50,
   COMMA_EXCLUDE_REGEX,
   ADDRESS_REGEX,
-  PROJECT_COST_REGEX,
-  FLOOR_SPACE_REGEX
+  PROJECT_COST_REGEX
 } = require('../helpers/regex')
 
 const {
@@ -2063,8 +2062,14 @@ const questionBank = {
             },
             {
               type: 'REGEX',
-              regex: FLOOR_SPACE_REGEX,
+              regex: WHOLE_NUMBER_REGEX,
               error: 'Floor space must be a whole number'
+            },
+            {
+              type: 'MIN_MAX',
+              min: 1,
+              max: 99999,
+              error: 'Number must be between 1-99999'
             },
             {
               type: 'MIN_MAX_CHARS',
@@ -2117,8 +2122,14 @@ const questionBank = {
             },
             {
               type: 'REGEX',
-              regex: FLOOR_SPACE_REGEX,
+              regex: WHOLE_NUMBER_REGEX,
               error: 'Floor space must be a whole number'
+            },
+            {
+              type: 'MIN_MAX',
+              min: 1,
+              max: 99999,
+              error: 'Number must be between 1-99999'
             },
             {
               type: 'MIN_MAX_CHARS',
@@ -2171,8 +2182,14 @@ const questionBank = {
             },
             {
               type: 'REGEX',
-              regex: FLOOR_SPACE_REGEX,
+              regex: WHOLE_NUMBER_REGEX,
               error: 'Floor space must be a whole number'
+            },
+            {
+              type: 'MIN_MAX',
+              min: 1,
+              max: 99999,
+              error: 'Number must be between 1-99999'
             },
             {
               type: 'MIN_MAX_CHARS',
