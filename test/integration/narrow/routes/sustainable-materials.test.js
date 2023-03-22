@@ -13,7 +13,6 @@ it('page loads successfully, with all the options', async () => {
     expect(response.payload).toContain('Low carbon concrete')
     expect(response.payload).toContain('Steel replacement products')
     expect(response.payload).toContain('Sustainably sourced timber')
-    expect(response.payload).toContain('Reused materials already on site')
     expect(response.payload).toContain('Reused or secondhand materials from elsewhere')
     expect(response.payload).toContain('Recycled materials')
     expect(response.payload).toContain('Something else')

@@ -140,28 +140,32 @@ const questionBank = {
               error: 'You cannot select that combination of options',
               standaloneObject: {
                 questionKey: 'applicant-type',
-                answerKey: 'applicant-type-A4'
+                answerKey: 'applicant-type-A5'
               }
             }
           ],
           answers: [
             {
               key: 'applicant-type-A1',
-              value: 'Dairy farmer'
+              value: 'Dairy'
             },
             {
               key: 'applicant-type-A2',
-              value: 'Beef farmer'
+              value: 'Beef'
             },
             {
               key: 'applicant-type-A3',
-              value: 'Mixed farmer (for example cattle and arable)'
+              value: 'Dairy and other livestock or arable'
+            },
+            {
+              key: 'applicant-type-A4',
+              value: 'Beef and other livestock or arable'
             },
             {
               value: 'divider'
             },
             {
-              key: 'applicant-type-A4',
+              key: 'applicant-type-A5',
               value: 'None of the above',
               notEligible: true
             }
@@ -1309,7 +1313,7 @@ const questionBank = {
               heading: 'Eligibility',
               content: [{
                 para: `All projects must have permanent external calf-height solid walls/barriers to keep out drafts.
-                
+
                       For a permanent open-sided structure with igloos/hutches, this may mean adding permanent solid sides to the outside pens (straw bales are not sufficient).`
               }]
             }]
