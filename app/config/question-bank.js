@@ -17,7 +17,8 @@ const {
   CHARS_MAX_50,
   COMMA_EXCLUDE_REGEX,
   ADDRESS_REGEX,
-  PROJECT_COST_REGEX
+  PROJECT_COST_REGEX,
+  NUMBER_REGEX
 } = require('../helpers/regex')
 
 const {
@@ -2562,7 +2563,7 @@ const questionBank = {
                 },
                 {
                   type: 'REGEX',
-                  regex: NUMBER_REGEX,
+                  regex: WHOLE_NUMBER_REGEX,
                   error: 'Number of employees must be a whole number, like 305'
                 },
                 {
