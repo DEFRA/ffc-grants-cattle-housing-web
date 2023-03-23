@@ -1663,7 +1663,6 @@ const questionBank = {
                     <li>loans</li>
                     <li>overdrafts</li>
                     <li>the Basic Payment Scheme</li>
-                    <li>agri-environment schemes such as the Countryside Stewardship Scheme</li>
                   </ul>
             </span>`
             },
@@ -1687,8 +1686,7 @@ const questionBank = {
                   items: [
                     'loans',
                     'overdrafts',
-                    'the Basic Payment Scheme',
-                    'agri-environment schemes such as the Countryside Stewardship Scheme'
+                    'the Basic Payment Scheme'
                   ]
                 }]
               }
