@@ -140,7 +140,7 @@ const questionBank = {
               error: 'You cannot select that combination of options',
               standaloneObject: {
                 questionKey: 'applicant-type',
-                answerKey: 'applicant-type-A5'
+                answerKey: 'applicant-type-A6'
               }
             }
           ],
@@ -155,17 +155,21 @@ const questionBank = {
             },
             {
               key: 'applicant-type-A3',
-              value: 'Dairy and other livestock or arable'
+              value: 'Dairy and Beef'
             },
             {
               key: 'applicant-type-A4',
+              value: 'Dairy and other livestock or arable'
+            },
+            {
+              key: 'applicant-type-A5',
               value: 'Beef and other livestock or arable'
             },
             {
               value: 'divider'
             },
             {
-              key: 'applicant-type-A5',
+              key: 'applicant-type-A6',
               value: 'None of the above',
               notEligible: true
             }
@@ -1659,7 +1663,6 @@ const questionBank = {
                     <li>loans</li>
                     <li>overdrafts</li>
                     <li>the Basic Payment Scheme</li>
-                    <li>agri-environment schemes such as the Countryside Stewardship Scheme</li>
                   </ul>
             </span>`
             },
@@ -1683,8 +1686,7 @@ const questionBank = {
                   items: [
                     'loans',
                     'overdrafts',
-                    'the Basic Payment Scheme',
-                    'agri-environment schemes such as the Countryside Stewardship Scheme'
+                    'the Basic Payment Scheme'
                   ]
                 }]
               }

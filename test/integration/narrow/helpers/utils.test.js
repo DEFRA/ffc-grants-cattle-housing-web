@@ -66,7 +66,7 @@ describe('Utils', () => {
     const mockAnswerList = ['applicant-type-A1', 'applicant-type-A2', 'applicant-type-A3']
 
     getYarValue.mockReturnValueOnce([ 'Dairy', 'Beef' ])
-    getYarValue.mockReturnValueOnce([ 'Dairy', 'Beef', 'Dairy and other livestock or arable' ])
+    getYarValue.mockReturnValueOnce([ 'Dairy', 'Beef', 'Dairy and Beef' ])
     
     expect(allAnswersSelected([], 'applicant-type', mockAnswerList)).toBe(false)
     expect(allAnswersSelected([], 'applicant-type', mockAnswerList)).toBe(true)
@@ -78,7 +78,7 @@ describe('Utils', () => {
     const mockAnswerList = ['applicant-type-A1', 'applicant-type-A2', 'applicant-type-A3']
     
     getYarValue.mockReturnValueOnce([])
-    getYarValue.mockReturnValueOnce([ 'Dairy', 'Beef', 'Dairy and other livestock or arable' ])
+    getYarValue.mockReturnValueOnce([ 'Dairy', 'Beef', 'Dairy and Beef' ])
 
     expect(someAnswersSelected([], 'applicant-type', mockAnswerList)).toBe(false)
     expect(someAnswersSelected([], 'applicant-type', mockAnswerList)).toBe(true)

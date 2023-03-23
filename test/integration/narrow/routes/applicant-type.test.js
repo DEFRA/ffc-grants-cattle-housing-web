@@ -12,6 +12,7 @@ describe('Page: /applicant-type', () => {
     expect(response.payload).toContain('What type of farmer are you?')
     expect(response.payload).toContain('Dairy')
     expect(response.payload).toContain('Beef')
+    expect(response.payload).toContain('Dairy and Beef')
     expect(response.payload).toContain('Dairy and other livestock or arable')
     expect(response.payload).toContain('Beef and other livestock or arable')
     expect(response.payload).toContain('None of the above')
