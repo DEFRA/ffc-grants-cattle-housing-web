@@ -62,6 +62,7 @@ const validateAnswerField = (value, validationType, details, payload) => {
 
     case 'MIN_MAX_CHARS': {
       const { min, max } = details
+      console.log("MIN",min)
       return (value.length >= min && value.length <= max)
     }
 
