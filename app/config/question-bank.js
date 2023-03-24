@@ -1,8 +1,5 @@
 const {
-  CURRENCY_FORMAT,
-  CHARS_MAX_10,
   CHARS_MIN_10,
-  CHARS_MAX_100,
   POSTCODE_REGEX,
   WHOLE_NUMBER_REGEX,
   SBI_REGEX,
@@ -11,11 +8,6 @@ const {
   EMAIL_REGEX,
   ONLY_TEXT_REGEX,
   ONLY_DIGITS_REGEX,
-  PLANNING_REFERENCE_NUMBER_REGEX,
-  LETTERS_AND_NUMBERS_REGEX,
-  TWO_NUMBERS_EIGHT_CHARS,
-  CHARS_MAX_50,
-  COMMA_EXCLUDE_REGEX,
   ADDRESS_REGEX,
   PROJECT_COST_REGEX
 } = require('../helpers/regex')
@@ -2547,7 +2539,7 @@ const questionBank = {
             {
               yarKey: 'numberEmployees',
               type: 'number',
-              classes: 'govuk-input--width-10',
+              classes: 'govuk-input--width-4',
               label: {
                 text: 'Number of employees',
                 classes: 'govuk-label'
@@ -2568,8 +2560,8 @@ const questionBank = {
                 {
                   type: 'MIN_MAX',
                   min: 1,
-                  max: 9999999,
-                  error: 'Number must be between 1-9999999'
+                  max: 9999,
+                  error: 'Number must be between 1-9999'
                 }
               ]
             },
@@ -3350,7 +3342,7 @@ const questionBank = {
             I understand the project’s eligibility and score is based on the answers I provided.</br></br>
             I am aware that the information I submit will be checked by the RPA.</br></br>
             I am happy to be contacted by Defra and RPA (or third-party on their behalf) about my application.</br></br>
-            Defra may wish to contact you to understand your experience of applying for the scheme.</br></br>
+            Defra may wish to contact you to understand your experience of applying for the scheme.</br>
             Please confirm if you are happy for us to contact you to 
             take part in optional research activities to help us improve our programmes and delivery.`
           },
