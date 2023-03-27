@@ -1900,6 +1900,9 @@ const questionBank = {
           preValidationKeys: [ 'automaticCalfFeeder' ],
           pageTitle: '',
           title: 'How will your building control moisture?',
+          hint: {
+            text: 'Select all that apply'
+          },
           fundingPriorities: '',
           type: 'multi-answer',
           minAnswerCount: 1,

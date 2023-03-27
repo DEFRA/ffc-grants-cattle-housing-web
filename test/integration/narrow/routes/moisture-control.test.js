@@ -32,6 +32,7 @@ describe('Page: /moisture-control', () => {
 		const response = await global.__SERVER__.inject(options)
 		expect(response.statusCode).toBe(200)
 		expect(response.payload).toContain('How will your building control moisture?')
+		expect(response.payload).toContain('Select all that apply') // hint text
 		expect(response.payload).toContain('A drain or drainage channel inside the pen');
 		expect(response.payload).toContain('Positioning drinking areas near drainage and away from bedding');
 		expect(response.payload).toContain('A separate preparation or washing area');
