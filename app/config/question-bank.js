@@ -1714,7 +1714,7 @@ const questionBank = {
           preValidationKeys: [ 'remainingCosts' ],
           pageTitle: '',
           title: 'Are you moving from individually housing calves over 7 days old to pair or group housing?',
-          fundingPriorities: 'RPA wants to fund projects that move from individually housing calves to pair or group housing.',
+          fundingPriorities: '',
           type: 'single-answer',
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           minAnswerCount: 1,
@@ -1739,7 +1739,7 @@ const questionBank = {
               {
                 heading: 'Funding Priorities',
                 content: [ {
-                  para: `RPA wants to fund projects that move from individually housing calves to pair or group housing.`
+                  para: `The RPA want to fund projects that will increase social contact between calves. By law, calves cannot be housed individually beyond 8 weeks.`
                 } ]
               }
             ]
