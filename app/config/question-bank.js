@@ -1874,6 +1874,9 @@ const questionBank = {
               value: '13 or more'
             },
             {
+              value: 'divider'
+            },
+            {
               key: 'automatic-calf-feeder-A5',
               value: 'We do not use an automatic feeder'
             }
