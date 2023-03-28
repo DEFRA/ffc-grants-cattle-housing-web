@@ -1554,6 +1554,7 @@ const questionBank = {
           },
           hint: {
             html: `
+              <p>The grant funding is for calf housing only</p>
               <p>You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £20,000 (40% of 50,000). The maximum grant is £500,000.<p/>
               <p>Do not include VAT.<p/>
               <p>Enter amount, for example 95,000<p/>
