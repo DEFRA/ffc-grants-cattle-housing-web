@@ -35,6 +35,7 @@ describe('Page: /automatic-calf-feeder', () => {
 		expect(response.payload).toContain('5 to 8');
 		expect(response.payload).toContain('9 to 12');
 		expect(response.payload).toContain('13 or more');
+		expect(response.payload).toContain('<div class="govuk-radios__divider">or</div>');
 		expect(response.payload).toContain('We do not use an automatic feeder');
 	});
 
