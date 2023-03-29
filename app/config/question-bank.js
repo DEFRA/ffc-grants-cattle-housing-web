@@ -1,8 +1,5 @@
 const {
-  CURRENCY_FORMAT,
-  CHARS_MAX_10,
   CHARS_MIN_10,
-  CHARS_MAX_100,
   POSTCODE_REGEX,
   WHOLE_NUMBER_REGEX,
   SBI_REGEX,
@@ -11,13 +8,10 @@ const {
   EMAIL_REGEX,
   ONLY_TEXT_REGEX,
   ONLY_DIGITS_REGEX,
-  PLANNING_REFERENCE_NUMBER_REGEX,
-  LETTERS_AND_NUMBERS_REGEX,
-  TWO_NUMBERS_EIGHT_CHARS,
-  CHARS_MAX_50,
-  COMMA_EXCLUDE_REGEX,
   ADDRESS_REGEX,
-  PROJECT_COST_REGEX
+  PROJECT_COST_REGEX,
+  CHARS_MAX_25,
+  STRUCTURE_ELIGIBLITY_REGEX
 } = require('../helpers/regex')
 
 const {
@@ -1177,71 +1171,78 @@ const questionBank = {
           yarKey: 'structure'
         },
         {
-          // key: 'structure-eligibility',
-          // order: 135,
-          // title: 'Does your building structure meet the eligibility criteria?',
-          // hint: {
-            // html: `<div class:"govuk-hint">
-            // All buildings must:</br></br>
-            // <li>be permanent structures</li>
-            // <li>have adequate drainage</li>
-            // <li>protect calves from draughts with solid walls/barriers to calf height</li>
-            // </div>`
-          // },
-          // pageTitle: '',
-          // backUrl: 'structure',
-          // nextUrl: 'drainage-slope',
-          // url: 'structure-eligibility',
-          // baseUrl: 'structure-eligibility',
-          // preValidationKeys: [],
-          // ineligibleContent: {
-          //   messageContent: `<p class="govuk-body">All buildings must:</p>
-          //   <div class="govuk-list govuk-list--bullet">
-          //         <ul>
-          //           <li>be permanent structures</li>
-          //           <li>have adequate drainage</li>
-          //           <li>protect calves from draughts with solid walls/barriers to calf height</li>
-          //         </ul>
-          //   </div>`,
-          //   messageLink: {
-          //     url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-          //     title: 'See other grants you may be eligible for.'
-          //   }
-          // },
-          // fundingPriorities: '',
-          // type: 'single-answer',
-          // minAnswerCount: 1,
-          // validate: [
-          //   {
-          //     type: 'NOT_EMPTY',
-          //     error: 'Select yes if your building structure meets the eligibility criteria'
-          //   }
-          // ],
-          // answers: [
-          //   {
-          //     key: 'structure-eligibility-A1',
-          //     value: 'Yes'
-          //   },
-          //   {
-          //     key: 'structure-eligibility-A2',
-          //     value: 'No',
-          //     notEligible: true
-          //   }
-          // ],
-          key: 'structure-eligibility',
-          order: 260,
-          title: 'structure-eligibility',
-          pageTitle: 'structure-eligibility',
-          url: 'structure-eligibility',
+          key: 'structureEligibility',
+          order: 135,
+          title: 'Does your building structure meet the eligibility criteria?',
+          hint: {
+            html: `<div class:"govuk-hint">
+            All buildings must:</br></br>
+            <li>be permanent structures</li>
+            <li>have adequate drainage</li>
+            <li>protect calves from draughts with solid walls/barriers to calf height</li>
+            </div>`
+          },
+          pageTitle: '',
           backUrl: 'structure',
           nextUrl: 'drainage-slope',
+          url: 'structure-eligibility',
+          baseUrl: 'structure-eligibility',
           preValidationKeys: [],
-          ineligibleContent: {},
+          ineligibleContent: {
+            messageContent: `<p class="govuk-body">All buildings must:</p>
+            <div class="govuk-list govuk-list--bullet">
+                  <ul>
+                    <li>be permanent structures</li>
+                    <li>have adequate drainage</li>
+                    <li>protect calves from draughts with solid walls/barriers to calf height</li>
+                  </ul>
+            </div>`,
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
+            }
+          },
           fundingPriorities: '',
-          type: '',
+          type: 'single-answer',
           minAnswerCount: 1,
-          answers: [],
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select yes if your building structure meets the eligibility criteria'
+            },
+            {
+              dependentKey: 'yesStructureEligibility',
+              type: 'REGEX',
+              regex: STRUCTURE_ELIGIBLITY_REGEX,
+              error: 'Description must only include letters, numbers, full stops, commas, hyphens and apostrophes'
+            },
+            {
+              dependentKey: 'yesStructureEligibility',
+              type: 'NOT_EMPTY',
+              error: 'Describe the building structure'
+            },
+            {
+              dependentKey: 'yesStructureEligibility',
+              type: 'REGEX',
+              regex: CHARS_MAX_25,
+              error: 'Description must be 25 characters or less'
+            }
+          ],
+          answers: [
+            {
+              key: 'structure-eligibility-A1',
+              conditional: true,
+              value: 'Yes'
+            },
+            {
+              key: 'structure-eligibility-A2',
+              value: 'No',
+              notEligible: true
+            }
+          ],
           yarKey: 'structureEligibility',
+          conditionalKey: 'yesStructureEligibility',
+          conditionalLabelData: 'Describe the building structure'
         },
         {
           key: 'drainage-slope',
@@ -2744,7 +2745,7 @@ questionBank.sections.forEach(({ questions }) => {
 const ALL_URLS = []
 ALL_QUESTIONS.forEach(item => ALL_URLS.push(item.url))
 
-const YAR_KEYS = ['itemsTotalValue', 'remainingCost', 'calculatedGrant']
+const YAR_KEYS = ['itemsTotalValue', 'remainingCost', 'calculatedGrant','yesStructureEligibility']
 ALL_QUESTIONS.forEach(item => YAR_KEYS.push(item.yarKey))
 module.exports = {
   questionBank,

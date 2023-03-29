@@ -57,6 +57,11 @@
       {% endif %}
 
       {% if not consentOptionalData and not reference %}
+        {% if customButtonText %}
+          {% set buttonText = customButtonText %}
+        {% else %}
+          {% set buttonText = "Continue" %}
+        {% endif %}
             {{ govukButton({
                 text: 'Continue' ,
                 classes: "govuk-!-margin-top-5",
@@ -95,4 +100,6 @@
       </div>
     </div>
   {% endif %}
+
+
 {% endblock %}

@@ -136,9 +136,6 @@ const getPage = async (question, request, h) => {
     case 'check-details': {
       return h.view('check-details', getCheckDetailsModel(request, question, backUrl, nextUrl))
     }
-    case 'structure-eligibility': {
-      return h.view('structure-eligibility', getCheckDetailsModel(request, question, backUrl, nextUrl))
-    }
     case 'planning-permission-summary': {
       const evidenceSummaryModel = getEvidenceSummaryModel(request, question, backUrl, nextUrl)
       if (evidenceSummaryModel.redirect) {
