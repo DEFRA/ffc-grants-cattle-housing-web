@@ -2114,7 +2114,7 @@ const questionBank = {
             text:'Enter floor area in square meters (m²), for example 5m²'
           },
           warning: {
-            text: 'There must be a minimum floor area of 4m2 per calf when the largest calf is between 100kg and 150kg.'
+            text: 'There must be a minimum floor area of 4m² per calf when the largest calf is between 100kg and 150kg.'
           },
           validate: [
             {
