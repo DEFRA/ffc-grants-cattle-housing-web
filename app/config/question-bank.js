@@ -1179,7 +1179,7 @@ const questionBank = {
           yarKey: 'structure'
         },
         {
-          key: 'structureEligibility',
+          key: 'structure-eligibility',
           order: 135,
           title: 'Does your building structure meet the eligibility criteria?',
           hint: {
