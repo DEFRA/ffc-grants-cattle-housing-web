@@ -41,6 +41,34 @@ it('should returns error message if description is more than 25', async () => {
     expect(postResponse.payload).toContain('Description must be 25 characters or less')
 })
 
+it('should returns error message if description have unexpected characters', async () => {
+    const postOptions = {
+        method: 'POST',
+        url: `${global.__URLPREFIX__}/structure-eligibility`,
+        payload: { structureEligibility: 'Yes', yesStructureEligibility: 'sdsd@', crumb: crumbToken },
+        headers: {
+        cookie: 'crumb=' + crumbToken
+        }
+    }
+    const postResponse = await global.__SERVER__.inject(postOptions)
+    expect(postResponse.statusCode).toBe(200)
+    expect(postResponse.payload).toContain('Description must only include letters, numbers, full stops, commas, hyphens and apostrophes')
+})
+
+it('should returns error message if description does not have any value', async () => {
+    const postOptions = {
+        method: 'POST',
+        url: `${global.__URLPREFIX__}/structure-eligibility`,
+        payload: { structureEligibility: 'Yes', crumb: crumbToken },
+        headers: {
+        cookie: 'crumb=' + crumbToken
+        }
+    }
+    const postResponse = await global.__SERVER__.inject(postOptions)
+    expect(postResponse.statusCode).toBe(200)
+    expect(postResponse.payload).toContain('Describe the building structure')
+})
+
 it('no option selected -> show error message', async () => {
     const postOptions = {
     method: 'POST',
