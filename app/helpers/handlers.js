@@ -14,6 +14,8 @@ const gapiService = require('../services/gapi-service')
 const { startPageUrl } = require('../config/server')
 const { ALL_QUESTIONS } = require('../config/question-bank')
 const { formatOtherItems } = require('./../helpers/other-items-sizes')
+// const createMessage = require('./../messaging/scoring/create-desirability-msg')
+const desirabilityData = require('../../test/unit/app/messaging/scoring/desirability-score.json')
 
 const {
   getConfirmationId,
@@ -23,6 +25,8 @@ const {
   getDataFromYarValue,
   getConsentOptionalData
 } = require('./pageHelpers')
+
+const scoreViewTemplate = 'score'
 
 const getPage = async (question, request, h) => {
   const { url, backUrl, nextUrlObject, type, title, yarKey, preValidationKeys, preValidationKeysRule } = question
@@ -104,6 +108,7 @@ const getPage = async (question, request, h) => {
     }
 
     const MAYBE_ELIGIBLE = { ...maybeEligibleContent, consentOptionalData, url, nextUrl, backUrl }
+
     return h.view('maybe-eligible', MAYBE_ELIGIBLE)
   }
 
@@ -147,20 +152,62 @@ const getPage = async (question, request, h) => {
       if(getYarValue(request,'tenancy') === 'Yes'){
         setYarValue(request, 'tenancyLength', null)
       }
+      break
     }
     case 'living-space-3m2': {
       setYarValue(request, 'livingSpace4m2', null)
       setYarValue(request, 'livingSpace5m2', null)
+      break
     }
     case 'living-space-4m2': {
       setYarValue(request, 'livingSpace3m2', null)
       setYarValue(request, 'livingSpace5m2', null)
+      break
     }
     case 'living-space-5m2': {
       setYarValue(request, 'livingSpace3m2', null)
       setYarValue(request, 'livingSpace4m2', null)
+      break
     }
-    case 'score':
+    case 'score': {
+      function createModel(data) {
+        return {
+          backLink: backUrl,
+          formActionPage: url,
+          ...data
+        }
+      }
+
+      // TODO: comment these back in when scoring data is ready
+      // const desirabilityAnswers = createMsg.getDesirabilityAnswers(request)
+      // console.log('here: ', 2, desirabilityAnswers);
+      // const formatAnswersForScoring = createMessage(desirabilityAnswers)
+      // const msgData = await getUserScore(formatAnswersForScoring, request.yar.id)
+
+      // Mocked score res
+      const msgData = desirabilityData
+      let scoreChance
+      switch (msgData.desirability.overallRating.band.toLowerCase()) {
+        case 'strong':
+          scoreChance = 'is likely to'
+          break
+        case 'average':
+          scoreChance = 'might'
+          break
+        default:
+          scoreChance = 'is unlikely to'
+          break
+      }
+
+      setYarValue(request, 'overAllScore', msgData)
+      // console.log('msgData: ', JSON.stringify(msgData), scoreChance);
+      return h.view(scoreViewTemplate, createModel({
+        titleText: msgData.desirability.overallRating.band,
+        scoreData: msgData,
+        questions: msgData.desirability.questions.sort((a, b) => a.order - b.order),
+        scoreChance: scoreChance
+      }))
+    }
     case 'business-details':
     case 'agent-details':
     case 'applicant-details': {
