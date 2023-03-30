@@ -9,7 +9,9 @@ const {
   ONLY_TEXT_REGEX,
   ONLY_DIGITS_REGEX,
   ADDRESS_REGEX,
-  PROJECT_COST_REGEX
+  PROJECT_COST_REGEX,
+  CHARS_MAX_25,
+  STRUCTURE_ELIGIBLITY_REGEX
 } = require('../helpers/regex')
 
 const {
@@ -1195,8 +1197,14 @@ const questionBank = {
           baseUrl: 'structure-eligibility',
           preValidationKeys: [],
           ineligibleContent: {
-            messageContent: 'This grant is only for projects in England.',
-            insertText: { text: 'Scotland, Wales and Northern Ireland have other grants available.' },
+            messageContent: `<p class="govuk-body">All buildings must:</p>
+            <div class="govuk-list govuk-list--bullet">
+                  <ul>
+                    <li>be permanent structures</li>
+                    <li>have adequate drainage</li>
+                    <li>protect calves from draughts with solid walls/barriers to calf height</li>
+                  </ul>
+            </div>`,
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -1209,11 +1217,29 @@ const questionBank = {
             {
               type: 'NOT_EMPTY',
               error: 'Select yes if your building structure meets the eligibility criteria'
+            },
+            {
+              dependentKey: 'yesStructureEligibility',
+              type: 'REGEX',
+              regex: STRUCTURE_ELIGIBLITY_REGEX,
+              error: 'Description must only include letters, numbers, full stops, commas, hyphens and apostrophes'
+            },
+            {
+              dependentKey: 'yesStructureEligibility',
+              type: 'NOT_EMPTY',
+              error: 'Describe the building structure'
+            },
+            {
+              dependentKey: 'yesStructureEligibility',
+              type: 'REGEX',
+              regex: CHARS_MAX_25,
+              error: 'Description must be 25 characters or less'
             }
           ],
           answers: [
             {
               key: 'structure-eligibility-A1',
+              conditional: true,
               value: 'Yes'
             },
             {
@@ -1222,7 +1248,9 @@ const questionBank = {
               notEligible: true
             }
           ],
-          yarKey: 'structureEligibility'
+          yarKey: 'structureEligibility',
+          conditionalKey: 'yesStructureEligibility',
+          conditionalLabelData: 'Describe the building structure'
         },
         {
           key: 'drainage-slope',
@@ -3425,7 +3453,7 @@ questionBank.sections.forEach(({ questions }) => {
 const ALL_URLS = []
 ALL_QUESTIONS.forEach(item => ALL_URLS.push(item.url))
 
-const YAR_KEYS = ['itemsTotalValue', 'remainingCost', 'calculatedGrant']
+const YAR_KEYS = ['itemsTotalValue', 'remainingCost', 'calculatedGrant','yesStructureEligibility']
 ALL_QUESTIONS.forEach(item => YAR_KEYS.push(item.yarKey))
 module.exports = {
   questionBank,

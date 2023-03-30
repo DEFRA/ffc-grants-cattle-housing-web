@@ -2,7 +2,7 @@ describe('Conditional html', () => {
   const { getHtml } = require('../../../../app/helpers/conditionalHTML')
 
   test('check function getHtml - robotic equipment, no errors', () => {
-    const label = 'roboticEquipment'
+    const label = 'yesStructureEligibility'
     const labelData = 'MOCK_LABEL_DATA'
     const fieldValueData = 'MOCK_FIELD_VALUE_DATA'
     const error = false
@@ -12,7 +12,7 @@ describe('Conditional html', () => {
   })
 
   test('check function getHtml - robotic equipment, no errors, empty fieldValueData', () => {
-    const label = 'roboticEquipment'
+    const label = 'yesStructureEligibility'
     const labelData = 'MOCK_LABEL_DATA'
     const fieldValueData = ''
     const error = false
@@ -22,7 +22,7 @@ describe('Conditional html', () => {
   })
 
   test('check function getHtml - robotic equipment, with errors', () => {
-    const label = 'roboticEquipment'
+    const label = 'yesStructureEligibility'
     const labelData = 'MOCK_LABEL_DATA'
     const fieldValueData = 'MOCK_FIELD_VALUE_DATA'
     const error = true
@@ -30,11 +30,11 @@ describe('Conditional html', () => {
     const result = getHtml(label, labelData, fieldValueData, error)
     expect(result).toContain('<div class="govuk-form-group govuk-form-group--error">')
     expect(result).toContain('Error:')
-    expect(result).toContain('You can enter up to 60 words')
+    expect(result).toContain('You can enter up to 25 words')
   })
 
   test('check function getHtml - not robotic equipment, no errors', () => {
-    const label = 'not_roboticEquipment'
+    const label = 'not_yesStructureEligibility'
     const labelData = 'MOCK_LABEL_DATA'
     const fieldValueData = 'MOCK_FIELD_VALUE_DATA'
     const error = false
@@ -44,7 +44,7 @@ describe('Conditional html', () => {
   })
 
   test('check function getHtml - not robotic equipment, with errors', () => {
-    const label = 'not_roboticEquipment'
+    const label = 'not_yesStructureEligibility'
     const labelData = 'MOCK_LABEL_DATA'
     const fieldValueData = 'MOCK_FIELD_VALUE_DATA'
     const error = true
