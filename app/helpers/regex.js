@@ -1,6 +1,7 @@
 const CURRENCY_FORMAT = /^(\d+|\d{1,3}(,\d{3})+)$/
 const CHARS_MAX_10 = /^.{1,10}$/
 const CHARS_MIN_10 = /^.{10,}$/
+const CHARS_MAX_25 = /^.{1,25}$/
 const CHARS_MAX_50 = /^.{1,50}$/
 const CHARS_MAX_100 = /^.{0,100}$/
 const WORDS_MAX_60 = /^(?:\b\w+\b[\s.',-]*){1,60}$/
@@ -22,6 +23,7 @@ const TWO_NUMBERS_EIGHT_CHARS = /^[a-zA-Z]{2}\d{8}$/
 const COMMA_EXCLUDE_REGEX = /^[^,]*(?!,)$/g // check
 const DECIMAL_EXCLUDE_REGEX = /^[^.]*(?!.)$/g // check
 const PROJECT_COST_REGEX = /^[1-9]\d*$/
+const STRUCTURE_ELIGIBLITY_REGEX = /^[a-zA-Z0-9,.' -]*$/
 
 
 module.exports = {
@@ -48,5 +50,7 @@ module.exports = {
   COMMA_EXCLUDE_REGEX,
   DECIMAL_EXCLUDE_REGEX,
   ADDRESS_REGEX,
-  PROJECT_COST_REGEX
+  PROJECT_COST_REGEX,
+  CHARS_MAX_25,
+  STRUCTURE_ELIGIBLITY_REGEX
 }
