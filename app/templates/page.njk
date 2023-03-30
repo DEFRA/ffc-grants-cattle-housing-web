@@ -108,8 +108,11 @@
               {% set secButtonText = 'Back to evidence summary' %}
             {% endif %}
           </div>
-
-          {{ conditionalButtons(diaplaySecondryBtn, buttonText, secButtonText) }}
+          {%if key === 'introducing-innovation' %}
+            {% set buttonText = 'Get your score'%}
+            {% set diaplaySecondryBtn = false %}
+          {% endif %}
+          {{ conditionalButtons(diaplaySecondryBtn, buttonText, secButtonText, mainButtonText) }}
         </form>
       </div>
 
