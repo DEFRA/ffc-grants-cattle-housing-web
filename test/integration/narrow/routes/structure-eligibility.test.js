@@ -38,7 +38,7 @@ it('should returns error message if description is more than 25', async () => {
     }
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Description must be 25 characters or less')
+    expect(postResponse.payload).toContain('Description must be 250 characters or less')
 })
 
 it('should returns error message if description have unexpected characters', async () => {

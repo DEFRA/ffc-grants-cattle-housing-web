@@ -1233,7 +1233,7 @@ const questionBank = {
               dependentKey: 'yesStructureEligibility',
               type: 'REGEX',
               regex: CHARS_MAX_25,
-              error: 'Description must be 25 characters or less'
+              error: 'Description must be 250 characters or less'
             }
           ],
           answers: [
