@@ -1,5 +1,5 @@
 const { crumbToken } = require('./test-helper')
-const fakeDescription = 'fake description fake description fake description'
+const fakeDescription = 'fake description fake description fake description fake description fake description fake description fake description fake description fake description fake description fake description fake description fake description fake description fake description fake description fake description fake description fake description fake description fake description fake description fake description fake description fake description fake description fake description fake description fake description fake description fake description fake description '
 describe('Page: /structure-eligibility', () => {
 const varList = {
     legalStatus: 'randomData',
@@ -27,7 +27,7 @@ it('page loads successfully, with all the options', async () => {
     expect(response.payload).toContain('No')
 })
 
-it('should returns error message if description is more than 25', async () => {
+it('should returns error message if description is more than 250', async () => {
     const postOptions = {
         method: 'POST',
         url: `${global.__URLPREFIX__}/structure-eligibility`,
@@ -38,7 +38,7 @@ it('should returns error message if description is more than 25', async () => {
     }
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Description must be 25 characters or less')
+    expect(postResponse.payload).toContain('Description must be 250 characters or less')
 })
 
 it('should returns error message if description have unexpected characters', async () => {

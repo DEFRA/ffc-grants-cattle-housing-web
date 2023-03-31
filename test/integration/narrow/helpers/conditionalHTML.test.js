@@ -30,7 +30,7 @@ describe('Conditional html', () => {
     const result = getHtml(label, labelData, fieldValueData, error)
     expect(result).toContain('<div class="govuk-form-group govuk-form-group--error">')
     expect(result).toContain('Error:')
-    expect(result).toContain('You can enter up to 25 words')
+    expect(result).toContain('You can enter up to 250 characters')
   })
 
   test('check function getHtml - not robotic equipment, no errors', () => {
