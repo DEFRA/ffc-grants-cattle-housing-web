@@ -1227,7 +1227,7 @@ const questionBank = {
             {
               dependentKey: 'yesStructureEligibility',
               type: 'NOT_EMPTY',
-              error: 'Describe the building structure'
+              error: 'Enter the description of the building structure'
             },
             {
               dependentKey: 'yesStructureEligibility',
@@ -1582,16 +1582,22 @@ const questionBank = {
           },
           hint: {
             html: `
-              <p>The grant funding is for calf housing only</p>
-              <p>You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £20,000 (40% of 50,000). The maximum grant is £500,000.<p/>
-              <p>Do not include VAT.<p/>
-              <p>Enter amount, for example 95,000<p/>
+                  <p>You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £20,000 (40% of 50,000). The maximum grant is £500,000.<p/>
+                  This grant is for:<br/>
+                  <ul class="govuk-list govuk-list--bullet govuk-hint">
+                    <li>structures, including concrete flooring, walls, roofs, structural reinforcement and drainage facilities</li>
+                    <li>fixtures, including calf accommodation pens, calf isolation facilities, gates, draught protection, ventilation systems, washing facilities and automatic calf feeders</li>
+                    <li>fittings, including temperature and humidity data loggers, heat lamps and enrichment items</li>
+                    <li>one-off utility costs such as the alteration of electricity or water supply to allow the building installation or upgrade</li>
+                  </ul>
+                  <p>Do not include VAT.<p/>
+                  <p>Enter amount, for example 95,000<p/>
               `
           },
           validate: [
             {
               type: 'NOT_EMPTY',
-              error: 'Enter a whole number with a maximum of 7 digits'
+              error: 'Enter the estimated total cost for the items'
             },
             {
               type: 'REGEX',
@@ -1619,17 +1625,7 @@ const questionBank = {
               content: [{
                 para: 'Movable items (for example buckets) and ongoing costs (for example straw) will not be funded.'
               }]
-            }],
-            details: {
-              summaryText: 'What the grant will fund',
-              html: `This grant is for:<br/><br/>
-              <ul class="govuk-list govuk-list--bullet">
-                <li>structures, including concrete flooring, walls, roofs, structural reinforcement and drainage facilities</li>
-                <li>fixtures, including calf accommodation pens, calf isolation facilities, gates, draught protection, ventilation systems, washing facilities and automatic calf feeders</li>
-                <li>fittings, including temperature and humidity data loggers, heat lamps and enrichment items</li>
-                <li>one-off utility costs such as the alteration of electricity or water supply to allow the building installation or upgrade</li>
-              </ul>`
-            }
+            }]
           },
           answers: [],
           yarKey: 'projectCost'
@@ -1716,7 +1712,7 @@ const questionBank = {
           validate: [
             {
               type: 'NOT_EMPTY',
-              error: 'Select if you can pay the remaining costs'
+              error: 'Select yes if you can pay the remaining costs'
             }
           ],
           answers: [
