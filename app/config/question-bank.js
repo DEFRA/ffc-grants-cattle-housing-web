@@ -2198,7 +2198,7 @@ const questionBank = {
             text:'Enter floor area in square meters (m²), for example 5m²'
           },
           warning: {
-            text: 'There must be a minimum floor area of 5m2 per calf when largest calf is over 150kg'
+            text: 'There must be a minimum floor area of 5m² per calf when largest calf is over 150kg'
           },
           validate: [
             {
@@ -3373,7 +3373,7 @@ const questionBank = {
             I understand the project’s eligibility and score is based on the answers I provided.</br></br>
             I am aware that the information I submit will be checked by the RPA.</br></br>
             I am happy to be contacted by Defra and RPA (or third-party on their behalf) about my application.</br></br>
-            Defra may wish to contact you to understand your experience of applying for the scheme.</br>
+            Defra may wish to contact you to understand your experience of applying for the scheme.
             Please confirm if you are happy for us to contact you to 
             take part in optional research activities to help us improve our programmes and delivery.`
           },
