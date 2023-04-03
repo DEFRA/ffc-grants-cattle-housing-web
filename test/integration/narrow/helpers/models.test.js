@@ -101,6 +101,7 @@ describe('Models', () => {
       },
       reachedCheckDetails: false,
       reachedEvidenceSummary: false,
+      reachedScoreResults: false,
       diaplaySecondryBtn: false
     })
   })
@@ -133,10 +134,11 @@ describe('Models', () => {
     )
   })
 
-  test('inspect getModel().backUrl', () => {
+  test('inspect getModel().backUrl', () => {  // TODO: Refactor this
     getYarValue.mockReturnValueOnce('mock-value')
     getYarValue.mockReturnValueOnce('mock-value')
     getYarValue.mockReturnValueOnce(undefined)
+    getYarValue.mockReturnValueOnce('mock-value')
 
     getUrl.mockReturnValueOnce('remaining-costs')
     getUrl.mockReturnValueOnce('tenancy')
@@ -220,6 +222,7 @@ describe('Models', () => {
     getYarValue.mockReturnValueOnce('mock-value')
     getYarValue.mockReturnValueOnce('mock-value')
     getYarValue.mockReturnValueOnce(undefined)
+    getYarValue.mockReturnValueOnce(undefined)
 
     expect(getModel([], questionForSidebar, {})).toEqual({
       type: 'mock_type',
@@ -294,6 +297,7 @@ describe('Models', () => {
       },
       reachedCheckDetails: false,
       reachedEvidenceSummary: false,
+      reachedScoreResults: false,
       diaplaySecondryBtn: undefined
     })
   })
