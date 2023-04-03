@@ -11,6 +11,8 @@ describe('Page: /tenancy', () => {
     }
   }))
 
+  console.log('hi')
+
   it('page loads successfully, with all the options', async () => {
     const options = {
       method: 'GET',
