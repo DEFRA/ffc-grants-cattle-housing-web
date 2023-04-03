@@ -195,7 +195,7 @@ const questionBank = {
               iconFallbackText: 'Warning'
             }
           },
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
@@ -291,7 +291,7 @@ const questionBank = {
               title: ''
             }
           },
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
@@ -421,7 +421,7 @@ const questionBank = {
               title: 'See other grants you may be eligible for.'
             }
           },
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
@@ -481,7 +481,7 @@ const questionBank = {
           backUrl: 'project-started',
           nextUrl: 'project',
           preValidationKeys: [],
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'single-answer',
           minAnswerCount: 1,
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
@@ -1210,7 +1210,7 @@ const questionBank = {
               title: 'See other grants you may be eligible for.'
             }
           },
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'single-answer',
           minAnswerCount: 1,
           validate: [
@@ -1280,7 +1280,7 @@ const questionBank = {
               title: 'See other grants you may be eligible for.'
             }
           },
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
@@ -1329,7 +1329,7 @@ const questionBank = {
               title: 'See other grants you may be eligible for.'
             }
           },
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
@@ -1409,7 +1409,7 @@ const questionBank = {
               title: 'See other grants you may be eligible for.'
             }
           },
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'single-answer',
           minAnswerCount: 1,
           validate: [
@@ -1452,7 +1452,7 @@ const questionBank = {
               title: 'See other grants you may be eligible for.'
             }
           },
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'single-answer',
           minAnswerCount: 1,
           sidebar: {
@@ -1532,7 +1532,7 @@ const questionBank = {
               title: 'See other grants you may be eligible for.'
             }
           },
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'single-answer',
           minAnswerCount: 1,
           validate: [
@@ -1563,7 +1563,7 @@ const questionBank = {
           baseUrl: 'project-cost',
           backUrl: 'roof-solar-PV',
           nextUrl: 'potential-amount',
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           preValidationKeys: [],
           grantInfo: {
             minGrant: MIN_GRANT,
@@ -1688,7 +1688,7 @@ const questionBank = {
               title: 'See other grants you may be eligible for.'
             }
           },
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'single-answer',
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           minAnswerCount: 1,
@@ -1739,7 +1739,7 @@ const questionBank = {
           preValidationKeys: [ 'remainingCosts' ],
           pageTitle: '',
           title: 'Are you moving from individually housing calves over 7 days old to pair or group housing?',
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'single-answer',
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           minAnswerCount: 1,
@@ -1781,7 +1781,7 @@ const questionBank = {
           preValidationKeys: [ 'housing' ],
           pageTitle: '',
           title: 'What will be the average calf group size for calves over 7 days old?',
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'single-answer',
           sidebar: {
             values: [
@@ -1829,7 +1829,7 @@ const questionBank = {
           preValidationKeys: [ 'calfGroupSize' ],
           pageTitle: '',
           title: 'What will be the maximum number of calves in the calf housing?',
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'single-answer',
           validate: [
             {
@@ -1873,7 +1873,7 @@ const questionBank = {
           preValidationKeys: [ 'numberOfCalves' ],
           pageTitle: '',
           title: 'How many calves will you have per automatic feeder?',
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'single-answer',
           validate: [
             {
@@ -1931,7 +1931,7 @@ const questionBank = {
           hint: {
             text: 'Select all that apply'
           },
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'multi-answer',
           minAnswerCount: 1,
           validate: [
@@ -2014,7 +2014,7 @@ const questionBank = {
               } ]
             } ]
           },
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'multi-answer',
           minAnswerCount: 1,
           validate: [
@@ -2063,7 +2063,7 @@ const questionBank = {
           baseUrl: 'floor-space-under100kg',
           backUrl: 'permanent-sick-pen',
           nextUrl: 'environmental-impact',
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           preValidationKeys: [],
           type: 'input',
           suffix: {
@@ -2123,7 +2123,7 @@ const questionBank = {
           baseUrl: 'floor-space-100kg-150kg',
           backUrl: 'permanent-sick-pen',
           nextUrl: 'environmental-impact',
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           preValidationKeys: [],
           type: 'input',
           suffix: {
@@ -2183,7 +2183,7 @@ const questionBank = {
           baseUrl: 'floor-space-over150kg',
           backUrl: 'permanent-sick-pen',
           nextUrl: 'environmental-impact',
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           preValidationKeys: [],
           type: 'input',
           suffix: {
@@ -2265,7 +2265,7 @@ const questionBank = {
               } ]
             } ]
           },
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'multi-answer',
           minAnswerCount: 1,
           validate: [
@@ -2324,7 +2324,7 @@ const questionBank = {
               }],
             } ]
           },
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'multi-answer',
           minAnswerCount: 1,
           validate: [
@@ -2419,7 +2419,7 @@ const questionBank = {
               } ]
             } ]
           },
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'multi-answer',
           minAnswerCount: 1,
           validate: [
@@ -2514,7 +2514,7 @@ const questionBank = {
             { dimension: 'cd1', value: { type: 'score', value: 'Eligible' } },
             { dimension: 'cm3', value: { type: 'journey-time' } }
           ],
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'multi-input',
           minAnswerCount: '',
           maxAnswerCount: '',
@@ -2704,7 +2704,7 @@ const questionBank = {
           baseUrl: 'applying',
           backUrl: 'business-details',
           preValidationKeys: [],
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'single-answer',
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           minAnswerCount: 1,
@@ -2745,7 +2745,7 @@ const questionBank = {
               elseUrl: 'applying'
             }
           },
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'multi-input',
           minAnswerCount: '',
           maxAnswerCount: '',
@@ -3058,7 +3058,7 @@ const questionBank = {
           summaryPageUrl: 'check-details',
           preValidationKeys: [],
           ineligibleContent: {},
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: 'multi-input',
           minAnswerCount: '',
           maxAnswerCount: '',
@@ -3353,7 +3353,7 @@ const questionBank = {
             agentDetailsLink: 'agent-details',
             farmerDetailsLink: 'applicant-details'
           },
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: '',
           minAnswerCount: 1,
           answers: []
@@ -3433,7 +3433,7 @@ const questionBank = {
             <p class="govuk-body"><a class="govuk-link" href="${process.env.SURVEY_LINK}" target="_blank" rel="noopener noreferrer">What do you think of this service?</a></p>
             `
           },
-          fundingPriorities: '',
+          fundingPriorities: 'Improving Adding Value',
           type: '',
           minAnswerCount: 1,
           answers: []
