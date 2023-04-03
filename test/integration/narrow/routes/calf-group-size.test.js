@@ -29,7 +29,7 @@ describe('Page: /group-size', () => {
 
 		const response = await global.__SERVER__.inject(options)
 		expect(response.statusCode).toBe(200)
-		expect(response.payload).toContain('What will be the average calf group size for calves over 7 days old?')
+		expect(response.payload).toContain('What will be the average group size for calves over 7 days old?')
 		expect(response.payload).toContain('2 to 3');
 		expect(response.payload).toContain('4 to 8');
 		expect(response.payload).toContain('9 to 12');

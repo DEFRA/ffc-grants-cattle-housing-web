@@ -26,7 +26,7 @@ describe('Page: /isolate-calves', () => {
 
 		const response = await global.__SERVER__.inject(options)
 		expect(response.statusCode).toBe(200)
-		expect(response.payload).toContain('Will there be facilities to temporarily isolate sick calves?')
+		expect(response.payload).toContain('Will the building have facilities to temporarily isolate sick calves?')
 		expect(response.payload).toContain('Yes')
 		expect(response.payload).toContain('No')
 	})
