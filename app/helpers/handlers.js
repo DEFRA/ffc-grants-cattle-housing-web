@@ -14,6 +14,7 @@ const gapiService = require('../services/gapi-service')
 const { startPageUrl } = require('../config/server')
 const { ALL_QUESTIONS } = require('../config/question-bank')
 const { formatOtherItems } = require('./../helpers/other-items-sizes')
+const desirabilityData = require('../../test/unit/app/messaging/scoring/desirability-score.json')
 
 const {
   getConfirmationId,
@@ -23,6 +24,16 @@ const {
   getDataFromYarValue,
   getConsentOptionalData
 } = require('./pageHelpers')
+
+const scoreViewTemplate = 'score'
+
+function createModel(data, backUrl, url) {
+  return {
+    backLink: backUrl,
+    formActionPage: url,
+    ...data
+  }
+}
 
 const getPage = async (question, request, h) => {
   const { url, backUrl, nextUrlObject, type, title, yarKey, preValidationKeys, preValidationKeysRule } = question
@@ -160,7 +171,38 @@ const getPage = async (question, request, h) => {
       setYarValue(request, 'livingSpace3m2', null)
       setYarValue(request, 'livingSpace4m2', null)
     }
-    case 'score':
+    case 'score': {
+
+      // TODO: comment these back in when scoring data is ready
+      // const desirabilityAnswers = createMsg.getDesirabilityAnswers(request)
+      // console.log('here: ', 2, desirabilityAnswers);
+      // const formatAnswersForScoring = createMessage(desirabilityAnswers)
+      // const msgData = await getUserScore(formatAnswersForScoring, request.yar.id)
+
+      // Mocked score res
+      const msgData = desirabilityData
+      let scoreChance
+      switch (msgData.desirability.overallRating.band.toLowerCase()) {
+        case 'strong':
+          scoreChance = 'is likely to'
+          break
+        case 'average':
+          scoreChance = 'might'
+          break
+        default:
+          scoreChance = 'is unlikely to'
+          break
+      }
+
+      setYarValue(request, 'overAllScore', msgData)
+      // console.log('msgData: ', JSON.stringify(msgData), scoreChance);
+      return h.view(scoreViewTemplate, createModel({
+        titleText: msgData.desirability.overallRating.band,
+        scoreData: msgData,
+        questions: msgData.desirability.questions.sort((a, b) => a.order - b.order),
+        scoreChance: scoreChance
+      }, backUrl, url))
+    }
     case 'business-details':
     case 'agent-details':
     case 'applicant-details': {

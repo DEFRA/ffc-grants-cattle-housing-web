@@ -2405,7 +2405,7 @@ const questionBank = {
           url: 'introducing-innovation',
           baseUrl: 'introducing-innovation',
           backUrl: 'sustainable-materials',
-          nextUrl: 'result-page',
+          nextUrl: 'score',
           sidebar: {
             values: [ {
               heading: 'Funding priorities',
@@ -2469,11 +2469,11 @@ const questionBank = {
           yarKey: 'introducingInnovation'
         },
         {
-          key: 'result-page',
+          key: 'score',
           order: 230,
-          title: 'Your results',
-          url: 'result-page',
-          baseUrl: 'result-page',
+          title: 'Score results',
+          url: 'score',
+          baseUrl: 'score',
           backUrl: 'introducing-innovation',
           nextUrl: 'business-details',
           preValidationKeys: [],

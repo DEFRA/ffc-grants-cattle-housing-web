@@ -76,6 +76,19 @@ const showBackToEvidenceSummaryButton = (key, request) => {
   }
 }
 
+const showBackToEScoreSummaryButton = (key, request) => {
+  switch (key) {
+    case 'planning-permission':
+    case 'planning-permission-evidence':
+    case 'moisture-control':
+    case 'score': {
+      return !!getYarValue(request, 'overAllScore')
+    }
+    default:
+      return false;
+  }
+}
+
 const getModel = (data, question, request, conditionalHtml = '') => {
   let { type, backUrl, key, backUrlObject, sidebar, title, hint, score, label, warning, warningCondition } = question
   const hasScore = !!getYarValue(request, 'current-score')
@@ -106,6 +119,7 @@ const getModel = (data, question, request, conditionalHtml = '') => {
     ...(warningDetails ? ({ warning: warningDetails }) : {}),
     reachedCheckDetails: showBackToDetailsButton(key, request),
     reachedEvidenceSummary: showBackToEvidenceSummaryButton(key, request),
+    reachedScoreResults: showBackToEScoreSummaryButton(key, request),
     diaplaySecondryBtn: hasScore && score?.isDisplay
   }
 }
