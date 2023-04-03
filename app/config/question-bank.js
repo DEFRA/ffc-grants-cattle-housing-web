@@ -2472,7 +2472,7 @@ const questionBank = {
           key: 'score',
           order: 230,
           title: 'Score results',
-          url: 'Score',
+          url: 'score',
           baseUrl: 'score',
           backUrl: 'introducing-innovation',
           nextUrl: 'business-details',
