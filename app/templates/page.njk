@@ -100,6 +100,8 @@
 
             {% if key === 'planning-permission' %}
               {% set diaplaySecondryBtn = false %}
+            {% elif reachedScoreResults %}
+              {% set diaplaySecondryBtn = true %}
             {% elif reachedCheckDetails %}
               {% set diaplaySecondryBtn = true %}
               {% set secButtonText = 'Back to details' %}

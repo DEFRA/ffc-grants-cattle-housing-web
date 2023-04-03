@@ -72,7 +72,7 @@ const showBackToEvidenceSummaryButton = (key, request) => {
       return !!getYarValue(request, 'reachedEvidenceSummary')
     }
     default:
-      return false
+      return false;
   }
 }
 
@@ -106,6 +106,7 @@ const getModel = (data, question, request, conditionalHtml = '') => {
     ...(warningDetails ? ({ warning: warningDetails }) : {}),
     reachedCheckDetails: showBackToDetailsButton(key, request),
     reachedEvidenceSummary: showBackToEvidenceSummaryButton(key, request),
+    reachedScoreResults: !!getYarValue(request, 'overAllScore'),
     diaplaySecondryBtn: hasScore && score?.isDisplay
   }
 }
