@@ -2405,7 +2405,7 @@ const questionBank = {
           url: 'introducing-innovation',
           baseUrl: 'introducing-innovation',
           backUrl: 'sustainable-materials',
-          nextUrl: 'result-page',
+          nextUrl: 'score',
           sidebar: {
             values: [ {
               heading: 'Funding priorities',
@@ -2469,33 +2469,14 @@ const questionBank = {
           yarKey: 'introducingInnovation'
         },
         {
-          key: 'result-page',
+          key: 'score',
           order: 230,
-          title: 'Your results',
-          url: 'result-page',
-          baseUrl: 'result-page',
+          title: 'Score results',
+          url: 'Score',
+          baseUrl: 'score',
           backUrl: 'introducing-innovation',
           nextUrl: 'business-details',
           preValidationKeys: [],
-          maybeEligible: true,
-          maybeEligibleContent: {
-            messageHeader: 'Your results',
-            messageContent: `Based on your answers, your project is:
-            <div class="govuk-inset-text">
-              <span class="govuk-heading-m">Eligible to apply</span>
-              </div>
-              <p class='govuk-body'>
-              The RPA wants to fund projects that have a higher environmental benefit. <br/><br/>
-              We will do this by prioritising projects in areas that need urgent action 
-              to reduce nutrient pollution from agriculture and restore natural habitats.<br/><br/>
-              Depending on the number of applications received, we may invite projects 
-              outside these areas to submit a full application.</p>`,
-            extraMessageContent: `
-            <h2 class="govuk-heading-m">Next steps</h2>
-            <p class="govuk-body">Next, add your business and contact details and submit them to the RPA (you should only do this once).
-            <br/><br/>
-            You’ll get an email with your answers and a reference number.</p>`
-          },
           answers: []
         },
 
