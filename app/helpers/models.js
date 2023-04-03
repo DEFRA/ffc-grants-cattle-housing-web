@@ -78,9 +78,9 @@ const showBackToEvidenceSummaryButton = (key, request) => {
 
 const showBackToEScoreSummaryButton = (key, request) => {
   switch (key) {
-    case 'planning-permission':
-    case 'planning-permission-evidence':
-    case 'moisture-control':
+    // case 'planning-permission':
+    // case 'planning-permission-evidence':
+    // case 'moisture-control':
     case 'score': {
       return !!getYarValue(request, 'overAllScore')
     }
