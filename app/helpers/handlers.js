@@ -42,6 +42,38 @@ const getPage = async (question, request, h) => {
   if (isRedirect) {
     return h.redirect(startPageUrl)
   }
+  if(url === 'score') {
+    // TODO: comment these back in when scoring data is ready
+    // const desirabilityAnswers = createMsg.getDesirabilityAnswers(request)
+    // console.log('here: ', 2, desirabilityAnswers);
+    // const formatAnswersForScoring = createMessage(desirabilityAnswers)
+    // const msgData = await getUserScore(formatAnswersForScoring, request.yar.id)
+
+    // Mocked score res
+    const msgData = desirabilityData
+    let scoreChance
+    switch (msgData.desirability.overallRating.band.toLowerCase()) {
+      case 'strong':
+        scoreChance = 'is likely to'
+        break
+      case 'average':
+        scoreChance = 'might'
+        break
+      default:
+        scoreChance = 'is unlikely to'
+        break
+    }
+
+    setYarValue(request, 'overAllScore', msgData)
+
+    return h.view(scoreViewTemplate, createModel({
+      titleText: msgData.desirability.overallRating.band,
+      scoreData: msgData,
+      questions: msgData.desirability.questions.sort((a, b) => a.order - b.order),
+      scoreChance: scoreChance
+    }, backUrl, url))
+
+  }
   let confirmationId = ''
 
   if (question.grantInfo) {
@@ -158,40 +190,8 @@ const getPage = async (question, request, h) => {
       if(getYarValue(request,'tenancy') === 'Yes'){
         setYarValue(request, 'tenancyLength', null)
       }
-      break
     }
-    case 'score': {
-
-      // TODO: comment these back in when scoring data is ready
-      // const desirabilityAnswers = createMsg.getDesirabilityAnswers(request)
-      // console.log('here: ', 2, desirabilityAnswers);
-      // const formatAnswersForScoring = createMessage(desirabilityAnswers)
-      // const msgData = await getUserScore(formatAnswersForScoring, request.yar.id)
-
-      // Mocked score res
-      const msgData = desirabilityData
-      let scoreChance
-      switch (msgData.desirability.overallRating.band.toLowerCase()) {
-        case 'strong':
-          scoreChance = 'is likely to'
-          break
-        case 'average':
-          scoreChance = 'might'
-          break
-        default:
-          scoreChance = 'is unlikely to'
-          break
-      }
-
-      setYarValue(request, 'overAllScore', msgData)
-      // console.log('msgData: ', JSON.stringify(msgData), scoreChance);
-      return h.view(scoreViewTemplate, createModel({
-        titleText: msgData.desirability.overallRating.band,
-        scoreData: msgData,
-        questions: msgData.desirability.questions.sort((a, b) => a.order - b.order),
-        scoreChance: scoreChance
-      }, backUrl, url))
-    }
+    // case 'score':
     case 'living-space-3m2':
       setYarValue(request, 'livingSpace4m2', null)
       setYarValue(request, 'livingSpace5m2', null)
