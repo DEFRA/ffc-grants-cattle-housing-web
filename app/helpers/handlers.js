@@ -14,7 +14,7 @@ const gapiService = require('../services/gapi-service')
 const { startPageUrl } = require('../config/server')
 const { ALL_QUESTIONS } = require('../config/question-bank')
 const { formatOtherItems } = require('./../helpers/other-items-sizes')
-const desirabilityData = require('../../test/unit/app/messaging/scoring/desirability-score.json')
+const desirabilityData = require('./desirability-score.json')
 
 const {
   getConfirmationId,
@@ -42,7 +42,8 @@ const getPage = async (question, request, h) => {
   if (isRedirect) {
     return h.redirect(startPageUrl)
   }
-  if(url === 'score') {
+
+  if (url === 'score') {
     // TODO: comment these back in when scoring data is ready
     // const desirabilityAnswers = createMsg.getDesirabilityAnswers(request)
     // console.log('here: ', 2, desirabilityAnswers);
