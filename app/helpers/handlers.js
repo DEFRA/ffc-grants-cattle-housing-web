@@ -158,18 +158,22 @@ const getPage = async (question, request, h) => {
       if(getYarValue(request,'tenancy') === 'Yes'){
         setYarValue(request, 'tenancyLength', null)
       }
+      break
     }
     case 'living-space-3m2': {
       setYarValue(request, 'livingSpace4m2', null)
       setYarValue(request, 'livingSpace5m2', null)
+      break
     }
     case 'living-space-4m2': {
       setYarValue(request, 'livingSpace3m2', null)
       setYarValue(request, 'livingSpace5m2', null)
+      break
     }
     case 'living-space-5m2': {
       setYarValue(request, 'livingSpace3m2', null)
       setYarValue(request, 'livingSpace4m2', null)
+      break
     }
     case 'score': {
 
