@@ -2008,7 +2008,7 @@ const questionBank = {
               heading: 'Funding Priorities',
               content: [ {
                 para: `RPA wants to fund buildings that go beyond the regulatory baseline by having:`,
-                      items:['a permanent sick pen','a separate air space','a permanent heat source'],
+                      items:['a permanent sick pen','a separate air space','a permanent heat source (for example heat lamps)'],
                       additionalPara: 'To create a separate air space, the area must have solid walls up to ceiling height blocking it from the calf housing.'
 
               } ]
