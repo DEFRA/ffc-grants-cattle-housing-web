@@ -26,7 +26,7 @@ it('page loads successfully, with all the options', async () => {
     expect(response.payload).toContain('What type of sick pen will your building have?')
     expect(response.payload).toContain('A permanent sick pen')
     expect(response.payload).toContain('A separate air space')
-    expect(response.payload).toContain('A permanent heat source')
+    expect(response.payload).toContain('A permanent heat source (for example heat lamps)')
     expect(response.payload).toContain('None of the above')
 })
 it('no option selected -> show error message', async () => {

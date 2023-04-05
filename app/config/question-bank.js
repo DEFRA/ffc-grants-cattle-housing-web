@@ -2042,7 +2042,7 @@ const questionBank = {
             },
             {
               key: 'permanent-sick-pen-A3',
-              value: 'A permanent heat source'
+              value: 'A permanent heat source (for example heat lamps)'
             },
             {
               value: 'divider'
