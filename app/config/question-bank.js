@@ -119,20 +119,12 @@ const questionBank = {
             }]
           },
           fundingPriorities: 'Improve the environment',
-          type: 'multi-answer',
+          type: 'single-answer',
           minAnswerCount: 1,
           validate: [
             {
               type: 'NOT_EMPTY',
               error: 'Select the option that applies to you'
-            },
-            {
-              type: 'STANDALONE_ANSWER',
-              error: 'You cannot select that combination of options',
-              standaloneObject: {
-                questionKey: 'applicant-type',
-                answerKey: 'applicant-type-A6'
-              }
             }
           ],
           answers: [

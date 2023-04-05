@@ -30,20 +30,6 @@ describe('Page: /applicant-type', () => {
     expect(postResponse.statusCode).toBe(200)
     expect(postResponse.payload).toContain('Select the option that applies to you')
   })
-
-  it(' \'None of the above\' selected with another option -> show error message', async () => {
-    const postOptions = {
-      method: 'POST',
-      url: `${global.__URLPREFIX__}/applicant-type`,
-      headers: { cookie: 'crumb=' + crumbToken },
-      payload: { applicantType: ['None of the above', 'Dairy'], crumb: crumbToken }
-    }
-
-    const postResponse = await global.__SERVER__.inject(postOptions)
-    expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('You cannot select that combination of options')
-  })
-
   it('user selects ineligible option: \'None of the above\' -> display ineligible page', async () => {
     const postOptions = {
       method: 'POST',
