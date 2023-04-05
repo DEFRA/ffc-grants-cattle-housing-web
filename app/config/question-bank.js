@@ -1247,7 +1247,7 @@ const questionBank = {
           ],
           yarKey: 'structureEligibility',
           conditionalKey: 'yesStructureEligibility',
-          conditionalLabelData: 'Describe the building structure'
+          conditionalLabelData: 'Enter the description of the building structure'
         },
         {
           key: 'drainage-slope',
