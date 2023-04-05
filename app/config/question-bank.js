@@ -85,9 +85,6 @@ const questionBank = {
           key: 'applicant-type',
           order: 10,
           title: 'What type of farmer are you?',
-          hint: {
-            text: 'Select all that apply'
-          },
           pageTitle: '',
           ga: [{ journeyStart: true }],
           url: 'applicant-type',
@@ -122,20 +119,12 @@ const questionBank = {
             }]
           },
           fundingPriorities: 'Improve the environment',
-          type: 'multi-answer',
+          type: 'single-answer',
           minAnswerCount: 1,
           validate: [
             {
               type: 'NOT_EMPTY',
               error: 'Select the option that applies to you'
-            },
-            {
-              type: 'STANDALONE_ANSWER',
-              error: 'You cannot select that combination of options',
-              standaloneObject: {
-                questionKey: 'applicant-type',
-                answerKey: 'applicant-type-A6'
-              }
             }
           ],
           answers: [
@@ -922,7 +911,7 @@ const questionBank = {
         {
           key: 'isolate-calves',
           order: 120,
-          title: 'Will there be facilities to temporarily isolate sick calves?',
+          title: 'Will the building have facilities to temporarily isolate sick calves?',
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           baseUrl: 'isolate-calves',
           url: 'isolate-calves',
@@ -970,7 +959,7 @@ const questionBank = {
         {
           key: 'straw-bedding',
           order: 125,
-          title: 'Will the calf housing have straw bedding?',
+          title: 'Will the calf housing have cereal straw bedding?',
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           baseUrl: 'straw-bedding',
           url: 'straw-bedding',
@@ -978,7 +967,7 @@ const questionBank = {
           nextUrl: 'concrete-flooring',
           preValidationKeys: [],
           ineligibleContent: {
-            messageContent: 'The calf housing must have straw bedding (using cereal straw).',
+            messageContent: 'The calf housing must have cereal straw bedding.',
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -990,7 +979,7 @@ const questionBank = {
             values: [{
               heading: 'Eligibility',
               content: [{
-                para: 'The calf housing must have straw bedding (using cereal straw).'
+                para: 'The calf housing must have cereal straw bedding.'
               }]
             }]
           },
@@ -1250,7 +1239,7 @@ const questionBank = {
           ],
           yarKey: 'structureEligibility',
           conditionalKey: 'yesStructureEligibility',
-          conditionalLabelData: 'Describe the building structure'
+          conditionalLabelData: 'Enter the description of the building structure'
         },
         {
           key: 'drainage-slope',
@@ -1488,7 +1477,7 @@ const questionBank = {
           title: 'Is the roof able to support solar PV panels?',
           hint: {
             html: `<div class:"govuk-hint">
-            The roof must be able to support solar PV panels, allowing for potential use in the future, unless:</br></br>
+            Your roof is exempt if:</br></br>
             <li>the building is listed or on a world heritage site</li>
             <li> you're upgrading an existing building and would not otherwise make changes to the roof </li>
             <li>the roof faces only north or is heavily shaded </li>
@@ -1496,7 +1485,6 @@ const questionBank = {
             <li>the roof has a pitch less than 15 degrees or greater than 50 degrees</li>
             </div>`
           },
-          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           pageTitle: '',
           backUrl: 'lighting',
           nextUrl: 'project-cost',
@@ -1517,7 +1505,7 @@ const questionBank = {
             }
           },
           ineligibleContent: {
-            messageContent: `<p class="govuk-body">The roof must be able to support solar PV panels, allowing for potential use in the future, unless:</p>
+            messageContent: `<p class="govuk-body">The roof must be able to support solar PV panels unless:</p>
             <div class="govuk-list govuk-list--bullet">
                   <ul>
                     <li>the building is listed or on a world heritage site</li>
@@ -1550,6 +1538,10 @@ const questionBank = {
               key: 'roof-solar-PV-A2',
               value: 'No',
               notEligible: true
+            },
+            {
+              key: 'roof-solar-PV-A3',
+              value: 'My roof is exempt'
             }
           ],
           yarKey: 'roofSolarPV'
@@ -1583,7 +1575,7 @@ const questionBank = {
           hint: {
             html: `
                   <p>You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £20,000 (40% of 50,000). The maximum grant is £500,000.<p/>
-                  This grant is for:<br/>
+                  The grant is for:<br/>
                   <ul class="govuk-list govuk-list--bullet govuk-hint">
                     <li>structures, including concrete flooring, walls, roofs, structural reinforcement and drainage facilities</li>
                     <li>fixtures, including calf accommodation pens, calf isolation facilities, gates, draught protection, ventilation systems, washing facilities and automatic calf feeders</li>
@@ -1780,7 +1772,7 @@ const questionBank = {
           nextUrl: 'number-of-calves',
           preValidationKeys: [ 'housing' ],
           pageTitle: '',
-          title: 'What will be the average calf group size for calves over 7 days old?',
+          title: 'What will be the average group size for calves over 7 days old?',
           fundingPriorities: '',
           type: 'single-answer',
           sidebar: {
@@ -2008,7 +2000,7 @@ const questionBank = {
               heading: 'Funding Priorities',
               content: [ {
                 para: `RPA wants to fund buildings that go beyond the regulatory baseline by having:`,
-                      items:['a permanent sick pen','a separate air space','a permanent heat source'],
+                      items:['a permanent sick pen','a separate air space','a permanent heat source (for example heat lamps)'],
                       additionalPara: 'To create a separate air space, the area must have solid walls up to ceiling height blocking it from the calf housing.'
 
               } ]
@@ -2042,7 +2034,7 @@ const questionBank = {
             },
             {
               key: 'permanent-sick-pen-A3',
-              value: 'A permanent heat source'
+              value: 'A permanent heat source (for example heat lamps)'
             },
             {
               value: 'divider'

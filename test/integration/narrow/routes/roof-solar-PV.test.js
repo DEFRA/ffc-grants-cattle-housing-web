@@ -25,6 +25,7 @@ it('page loads successfully, with all the options', async () => {
     expect(response.payload).toContain('Is the roof able to support solar PV panels?')
     expect(response.payload).toContain('Yes')
     expect(response.payload).toContain('No')
+    expect(response.payload).toContain('My roof is exempt')
 })
 
 it('no option selected -> show error message', async () => {

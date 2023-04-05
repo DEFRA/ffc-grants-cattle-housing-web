@@ -66,7 +66,7 @@ it('should returns error message if description does not have any value', async 
     }
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Describe the building structure')
+    expect(postResponse.payload).toContain('Enter the description of the building structure')
 })
 
 it('no option selected -> show error message', async () => {
