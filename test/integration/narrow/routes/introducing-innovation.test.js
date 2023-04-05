@@ -39,8 +39,7 @@ it(' \'None of the above\' selected with another option -> show error message', 
     expect(postResponse.statusCode).toBe(200)
     expect(postResponse.payload).toContain('You cannot select that combination of options')
 })
-it('user selects eligible option -> store user response and redirect to /result-page', async () => {
-    const postOptions = {
+it('user selects eligible option -> store user response and redirect to /score', async () => {    const postOptions = {
     method: 'POST',
     url: `${global.__URLPREFIX__}/introducing-innovation`,
     headers: { cookie: 'crumb=' + crumbToken },
@@ -49,6 +48,6 @@ it('user selects eligible option -> store user response and redirect to /result-
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
-    expect(postResponse.headers.location).toBe('result-page')
+    expect(postResponse.headers.location).toBe('score')
 })
 })
