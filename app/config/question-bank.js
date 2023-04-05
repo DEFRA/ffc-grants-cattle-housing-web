@@ -1583,7 +1583,7 @@ const questionBank = {
           hint: {
             html: `
                   <p>You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £20,000 (40% of 50,000). The maximum grant is £500,000.<p/>
-                  This grant is for:<br/>
+                  The grant is for:<br/>
                   <ul class="govuk-list govuk-list--bullet govuk-hint">
                     <li>structures, including concrete flooring, walls, roofs, structural reinforcement and drainage facilities</li>
                     <li>fixtures, including calf accommodation pens, calf isolation facilities, gates, draught protection, ventilation systems, washing facilities and automatic calf feeders</li>
