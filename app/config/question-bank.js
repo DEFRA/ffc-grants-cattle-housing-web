@@ -2499,7 +2499,7 @@ const questionBank = {
           pageTitle: '',
           url: 'business-details',
           baseUrl: 'business-details',
-          backUrl: 'result-page',
+          backUrl: 'score',
           nextUrl: 'applying',
           preValidationKeys: [],
           ga: [
