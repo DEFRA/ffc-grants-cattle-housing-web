@@ -27,7 +27,7 @@ const {
 
 const scoreViewTemplate = 'score'
 
-function createModel(data, backUrl, url) {
+const createModel = (data, backUrl, url) => {
   return {
     backLink: backUrl,
     formActionPage: url,
@@ -379,5 +379,6 @@ const getPostHandler = (currentQuestion) => {
 
 module.exports = {
   getHandler,
-  getPostHandler
+  getPostHandler,
+  createModel
 }
