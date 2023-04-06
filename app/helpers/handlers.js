@@ -230,10 +230,10 @@ const showPostPage = (currentQuestion, request, h) => {
   }
   for (const [key, value] of Object.entries(payload)) {
     thisAnswer = answers?.find(answer => (answer.value === value))
-    if (yarKey === 'cover' && thisAnswer.key === 'cover-A2') {
-      request.yar.set('coverType', '')
-      request.yar.set('coverSize', '')
-    }
+    // if (yarKey === 'cover' && thisAnswer.key === 'cover-A2') {
+    //   request.yar.set('coverType', '')
+    //   request.yar.set('coverSize', '')
+    // }
 
     if (type !== 'multi-input' && key !== 'secBtn') {
       setYarValue(request, key, key === 'projectPostcode' ? value.replace(DELETE_POSTCODE_CHARS_REGEX, '').split(/(?=.{3}$)/).join(' ').toUpperCase() : value)
@@ -241,9 +241,9 @@ const showPostPage = (currentQuestion, request, h) => {
   }
   if (type === 'multi-input') {
     let allFields = currentQuestion.allFields
-    if (currentQuestion.costDataKey) {
-      allFields = formatOtherItems(request)
-    }
+    // if (currentQuestion.costDataKey) {
+    //   allFields = formatOtherItems(request)
+    // }
     allFields.forEach(field => {
       const payloadYarVal = payload[field.yarKey]
         ? payload[field.yarKey].replace(DELETE_POSTCODE_CHARS_REGEX, '').split(/(?=.{3}$)/).join(' ').toUpperCase()
