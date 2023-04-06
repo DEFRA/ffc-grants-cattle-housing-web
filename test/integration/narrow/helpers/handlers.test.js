@@ -53,24 +53,67 @@ describe('Get & Post Handlers', () => {
     expect(mockH.redirect).toHaveBeenCalledWith('/upgrading-calf-housing/start')
   })
 
-  test('it handles the score result page', async () => {
-    question = {
-      url: 'score',
-      title: 'mock-title',
-      backUrl: 'test-back-link'
-    }
-    mockH = { view: jest.fn() }
+  describe('it handles the score results page: ', () => {
+    test('Average score', async () => {
+      question = {
+        url: 'score',
+        title: 'mock-title',
+        backUrl: 'test-back-link'
+      }
+      mockH = { view: jest.fn() }
+  
+      await getHandler(question)({}, mockH)
+      expect(mockH.view).toHaveBeenCalledWith('score', {
+        titleText: data.desirability.overallRating.band,
+        backLink: "test-back-link",
+        formActionPage: "score",
+        scoreChance: "might",
+        scoreData: data,
+        questions: data.desirability.questions,
+      })
+    });
 
-    await getHandler(question)({}, mockH)
-    expect(mockH.view).toHaveBeenCalledWith('score', {
-      titleText: "Average",
-      backLink: "test-back-link",
-      formActionPage: "score",
-      scoreChance: "might",
-      scoreData: data,
-      questions: data.desirability.questions,
-    })
-  });
+    test('Strong score', async () => {
+      data.desirability.overallRating.band = 'Strong'
+      question = {
+        url: 'score',
+        title: 'mock-title',
+        backUrl: 'test-back-link'
+      }
+      mockH = { view: jest.fn() }
+  
+      await getHandler(question)({}, mockH)
+      expect(mockH.view).toHaveBeenCalledWith('score', {
+        titleText: data.desirability.overallRating.band,
+        backLink: "test-back-link",
+        formActionPage: "score",
+        scoreChance: "is likely to",
+        scoreData: data,
+        questions: data.desirability.questions,
+      })
+    });
+
+    test('Default score', async () => {
+      data.desirability.overallRating.band = 'AAAARRRGGHH!!!'
+      question = {
+        url: 'score',
+        title: 'mock-title',
+        backUrl: 'test-back-link'
+      }
+      mockH = { view: jest.fn() }
+  
+      await getHandler(question)({}, mockH)
+      expect(mockH.view).toHaveBeenCalledWith('score', {
+        titleText: data.desirability.overallRating.band,
+        backLink: "test-back-link",
+        formActionPage: "score",
+        scoreChance: "is unlikely to",
+        scoreData: data,
+        questions: data.desirability.questions,
+      })
+    });
+  })
+
 
 
   describe('Create Model', () => {
