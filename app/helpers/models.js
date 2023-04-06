@@ -78,7 +78,6 @@ const showBackToEvidenceSummaryButton = (key, request) => {
 
 const showBackToEScoreSummaryButton = (key, request) => {
   switch (key) {
-    // case '':
     case 'applicant-type':
     case 'legal-status':
     case 'country':
