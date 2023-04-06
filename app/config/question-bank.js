@@ -1756,7 +1756,8 @@ const questionBank = {
               {
                 heading: 'Funding Priorities',
                 content: [ {
-                  para: `The RPA want to fund projects that will increase social contact between calves. By law, calves cannot be housed individually beyond 8 weeks.`
+                  para: `The RPA want to fund projects that will increase social contact between calves.`,
+                  additionalPara: `By law, calves cannot be housed individually beyond 8 weeks.`
                 } ]
               }
             ]

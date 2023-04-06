@@ -78,30 +78,6 @@ const showBackToEvidenceSummaryButton = (key, request) => {
 
 const showBackToEScoreSummaryButton = (key, request) => {
   switch (key) {
-    case 'applicant-type':
-    case 'legal-status':
-    case 'country':
-    case 'planning-permission':
-    case 'project-started':
-    case 'tenancy':
-    case 'project':
-    case 'calf-weight':
-    case 'living-space-3m2':
-    case 'living-space-4m2':
-    case 'living-space-5m2':
-    case 'housed-individually':
-    case 'isolate-calves':
-    case 'straw-bedding':
-    case 'concrete-flooring':
-    case 'enrichment':
-    case 'structure':
-    case 'structure-eligibility':
-    case 'drainage-slope':
-    case 'draught-protection':
-    case 'additional-items':
-    case 'lighting':
-    case 'roof-solar-PV':
-    case 'project-cost':
     case 'housing':
     case 'group-size':
     case 'number-of-calves':
