@@ -78,9 +78,18 @@ const showBackToEvidenceSummaryButton = (key, request) => {
 
 const showBackToEScoreSummaryButton = (key, request) => {
   switch (key) {
-    // case 'planning-permission':
-    // case 'planning-permission-evidence':
-    // case 'moisture-control':
+    case 'housing':
+    case 'group-size':
+    case 'number-of-calves':
+    case 'automatic-calf-feeder':
+    case 'moisture-control':
+    case 'permanent-sick-pen':
+    case 'floor-space-100kg-150kg':
+    case 'floor-space-under100kg':
+    case 'floor-space-over150kg':
+    case 'environmental-impact':
+    case 'sustainable-materials':
+    case 'introducing-innovation':
     case 'score': {
       return !!getYarValue(request, 'overAllScore')
     }

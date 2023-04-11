@@ -6,14 +6,14 @@ const { formatUKCurrency } = require('../helpers/data-formats')
 const { SELECT_VARIABLE_TO_REPLACE, DELETE_POSTCODE_CHARS_REGEX } = require('../helpers/regex')
 const { getUrl } = require('../helpers/urls')
 const { guardPage } = require('../helpers/page-guard')
-const { notUniqueSelection, uniqueSelection } = require('../helpers/utils')
+// const { notUniqueSelection, uniqueSelection } = require('../helpers/utils')
 const senders = require('../messaging/senders')
 const createMsg = require('../messaging/create-msg')
 const emailFormatting = require('./../messaging/email/process-submission')
 const gapiService = require('../services/gapi-service')
 const { startPageUrl } = require('../config/server')
-const { ALL_QUESTIONS } = require('../config/question-bank')
-const { formatOtherItems } = require('./../helpers/other-items-sizes')
+// const { ALL_QUESTIONS } = require('../config/question-bank')
+// const { formatOtherItems } = require('./../helpers/other-items-sizes')
 const desirabilityData = require('./desirability-score.json')
 
 const {
@@ -27,7 +27,7 @@ const {
 
 const scoreViewTemplate = 'score'
 
-function createModel(data, backUrl, url) {
+const createModel = (data, backUrl, url) => {
   return {
     backLink: backUrl,
     formActionPage: url,
@@ -379,5 +379,6 @@ const getPostHandler = (currentQuestion) => {
 
 module.exports = {
   getHandler,
-  getPostHandler
+  getPostHandler,
+  createModel
 }
