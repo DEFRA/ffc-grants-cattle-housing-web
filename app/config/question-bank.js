@@ -1613,7 +1613,7 @@ const questionBank = {
           },
           sidebar: {
             values: [{
-              heading: 'What the grant will fund',
+              heading: 'What the grant will not fund',
               content: [{
                 para: 'Movable items (for example buckets) and ongoing costs (for example straw) will not be funded.'
               }]
