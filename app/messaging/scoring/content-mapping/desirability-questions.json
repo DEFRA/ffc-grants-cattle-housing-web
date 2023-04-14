@@ -1,12 +1,116 @@
 {  
   
-  "inEngland": [
+  "housing": [
     {
-      "key": "inEngland",
-      "title": "Is the planned project in England?",
+      "key": "housing",
+      "title": "Are you moving from individually housing calves over 7 days old to pair or group housing?",
       "answers": {
-        "inEngland-A1": "Yes",
-        "inEngland-A2": "No"
+        "housing-A1": "Yes",
+        "housing-A2": "No"
+      }
+    }
+  ],
+  "calf-group-size": [
+    {
+      "key": "calf-group-size",
+      "title": "What will be the average group size for calves over 7 days old?",
+      "answers": {
+        "calf-group-size-A1": "2 to 3",
+        "calf-group-size-A2": "4 to 8",
+        "calf-group-size-A3": "9 to 12",
+        "calf-group-size-A4": "13 or more"
+      }
+    }
+  ],
+  "number-of-calves": [
+    {
+      "key": "number-of-calves",
+      "title": "What will be the maximum number of calves in the calf housing?",
+      "answers": {
+        "number-of-calves-A1": "2 to 50",
+        "number-of-calves-A2": "51 to 100",
+        "number-of-calves-A3": "Over 100"
+      }
+    }
+  ],
+  "automatic-calf-feeder": [
+    {
+      "key": "automatic-calf-feeder",
+      "title": "How many calves will you have per automatic feeder?",
+      "answers": {
+        "automatic-calf-feeder-A1": "1 to 4",
+        "automatic-calf-feeder-A2": "5 to 8",
+        "automatic-calf-feeder-A3": "9 to 12",
+        "automatic-calf-feeder-A4": "13 or more",
+        "automatic-calf-feeder-A5": "We do not use an automatic feeder"
+      }
+    }
+  ],
+  "moisture-control": [
+    {
+      "key": "moisture-control",
+      "title": "How will your building control moisture?",
+      "answers": {
+        "moisture-control-A1": "A drain or drainage channel inside the pen",
+        "moisture-control-A2": "Positioning drinking areas near drainage and away from bedding",
+        "moisture-control-A3": "A separate preparation or washing area",
+        "moisture-control-A4": "None of the above"
+      }
+    }
+  ],
+  "permanent-sick-pen": [
+    {
+      "key": "permanent-sick-pen",
+      "title": "What type of sick pen will your building have?",
+      "answers": {
+        "permanent-sick-pen-A1": "A permanent sick pen",
+        "permanent-sick-pen-A2": "A separate air space",
+        "permanent-sick-pen-A3": "A permanent heat source (for example heat lamps)",
+        "permanent-sick-pen-A4": "None of the above"
+      }
+    }
+  ],
+  "floor-space": [
+    {
+      "key": "floor-space",
+      "title": "How much space will each calf have?"
+    }
+  ],
+  "environmental-impact": [
+    {
+      "key": "environmental-impact",
+      "title": "How will the building minimise environmental impact?",
+      "answers": {
+        "environmental-impact-A1": "Solar PV panels on the roof of the building",
+        "environmental-impact-A2": "Collect and store rainwater",
+        "environmental-impact-A3": "None of the above"
+      }
+    }
+  ],
+  "sustainable-materials": [
+    {
+      "key": "sustainable-materials",
+      "title": "Will your building use sustainable materials?",
+      "answers": {
+        "sustainable-materials-A1": "Low carbon concrete",
+        "sustainable-materials-A2": "Steel replacement products",
+        "sustainable-materials-A3": "Sustainably sourced timber",
+        "sustainable-materials-A4": "Reused or secondhand materials from elsewhere",
+        "sustainable-materials-A5": "Recycled materials",
+        "sustainable-materials-A6": "Something else",
+        "sustainable-materials-A7": "None of the above"
+      }
+    }
+  ],
+  "introducing-innovation": [
+    {
+      "key": "introducing-innovation",
+      "title": "Is your project introducing innovation?",
+      "answers": {
+        "introducing-innovation-A1": "Technology",
+        "introducing-innovation-A2": "Collaboration",
+        "introducing-innovation-A3": "Techniques",
+        "introducing-innovation-A4": "None of the above"
       }
     }
   ]

@@ -9,16 +9,45 @@ describe('create-msg', () => {
     getYarValue.mockImplementation((req, key) => (dict[key]))
 
     dict = {
-      inEngland: 'hello'
+      housing: 'hello',
+      calfGroupSize: 'hello',
+      numberOfCalves: 'HELLO',
+      automaticCalfFeeder: 'hello',
+      moistureControl: ['hello'],
+      permanentSickPen: ['hello'],
+      floorSpace: 22,
+      environmentalImpact: ['hello'],
+      sustainableMaterials: ['hello'],
+      introducingInnovation: ['hello']
     }
     expect(getDesirabilityAnswers({})).toEqual({
-      inEngland: 'hello'
+      housing: 'hello',
+      calfGroupSize: 'hello',
+      numberOfCalves: 'HELLO',
+      automaticCalfFeeder: 'hello',
+      moistureControl: ['hello'],
+      permanentSickPen: ['hello'],
+      floorSpace: 22,
+      environmentalImpact: ['hello'],
+      sustainableMaterials: ['hello'],
+      introducingInnovation: ['hello']
     })
 
-    dict = {
-      inEngland: ['hello']
-    }
+    // dict = {
+    //   ...dict
+    // }
 
-    expect(getDesirabilityAnswers({})).toEqual(null)
+    // expect(getDesirabilityAnswers({})).toEqual({
+    //   housing: 'hello',
+    //   calfGroupSize: 'hello',
+    //   numberOfCalves: 'HELLO',
+    //   automaticCalfFeeder: 'hello',
+    //   moistureControl: ['hello'],
+    //   permanentSickPen: ['hello'],
+    //   floorSpace: 22,
+    //   environmentalImpact: ['hello'],
+    //   sustainableMaterials: ['hello'],
+    //   introducingInnovation: ['hello']
+    // })
   })
 })

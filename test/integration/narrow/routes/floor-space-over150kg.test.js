@@ -4,7 +4,7 @@ const varListTemplate = {
     legalStatus: 'randomData',
     projectType: 'fakeData',
     calfWeight:'Over 150kg',
-    floorSpaceOver150kg: null,
+    floorSpace: null,
     'current-score': null
 }
 let varList
@@ -27,7 +27,7 @@ describe('Page: /floor-space-over150kg', () => {
         jest.clearAllMocks()
     })
 it('page loads successfully, with all the options', async () => {
-    varList.floorSpaceOver150kg = undefined
+    varList.floorSpace = undefined
 
     const options = {
     method: 'GET',
@@ -53,12 +53,12 @@ it('no option selected -> show error message', async () => {
     expect(postResponse.payload).toContain('Enter how much space each calf will have')
 })
 
-it('user selects eligible option: \'floorSpaceOver150kg: 22\' -> display environmental-impact', async () => {
+it('user selects eligible option: \'floorSpace: 22\' -> display environmental-impact', async () => {
     const postOptions = {
     method: 'POST',
     url: `${global.__URLPREFIX__}/floor-space-over150kg`,
     headers: { cookie: 'crumb=' + crumbToken },
-    payload: { floorSpaceOver150kg: '22', crumb: crumbToken }
+    payload: { floorSpace: '22', crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
@@ -69,7 +69,7 @@ it('should return an error message if a string is typed in', async () => {
     const postOptions = {
         method: 'POST',
         url: `${global.__URLPREFIX__}/floor-space-over150kg`,
-        payload: { floorSpaceOver150kg: '1234s6', crumb: crumbToken },
+        payload: { floorSpace: '1234s6', crumb: crumbToken },
         headers: { cookie: 'crumb=' + crumbToken }
     }
 
@@ -82,7 +82,7 @@ it('should return an error message if number contains a space', async () => {
     const postOptions = {
     method: 'POST',
     url: `${global.__URLPREFIX__}/floor-space-over150kg`,
-    payload: { floorSpaceOver150kg: '1234 6', crumb: crumbToken },
+    payload: { floorSpace: '1234 6', crumb: crumbToken },
     headers: { cookie: 'crumb=' + crumbToken }
     }
 
@@ -94,7 +94,7 @@ it('should return an error message if number contains a comma "," ', async () =>
     const postOptions = {
         method: 'POST',
         url: `${global.__URLPREFIX__}/floor-space-over150kg`,
-        payload: { floorSpaceOver150kg: '123,456', crumb: crumbToken },
+        payload: { floorSpace: '123,456', crumb: crumbToken },
         headers: { cookie: 'crumb=' + crumbToken }
     }
 
@@ -109,7 +109,7 @@ it('should return an error message if a fraction is typed in - it contains a dot
     const postOptions = {
     method: 'POST',
     url: `${global.__URLPREFIX__}/floor-space-over150kg`,
-    payload: { floorSpaceOver150kg: '123.456', crumb: crumbToken },
+    payload: { floorSpace: '123.456', crumb: crumbToken },
     headers: { cookie: 'crumb=' + crumbToken }
     }
 
@@ -122,7 +122,7 @@ it('should return an error message if the number of digits typed exceed 5', asyn
     const postOptions = {
         method: 'POST',
         url: `${global.__URLPREFIX__}/floor-space-over150kg`,
-        payload: { floorSpaceOver150kg: '123456', crumb: crumbToken },
+        payload: { floorSpace: '123456', crumb: crumbToken },
         headers: { cookie: 'crumb=' + crumbToken }
     }
 
@@ -134,7 +134,7 @@ it('should store valid user input and redirect to environmental-impact page', as
     const postOptions = {
         method: 'POST',
         url: `${global.__URLPREFIX__}/floor-space-over150kg`,
-        payload: { floorSpaceOver150kg: '232', crumb: crumbToken },
+        payload: { floorSpace: '232', crumb: crumbToken },
         headers: { cookie: 'crumb=' + crumbToken }
     }
 
