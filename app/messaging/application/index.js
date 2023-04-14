@@ -1,6 +1,5 @@
 const { sendMessage, receiveMessage } = require('../')
 const { scoreRequestQueue, fetchScoreRequestMsgType, scoreResponseQueue } = require('../../config/messaging.js')
-const createMsg = require('./../scoring/create-desirability-msg')
 
 async function getUserScore (desirabilityMsg, sessionId) {
   console.log('[MADE IT TO MESSAGE]', sessionId)
