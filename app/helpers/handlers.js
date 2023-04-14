@@ -9,12 +9,14 @@ const { guardPage } = require('../helpers/page-guard')
 // const { notUniqueSelection, uniqueSelection } = require('../helpers/utils')
 const senders = require('../messaging/senders')
 const createMsg = require('../messaging/create-msg')
+const createDesirabilityMsg = require('./../scoring/create-desirability-msg')
+
 const emailFormatting = require('./../messaging/email/process-submission')
 const gapiService = require('../services/gapi-service')
 const { startPageUrl } = require('../config/server')
 // const { ALL_QUESTIONS } = require('../config/question-bank')
 // const { formatOtherItems } = require('./../helpers/other-items-sizes')
-const desirabilityData = require('./desirability-score.json')
+// const desirabilityData = require('./desirability-score.json')
 
 const {
   getConfirmationId,
@@ -45,13 +47,13 @@ const getPage = async (question, request, h) => {
 
   if (url === 'score') {
     // TODO: comment these back in when scoring data is ready
-    // const desirabilityAnswers = createMsg.getDesirabilityAnswers(request)
-    // console.log('here: ', 2, desirabilityAnswers);
-    // const formatAnswersForScoring = createMessage(desirabilityAnswers)
-    // const msgData = await getUserScore(formatAnswersForScoring, request.yar.id)
+    const desirabilityAnswers = createMsg.getDesirabilityAnswers(request)
+    console.log('here: ', 2, desirabilityAnswers);
+    const formatAnswersForScoring = createDesirabilityMessage(desirabilityAnswers)
+    const msgData = await getUserScore(formatAnswersForScoring, request.yar.id)
 
     // Mocked score res
-    const msgData = desirabilityData
+    // const msgData = desirabilityData
     let scoreChance
     switch (msgData.desirability.overallRating.band.toLowerCase()) {
       case 'strong':
