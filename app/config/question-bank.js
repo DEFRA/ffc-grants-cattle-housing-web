@@ -168,7 +168,7 @@ const questionBank = {
           nextUrl: 'country',
           url: 'legal-status',
           baseUrl: 'legal-status',
-          preValidationKeys: [],
+          preValidationKeys: ['applicantType'],
           ineligibleContent: {
             messageContent: 'Your business does not have an eligible legal status.',
             details: {
@@ -271,7 +271,7 @@ const questionBank = {
           nextUrl: 'planning-permission',
           url: 'country',
           baseUrl: 'country',
-          preValidationKeys: [],
+          preValidationKeys: ['legalStatus'],
           ineligibleContent: {
             messageContent: 'This grant is only for projects in England.',
             insertText: { text: 'Scotland, Wales and Northern Ireland have other grants available.' },
@@ -321,7 +321,7 @@ const questionBank = {
           baseUrl: 'planning-permission',
           backUrl: 'country',
           nextUrl: 'project-started',
-          preValidationKeys: [],
+          preValidationKeys: ['inEngland'],
           ineligibleContent: {
             messageContent: 'Any planning permission must be in place by 31 January 2024 (the end of the application window).',
             messageLink: {
@@ -377,7 +377,7 @@ const questionBank = {
           backUrl: 'planning-permission',
           nextUrl: 'project-started',
           maybeEligible: true,
-          preValidationKeys: [],
+          preValidationKeys: ['inEngland'],
           maybeEligibleContent: {
             messageHeader: 'You may be able to apply for a grant from this scheme',
             messageContent: 'Any planning permission must be in place by 31 January 2024 (the end of the application window).'
@@ -401,7 +401,7 @@ const questionBank = {
               elseUrl: 'planning-permission-condition'
             }
           },
-          preValidationKeys: [],
+          preValidationKeys: ['inEngland'],
           ineligibleContent: {
             messageContent: 'You cannot apply for a grant if you have already started work on the project.',
             insertText: { text: 'Starting the project or committing to any costs (such as placing orders) before you receive a funding agreement invalidates your application.' },
@@ -469,7 +469,7 @@ const questionBank = {
           baseUrl: 'tenancy',
           backUrl: 'project-started',
           nextUrl: 'project',
-          preValidationKeys: [],
+          preValidationKeys: ['projectStart'],
           fundingPriorities: '',
           type: 'single-answer',
           minAnswerCount: 1,
@@ -512,7 +512,7 @@ const questionBank = {
           url: 'tenancy-length',
           baseUrl: 'tenancy-length',
           backUrl: 'tenancy',
-          preValidationKeys: [],
+          preValidationKeys: ['tenancy'],
           nextUrl: 'project',
           type: 'single-answer',
           minAnswerCount: 1,
@@ -551,7 +551,7 @@ const questionBank = {
           order: 70,
           url: 'tenancy-length-condition',
           backUrl: 'tenancy-length',
-          preValidationKeys: [],
+          preValidationKeys: ['tenancyLength'],
           nextUrl: 'project',
           maybeEligible: true,
           maybeEligibleContent: {
@@ -576,7 +576,7 @@ const questionBank = {
               nonDependentUrl: 'tenancy'
             }
           },
-          preValidationKeys: [],
+          preValidationKeys: ['tenancy'],
           ineligibleContent: {
             messageContent: `
                 <div class="govuk-list govuk-list--bullet">
@@ -638,7 +638,7 @@ const questionBank = {
           hint: {
             text: 'A calf is up to 6 months of age'
           },
-          preValidationKeys: [],
+          preValidationKeys: ['project'],
           ineligibleContent: {
             messageContent: `<p class="govuk-body">This grant is for:</p>
               <div class="govuk-list govuk-list--bullet">
@@ -697,7 +697,7 @@ const questionBank = {
           backUrl: 'calf-weight',
           nextUrl: 'housed-individually',
           url: 'living-space-3m2',
-          preValidationKeys: [],
+          preValidationKeys: ['calfWeight'],
           type: 'single-answer',
           minAnswerCount: 1,
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
@@ -750,7 +750,7 @@ const questionBank = {
           backUrl: 'calf-weight',
           nextUrl: 'housed-individually',
           url: 'living-space-4m2',
-          preValidationKeys: [],
+          preValidationKeys: ['calfWeight'],
           type: 'single-answer',
           minAnswerCount: 1,
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
@@ -803,7 +803,7 @@ const questionBank = {
           backUrl: 'calf-weight',
           nextUrl: 'housed-individually',
           url: 'living-space-5m2',
-          preValidationKeys: [],
+          preValidationKeys: ['calfWeight'],
           type: 'single-answer',
           minAnswerCount: 1,
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
@@ -854,7 +854,7 @@ const questionBank = {
           baseUrl: 'housed-individually',
           url: 'housed-individually',
           nextUrl: 'isolate-calves',
-          preValidationKeys: [],
+          preValidationKeys: ['calfWeight'],
           backUrlObject: {
             dependentQuestionYarKey: 'calfWeight',
             dependentAnswerKeysArray: ['calf-weight-A1'],
@@ -917,7 +917,7 @@ const questionBank = {
           url: 'isolate-calves',
           backUrl: 'housed-individually',
           nextUrl: 'straw-bedding',
-          preValidationKeys: [],
+          preValidationKeys: ['housedIndividually'],
           ineligibleContent: {
             messageContent: 'The building must have facilities to temporarily isolate sick calves (for example, a temporary pen erected in an existing pen to isolate a sick calf).',
             insertText: { text: 'Sick calves may need to be temporarily isolated to prevent spreading disease.' },
@@ -965,7 +965,7 @@ const questionBank = {
           url: 'straw-bedding',
           backUrl: 'isolate-calves',
           nextUrl: 'concrete-flooring',
-          preValidationKeys: [],
+          preValidationKeys: ['isolateCalves'],
           ineligibleContent: {
             messageContent: 'The calf housing must have cereal straw bedding.',
             messageLink: {
@@ -1113,7 +1113,7 @@ const questionBank = {
           baseUrl: 'structure',
           backUrl: 'enrichment',
           nextUrl: 'drainage-slope',
-          preValidationKeys: [],
+          preValidationKeys: ['enrichment'],
           ineligibleContent: {
             messageContent: `<p class="govuk-body">Each pair or group of calves must have at least one enrichment item, such as:</p>
                               <div class="govuk-list govuk-list--bullet">
@@ -1184,7 +1184,7 @@ const questionBank = {
           nextUrl: 'drainage-slope',
           url: 'structure-eligibility',
           baseUrl: 'structure-eligibility',
-          preValidationKeys: [],
+          preValidationKeys: ['structure'],
           ineligibleContent: {
             messageContent: `<p class="govuk-body">All buildings must:</p>
             <div class="govuk-list govuk-list--bullet">
@@ -1261,7 +1261,7 @@ const questionBank = {
           nextUrl: 'draught-protection',
           url: 'drainage-slope',
           baseUrl: 'drainage-slope',
-          preValidationKeys: [],
+          preValidationKeys: ['structure'],
           ineligibleContent: {
             messageContent: 'The building must have sloped flooring with a 1 in 20 (5%) gradient in bedded areas that slopes towards a drain or drainage channel. ',
             messageLink: {
@@ -1309,7 +1309,7 @@ const questionBank = {
           nextUrl: 'additional-items',
           url: 'draught-protection',
           baseUrl: 'draught-protection',
-          preValidationKeys: [],
+          preValidationKeys: ['drainageSlope'],
           ineligibleContent: {
             messageContent: 'All projects must have permanent external calf-height solid walls/barriers to keep out drafts.',
             insertText: { text: 'For a permanent open-sided structure with igloos/hutches, this may mean adding permanent solid sides to the outside pens (straw bales are not sufficient).'},
@@ -1368,7 +1368,7 @@ const questionBank = {
           nextUrl: 'lighting',
           url: 'additional-items',
           baseUrl: 'additional-items',
-          preValidationKeys: [],
+          preValidationKeys: ['draughtProtection'],
           sidebar: {
             values: [
               {
@@ -1433,7 +1433,7 @@ const questionBank = {
           nextUrl: 'roof-solar-PV',
           url: 'lighting',
           baseUrl: 'lighting',
-          preValidationKeys: [],
+          preValidationKeys: ['additionalItems'],
           ineligibleContent: {
             messageContent: 'The building must have fitted lighting of at least 50 lux.',
             messageLink: {
@@ -1490,7 +1490,7 @@ const questionBank = {
           nextUrl: 'project-cost',
           url: 'roof-solar-PV',
           baseUrl: 'roof-solar-PV',
-          preValidationKeys: [],
+          preValidationKeys: ['lighting'],
           sidebar: {
             values: [{
               heading: 'Eligibility',
@@ -1556,7 +1556,7 @@ const questionBank = {
           backUrl: 'roof-solar-PV',
           nextUrl: 'potential-amount',
           fundingPriorities: '',
-          preValidationKeys: [],
+          preValidationKeys: ['roofSolarPV'],
           grantInfo: {
             minGrant: MIN_GRANT,
             maxGrant: MAX_GRANT,
@@ -1629,7 +1629,7 @@ const questionBank = {
           baseUrl: 'potential-amount',
           backUrl: 'project-cost',
           nextUrl: 'remaining-costs',
-          preValidationKeys: [],
+          preValidationKeys: ['projectCost'],
           grantInfo: {
             minGrant: MIN_GRANT,
             maxGrant: MAX_GRANT,
@@ -1662,7 +1662,7 @@ const questionBank = {
           baseUrl: 'remaining-costs',
           backUrl: 'potential-amount',
           nextUrl: 'housing',
-          preValidationKeys: [],
+          preValidationKeys: ['projectCost'],
           ineligibleContent: {
             messageContent: '<p class="govuk-body">You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.</p>',
             insertText: {
@@ -1982,7 +1982,7 @@ const questionBank = {
             text: 'Select all that apply'
           },
           pageTitle: '',
-          preValidationKeys: ['calfWeight'],
+          preValidationKeys: ['moistureControl'],
           url: 'permanent-sick-pen',
           baseUrl: 'permanent-sick-pen',
           backUrl: 'moisture-control',
@@ -2057,7 +2057,7 @@ const questionBank = {
           backUrl: 'permanent-sick-pen',
           nextUrl: 'environmental-impact',
           fundingPriorities: '',
-          preValidationKeys: [],
+          preValidationKeys: ['permanentSickPen'],
           type: 'input',
           suffix: {
             text: 'm²'
@@ -2117,7 +2117,7 @@ const questionBank = {
           backUrl: 'permanent-sick-pen',
           nextUrl: 'environmental-impact',
           fundingPriorities: '',
-          preValidationKeys: [],
+          preValidationKeys: ['permanentSickPen'],
           type: 'input',
           suffix: {
             text: 'm²'
@@ -2177,7 +2177,7 @@ const questionBank = {
           backUrl: 'permanent-sick-pen',
           nextUrl: 'environmental-impact',
           fundingPriorities: '',
-          preValidationKeys: [],
+          preValidationKeys: ['permanentSickPen'],
           type: 'input',
           suffix: {
             text: 'm²'
@@ -2237,6 +2237,7 @@ const questionBank = {
           pageTitle: '',
           url: 'environmental-impact',
           baseUrl: 'environmental-impact',
+          preValidationKeys: ['permanentSickPen'],
           backUrlObject: {
             dependentQuestionYarKey: 'calfWeight',
             dependentAnswerKeysArray: [ 'calf-weight-A1' ],
@@ -2306,6 +2307,7 @@ const questionBank = {
           baseUrl: 'sustainable-materials',
           backUrl: 'environmental-impact',
           nextUrl: 'introducing-innovation',
+          preValidationKeys: ['environmentalImpact'],
           sidebar: {
             values: [ {
               heading: 'Funding priorities',
@@ -2399,6 +2401,7 @@ const questionBank = {
           baseUrl: 'introducing-innovation',
           backUrl: 'sustainable-materials',
           nextUrl: 'score',
+          preValidationKeys: ['sustainableMaterials'],
           sidebar: {
             values: [ {
               heading: 'Funding priorities',
@@ -2469,7 +2472,7 @@ const questionBank = {
           baseUrl: 'score',
           backUrl: 'introducing-innovation',
           nextUrl: 'business-details',
-          preValidationKeys: [],
+          preValidationKeys: ['introducingInnovation'],
           maybeEligible: true,
           maybeEligibleContent: {
             messageHeader: 'Your results',
@@ -2502,7 +2505,7 @@ const questionBank = {
           baseUrl: 'business-details',
           backUrl: 'score',
           nextUrl: 'applying',
-          preValidationKeys: [],
+          preValidationKeys: ['introducingInnovation'],
           ga: [
             { dimension: 'cd1', value: { type: 'score', value: 'Eligible' } },
             { dimension: 'cm3', value: { type: 'journey-time' } }
@@ -2696,7 +2699,7 @@ const questionBank = {
           url: 'applying',
           baseUrl: 'applying',
           backUrl: 'business-details',
-          preValidationKeys: [],
+          preValidationKeys: ['businessDetails'],
           fundingPriorities: '',
           type: 'single-answer',
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
@@ -2729,7 +2732,7 @@ const questionBank = {
           url: 'applicant-details',
           baseUrl: 'applicant-details',
           nextUrl: 'check-details',
-          preValidationKeys: [],
+          preValidationKeys: ['applying'],
           backUrlObject: {
             dependentQuestionYarKey: 'applying',
             dependentAnswerKeysArray: ['applying-A2'],
@@ -3049,7 +3052,7 @@ const questionBank = {
           backUrl: 'applying',
           nextUrl: 'applicant-details',
           summaryPageUrl: 'check-details',
-          preValidationKeys: [],
+          preValidationKeys: ['applying'],
           ineligibleContent: {},
           fundingPriorities: '',
           type: 'multi-input',
@@ -3339,7 +3342,7 @@ const questionBank = {
           url: 'check-details',
           backUrl: 'applicant-details',
           nextUrl: 'confirm',
-          preValidationKeys: [],
+          preValidationKeys: ['applying'],
           ineligibleContent: {},
           pageData: {
             businessDetailsLink: 'business-details',
@@ -3358,7 +3361,7 @@ const questionBank = {
           url: 'confirm',
           backUrl: 'check-details',
           nextUrl: 'confirmation',
-          preValidationKeys: [],
+          preValidationKeys: ['farmerDetails'],
           maybeEligible: true,
           maybeEligibleContent: {
             messageHeader: 'Confirm and send',
@@ -3386,7 +3389,7 @@ const questionBank = {
           pageTitle: '',
           url: 'confirmation',
           baseUrl: 'confirmation',
-          preValidationKeys: [],
+          preValidationKeys: ['farmerDetails'],
           ga: [
             { dimension: 'cd2', value: { type: 'score' } },
             { dimension: 'cd5', value: { type: 'confirmationId' } },
