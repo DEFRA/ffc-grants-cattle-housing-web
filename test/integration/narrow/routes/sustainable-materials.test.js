@@ -1,6 +1,19 @@
 const { crumbToken } = require('./test-helper')
 
 describe('Page: /sustainable-materials', () => {
+    const varList = {
+        legalStatus: 'randomData',
+        projectType: 'fakeData'
+    }
+    
+    jest.mock('../../../../app/helpers/session', () => ({
+        setYarValue: (request, key, value) => null,
+        getYarValue: (request, key) => {
+        if (varList[key]) return varList[key]
+        else return 'Error'
+        }
+    }))
+    
 it('page loads successfully, with all the options', async () => {
     const options = {
     method: 'GET',
