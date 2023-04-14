@@ -9,7 +9,7 @@ const { guardPage } = require('../helpers/page-guard')
 // const { notUniqueSelection, uniqueSelection } = require('../helpers/utils')
 const senders = require('../messaging/senders')
 const createMsg = require('../messaging/create-msg')
-const createDesirabilityMsg = require('./../scoring/create-desirability-msg')
+const createDesirabilityMsg = require('./../messaging/scoring/create-desirability-msg')
 
 const emailFormatting = require('./../messaging/email/process-submission')
 const gapiService = require('../services/gapi-service')
@@ -49,7 +49,7 @@ const getPage = async (question, request, h) => {
     // TODO: comment these back in when scoring data is ready
     const desirabilityAnswers = createMsg.getDesirabilityAnswers(request)
     console.log('here: ', 2, desirabilityAnswers);
-    const formatAnswersForScoring = createDesirabilityMessage(desirabilityAnswers)
+    const formatAnswersForScoring = createDesirabilityMsg(desirabilityAnswers)
     const msgData = await getUserScore(formatAnswersForScoring, request.yar.id)
 
     // Mocked score res
