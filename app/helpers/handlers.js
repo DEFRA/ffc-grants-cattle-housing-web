@@ -10,6 +10,7 @@ const { guardPage } = require('../helpers/page-guard')
 const senders = require('../messaging/senders')
 const createMsg = require('../messaging/create-msg')
 const createDesirabilityMsg = require('./../messaging/scoring/create-desirability-msg')
+const { getUserScore } = require('../messaging/application')
 
 const emailFormatting = require('./../messaging/email/process-submission')
 const gapiService = require('../services/gapi-service')

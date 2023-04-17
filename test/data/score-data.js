@@ -1,114 +1,190 @@
 
 const msgData = {
   grantScheme: {
-    key: 'ADDVAL01',
+    key: 'Calf01',
     name: 'Cattle Housing Grant'
   },
   desirability: {
     questions: [
       {
-        key: 'products-processed',
+        key: "housing",
         answers: [
           {
-            key: 'products-processed',
-            title: 'What type of produce is being processed?',
+            key: 'housing',
+            title: 'Housing',
             input: [
               {
-                key: 'products-processed-A1',
-                value: 'Arable crops'
-              }
-            ]
-          }
-        ],
-        rating: {
-          score: 4,
-          band: 'Strong',
-          importance: null
-        }
-      },
-      {
-        key: 'how-adding-value',
-        answers: [
-          {
-            key: 'how-adding-value',
-            title: 'How will you add value to the products?',
-            input: [
-              {
-                key: 'how-adding-value-A1',
-                value: 'Processing or preparing primary product'
-              }
-            ]
-          }
-        ],
-        rating: {
-          score: 0.8,
-          band: 'Strong',
-          importance: null
-        }
-      },
-      {
-        key: 'project-impact',
-        answers: [
-          {
-            key: 'project-impact',
-            title: 'What impact will the project have?',
-            input: [
-              {
-                key: 'project-impact-A1',
-                value: 'Diversifying into creating added-value products'
-              }
-            ]
-          }
-        ],
-        rating: {
-          score: 1.6,
-          band: 'Strong',
-          importance: null
-        }
-      },
-      {
-        key: 'future-customers',
-        answers: [
-          {
-            key: 'future-customers',
-            title: 'Who are your current customers?',
-            input: [
-              {
-                key: 'future-customers-A1',
-                value: 'Processors'
-              },
-              {
-                key: 'future-customers-A2',
-                value: 'Wholesalers'
-              }
-            ]
-          }
-        ],
-        rating: {
-          score: 4,
-          band: 'Strong',
-          importance: null
-        }
-      },
-      {
-        key: 'collaboration',
-        answers: [
-          {
-            key: 'collaboration',
-            title: 'Who are your current customers?',
-            input: [
-              {
-                key: 'collaboration-A1',
+                key: 'housing-A1',
                 value: 'Yes'
               }
             ]
           }
         ],
         rating: {
-          score: 4,
-          band: 'Strong',
-          importance: null
+          score: 6,
+          band: 'Average'
         }
+        
+      },
+      {
+        key: "calf-group-size",
+        answers: [
+          {
+            key: 'calf-group-size',
+            title: 'Calf group size',
+            input: [
+              {
+                key: 'calf-group-size-A1',
+                value: '2 to 3'
+              }
+            ]
+          }
+        ],
+        rating: {
+          score: 6,
+          band: 'Average'
+        }
+        
+      },
+      {
+        key: "number-of-calves",
+        answers: [
+          {
+            key: 'number-of-calves',
+            title: 'CNumber of calves',
+            input: [
+              {
+                key: 'number-of-calves-A1',
+                value: '2 to 50'
+              }
+            ]
+          }
+        ],
+        rating: {
+          score: 6,
+          band: 'Average'
+        }
+        
+      },
+      {
+        key: "automatic-calf-feeder",
+        answers: [
+          {
+            key: 'automatic-calf-feeder',
+            title: 'Automatic Calf Feeder',
+            input: [
+              {
+                key: 'automatic-calf-feeder-A1',
+                value: '1 to 4'
+              }
+            ]
+          }
+        ],
+        rating: {
+          score: 6,
+          band: 'Average'
+        }
+        
+      },
+      {
+        key: "calf-group-size",
+        answers: [
+          {
+            key: 'calf-group-size',
+            title: 'Calf group size',
+            input: [
+              {
+                key: 'calf-group-size-A1',
+                value: '2 to 3'
+              }
+            ]
+          }
+        ],
+        rating: {
+          score: 6,
+          band: 'Average'
+        }
+        
+      },
+      {
+        key: "moisture-control",
+        answers: [
+          {
+            key: 'moisture-control',
+            title: 'Moisture control',
+            input: [
+              {
+                key: 'moisture-control-A1',
+                value: 'A drain or drainage channel inside the pen'
+              }
+            ]
+          }
+        ],
+        rating: {
+          score: 6,
+          band: 'Average'
+        }
+        
+      },
+      {
+        key: "permanent-sick-pen",
+        answers: [
+          {
+            key: 'permanent-sick-pen',
+            title: 'Permanent sick pen',
+            input: [
+              {
+                key: 'permanent-sick-pen-A1',
+                value: 'A permanent sick pen'
+              }
+            ]
+          }
+        ],
+        rating: {
+          score: 6,
+          band: 'Average'
+        }
+        
+      },
+      {
+        key: "floor-space",
+        answers: [
+          {
+            key: 'floor-space',
+            title: 'Floor space',
+            input: [
+              {
+                key: null,
+                value: 20
+              }
+            ]
+          }
+        ],
+        rating: {
+          score: 6,
+          band: 'Average'
+        }
+        
+      },
+      {
+        key: "floor-space",
+        answers: [
+          {
+            key: 'floor-space',
+            title: 'Floor space',
+            input: [
+              {
+                key: null,
+                value: 20
+              }
+            ]
+          }
+        ],
+        rating: {
+          score: 6,
+          band: 'Average'
+        }
+        
       },
       {
         key: 'environmental-impact',
@@ -119,35 +195,49 @@ const msgData = {
             input: [
               {
                 key: 'environmental-impact-A1',
-                value: 'Energy efficiency'
+                value: 'Solar PV panels on the roof of the building'
               },
               {
                 key: 'environmental-impact-A2',
-                value: 'Water efficiency'
+                value: 'Collect and store rainwater'
               }
             ]
           }
         ],
         rating: {
           score: 0.8,
-          band: 'Strong',
-          importance: null
+          band: 'Strong'
+        }
+      },
+      {
+        key: 'sustainable-materials',
+        answers: [
+          {
+            key: 'sustainable-materials',
+            title: 'Sustainable materials',
+            input: [
+              {
+                key: 'sustainable-materials-A1',
+                value: 'Low carbon concrete'
+              },
+              {
+                key: 'sustainable-materials-A2',
+                value: 'Steel replacement products'
+              }
+            ]
+          }
+        ],
+        rating: {
+          score: 0.8,
+          band: 'Strong'
         }
       }
     ],
+      
     overallRating: {
       score: 19,
-      band: 'Weak'
+      band: 'Average'
     }
-  },
-  questionMapping: {
-    productsProcessed: 'produce-processed',
-    howAddingValue: 'how-adding-value',
-    projectImpact: 'project-impact',
-    currentCustomers: 'current-customers',
-    futureCustomers: 'future-customers',
-    collaboration: 'collaboration',
-    environmentalImpact: 'environmental-impact'
   }
 }
 module.exports = msgData
