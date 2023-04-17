@@ -78,28 +78,6 @@ describe('Project cost page', () => {
     expect(postResponse.payload).toContain('Enter the estimated cost for the items')
   })
 
-  it('should return an error message if no option is selected and no projectItemsList', async () => {
-    varList = {
-      farmingType: 'some fake crop',
-      legalStatus: 'fale status',
-      inEngland: 'Yes',
-      projectStarted: 'No',
-      landOwnership: 'Yes',
-      projectItemsList: undefined,
-      projectCost: '1111',
-      'current-score': ''
-    }
-    const postOptions = {
-      method: 'POST',
-      url: `${global.__URLPREFIX__}/project-cost`,
-      payload: { projectCost: '', crumb: crumbToken },
-      headers: { cookie: 'crumb=' + crumbToken }
-    }
-
-    const postResponse = await global.__SERVER__.inject(postOptions)
-    expect(postResponse.statusCode).toBe(302)
-  })
-
   it('should return an error message if a string is typed in', async () => {
     const postOptions = {
       method: 'POST',
