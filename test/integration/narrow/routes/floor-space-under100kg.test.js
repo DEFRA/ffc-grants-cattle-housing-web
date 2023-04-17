@@ -5,7 +5,7 @@ const varListTemplate = {
   projectType: 'fakeData',
   calfWeight: '100kg or under',
   floorSpaceUnder100kg: null,
-  'current-score': null
+  'current-score': ''
 }
 let varList
 

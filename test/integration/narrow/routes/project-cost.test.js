@@ -10,7 +10,7 @@ const varListTemplate = {
     projectEquipment: ['Boom', 'Trickle']
   },
   projectCost: '12345678',
-  'current-score': null
+  'current-score': ''
 }
 
 let varList
@@ -52,7 +52,7 @@ describe('Project cost page', () => {
         projectEquipment: ['Boom', 'Trickle']
       },
       projectCost: undefined,
-      'current-score': null
+      'current-score': ''
     }
 
     const options = {

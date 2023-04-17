@@ -4,7 +4,7 @@ describe('Page: /additional-items', () => {
   const varList = {
     legalStatus: 'randomData',
     projectType: 'fakeData',
-    'current-score': null
+    'current-score': ''
   }
 
   jest.mock('../../../../app/helpers/session', () => ({

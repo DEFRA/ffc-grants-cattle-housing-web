@@ -3,7 +3,7 @@ const { crumbToken } = require('./test-helper')
 describe('Page: /planning-permission-condition', () => {
   const varList = {
     inEngland: 'randomData',
-    'current-score': null
+    'current-score': ''
   }
 
   jest.mock('../../../../app/helpers/session', () => ({

@@ -8,7 +8,7 @@ describe('Page: /concrete-flooring', () => {
     tenancyLength: null,
     calfWeight: '100kg or under',
     housedIndividually: 'Yes',
-    'current-score': null
+    'current-score': ''
   }
 
   jest.mock('../../../../app/helpers/session', () => ({

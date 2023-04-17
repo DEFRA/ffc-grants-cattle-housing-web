@@ -3,8 +3,8 @@ const { crumbToken } = require('./test-helper')
 describe('Page: /living-space-3m2', () => {
   const varList = {
     legalStatus: 'randomData',
-      projectType: 'fakeData',
-      'current-score': null
+    projectType: 'fakeData',
+    'current-score': ''
 
   }
 

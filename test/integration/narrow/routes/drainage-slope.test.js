@@ -5,7 +5,7 @@ describe('Page: /draine-slope', () => {
     legalStatus: 'randomData',
     projectType: 'fakeData',
     structure: 'A-frame building',
-    'current-score': null
+    'current-score': ''
   }
 
   jest.mock('../../../../app/helpers/session', () => ({

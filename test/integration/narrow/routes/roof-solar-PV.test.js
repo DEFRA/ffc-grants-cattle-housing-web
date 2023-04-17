@@ -4,7 +4,7 @@ describe('Page: /roof-solar-PV', () => {
   const varList = {
     legalStatus: 'randomData',
     projectType: 'fakeData',
-    'current-score': null
+    'current-score': ''
 
   }
 
