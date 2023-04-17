@@ -20,7 +20,6 @@ const {
   GRANT_PERCENTAGE
 } = require('../helpers/grant-details')
 
-
 const { LIST_COUNTIES } = require('../helpers/all-counties')
 
 /**
@@ -260,7 +259,7 @@ const questionBank = {
         },
         {
           key: 'country',
-          order: 141,
+          order: 30,
           title: 'Is the planned project in England?',
           hint: {
             text: 'The location of the calf housing'
@@ -314,7 +313,7 @@ const questionBank = {
         },
         {
           key: 'planning-permission',
-          order: 142,
+          order: 40,
           title: 'Does the project have planning permission?',
           pageTitle: '',
           url: 'planning-permission',
@@ -372,7 +371,7 @@ const questionBank = {
         },
         {
           key: 'planning-permission-condition',
-          order: 145,
+          order: 41,
           url: 'planning-permission-condition',
           backUrl: 'planning-permission',
           nextUrl: 'project-started',
@@ -386,7 +385,7 @@ const questionBank = {
         },
         {
           key: 'project-started',
-          order: 151,
+          order: 50,
           title: 'Have you already started work on the project?',
           pageTitle: '',
           url: 'project-started',
@@ -459,7 +458,7 @@ const questionBank = {
         },
         {
           key: 'tenancy',
-          order: 152,
+          order: 60,
           title: 'Is the planned project on land the business owns?',
           hint: {
             text: 'The location of the calf housing'
@@ -503,7 +502,7 @@ const questionBank = {
         },
         {
           key: 'tenancy-length',
-          order: 60,
+          order: 61,
           title: 'Do you have a tenancy agreement for 5 years after the final grant payment?',
           hint: {
             text: 'The location of the calf housing'
@@ -548,7 +547,7 @@ const questionBank = {
         {
           key: 'tenancy-length-condition',
           title: 'You may be able to apply for a grant from this scheme',
-          order: 70,
+          order: 62,
           url: 'tenancy-length-condition',
           backUrl: 'tenancy-length',
           preValidationKeys: ['tenancyLength'],
@@ -561,7 +560,7 @@ const questionBank = {
         },
         {
           key: 'project',
-          order: 80,
+          order: 70,
           title: 'What is your project?',
           baseUrl: 'project',
           backUrl: 'tenancy',
@@ -630,7 +629,7 @@ const questionBank = {
         },
         {
           key: 'calf-weight',
-          order: 90,
+          order: 80,
           title: 'What will be the weight of the largest calf?',
           baseUrl: 'calf-weight',
           backUrl: 'project',
@@ -691,7 +690,7 @@ const questionBank = {
         },
         {
           key: 'living-space-3m2',
-          order: 100,
+          order: 90,
           title: 'Will each calf have at least 3m² living space?',
           baseUrl: 'living-space-3m2',
           backUrl: 'calf-weight',
@@ -744,7 +743,7 @@ const questionBank = {
         },
         {
           key: 'living-space-4m2',
-          order: 104,
+          order: 91,
           title: 'Will each calf have at least 4m² living space?',
           baseUrl: 'living-space-4m2',
           backUrl: 'calf-weight',
@@ -797,7 +796,7 @@ const questionBank = {
         },
         {
           key: 'living-space-5m2',
-          order: 107,
+          order: 92,
           title: 'Will each calf have at least 5m² living space?',
           baseUrl: 'living-space-5m2',
           backUrl: 'calf-weight',
@@ -849,7 +848,7 @@ const questionBank = {
         },
         {
           key: 'housed-individually',
-          order: 110,
+          order: 100,
           title: 'Will calves over 7 days old be housed individually?',
           baseUrl: 'housed-individually',
           url: 'housed-individually',
@@ -910,7 +909,7 @@ const questionBank = {
         },
         {
           key: 'isolate-calves',
-          order: 120,
+          order: 110,
           title: 'Will the building have facilities to temporarily isolate sick calves?',
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           baseUrl: 'isolate-calves',
@@ -958,7 +957,7 @@ const questionBank = {
         },
         {
           key: 'straw-bedding',
-          order: 125,
+          order: 120,
           title: 'Will the calf housing have cereal straw bedding?',
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           baseUrl: 'straw-bedding',
@@ -1106,7 +1105,7 @@ const questionBank = {
         },
         {
           key: 'structure',
-          order: 130,
+          order: 150,
           title: 'What type of structure is your building?',
           pageTitle: '',
           url: 'structure',
@@ -1169,7 +1168,7 @@ const questionBank = {
         },
         {
           key: 'structure-eligibility',
-          order: 135,
+          order: 160,
           title: 'Does your building structure meet the eligibility criteria?',
           hint: {
             html: `<div class:"govuk-hint">
@@ -1243,7 +1242,7 @@ const questionBank = {
         },
         {
           key: 'drainage-slope',
-          order: 140,
+          order: 170,
           title: 'Will the floor in bedded areas slope towards a drain or drainage channel?',
           hint: {
             text: 'The floor must have at least 5% gradient'
@@ -1301,7 +1300,7 @@ const questionBank = {
         },
         {
           key: 'draught-protection',
-          order: 150,
+          order: 180,
           title: 'Will calves be protected from draughts?',
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           pageTitle: '',
@@ -1312,7 +1311,7 @@ const questionBank = {
           preValidationKeys: ['drainageSlope'],
           ineligibleContent: {
             messageContent: 'All projects must have permanent external calf-height solid walls/barriers to keep out drafts.',
-            insertText: { text: 'For a permanent open-sided structure with igloos/hutches, this may mean adding permanent solid sides to the outside pens (straw bales are not sufficient).'},
+            insertText: { text: 'For a permanent open-sided structure with igloos/hutches, this may mean adding permanent solid sides to the outside pens (straw bales are not sufficient).' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -1352,7 +1351,7 @@ const questionBank = {
         },
         {
           key: 'additional-items',
-          order: 160,
+          order: 190,
           title: 'Will the building have these items?',
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           hint: {
@@ -1422,10 +1421,10 @@ const questionBank = {
         },
         {
           key: 'lighting',
-          order: 170,
+          order: 200,
           title: 'Will the building have fitted lighting of at least 50 lux?',
           hint: {
-            text:"Lux is the International System of Units (SI) unit of illuminance (it is equal to one lumen per square metre)."
+            text: 'Lux is the International System of Units (SI) unit of illuminance (it is equal to one lumen per square metre).'
           },
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           pageTitle: '',
@@ -1473,7 +1472,7 @@ const questionBank = {
         },
         {
           key: 'roof-solar-PV',
-          order: 160,
+          order: 210,
           title: 'Is the roof able to support solar PV panels?',
           hint: {
             html: `<div class:"govuk-hint">
@@ -1548,7 +1547,7 @@ const questionBank = {
         },
         {
           key: 'project-cost',
-          order: 161,
+          order: 220,
           pageTitle: '',
           classes: 'govuk-input--width-10',
           url: 'project-cost',
@@ -1624,7 +1623,7 @@ const questionBank = {
         },
         {
           key: 'potential-amount',
-          order: 162,
+          order: 230,
           url: 'potential-amount',
           baseUrl: 'potential-amount',
           backUrl: 'project-cost',
@@ -1655,7 +1654,7 @@ const questionBank = {
         },
         {
           key: 'remaining-costs',
-          order: 190,
+          order: 240,
           title: 'Can you pay the remaining costs of £{{_remainingCost_}}?',
           pageTitle: '',
           url: 'remaining-costs',
@@ -1723,16 +1722,19 @@ const questionBank = {
         },
         {
           key: 'housing',
-          order: 151,
+          order: 250,
           url: 'housing',
           baseUrl: 'housing',
           backUrl: 'remaining-costs',
           nextUrl: 'group-size', // todo: change to disease-transmission later
-          preValidationKeys: [ 'remainingCosts' ],
+          preValidationKeys: ['remainingCosts'],
           pageTitle: '',
           title: 'Are you moving from individually housing calves over 7 days old to pair or group housing?',
           fundingPriorities: '',
           type: 'single-answer',
+          score: {
+            isScore: true
+          },
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           minAnswerCount: 1,
           validate: [
@@ -1748,17 +1750,17 @@ const questionBank = {
             },
             {
               key: 'housing-A2',
-              value: 'No',
+              value: 'No'
             }
           ],
           sidebar: {
             values: [
               {
                 heading: 'Funding Priorities',
-                content: [ {
-                  para: `The RPA want to fund projects that will increase social contact between calves.`,
-                  additionalPara: `By law, calves cannot be housed individually beyond 8 weeks.`
-                } ]
+                content: [{
+                  para: 'The RPA want to fund projects that will increase social contact between calves.',
+                  additionalPara: 'By law, calves cannot be housed individually beyond 8 weeks.'
+                }]
               }
             ]
           },
@@ -1766,23 +1768,26 @@ const questionBank = {
         },
         {
           key: 'calf-group-size',
-          order: 152,
+          order: 260,
           url: 'group-size',
           baseUrl: 'group-size',
           backUrl: 'housing',
           nextUrl: 'number-of-calves',
-          preValidationKeys: [ 'housing' ],
+          preValidationKeys: ['housing'],
           pageTitle: '',
           title: 'What will be the average group size for calves over 7 days old?',
           fundingPriorities: '',
           type: 'single-answer',
+          score: {
+            isScore: true
+          },
           sidebar: {
             values: [
               {
                 heading: 'Funding Priorities',
-                content: [ {
-                  para: `RPA wants to fund projects that increase social interaction for calves, with a preference for groups of 4 to 8, followed by groups with fewer than 13 calves.`,
-                } ]
+                content: [{
+                  para: 'RPA wants to fund projects that increase social interaction for calves, with a preference for groups of 4 to 8, followed by groups with fewer than 13 calves.'
+                }]
               }
             ]
           },
@@ -1814,16 +1819,19 @@ const questionBank = {
         },
         {
           key: 'number-of-calves',
-          order: 153,
+          order: 270,
           url: 'number-of-calves',
           baseUrl: 'number-of-calves',
           backUrl: 'group-size',
           nextUrl: 'automatic-calf-feeder',
-          preValidationKeys: [ 'calfGroupSize' ],
+          preValidationKeys: ['calfGroupSize'],
           pageTitle: '',
           title: 'What will be the maximum number of calves in the calf housing?',
           fundingPriorities: '',
           type: 'single-answer',
+          score: {
+            isScore: true
+          },
           validate: [
             {
               type: 'NOT_EMPTY',
@@ -1848,9 +1856,9 @@ const questionBank = {
             values: [
               {
                 heading: 'Funding Priorities',
-                content: [ {
-                  para: `RPA wants to fund projects that house 50 calves or fewer in a single air space.`,
-                } ]
+                content: [{
+                  para: 'RPA wants to fund projects that house 50 calves or fewer in a single air space.'
+                }]
               }
             ]
           },
@@ -1858,16 +1866,19 @@ const questionBank = {
         },
         {
           key: 'automatic-calf-feeder',
-          order: 154,
+          order: 280,
           url: 'automatic-calf-feeder',
           baseUrl: 'automatic-calf-feeder',
           backUrl: 'number-of-calves',
           nextUrl: 'moisture-control',
-          preValidationKeys: [ 'numberOfCalves' ],
+          preValidationKeys: ['numberOfCalves'],
           pageTitle: '',
           title: 'How many calves will you have per automatic feeder?',
           fundingPriorities: '',
           type: 'single-answer',
+          score: {
+            isScore: true
+          },
           validate: [
             {
               type: 'NOT_EMPTY',
@@ -1903,9 +1914,9 @@ const questionBank = {
             values: [
               {
                 heading: 'Funding Priorities',
-                content: [ {
-                  para: `RPA wants to fund projects that have a smaller number of calves per feeder.`,
-                } ]
+                content: [{
+                  para: 'RPA wants to fund projects that have a smaller number of calves per feeder.'
+                }]
               }
             ]
           },
@@ -1913,12 +1924,12 @@ const questionBank = {
         },
         {
           key: 'moisture-control',
-          order: 155,
+          order: 290,
           url: 'moisture-control',
           baseUrl: 'moisture-control',
           backUrl: 'automatic-calf-feeder',
           nextUrl: 'permanent-sick-pen',
-          preValidationKeys: [ 'automaticCalfFeeder' ],
+          preValidationKeys: ['automaticCalfFeeder'],
           pageTitle: '',
           title: 'How will your building control moisture?',
           hint: {
@@ -1926,7 +1937,9 @@ const questionBank = {
           },
           fundingPriorities: '',
           type: 'multi-answer',
-          minAnswerCount: 1,
+          score: {
+            isScore: true
+          },
           validate: [
             {
               type: 'NOT_EMPTY',
@@ -1966,9 +1979,9 @@ const questionBank = {
             values: [
               {
                 heading: 'Funding Priorities',
-                content: [ {
-                  para: `RPA wants to fund projects that go beyond the regulatory baseline to control building moisture.`,
-                } ]
+                content: [{
+                  para: 'RPA wants to fund projects that go beyond the regulatory baseline to control building moisture.'
+                }]
               }
             ]
           },
@@ -1976,7 +1989,7 @@ const questionBank = {
         },
         {
           key: 'permanent-sick-pen',
-          order: 194,
+          order: 300,
           title: 'What type of sick pen will your building have?',
           hint: {
             text: 'Select all that apply'
@@ -1988,8 +2001,8 @@ const questionBank = {
           backUrl: 'moisture-control',
           nextUrlObject: {
             dependentQuestionYarKey: 'calfWeight',
-            dependentAnswerKeysArray: [ 'calf-weight-A1' ],
-            nonDependentAnswerKeysArray: [ 'calf-weight-A3' ],
+            dependentAnswerKeysArray: ['calf-weight-A1'],
+            nonDependentAnswerKeysArray: ['calf-weight-A3'],
             urlOptions: {
               thenUrl: 'floor-space-under100kg',
               elseUrl: 'floor-space-100kg-150kg',
@@ -1997,18 +2010,21 @@ const questionBank = {
             }
           },
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Funding Priorities',
-              content: [ {
-                para: `RPA wants to fund buildings that go beyond the regulatory baseline by having:`,
-                      items:['a permanent sick pen','a separate air space','a permanent heat source (for example heat lamps)'],
-                      additionalPara: 'To create a separate air space, the area must have solid walls up to ceiling height blocking it from the calf housing.'
+              content: [{
+                para: 'RPA wants to fund buildings that go beyond the regulatory baseline by having:',
+                items: ['a permanent sick pen', 'a separate air space', 'a permanent heat source (for example heat lamps)'],
+                additionalPara: 'To create a separate air space, the area must have solid walls up to ceiling height blocking it from the calf housing.'
 
-              } ]
-            } ]
+              }]
+            }]
           },
           fundingPriorities: '',
           type: 'multi-answer',
+          score: {
+            isScore: true
+          },
           minAnswerCount: 1,
           validate: [
             {
@@ -2042,14 +2058,14 @@ const questionBank = {
             },
             {
               key: 'permanent-sick-pen-A4',
-              value: 'None of the above',
+              value: 'None of the above'
             }
           ],
           yarKey: 'permanentSickPen'
         },
         {
           key: 'floor-space-under100kg',
-          order: 195,
+          order: 310,
           pageTitle: '',
           classes: 'govuk-input--width-5',
           url: 'floor-space-under100kg',
@@ -2059,6 +2075,9 @@ const questionBank = {
           fundingPriorities: '',
           preValidationKeys: ['permanentSickPen'],
           type: 'input',
+          score: {
+            isScore: true
+          },
           suffix: {
             text: 'm²'
           },
@@ -2068,7 +2087,7 @@ const questionBank = {
             isPageHeading: true
           },
           hint: {
-            text:'Enter floor area in square meters (m²), for example 5m²'
+            text: 'Enter floor area in square meters (m²), for example 5m²'
           },
           warning: {
             text: 'There must be a minimum floor area of 3m² per calf when largest calf is 100kg or under.'
@@ -2099,9 +2118,9 @@ const questionBank = {
           sidebar: {
             values: [{
               heading: 'Funding priorities',
-              content: [ {
+              content: [{
                 para: 'RPA wants to fund projects that go beyond the regulatory baseline and provide more than the minimum floor area.'
-              }],
+              }]
             }]
           },
           answers: [],
@@ -2109,7 +2128,7 @@ const questionBank = {
         },
         {
           key: 'floor-space-100kg-150kg',
-          order: 196,
+          order: 311,
           pageTitle: '',
           classes: 'govuk-input--width-5',
           url: 'floor-space-100kg-150kg',
@@ -2119,6 +2138,9 @@ const questionBank = {
           fundingPriorities: '',
           preValidationKeys: ['permanentSickPen'],
           type: 'input',
+          score: {
+            isScore: true
+          },
           suffix: {
             text: 'm²'
           },
@@ -2128,7 +2150,7 @@ const questionBank = {
             isPageHeading: true
           },
           hint: {
-            text:'Enter floor area in square meters (m²), for example 5m²'
+            text: 'Enter floor area in square meters (m²), for example 5m²'
           },
           warning: {
             text: 'There must be a minimum floor area of 4m² per calf when the largest calf is between 100kg and 150kg.'
@@ -2159,9 +2181,9 @@ const questionBank = {
           sidebar: {
             values: [{
               heading: 'Funding priorities',
-              content: [ {
+              content: [{
                 para: 'RPA wants to fund projects that go beyond the regulatory baseline and provide more than the minimum floor area.'
-              }],
+              }]
             }]
           },
           answers: [],
@@ -2169,7 +2191,7 @@ const questionBank = {
         },
         {
           key: 'floor-space-over150kg',
-          order: 195,
+          order: 312,
           pageTitle: '',
           classes: 'govuk-input--width-5',
           url: 'floor-space-over150kg',
@@ -2179,6 +2201,9 @@ const questionBank = {
           fundingPriorities: '',
           preValidationKeys: ['permanentSickPen'],
           type: 'input',
+          score: {
+            isScore: true
+          },
           suffix: {
             text: 'm²'
           },
@@ -2188,7 +2213,7 @@ const questionBank = {
             isPageHeading: true
           },
           hint: {
-            text:'Enter floor area in square meters (m²), for example 5m²'
+            text: 'Enter floor area in square meters (m²), for example 5m²'
           },
           warning: {
             text: 'There must be a minimum floor area of 5m² per calf when largest calf is over 150kg'
@@ -2219,9 +2244,9 @@ const questionBank = {
           sidebar: {
             values: [{
               heading: 'Funding priorities',
-              content: [ {
+              content: [{
                 para: 'RPA wants to fund projects that go beyond the regulatory baseline and provide more than the minimum floor area.'
-              }],
+              }]
             }]
           },
           answers: [],
@@ -2229,7 +2254,7 @@ const questionBank = {
         },
         {
           key: 'environmental-impact',
-          order: 200,
+          order: 320,
           title: 'How will the building minimise environmental impact?',
           hint: {
             text: 'Select all that apply'
@@ -2240,8 +2265,8 @@ const questionBank = {
           preValidationKeys: ['permanentSickPen'],
           backUrlObject: {
             dependentQuestionYarKey: 'calfWeight',
-            dependentAnswerKeysArray: [ 'calf-weight-A1' ],
-            nonDependentAnswerKeysArray: [ 'calf-weight-A3' ],
+            dependentAnswerKeysArray: ['calf-weight-A1'],
+            nonDependentAnswerKeysArray: ['calf-weight-A3'],
             urlOptions: {
               thenUrl: 'floor-space-under100kg',
               elseUrl: 'floor-space-100kg-150kg',
@@ -2250,17 +2275,20 @@ const questionBank = {
           },
           nextUrl: 'sustainable-materials',
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Funding priorities',
-              content: [ {
+              content: [{
                 para: `RPA wants to fund buildings that enhance environmental sustainability and help meet government environmental targets.
 
                       Solar PV panels are not funded through the grant but applicants intending to use them will get a higher score.`
-              } ]
-            } ]
+              }]
+            }]
           },
           fundingPriorities: '',
           type: 'multi-answer',
+          score: {
+            isScore: true
+          },
           minAnswerCount: 1,
           validate: [
             {
@@ -2297,7 +2325,7 @@ const questionBank = {
         },
         {
           key: 'sustainable-materials',
-          order: 210,
+          order: 330,
           title: 'Will your building use sustainable materials?',
           hint: {
             text: 'Select all that apply'
@@ -2309,18 +2337,21 @@ const questionBank = {
           nextUrl: 'introducing-innovation',
           preValidationKeys: ['environmentalImpact'],
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Funding priorities',
-              content: [ {
+              content: [{
                 para: `RPA wants to fund buildings that use sustainable materials.
 
                       You should consult building experts for advice on building materials to ensure they are fit for purpose.`,
-                items:[]
-              }],
-            } ]
+                items: []
+              }]
+            }]
           },
           fundingPriorities: '',
           type: 'multi-answer',
+          score: {
+            isScore: true
+          },
           minAnswerCount: 1,
           validate: [
             {
@@ -2341,28 +2372,28 @@ const questionBank = {
               key: 'sustainable-materials-A1',
               value: 'Low carbon concrete',
               hint: {
-                text:'Alternatives to Ordinary Portland Cement that have higher embodied CO2 (for example, lower carbon aggregates, Portland Limestone Cements or low-cement-concrete)'
+                text: 'Alternatives to Ordinary Portland Cement that have higher embodied CO2 (for example, lower carbon aggregates, Portland Limestone Cements or low-cement-concrete)'
               }
             },
             {
               key: 'sustainable-materials-A2',
               value: 'Steel replacement products',
               hint: {
-                text:'Fibre reinforced polymer (FRP), resin pilling, carbon fibre'
+                text: 'Fibre reinforced polymer (FRP), resin pilling, carbon fibre'
               }
             },
             {
               key: 'sustainable-materials-A3',
               value: 'Sustainably sourced timber',
               hint: {
-                text:'Timber certified by FSC, PEFC, SFI, or CSA'
+                text: 'Timber certified by FSC, PEFC, SFI, or CSA'
               }
             },
             {
               key: 'sustainable-materials-A4',
               value: 'Reused or secondhand materials from elsewhere',
               hint: {
-                text:`Wooden cladding, fencing, pen dividers if sourced on site. If elsewhere,
+                text: `Wooden cladding, fencing, pen dividers if sourced on site. If elsewhere,
                       a supplier quote must include a statement that the item has not been previously purchased with public funding, 
                       is fit for purpose and is expected to last at least 5 years`
               }
@@ -2371,7 +2402,7 @@ const questionBank = {
               key: 'sustainable-materials-A5',
               value: 'Recycled materials',
               hint: {
-                text:'Materials with a recycled content of more than 40%'
+                text: 'Materials with a recycled content of more than 40%'
               }
             },
             {
@@ -2390,7 +2421,7 @@ const questionBank = {
         },
         {
           key: 'introducing-innovation',
-          order: 220,
+          order: 340,
           title: 'Is your project introducing innovation?',
           hint: {
             html: `Collaborations, technologies or techniques that are new to your farm
@@ -2403,20 +2434,23 @@ const questionBank = {
           nextUrl: 'score',
           preValidationKeys: ['sustainableMaterials'],
           sidebar: {
-            values: [ {
+            values: [{
               heading: 'Funding priorities',
-              content: [ {
-                para: `RPA wants to fund projects that introduce innovation, such as:`,
+              content: [{
+                para: 'RPA wants to fund projects that introduce innovation, such as:',
                 items: [
                   'technology',
                   'collaboration',
                   'techniques'
                 ]
-              } ]
-            } ]
+              }]
+            }]
           },
           fundingPriorities: '',
           type: 'multi-answer',
+            score: {
+            isScore: true
+          },
           minAnswerCount: 1,
           validate: [
             {
@@ -2466,7 +2500,7 @@ const questionBank = {
         },
         {
           key: 'score',
-          order: 230,
+          order: 350,
           title: 'Score results',
           url: 'score',
           baseUrl: 'score',
@@ -2498,7 +2532,7 @@ const questionBank = {
         /// ////// ***************** After Score  ************************************/////////////////////
         {
           key: 'business-details',
-          order: 240,
+          order: 360,
           title: 'Business details',
           pageTitle: '',
           url: 'business-details',
@@ -2693,7 +2727,7 @@ const questionBank = {
         },
         {
           key: 'applying',
-          order: 250,
+          order: 370,
           title: 'Who is applying for this grant?',
           pageTitle: '',
           url: 'applying',
@@ -2726,7 +2760,7 @@ const questionBank = {
         },
         {
           key: 'farmer-details',
-          order: 260,
+          order: 380,
           title: 'Applicant’s details',
           pageTitle: '',
           url: 'applicant-details',
@@ -3041,7 +3075,7 @@ const questionBank = {
         },
         {
           key: 'agent-details',
-          order: 270,
+          order: 390,
           title: 'Agent’s details',
           hint: {
             text: 'Enter the agent and agent business details'
@@ -3336,7 +3370,7 @@ const questionBank = {
         },
         {
           key: 'check-details',
-          order: 280,
+          order: 400,
           title: 'Check your details',
           pageTitle: 'Check details',
           url: 'check-details',
@@ -3357,7 +3391,7 @@ const questionBank = {
         {
           key: 'confirm',
           title: 'Confirm and send',
-          order: 290,
+          order: 410,
           url: 'confirm',
           backUrl: 'check-details',
           nextUrl: 'confirmation',
@@ -3384,7 +3418,7 @@ const questionBank = {
         },
         {
           key: 'reference-number',
-          order: 300,
+          order: 420,
           title: 'Details submitted',
           pageTitle: '',
           url: 'confirmation',
@@ -3446,7 +3480,7 @@ questionBank.sections.forEach(({ questions }) => {
 const ALL_URLS = []
 ALL_QUESTIONS.forEach(item => ALL_URLS.push(item.url))
 
-const YAR_KEYS = ['itemsTotalValue', 'remainingCost', 'calculatedGrant','yesStructureEligibility']
+const YAR_KEYS = ['itemsTotalValue', 'remainingCost', 'calculatedGrant', 'yesStructureEligibility']
 ALL_QUESTIONS.forEach(item => YAR_KEYS.push(item.yarKey))
 module.exports = {
   questionBank,
