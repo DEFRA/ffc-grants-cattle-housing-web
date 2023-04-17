@@ -16,6 +16,7 @@ jest.doMock('../../../../app/helpers/session', () => ({
 }))
 
 describe('All default GET routes', () => {
+  varList['current-score'] = null
   ALL_QUESTIONS.forEach(question => {
     it(`should load ${question.key} page successfully`, async () => {
       const options = {
