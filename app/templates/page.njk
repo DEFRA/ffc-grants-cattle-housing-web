@@ -98,16 +98,9 @@
             {% set buttonText = 'Continue' %}
             {% set secButtonText = 'Back to score' %}
 
-            {% if key === 'planning-permission' %}
-              {% set diaplaySecondryBtn = false %}
-            {% elif reachedScoreResults %}
-              {% set diaplaySecondryBtn = true %}
-            {% elif reachedCheckDetails %}
+            {% if reachedCheckDetails %}
               {% set diaplaySecondryBtn = true %}
               {% set secButtonText = 'Back to details' %}
-            {% elif reachedEvidenceSummary %}
-              {% set diaplaySecondryBtn = true %}
-              {% set secButtonText = 'Back to evidence summary' %}
             {% endif %}
           </div>
           {%if key === 'introducing-innovation' %}

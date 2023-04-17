@@ -7,7 +7,7 @@ describe('confirm page', () => {
     setYarValue: (request, key, value) => null,
     getYarValue: (request, key) => {
       if (varList[key]) return varList[key]
-      else return 'Error'
+      else return undefined
     }
   }))
   it('page loads successfully, with all the options', async () => {

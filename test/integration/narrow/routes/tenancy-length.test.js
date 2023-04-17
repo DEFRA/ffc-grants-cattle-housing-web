@@ -7,7 +7,7 @@ describe('Page: /tenancy-length', () => {
     setYarValue: (request, key, value) => null,
     getYarValue: (request, key) => {
       if (varList[key]) return varList[key]
-      else return 'Error'
+      else return undefined
     }
   }))
 

@@ -7,7 +7,7 @@ describe('Page: /applicant-details', () => {
     setYarValue: (request, key, value) => null,
     getYarValue: (request, key) => {
       if (varList[key]) return varList[key]
-      else return 'Error'
+      else return undefined
     }
   }))
 
