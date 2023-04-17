@@ -4,14 +4,14 @@ describe('Page: /additional-items', () => {
   const varList = {
     legalStatus: 'randomData',
     projectType: 'fakeData',
-    'current-score': ''
+    // 'current-score': null
   }
 
   jest.mock('../../../../app/helpers/session', () => ({
     setYarValue: (request, key, value) => null,
     getYarValue: (request, key) => {
       if (varList[key]) return varList[key]
-      else return 'Error'
+      else return undefined
     }
   }))
 

@@ -3,14 +3,14 @@ const { crumbToken } = require('./test-helper')
 describe('Page: /planning-permission', () => {
   const varList = {
     inEngland: 'randomData',
-    'current-score': ''
+    'current-score': null
   }
 
   jest.mock('../../../../app/helpers/session', () => ({
     setYarValue: (request, key, value) => null,
     getYarValue: (request, key) => {
       if (varList[key]) return varList[key]
-      else return 'Error'
+      else return null
     }
   }))
 

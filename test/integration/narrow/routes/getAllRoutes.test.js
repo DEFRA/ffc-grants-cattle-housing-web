@@ -3,22 +3,23 @@ let varList
 ALL_QUESTIONS.forEach(question => {
   if (question.preValidationKeys) {
     varList = question.preValidationKeys.map(m => {
-      return { m: 'someValue', 'current-score': '' }
+      return { m: 'someValue' }
     })
   }
 })
 
-jest.mock('../../../../app/helpers/session', () => ({
+jest.doMock('../../../../app/helpers/session', () => ({
   setYarValue: (request, key, value) => null,
   getYarValue: (request, key) => {
     if (varList[key]) return varList[key]
-    else return 'Error'
+    else return undefined
   }
 }))
 
 describe('All default GET routes', () => {
   ALL_QUESTIONS.forEach(question => {
     console.log(varList,'LLLLLLLLLLLLIIIIII')
+    varList.consentMain = 'Hello'
 
     it(`should load ${question.key} page successfully`, async () => {
       const options = {
@@ -26,6 +27,7 @@ describe('All default GET routes', () => {
         url: `${global.__URLPREFIX__}/${question.url}`
       }
       const response = await global.__SERVER__.inject(options)
+      console.log(response.headers.location)
       expect(response.statusCode).toBe(200)
     })
   })
