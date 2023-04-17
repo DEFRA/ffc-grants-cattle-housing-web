@@ -29,7 +29,7 @@ describe('Page: /planning-permission-condition', () => {
       url: `${global.__URLPREFIX__}/planning-permission-condition`
     }
     const getResponse = await global.__SERVER__.inject(getOptions)
-    expect(getResponse.headers.location).toBe('planning-permission-condition')
+    expect(getResponse.statusCode).toBe(200)
     expect(getResponse.payload).toContain('<a href=\"planning-permission`\" class=\"govuk-back-link\">Back</a>')
   })
 })
