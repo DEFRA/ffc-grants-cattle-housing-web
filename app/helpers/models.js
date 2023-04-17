@@ -76,28 +76,6 @@ const showBackToEvidenceSummaryButton = (key, request) => {
   }
 }
 
-const showBackToEScoreSummaryButton = (key, request) => {
-  switch (key) {
-    case 'housing':
-    case 'group-size':
-    case 'number-of-calves':
-    case 'automatic-calf-feeder':
-    case 'moisture-control':
-    case 'permanent-sick-pen':
-    case 'floor-space-100kg-150kg':
-    case 'floor-space-under100kg':
-    case 'floor-space-over150kg':
-    case 'environmental-impact':
-    case 'sustainable-materials':
-    case 'introducing-innovation':
-    case 'score': {
-      return !!getYarValue(request, 'overAllScore')
-    }
-    default:
-      return false;
-  }
-}
-
 const getModel = (data, question, request, conditionalHtml = '') => {
   let { type, backUrl, key, backUrlObject, sidebar, title, hint, score, label, warning, warningCondition } = question
   const hasScore = !!getYarValue(request, 'current-score')
@@ -128,8 +106,8 @@ const getModel = (data, question, request, conditionalHtml = '') => {
     ...(warningDetails ? ({ warning: warningDetails }) : {}),
     reachedCheckDetails: showBackToDetailsButton(key, request),
     reachedEvidenceSummary: showBackToEvidenceSummaryButton(key, request),
-    reachedScoreResults: showBackToEScoreSummaryButton(key, request),
-    diaplaySecondryBtn: hasScore && score?.isDisplay
+    // reachedScoreResults: showBackToEScoreSummaryButton(key, request),
+    diaplaySecondryBtn: hasScore && score?.isScore
   }
 }
 
