@@ -381,7 +381,7 @@ const questionBank = {
             messageHeader: 'You may be able to apply for a grant from this scheme',
             messageContent: 'Any planning permission must be in place by 31 January 2024 (the end of the application window).'
           },
-          yarKey: 'PlanningPermissionCondition'
+          yarKey: 'planningPermissionCondition'
         },
         {
           key: 'project-started',

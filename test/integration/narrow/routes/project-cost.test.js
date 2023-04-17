@@ -69,13 +69,13 @@ describe('Project cost page', () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/project-cost`,
-      payload: { projectCost: '', crumb: crumbToken },
+      payload: { crumb: crumbToken },
       headers: { cookie: 'crumb=' + crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Enter the estimated cost for the items')
+    expect(postResponse.payload).toContain('Enter the estimated total cost for the items')
   })
 
   it('should return an error message if a string is typed in', async () => {

@@ -1,17 +1,14 @@
 const { ALL_QUESTIONS } = require('../../../../app/config/question-bank')
-let varList = {
-  'current-score': ''
-
-}
+let varList
 ALL_QUESTIONS.forEach(question => {
   if (question.preValidationKeys) {
     varList = question.preValidationKeys.map(m => {
-      return { m: 'someValue' }
+      return { m: 'someValue', 'current-score': '' }
     })
   }
 })
 
-jest.doMock('../../../../app/helpers/session', () => ({
+jest.mock('../../../../app/helpers/session', () => ({
   setYarValue: (request, key, value) => null,
   getYarValue: (request, key) => {
     if (varList[key]) return varList[key]
