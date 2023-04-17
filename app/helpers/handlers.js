@@ -15,6 +15,10 @@ const { getUserScore } = require('../messaging/application')
 const emailFormatting = require('./../messaging/email/process-submission')
 const gapiService = require('../services/gapi-service')
 const { startPageUrl } = require('../config/server')
+
+const { tableOrder } = require('../helpers/score-table-helper')
+const urlPrefix = require('../config/server').urlPrefix
+
 // const { ALL_QUESTIONS } = require('../config/question-bank')
 // const { formatOtherItems } = require('./../helpers/other-items-sizes')
 // const desirabilityData = require('./desirability-score.json')
@@ -45,38 +49,75 @@ const getPage = async (question, request, h) => {
   if (isRedirect) {
     return h.redirect(startPageUrl)
   }
+  switch (url) {
+    case 'floor-space-under100kg':
+      setYarValue(request, 'floorSpaceValue', 3)
+      break
+    case 'floor-space-100kg-150kg':
+      setYarValue(request, 'floorSpaceValue', 4)
+      break
 
-  if (url === 'score') {
-    // TODO: comment these back in when scoring data is ready
-    const desirabilityAnswers = createMsg.getDesirabilityAnswers(request)
-    console.log('here: ', 2, desirabilityAnswers);
-    const formatAnswersForScoring = createDesirabilityMsg(desirabilityAnswers)
-    const msgData = await getUserScore(formatAnswersForScoring, request.yar.id)
+    case 'floor-space-over150kg':
+      setYarValue(request, 'floorSpaceValue', 5)
+      break
+    case 'score':
+      // TODO: comment these back in when scoring data is ready
+      // CHECK FLOOR-SPACE QUESTION USED, ADD NEW VAR TO SEND?
+      const floorSpaceVar = getYarValue(request, 'floorSpaceValue')
 
-    // Mocked score res
-    // const msgData = desirabilityData
-    let scoreChance
-    switch (msgData.desirability.overallRating.band.toLowerCase()) {
-      case 'strong':
-        scoreChance = 'is likely to'
-        break
-      case 'average':
-        scoreChance = 'might'
-        break
-      default:
-        scoreChance = 'is unlikely to'
-        break
-    }
+      const desirabilityAnswers = createMsg.getDesirabilityAnswers(request)
+      console.log('here: ', 2, desirabilityAnswers);
+      const formatAnswersForScoring = createDesirabilityMsg(desirabilityAnswers, floorSpaceVar)
+      const msgData = await getUserScore(formatAnswersForScoring, request.yar.id)
 
-    setYarValue(request, 'overAllScore', msgData)
+      // Mocked score res
+      // const msgData = desirabilityData
+      let scoreChance
+      switch (msgData.desirability.overallRating.band.toLowerCase()) {
+        case 'strong':
+          scoreChance = 'is likely to'
+          break
+        case 'average':
+          scoreChance = 'might'
+          break
+        default:
+          scoreChance = 'is unlikely to'
+          break
+      }
 
-    return h.view(scoreViewTemplate, createModel({
-      titleText: msgData.desirability.overallRating.band,
-      scoreData: msgData,
-      questions: msgData.desirability.questions.sort((a, b) => a.order - b.order),
-      scoreChance: scoreChance
-    }, backUrl, url))
+      setYarValue(request, 'overAllScore', msgData)
 
+      const questions = msgData.desirability.questions.map(desirabilityQuestion => {
+        const tableQuestion = tableOrder.filter(tableQuestionD => tableQuestionD.key === desirabilityQuestion.key)[0]
+        desirabilityQuestion.title = tableQuestion.title
+        desirabilityQuestion.desc = tableQuestion.desc ?? ''
+        desirabilityQuestion.url = `${urlPrefix}/${tableQuestion.url}`
+        desirabilityQuestion.order = tableQuestion.order
+        desirabilityQuestion.unit = tableQuestion?.unit
+        desirabilityQuestion.pageTitle = tableQuestion.pageTitle
+        desirabilityQuestion.fundingPriorities = tableQuestion.fundingPriorities
+        desirabilityQuestion.answers = desirabilityQuestion.answers;
+
+        if (desirabilityQuestion.title === 'Floor area') {
+          if (floorSpaceVar === 3) {
+            desirabilityQuestion.url = `${urlPrefix}/floor-space-under100kg`
+          } else if (floorSpaceVar === 4) {
+            desirabilityQuestion.url = `${urlPrefix}/floor-space-100kg-150kg`
+          } else {
+            desirabilityQuestion.url = `${urlPrefix}/floor-space-over150kg`
+
+          }
+        }
+
+        return desirabilityQuestion
+      })
+
+      return h.view(scoreViewTemplate, createModel({
+        titleText: msgData.desirability.overallRating.band,
+        scoreData: msgData,
+        questions: questions.sort((a, b) => a.order - b.order),
+        scoreChance: scoreChance
+      }, backUrl, url))
   }
   let confirmationId = ''
 
