@@ -2440,21 +2440,21 @@ const questionBank = {
               key: 'introducing-innovation-A1',
               value: 'Technology',
               hint: {
-                text: 'For example, advance ventilation control systems, veterinary technology equipment'
+                text: 'For example, automated ventilation control systems, veterinary equipment'
               }
             },
             {
               key: 'introducing-innovation-A2',
               value: 'Collaboration',
               hint: {
-                text: 'For example, partnerships with educational institutions, other farmers or the local community '
+                text: 'Collaborations that are new to your farm or build significantly on existing partnerships (for example, partnerships with educational institutions, other farms or the local community)'
               }
             },
             {
               key: 'introducing-innovation-A3',
               value: 'Techniques',
               hint: {
-                text: 'For example, data recording or digital techniques, pain management techniques'
+                text: 'Techniques that improve stockperson’s skills or animal health and welfare (for example, the use of long-term analgesics for castration or disbudding)'
               }
             },
             {
