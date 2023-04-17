@@ -3,7 +3,8 @@ const fakeDescription = 'fake description fake description fake description fake
 describe('Page: /structure-eligibility', () => {
   const varList = {
     legalStatus: 'randomData',
-    projectType: 'fakeData'
+    projectType: 'fakeData',
+    'current-score': null
   }
 
   jest.mock('../../../../app/helpers/session', () => ({

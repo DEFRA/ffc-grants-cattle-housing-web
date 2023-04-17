@@ -7,6 +7,8 @@ ALL_QUESTIONS.forEach(question => {
     })
   }
 })
+varList['current-score'] = null
+
 jest.doMock('../../../../app/helpers/session', () => ({
   setYarValue: (request, key, value) => null,
   getYarValue: (request, key) => {

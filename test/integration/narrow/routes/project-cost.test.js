@@ -24,7 +24,7 @@ const mockSession = {
 
 jest.mock('../../../../app/helpers/session', () => mockSession)
 
-xdescribe('Project cost page', () => {
+describe('Project cost page', () => {
   beforeEach(() => {
     varList = { ...varListTemplate }
   })
@@ -63,18 +63,6 @@ xdescribe('Project cost page', () => {
 
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
-  })
-
-  it('should redirect to project summary page if theres score', async () => {
-    varList['current-score'] = true
-    const options = {
-      method: 'GET',
-      url: `${global.__URLPREFIX__}/project-cost`
-    }
-
-    const response = await global.__SERVER__.inject(options)
-    expect(response.statusCode).toBe(302)
-    expect(response.headers.location).toBe(`${global.__URLPREFIX__}/summer-abstraction-mains`)
   })
 
   it('should return an error message if no option is selected', async () => {
@@ -200,7 +188,7 @@ xdescribe('Project cost page', () => {
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
-    console.log('payload: ', postResponse.payload);
+    console.log('payload: ', postResponse.payload)
     expect(postResponse.statusCode).toBe(302)
     expect(postResponse.headers.location).toBe('potential-amount')
   })
@@ -216,5 +204,16 @@ xdescribe('Project cost page', () => {
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
     expect(postResponse.headers.location).toBe('potential-amount')
+  })
+  it('should redirect to housing page if theres score', async () => {
+    varList['current-score'] = true
+    const options = {
+      method: 'GET',
+      url: `${global.__URLPREFIX__}/project-cost`
+    }
+
+    const response = await global.__SERVER__.inject(options)
+    expect(response.statusCode).toBe(302)
+    expect(response.headers.location).toBe(`${global.__URLPREFIX__}/housing`)
   })
 })

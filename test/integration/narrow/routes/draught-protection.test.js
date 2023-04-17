@@ -4,8 +4,9 @@ describe('Page: /draught-protection', () => {
   const varList = {
     legalStatus: 'randomData',
     projectType: 'fakeData',
-    tenancy : 'Yes',
-    tenancyLength: null
+    tenancy: 'Yes',
+    tenancyLength: null,
+    'current-score': null
   }
 
   jest.mock('../../../../app/helpers/session', () => ({
