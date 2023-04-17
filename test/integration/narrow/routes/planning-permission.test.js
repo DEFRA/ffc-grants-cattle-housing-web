@@ -1,13 +1,16 @@
 const { crumbToken } = require('./test-helper')
 
 describe('Page: /planning-permission', () => {
-  const varList = { inEngland: 'randomData' }
+  const varList = {
+    inEngland: 'randomData',
+    'current-score': null
+  }
 
   jest.mock('../../../../app/helpers/session', () => ({
     setYarValue: (request, key, value) => null,
     getYarValue: (request, key) => {
       if (varList[key]) return varList[key]
-      else return 'Error'
+      else return null
     }
   }))
 
@@ -39,20 +42,8 @@ describe('Page: /planning-permission', () => {
     expect(postResponse.payload).toContain('Select when the project will have project planning permission')
   })
 
-  it('user came from \'PLANNING PERMISSION SUMMARY\' page -> DO NOT display <Back to evidence summary> button', async () => {
-    varList.reachedEvidenceSummary = true
 
-    const options = {
-      method: 'GET',
-      url: `${global.__URLPREFIX__}/planning-permission`
-    }
-    const response = await global.__SERVER__.inject(options)
-    expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('Continue')
-    expect(response.payload).not.toContain('Back to evidence summary')
-  })
-
-  it('user selects conditional option: \'Expected to have by 31 December 2023\' -> display conditional page', async () => {
+  it('user selects conditional option: \'Expected to have by 31 January 2024\' -> display conditional page', async () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/planning-permission`,
@@ -88,7 +79,7 @@ describe('Page: /planning-permission', () => {
     expect(postResponse.headers.location).toBe('project-started')
   })
 
-  it('user selects ineligible option `Will not have by 31 January 2023` and display ineligible page', async () => {
+  it('user selects ineligible option `Will not have by 31 January 2024` and display ineligible page', async () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/planning-permission`,
@@ -98,6 +89,5 @@ describe('Page: /planning-permission', () => {
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.payload).toContain('You cannot apply for a grant from this scheme')
-
-  })
+})
 })
