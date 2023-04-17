@@ -3,8 +3,7 @@ const { crumbToken } = require('./test-helper')
 describe('Page: /potential-amount', () => {
   const varList = {
     projectCost: 50000,
-    calculatedGrant: 20000,
-    'current-score': ''
+    calculatedGrant: 20000
   }
   const eligiblePageText = 'You may be able to apply for a grant of up to £20,000, based on the estimated cost of £50,000.'
 
@@ -12,7 +11,7 @@ describe('Page: /potential-amount', () => {
     setYarValue: (request, key, value) => null,
     getYarValue: (request, key) => {
       if (varList[key]) return varList[key]
-      else return 'Error'
+      else return undefined
     }
   }))
 

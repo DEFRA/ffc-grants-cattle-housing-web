@@ -18,7 +18,6 @@ jest.doMock('../../../../app/helpers/session', () => ({
 
 describe('All default GET routes', () => {
   ALL_QUESTIONS.forEach(question => {
-    console.log(varList,'LLLLLLLLLLLLIIIIII')
     varList.consentMain = 'Hello'
 
     it(`should load ${question.key} page successfully`, async () => {

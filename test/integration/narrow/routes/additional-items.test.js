@@ -3,8 +3,7 @@ const { crumbToken } = require('./test-helper')
 describe('Page: /additional-items', () => {
   const varList = {
     legalStatus: 'randomData',
-    projectType: 'fakeData',
-    // 'current-score': null
+    projectType: 'fakeData'
   }
 
   jest.mock('../../../../app/helpers/session', () => ({

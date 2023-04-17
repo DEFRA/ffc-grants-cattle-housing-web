@@ -7,15 +7,14 @@ describe('Page: /concrete-flooring', () => {
     tenancy: 'Yes',
     tenancyLength: null,
     calfWeight: '100kg or under',
-    housedIndividually: 'Yes',
-    'current-score': ''
+    housedIndividually: 'Yes'
   }
 
   jest.mock('../../../../app/helpers/session', () => ({
     setYarValue: (request, key, value) => null,
     getYarValue: (request, key) => {
       if (varList[key]) return varList[key]
-      else return 'Error'
+      else return undefined
     }
   }))
 
