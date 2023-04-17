@@ -4,8 +4,7 @@ const varListTemplate = {
   legalStatus: 'randomData',
   projectType: 'fakeData',
   calfWeight: 'Over 150kg',
-  floorSpaceOver150kg: null,
-  'current-score': ''
+  floorSpaceOver150kg: null
 }
 let varList
 
@@ -13,7 +12,7 @@ const mockSession = {
   setYarValue: (request, key, value) => null,
   getYarValue: (request, key) => {
     if (Object.keys(varList).includes(key)) return varList[key]
-    else return 'Error'
+    else return undefined
   }
 }
 

@@ -4,15 +4,14 @@ describe('Page: /draine-slope', () => {
   const varList = {
     legalStatus: 'randomData',
     projectType: 'fakeData',
-    structure: 'A-frame building',
-    'current-score': ''
+    structure: 'A-frame building'
   }
 
   jest.mock('../../../../app/helpers/session', () => ({
     setYarValue: (request, key, value) => null,
     getYarValue: (request, key) => {
       if (varList[key]) return varList[key]
-      else return 'Error'
+      else return undefined
     }
   }))
 

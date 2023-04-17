@@ -8,15 +8,14 @@ describe('Page: /enrichment', () => {
     tenancyLength: null,
     calfWeight: '100kg or under',
     housedIndividually: 'Yes',
-    isolateCalves: 'Yes',
-    'current-score': ''
+    isolateCalves: 'Yes'
   }
 
   jest.mock('../../../../app/helpers/session', () => ({
     setYarValue: (request, key, value) => null,
     getYarValue: (request, key) => {
       if (varList[key]) return varList[key]
-      else return 'Error'
+      else return undefined
     }
   }))
 

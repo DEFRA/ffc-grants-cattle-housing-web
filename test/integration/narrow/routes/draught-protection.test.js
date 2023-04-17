@@ -5,15 +5,14 @@ describe('Page: /draught-protection', () => {
     legalStatus: 'randomData',
     projectType: 'fakeData',
     tenancy: 'Yes',
-    tenancyLength: null,
-    'current-score': ''
+    tenancyLength: null
   }
 
   jest.mock('../../../../app/helpers/session', () => ({
     setYarValue: (request, key, value) => null,
     getYarValue: (request, key) => {
       if (varList[key]) return varList[key]
-      else return 'Error'
+      else return undefined
     }
   }))
 

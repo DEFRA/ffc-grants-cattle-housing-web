@@ -9,8 +9,7 @@ const varListTemplate = {
   projectItemsList: {
     projectEquipment: ['Boom', 'Trickle']
   },
-  projectCost: '12345678',
-  'current-score': ''
+  projectCost: '12345678'
 }
 
 let varList
@@ -18,7 +17,7 @@ const mockSession = {
   setYarValue: (request, key, value) => null,
   getYarValue: (request, key) => {
     if (Object.keys(varList).includes(key)) return varList[key]
-    else return 'Error'
+    else return undefined
   }
 }
 
@@ -51,8 +50,7 @@ describe('Project cost page', () => {
       projectItemsList: {
         projectEquipment: ['Boom', 'Trickle']
       },
-      projectCost: undefined,
-      'current-score': ''
+      projectCost: undefined
     }
 
     const options = {

@@ -1,13 +1,13 @@
 const { crumbToken } = require('./test-helper')
 
 describe('Page: /remaining-costs', () => {
-  const varList = { projectCost: '1234567', calculatedGrant: '312000', remainingCost: 740740.20, 'current-score': '' }
+  const varList = { projectCost: '1234567', calculatedGrant: '312000', remainingCost: 740740.20 }
 
   jest.mock('../../../../app/helpers/session', () => ({
     setYarValue: (request, key, value) => null,
     getYarValue: (request, key) => {
       if (varList[key]) return varList[key]
-      else return 'Error'
+      else return undefined
     }
   }))
 
