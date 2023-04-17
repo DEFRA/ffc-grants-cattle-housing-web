@@ -101,7 +101,6 @@ describe('Models', () => {
       },
       reachedCheckDetails: false,
       reachedEvidenceSummary: false,
-      reachedScoreResults: false,
       diaplaySecondryBtn: false
     })
   })
@@ -297,7 +296,6 @@ describe('Models', () => {
       },
       reachedCheckDetails: false,
       reachedEvidenceSummary: false,
-      reachedScoreResults: false,
       diaplaySecondryBtn: undefined
     })
   })
