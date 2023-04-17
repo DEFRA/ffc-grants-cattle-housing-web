@@ -43,7 +43,6 @@ describe('Project cost page', () => {
   })
 
   it('should load page successfully if no projectCost', async () => {
-
     varList = {
       legalStatus: 'fale status',
       inEngland: 'Yes',

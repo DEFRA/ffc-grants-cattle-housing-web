@@ -1,5 +1,8 @@
 const { ALL_QUESTIONS } = require('../../../../app/config/question-bank')
-let varList
+let varList = {
+  'current-score': ''
+
+}
 ALL_QUESTIONS.forEach(question => {
   if (question.preValidationKeys) {
     varList = question.preValidationKeys.map(m => {
@@ -7,7 +10,6 @@ ALL_QUESTIONS.forEach(question => {
     })
   }
 })
-varList['current-score'] = null
 
 jest.doMock('../../../../app/helpers/session', () => ({
   setYarValue: (request, key, value) => null,
@@ -18,8 +20,9 @@ jest.doMock('../../../../app/helpers/session', () => ({
 }))
 
 describe('All default GET routes', () => {
-  varList['current-score'] = null
   ALL_QUESTIONS.forEach(question => {
+    console.log(varList,'LLLLLLLLLLLLIIIIII')
+
     it(`should load ${question.key} page successfully`, async () => {
       const options = {
         method: 'GET',

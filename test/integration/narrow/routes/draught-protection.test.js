@@ -6,7 +6,7 @@ describe('Page: /draught-protection', () => {
     projectType: 'fakeData',
     tenancy: 'Yes',
     tenancyLength: null,
-    'current-score': null
+    'current-score': ''
   }
 
   jest.mock('../../../../app/helpers/session', () => ({

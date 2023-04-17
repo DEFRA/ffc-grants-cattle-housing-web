@@ -27,6 +27,16 @@ describe('Page: /structure-eligibility', () => {
     expect(response.payload).toContain('No')
   })
 
+  it('page loads with correct back link', async () => {
+    const options = {
+      method: 'GET',
+      url: `${global.__URLPREFIX__}/structure-eligibility`
+    }
+    const response = await global.__SERVER__.inject(options)
+    expect(response.statusCode).toBe(200)
+    expect(response.payload).toContain('<a href=\"structure\" class=\"govuk-back-link\">Back</a>')
+  })
+
   it('should returns error message if description is more than 250', async () => {
     const postOptions = {
       method: 'POST',
@@ -103,14 +113,5 @@ describe('Page: /structure-eligibility', () => {
     }
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.payload).toContain('You cannot apply for a grant from this scheme')
-  })
-  it('page loads with correct back link', async () => {
-    const options = {
-      method: 'GET',
-      url: `${global.__URLPREFIX__}/structure-eligibility`
-    }
-    const response = await global.__SERVER__.inject(options)
-    expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('<a href=\"structure\" class=\"govuk-back-link\">Back</a>')
   })
 })
