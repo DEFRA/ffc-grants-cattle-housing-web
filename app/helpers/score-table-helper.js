@@ -58,7 +58,7 @@ const tableOrder = [
 		order: 7,
 		title: 'Floor area',
 		pageTitle: 'Floor area',
-        unit: 'm\^2',
+        unit: 'm2\u00B2',
 		url: '', // need to add based on answer given
 		fundingPriorities: 'Improve productivity',
 		yarKey: 'floorSpace',
