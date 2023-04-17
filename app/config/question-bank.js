@@ -1999,6 +1999,9 @@ const questionBank = {
           url: 'permanent-sick-pen',
           baseUrl: 'permanent-sick-pen',
           backUrl: 'moisture-control',
+          warning: {
+            text: 'To create a separate air space, the area must have solid walls up to ceiling height blocking it from the calf housing.'
+          },
           nextUrlObject: {
             dependentQuestionYarKey: 'calfWeight',
             dependentAnswerKeysArray: ['calf-weight-A1'],
