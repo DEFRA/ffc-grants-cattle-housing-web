@@ -47,7 +47,6 @@ const getPage = async (question, request, h) => {
   if (isRedirect) {
     return h.redirect(startPageUrl)
   }
-
   if (getYarValue(request, 'current-score') && question.order < 250) {
     return h.redirect(`${urlPrefix}/housing`)
   }
