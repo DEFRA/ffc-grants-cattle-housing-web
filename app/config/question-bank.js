@@ -2127,7 +2127,7 @@ const questionBank = {
             }]
           },
           answers: [],
-          yarKey: 'floorSpaceUnder100kg'
+          yarKey: 'floorSpace'
         },
         {
           key: 'floor-space-100kg-150kg',
@@ -2190,7 +2190,7 @@ const questionBank = {
             }]
           },
           answers: [],
-          yarKey: 'floorSpace100kg150kg'
+          yarKey: 'floorSpace'
         },
         {
           key: 'floor-space-over150kg',
@@ -2253,7 +2253,7 @@ const questionBank = {
             }]
           },
           answers: [],
-          yarKey: 'floorSpaceOver150kg'
+          yarKey: 'floorSpace'
         },
         {
           key: 'environmental-impact',
