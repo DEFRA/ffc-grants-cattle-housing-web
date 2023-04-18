@@ -20,7 +20,9 @@ const getUrl = (urlObject, url, request, secBtn, currentUrl) => {
   const isNonDependantAnswer = checkAnswerExist(dependentQuestionYarKey, dependentAnswer, nonDependentAnswerKeysArray)
   const selectedElseUrl = (dependentAnswer && !isNonDependantAnswer) ? elseUrl : nonDependentUrl
 
-  return selectThenUrl ? thenUrl : selectedElseUrl
+  const nextUrl = selectThenUrl ? thenUrl : selectedElseUrl
+
+  return secBtn ? secBtnPath : nextUrl
 }
 const checkAnswerExist = (dependentQuestionYarKey, dependentAnswer, yarKeysToCheck) => {
   return ALL_QUESTIONS.find(thisQuestion => (
