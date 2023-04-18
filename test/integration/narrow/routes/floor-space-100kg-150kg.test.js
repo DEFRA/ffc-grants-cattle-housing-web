@@ -10,11 +10,11 @@ const varListTemplate = {
 let varList
 
 const mockSession = {
-    setYarValue: (request, key, value) => null,
-    getYarValue: (request, key) => {
+  setYarValue: (request, key, value) => null,
+  getYarValue: (request, key) => {
     if (Object.keys(varList).includes(key)) return varList[key]
-    else return 'Error'
-    }
+    else return undefined
+  }
 }
 
 jest.mock('../../../../app/helpers/session', () => mockSession)
@@ -30,28 +30,28 @@ it('page loads successfully, with all the options', async () => {
     varList.floorSpace = undefined
 
     const options = {
-    method: 'GET',
-    url: `${global.__URLPREFIX__}/floor-space-100kg-150kg`
+      method: 'GET',
+      url: `${global.__URLPREFIX__}/floor-space-100kg-150kg`
     }
 
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
     expect(response.payload).toContain('How much space will each calf have?')
-})
+  })
 
-it('no option selected -> show error message', async () => {
+  it('no option selected -> show error message', async () => {
     varList['current-score'] = null
     const postOptions = {
-    method: 'POST',
-    url: `${global.__URLPREFIX__}/floor-space-100kg-150kg`,
-    headers: { cookie: 'crumb=' + crumbToken },
-    payload: { crumb: crumbToken }
+      method: 'POST',
+      url: `${global.__URLPREFIX__}/floor-space-100kg-150kg`,
+      headers: { cookie: 'crumb=' + crumbToken },
+      payload: { crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
     expect(postResponse.payload).toContain('Enter how much space each calf will have')
-})
+  })
 
 it('user selects eligible option: \'floorSpace: 22\' -> display environmental-impact', async () => {
     const postOptions = {
@@ -64,8 +64,8 @@ it('user selects eligible option: \'floorSpace: 22\' -> display environmental-im
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
     expect(postResponse.headers.location).toBe('environmental-impact')
-})
-it('should return an error message if a string is typed in', async () => {
+  })
+  it('should return an error message if a string is typed in', async () => {
     const postOptions = {
         method: 'POST',
         url: `${global.__URLPREFIX__}/floor-space-100kg-150kg`,
@@ -76,9 +76,9 @@ it('should return an error message if a string is typed in', async () => {
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
     expect(postResponse.payload).toContain('Floor space must be a whole number')
-})
+  })
 
-it('should return an error message if number contains a space', async () => {
+  it('should return an error message if number contains a space', async () => {
     const postOptions = {
     method: 'POST',
     url: `${global.__URLPREFIX__}/floor-space-100kg-150kg`,
@@ -89,8 +89,8 @@ it('should return an error message if number contains a space', async () => {
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
     expect(postResponse.payload).toContain('Floor space must be a whole number')
-})
-it('should return an error message if number contains a comma "," ', async () => {
+  })
+  it('should return an error message if number contains a comma "," ', async () => {
     const postOptions = {
         method: 'POST',
         url: `${global.__URLPREFIX__}/floor-space-100kg-150kg`,
@@ -101,11 +101,9 @@ it('should return an error message if number contains a comma "," ', async () =>
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
     expect(postResponse.payload).toContain('Floor space must be a whole number')
-})
+  })
 
-
-
-it('should return an error message if a fraction is typed in - it contains a dot "." ', async () => {
+  it('should return an error message if a fraction is typed in - it contains a dot "." ', async () => {
     const postOptions = {
     method: 'POST',
     url: `${global.__URLPREFIX__}/floor-space-100kg-150kg`,
@@ -116,9 +114,9 @@ it('should return an error message if a fraction is typed in - it contains a dot
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
     expect(postResponse.payload).toContain('Floor space must be a whole number')
-})
+  })
 
-it('should return an error message if the number of digits typed exceed 5', async () => {
+  it('should return an error message if the number of digits typed exceed 5', async () => {
     const postOptions = {
         method: 'POST',
         url: `${global.__URLPREFIX__}/floor-space-100kg-150kg`,
@@ -129,8 +127,8 @@ it('should return an error message if the number of digits typed exceed 5', asyn
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
     expect(postResponse.payload).toContain('Number must be between 1-99999')
-})
-it('should store valid user input and redirect to environmental-impact page', async () => {
+  })
+  it('should store valid user input and redirect to environmental-impact page', async () => {
     const postOptions = {
         method: 'POST',
         url: `${global.__URLPREFIX__}/floor-space-100kg-150kg`,
@@ -141,15 +139,15 @@ it('should store valid user input and redirect to environmental-impact page', as
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
     expect(postResponse.headers.location).toBe('environmental-impact')
-})
+  })
 
-it('page loads with correct back link', async () => {
+  it('page loads with correct back link', async () => {
     const options = {
-    method: 'GET',
-    url: `${global.__URLPREFIX__}/floor-space-100kg-150kg`
+      method: 'GET',
+      url: `${global.__URLPREFIX__}/floor-space-100kg-150kg`
     }
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
     expect(response.payload).toContain('<a href=\"permanent-sick-pen\" class=\"govuk-back-link\">Back</a>')
-})
+  })
 })

@@ -1,23 +1,23 @@
 const { crumbToken } = require('./test-helper')
 
 describe('Page: /sustainable-materials', () => {
-    const varList = {
-        legalStatus: 'randomData',
-        projectType: 'fakeData'
+  const varList = {
+    legalStatus: 'randomData',
+    projectType: 'fakeData'
+  }
+
+  jest.mock('../../../../app/helpers/session', () => ({
+    setYarValue: (request, key, value) => null,
+    getYarValue: (request, key) => {
+      if (varList[key]) return varList[key]
+      else return 'Error'
     }
-    
-    jest.mock('../../../../app/helpers/session', () => ({
-        setYarValue: (request, key, value) => null,
-        getYarValue: (request, key) => {
-        if (varList[key]) return varList[key]
-        else return 'Error'
-        }
-    }))
-    
-it('page loads successfully, with all the options', async () => {
+  }))
+
+  it('page loads successfully, with all the options', async () => {
     const options = {
-    method: 'GET',
-    url: `${global.__URLPREFIX__}/sustainable-materials`
+      method: 'GET',
+      url: `${global.__URLPREFIX__}/sustainable-materials`
     }
 
     const response = await global.__SERVER__.inject(options)
@@ -30,41 +30,41 @@ it('page loads successfully, with all the options', async () => {
     expect(response.payload).toContain('Recycled materials')
     expect(response.payload).toContain('Something else')
     expect(response.payload).toContain('None of the above')
-})
-it('no option selected -> show error message', async () => {
+  })
+  it('no option selected -> show error message', async () => {
     const postOptions = {
-    method: 'POST',
-    url: `${global.__URLPREFIX__}/sustainable-materials`,
-    headers: { cookie: 'crumb=' + crumbToken },
-    payload: { sustainableMaterials: '', crumb: crumbToken }
+      method: 'POST',
+      url: `${global.__URLPREFIX__}/sustainable-materials`,
+      headers: { cookie: 'crumb=' + crumbToken },
+      payload: { sustainableMaterials: '', crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
     expect(postResponse.payload).toContain('Select if your building will use sustainable materials')
-})
-it(' \'None of the above\' selected with another option -> show error message', async () => {
+  })
+  it(' \'None of the above\' selected with another option -> show error message', async () => {
     const postOptions = {
-    method: 'POST',
-    url: `${global.__URLPREFIX__}/sustainable-materials`,
-    headers: { cookie: 'crumb=' + crumbToken },
-    payload: { sustainableMaterials: ['None of the above', 'Sustainability sourced wood or materials'], crumb: crumbToken }
+      method: 'POST',
+      url: `${global.__URLPREFIX__}/sustainable-materials`,
+      headers: { cookie: 'crumb=' + crumbToken },
+      payload: { sustainableMaterials: ['None of the above', 'Sustainability sourced wood or materials'], crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
     expect(postResponse.payload).toContain('You cannot select that combination of options')
-})
-it('user selects eligible option -> store user response and redirect to /introducing-innovation', async () => {
+  })
+  it('user selects eligible option -> store user response and redirect to /introducing-innovation', async () => {
     const postOptions = {
-    method: 'POST',
-    url: `${global.__URLPREFIX__}/sustainable-materials`,
-    headers: { cookie: 'crumb=' + crumbToken },
-    payload: { sustainableMaterials: ['Sustainability sourced wood or materials'], crumb: crumbToken }
+      method: 'POST',
+      url: `${global.__URLPREFIX__}/sustainable-materials`,
+      headers: { cookie: 'crumb=' + crumbToken },
+      payload: { sustainableMaterials: ['Sustainability sourced wood or materials'], crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
     expect(postResponse.headers.location).toBe('introducing-innovation')
-})
+  })
 })

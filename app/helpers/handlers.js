@@ -14,11 +14,9 @@ const { getUserScore } = require('../messaging/application')
 
 const emailFormatting = require('./../messaging/email/process-submission')
 const gapiService = require('../services/gapi-service')
-const { startPageUrl } = require('../config/server')
+const { startPageUrl, urlPrefix } = require('../config/server')
 
 const { tableOrder } = require('../helpers/score-table-helper')
-const urlPrefix = require('../config/server').urlPrefix
-
 // const { ALL_QUESTIONS } = require('../config/question-bank')
 // const { formatOtherItems } = require('./../helpers/other-items-sizes')
 // const desirabilityData = require('./desirability-score.json')
@@ -49,6 +47,11 @@ const getPage = async (question, request, h) => {
   if (isRedirect) {
     return h.redirect(startPageUrl)
   }
+
+  if (getYarValue(request, 'current-score') && question.order < 250) {
+    return h.redirect(`${urlPrefix}/housing`)
+  }
+
   switch (url) {
     case 'floor-space-under100kg':
       setYarValue(request, 'floorSpaceValue', 3)
@@ -56,7 +59,6 @@ const getPage = async (question, request, h) => {
     case 'floor-space-100kg-150kg':
       setYarValue(request, 'floorSpaceValue', 4)
       break
-
     case 'floor-space-over150kg':
       setYarValue(request, 'floorSpaceValue', 5)
       break
@@ -70,8 +72,9 @@ const getPage = async (question, request, h) => {
       const formatAnswersForScoring = createDesirabilityMsg(desirabilityAnswers, floorSpaceVar)
       const msgData = await getUserScore(formatAnswersForScoring, request.yar.id)
 
+      setYarValue(request, 'current-score', msgData.desirability.overallRating.band) // do we need this alongside overAllScore? Having both seems redundant
+
       // Mocked score res
-      // const msgData = desirabilityData
       let scoreChance
       switch (msgData.desirability.overallRating.band.toLowerCase()) {
         case 'strong':
@@ -132,7 +135,10 @@ const getPage = async (question, request, h) => {
     gapiService.sendEligibilityEvent(request, 'true')
     return h.view('not-eligible', NOT_ELIGIBLE)
   }
-  
+
+
+
+
 
   if (question.maybeEligible) {
     let { maybeEligibleContent } = question
@@ -232,7 +238,7 @@ const getPage = async (question, request, h) => {
       return h.view('evidence-summary', evidenceSummaryModel)
     }
     case 'project': {
-      if(getYarValue(request,'tenancy') === 'Yes'){
+      if (getYarValue(request, 'tenancy') === 'Yes') {
         setYarValue(request, 'tenancyLength', null)
       }
     }
@@ -284,7 +290,7 @@ const showPostPage = (currentQuestion, request, h) => {
     }
   }
   if (type === 'multi-input') {
-    let allFields = currentQuestion.allFields
+    const allFields = currentQuestion.allFields
     // if (currentQuestion.costDataKey) {
     //   allFields = formatOtherItems(request)
     // }
@@ -360,8 +366,6 @@ const showPostPage = (currentQuestion, request, h) => {
   } else if (thisAnswer?.redirectUrl) {
     return h.redirect(thisAnswer?.redirectUrl)
   }
-
-
 
   if (thisAnswer?.notEligible || (yarKey === 'projectCost' ? !getGrantValues(payload[Object.keys(payload)[0]], currentQuestion.grantInfo).isEligible : null)) {
     gapiService.sendEligibilityEvent(request, !!thisAnswer?.notEligible)

@@ -9,11 +9,12 @@ ALL_QUESTIONS.forEach(question => {
     })
   }
 })
+
 jest.doMock('../../../../app/helpers/session', () => ({
   setYarValue: (request, key, value) => null,
   getYarValue: (request, key) => {
     if (varList[key]) return varList[key]
-    else return 'Error'
+    else return undefined
   }
 }))
 
@@ -40,6 +41,8 @@ describe('All default GET routes', () => {
 	})
 
   ALL_QUESTIONS.forEach(question => {
+    varList.consentMain = 'Hello'
+
     it(`should load ${question.key} page successfully`, async () => {
       // for score page only
       jest.spyOn(newSender, 'getUserScore').mockImplementationOnce(() => {
@@ -52,6 +55,7 @@ describe('All default GET routes', () => {
         url: `${global.__URLPREFIX__}/${question.url}`
       }
       const response = await global.__SERVER__.inject(options)
+      console.log(response.headers.location)
       expect(response.statusCode).toBe(200)
     })
   })

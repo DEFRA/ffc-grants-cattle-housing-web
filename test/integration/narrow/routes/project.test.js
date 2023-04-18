@@ -4,7 +4,7 @@ describe('Page: /project', () => {
   const varList = {
     legalStatus: 'randomData',
     projectType: 'fakeData',
-    tenancy : 'Yes',
+    tenancy: 'Yes',
     tenancyLength: null
   }
 
@@ -12,7 +12,7 @@ describe('Page: /project', () => {
     setYarValue: (request, key, value) => null,
     getYarValue: (request, key) => {
       if (varList[key]) return varList[key]
-      else return 'Error'
+      else return undefined
     }
   }))
 
