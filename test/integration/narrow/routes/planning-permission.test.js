@@ -10,7 +10,7 @@ describe('Page: /planning-permission', () => {
     setYarValue: (request, key, value) => null,
     getYarValue: (request, key) => {
       if (varList[key]) return varList[key]
-      else return null
+      else return undefined
     }
   }))
 
