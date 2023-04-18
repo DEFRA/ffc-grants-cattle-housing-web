@@ -93,10 +93,6 @@ const getPage = async (question, request, h) => {
     return h.view('not-eligible', NOT_ELIGIBLE)
   }
 
-
-
-
-
   if (question.maybeEligible) {
     let { maybeEligibleContent } = question
     maybeEligibleContent.title = question.title
