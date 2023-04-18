@@ -200,17 +200,7 @@ const getPage = async (question, request, h) => {
       }
     }
     // case 'score':
-    case 'living-space-3m2':
-      setYarValue(request, 'livingSpace4m2', null)
-      setYarValue(request, 'livingSpace5m2', null)
-      
-    case 'living-space-4m2':
-      setYarValue(request, 'livingSpace3m2', null)
-      setYarValue(request, 'livingSpace5m2', null)
-      
-    case 'living-space-5m2':
-      setYarValue(request, 'livingSpace3m2', null)
-      setYarValue(request, 'livingSpace4m2', null)
+  
       
     case 'business-details':
     case 'agent-details':
