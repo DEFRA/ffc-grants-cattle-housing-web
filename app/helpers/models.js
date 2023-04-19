@@ -106,7 +106,6 @@ const getModel = (data, question, request, conditionalHtml = '') => {
     ...(warningDetails ? ({ warning: warningDetails }) : {}),
     reachedCheckDetails: showBackToDetailsButton(key, request),
     reachedEvidenceSummary: showBackToEvidenceSummaryButton(key, request),
-    // reachedScoreResults: showBackToEScoreSummaryButton(key, request),
     diaplaySecondryBtn: hasScore && score?.isScore
   }
 }

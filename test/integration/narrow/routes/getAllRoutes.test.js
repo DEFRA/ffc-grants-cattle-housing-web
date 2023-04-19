@@ -1,4 +1,6 @@
 const { ALL_QUESTIONS } = require('../../../../app/config/question-bank')
+const scoreData = require('../../../data/score-data')
+
 let varList
 ALL_QUESTIONS.forEach(question => {
   if (question.preValidationKeys) {
@@ -16,11 +18,38 @@ jest.doMock('../../../../app/helpers/session', () => ({
   }
 }))
 
+const newSender = require('../../../../app/messaging/application')
+const createMsg = require('../../../../app/messaging/create-msg')
+const getDesirabilityAnswersSpy = jest.spyOn(createMsg, 'getDesirabilityAnswers').mockImplementation(() => {
+  return {
+    test: 'test'
+  };
+})
+const getUserScoringSpy = jest.spyOn(newSender, 'getUserScore').mockImplementation(() => {
+  Promise.resolve(scoreData);
+})
+
+
 describe('All default GET routes', () => {
+  beforeEach(async () => {
+		jest.mock('../../../../app/messaging')
+		jest.mock('../../../../app/messaging/senders')
+		jest.mock('ffc-messaging')
+	})
+	afterEach(async () => {
+		jest.clearAllMocks()
+	})
+
   ALL_QUESTIONS.forEach(question => {
     varList.consentMain = 'Hello'
 
     it(`should load ${question.key} page successfully`, async () => {
+      // for score page only
+      jest.spyOn(newSender, 'getUserScore').mockImplementationOnce(() => {
+        console.log('Spy: weakkk', JSON.stringify(scoreData));
+        return scoreData
+      })
+
       const options = {
         method: 'GET',
         url: `${global.__URLPREFIX__}/${question.url}`

@@ -3,7 +3,8 @@ const { crumbToken } = require('./test-helper')
 describe('Page: /planning-permission-condition', () => {
   const varList = {
     legalStatus: 'fake data',
-    inEngland: 'randomData'
+    inEngland: 'randomData',
+    planningPermission: 'fake'
   }
 
   jest.mock('../../../../app/helpers/session', () => ({
