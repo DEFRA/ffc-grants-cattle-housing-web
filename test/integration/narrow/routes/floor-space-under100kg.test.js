@@ -1,11 +1,11 @@
 const { crumbToken } = require('./test-helper')
 
 const varListTemplate = {
-  legalStatus: 'randomData',
-  projectType: 'fakeData',
-  calfWeight: '100kg or under',
-  floorSpaceUnder100kg: null,
-  'current-score': ''
+    legalStatus: 'randomData',
+    projectType: 'fakeData',
+    calfWeight:'100kg or under',
+    floorSpace: null,
+    'current-score': null
 }
 let varList
 
@@ -20,14 +20,14 @@ const mockSession = {
 jest.mock('../../../../app/helpers/session', () => mockSession)
 
 describe('Page: /floor-space-under100kg', () => {
-  beforeEach(() => {
-    varList = { ...varListTemplate }
-  })
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
-  it('page loads successfully, with all the options', async () => {
-    varList.floorSpaceUnder100kg = undefined
+    beforeEach(() => {
+        varList = { ...varListTemplate }
+    })
+    afterEach(() => {
+        jest.clearAllMocks()
+    })
+it('page loads successfully, with all the options', async () => {
+    varList.floorSpace = undefined
 
     const options = {
       method: 'GET',
@@ -53,12 +53,12 @@ describe('Page: /floor-space-under100kg', () => {
     expect(postResponse.payload).toContain('Enter how much space each calf will have')
   })
 
-  it('user selects eligible option: \'floorSpaceUnder100kg: 22\' -> display environmental-impact', async () => {
+it('user selects eligible option: \'floorSpace: 22\' -> display environmental-impact', async () => {
     const postOptions = {
-      method: 'POST',
-      url: `${global.__URLPREFIX__}/floor-space-under100kg`,
-      headers: { cookie: 'crumb=' + crumbToken },
-      payload: { floorSpaceUnder100kg: '22', crumb: crumbToken }
+    method: 'POST',
+    url: `${global.__URLPREFIX__}/floor-space-under100kg`,
+    headers: { cookie: 'crumb=' + crumbToken },
+    payload: { floorSpace: '22', crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
@@ -67,10 +67,10 @@ describe('Page: /floor-space-under100kg', () => {
   })
   it('should return an error message if a string is typed in', async () => {
     const postOptions = {
-      method: 'POST',
-      url: `${global.__URLPREFIX__}/floor-space-under100kg`,
-      payload: { floorSpaceUnder100kg: '1234s6', crumb: crumbToken },
-      headers: { cookie: 'crumb=' + crumbToken }
+        method: 'POST',
+        url: `${global.__URLPREFIX__}/floor-space-under100kg`,
+        payload: { floorSpace: '1234s6', crumb: crumbToken },
+        headers: { cookie: 'crumb=' + crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
@@ -80,10 +80,10 @@ describe('Page: /floor-space-under100kg', () => {
 
   it('should return an error message if number contains a space', async () => {
     const postOptions = {
-      method: 'POST',
-      url: `${global.__URLPREFIX__}/floor-space-under100kg`,
-      payload: { floorSpaceUnder100kg: '1234 6', crumb: crumbToken },
-      headers: { cookie: 'crumb=' + crumbToken }
+    method: 'POST',
+    url: `${global.__URLPREFIX__}/floor-space-under100kg`,
+    payload: { floorSpace: '1234 6', crumb: crumbToken },
+    headers: { cookie: 'crumb=' + crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
@@ -92,10 +92,10 @@ describe('Page: /floor-space-under100kg', () => {
   })
   it('should return an error message if number contains a comma "," ', async () => {
     const postOptions = {
-      method: 'POST',
-      url: `${global.__URLPREFIX__}/floor-space-under100kg`,
-      payload: { floorSpaceUnder100kg: '123,456', crumb: crumbToken },
-      headers: { cookie: 'crumb=' + crumbToken }
+        method: 'POST',
+        url: `${global.__URLPREFIX__}/floor-space-under100kg`,
+        payload: { floorSpace: '123,456', crumb: crumbToken },
+        headers: { cookie: 'crumb=' + crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
@@ -105,10 +105,10 @@ describe('Page: /floor-space-under100kg', () => {
 
   it('should return an error message if a fraction is typed in - it contains a dot "." ', async () => {
     const postOptions = {
-      method: 'POST',
-      url: `${global.__URLPREFIX__}/floor-space-under100kg`,
-      payload: { floorSpaceUnder100kg: '123.456', crumb: crumbToken },
-      headers: { cookie: 'crumb=' + crumbToken }
+    method: 'POST',
+    url: `${global.__URLPREFIX__}/floor-space-under100kg`,
+    payload: { floorSpace: '123.456', crumb: crumbToken },
+    headers: { cookie: 'crumb=' + crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
@@ -118,10 +118,10 @@ describe('Page: /floor-space-under100kg', () => {
 
   it('should return an error message if the number of digits typed exceed 5', async () => {
     const postOptions = {
-      method: 'POST',
-      url: `${global.__URLPREFIX__}/floor-space-under100kg`,
-      payload: { floorSpaceUnder100kg: '123456', crumb: crumbToken },
-      headers: { cookie: 'crumb=' + crumbToken }
+        method: 'POST',
+        url: `${global.__URLPREFIX__}/floor-space-under100kg`,
+        payload: { floorSpace: '123456', crumb: crumbToken },
+        headers: { cookie: 'crumb=' + crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
@@ -130,10 +130,10 @@ describe('Page: /floor-space-under100kg', () => {
   })
   it('should store valid user input and redirect to environmental-impact page', async () => {
     const postOptions = {
-      method: 'POST',
-      url: `${global.__URLPREFIX__}/floor-space-under100kg`,
-      payload: { floorSpaceUnder100kg: '232', crumb: crumbToken },
-      headers: { cookie: 'crumb=' + crumbToken }
+        method: 'POST',
+        url: `${global.__URLPREFIX__}/floor-space-under100kg`,
+        payload: { floorSpace: '232', crumb: crumbToken },
+        headers: { cookie: 'crumb=' + crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)

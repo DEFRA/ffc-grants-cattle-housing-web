@@ -1,5 +1,6 @@
 const { YAR_KEYS } = require('../config/question-bank')
 const Joi = require('joi')
+const { getDataFromYarValue } = require('./../helpers/pageHelpers')
 const { getYarValue } = require('../helpers/session')
 
 function getAllDetails (request, confirmationId) {
@@ -13,15 +14,32 @@ function getAllDetails (request, confirmationId) {
 }
 
 const desirabilityAnswersSchema = Joi.object({
-  inEngland: Joi.string()
-  
+  housing: Joi.string(),
+  calfGroupSize: Joi.string(),
+  numberOfCalves: Joi.string(),
+  automaticCalfFeeder: Joi.string(),
+  moistureControl: Joi.array().items(Joi.string()),
+  permanentSickPen: Joi.array().items(Joi.string()),
+  floorSpace: Joi.number(),
+  environmentalImpact: Joi.array().items(Joi.string()),
+  sustainableMaterials: Joi.array().items(Joi.string()),
+  introducingInnovation: Joi.array().items(Joi.string())
 })
 
 function getDesirabilityAnswers (request) {
   try {
     
     const val = {
-      inEngland: getYarValue(request, 'inEngland'),
+      housing: getYarValue(request, 'housing'),
+      calfGroupSize: getYarValue(request, 'calfGroupSize'),
+      numberOfCalves: getYarValue(request, 'numberOfCalves'),
+      automaticCalfFeeder: getYarValue(request, 'automaticCalfFeeder'),
+      moistureControl: getDataFromYarValue(request, 'moistureControl', 'multi-answer'),
+      permanentSickPen: getDataFromYarValue(request, 'permanentSickPen', 'multi-answer'),
+      floorSpace: getYarValue(request, 'floorSpace'),
+      environmentalImpact: getDataFromYarValue(request, 'environmentalImpact', 'multi-answer'),
+      sustainableMaterials: getDataFromYarValue(request, 'sustainableMaterials', 'multi-answer'),
+      introducingInnovation: getDataFromYarValue(request, 'introducingInnovation', 'multi-answer')
     }
     
     const result = desirabilityAnswersSchema.validate(val, {

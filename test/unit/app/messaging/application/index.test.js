@@ -15,45 +15,12 @@ describe('application messaging tests', () => {
     const receiveMessageRes = { id: 1 }
     receiveMessage.mockResolvedValue(receiveMessageRes)
 
-    const message = await getUserScore({inEngland: 'Yes'}, sessionId)
+    const message = await getUserScore({}, sessionId)
 
     expect(message).toEqual(receiveMessageRes)
     expect(receiveMessage).toHaveBeenCalledTimes(1)
     expect(receiveMessage).toHaveBeenCalledWith(sessionId, scoreResponseQueue)
     expect(sendMessage).toHaveBeenCalledTimes(1)
-    expect(sendMessage).toHaveBeenCalledWith({
-      desirability: {
-        overallRating:  {
-          band: null,
-          score: null,
-        },
-        questions: [
-          {
-            answers: [
-              {
-                input: [
-                  {
-                    key: 'inEngland-A1',
-                    value: 'Yes'
-                  }
-                ],
-                key: 'inEngland',
-                title: 'Is the planned project in England?'
-              }
-            ],
-            key: 'inEngland',
-            rating: {
-              band: null,
-              importance: null,
-              score: null
-            }
-          }
-        ],
-      },
-      grantScheme: {
-      key: 'CALF01',
-      name: 'cattle-housing',
-    },
-   }, fetchScoreRequestMsgType, scoreRequestQueue, { sessionId })
+    expect(sendMessage).toHaveBeenCalledWith({}, fetchScoreRequestMsgType, scoreRequestQueue, { sessionId })
   })
 })

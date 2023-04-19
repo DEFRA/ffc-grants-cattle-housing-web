@@ -12,6 +12,7 @@ const schema = Joi.object({
   serviceEndDate: Joi.string().default(serviceEndDate),
   serviceEndTime: Joi.string().default(serviceEndTime),
   cookiePassword: Joi.string().default('dummycookiepassworddummycookiepassword'),
+  surveyLink: Joi.string().default('someValue'),
   googleTagManagerKey: Joi.string().default('GTM-WJ5C78H'),
   googleTagManagerServerKey: Joi.string().default('UA-179628664-4'),
   protectiveMonitoringUrl: Joi.string().allow(''),
@@ -34,6 +35,7 @@ const schema = Joi.object({
 const config = {
   urlPrefix: process.env.URL_PREFIX,
   cookiePassword: process.env.COOKIE_PASSWORD,
+  surveyLink: process.env.SURVEY_LINK,
   googleTagManagerKey: process.env.GOOGLE_TAG_MANAGER_KEY,
   googleTagManagerServerKey: process.env.GOOGLE_TAG_MANAGER_SERVER_KEY,
   protectiveMonitoringUrl: process.env.PROTECTIVE_MONITORING_URL,

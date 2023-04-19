@@ -376,7 +376,7 @@ const questionBank = {
           backUrl: 'planning-permission',
           nextUrl: 'project-started',
           maybeEligible: true,
-          preValidationKeys: ['inEngland'],
+          preValidationKeys: ['planningPermission'],
           maybeEligibleContent: {
             messageHeader: 'You may be able to apply for a grant from this scheme',
             messageContent: 'Any planning permission must be in place by 31 January 2024 (the end of the application window).'
@@ -2127,7 +2127,7 @@ const questionBank = {
             }]
           },
           answers: [],
-          yarKey: 'floorSpaceUnder100kg'
+          yarKey: 'floorSpace'
         },
         {
           key: 'floor-space-100kg-150kg',
@@ -2190,7 +2190,7 @@ const questionBank = {
             }]
           },
           answers: [],
-          yarKey: 'floorSpace100kg150kg'
+          yarKey: 'floorSpace'
         },
         {
           key: 'floor-space-over150kg',
@@ -2253,7 +2253,7 @@ const questionBank = {
             }]
           },
           answers: [],
-          yarKey: 'floorSpaceOver150kg'
+          yarKey: 'floorSpace'
         },
         {
           key: 'environmental-impact',
@@ -3450,7 +3450,7 @@ const questionBank = {
             <a class="govuk-link" title="Send email to RPA" target="_blank" rel="noopener noreferrer" href="mailto:ftf@rpa.gov.uk">FTF@rpa.gov.uk</a><br/><br/>
             
             <h2 class="govuk-heading-m">What happens next</h2>
-            <p>1. RPA will be in touch when the full application period opens. They will tell you if your project scored well enough to get the full application form.</p>
+            <p>1. RPA will be in touch when the full application period opens to tell you if your project is invited to submit a full application form.</p>
             <p>2. If you submit an application, RPA will assess it against other projects and value for money. You will not automatically get a grant. The grant is expected to be highly competitive and you are competing against other projects.</p>
             <p>3. If your application is successful, you’ll be sent a funding agreement and can begin work on the project.</p>
             `,
@@ -3461,7 +3461,7 @@ const questionBank = {
             <p>Before you start the project, you can:</p>
             <ul>
               <li>get quotes from suppliers</li>
-              <li>apply for planning permission or an abstraction licence</li>
+              <li>apply for planning permission</li>
             </ul>
             <p class="govuk-body"><a class="govuk-link" href="${process.env.SURVEY_LINK}" target="_blank" rel="noopener noreferrer">What do you think of this service?</a></p>
             `
