@@ -207,6 +207,7 @@ function getEmailDetails (submission, rpaEmail, isAgentEmail = false) {
       projectStart: submission.projectStart,
       tenancy: submission.tenancy,
       isTenancyLength: submission.tenancyLength ? 'Yes' : 'No',
+      project: submission.project ?? ' ',
       calfWeight: submission.calfWeight ?? ' ',
       livingSpace: submission.livingSpace ?? ' ',
       housedIndividually: submission.housedIndividually ?? ' ',

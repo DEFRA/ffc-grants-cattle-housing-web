@@ -1824,7 +1824,7 @@ const questionBank = {
           baseUrl: 'automatic-calf-feeder',
           backUrl: 'calf-group-size',
           nextUrl: 'moisture-control',
-          preValidationKeys: ['numberOfCalves'],
+          preValidationKeys: ['calfGroupSize'],
           pageTitle: '',
           title: 'How many calves will you have per automatic feeder?',
           fundingPriorities: '',
