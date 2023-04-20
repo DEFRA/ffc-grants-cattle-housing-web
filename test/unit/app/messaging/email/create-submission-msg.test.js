@@ -1,7 +1,3 @@
-const agentSubmission = require('./submission-agent.json')
-const farmerSubmission = require('./submission-farmer.json')
-const desirabilityScore = require('../../../../../app/helpers/desirability-score.json')
-
 describe('Create submission messages', () => {
   const createSubmissionMsg = require('../../../../../app/messaging/email/create-submission-msg')
   const testTimeConstant = new Date(2022, 8, 18)

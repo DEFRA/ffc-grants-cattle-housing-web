@@ -272,7 +272,7 @@ function spreadsheet (submission, desirabilityScore) {
 
 module.exports = function (submission, desirabilityScore) {
   return {
-    applicantEmail: getEmailDetails(submission, false),
+    applicantEmail: getEmailDetails(submission, desirabilityScore, false),
     agentEmail: submission.applying === 'Agent' ? getEmailDetails(submission,desirabilityScore, false, true) : null,
     rpaEmail: spreadsheetConfig.sendEmailToRpa ? getEmailDetails(submission, desirabilityScore, spreadsheetConfig.rpaEmail) : null,
     spreadsheet: spreadsheet(submission, desirabilityScore)
