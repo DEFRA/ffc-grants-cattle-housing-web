@@ -61,13 +61,13 @@ test('Email part of message should have correct properties', () => {
     expect(msg.applicantEmail.details).toHaveProperty(
         'firstName', 'lastName', 'referenceNumber', 'overallRating', 'legalStatus',
         'location', 'landOwnership', 'tenancyAgreement', 'project',
-        'irrigationEquipment', 'technology', 'itemsCost', 'potentialFunding', 'remainingCost',
-        'projectStarted', 'planningPermission', 'abstractionLicence', 'projectName',
-        'waterSourceScore', 'irrigationCurrent', 'irrigationPlanned', 
-        'productivity', 'productivityScore', 'collaboration', 'collaborationScore', 'businessName',
+        'technology', 'itemsCost', 'potentialFunding', 'remainingCost',
+        'projectStarted', 'planningPermission', 'projectName', 'businessName',
         'farmerName', 'farmerSurname', 'agentName', 'agentSurname', 'farmerEmail', 'agentEmail',
         'contactConsent', 'scoreDate', 'introducingInnovation', 'sustainableMaterials', 'environmentalImpact',
         'floorSpace', 'permanentSickPen', 'moistureControl', 'automaticCalfFeeder', 'calfGroupSize', 'housing',
+        'housingScore', 'calfGroupSizeScore', 'automaticCalfFeederScore', 'moistureControlScore', 'permanentSickPenScore',
+        'floorSpaceScore', 'environmentalImpactScore', 'sustainableMaterialsScore', 'introducingInnovationScore',
         'projectCost','roofSolarPV','lighting','additionalItems','drainageSlope','structure', 'enrichment',
         'concreteFlooring', 'strawBedding', 'isolateCalves', 'housedIndividually', 'livingSpace', 'calfWeight'
     )
