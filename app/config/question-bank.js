@@ -1772,7 +1772,7 @@ const questionBank = {
           url: 'group-size',
           baseUrl: 'group-size',
           backUrl: 'housing',
-          nextUrl: 'number-of-calves',
+          nextUrl: 'automatic-calf-feeder',
           preValidationKeys: ['housing'],
           pageTitle: '',
           title: 'What will be the average group size for calves over 7 days old?',
@@ -1818,60 +1818,13 @@ const questionBank = {
           yarKey: 'calfGroupSize'
         },
         {
-          key: 'number-of-calves',
-          order: 270,
-          url: 'number-of-calves',
-          baseUrl: 'number-of-calves',
-          backUrl: 'group-size',
-          nextUrl: 'automatic-calf-feeder',
-          preValidationKeys: ['calfGroupSize'],
-          pageTitle: '',
-          title: 'What will be the maximum number of calves in the calf housing?',
-          fundingPriorities: '',
-          type: 'single-answer',
-          score: {
-            isScore: true
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select what will be the maximum number of calves housed in the calf housing'
-            }
-          ],
-          answers: [
-            {
-              key: 'number-of-calves-A1',
-              value: '2 to 50'
-            },
-            {
-              key: 'number-of-calves-A2',
-              value: '51 to 100'
-            },
-            {
-              key: 'number-of-calves-A3',
-              value: 'Over 100'
-            }
-          ],
-          sidebar: {
-            values: [
-              {
-                heading: 'Funding Priorities',
-                content: [{
-                  para: 'RPA wants to fund projects that house 50 calves or fewer in a single air space.'
-                }]
-              }
-            ]
-          },
-          yarKey: 'numberOfCalves'
-        },
-        {
           key: 'automatic-calf-feeder',
           order: 280,
           url: 'automatic-calf-feeder',
           baseUrl: 'automatic-calf-feeder',
-          backUrl: 'number-of-calves',
+          backUrl: 'calf-group-size',
           nextUrl: 'moisture-control',
-          preValidationKeys: ['numberOfCalves'],
+          preValidationKeys: [ 'calfGroupSize' ],
           pageTitle: '',
           title: 'How many calves will you have per automatic feeder?',
           fundingPriorities: '',
@@ -1929,7 +1882,7 @@ const questionBank = {
           baseUrl: 'moisture-control',
           backUrl: 'automatic-calf-feeder',
           nextUrl: 'permanent-sick-pen',
-          preValidationKeys: ['automaticCalfFeeder'],
+          preValidationKeys: ['calfGroupSize'],
           pageTitle: '',
           title: 'How will your building control moisture?',
           hint: {
