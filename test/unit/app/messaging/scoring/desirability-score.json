@@ -54,33 +54,9 @@
 				}
 			},
 			{
-				"title": "Maximum number of calves",
-				"url": "number-of-calves",
-				"backUrl": "group-size",
-				"fundingPriorities": "Improve health/welfare",
-				"key": "number-of-calves",
-				"answers": [
-					{
-						"key": "number-of-calves",
-						"title": "What will be the maximum number of calves in the calf housing?",
-						"input": [
-							{
-								"key": "number-of-calves-A2",
-								"value": "51 to 100"
-							}
-						]
-					}
-				],
-				"rating": {
-					"score": 9,
-					"band": "Strong",
-					"importance": null
-				}
-			},
-			{
 				"title": "Calves per automatic calf feeder",
 				"url": "automatic-calf-feeder",
-				"backUrl": "number-of-calves",
+				"backUrl": "housing",
 				"fundingPriorities": "Improve health/welfare",
 				"key": "automatic-calf-feeder",
 				"answers": [
@@ -152,7 +128,7 @@
 			{
 				"title": "Environmental impact",
 				"url": "environmental-impact",
-				"backUrl": "number-of-calves",
+				"backUrl": "housing",
 				"fundingPriorities": "Improve health/welfare",
 				"key": "environmental-impact",
 				"answers": [
@@ -176,7 +152,7 @@
 			{
 				"title": "Sustainable materials",
 				"url": "automatic-calf-feeder",
-				"backUrl": "number-of-calves",
+				"backUrl": "housing",
 				"fundingPriorities": "Improve health/welfare",
 				"key": "automatic-calf-feeder",
 				"answers": [
@@ -200,7 +176,7 @@
 			{
 				"title": "Innovation",
 				"url": "automatic-calf-feeder",
-				"backUrl": "number-of-calves",
+				"backUrl": "housing",
 				"fundingPriorities": "Improve health/welfare",
 				"key": "automatic-calf-feeder",
 				"answers": [
