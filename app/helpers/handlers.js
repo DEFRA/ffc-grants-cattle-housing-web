@@ -274,7 +274,12 @@ const showPostPage = (currentQuestion, request, h) => {
     setYarValue(request, yarKey, '')
   }
   for (const [key, value] of Object.entries(payload)) {
-    thisAnswer = answers?.find(answer => (answer.value === value))
+    // if statement added for multi-input eligibility for non-eligible
+    if(typeof(value) === "object"){
+      thisAnswer = answers?.find(answer => (answer.value === value[0]))
+    }else{
+      thisAnswer = answers?.find(answer => (answer.value === value))
+    }
     // if (yarKey === 'cover' && thisAnswer.key === 'cover-A2') {
     //   request.yar.set('coverType', '')
     //   request.yar.set('coverSize', '')
