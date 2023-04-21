@@ -212,6 +212,7 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       projectPostcode: submission.farmerDetails.projectPostcode,
       projectStart: submission.projectStart,
       tenancy: submission.tenancy,
+      tenancyLength: submission.tenancyLength ?? ' ', 
       isTenancyLength: submission.tenancyLength ? 'Yes' : 'No',
       project: submission.project ?? ' ',
       calfWeight: submission.calfWeight ?? ' ',
