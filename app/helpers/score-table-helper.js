@@ -18,15 +18,6 @@ const tableOrder = [
 		yarKey: 'calfGroupSize',
 	},
     {
-		key: 'number-of-calves',
-		order: 3,
-		title: 'Maximum number of calves',
-		pageTitle: 'Maximum number of calves',
-		url: 'number-of-calves',
-		fundingPriorities: 'Improve health/welfare',
-		yarKey: 'numberOfCalves',
-	},
-    {
 		key: 'automatic-calf-feeder',
 		order: 4,
 		title: 'Calves per automatic calf feeder',
