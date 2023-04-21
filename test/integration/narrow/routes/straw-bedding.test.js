@@ -36,7 +36,7 @@ describe('Page: /straw-bedding', () => {
       method: 'POST',
       url: `${global.__URLPREFIX__}/straw-bedding`,
       headers: { cookie: 'crumb=' + crumbToken },
-      payload: { strawBedding: null, crumb: crumbToken }
+      payload: { crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
