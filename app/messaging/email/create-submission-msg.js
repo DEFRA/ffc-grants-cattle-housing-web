@@ -2,6 +2,12 @@ const emailConfig = require('./config/email')
 const spreadsheetConfig = require('./config/spreadsheet')
 const { microTurnover, smallTurnover, mediumTurnover, microEmployeesNum, smallEmployeesNum, mediumEmployeesNum } = require('./business-size-constants')
 
+function getQuestionScoreBand (questions, questionKey) {
+  return questions.filter(question => question.key === questionKey).length > 0
+    ? questions.find(question => question.key === questionKey).rating.band
+    : ''
+}
+
 function generateRow (rowNumber, name, value, bold = false) {
   return {
     row: rowNumber,
@@ -87,7 +93,7 @@ const getPlanningPermissionDoraValue = (planningPermission) => {
 //   return projectItems.join('|')
 // }
 
-function getSpreadsheetDetails (submission) {
+function getSpreadsheetDetails (submission, desirabilityScore) {
   const today = new Date()
   const todayStr = today.toLocaleDateString('en-GB')
   const schemeName = 'Cattle Housing'
@@ -157,8 +163,8 @@ function getSpreadsheetDetails (submission) {
           generateRow(54, 'Electronic OA received date ', todayStr),
           generateRow(370, 'Status', 'Pending RPA review'),
           generateRow(85, 'Full Application Submission Date', (new Date(today.setMonth(today.getMonth() + 6))).toLocaleDateString('en-GB')),
-          generateRow(375, 'OA percent', 0),
-          generateRow(365, 'OA score', 0),
+          generateRow(375, 'OA percent', String(desirabilityScore.desirability.overallRating.score)),
+          generateRow(365, 'OA score', desirabilityScore.desirability.overallRating.band),
           ...addAgentDetails(submission.agentsDetails)
         ]
       }
@@ -166,19 +172,19 @@ function getSpreadsheetDetails (submission) {
   }
 }
 
-// function getCurrencyFormat (amount) {
-//   return Number(amount).toLocaleString('en-US', { minimumFractionDigits: 0, style: 'currency', currency: 'GBP' })
-// }
-
-const getItemUnit = (otherItem) => {
-  if (otherItem.includes('pump') || otherItem.includes('slurry store')) {
-    return 'item(s)'
-  } else if (otherItem.includes('pipework') || otherItem.includes('channels') || otherItem.includes('below ground')) {
-    return 'm'
-  } else {
-    return 'm³'
-  }
+function getCurrencyFormat (amount) {
+  return Number(amount).toLocaleString('en-US', { minimumFractionDigits: 0, style: 'currency', currency: 'GBP' })
 }
+
+// const getItemUnit = (otherItem) => {
+//   if (otherItem.includes('pump') || otherItem.includes('slurry store')) {
+//     return 'item(s)'
+//   } else if (otherItem.includes('pipework') || otherItem.includes('channels') || otherItem.includes('below ground')) {
+//     return 'm'
+//   } else {
+//     return 'm³'
+//   }
+// }
 
 // function displayObject (itemSizeQuantities, otherItems) {
 //   let unit
@@ -190,7 +196,7 @@ const getItemUnit = (otherItem) => {
 //   return projectItems
 // }
 
-function getEmailDetails (submission, rpaEmail, isAgentEmail = false) {
+function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail = false) {
   const email = isAgentEmail ? submission.agentsDetails.emailAddress : submission.farmerDetails.emailAddress
   return {
     notifyTemplate: emailConfig.notifyTemplate,
@@ -206,11 +212,42 @@ function getEmailDetails (submission, rpaEmail, isAgentEmail = false) {
       projectPostcode: submission.farmerDetails.projectPostcode,
       projectStart: submission.projectStart,
       tenancy: submission.tenancy,
+      tenancyLength: submission.tenancyLength ?? ' ', 
       isTenancyLength: submission.tenancyLength ? 'Yes' : 'No',
-      tenancyLength: submission.tenancyLength ?? ' ',
-      // projectCost: getCurrencyFormat(submission.itemsTotalValue),
-      // potentialFunding: getCurrencyFormat(submission.calculatedGrant),
-      // remainingCost: submission.remainingCosts,
+      project: submission.project,
+      calfWeight: submission.calfWeight,
+      livingSpace: submission.livingSpace,
+      housedIndividually: submission.housedIndividually,
+      isolateCalves: submission.isolateCalves,
+      strawBedding: submission.strawBedding,
+      concreteFlooring: submission.concreteFlooring,
+      enrichment: submission.enrichment,
+      structure: submission.structure,
+      drainageSlope: submission.drainageSlope,
+      additionalItems: submission.additionalItems,
+      lighting: submission.lighting,
+      roofSolarPV: submission.roofSolarPV,
+      projectCost: getCurrencyFormat(submission.projectCost),
+      potentialFunding: getCurrencyFormat(submission.calculatedGrant),
+      remainingCost: submission.remainingCosts,
+      housing: submission.housing,
+      housingScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'housing'),
+      calfGroupSize: submission.calfGroupSize,
+      calfGroupSizeScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'calf-group-size'),
+      automaticCalfFeeder: submission.automaticCalfFeeder,
+      automaticCalfFeederScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'automatic-calf-feeder'),
+      moistureControl: submission.moistureControl,
+      moistureControlScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'moisture-control'),
+      permanentSickPen: submission.permanentSickPen,
+      permanentSickPenScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'permanent-sick-pen'),
+      floorSpace: submission.floorSpace,
+      floorSpaceScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'floor-space'),
+      environmentalImpact: submission.environmentalImpact,
+      environmentalImpactScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'environmental-impact'),
+      sustainableMaterials: submission.sustainableMaterials,
+      sustainableMaterialsScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'sustainable-materials'),
+      introducingInnovation: submission.introducingInnovation,
+      introducingInnovationScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'introducing-innovation'),
       projectName: submission.businessDetails.projectName,
       projectType: submission.projectType,
       businessName: submission.businessDetails.businessName,
@@ -220,6 +257,7 @@ function getEmailDetails (submission, rpaEmail, isAgentEmail = false) {
       isAgent: submission.agentsDetails ? 'Yes' : 'No',
       agentName: submission.agentsDetails?.firstName ?? ' ',
       agentSurname: submission.agentsDetails?.lastName ?? ' ',
+      agentBusinessName: submission.agentDetails?.businessName ?? 'N/A',
       agentEmail: submission.agentsDetails?.emailAddress ?? ' ',
       contactConsent: submission.consentOptional ? 'Yes' : 'No',
       scoreDate: new Date().toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' }),
@@ -228,16 +266,16 @@ function getEmailDetails (submission, rpaEmail, isAgentEmail = false) {
   }
 }
 
-function spreadsheet (submission) {
-  const data = getSpreadsheetDetails(submission)
+function spreadsheet (submission, desirabilityScore) {
+  const data = getSpreadsheetDetails(submission, desirabilityScore)
   return data
 }
 
-module.exports = function (submission) {
+module.exports = function (submission, desirabilityScore) {
   return {
-    applicantEmail: getEmailDetails(submission, false),
-    agentEmail: submission.applying === 'Agent' ? getEmailDetails(submission, false, true) : null,
-    rpaEmail: spreadsheetConfig.sendEmailToRpa ? getEmailDetails(submission, spreadsheetConfig.rpaEmail) : null,
-    spreadsheet: spreadsheet(submission)
+    applicantEmail: getEmailDetails(submission, desirabilityScore, false),
+    agentEmail: submission.applying === 'Agent' ? getEmailDetails(submission,desirabilityScore, false, true) : null,
+    rpaEmail: spreadsheetConfig.sendEmailToRpa ? getEmailDetails(submission, desirabilityScore, spreadsheetConfig.rpaEmail) : null,
+    spreadsheet: spreadsheet(submission, desirabilityScore)
   }
 }

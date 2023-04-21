@@ -2,14 +2,10 @@ const { sendDesirabilitySubmitted } = require('../senders')
 const createMsg = require('./create-submission-msg')
 const appInsights = require('../../services/app-insights')
 
-const desirabilityScore = 'Strong'
 
 module.exports = async function (msg) {
   try {
-    const { body: submissionDetails, correlationId } = msg
-
-    // Get details from cache regarding desirability score
-    // const desirabilityScore = await cache.getDesirabilityScore(correlationId)
+    const { body: submissionDetails, correlationId, scoring: desirabilityScore } = msg
 
     console.log('MADE IT TO DETAILS', submissionDetails, 'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW')
     const msgOut = createMsg(submissionDetails, desirabilityScore)
