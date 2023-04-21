@@ -35,6 +35,7 @@
     "planningPermission": "Yes",
     "projectStart": "Yes, preparatory work",
     "tenancy": "Yes",
+    "tenancyLength":"Yes",
     "isTenancyLength": "Yes",
     "businessDetails": {
         "projectName": "Test Project",
