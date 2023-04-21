@@ -146,7 +146,7 @@ const getPage = async (question, request, h) => {
       }
       confirmationId = getConfirmationId(request.yar.id)
       try {
-        const emailData = await emailFormatting({ body: createMsg.getAllDetails(request, confirmationId) }, request.yar.id)
+        const emailData = await emailFormatting({ body: createMsg.getAllDetails(request, confirmationId), scoring: getYarValue(request, "overAllScore") }, request.yar.id)
         await senders.sendDesirabilitySubmitted(emailData, request.yar.id) // replace with sendDesirabilitySubmitted, and replace first param with call to function in process-submission
         await gapiService.sendDimensionOrMetrics(request, [{
           dimensionOrMetric: gapiService.dimensions.CONFIRMATION,
@@ -238,17 +238,7 @@ const getPage = async (question, request, h) => {
       }
     }
     // case 'score':
-    case 'living-space-3m2':
-      setYarValue(request, 'livingSpace4m2', null)
-      setYarValue(request, 'livingSpace5m2', null)
-      
-    case 'living-space-4m2':
-      setYarValue(request, 'livingSpace3m2', null)
-      setYarValue(request, 'livingSpace5m2', null)
-      
-    case 'living-space-5m2':
-      setYarValue(request, 'livingSpace3m2', null)
-      setYarValue(request, 'livingSpace4m2', null)
+  
       
     case 'business-details':
     case 'agent-details':

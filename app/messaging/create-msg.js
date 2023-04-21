@@ -16,7 +16,6 @@ function getAllDetails (request, confirmationId) {
 const desirabilityAnswersSchema = Joi.object({
   housing: Joi.string(),
   calfGroupSize: Joi.string(),
-  numberOfCalves: Joi.string(),
   automaticCalfFeeder: Joi.string(),
   moistureControl: Joi.array().items(Joi.string()),
   permanentSickPen: Joi.array().items(Joi.string()),
@@ -32,7 +31,6 @@ function getDesirabilityAnswers (request) {
     const val = {
       housing: getYarValue(request, 'housing'),
       calfGroupSize: getYarValue(request, 'calfGroupSize'),
-      numberOfCalves: getYarValue(request, 'numberOfCalves'),
       automaticCalfFeeder: getYarValue(request, 'automaticCalfFeeder'),
       moistureControl: getDataFromYarValue(request, 'moistureControl', 'multi-answer'),
       permanentSickPen: getDataFromYarValue(request, 'permanentSickPen', 'multi-answer'),

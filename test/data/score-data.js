@@ -47,26 +47,6 @@ const msgData = {
               }
           },
           {
-              "key": "number-of-calves",
-              "answers": [
-                  {
-                      "key": "number-of-calves",
-                      "title": "What will be the maximum number of calves in the calf housing?",
-                      "input": [
-                          {
-                              "key": "number-of-calves-A2",
-                              "value": "51 to 100"
-                          }
-                      ]
-                  }
-              ],
-              "rating": {
-                  "score": 0,
-                  "band": "Weak",
-                  "importance": null
-              }
-          },
-          {
               "key": "automatic-calf-feeder",
               "answers": [
                   {

@@ -45,7 +45,7 @@ describe('Page: /living-space-3m2', () => {
       method: 'POST',
       url: `${global.__URLPREFIX__}/living-space-3m2`,
       headers: { cookie: 'crumb=' + crumbToken },
-      payload: { livingSpace3m2: 'Yes', crumb: crumbToken }
+      payload: { livingSpace: 'Yes', crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
@@ -58,7 +58,7 @@ describe('Page: /living-space-3m2', () => {
       method: 'POST',
       url: `${global.__URLPREFIX__}/living-space-3m2`,
       headers: { cookie: 'crumb=' + crumbToken },
-      payload: { livingSpace3m2: 'No', crumb: crumbToken }
+      payload: { livingSpace: 'No', crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
