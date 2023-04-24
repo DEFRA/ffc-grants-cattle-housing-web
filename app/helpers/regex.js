@@ -24,6 +24,7 @@ const COMMA_EXCLUDE_REGEX = /^[^,]*(?!,)$/g // check
 const DECIMAL_EXCLUDE_REGEX = /^[^.]*(?!.)$/g // check
 const PROJECT_COST_REGEX = /^[1-9]\d*$/
 const STRUCTURE_ELIGIBLITY_REGEX = /^[a-zA-Z0-9,.' -]*$/
+const TWO_DP_NUMBER = /^\d+(\.?)(\d{0,2})$/
 
 
 module.exports = {
@@ -52,5 +53,6 @@ module.exports = {
   ADDRESS_REGEX,
   PROJECT_COST_REGEX,
   CHARS_MAX_25,
-  STRUCTURE_ELIGIBLITY_REGEX
+  STRUCTURE_ELIGIBLITY_REGEX,
+  TWO_DP_NUMBER
 }
