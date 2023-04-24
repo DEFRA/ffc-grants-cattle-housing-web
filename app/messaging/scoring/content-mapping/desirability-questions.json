@@ -84,10 +84,11 @@
         "sustainable-materials-A1": "Low carbon concrete",
         "sustainable-materials-A2": "Steel replacement products",
         "sustainable-materials-A3": "Sustainably sourced timber",
-        "sustainable-materials-A4": "Reused or secondhand materials from elsewhere",
-        "sustainable-materials-A5": "Recycled materials",
-        "sustainable-materials-A6": "Something else",
-        "sustainable-materials-A7": "None of the above"
+        "sustainable-materials-A4": "Reused materials already on site",
+        "sustainable-materials-A5": "Reused or secondhand materials from elsewhere",
+        "sustainable-materials-A6": "Recycled materials",
+        "sustainable-materials-A7": "Something else",
+        "sustainable-materials-A8": "None of the above"
       }
     }
   ],

@@ -2053,11 +2053,11 @@ const questionBank = {
               type: 'NOT_EMPTY',
               error: 'Enter how much space each calf will have'
             },
-            {
-              type: 'REGEX',
-              regex: WHOLE_NUMBER_REGEX,
-              error: 'Floor space must be a whole number'
-            },
+            // {
+            //   type: 'REGEX',
+            //   regex: WHOLE_NUMBER_REGEX,
+            //   error: 'Floor space must be a whole number'
+            // },
             {
               type: 'MIN_MAX',
               min: 1,
@@ -2116,11 +2116,11 @@ const questionBank = {
               type: 'NOT_EMPTY',
               error: 'Enter how much space each calf will have'
             },
-            {
-              type: 'REGEX',
-              regex: WHOLE_NUMBER_REGEX,
-              error: 'Floor space must be a whole number'
-            },
+            // {
+            //   type: 'REGEX',
+            //   regex: WHOLE_NUMBER_REGEX,
+            //   error: 'Floor space must be a whole number'
+            // },
             {
               type: 'MIN_MAX',
               min: 1,
@@ -2179,11 +2179,11 @@ const questionBank = {
               type: 'NOT_EMPTY',
               error: 'Enter how much space each calf will have'
             },
-            {
-              type: 'REGEX',
-              regex: WHOLE_NUMBER_REGEX,
-              error: 'Floor space must be a whole number'
-            },
+            // {
+            //   type: 'REGEX',
+            //   regex: WHOLE_NUMBER_REGEX,
+            //   error: 'Floor space must be a whole number'
+            // },
             {
               type: 'MIN_MAX',
               min: 1,
@@ -2347,6 +2347,13 @@ const questionBank = {
             },
             {
               key: 'sustainable-materials-A4',
+              value: 'Reused materials already on site',
+              hint: {
+                text: 'For example wooden cladding, fencing, pen dividers'
+              }
+            },
+            {
+              key: 'sustainable-materials-A5',
               value: 'Reused or secondhand materials from elsewhere',
               hint: {
                 text: `Wooden cladding, fencing, pen dividers if sourced on site. If elsewhere,
@@ -2355,21 +2362,21 @@ const questionBank = {
               }
             },
             {
-              key: 'sustainable-materials-A5',
+              key: 'sustainable-materials-A6',
               value: 'Recycled materials',
               hint: {
                 text: 'Materials with a recycled content of more than 40%'
               }
             },
             {
-              key: 'sustainable-materials-A6',
+              key: 'sustainable-materials-A7',
               value: 'Something else'
             },
             {
               value: 'divider'
             },
             {
-              key: 'sustainable-materials-A7',
+              key: 'sustainable-materials-A8',
               value: 'None of the above'
             }
           ],
