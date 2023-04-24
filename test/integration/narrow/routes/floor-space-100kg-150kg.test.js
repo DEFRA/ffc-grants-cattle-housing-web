@@ -69,51 +69,51 @@ it('user selects eligible option: \'floorSpace: 22\' -> display environmental-im
     const postOptions = {
         method: 'POST',
         url: `${global.__URLPREFIX__}/floor-space-100kg-150kg`,
-        payload: { floorSpace: '1234s6', crumb: crumbToken },
+        payload: { floorSpace: '1234s', crumb: crumbToken },
         headers: { cookie: 'crumb=' + crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Floor space must be a whole number')
+    expect(postResponse.payload).toContain('Floor space must be 2 decimal places or less')
   })
 
   it('should return an error message if number contains a space', async () => {
     const postOptions = {
     method: 'POST',
     url: `${global.__URLPREFIX__}/floor-space-100kg-150kg`,
-    payload: { floorSpace: '1234 6', crumb: crumbToken },
+    payload: { floorSpace: '123 4', crumb: crumbToken },
     headers: { cookie: 'crumb=' + crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Floor space must be a whole number')
+    expect(postResponse.payload).toContain('Floor space must be 2 decimal places or less')
   })
   it('should return an error message if number contains a comma "," ', async () => {
     const postOptions = {
         method: 'POST',
         url: `${global.__URLPREFIX__}/floor-space-100kg-150kg`,
-        payload: { floorSpace: '123,456', crumb: crumbToken },
+        payload: { floorSpace: '123,4', crumb: crumbToken },
         headers: { cookie: 'crumb=' + crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Floor space must be a whole number')
+    expect(postResponse.payload).toContain('Floor space must be 2 decimal places or less')
   })
 
-  it('should return an error message if a fraction is typed in - it contains a dot "." ', async () => {
+  it('should return an error message if 3dp entered', async () => {
     const postOptions = {
     method: 'POST',
     url: `${global.__URLPREFIX__}/floor-space-100kg-150kg`,
-    payload: { floorSpace: '123.456', crumb: crumbToken },
+    payload: { floorSpace: '12.456', crumb: crumbToken },
     headers: { cookie: 'crumb=' + crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Floor space must be a whole number')
+    expect(postResponse.payload).toContain('Floor space must be 2 decimal places or less')
   })
 
   it('should return an error message if the number of digits typed exceed 5', async () => {
@@ -126,13 +126,53 @@ it('user selects eligible option: \'floorSpace: 22\' -> display environmental-im
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Number must be between 1-99999')
+    expect(postResponse.payload).toContain('Number must be between 4-99.99')
   })
+
+  it('should return an error message if 0 entered', async () => {
+    const postOptions = {
+        method: 'POST',
+        url: `${global.__URLPREFIX__}/floor-space-100kg-150kg`,
+        payload: { floorSpace: '0', crumb: crumbToken },
+        headers: { cookie: 'crumb=' + crumbToken }
+    }
+
+    const postResponse = await global.__SERVER__.inject(postOptions)
+    expect(postResponse.statusCode).toBe(200)
+    expect(postResponse.payload).toContain('Number must be between 4-99.99')
+  })
+
+  it('should return an error message if more than 99.99 entered', async () => {
+    const postOptions = {
+        method: 'POST',
+        url: `${global.__URLPREFIX__}/floor-space-100kg-150kg`,
+        payload: { floorSpace: '100', crumb: crumbToken },
+        headers: { cookie: 'crumb=' + crumbToken }
+    }
+
+    const postResponse = await global.__SERVER__.inject(postOptions)
+    expect(postResponse.statusCode).toBe(200)
+    expect(postResponse.payload).toContain('Number must be between 4-99.99')
+  })
+
+  it('should return an error message if less than base value entered', async () => {
+    const postOptions = {
+        method: 'POST',
+        url: `${global.__URLPREFIX__}/floor-space-100kg-150kg`,
+        payload: { floorSpace: '0', crumb: crumbToken },
+        headers: { cookie: 'crumb=' + crumbToken }
+    }
+
+    const postResponse = await global.__SERVER__.inject(postOptions)
+    expect(postResponse.statusCode).toBe(200)
+    expect(postResponse.payload).toContain('Floor space must be a minimum of 4m2')
+  })
+
   it('should store valid user input and redirect to environmental-impact page', async () => {
     const postOptions = {
         method: 'POST',
         url: `${global.__URLPREFIX__}/floor-space-100kg-150kg`,
-        payload: { floorSpace: '232', crumb: crumbToken },
+        payload: { floorSpace: '23', crumb: crumbToken },
         headers: { cookie: 'crumb=' + crumbToken }
     }
 

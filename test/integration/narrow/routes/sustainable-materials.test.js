@@ -26,6 +26,7 @@ describe('Page: /sustainable-materials', () => {
     expect(response.payload).toContain('Low carbon concrete')
     expect(response.payload).toContain('Steel replacement products')
     expect(response.payload).toContain('Sustainably sourced timber')
+    expect(response.payload).toContain('Reused materials already on site')
     expect(response.payload).toContain('Reused or secondhand materials from elsewhere')
     expect(response.payload).toContain('Recycled materials')
     expect(response.payload).toContain('Something else')
@@ -48,7 +49,7 @@ describe('Page: /sustainable-materials', () => {
       method: 'POST',
       url: `${global.__URLPREFIX__}/sustainable-materials`,
       headers: { cookie: 'crumb=' + crumbToken },
-      payload: { sustainableMaterials: ['None of the above', 'Sustainability sourced wood or materials'], crumb: crumbToken }
+      payload: { sustainableMaterials: ['None of the above', 'Sustainably sourced timber'], crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
