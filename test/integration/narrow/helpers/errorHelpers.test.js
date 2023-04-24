@@ -23,7 +23,7 @@ describe('Get & Post Handlers', () => {
     }
     expect(validateAnswerField(value, 'COMBINATION_ANSWER', details, {})).toBe(true)
 
-    value =  ['Dairy', 'Beef', 'Dairy and Beef']
+    value =  ['Beef (including calf rearing)', 'Dairy (including calf rearing)', 'Pigs']
     details = {
       combinationObject: {
         questionKey: 'applicant-type',
