@@ -91,15 +91,11 @@ const questionBank = {
           baseUrl: 'applicant-type',
           backUrl: 'start',
           nextUrl: 'legal-status',
+          hint:{
+            text:'Select all that apply'
+          },
           ineligibleContent: {
-            messageContent: `
-            This grant is for:</br>
-            <ul class="govuk-list govuk-list--bullet">
-              <li>building new calf housing</li>
-              <li>refurbishing or extending existing calf housing</li>
-            </ul>
-            `,
-            insertText: { text: 'A calf is up to 6 months of age.' },
+            messageContent: `This grant is only for dairy and beef (including calf rearing) famers.`,
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -109,50 +105,75 @@ const questionBank = {
             values: [{
               heading: 'Eligibility',
               content: [{
-                para: 'This grant is for:',
-                items: [
-                  'building new calf housing',
-                  'refurbishing or extending existing calf housing'
-                ],
-                additionalPara: 'A calf is up to 6 months of age.'
+                para: 'This grant is only for dairy and beef (including calf rearing) famers.'
               }]
             }]
           },
           fundingPriorities: 'Improve the environment',
-          type: 'single-answer',
-          minAnswerCount: 1,
+          type: 'multi-answer',
           validate: [
             {
               type: 'NOT_EMPTY',
               error: 'Select the option that applies to you'
+            },
+            {
+              type: 'STANDALONE_ANSWER',
+              error: 'You cannot select that combination of options',
+              standaloneObject: {
+                questionKey: 'applicant-type',
+                answerKey: 'applicant-type-A10'
+              }
             }
           ],
           answers: [
             {
               key: 'applicant-type-A1',
-              value: 'Dairy'
+              value: 'Beef (including calf rearing)'
             },
             {
               key: 'applicant-type-A2',
-              value: 'Beef'
+              value: 'Dairy (including calf rearing)'
             },
             {
               key: 'applicant-type-A3',
-              value: 'Dairy and Beef'
+              value: 'Pigs',
+              notEligible: true
             },
             {
               key: 'applicant-type-A4',
-              value: 'Dairy and other livestock or arable'
+              value: 'Sheep',
+              notEligible: true
             },
             {
               key: 'applicant-type-A5',
-              value: 'Beef and other livestock or arable'
+              value: 'Laying hens',
+              notEligible: true
+            },
+            {
+              key: 'applicant-type-A6',
+              value: 'Meat chickens',
+              notEligible: true
+            },
+            {
+              key: 'applicant-type-A7',
+              value: 'Aquaculture',
+              notEligible: true
+            },
+            {
+              key: 'applicant-type-A8',
+              value: 'Arable',
+              notEligible: true
+            },
+            {
+              key: 'applicant-type-A9',
+              value: 'Horticulture',
+              notEligible: true
             },
             {
               value: 'divider'
             },
             {
-              key: 'applicant-type-A6',
+              key: 'applicant-type-A10',
               value: 'None of the above',
               notEligible: true
             }
@@ -2460,21 +2481,21 @@ const questionBank = {
               key: 'introducing-innovation-A1',
               value: 'Technology',
               hint: {
-                text: 'For example, advance ventilation control systems, veterinary technology equipment'
+                text: 'For example, automated ventilation control systems, veterinary equipment'
               }
             },
             {
               key: 'introducing-innovation-A2',
               value: 'Collaboration',
               hint: {
-                text: 'For example, partnerships with educational institutions, other farmers or the local community '
+                text: 'Collaborations that are new to your farm or build significantly on existing partnerships (for example, partnerships with educational institutions, other farms or the local community)'
               }
             },
             {
               key: 'introducing-innovation-A3',
               value: 'Techniques',
               hint: {
-                text: 'For example, data recording or digital techniques, pain management techniques'
+                text: 'Techniques that improve stockperson’s skills or animal health and welfare (for example, the use of long-term analgesics for castration or disbudding)'
               }
             },
             {
@@ -3393,9 +3414,8 @@ const questionBank = {
             I am aware that the information I submit will be checked by the RPA.</br></br>
             I am happy to be contacted by Defra and RPA (or third-party on their behalf) about my application.
             <h2 class="govuk-heading-m">Improving our schemes</h2>
-            Defra may wish to contact you to understand your experience of applying for the scheme.
-            Please confirm if you are happy for us to contact you to 
-            take part in optional research activities to help us improve our programmes and delivery.`
+            Defra may wish to contact you to take part in optional research activities to help us improve our programmes and delivery. 
+            Please confirm if you are happy for us to contact you to take part in optional research activities.`
           },
           answers: [
             {
