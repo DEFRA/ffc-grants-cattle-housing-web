@@ -43,7 +43,7 @@ describe('Page: /sustainable-materials', () => {
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
     expect(postResponse.payload).toContain('Select if your building will use sustainable materials')
-  // })
+  })
   // it(' \'None of the above\' selected with another option -> show error message', async () => {
   //   const postOptions = {
   //     method: 'POST',
