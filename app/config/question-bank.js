@@ -2725,8 +2725,7 @@ const questionBank = {
                   error: 'Number of calves must be a whole number'
                 },
                 {
-                  type: 'MIN_MAX',
-                  min: 1,
+                  type: 'MAX_ONLY', // max only
                   max: 9999999,
                   error: 'Number must be between 1-9999999'
                 }
