@@ -159,7 +159,7 @@ it('user selects eligible option: \'floorSpace: 22\' -> display environmental-im
     const postOptions = {
         method: 'POST',
         url: `${global.__URLPREFIX__}/floor-space-under100kg`,
-        payload: { floorSpace: '0', crumb: crumbToken },
+        payload: { floorSpace: '1', crumb: crumbToken },
         headers: { cookie: 'crumb=' + crumbToken }
     }
 
@@ -172,7 +172,7 @@ it('user selects eligible option: \'floorSpace: 22\' -> display environmental-im
     const postOptions = {
         method: 'POST',
         url: `${global.__URLPREFIX__}/floor-space-under100kg`,
-        payload: { floorSpace: '232', crumb: crumbToken },
+        payload: { floorSpace: '23', crumb: crumbToken },
         headers: { cookie: 'crumb=' + crumbToken }
     }
 
