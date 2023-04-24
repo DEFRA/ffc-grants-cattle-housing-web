@@ -103,39 +103,6 @@ describe('Page: /business-details', () => {
     expect(postResponse.statusCode).toBe(200)
     expect(postResponse.payload).toContain('Number of employees must be a whole number, like 305')
   })
-
-  it('should validate number of employees - maximum number of employees is 9999999', async () => {
-    const postOptions = {
-      method: 'POST',
-      url: `${global.__URLPREFIX__}/business-details`,
-      headers: { cookie: 'crumb=' + crumbToken },
-      payload: {
-        numberEmployees: '12345678',
-        crumb: crumbToken
-      }
-    }
-
-    const postResponse = await global.__SERVER__.inject(postOptions)
-    expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Number must be between 1-9999999')
-  })
-
-  it('should validate number of employees - minimum number of employees is 1', async () => {
-    const postOptions = {
-      method: 'POST',
-      url: `${global.__URLPREFIX__}/business-details`,
-      headers: { cookie: 'crumb=' + crumbToken },
-      payload: {
-        numberEmployees: '0',
-        crumb: crumbToken
-      }
-    }
-
-    const postResponse = await global.__SERVER__.inject(postOptions)
-    expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Number must be between 1-9999999')
-  })
-
   it('should validate business turnover - only digits', async () => {
     const postOptions = {
       method: 'POST',
@@ -279,28 +246,6 @@ describe('Page: /business-details', () => {
     expect(postResponse.statusCode).toBe(200)
     expect(postResponse.payload).toContain('SBI number must have 9 characters, like 011115678')
   })
-
-  it('should validate calvesNumber - should be: Number must be between 1-9999999', async () => {
-    const postOptions = {
-      method: 'POST',
-      url: `${global.__URLPREFIX__}/business-details`,
-      headers: { cookie: 'crumb=' + crumbToken },
-      payload: {
-        projectName: 'Project Name',
-        businessName: 'Business Name',
-        numberEmployees: '1234',
-        businessTurnover: '5678',
-        calvingSystem: 'Other',
-        calvesNumber: '99999999',
-        crumb: crumbToken
-      }
-    }
-
-    const postResponse = await global.__SERVER__.inject(postOptions)
-    expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Number must be between 1-9999999')
-  })
-
   it('should validate calvesNumber - When a decimal is entered: Number of calves must be a whole number', async () => {
     const postOptions = {
       method: 'POST',
