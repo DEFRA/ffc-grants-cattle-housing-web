@@ -2690,6 +2690,12 @@ const questionBank = {
                   type: 'REGEX',
                   regex: WHOLE_NUMBER_REGEX,
                   error: 'Number of calves must be a whole number'
+                },
+                {
+                  type: 'MIN_MAX',
+                  min: 1,
+                  max: 9999999,
+                  error: 'Number must be between 1-9999999'
                 }
               ]
             }
