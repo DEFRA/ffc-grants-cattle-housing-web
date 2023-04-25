@@ -11,7 +11,8 @@ const {
   ADDRESS_REGEX,
   PROJECT_COST_REGEX,
   CHARS_MAX_25,
-  STRUCTURE_ELIGIBLITY_REGEX
+  STRUCTURE_ELIGIBLITY_REGEX,
+  TWO_DP_NUMBER
 } = require('../helpers/regex')
 
 const {
@@ -1843,7 +1844,7 @@ const questionBank = {
           order: 280,
           url: 'automatic-calf-feeder',
           baseUrl: 'automatic-calf-feeder',
-          backUrl: 'calf-group-size',
+          backUrl: 'group-size',
           nextUrl: 'moisture-control',
           preValidationKeys: ['calfGroupSize'],
           pageTitle: '',
@@ -2044,7 +2045,7 @@ const questionBank = {
           key: 'floor-space-under100kg',
           order: 310,
           pageTitle: '',
-          classes: 'govuk-input--width-5',
+          classes: 'govuk-input--width-4',
           url: 'floor-space-under100kg',
           baseUrl: 'floor-space-under100kg',
           backUrl: 'permanent-sick-pen',
@@ -2064,7 +2065,7 @@ const questionBank = {
             isPageHeading: true
           },
           hint: {
-            text: 'Enter floor area in square meters (m²), for example 5m²'
+            text: 'Enter floor area in square meters (m2), for example 3.35m2'
           },
           warning: {
             text: 'There must be a minimum floor area of 3m² per calf when largest calf is 100kg or under.'
@@ -2075,22 +2076,31 @@ const questionBank = {
               error: 'Enter how much space each calf will have'
             },
             {
-              type: 'REGEX',
-              regex: WHOLE_NUMBER_REGEX,
-              error: 'Floor space must be a whole number'
+              type: 'ZERO_CHECK',
+              error: 'Number must be between 3-99.99'
             },
             {
-              type: 'MIN_MAX',
-              min: 1,
-              max: 99999,
-              error: 'Number must be between 1-99999'
+              type: 'REGEX',
+              regex: TWO_DP_NUMBER,
+              error: 'Floor space must be 2 decimal places or less'
             },
             {
               type: 'MIN_MAX_CHARS',
               min: 1,
               max: 5,
-              error: 'Number must be between 1-99999'
+              error: 'Number must be between 3-99.99'
+            },
+            {
+              type: 'MIN_ONLY',
+              min: 3,
+              error: 'Floor space must be a minimum of 3m2'
+            },
+            {
+              type: 'MAX_ONLY',
+              max: 99.99,
+              error: 'Number must be between 3-99.99'
             }
+            
           ],
           sidebar: {
             values: [{
@@ -2107,7 +2117,7 @@ const questionBank = {
           key: 'floor-space-100kg-150kg',
           order: 311,
           pageTitle: '',
-          classes: 'govuk-input--width-5',
+          classes: 'govuk-input--width-4',
           url: 'floor-space-100kg-150kg',
           baseUrl: 'floor-space-100kg-150kg',
           backUrl: 'permanent-sick-pen',
@@ -2127,7 +2137,7 @@ const questionBank = {
             isPageHeading: true
           },
           hint: {
-            text: 'Enter floor area in square meters (m²), for example 5m²'
+            text: 'Enter floor area in square meters (m2), for example 4.40m2'
           },
           warning: {
             text: 'There must be a minimum floor area of 4m² per calf when the largest calf is between 100kg and 150kg.'
@@ -2138,21 +2148,29 @@ const questionBank = {
               error: 'Enter how much space each calf will have'
             },
             {
-              type: 'REGEX',
-              regex: WHOLE_NUMBER_REGEX,
-              error: 'Floor space must be a whole number'
+              type: 'ZERO_CHECK',
+              error: 'Number must be between 4-99.99'
             },
             {
-              type: 'MIN_MAX',
-              min: 1,
-              max: 99999,
-              error: 'Number must be between 1-99999'
+              type: 'REGEX',
+              regex: TWO_DP_NUMBER,
+              error: 'Floor space must be 2 decimal places or less'
             },
             {
               type: 'MIN_MAX_CHARS',
               min: 1,
               max: 5,
-              error: 'Number must be between 1-99999'
+              error: 'Number must be between 4-99.99'
+            },
+            {
+              type: 'MIN_ONLY',
+              min: 4,
+              error: 'Floor space must be a minimum of 4m2'
+            },
+            {
+              type: 'MAX_ONLY',
+              max: 99.99,
+              error: 'Number must be between 4-99.99'
             }
           ],
           sidebar: {
@@ -2170,7 +2188,7 @@ const questionBank = {
           key: 'floor-space-over150kg',
           order: 312,
           pageTitle: '',
-          classes: 'govuk-input--width-5',
+          classes: 'govuk-input--width-4',
           url: 'floor-space-over150kg',
           baseUrl: 'floor-space-over150kg',
           backUrl: 'permanent-sick-pen',
@@ -2190,7 +2208,7 @@ const questionBank = {
             isPageHeading: true
           },
           hint: {
-            text: 'Enter floor area in square meters (m²), for example 5m²'
+            text: 'Enter floor area in square meters (m2), for example 5.55m2'
           },
           warning: {
             text: 'There must be a minimum floor area of 5m² per calf when largest calf is over 150kg'
@@ -2201,21 +2219,29 @@ const questionBank = {
               error: 'Enter how much space each calf will have'
             },
             {
-              type: 'REGEX',
-              regex: WHOLE_NUMBER_REGEX,
-              error: 'Floor space must be a whole number'
+              type: 'ZERO_CHECK',
+              error: 'Number must be between 5-99.99'
             },
             {
-              type: 'MIN_MAX',
-              min: 1,
-              max: 99999,
-              error: 'Number must be between 1-99999'
+              type: 'REGEX',
+              regex: TWO_DP_NUMBER,
+              error: 'Floor space must be 2 decimal places or less'
             },
             {
               type: 'MIN_MAX_CHARS',
               min: 1,
               max: 5,
-              error: 'Number must be between 1-99999'
+              error: 'Number must be between 5-99.99'
+            },
+            {
+              type: 'MIN_ONLY',
+              min: 5,
+              error: 'Floor space must be a minimum of 5m2'
+            },
+            {
+              type: 'MAX_ONLY',
+              max: 99.99,
+              error: 'Number must be between 5-99.99'
             }
           ],
           sidebar: {
@@ -2368,6 +2394,13 @@ const questionBank = {
             },
             {
               key: 'sustainable-materials-A4',
+              value: 'Reused materials already on site',
+              hint: {
+                text: 'For example wooden cladding, fencing, pen dividers'
+              }
+            },
+            {
+              key: 'sustainable-materials-A5',
               value: 'Reused or secondhand materials from elsewhere',
               hint: {
                 text: `Wooden cladding, fencing, pen dividers if sourced on site. If elsewhere,
@@ -2376,21 +2409,21 @@ const questionBank = {
               }
             },
             {
-              key: 'sustainable-materials-A5',
+              key: 'sustainable-materials-A6',
               value: 'Recycled materials',
               hint: {
                 text: 'Materials with a recycled content of more than 40%'
               }
             },
             {
-              key: 'sustainable-materials-A6',
+              key: 'sustainable-materials-A7',
               value: 'Something else'
             },
             {
               value: 'divider'
             },
             {
-              key: 'sustainable-materials-A7',
+              key: 'sustainable-materials-A8',
               value: 'None of the above'
             }
           ],
@@ -2692,8 +2725,7 @@ const questionBank = {
                   error: 'Number of calves must be a whole number'
                 },
                 {
-                  type: 'MIN_MAX',
-                  min: 1,
+                  type: 'MAX_ONLY', // max only
                   max: 9999999,
                   error: 'Number must be between 1-9999999'
                 }

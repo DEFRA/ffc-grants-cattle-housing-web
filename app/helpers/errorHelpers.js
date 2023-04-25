@@ -70,6 +70,20 @@ const validateAnswerField = (value, validationType, details, payload) => {
       return (value >= min && value <= max)
     }
 
+    case 'MIN_ONLY': {
+      const { min } = details
+      return (value >= min)
+    }
+
+    case 'MAX_ONLY': {
+      const { max } = details
+      return (value <= max)
+    }
+
+    case 'ZERO_CHECK': {
+      return (value != 0)
+    }
+
     case 'MAX_SELECT': {
       const { max } = details
       return ([value].flat().length <= max)
