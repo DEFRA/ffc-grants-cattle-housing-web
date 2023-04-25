@@ -2366,7 +2366,7 @@ const questionBank = {
               error: 'You cannot select that combination of options',
               standaloneObject: {
                 questionKey: 'sustainable-materials',
-                answerKey: 'sustainable-materials-A7'
+                answerKey: 'sustainable-materials-A8'
               }
             }
           ],
