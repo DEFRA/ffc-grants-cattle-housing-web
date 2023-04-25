@@ -68,7 +68,7 @@ test('Email part of message should have correct properties', () => {
         'floorSpace', 'permanentSickPen', 'moistureControl', 'automaticCalfFeeder', 'calfGroupSize', 'housing',
         'housingScore', 'calfGroupSizeScore', 'automaticCalfFeederScore', 'moistureControlScore', 'permanentSickPenScore',
         'floorSpaceScore', 'environmentalImpactScore', 'sustainableMaterialsScore', 'introducingInnovationScore',
-        'projectCost','roofSolarPV','lighting','additionalItems','drainageSlope','structure', 'enrichment',
+        'projectCost','roofSolarPV','additionalItems','drainageSlope','structure', 'enrichment',
         'concreteFlooring', 'strawBedding', 'isolateCalves', 'housedIndividually', 'livingSpace', 'calfWeight'
     )
 })

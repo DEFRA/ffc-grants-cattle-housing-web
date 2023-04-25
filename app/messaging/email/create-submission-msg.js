@@ -225,7 +225,6 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       structure: submission.structure,
       drainageSlope: submission.drainageSlope,
       additionalItems: submission.additionalItems,
-      lighting: submission.lighting,
       roofSolarPV: submission.roofSolarPV,
       projectCost: getCurrencyFormat(submission.projectCost),
       potentialFunding: getCurrencyFormat(submission.calculatedGrant),

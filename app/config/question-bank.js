@@ -937,7 +937,7 @@ const questionBank = {
           baseUrl: 'isolate-calves',
           url: 'isolate-calves',
           backUrl: 'housed-individually',
-          nextUrl: 'straw-bedding',
+          nextUrl: 'concrete-flooring',
           preValidationKeys: ['housedIndividually'],
           ineligibleContent: {
             messageContent: 'The building must have facilities to temporarily isolate sick calves (for example, a temporary pen erected in an existing pen to isolate a sick calf).',
@@ -978,60 +978,14 @@ const questionBank = {
           yarKey: 'isolateCalves'
         },
         {
-          key: 'straw-bedding',
-          order: 120,
-          title: 'Will the calf housing have cereal straw bedding?',
-          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
-          baseUrl: 'straw-bedding',
-          url: 'straw-bedding',
-          backUrl: 'isolate-calves',
-          nextUrl: 'concrete-flooring',
-          preValidationKeys: ['isolateCalves'],
-          ineligibleContent: {
-            messageContent: 'The calf housing must have cereal straw bedding.',
-            messageLink: {
-              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-              title: 'See other grants you may be eligible for.'
-            }
-          },
-          type: 'single-answer',
-          minAnswerCount: 1,
-          sidebar: {
-            values: [{
-              heading: 'Eligibility',
-              content: [{
-                para: 'The calf housing must have cereal straw bedding.'
-              }]
-            }]
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select yes if the calf housing will have straw bedding'
-            }
-          ],
-          answers: [
-            {
-              key: 'straw-bedding-A1',
-              value: 'Yes'
-            },
-            {
-              key: 'straw-bedding-A2',
-              value: 'No',
-              notEligible: true
-            }
-          ],
-          yarKey: 'strawBedding'
-        },
-        {
           key: 'concrete-flooring',
           order: 130,
           title: 'Will the calf housing have solid concrete flooring?',
           baseUrl: 'concrete-flooring',
           url: 'concrete-flooring',
-          backUrl: 'straw-bedding',
+          backUrl: 'isolate-calves',
           nextUrl: 'enrichment',
-          preValidationKeys: ['strawBedding'],
+          preValidationKeys: ['isolateCalves'],
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           ineligibleContent: {
             messageContent: 'The calf housing must have solid concrete flooring.',
@@ -1386,7 +1340,7 @@ const questionBank = {
           },
           pageTitle: '',
           backUrl: 'draught-protection',
-          nextUrl: 'lighting',
+          nextUrl: 'roof-solar-PV',
           url: 'additional-items',
           baseUrl: 'additional-items',
           preValidationKeys: ['draughtProtection'],
@@ -1442,57 +1396,6 @@ const questionBank = {
           yarKey: 'additionalItems'
         },
         {
-          key: 'lighting',
-          order: 200,
-          title: 'Will the building have fitted lighting of at least 50 lux?',
-          hint: {
-            text: 'Lux is the International System of Units (SI) unit of illuminance (it is equal to one lumen per square metre).'
-          },
-          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
-          pageTitle: '',
-          backUrl: 'additional-items',
-          nextUrl: 'roof-solar-PV',
-          url: 'lighting',
-          baseUrl: 'lighting',
-          preValidationKeys: ['additionalItems'],
-          ineligibleContent: {
-            messageContent: 'The building must have fitted lighting of at least 50 lux.',
-            messageLink: {
-              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-              title: 'See other grants you may be eligible for.'
-            }
-          },
-          fundingPriorities: '',
-          type: 'single-answer',
-          minAnswerCount: 1,
-          sidebar: {
-            values: [{
-              heading: 'Eligibility',
-              content: [{
-                para: 'The building must have fitted lighting of at least 50 lux.'
-              }]
-            }]
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select yes if the building will have fitted lighting of at least 50 lux'
-            }
-          ],
-          answers: [
-            {
-              key: 'lighting-A1',
-              value: 'Yes'
-            },
-            {
-              key: 'lighting-A2',
-              value: 'No',
-              notEligible: true
-            }
-          ],
-          yarKey: 'lighting'
-        },
-        {
           key: 'roof-solar-PV',
           order: 210,
           title: 'Is the roof able to support solar PV panels?',
@@ -1507,11 +1410,11 @@ const questionBank = {
             </div>`
           },
           pageTitle: '',
-          backUrl: 'lighting',
+          backUrl: 'additional-items',
           nextUrl: 'project-cost',
           url: 'roof-solar-PV',
           baseUrl: 'roof-solar-PV',
-          preValidationKeys: ['lighting'],
+          preValidationKeys: ['additionalItems'],
           sidebar: {
             values: [{
               heading: 'Eligibility',

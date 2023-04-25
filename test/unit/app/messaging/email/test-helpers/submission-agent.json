@@ -54,7 +54,6 @@
     "structure":"A-frame building",
     "drainageSlope":"Yes",
     "additionalItems":"Yes",
-    "lighting":"Yes",
     "roofSolarPV":"Yes",
     "projectCost": 100000,
     "potentialFunding": "40000.00",
