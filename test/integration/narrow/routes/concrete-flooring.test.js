@@ -26,7 +26,7 @@ describe('Page: /concrete-flooring', () => {
 
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('Will the calf housing have solid concrete flooring?')
+    expect(response.payload).toContain('Will the calf housing have both concrete flooring and cereal straw bedding?')
     expect(response.payload).toContain('Yes')
     expect(response.payload).toContain('No')
   })
@@ -41,7 +41,7 @@ describe('Page: /concrete-flooring', () => {
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Select yes if the calf housing will have solid concrete flooring')
+    expect(postResponse.payload).toContain('Select yes if the calf housing will have concrete flooring and cereal straw bedding')
   })
 
   it('user selects ineligible option: \'No\' -> display ineligible page', async () => {

@@ -980,7 +980,7 @@ const questionBank = {
         {
           key: 'concrete-flooring',
           order: 130,
-          title: 'Will the calf housing have solid concrete flooring?',
+          title: 'Will the calf housing have both concrete flooring and cereal straw bedding?',
           baseUrl: 'concrete-flooring',
           url: 'concrete-flooring',
           backUrl: 'isolate-calves',
@@ -988,7 +988,7 @@ const questionBank = {
           preValidationKeys: ['isolateCalves'],
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           ineligibleContent: {
-            messageContent: 'The calf housing must have solid concrete flooring.',
+            messageContent: 'The calf housing must have solid concrete flooring and cereal straw bedding.',
             insertText: { text: 'It cannot have slatted or hardcore flooring.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
@@ -1001,7 +1001,7 @@ const questionBank = {
             values: [{
               heading: 'Eligibility',
               content: [{
-                para: 'The calf housing must have solid concrete flooring.',
+                para: 'The calf housing must have solid concrete flooring and cereal straw bedding.',
                 additionalPara: 'It cannot have slatted or hardcore flooring.'
               }]
             }]
@@ -1009,7 +1009,7 @@ const questionBank = {
           validate: [
             {
               type: 'NOT_EMPTY',
-              error: 'Select yes if the calf housing will have solid concrete flooring'
+              error: 'Select yes if the calf housing will have concrete flooring and cereal straw bedding'
             }
           ],
           answers: [
