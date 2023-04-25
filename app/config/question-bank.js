@@ -1335,6 +1335,7 @@ const questionBank = {
             The building must have:</br></br>
             <li>access to a water supply</li>
             <li>at least 2 IP66 electrical sockets in the building</li>
+            <li>fitted lighting of at least 50 lux (lux is equal to one lumen per square metre)</li>
             <li>temperature and humidity data loggers (capable of autonomously recording temperature/humidity over a defined period and storing data to view later)</li>
             </div>`
           },
@@ -1353,7 +1354,8 @@ const questionBank = {
                   items: [
                     'access to a water supply',
                     'at least 2 IP66 electrical sockets in the building',
-                    'temperature and humidity data loggers (capable of autonomously recording temperature/humidity over a defined period and storing data to view later)'
+                    'fitted lighting of at least 50 lux',
+                    'temperature and humidity data loggers'
                   ]
                 }]
               }
@@ -1363,9 +1365,10 @@ const questionBank = {
             messageContent: `<p class="govuk-body">The building must have:</p>
             <div class="govuk-list govuk-list--bullet">
                   <ul>
-                    <li>access to a water supply</li>
                     <li>at least 2 IP66 electrical sockets in the building</li>
-                    <li>temperature and humidity data loggers (capable of autonomously recording temperature/humidity over a defined period and storing data to view later)</li>
+                    <li>access to a water supply</li>
+                    <li>fitted lighting of at least 50 lux</li>
+                    <li>temperature and humidity data loggers</li>
                   </ul>
             </div>`,
             messageLink: {
@@ -2384,7 +2387,7 @@ const questionBank = {
               key: 'introducing-innovation-A1',
               value: 'Technology',
               hint: {
-                text: 'For example, automated ventilation control systems, veterinary equipment'
+                text: 'Machinery or equipment that is new to your funded building. For example, automated ventilation control systems, veterinary equipment'
               }
             },
             {
