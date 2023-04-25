@@ -95,7 +95,7 @@ const questionBank = {
             text:'Select all that apply'
           },
           ineligibleContent: {
-            messageContent: `This grant is only for dairy and beef (including calf rearing) famers.`,
+            messageContent: `This grant is only for dairy and beef (including calf rearing) farmers.`,
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -105,7 +105,7 @@ const questionBank = {
             values: [{
               heading: 'Eligibility',
               content: [{
-                para: 'This grant is only for dairy and beef (including calf rearing) famers.'
+                para: 'This grant is only for dairy and beef (including calf rearing) farmers.'
               }]
             }]
           },
