@@ -95,7 +95,7 @@ const questionBank = {
             text:'Select all that apply'
           },
           ineligibleContent: {
-            messageContent: `This grant is only for dairy and beef (including calf rearing) famers.`,
+            messageContent: `This grant is only for dairy and beef (including calf rearing) farmers.`,
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -105,7 +105,7 @@ const questionBank = {
             values: [{
               heading: 'Eligibility',
               content: [{
-                para: 'This grant is only for dairy and beef (including calf rearing) famers.'
+                para: 'This grant is only for dairy and beef (including calf rearing) farmers.'
               }]
             }]
           },
@@ -2065,7 +2065,7 @@ const questionBank = {
             isPageHeading: true
           },
           hint: {
-            text: 'Enter floor area in square meters (m2), for example 3.35m2'
+            text: 'Enter floor area in square meters (m²), for example 3.35m²'
           },
           warning: {
             text: 'There must be a minimum floor area of 3m² per calf when largest calf is 100kg or under.'
@@ -2093,7 +2093,7 @@ const questionBank = {
             {
               type: 'MIN_ONLY',
               min: 3,
-              error: 'Floor space must be a minimum of 3m2'
+              error: 'Floor space must be a minimum of 3m²'
             },
             {
               type: 'MAX_ONLY',
@@ -2137,7 +2137,7 @@ const questionBank = {
             isPageHeading: true
           },
           hint: {
-            text: 'Enter floor area in square meters (m2), for example 4.40m2'
+            text: 'Enter floor area in square meters (m²), for example 4.40m²'
           },
           warning: {
             text: 'There must be a minimum floor area of 4m² per calf when the largest calf is between 100kg and 150kg.'
@@ -2165,7 +2165,7 @@ const questionBank = {
             {
               type: 'MIN_ONLY',
               min: 4,
-              error: 'Floor space must be a minimum of 4m2'
+              error: 'Floor space must be a minimum of 4m²'
             },
             {
               type: 'MAX_ONLY',
@@ -2208,7 +2208,7 @@ const questionBank = {
             isPageHeading: true
           },
           hint: {
-            text: 'Enter floor area in square meters (m2), for example 5.55m2'
+            text: 'Enter floor area in square meters (m²), for example 5.55m²'
           },
           warning: {
             text: 'There must be a minimum floor area of 5m² per calf when largest calf is over 150kg'
@@ -2236,7 +2236,7 @@ const questionBank = {
             {
               type: 'MIN_ONLY',
               min: 5,
-              error: 'Floor space must be a minimum of 5m2'
+              error: 'Floor space must be a minimum of 5m²'
             },
             {
               type: 'MAX_ONLY',
@@ -2366,7 +2366,7 @@ const questionBank = {
               error: 'You cannot select that combination of options',
               standaloneObject: {
                 questionKey: 'sustainable-materials',
-                answerKey: 'sustainable-materials-A7'
+                answerKey: 'sustainable-materials-A8'
               }
             }
           ],

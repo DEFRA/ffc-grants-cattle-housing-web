@@ -165,7 +165,7 @@ it('user selects eligible option: \'floorSpace: 22\' -> display environmental-im
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Floor space must be a minimum of 5m2')
+    expect(postResponse.payload).toContain('Floor space must be a minimum of 5m²')
   })
   it('should store valid user input and redirect to environmental-impact page', async () => {
     const postOptions = {
