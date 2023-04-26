@@ -17,6 +17,7 @@ const EMAIL_REGEX = /^\w+([.-](\w+))*@[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*(\.[a-zA-Z]
 const ADDRESS_REGEX = /^[a-zA-Z0-9' -]*$/
 const ONLY_TEXT_REGEX = /^[a-zA-Z\s]+$/
 const ONLY_DIGITS_AND_FLOATS_REGEX = /[+-]?([0-9]*[.])?[0-9]+/
+const ONLY_DIGITS_AND_DECIMAL_REGEX = /^[0-9.]+$/
 const PLANNING_REFERENCE_NUMBER_REGEX = /^[a-zA-Z0-9\/]{1,50}$/
 const LETTERS_AND_NUMBERS_REGEX = /^[a-zA-Z0-9]{1,10}$/
 const TWO_NUMBERS_EIGHT_CHARS = /^[a-zA-Z]{2}\d{8}$/
@@ -54,5 +55,6 @@ module.exports = {
   PROJECT_COST_REGEX,
   CHARS_MAX_25,
   STRUCTURE_ELIGIBLITY_REGEX,
-  TWO_DP_NUMBER
+  TWO_DP_NUMBER,
+  ONLY_DIGITS_AND_DECIMAL_REGEX
 }

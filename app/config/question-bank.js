@@ -12,7 +12,8 @@ const {
   PROJECT_COST_REGEX,
   CHARS_MAX_25,
   STRUCTURE_ELIGIBLITY_REGEX,
-  TWO_DP_NUMBER
+  TWO_DP_NUMBER,
+  ONLY_DIGITS_AND_DECIMAL_REGEX
 } = require('../helpers/regex')
 
 const {
@@ -2077,7 +2078,7 @@ const questionBank = {
             },
             {
               type: 'REGEX',
-              regex: ONLY_DIGITS_REGEX,
+              regex: ONLY_DIGITS_AND_DECIMAL_REGEX,
               error: 'Floor space should only include numbers and decimals'
             },
             {
@@ -2154,7 +2155,7 @@ const questionBank = {
             },
             {
               type: 'REGEX',
-              regex: ONLY_DIGITS_REGEX,
+              regex: ONLY_DIGITS_AND_DECIMAL_REGEX,
               error: 'Floor space should only include numbers and decimals'
             },
             {
@@ -2230,7 +2231,7 @@ const questionBank = {
             },
             {
               type: 'REGEX',
-              regex: ONLY_DIGITS_REGEX,
+              regex: ONLY_DIGITS_AND_DECIMAL_REGEX,
               error: 'Floor space should only include numbers and decimals'
             },
             {
