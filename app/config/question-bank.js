@@ -1408,7 +1408,7 @@ const questionBank = {
             <li>the building is listed or on a world heritage site</li>
             <li> you're upgrading an existing building and would not otherwise make changes to the roof </li>
             <li>the roof faces only north or is heavily shaded </li>
-            <li>the roof does not have 20m<sup>2</sup> of clear roof space </li>
+            <li>the roof does not have 20m² of clear roof space </li>
             <li>the roof has a pitch less than 15 degrees or greater than 50 degrees</li>
             </div>`
           },
@@ -1750,7 +1750,7 @@ const questionBank = {
           order: 290,
           url: 'moisture-control',
           baseUrl: 'moisture-control',
-          backUrl: 'calf-group-size',
+          backUrl: 'group-size',
           nextUrl: 'permanent-sick-pen',
           preValidationKeys: ['calfGroupSize'],
           pageTitle: '',
