@@ -47,26 +47,6 @@ const msgData = {
               }
           },
           {
-              "key": "automatic-calf-feeder",
-              "answers": [
-                  {
-                      "key": "automatic-calf-feeder",
-                      "title": "How many calves will you have per automatic feeder?",
-                      "input": [
-                          {
-                              "key": "automatic-calf-feeder-A3",
-                              "value": "9 to 12"
-                          }
-                      ]
-                  }
-              ],
-              "rating": {
-                  "score": 0.7293000000000001,
-                  "band": "Strong",
-                  "importance": null
-              }
-          },
-          {
               "key": "moisture-control",
               "answers": [
                   {

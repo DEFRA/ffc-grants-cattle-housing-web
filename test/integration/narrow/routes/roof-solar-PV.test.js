@@ -74,6 +74,6 @@ describe('Page: /roof-solar-PV', () => {
     }
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('<a href=\"lighting\" class=\"govuk-back-link\">Back</a>')
+    expect(response.payload).toContain('<a href=\"additional-items\" class=\"govuk-back-link\">Back</a>')
   })
 })

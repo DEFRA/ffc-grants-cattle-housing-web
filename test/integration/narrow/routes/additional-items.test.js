@@ -40,7 +40,7 @@ describe('Page: /additional-items', () => {
     expect(postResponse.payload).toContain('Select yes if the building will have these items')
   })
 
-  it('user selects eligible option: \'Yes\' -> display lighting', async () => {
+  it('user selects eligible option: \'Yes\' -> display roof-solar-PV', async () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/additional-items`,
@@ -50,7 +50,7 @@ describe('Page: /additional-items', () => {
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
-    expect(postResponse.headers.location).toBe('lighting')
+    expect(postResponse.headers.location).toBe('roof-solar-PV')
   })
 
   it('user selects ineligible option: \'No\' -> display additional-items ineligible page', async () => {

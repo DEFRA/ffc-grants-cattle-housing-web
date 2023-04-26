@@ -938,7 +938,7 @@ const questionBank = {
           baseUrl: 'isolate-calves',
           url: 'isolate-calves',
           backUrl: 'housed-individually',
-          nextUrl: 'straw-bedding',
+          nextUrl: 'flooring-and-bedding',
           preValidationKeys: ['housedIndividually'],
           ineligibleContent: {
             messageContent: 'The building must have facilities to temporarily isolate sick calves (for example, a temporary pen erected in an existing pen to isolate a sick calf).',
@@ -979,63 +979,17 @@ const questionBank = {
           yarKey: 'isolateCalves'
         },
         {
-          key: 'straw-bedding',
-          order: 120,
-          title: 'Will the calf housing have cereal straw bedding?',
-          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
-          baseUrl: 'straw-bedding',
-          url: 'straw-bedding',
-          backUrl: 'isolate-calves',
-          nextUrl: 'concrete-flooring',
-          preValidationKeys: ['isolateCalves'],
-          ineligibleContent: {
-            messageContent: 'The calf housing must have cereal straw bedding.',
-            messageLink: {
-              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-              title: 'See other grants you may be eligible for.'
-            }
-          },
-          type: 'single-answer',
-          minAnswerCount: 1,
-          sidebar: {
-            values: [{
-              heading: 'Eligibility',
-              content: [{
-                para: 'The calf housing must have cereal straw bedding.'
-              }]
-            }]
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select yes if the calf housing will have straw bedding'
-            }
-          ],
-          answers: [
-            {
-              key: 'straw-bedding-A1',
-              value: 'Yes'
-            },
-            {
-              key: 'straw-bedding-A2',
-              value: 'No',
-              notEligible: true
-            }
-          ],
-          yarKey: 'strawBedding'
-        },
-        {
-          key: 'concrete-flooring',
+          key: 'flooring-and-bedding',
           order: 130,
-          title: 'Will the calf housing have solid concrete flooring?',
-          baseUrl: 'concrete-flooring',
-          url: 'concrete-flooring',
-          backUrl: 'straw-bedding',
+          title: 'Will the calf housing have both concrete flooring and cereal straw bedding?',
+          baseUrl: 'flooring-and-bedding',
+          url: 'flooring-and-bedding',
+          backUrl: 'isolate-calves',
           nextUrl: 'enrichment',
-          preValidationKeys: ['strawBedding'],
+          preValidationKeys: ['isolateCalves'],
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           ineligibleContent: {
-            messageContent: 'The calf housing must have solid concrete flooring.',
+            messageContent: 'The calf housing must have solid concrete flooring and cereal straw bedding.',
             insertText: { text: 'It cannot have slatted or hardcore flooring.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
@@ -1048,7 +1002,7 @@ const questionBank = {
             values: [{
               heading: 'Eligibility',
               content: [{
-                para: 'The calf housing must have solid concrete flooring.',
+                para: 'The calf housing must have solid concrete flooring and cereal straw bedding.',
                 additionalPara: 'It cannot have slatted or hardcore flooring.'
               }]
             }]
@@ -1056,16 +1010,16 @@ const questionBank = {
           validate: [
             {
               type: 'NOT_EMPTY',
-              error: 'Select yes if the calf housing will have solid concrete flooring'
+              error: 'Select yes if the calf housing will have concrete flooring and cereal straw bedding'
             }
           ],
           answers: [
             {
-              key: 'concrete-flooring-A1',
+              key: 'flooring-and-bedding-A1',
               value: 'Yes'
             },
             {
-              key: 'concrete-flooring-A2',
+              key: 'flooring-and-bedding-A2',
               value: 'No',
               notEligible: true
             }
@@ -1082,7 +1036,7 @@ const questionBank = {
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           baseUrl: 'enrichment',
           url: 'enrichment',
-          backUrl: 'concrete-flooring',
+          backUrl: 'flooring-and-bedding',
           nextUrl: 'structure',
           preValidationKeys: ['concreteFlooring'],
           ineligibleContent: {
@@ -1382,12 +1336,13 @@ const questionBank = {
             The building must have:</br></br>
             <li>access to a water supply</li>
             <li>at least 2 IP66 electrical sockets in the building</li>
+            <li>fitted lighting of at least 50 lux (lux is equal to one lumen per square metre)</li>
             <li>temperature and humidity data loggers (capable of autonomously recording temperature/humidity over a defined period and storing data to view later)</li>
             </div>`
           },
           pageTitle: '',
           backUrl: 'draught-protection',
-          nextUrl: 'lighting',
+          nextUrl: 'roof-solar-PV',
           url: 'additional-items',
           baseUrl: 'additional-items',
           preValidationKeys: ['draughtProtection'],
@@ -1400,7 +1355,8 @@ const questionBank = {
                   items: [
                     'access to a water supply',
                     'at least 2 IP66 electrical sockets in the building',
-                    'temperature and humidity data loggers (capable of autonomously recording temperature/humidity over a defined period and storing data to view later)'
+                    'fitted lighting of at least 50 lux',
+                    'temperature and humidity data loggers'
                   ]
                 }]
               }
@@ -1410,9 +1366,10 @@ const questionBank = {
             messageContent: `<p class="govuk-body">The building must have:</p>
             <div class="govuk-list govuk-list--bullet">
                   <ul>
-                    <li>access to a water supply</li>
                     <li>at least 2 IP66 electrical sockets in the building</li>
-                    <li>temperature and humidity data loggers (capable of autonomously recording temperature/humidity over a defined period and storing data to view later)</li>
+                    <li>access to a water supply</li>
+                    <li>fitted lighting of at least 50 lux</li>
+                    <li>temperature and humidity data loggers</li>
                   </ul>
             </div>`,
             messageLink: {
@@ -1443,57 +1400,6 @@ const questionBank = {
           yarKey: 'additionalItems'
         },
         {
-          key: 'lighting',
-          order: 200,
-          title: 'Will the building have fitted lighting of at least 50 lux?',
-          hint: {
-            text: 'Lux is the International System of Units (SI) unit of illuminance (it is equal to one lumen per square metre).'
-          },
-          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
-          pageTitle: '',
-          backUrl: 'additional-items',
-          nextUrl: 'roof-solar-PV',
-          url: 'lighting',
-          baseUrl: 'lighting',
-          preValidationKeys: ['additionalItems'],
-          ineligibleContent: {
-            messageContent: 'The building must have fitted lighting of at least 50 lux.',
-            messageLink: {
-              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-              title: 'See other grants you may be eligible for.'
-            }
-          },
-          fundingPriorities: '',
-          type: 'single-answer',
-          minAnswerCount: 1,
-          sidebar: {
-            values: [{
-              heading: 'Eligibility',
-              content: [{
-                para: 'The building must have fitted lighting of at least 50 lux.'
-              }]
-            }]
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select yes if the building will have fitted lighting of at least 50 lux'
-            }
-          ],
-          answers: [
-            {
-              key: 'lighting-A1',
-              value: 'Yes'
-            },
-            {
-              key: 'lighting-A2',
-              value: 'No',
-              notEligible: true
-            }
-          ],
-          yarKey: 'lighting'
-        },
-        {
           key: 'roof-solar-PV',
           order: 210,
           title: 'Is the roof able to support solar PV panels?',
@@ -1503,16 +1409,16 @@ const questionBank = {
             <li>the building is listed or on a world heritage site</li>
             <li> you're upgrading an existing building and would not otherwise make changes to the roof </li>
             <li>the roof faces only north or is heavily shaded </li>
-            <li>the roof does not have 20m<sup>2</sup> of clear roof space </li>
+            <li>the roof does not have 20m² of clear roof space </li>
             <li>the roof has a pitch less than 15 degrees or greater than 50 degrees</li>
             </div>`
           },
           pageTitle: '',
-          backUrl: 'lighting',
+          backUrl: 'additional-items',
           nextUrl: 'project-cost',
           url: 'roof-solar-PV',
           baseUrl: 'roof-solar-PV',
-          preValidationKeys: ['lighting'],
+          preValidationKeys: ['additionalItems'],
           sidebar: {
             values: [{
               heading: 'Eligibility',
@@ -1795,7 +1701,7 @@ const questionBank = {
           url: 'group-size',
           baseUrl: 'group-size',
           backUrl: 'housing',
-          nextUrl: 'automatic-calf-feeder',
+          nextUrl: 'moisture-control',
           preValidationKeys: ['housing'],
           pageTitle: '',
           title: 'What will be the average group size for calves over 7 days old?',
@@ -1841,71 +1747,13 @@ const questionBank = {
           yarKey: 'calfGroupSize'
         },
         {
-          key: 'automatic-calf-feeder',
-          order: 280,
-          url: 'automatic-calf-feeder',
-          baseUrl: 'automatic-calf-feeder',
-          backUrl: 'group-size',
-          nextUrl: 'moisture-control',
-          preValidationKeys: ['calfGroupSize'],
-          pageTitle: '',
-          title: 'How many calves will you have per automatic feeder?',
-          fundingPriorities: '',
-          type: 'single-answer',
-          score: {
-            isScore: true
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select how many calves you will have per automatic calf feeder'
-            }
-          ],
-          answers: [
-            {
-              key: 'automatic-calf-feeder-A1',
-              value: '1 to 4'
-            },
-            {
-              key: 'automatic-calf-feeder-A2',
-              value: '5 to 8'
-            },
-            {
-              key: 'automatic-calf-feeder-A3',
-              value: '9 to 12'
-            },
-            {
-              key: 'automatic-calf-feeder-A4',
-              value: '13 or more'
-            },
-            {
-              value: 'divider'
-            },
-            {
-              key: 'automatic-calf-feeder-A5',
-              value: 'We do not use an automatic feeder'
-            }
-          ],
-          sidebar: {
-            values: [
-              {
-                heading: 'Funding Priorities',
-                content: [{
-                  para: 'RPA wants to fund projects that have a smaller number of calves per feeder.'
-                }]
-              }
-            ]
-          },
-          yarKey: 'automaticCalfFeeder'
-        },
-        {
           key: 'moisture-control',
           order: 290,
           url: 'moisture-control',
           baseUrl: 'moisture-control',
-          backUrl: 'automatic-calf-feeder',
+          backUrl: 'group-size',
           nextUrl: 'permanent-sick-pen',
-          preValidationKeys: ['automaticCalfFeeder'],
+          preValidationKeys: ['calfGroupSize'],
           pageTitle: '',
           title: 'How will your building control moisture?',
           hint: {
@@ -2497,7 +2345,7 @@ const questionBank = {
               key: 'introducing-innovation-A1',
               value: 'Technology',
               hint: {
-                text: 'For example, automated ventilation control systems, veterinary equipment'
+                text: 'Machinery or equipment that is new to your funded building. For example, automated ventilation control systems, veterinary equipment'
               }
             },
             {

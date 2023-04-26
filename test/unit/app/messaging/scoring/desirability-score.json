@@ -54,30 +54,6 @@
 				}
 			},
 			{
-				"title": "Calves per automatic calf feeder",
-				"url": "automatic-calf-feeder",
-				"backUrl": "housing",
-				"fundingPriorities": "Improve health/welfare",
-				"key": "automatic-calf-feeder",
-				"answers": [
-					{
-						"key": "automatic-calf-feeder",
-						"title": "How many calves will you have per automatic feeder?",
-						"input": [
-							{
-								"key": "automatic-calf-feeder-A2",
-								"value": "5 to 8"
-							}
-						]
-					}
-				],
-				"rating": {
-					"score": 9,
-					"band": "Strong",
-					"importance": null
-				}
-			},
-			{
 				"title": "Sick pen type",
 				"url": "permanent-sick-pen",
 				"backUrl": "moisture-control",

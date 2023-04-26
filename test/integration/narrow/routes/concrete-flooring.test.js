@@ -1,6 +1,6 @@
 const { crumbToken } = require('./test-helper')
 
-describe('Page: /concrete-flooring', () => {
+describe('Page: /flooring-and-bedding', () => {
   const varList = {
     legalStatus: 'randomData',
     projectType: 'fakeData',
@@ -21,12 +21,12 @@ describe('Page: /concrete-flooring', () => {
   it('page loads successfully, with all the options', async () => {
     const options = {
       method: 'GET',
-      url: `${global.__URLPREFIX__}/concrete-flooring`
+      url: `${global.__URLPREFIX__}/flooring-and-bedding`
     }
 
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('Will the calf housing have solid concrete flooring?')
+    expect(response.payload).toContain('Will the calf housing have both concrete flooring and cereal straw bedding?')
     expect(response.payload).toContain('Yes')
     expect(response.payload).toContain('No')
   })
@@ -34,20 +34,20 @@ describe('Page: /concrete-flooring', () => {
   it('no option selected -> show error message', async () => {
     const postOptions = {
       method: 'POST',
-      url: `${global.__URLPREFIX__}/concrete-flooring`,
+      url: `${global.__URLPREFIX__}/flooring-and-bedding`,
       headers: { cookie: 'crumb=' + crumbToken },
       payload: { crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Select yes if the calf housing will have solid concrete flooring')
+    expect(postResponse.payload).toContain('Select yes if the calf housing will have concrete flooring and cereal straw bedding')
   })
 
   it('user selects ineligible option: \'No\' -> display ineligible page', async () => {
     const postOptions = {
       method: 'POST',
-      url: `${global.__URLPREFIX__}/concrete-flooring`,
+      url: `${global.__URLPREFIX__}/flooring-and-bedding`,
       headers: { cookie: 'crumb=' + crumbToken },
       payload: { concreteFlooring: 'No', crumb: crumbToken }
     }
@@ -59,7 +59,7 @@ describe('Page: /concrete-flooring', () => {
   it('user selects eligible option -> store user response and redirect to /enrichment', async () => {
     const postOptions = {
       method: 'POST',
-      url: `${global.__URLPREFIX__}/concrete-flooring`,
+      url: `${global.__URLPREFIX__}/flooring-and-bedding`,
       headers: { cookie: 'crumb=' + crumbToken },
       payload: { concreteFlooring: 'Yes', crumb: crumbToken }
     }
@@ -72,10 +72,10 @@ describe('Page: /concrete-flooring', () => {
   it('page loads with correct back link', async () => {
     const options = {
       method: 'GET',
-      url: `${global.__URLPREFIX__}/concrete-flooring`
+      url: `${global.__URLPREFIX__}/flooring-and-bedding`
     }
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('<a href=\"straw-bedding\" class=\"govuk-back-link\">Back</a>')
+    expect(response.payload).toContain('<a href=\"isolate-calves\" class=\"govuk-back-link\">Back</a>')
   })
 })

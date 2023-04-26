@@ -22,19 +22,6 @@
       }
     }
   ],
-  "automatic-calf-feeder": [
-    {
-      "key": "automatic-calf-feeder",
-      "title": "How many calves will you have per automatic feeder?",
-      "answers": {
-        "automatic-calf-feeder-A1": "1 to 4",
-        "automatic-calf-feeder-A2": "5 to 8",
-        "automatic-calf-feeder-A3": "9 to 12",
-        "automatic-calf-feeder-A4": "13 or more",
-        "automatic-calf-feeder-A5": "We do not use an automatic feeder"
-      }
-    }
-  ],
   "moisture-control": [
     {
       "key": "moisture-control",

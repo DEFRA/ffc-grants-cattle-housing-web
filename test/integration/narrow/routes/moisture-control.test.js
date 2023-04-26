@@ -11,8 +11,7 @@ describe('Page: /moisture-control', () => {
 		isolateCalves: 'Yes',
 		remainingCosts: 'Yes',
 		housing: 'Yes',
-		calfGroupSize: '2 to 3',
-		automaticCalfFeeder: '1 to 4',
+		calfGroupSize: '2 to 3'
 	}
 
 	jest.mock('../../../../app/helpers/session', () => ({
