@@ -938,7 +938,7 @@ const questionBank = {
           baseUrl: 'isolate-calves',
           url: 'isolate-calves',
           backUrl: 'housed-individually',
-          nextUrl: 'concrete-flooring',
+          nextUrl: 'flooring-and-bedding',
           preValidationKeys: ['housedIndividually'],
           ineligibleContent: {
             messageContent: 'The building must have facilities to temporarily isolate sick calves (for example, a temporary pen erected in an existing pen to isolate a sick calf).',
@@ -979,11 +979,11 @@ const questionBank = {
           yarKey: 'isolateCalves'
         },
         {
-          key: 'concrete-flooring',
+          key: 'flooring-and-bedding',
           order: 130,
           title: 'Will the calf housing have both concrete flooring and cereal straw bedding?',
-          baseUrl: 'concrete-flooring',
-          url: 'concrete-flooring',
+          baseUrl: 'flooring-and-bedding',
+          url: 'flooring-and-bedding',
           backUrl: 'isolate-calves',
           nextUrl: 'enrichment',
           preValidationKeys: ['isolateCalves'],
@@ -1015,11 +1015,11 @@ const questionBank = {
           ],
           answers: [
             {
-              key: 'concrete-flooring-A1',
+              key: 'flooring-and-bedding-A1',
               value: 'Yes'
             },
             {
-              key: 'concrete-flooring-A2',
+              key: 'flooring-and-bedding-A2',
               value: 'No',
               notEligible: true
             }
@@ -1036,7 +1036,7 @@ const questionBank = {
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           baseUrl: 'enrichment',
           url: 'enrichment',
-          backUrl: 'concrete-flooring',
+          backUrl: 'flooring-and-bedding',
           nextUrl: 'structure',
           preValidationKeys: ['concreteFlooring'],
           ineligibleContent: {

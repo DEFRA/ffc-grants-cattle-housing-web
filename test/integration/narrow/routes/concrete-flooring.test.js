@@ -1,6 +1,6 @@
 const { crumbToken } = require('./test-helper')
 
-describe('Page: /concrete-flooring', () => {
+describe('Page: /flooring-and-bedding', () => {
   const varList = {
     legalStatus: 'randomData',
     projectType: 'fakeData',
@@ -21,7 +21,7 @@ describe('Page: /concrete-flooring', () => {
   it('page loads successfully, with all the options', async () => {
     const options = {
       method: 'GET',
-      url: `${global.__URLPREFIX__}/concrete-flooring`
+      url: `${global.__URLPREFIX__}/flooring-and-bedding`
     }
 
     const response = await global.__SERVER__.inject(options)
@@ -34,7 +34,7 @@ describe('Page: /concrete-flooring', () => {
   it('no option selected -> show error message', async () => {
     const postOptions = {
       method: 'POST',
-      url: `${global.__URLPREFIX__}/concrete-flooring`,
+      url: `${global.__URLPREFIX__}/flooring-and-bedding`,
       headers: { cookie: 'crumb=' + crumbToken },
       payload: { crumb: crumbToken }
     }
@@ -47,7 +47,7 @@ describe('Page: /concrete-flooring', () => {
   it('user selects ineligible option: \'No\' -> display ineligible page', async () => {
     const postOptions = {
       method: 'POST',
-      url: `${global.__URLPREFIX__}/concrete-flooring`,
+      url: `${global.__URLPREFIX__}/flooring-and-bedding`,
       headers: { cookie: 'crumb=' + crumbToken },
       payload: { concreteFlooring: 'No', crumb: crumbToken }
     }
@@ -59,7 +59,7 @@ describe('Page: /concrete-flooring', () => {
   it('user selects eligible option -> store user response and redirect to /enrichment', async () => {
     const postOptions = {
       method: 'POST',
-      url: `${global.__URLPREFIX__}/concrete-flooring`,
+      url: `${global.__URLPREFIX__}/flooring-and-bedding`,
       headers: { cookie: 'crumb=' + crumbToken },
       payload: { concreteFlooring: 'Yes', crumb: crumbToken }
     }
@@ -72,7 +72,7 @@ describe('Page: /concrete-flooring', () => {
   it('page loads with correct back link', async () => {
     const options = {
       method: 'GET',
-      url: `${global.__URLPREFIX__}/concrete-flooring`
+      url: `${global.__URLPREFIX__}/flooring-and-bedding`
     }
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
