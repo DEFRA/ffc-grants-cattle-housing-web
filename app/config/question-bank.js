@@ -2076,6 +2076,11 @@ const questionBank = {
               error: 'Enter how much space each calf will have'
             },
             {
+              type: 'REGEX',
+              regex: ONLY_DIGITS_REGEX,
+              error: 'Floor space should only include numbers and decimals'
+            },
+            {
               type: 'ZERO_CHECK',
               error: 'Number must be between 3-99.99'
             },
@@ -2148,6 +2153,11 @@ const questionBank = {
               error: 'Enter how much space each calf will have'
             },
             {
+              type: 'REGEX',
+              regex: ONLY_DIGITS_REGEX,
+              error: 'Floor space should only include numbers and decimals'
+            },
+            {
               type: 'ZERO_CHECK',
               error: 'Number must be between 4-99.99'
             },
@@ -2217,6 +2227,11 @@ const questionBank = {
             {
               type: 'NOT_EMPTY',
               error: 'Enter how much space each calf will have'
+            },
+            {
+              type: 'REGEX',
+              regex: ONLY_DIGITS_REGEX,
+              error: 'Floor space should only include numbers and decimals'
             },
             {
               type: 'ZERO_CHECK',
