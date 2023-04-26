@@ -18,15 +18,6 @@ const tableOrder = [
 		yarKey: 'calfGroupSize',
 	},
     {
-		key: 'automatic-calf-feeder',
-		order: 4,
-		title: 'Calves per automatic calf feeder',
-		pageTitle: 'Calves per automatic calf feeder',
-		url: 'automatic-calf-feeder',
-		fundingPriorities: 'Improve health/welfare',
-		yarKey: 'automaticCalfFeeder',
-	},
-    {
 		key: 'moisture-control',
 		order: 5,
 		title: 'Control building moisture',

@@ -233,8 +233,6 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       housingScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'housing'),
       calfGroupSize: submission.calfGroupSize,
       calfGroupSizeScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'calf-group-size'),
-      automaticCalfFeeder: submission.automaticCalfFeeder,
-      automaticCalfFeederScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'automatic-calf-feeder'),
       moistureControl: submission.moistureControl,
       moistureControlScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'moisture-control'),
       permanentSickPen: submission.permanentSickPen,

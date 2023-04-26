@@ -11,7 +11,6 @@ describe('create-msg', () => {
     dict = {
       housing: 'hello',
       calfGroupSize: 'hello',
-      automaticCalfFeeder: 'hello',
       moistureControl: ['hello'],
       permanentSickPen: ['hello'],
       floorSpace: 22,
@@ -22,7 +21,6 @@ describe('create-msg', () => {
     expect(getDesirabilityAnswers({})).toEqual({
       housing: 'hello',
       calfGroupSize: 'hello',
-      automaticCalfFeeder: 'hello',
       moistureControl: ['hello'],
       permanentSickPen: ['hello'],
       floorSpace: 22,
@@ -38,7 +36,6 @@ describe('create-msg', () => {
     // expect(getDesirabilityAnswers({})).toEqual({
     //   housing: 'hello',
     //   calfGroupSize: 'hello',
-    //   automaticCalfFeeder: 'hello',
     //   moistureControl: ['hello'],
     //   permanentSickPen: ['hello'],
     //   floorSpace: 22,

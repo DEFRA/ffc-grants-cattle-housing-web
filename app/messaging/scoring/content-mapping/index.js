@@ -3,7 +3,6 @@ module.exports = {
   desirabilityInputQuestionMapping: {
     housing: 'housing',
     'calf-group-size': 'calfGroupSize',
-    'automatic-calf-feeder': 'automaticCalfFeeder',
     'moisture-control': 'moistureControl',
     'permanent-sick-pen': 'permanentSickPen',
     'floor-space': 'floorSpace',

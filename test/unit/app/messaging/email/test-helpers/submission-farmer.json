@@ -50,7 +50,6 @@
     "remainingCost": "60000.00",
     "housing":"Yes",
     "calfGroupSize":"2 to 3",
-    "automaticCalfFeeder":"5 to 8",
     "moistureControl":["A drain or drainage channel inside the pen", "Positioning drinking areas near drainage and away from bedding"],
     "permanentSickPen":["A permanent sick pen", "A separate air space"],
     "floorSpace":20,

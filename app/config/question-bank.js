@@ -1700,7 +1700,7 @@ const questionBank = {
           url: 'group-size',
           baseUrl: 'group-size',
           backUrl: 'housing',
-          nextUrl: 'automatic-calf-feeder',
+          nextUrl: 'moisture-control',
           preValidationKeys: ['housing'],
           pageTitle: '',
           title: 'What will be the average group size for calves over 7 days old?',
@@ -1746,71 +1746,13 @@ const questionBank = {
           yarKey: 'calfGroupSize'
         },
         {
-          key: 'automatic-calf-feeder',
-          order: 280,
-          url: 'automatic-calf-feeder',
-          baseUrl: 'automatic-calf-feeder',
-          backUrl: 'group-size',
-          nextUrl: 'moisture-control',
-          preValidationKeys: ['calfGroupSize'],
-          pageTitle: '',
-          title: 'How many calves will you have per automatic feeder?',
-          fundingPriorities: '',
-          type: 'single-answer',
-          score: {
-            isScore: true
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select how many calves you will have per automatic calf feeder'
-            }
-          ],
-          answers: [
-            {
-              key: 'automatic-calf-feeder-A1',
-              value: '1 to 4'
-            },
-            {
-              key: 'automatic-calf-feeder-A2',
-              value: '5 to 8'
-            },
-            {
-              key: 'automatic-calf-feeder-A3',
-              value: '9 to 12'
-            },
-            {
-              key: 'automatic-calf-feeder-A4',
-              value: '13 or more'
-            },
-            {
-              value: 'divider'
-            },
-            {
-              key: 'automatic-calf-feeder-A5',
-              value: 'We do not use an automatic feeder'
-            }
-          ],
-          sidebar: {
-            values: [
-              {
-                heading: 'Funding Priorities',
-                content: [{
-                  para: 'RPA wants to fund projects that have a smaller number of calves per feeder.'
-                }]
-              }
-            ]
-          },
-          yarKey: 'automaticCalfFeeder'
-        },
-        {
           key: 'moisture-control',
           order: 290,
           url: 'moisture-control',
           baseUrl: 'moisture-control',
-          backUrl: 'automatic-calf-feeder',
+          backUrl: 'calf-group-size',
           nextUrl: 'permanent-sick-pen',
-          preValidationKeys: ['automaticCalfFeeder'],
+          preValidationKeys: ['calfGroupSize'],
           pageTitle: '',
           title: 'How will your building control moisture?',
           hint: {
