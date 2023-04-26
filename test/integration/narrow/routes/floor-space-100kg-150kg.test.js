@@ -75,7 +75,7 @@ it('user selects eligible option: \'floorSpace: 22\' -> display environmental-im
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Floor space must be 2 decimal places or less')
+    expect(postResponse.payload).toContain('Floor space should only include numbers and decimals')
   })
 
   it('should return an error message if number contains a space', async () => {
@@ -88,7 +88,7 @@ it('user selects eligible option: \'floorSpace: 22\' -> display environmental-im
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Floor space must be 2 decimal places or less')
+    expect(postResponse.payload).toContain('Floor space should only include numbers and decimals')
   })
   it('should return an error message if number contains a comma "," ', async () => {
     const postOptions = {
@@ -100,7 +100,7 @@ it('user selects eligible option: \'floorSpace: 22\' -> display environmental-im
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Floor space must be 2 decimal places or less')
+    expect(postResponse.payload).toContain('Floor space should only include numbers and decimals')
   })
 
   it('should return an error message if 3dp entered', async () => {
