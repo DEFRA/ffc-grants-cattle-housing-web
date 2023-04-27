@@ -37,7 +37,7 @@ function addAgentDetails (agentsDetails) {
     generateRow(27, 'Agent Forename', agentsDetails?.firstName ?? ''),
     generateRow(29, 'Agent Address line 1', agentsDetails?.address1 ?? ''),
     generateRow(30, 'Agent Address line 2', agentsDetails?.address2 ?? ''),
-    generateRow(31, 'Agent Address line 3', ''),
+    // generateRow(31, 'Agent Address line 3', ''),
     generateRow(32, 'Agent Address line 4 (town)', agentsDetails?.town ?? ''),
     generateRow(33, 'Agent Address line 5 (County)', agentsDetails?.county ?? ''),
     generateRow(34, 'Agent Postcode (use capitals)', agentsDetails?.postcode ?? ''),
@@ -96,7 +96,7 @@ const getPlanningPermissionDoraValue = (planningPermission) => {
 function getSpreadsheetDetails (submission, desirabilityScore) {
   const today = new Date()
   const todayStr = today.toLocaleDateString('en-GB')
-  const schemeName = 'Cattle Housing'
+  const schemeName = 'Calf Housing for Health and Welfare'
   const subScheme = `FTF-${schemeName}`
 
   return {
@@ -119,25 +119,50 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(2, 'FA or OA', 'Outline Application'),
           generateRow(40, 'Scheme', 'Farming Transformation Fund'),
           generateRow(39, 'Sub scheme', subScheme),
-          generateRow(43, 'Theme', 'Cattle Housing Grants'),
-          generateRow(90, 'Project type', 'Slurry Store and Cover'),
+          generateRow(43, 'Theme', 'Calf Housing Grants'), // double check this
+          generateRow(90, 'Sub-Theme / Project type', 'Calf Housing'), // double check
           generateRow(41, 'Owner', 'RD'),
-          generateRow(53, 'Business type', getBusinessTypeC53(submission.applicantType)),
+          generateRow(53, 'Business type (Plus animal numbers)', getBusinessTypeC53(submission.applicantType)), // design action
           generateRow(341, 'Grant Launch Date', ''),
-          generateRow(23, 'Status of applicant', submission.legalStatus),
-          // generateRow(44, 'Project Items', getProjectItemsFormattedArray(submission.itemSizeQuantities, [submission.otherItems].flat(), submission.storageType, submission.serviceCapacityIncrease, submission.coverType, submission.coverSize)),
-          generateRow(45, 'Location of project (postcode)', submission.farmerDetails.projectPostcode),
+          generateRow(23, 'Business Form Classification (Status of Applicant)', submission.legalStatus),
+          // project in england Cell ref
+
+          generateRow(405, 'Project Type', submission.project),
+          generateRow(406, 'Calf Weight', submission.calfWeight),
+          generateRow(407, 'Living Space', submission.livingSpace),
+          generateRow(408, 'Calves Housed Individually', submission.housedIndividually),
+          generateRow(409, 'Isolate Sick Calves', submission.isolateCalves),
+          generateRow(411, 'Flooring and Bedding', submission.concreteFlooring),
+          generateRow(412, 'Enrichment', submission.enrichment),
+          generateRow(413, 'Building Structure', submission.structure),
+          generateRow(414, 'Eligibility Building Structure', submission.yesStructureEligibility ?? submission.structureEligibility), // get this checked, find out how yesStructureEligibility works
+          generateRow(415, 'Drainage', submission.drainageSlope),
+          generateRow(416, 'Draught Protection', submission.draughtProtection),
+          generateRow(417, 'Additional Items', submission.additionalItems),
+          generateRow(419, 'Solar PV Panels', submission.roofSolarPV),
+          generateRow(420, 'Moving from Individually Housed', submission.housing),
+          generateRow(421, 'Average Calf Size Group', submission.calfGroupSize),
+          generateRow(423, 'Moisture Control', submission.moistureControl),
+          generateRow(424, 'Permanent Sick Pen', submission.permanentSickPen),
+          generateRow(425, 'Floor Space', submission.floorSpace),
+          generateRow(426, 'Environmental Impact', submission.environmentalImpact),
+          generateRow(427, 'Sustainable Materials', submission.sustainableMaterials),
+          generateRow(428, 'Introducing Innovation', submission.introducingInnovation),
+
+          generateRow(45, 'Applicant Business or Project Postcode', submission.farmerDetails.projectPostcode), // written twice in excel, check
           generateRow(376, 'Project Started', submission.projectStart),
           generateRow(342, 'Land owned by Farm', submission.tenancy),
           generateRow(343, 'Tenancy for next 5 years', submission.tenancyLength ?? ''),
-          // generateRow(55, 'Total project expenditure', String(submission.itemsTotalValue).replace(/,/g, '')),
-          generateRow(57, 'Grant rate', '50'),
-          // generateRow(56, 'Grant amount requested', submission.calculatedGrant),
-          // generateRow(345, 'Remaining Cost to Farmer', submission.remainingCost),
+          generateRow(55, 'Total project expenditure', String(submission.projectCost.toFixed(2))),
+          generateRow(57, 'Grant rate', '40'), // hard coded value?
+          generateRow(56, 'Grant amount requested', submission.calculatedGrant),
+          generateRow(345, 'Remaining Cost to Farmer', submission.remainingCost),
           generateRow(346, 'Planning Permission Status', getPlanningPermissionDoraValue(submission.planningPermission)),
           generateRow(366, 'Date of OA decision', ''),
           generateRow(42, 'Project name', submission.businessDetails.projectName),
           generateRow(4, 'Single business identifier (SBI)', submission.businessDetails.sbi || '000000000'), // sbi is '' if not set so use || instead of ??
+          generateRow(429, 'Calving System', submission.businessDetails.calvingSystem),
+          generateRow(430, 'Number of Calves', submission.businessDetails.calvesNumber),
           generateRow(7, 'Business name', submission.businessDetails.businessName),
           generateRow(367, 'Annual Turnover', submission.businessDetails.businessTurnover),
           generateRow(22, 'Employees', submission.businessDetails.numberEmployees),
@@ -147,14 +172,14 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(6, 'Forename', submission.farmerDetails.firstName),
           generateRow(8, 'Address line 1', submission.farmerDetails.address1),
           generateRow(9, 'Address line 2', submission.farmerDetails.address2),
-          generateRow(10, 'Address line 3', ''),
+          // generateRow(10, 'Address line 3', ''),
           generateRow(11, 'Address line 4 (town)', submission.farmerDetails.town),
           generateRow(12, 'Address line 5 (county)', submission.farmerDetails.county),
           generateRow(13, 'Postcode (use capitals)', submission.farmerDetails.postcode),
           generateRow(16, 'Landline number', submission.farmerDetails.landlineNumber ?? ''),
           generateRow(17, 'Mobile number', submission.farmerDetails.mobileNumber ?? ''),
           generateRow(18, 'Email', submission.farmerDetails.emailAddress),
-          generateRow(89, 'Customer Marketing Indicator', submission.consentOptional ? 'Yes' : 'No'),
+          generateRow(89, 'Customer Marketing Indicator', submission.consentOptional ? 'Yes' : 'No'), // full name?
           generateRow(368, 'Date ready for QC or decision', todayStr),
           generateRow(369, 'Eligibility Reference No.', submission.confirmationId),
           generateRow(94, 'Current location of file', 'NA Automated'),

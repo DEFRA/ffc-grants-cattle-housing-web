@@ -2,7 +2,7 @@
     "applying": "Agent",
     "consentOptional": false,
     "otherItems": "None of the above",
-    "agentDetails": {
+    "agentsDetails": {
         "title": "Mr",
         "firstName": "Geoff",
         "lastName": "Hopkin",
