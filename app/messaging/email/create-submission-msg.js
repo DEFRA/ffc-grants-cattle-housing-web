@@ -213,7 +213,7 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       projectStart: submission.projectStart,
       tenancy: submission.tenancy,
       tenancyLength: submission.tenancyLength ?? 'N/A',
-      isTenancyLength: submission.tenancyLength ? 'Yes' : 'No',
+      // isTenancyLength: submission.tenancyLength ? 'Yes' : 'No',
       project: submission.project,
       calfWeight: submission.calfWeight,
       livingSpace: submission.livingSpace,
