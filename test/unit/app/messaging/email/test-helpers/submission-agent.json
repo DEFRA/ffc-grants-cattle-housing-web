@@ -52,7 +52,7 @@
     "concreteFlooring":"Yes",
     "enrichment":"Yes",
     "structure":"A-frame building",
-    "structureEligibility": "N/A",
+    "structureEligibility": null,
     "drainageSlope":"Yes",
     "additionalItems":"Yes",
     "roofSolarPV":"Yes",
@@ -67,6 +67,6 @@
     "environmentalImpact":["Solar PV panels on the roof of the building", "Collect and store rainwater"],
     "sustainableMaterials":["Low carbon concrete", "Steel replacement products"],
     "introducingInnovation":["Technology", "Collaboration"],
-    "calvingSystem":"Year round",
-    "calvesNumber": 22
+    "calvingSystem":null,
+    "calvesNumber": null
 }  
