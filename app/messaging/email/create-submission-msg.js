@@ -223,6 +223,7 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       concreteFlooring: submission.concreteFlooring,
       enrichment: submission.enrichment,
       structure: submission.structure,
+      structureEligibility: submission.structureEligibility === 'Yes' ? submission.yesStructureEligibility : submission.structureEligibility ?? 'N/A',
       draughtProtection:submission.draughtProtection,
       drainageSlope: submission.drainageSlope,
       additionalItems: submission.additionalItems,
