@@ -43,6 +43,7 @@
     "enrichment":"Yes",
     "structure":"A-frame building",
     "structureEligibility": "Yes",
+    "yesStructureEligibility": "we have got proof and everthing for it",
     "drainageSlope":"Yes",
     "additionalItems":"Yes",
     "roofSolarPV":"Yes",
