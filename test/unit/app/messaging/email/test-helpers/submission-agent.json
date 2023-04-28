@@ -1,8 +1,7 @@
 {
     "applying": "Agent",
-    "consentOptional": false,
     "otherItems": "None of the above",
-    "agentDetails": {
+    "agentsDetails": {
         "title": "Mr",
         "firstName": "Geoff",
         "lastName": "Hopkin",
@@ -65,7 +64,6 @@
     "floorSpace":20,
     "environmentalImpact":["Solar PV panels on the roof of the building", "Collect and store rainwater"],
     "sustainableMaterials":["Low carbon concrete", "Steel replacement products"],
-    "introducingInnovation":["Technology", "Collaboration"],
-    "calvingSystem":null,
-    "calvesNumber": null
+    "introducingInnovation":["Technology", "Collaboration"]
+
 }  
