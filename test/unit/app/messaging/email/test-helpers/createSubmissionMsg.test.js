@@ -65,8 +65,8 @@ test('Email part of message should have correct properties', () => {
         'projectStarted', 'planningPermission', 'projectName', 'businessName',
         'farmerName', 'farmerSurname', 'agentName', 'agentSurname', 'farmerEmail', 'agentEmail',
         'contactConsent', 'scoreDate', 'introducingInnovation', 'sustainableMaterials', 'environmentalImpact',
-        'floorSpace', 'permanentSickPen', 'moistureControl', 'calfGroupSize', 'housing',
-        'housingScore', 'calfGroupSizeScore', 'moistureControlScore', 'permanentSickPenScore',
+        'floorSpace', 'permanentSickPen', 'moistureControl', 'calfGroupSize', 'housing', 'calvingSystem', 'calvesNumber',
+        'housingScore', 'calfGroupSizeScore', 'moistureControlScore', 'permanentSickPenScore', 'structureEligibility',
         'floorSpaceScore', 'environmentalImpactScore', 'sustainableMaterialsScore', 'introducingInnovationScore',
         'projectCost','roofSolarPV','additionalItems','drainageSlope','structure', 'enrichment',
         'concreteFlooring', 'strawBedding', 'isolateCalves', 'housedIndividually', 'livingSpace', 'calfWeight'
@@ -104,63 +104,55 @@ test('Over 250 employees results in large business definition', () => {
     expect(msg.spreadsheet.worksheets[0].rows.find(r => r.row === 20).values[2]).toBe('Large')
 })
 
-// test('getscorechance function', () => {
-//     let msg = createMsg(farmerSubmission, desirabilityScore,'strong')
-//     expect(msg.getScoreChance).toBe('seems likely to')
-
-//     msg = createMsg(farmerSubmission, desirabilityScore)
-//     expect(msg.getScoreChance).toBe('seems unlikely to')
-//     })
-
-// test('Agent submission generates correct message payload', () => {
-//         jest.mock('../../../../../../app/messaging/email/config/spreadsheet', () => ({
-//             hideEmptyRows: true,
-//             protectEnabled: true,
-//             sendEmailToRpa: true,
-//             protectPassword: mockPassword
-//         }))
-//         const msg = createMsg(agentSubmission, desirabilityScore)
+test('Agent submission generates correct message payload', () => {
+        jest.mock('../../../../../../app/messaging/email/config/spreadsheet', () => ({
+            hideEmptyRows: true,
+            protectEnabled: true,
+            sendEmailToRpa: true,
+            protectPassword: mockPassword
+        }))
+        const msg = createMsg(agentSubmission, desirabilityScore)
     
-//     expect(msg).toHaveProperty('agentEmail')
-//     expect(msg).toHaveProperty('applicantEmail')
-//     expect(msg).toHaveProperty('rpaEmail')
-//     expect(msg).toHaveProperty('spreadsheet')
-//     expect(msg.agentEmail.emailAddress).toBe(agentSubmission.agentDetails.emailAddress)
-//     expect(msg.applicantEmail.emailAddress).toBe(agentSubmission.farmerDetails.emailAddress)
-//     expect(msg.rpaEmail.emailAddress).toBe('FTF@rpa.gov.uk')
-// })
+    expect(msg).toHaveProperty('agentEmail')
+    expect(msg).toHaveProperty('applicantEmail')
+    expect(msg).toHaveProperty('rpaEmail')
+    expect(msg).toHaveProperty('spreadsheet')
+    expect(msg.agentEmail.emailAddress).toBe(agentSubmission.agentsDetails.emailAddress)
+    expect(msg.applicantEmail.emailAddress).toBe(agentSubmission.farmerDetails.emailAddress)
+    expect(msg.rpaEmail.emailAddress).toBe('FTF@rpa.gov.uk')
+})
 
-// test('Spreadsheet part of message should have correct properties', () => {
-//     const msg = createMsg(agentSubmission, desirabilityScore)
+test('Spreadsheet part of message should have correct properties', () => {
+    const msg = createMsg(agentSubmission, desirabilityScore)
 
-//     expect(msg.spreadsheet).toHaveProperty('filename')
-//     expect(msg.spreadsheet).toHaveProperty('uploadLocation')
-//     expect(msg.spreadsheet).toHaveProperty('worksheets')
-//     expect(msg.spreadsheet.worksheets.length).toBe(1)
-//     expect(msg.spreadsheet.worksheets[0]).toHaveProperty('title')
-//     expect(msg.spreadsheet.worksheets[0]).toHaveProperty('hideEmptyRows')
-//     expect(msg.spreadsheet.worksheets[0]).toHaveProperty('defaultColumnWidth')
-//     expect(msg.spreadsheet.worksheets[0]).toHaveProperty('protectPassword')
-//     expect(msg.spreadsheet.worksheets[0]).toHaveProperty('rows')
-//     expect(msg.spreadsheet.worksheets[0].rows.length).toBe(87)
-// })
+    expect(msg.spreadsheet).toHaveProperty('filename')
+    expect(msg.spreadsheet).toHaveProperty('uploadLocation')
+    expect(msg.spreadsheet).toHaveProperty('worksheets')
+    expect(msg.spreadsheet.worksheets.length).toBe(1)
+    expect(msg.spreadsheet.worksheets[0]).toHaveProperty('title')
+    expect(msg.spreadsheet.worksheets[0]).toHaveProperty('hideEmptyRows')
+    expect(msg.spreadsheet.worksheets[0]).toHaveProperty('defaultColumnWidth')
+    expect(msg.spreadsheet.worksheets[0]).toHaveProperty('protectPassword')
+    expect(msg.spreadsheet.worksheets[0]).toHaveProperty('rows')
+    expect(msg.spreadsheet.worksheets[0].rows.length).toBe(58)
+})
 
-// test('Protect password property should not be set if config is false', () => {
-//     jest.mock('../../../../../../app/messaging/email/config/spreadsheet', () => ({
-//         hideEmptyRows: true,
-//         protectEnabled: false,
-//         sendEmailToRpa: false,
-//         protectPassword: mockPassword
-//     }))
-//     const createSubmissionMsg = require('../../../../../../app/messaging/email/create-submission-msg')
-//     const msg = createSubmissionMsg(agentSubmission, desirabilityScore)
-//     expect(msg.spreadsheet.worksheets[0]).not.toHaveProperty('protectPassword')
-// })
+test('Protect password property should not be set if config is false', () => {
+    jest.mock('../../../../../../app/messaging/email/config/spreadsheet', () => ({
+        hideEmptyRows: true,
+        protectEnabled: false,
+        sendEmailToRpa: false,
+        protectPassword: mockPassword
+    }))
+    const createSubmissionMsg = require('../../../../../../app/messaging/email/create-submission-msg')
+    const msg = createSubmissionMsg(agentSubmission, desirabilityScore)
+    expect(msg.spreadsheet.worksheets[0]).not.toHaveProperty('protectPassword')
+})
 
-// test('Unknown farming type produces error string', () => {
-//     farmerSubmission.farmingType = 'bad value'
-//     const msg = createMsg(farmerSubmission, desirabilityScore)
+test('Unknown farming type produces error string', () => {
+    farmerSubmission.farmingType = 'bad value'
+    const msg = createMsg(farmerSubmission, desirabilityScore)
 
-//     expect(msg.spreadsheet.worksheets[0].rows.find(r => r.row === 53).values[2]).toBe('farmer with livestock')
-// })
+    expect(msg.spreadsheet.worksheets[0].rows.find(r => r.row === 53).values[2]).toBe('farmer with livestock')
+})
 })
