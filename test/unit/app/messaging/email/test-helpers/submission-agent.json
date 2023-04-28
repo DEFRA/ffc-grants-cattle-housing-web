@@ -1,6 +1,5 @@
 {
     "applying": "Agent",
-    "consentOptional": false,
     "otherItems": "None of the above",
     "agentsDetails": {
         "title": "Mr",
@@ -35,8 +34,7 @@
     "planningPermission": "Yes",
     "projectStart": "Yes, preparatory work",
     "tenancy": "Yes",
-    "tenancyLength":"Yes",
-    "isTenancyLength": "Yes",
+    "tenancyAgreement": null,
     "businessDetails": {
         "projectName": "Test Project",
         "businessName": "Test Business"
@@ -52,6 +50,7 @@
     "concreteFlooring":"Yes",
     "enrichment":"Yes",
     "structure":"A-frame building",
+    "structureEligibility": null,
     "drainageSlope":"Yes",
     "additionalItems":"Yes",
     "roofSolarPV":"Yes",
@@ -66,4 +65,5 @@
     "environmentalImpact":["Solar PV panels on the roof of the building", "Collect and store rainwater"],
     "sustainableMaterials":["Low carbon concrete", "Steel replacement products"],
     "introducingInnovation":["Technology", "Collaboration"]
+
 }  

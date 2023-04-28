@@ -65,8 +65,8 @@ test('Email part of message should have correct properties', () => {
         'projectStarted', 'planningPermission', 'projectName', 'businessName',
         'farmerName', 'farmerSurname', 'agentName', 'agentSurname', 'farmerEmail', 'agentEmail',
         'contactConsent', 'scoreDate', 'introducingInnovation', 'sustainableMaterials', 'environmentalImpact',
-        'floorSpace', 'permanentSickPen', 'moistureControl', 'calfGroupSize', 'housing',
-        'housingScore', 'calfGroupSizeScore', 'moistureControlScore', 'permanentSickPenScore',
+        'floorSpace', 'permanentSickPen', 'moistureControl', 'calfGroupSize', 'housing', 'calvingSystem', 'calvesNumber',
+        'housingScore', 'calfGroupSizeScore', 'moistureControlScore', 'permanentSickPenScore', 'structureEligibility',
         'floorSpaceScore', 'environmentalImpactScore', 'sustainableMaterialsScore', 'introducingInnovationScore',
         'projectCost','roofSolarPV','additionalItems','drainageSlope','structure', 'enrichment',
         'concreteFlooring', 'strawBedding', 'isolateCalves', 'housedIndividually', 'livingSpace', 'calfWeight'
