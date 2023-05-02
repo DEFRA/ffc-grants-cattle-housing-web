@@ -196,6 +196,17 @@ function getCurrencyFormat (amount) {
 //   return projectItems
 // }
 
+function getScoreChance (rating) {
+  switch (rating.toLowerCase()) {
+    case 'strong':
+      return 'seems likely to'
+    case 'average':
+      return 'might'
+    default:
+      return 'seems unlikely to'
+  }
+}
+
 function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail = false) {
   const email = isAgentEmail ? submission.agentsDetails.emailAddress : submission.farmerDetails.emailAddress
   return {
@@ -205,6 +216,8 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       firstName: isAgentEmail ? submission.agentsDetails.firstName : submission.farmerDetails.firstName,
       lastName: isAgentEmail ? submission.agentsDetails.lastName : submission.farmerDetails.lastName,
       referenceNumber: submission.confirmationId,
+      overallRating: desirabilityScore.desirability.overallRating.band,
+      scoreChance: getScoreChance(desirabilityScore.desirability.overallRating.band),
       legalStatus: submission.legalStatus,
       applicantType: submission.applicantType ? [submission.applicantType].flat().join(', ') : ' ',
       location: submission.inEngland,
@@ -270,11 +283,12 @@ function spreadsheet (submission, desirabilityScore) {
   return data
 }
 
-module.exports = function (submission, desirabilityScore) {
+module.exports = function (submission, desirabilityScore, rating='') {
   return {
     applicantEmail: getEmailDetails(submission, desirabilityScore, false),
     agentEmail: submission.applying === 'Agent' ? getEmailDetails(submission,desirabilityScore, false, true) : null,
     rpaEmail: spreadsheetConfig.sendEmailToRpa ? getEmailDetails(submission, desirabilityScore, spreadsheetConfig.rpaEmail) : null,
-    spreadsheet: spreadsheet(submission, desirabilityScore)
+    spreadsheet: spreadsheet(submission, desirabilityScore),
+    getScoreChance:getScoreChance(rating)
   }
 }
