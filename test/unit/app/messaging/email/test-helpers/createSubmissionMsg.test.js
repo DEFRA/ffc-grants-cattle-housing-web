@@ -155,4 +155,13 @@ test('Unknown farming type produces error string', () => {
 
     expect(msg.spreadsheet.worksheets[0].rows.find(r => r.row === 53).values[2]).toBe('farmer with livestock')
 })
+
+test('getscorechance function', () => {
+    let msg = createMsg(farmerSubmission, desirabilityScore,'strong')
+    expect(msg.getScoreChance).toBe('seems likely to')
+
+    msg = createMsg(farmerSubmission, desirabilityScore)
+    expect(msg.getScoreChance).toBe('seems unlikely to')
+})
+
 })
