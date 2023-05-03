@@ -587,7 +587,7 @@ const questionBank = {
           title: 'What is your project?',
           baseUrl: 'project',
           backUrl: 'tenancy',
-          nextUrl: 'calf-weight',
+          nextUrl: 'minimum-living-space',
           url: 'project',
           backUrlObject: {
             dependentQuestionYarKey: 'tenancyLength',
@@ -651,25 +651,38 @@ const questionBank = {
           yarKey: 'project'
         },
         {
-          key: 'calf-weight',
+          key: 'minimum-living-space',
           order: 80,
           title: 'What will be the weight of the largest calf?',
-          baseUrl: 'calf-weight',
+          baseUrl: 'minimum-living-space',
           backUrl: 'project',
-          url: 'calf-weight',
+          nextUrl: 'housed-individually',
+          url: 'minimum-living-space',
           hint: {
-            text: 'A calf is up to 6 months of age'
+            html: `<div class:"govuk-hint">
+                    The minimum space must be:</br></br>
+                    <li>3m2 per calf when largest calf is 100kg or under</li>
+                    <li>4m2 per calf when largest calf is between 100kg and 150kg</li>
+                    <li>5m2 per calf when largest calf is over 150kg</li></br>
+
+                    This includes the lying, standing and feeding/drinking areas.
+                  </div>`
+          },
+          warning: {
+            text: 'The required space-per-calf for each group or pair may change over time so the housing design should account for this.'
           },
           preValidationKeys: ['project'],
           ineligibleContent: {
-            messageContent: `<p class="govuk-body">This grant is for:</p>
+            messageContent: `
               <div class="govuk-list govuk-list--bullet">
-                    You can use:
-                    <ul>
-                      <li>building new calf housing</li>
-                      <li>refurbishing or extending existing calf housing</li>
-                    </ul>
+                  Each calf must have the minimum living space:
+                  <ul>
+                    <li>3m2 per calf when largest calf is 100kg or under</li>
+                    <li>4m2 per calf when largest calf is between 100kg and 150kg</li>
+                    <li>5m2 per calf when largest calf is over 150kg</li></br>
+                  </ul>
               </div>`,
+            insertText: { text: 'This includes the lying, standing and feeding/drinking areas.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you might be eligible for.'
@@ -677,6 +690,7 @@ const questionBank = {
           },
           type: 'single-answer',
           minAnswerCount: 1,
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           sidebar: {
             values: [{
               heading: 'Eligibility',
@@ -694,180 +708,16 @@ const questionBank = {
           ],
           answers: [
             {
-              key: 'calf-weight-A1',
-              value: '100kg or under',
-              redirectUrl: 'living-space-3m2'
-            },
-            {
-              key: 'calf-weight-A2',
-              value: 'Between 100kg and 150kg',
-              redirectUrl: 'living-space-4m2'
-            },
-            {
-              key: 'calf-weight-A3',
-              value: 'Over 150kg',
-              redirectUrl: 'living-space-5m2'
-            }
-          ],
-          yarKey: 'calfWeight'
-        },
-        {
-          key: 'living-space-3m2',
-          order: 90,
-          title: 'Will each calf have at least 3m² living space?',
-          baseUrl: 'living-space-3m2',
-          backUrl: 'calf-weight',
-          nextUrl: 'housed-individually',
-          url: 'living-space-3m2',
-          preValidationKeys: ['calfWeight'],
-          type: 'single-answer',
-          minAnswerCount: 1,
-          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
-          ineligibleContent: {
-            messageContent: 'Calves weighing up to 100kg must have at least 3m² living space',
-            insertText: { text: 'This includes the lying, standing and feeding/drinking areas.' },
-            messageLink: {
-              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-              title: 'See other grants you might be eligible for.'
-            },
-            additionalPara: 'The required space-per-calf for each group or pair may change over time so the housing design should account for this.'
-          },
-          sidebar: {
-            values: [{
-              heading: 'Eligibility',
-              content: [{
-                para: `
-                Calves weighing up to 100kg must have at least 3m² living space.
-
-                This includes the lying, standing and feeding/drinking areas.
-
-                The required space-per-calf for each group or pair may change over time so the housing design should account for this.  `
-              }]
-            }]
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select yes if each calf will have at least 3m² living space'
-            }
-          ],
-          answers: [
-            {
-              key: 'living-space-3m2-A1',
+              key: 'minimum-living-space-A1',
               value: 'Yes'
             },
             {
-              key: 'living-space-3m2-A2',
+              key: 'minimum-living-space-A2',
               value: 'No',
               notEligible: true
             }
           ],
-          yarKey: 'livingSpace'
-        },
-        {
-          key: 'living-space-4m2',
-          order: 91,
-          title: 'Will each calf have at least 4m² living space?',
-          baseUrl: 'living-space-4m2',
-          backUrl: 'calf-weight',
-          nextUrl: 'housed-individually',
-          url: 'living-space-4m2',
-          preValidationKeys: ['calfWeight'],
-          type: 'single-answer',
-          minAnswerCount: 1,
-          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
-          ineligibleContent: {
-            messageContent: 'Calves weighing between 100kg and 150kg must have at least 4m² living space.',
-            insertText: { text: 'This includes the lying, standing and feeding/drinking areas.' },
-            messageLink: {
-              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-              title: 'See other grants you might be eligible for.'
-            },
-            additionalPara: 'The required space-per-calf for each group or pair may change over time so the housing design should account for this.'
-          },
-          sidebar: {
-            values: [{
-              heading: 'Eligibility',
-              content: [{
-                para: `
-                      Calves weighing between 100kg and 150kg must have at least 4m² living space.
-
-                      This includes the lying, standing and feeding/drinking areas.
-
-                      The required space-per-calf for each group or pair may change over time so the housing design should account for this.`
-              }]
-            }]
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select yes if each calf will have at least 4m² living space'
-            }
-          ],
-          answers: [
-            {
-              key: 'living-space-4m2-A1',
-              value: 'Yes'
-            },
-            {
-              key: 'living-space-4m2-A2',
-              value: 'No',
-              notEligible: true
-            }
-          ],
-          yarKey: 'livingSpace'
-        },
-        {
-          key: 'living-space-5m2',
-          order: 92,
-          title: 'Will each calf have at least 5m² living space?',
-          baseUrl: 'living-space-5m2',
-          backUrl: 'calf-weight',
-          nextUrl: 'housed-individually',
-          url: 'living-space-5m2',
-          preValidationKeys: ['calfWeight'],
-          type: 'single-answer',
-          minAnswerCount: 1,
-          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
-          ineligibleContent: {
-            messageContent: 'Calves weighing over 150kg must have at least 5m² living space.',
-            insertText: { text: 'This includes the lying, standing and feeding/drinking areas.' },
-            messageLink: {
-              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-              title: 'See other grants you might be eligible for.'
-            },
-            additionalPara: 'The required space-per-calf for each group or pair may change over time so the housing design should account for this.'
-          },
-          sidebar: {
-            values: [{
-              heading: 'Eligibility',
-              content: [{
-                para: `Calves weighing over 150kg must have at least 5m² living space.
-
-                      This includes the lying, standing and feeding/drinking areas.
-                
-                      The required space-per-calf for each group or pair may change over time so the housing design should account for this.  `
-              }]
-            }]
-          },
-          validate: [
-            {
-              type: 'NOT_EMPTY',
-              error: 'Select yes if each calf will have at least 5m² living space'
-            }
-          ],
-          answers: [
-            {
-              key: 'living-space-5m2-A1',
-              value: 'Yes'
-            },
-            {
-              key: 'living-space-5m2-A2',
-              value: 'No',
-              notEligible: true
-            }
-          ],
-          yarKey: 'livingSpace'
+          yarKey: 'minimumLivingSpace'
         },
         {
           key: 'housed-individually',
@@ -876,17 +726,8 @@ const questionBank = {
           baseUrl: 'housed-individually',
           url: 'housed-individually',
           nextUrl: 'isolate-calves',
-          preValidationKeys: ['calfWeight'],
-          backUrlObject: {
-            dependentQuestionYarKey: 'calfWeight',
-            dependentAnswerKeysArray: ['calf-weight-A1'],
-            nonDependentAnswerKeysArray: ['calf-weight-A3'],
-            urlOptions: {
-              thenUrl: 'living-space-3m2',
-              elseUrl: 'living-space-4m2',
-              nonDependentUrl: 'living-space-5m2'
-            }
-          },
+          backUrl: 'minimum-living-space',
+          preValidationKeys: ['minimumLivingSpace'],
           ineligibleContent: {
             messageContent: '<p class="govuk-body">Calves can only be housed individually in exceptional circumstances (for example, illness or no other calves of similar age).</p>',
             messageLink: {
@@ -1827,9 +1668,9 @@ const questionBank = {
             text: 'To create a separate air space, the area must have solid walls up to ceiling height blocking it from the calf housing.'
           },
           nextUrlObject: {
-            dependentQuestionYarKey: 'calfWeight',
-            dependentAnswerKeysArray: ['calf-weight-A1'],
-            nonDependentAnswerKeysArray: ['calf-weight-A3'],
+            dependentQuestionYarKey: 'minimumLivingSpace',
+            dependentAnswerKeysArray: ['minimum-living-space-A1'],
+            nonDependentAnswerKeysArray: ['minimum-living-space-A3'],
             urlOptions: {
               thenUrl: 'floor-space-under100kg',
               elseUrl: 'floor-space-100kg-150kg',
@@ -2131,9 +1972,9 @@ const questionBank = {
           baseUrl: 'environmental-impact',
           preValidationKeys: ['permanentSickPen'],
           backUrlObject: {
-            dependentQuestionYarKey: 'calfWeight',
-            dependentAnswerKeysArray: ['calf-weight-A1'],
-            nonDependentAnswerKeysArray: ['calf-weight-A3'],
+            dependentQuestionYarKey: 'minimumLivingSpace',
+            dependentAnswerKeysArray: ['minimum-living-space-A1'],
+            nonDependentAnswerKeysArray: ['minimum-living-space-A3'],
             urlOptions: {
               thenUrl: 'floor-space-under100kg',
               elseUrl: 'floor-space-100kg-150kg',

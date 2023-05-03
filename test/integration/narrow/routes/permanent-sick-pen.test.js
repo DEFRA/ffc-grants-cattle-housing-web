@@ -4,7 +4,7 @@ describe('Page: /permanent-sick-pen', () => {
     const varList = {
         legalStatus: 'randomData',
         projectType: 'fakeData',
-        calfWeight: '100kg or under'
+        minimumLivingSpace: '100kg or under'
     }
 
     jest.mock('../../../../app/helpers/session', () => ({
@@ -66,7 +66,7 @@ it('user selects eligible option -> store user response and redirect to /floor-s
     expect(postResponse.headers.location).toBe('floor-space-under100kg')
 })
 it('user selects eligible option -> store user response and redirect to /floor-space-100kg-150kg', async () => {
-    varList.calfWeight = 'Between 100kg and 150kg'
+    varList.minimumLivingSpace = 'Between 100kg and 150kg'
     const postOptions = {
     method: 'POST',
     url: `${global.__URLPREFIX__}/permanent-sick-pen`,
@@ -79,7 +79,7 @@ it('user selects eligible option -> store user response and redirect to /floor-s
     expect(postResponse.headers.location).toBe('floor-space-100kg-150kg')
 })
 it('user selects eligible option  -> store user response and redirect to /floor-space-over150kg', async () => {
-    varList.calfWeight = 'Over 150kg'
+    varList.minimumLivingSpace = 'Over 150kg'
     const postOptions = {
     method: 'POST',
     url: `${global.__URLPREFIX__}/permanent-sick-pen`,
