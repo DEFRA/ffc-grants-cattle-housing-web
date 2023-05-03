@@ -695,15 +695,14 @@ const questionBank = {
             values: [{
               heading: 'Eligibility',
               content: [{
-                para: 'There must be a minimum floor area of:',
-                items: ['3m² per calf when largest calf is 100kg or under', '4m² per calf when largest calf is between 100kg and 150kg', '5m² per calf when largest calf is over 150kg']
+                para: 'Each calf must have at least the minimum living space.'
               }]
             }]
           },
           validate: [
             {
               type: 'NOT_EMPTY',
-              error: 'Select the option that applies to you'
+              error: 'Select yes if each calf will have the minimum living space'
             }
           ],
           answers: [

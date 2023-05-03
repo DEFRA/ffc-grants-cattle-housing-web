@@ -23,9 +23,8 @@ describe('Page: /minimum-living-space', () => {
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
     expect(response.payload).toContain('What will be the weight of the largest calf?')
-    expect(response.payload).toContain('100kg or under')
-    expect(response.payload).toContain('Between 100kg and 150kg')
-    expect(response.payload).toContain('Over 150kg')
+    expect(response.payload).toContain('Yes')
+    expect(response.payload).toContain('No')
   })
 
   it('no option selected -> show error message', async () => {
@@ -38,7 +37,7 @@ describe('Page: /minimum-living-space', () => {
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Select the option that applies to you')
+    expect(postResponse.payload).toContain('Select yes if each calf will have the minimum living space')
   })
   it('page loads with correct back link', async () => {
     const options = {
