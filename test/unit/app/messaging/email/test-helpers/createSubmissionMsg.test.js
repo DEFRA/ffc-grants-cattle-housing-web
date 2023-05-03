@@ -69,7 +69,7 @@ test('Email part of message should have correct properties', () => {
         'housingScore', 'calfGroupSizeScore', 'moistureControlScore', 'permanentSickPenScore', 'structureEligibility',
         'floorSpaceScore', 'environmentalImpactScore', 'sustainableMaterialsScore', 'introducingInnovationScore',
         'projectCost','roofSolarPV','additionalItems','drainageSlope','structure', 'enrichment',
-        'concreteFlooring', 'strawBedding', 'isolateCalves', 'housedIndividually', 'livingSpace', 'calfWeight'
+        'concreteFlooring', 'strawBedding', 'isolateCalves', 'housedIndividually', 'minimumLivingSpace'
     )
 })
 test('Under 10 employees results in micro business definition', () => {
