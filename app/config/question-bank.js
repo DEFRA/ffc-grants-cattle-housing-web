@@ -824,6 +824,9 @@ const questionBank = {
           title: 'Will the calf housing have both concrete flooring and cereal straw bedding?',
           baseUrl: 'flooring-and-bedding',
           url: 'flooring-and-bedding',
+          hint: {
+            text: "It cannot have slatted or hardcore flooring"
+          },
           backUrl: 'isolate-calves',
           nextUrl: 'enrichment',
           preValidationKeys: ['isolateCalves'],
@@ -843,7 +846,7 @@ const questionBank = {
               heading: 'Eligibility',
               content: [{
                 para: 'The calf housing must have solid concrete flooring and cereal straw bedding.',
-                additionalPara: 'It cannot have slatted or hardcore flooring.'
+                additionalPara: 'The calf housing must have solid concrete flooring and cereal straw bedding.'
               }]
             }]
           },
