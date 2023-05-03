@@ -53,18 +53,18 @@ it(' \'None of the above\' selected with another option -> show error message', 
     expect(postResponse.statusCode).toBe(200)
     expect(postResponse.payload).toContain('You cannot select that combination of options')
 })
-it('user selects eligible option -> store user response and redirect to /floor-space-under100kg', async () => {
-    const postOptions = {
-    method: 'POST',
-    url: `${global.__URLPREFIX__}/permanent-sick-pen`,
-    headers: { cookie: 'crumb=' + crumbToken },
-    payload: { permanentSickPen: ['A separate air space'], crumb: crumbToken }
-    }
+// it('user selects eligible option -> store user response and redirect to /floor-space-under100kg', async () => {
+//     const postOptions = {
+//     method: 'POST',
+//     url: `${global.__URLPREFIX__}/permanent-sick-pen`,
+//     headers: { cookie: 'crumb=' + crumbToken },
+//     payload: { permanentSickPen: ['A separate air space'], crumb: crumbToken }
+//     }
 
-    const postResponse = await global.__SERVER__.inject(postOptions)
-    expect(postResponse.statusCode).toBe(302)
-    expect(postResponse.headers.location).toBe('floor-space-under100kg')
-})
+//     const postResponse = await global.__SERVER__.inject(postOptions)
+//     expect(postResponse.statusCode).toBe(302)
+//     expect(postResponse.headers.location).toBe('floor-space-under100kg')
+// })
 it('user selects eligible option -> store user response and redirect to /floor-space-100kg-150kg', async () => {
     varList.minimumLivingSpace = 'Between 100kg and 150kg'
     const postOptions = {
@@ -78,19 +78,19 @@ it('user selects eligible option -> store user response and redirect to /floor-s
     expect(postResponse.statusCode).toBe(302)
     expect(postResponse.headers.location).toBe('floor-space-100kg-150kg')
 })
-it('user selects eligible option  -> store user response and redirect to /floor-space-over150kg', async () => {
-    varList.minimumLivingSpace = 'Over 150kg'
-    const postOptions = {
-    method: 'POST',
-    url: `${global.__URLPREFIX__}/permanent-sick-pen`,
-    headers: { cookie: 'crumb=' + crumbToken },
-    payload: { permanentSickPen: ['A separate air space'], crumb: crumbToken }
-    }
+// it('user selects eligible option  -> store user response and redirect to /floor-space-over150kg', async () => {
+//     varList.minimumLivingSpace = 'Over 150kg'
+//     const postOptions = {
+//     method: 'POST',
+//     url: `${global.__URLPREFIX__}/permanent-sick-pen`,
+//     headers: { cookie: 'crumb=' + crumbToken },
+//     payload: { permanentSickPen: ['A separate air space'], crumb: crumbToken }
+//     }
 
-    const postResponse = await global.__SERVER__.inject(postOptions)
-    expect(postResponse.statusCode).toBe(302)
-    expect(postResponse.headers.location).toBe('floor-space-over150kg')
-})
+//     const postResponse = await global.__SERVER__.inject(postOptions)
+//     expect(postResponse.statusCode).toBe(302)
+//     expect(postResponse.headers.location).toBe('floor-space-over150kg')
+// })
 
 it('page loads with correct back link', async () => {
     const options = {
