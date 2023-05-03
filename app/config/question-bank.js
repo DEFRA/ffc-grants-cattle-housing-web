@@ -661,9 +661,9 @@ const questionBank = {
           hint: {
             html: `<div class:"govuk-hint">
                     The minimum space must be:</br></br>
-                    <li>3m2 per calf when largest calf is 100kg or under</li>
-                    <li>4m2 per calf when largest calf is between 100kg and 150kg</li>
-                    <li>5m2 per calf when largest calf is over 150kg</li></br>
+                    <li>3m² per calf when largest calf is 100kg or under</li>
+                    <li>4m² per calf when largest calf is between 100kg and 150kg</li>
+                    <li>5m² per calf when largest calf is over 150kg</li></br>
 
                     This includes the lying, standing and feeding/drinking areas.
                   </div>`
@@ -677,9 +677,9 @@ const questionBank = {
               <div class="govuk-list govuk-list--bullet">
                   Each calf must have the minimum living space:
                   <ul>
-                    <li>3m2 per calf when largest calf is 100kg or under</li>
-                    <li>4m2 per calf when largest calf is between 100kg and 150kg</li>
-                    <li>5m2 per calf when largest calf is over 150kg</li></br>
+                    <li>3m² per calf when largest calf is 100kg or under</li>
+                    <li>4m² per calf when largest calf is between 100kg and 150kg</li>
+                    <li>5m² per calf when largest calf is over 150kg</li></br>
                   </ul>
               </div>`,
             insertText: { text: 'This includes the lying, standing and feeding/drinking areas.' },
