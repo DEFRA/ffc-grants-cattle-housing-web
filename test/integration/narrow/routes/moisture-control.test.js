@@ -6,7 +6,7 @@ describe('Page: /moisture-control', () => {
 		projectType: 'fakeData',
 		tenancy: 'Yes',
 		tenancyLength: null,
-		calfWeight: '100kg or under',
+		minimumLivingSpace: '100kg or under',
 		housedIndividually: 'Yes',
 		isolateCalves: 'Yes',
 		remainingCosts: 'Yes',
