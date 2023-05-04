@@ -833,7 +833,6 @@ const questionBank = {
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           ineligibleContent: {
             messageContent: 'The calf housing must have solid concrete flooring and cereal straw bedding.',
-            insertText: { text: 'It cannot have slatted or hardcore flooring.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -1198,8 +1197,8 @@ const questionBank = {
                   items: [
                     'access to a water supply',
                     'at least 2 IP66 electrical sockets in the building',
-                    'fitted lighting of at least 50 lux',
-                    'temperature and humidity data loggers'
+                    'fitted lighting of at least 50 lux (lux is equal to one lumen per square metre)',
+                    'temperature and humidity data loggers (capable of autonomously recording temperature/humidity over a defined period and storing data to view later)'
                   ]
                 }]
               }
