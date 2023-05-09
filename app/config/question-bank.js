@@ -844,8 +844,7 @@ const questionBank = {
             values: [{
               heading: 'Eligibility',
               content: [{
-                para: 'The calf housing must have solid concrete flooring and cereal straw bedding.',
-                additionalPara: 'The calf housing must have solid concrete flooring and cereal straw bedding.'
+                para: 'The calf housing must have solid concrete flooring and cereal straw bedding.'
               }]
             }]
           },
