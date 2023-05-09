@@ -675,7 +675,7 @@ const questionBank = {
           ineligibleContent: {
             messageContent: `
               <div class="govuk-list govuk-list--bullet">
-                  Each calf must have the minimum living space:
+                  Each calf must have the minimum floor area:
                   <ul>
                     <li>3m² per calf for calves under 100kg</li>
                     <li>4m² per calf for calves between 100kg and 150kg</li>
@@ -844,8 +844,7 @@ const questionBank = {
             values: [{
               heading: 'Eligibility',
               content: [{
-                para: 'The calf housing must have solid concrete flooring and cereal straw bedding.',
-                additionalPara: 'The calf housing must have solid concrete flooring and cereal straw bedding.'
+                para: 'The calf housing must have solid concrete flooring and cereal straw bedding.'
               }]
             }]
           },
@@ -1208,10 +1207,10 @@ const questionBank = {
             messageContent: `<p class="govuk-body">The building must have:</p>
             <div class="govuk-list govuk-list--bullet">
                   <ul>
-                    <li>at least 2 IP66 electrical sockets in the building</li>
                     <li>access to a water supply</li>
-                    <li>fitted lighting of at least 50 lux</li>
-                    <li>temperature and humidity data loggers</li>
+                    <li>at least 2 IP66 electrical sockets in the building</li>
+                    <li>fitted lighting of at least 50 lux (lux is equal to one lumen per square metre)</li>
+                    <li>temperature and humidity data loggers (capable of autonomously recording temperature/humidity over a defined period and storing data to view later)</li>
                   </ul>
             </div>`,
             messageLink: {
