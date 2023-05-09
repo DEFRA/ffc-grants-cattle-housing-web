@@ -54,7 +54,7 @@ describe('Page: /project', () => {
     expect(postResponse.payload).toContain('You cannot apply for a grant from this scheme')
   })
 
-  it('user selects eligible option -> store user response and redirect to /minimum-living-space', async () => {
+  it('user selects eligible option -> store user response and redirect to /minimum-floor-area', async () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/project`,
@@ -64,7 +64,7 @@ describe('Page: /project', () => {
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
-    expect(postResponse.headers.location).toBe('minimum-living-space')
+    expect(postResponse.headers.location).toBe('minimum-floor-area')
   })
 
   it('page loads with correct back link when tenancy-length page`s answer is Yes', async () => {

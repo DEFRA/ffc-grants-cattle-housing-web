@@ -3,7 +3,7 @@ const { crumbToken } = require('./test-helper')
 const varListTemplate = {
     legalStatus: 'randomData',
     projectType: 'fakeData',
-    minimumLivingSpace:'100kg or under',
+    minimumFloorArea:'100kg or under',
     floorSpace: null,
     'current-score': null
 }

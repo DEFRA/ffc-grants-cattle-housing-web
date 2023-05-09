@@ -6,7 +6,7 @@ describe('Page: /flooring-and-bedding', () => {
     projectType: 'fakeData',
     tenancy: 'Yes',
     tenancyLength: null,
-    minimumLivingSpace: '100kg or under',
+    minimumFloorArea: '100kg or under',
     housedIndividually: 'Yes'
   }
 

@@ -227,7 +227,7 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       tenancy: submission.tenancy,
       tenancyAgreement: submission.tenancyLength ?? 'N/A',
       project: submission.project,
-      minimumLivingSpace: submission.minimumLivingSpace,
+      minimumFloorArea: submission.minimumFloorArea,
       housedIndividually: submission.housedIndividually,
       isolateCalves: submission.isolateCalves,
       strawBedding: submission.strawBedding,

@@ -6,7 +6,7 @@ describe('Page: /housing', () => {
 		projectType: 'fakeData',
 		tenancy: 'Yes',
 		tenancyLength: null,
-		minimumLivingSpace: '100kg or under',
+		minimumFloorArea: '100kg or under',
 		housedIndividually: 'Yes',
 		isolateCalves: 'Yes',
 		remainingCosts: 'Yes',

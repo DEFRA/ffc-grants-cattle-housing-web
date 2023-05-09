@@ -1,6 +1,6 @@
 const { crumbToken } = require('./test-helper')
 
-describe('Page: /minimum-living-space', () => {
+describe('Page: /minimum-floor-area', () => {
   const varList = {
     legalStatus: 'randomData',
     projectType: 'fakeData'
@@ -17,12 +17,12 @@ describe('Page: /minimum-living-space', () => {
   it('page loads successfully, with all the options', async () => {
     const options = {
       method: 'GET',
-      url: `${global.__URLPREFIX__}/minimum-living-space`
+      url: `${global.__URLPREFIX__}/minimum-floor-area`
     }
 
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('What will be the weight of the largest calf?')
+    expect(response.payload).toContain('Will each calf have the minimum floor area?')
     expect(response.payload).toContain('Yes')
     expect(response.payload).toContain('No')
   })
@@ -30,7 +30,7 @@ describe('Page: /minimum-living-space', () => {
   it('no option selected -> show error message', async () => {
     const postOptions = {
       method: 'POST',
-      url: `${global.__URLPREFIX__}/minimum-living-space`,
+      url: `${global.__URLPREFIX__}/minimum-floor-area`,
       headers: { cookie: 'crumb=' + crumbToken },
       payload: { crumb: crumbToken }
     }
@@ -42,7 +42,7 @@ describe('Page: /minimum-living-space', () => {
   it('page loads with correct back link', async () => {
     const options = {
       method: 'GET',
-      url: `${global.__URLPREFIX__}/minimum-living-space`
+      url: `${global.__URLPREFIX__}/minimum-floor-area`
     }
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
