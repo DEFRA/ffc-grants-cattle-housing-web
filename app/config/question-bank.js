@@ -587,7 +587,7 @@ const questionBank = {
           title: 'What is your project?',
           baseUrl: 'project',
           backUrl: 'tenancy',
-          nextUrl: 'minimum-living-space',
+          nextUrl: 'minimum-floor-area',
           url: 'project',
           backUrlObject: {
             dependentQuestionYarKey: 'tenancyLength',
@@ -651,25 +651,25 @@ const questionBank = {
           yarKey: 'project'
         },
         {
-          key: 'minimum-living-space',
+          key: 'minimum-floor-area',
           order: 80,
-          title: 'What will be the weight of the largest calf?',
-          baseUrl: 'minimum-living-space',
+          title: 'Will each calf have the minimum floor area?',
+          baseUrl: 'minimum-floor-area',
           backUrl: 'project',
           nextUrl: 'housed-individually',
-          url: 'minimum-living-space',
+          url: 'minimum-floor-area',
           hint: {
             html: `<div class:"govuk-hint">
-                    The minimum space must be:</br></br>
-                    <li>3m² per calf when largest calf is 100kg or under</li>
-                    <li>4m² per calf when largest calf is between 100kg and 150kg</li>
-                    <li>5m² per calf when largest calf is over 150kg</li></br>
+                    The minimum area must be:</br></br>
+                    <li>3m² per calf for calves under 100kg</li>
+                    <li>4m² per calf for calves between 100kg and 150kg</li>
+                    <li>5m² per calf for calves over 150kg</li></br>
 
                     This includes the lying, standing and feeding/drinking areas.
                   </div>`
           },
           warning: {
-            text: 'The required space-per-calf for each group or pair may change over time so the housing design should account for this.'
+            text: 'The required area per calf for each group or pair may change over time so the housing design should account for this.'
           },
           preValidationKeys: ['project'],
           ineligibleContent: {
@@ -677,9 +677,9 @@ const questionBank = {
               <div class="govuk-list govuk-list--bullet">
                   Each calf must have the minimum living space:
                   <ul>
-                    <li>3m² per calf when largest calf is 100kg or under</li>
-                    <li>4m² per calf when largest calf is between 100kg and 150kg</li>
-                    <li>5m² per calf when largest calf is over 150kg</li></br>
+                    <li>3m² per calf for calves under 100kg</li>
+                    <li>4m² per calf for calves between 100kg and 150kg</li>
+                    <li>5m² per calf for calves over 150kg</li></br>
                   </ul>
               </div>`,
             insertText: { text: 'This includes the lying, standing and feeding/drinking areas.' },
@@ -695,7 +695,7 @@ const questionBank = {
             values: [{
               heading: 'Eligibility',
               content: [{
-                para: 'Each calf must have at least the minimum living space.'
+                para: 'Each calf must have at least the minimum floor area.'
               }]
             }]
           },
@@ -707,16 +707,16 @@ const questionBank = {
           ],
           answers: [
             {
-              key: 'minimum-living-space-A1',
+              key: 'minimum-floor-area-A1',
               value: 'Yes'
             },
             {
-              key: 'minimum-living-space-A2',
+              key: 'minimum-floor-area-A2',
               value: 'No',
               notEligible: true
             }
           ],
-          yarKey: 'minimumLivingSpace'
+          yarKey: 'minimumFloorArea'
         },
         {
           key: 'housed-individually',
@@ -725,8 +725,8 @@ const questionBank = {
           baseUrl: 'housed-individually',
           url: 'housed-individually',
           nextUrl: 'isolate-calves',
-          backUrl: 'minimum-living-space',
-          preValidationKeys: ['minimumLivingSpace'],
+          backUrl: 'minimum-floor-area',
+          preValidationKeys: ['minimumFloorArea'],
           ineligibleContent: {
             messageContent: '<p class="govuk-body">Calves can only be housed individually in exceptional circumstances (for example, illness or no other calves of similar age).</p>',
             messageLink: {
@@ -1669,9 +1669,9 @@ const questionBank = {
             text: 'To create a separate air space, the area must have solid walls up to ceiling height blocking it from the calf housing.'
           },
           nextUrlObject: {
-            dependentQuestionYarKey: 'minimumLivingSpace',
-            dependentAnswerKeysArray: ['minimum-living-space-A1'],
-            nonDependentAnswerKeysArray: ['minimum-living-space-A3'],
+            dependentQuestionYarKey: 'minimumFloorArea',
+            dependentAnswerKeysArray: ['minimum-floor-area-A1'],
+            nonDependentAnswerKeysArray: ['minimum-floor-area-A3'],
             urlOptions: {
               thenUrl: 'floor-space-under100kg',
               elseUrl: 'floor-space-100kg-150kg',
@@ -1973,9 +1973,9 @@ const questionBank = {
           baseUrl: 'environmental-impact',
           preValidationKeys: ['permanentSickPen'],
           backUrlObject: {
-            dependentQuestionYarKey: 'minimumLivingSpace',
-            dependentAnswerKeysArray: ['minimum-living-space-A1'],
-            nonDependentAnswerKeysArray: ['minimum-living-space-A3'],
+            dependentQuestionYarKey: 'minimumFloorArea',
+            dependentAnswerKeysArray: ['minimum-floor-area-A1'],
+            nonDependentAnswerKeysArray: ['minimum-floor-area-A3'],
             urlOptions: {
               thenUrl: 'floor-space-under100kg',
               elseUrl: 'floor-space-100kg-150kg',

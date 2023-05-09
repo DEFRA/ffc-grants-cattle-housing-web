@@ -6,7 +6,7 @@ describe('Page: /housed-individually', () => {
     projectType: 'fakeData',
     tenancy: 'Yes',
     tenancyLength: null,
-    minimumLivingSpace: '100kg or under'
+    minimumFloorArea: '100kg or under'
   }
 
   jest.mock('../../../../app/helpers/session', () => ({
