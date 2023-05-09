@@ -658,7 +658,7 @@ const questionBank = {
           backUrl: 'project',
           nextUrl: 'housed-individually',
           url: 'minimum-floor-area',
-        hint: {
+          hint: {
             html: `<div class:"govuk-hint">
                     The minimum area must be:</br></br>
                     <li>3m² per calf for calves under 100kg</li>
