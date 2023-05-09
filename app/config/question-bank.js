@@ -675,7 +675,7 @@ const questionBank = {
           ineligibleContent: {
             messageContent: `
               <div class="govuk-list govuk-list--bullet">
-                Each calf must have the minimum floor area:
+                  Each calf must have the minimum floor area:
                   <ul>
                     <li>3m² per calf for calves under 100kg</li>
                     <li>4m² per calf for calves between 100kg and 150kg</li>
