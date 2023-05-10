@@ -37,7 +37,7 @@ describe('Page: /minimum-floor-area', () => {
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Select yes if each calf will have the minimum living space')
+    expect(postResponse.payload).toContain('Select yes if each calf will have the minimum floor area')
   })
   it('page loads with correct back link', async () => {
     const options = {
