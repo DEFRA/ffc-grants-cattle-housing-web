@@ -702,7 +702,7 @@ const questionBank = {
           validate: [
             {
               type: 'NOT_EMPTY',
-              error: 'Select yes if each calf will have the minimum living space'
+              error: 'Select yes if each calf will have the minimum floor area'
             }
           ],
           answers: [
@@ -1197,7 +1197,7 @@ const questionBank = {
                     'access to a water supply',
                     'at least 2 IP66 electrical sockets in the building',
                     'fitted lighting of at least 50 lux (lux is equal to one lumen per square metre)',
-                    'temperature and humidity data loggers (capable of autonomously recording temperature/humidity over a defined period and storing data to view later)'
+                    'temperature and humidity data loggers'
                   ]
                 }]
               }
