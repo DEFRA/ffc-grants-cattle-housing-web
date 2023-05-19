@@ -87,26 +87,6 @@ const msgData = {
               "rating": {}
           },
           {
-              "key": "floor-space",
-              "answers": [
-                  {
-                      "key": "floor-space",
-                      "title": "How much space will each calf have?",
-                      "input": [
-                          {
-                              "key": 3,
-                              "value": 5454
-                          }
-                      ]
-                  }
-              ],
-              "rating": {
-                  "score": 2725500,
-                  "band": "Strong",
-                  "importance": null
-              }
-          },
-          {
               "key": "environmental-impact",
               "answers": [
                   {
