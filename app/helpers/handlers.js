@@ -51,76 +51,51 @@ const getPage = async (question, request, h) => {
     return h.redirect(`${urlPrefix}/housing`)
   }
 
-  switch (url) {
-    case 'floor-space-under100kg':
-      setYarValue(request, 'floorSpaceValue', 3)
-      break
-    case 'floor-space-100kg-150kg':
-      setYarValue(request, 'floorSpaceValue', 4)
-      break
-    case 'floor-space-over150kg':
-      setYarValue(request, 'floorSpaceValue', 5)
-      break
-    case 'score':
-      // TODO: comment these back in when scoring data is ready
-      // CHECK FLOOR-SPACE QUESTION USED, ADD NEW VAR TO SEND?
-      const floorSpaceVar = getYarValue(request, 'floorSpaceValue')
+  if (url === 'score') {
+    const desirabilityAnswers = createMsg.getDesirabilityAnswers(request)
+    console.log('here: ', 2, desirabilityAnswers)
+    const formatAnswersForScoring = createDesirabilityMsg(desirabilityAnswers)
+    const msgData = await getUserScore(formatAnswersForScoring, request.yar.id)
 
-      const desirabilityAnswers = createMsg.getDesirabilityAnswers(request)
-      console.log('here: ', 2, desirabilityAnswers);
-      const formatAnswersForScoring = createDesirabilityMsg(desirabilityAnswers, floorSpaceVar)
-      const msgData = await getUserScore(formatAnswersForScoring, request.yar.id)
+    setYarValue(request, 'current-score', msgData.desirability.overallRating.band) // do we need this alongside overAllScore? Having both seems redundant
 
-      setYarValue(request, 'current-score', msgData.desirability.overallRating.band) // do we need this alongside overAllScore? Having both seems redundant
+    // Mocked score res
+    let scoreChance
+    switch (msgData.desirability.overallRating.band.toLowerCase()) {
+      case 'strong':
+        scoreChance = 'is likely to'
+        break
+      case 'average':
+        scoreChance = 'might'
+        break
+      default:
+        scoreChance = 'is unlikely to'
+        break
+    }
 
-      // Mocked score res
-      let scoreChance
-      switch (msgData.desirability.overallRating.band.toLowerCase()) {
-        case 'strong':
-          scoreChance = 'is likely to'
-          break
-        case 'average':
-          scoreChance = 'might'
-          break
-        default:
-          scoreChance = 'is unlikely to'
-          break
-      }
+    setYarValue(request, 'overAllScore', msgData)
 
-      setYarValue(request, 'overAllScore', msgData)
+    const questions = msgData.desirability.questions.map(desirabilityQuestion => {
+      const tableQuestion = tableOrder.filter(tableQuestionD => tableQuestionD.key === desirabilityQuestion.key)[0]
+      desirabilityQuestion.title = tableQuestion.title
+      desirabilityQuestion.desc = tableQuestion.desc ?? ''
+      desirabilityQuestion.url = `${urlPrefix}/${tableQuestion.url}`
+      desirabilityQuestion.order = tableQuestion.order
+      desirabilityQuestion.unit = tableQuestion?.unit
+      desirabilityQuestion.pageTitle = tableQuestion.pageTitle
+      desirabilityQuestion.fundingPriorities = tableQuestion.fundingPriorities
+      desirabilityQuestion.answers = desirabilityQuestion.answers
+      return desirabilityQuestion
+    })
 
-      const questions = msgData.desirability.questions.map(desirabilityQuestion => {
-        const tableQuestion = tableOrder.filter(tableQuestionD => tableQuestionD.key === desirabilityQuestion.key)[0]
-        desirabilityQuestion.title = tableQuestion.title
-        desirabilityQuestion.desc = tableQuestion.desc ?? ''
-        desirabilityQuestion.url = `${urlPrefix}/${tableQuestion.url}`
-        desirabilityQuestion.order = tableQuestion.order
-        desirabilityQuestion.unit = tableQuestion?.unit
-        desirabilityQuestion.pageTitle = tableQuestion.pageTitle
-        desirabilityQuestion.fundingPriorities = tableQuestion.fundingPriorities
-        desirabilityQuestion.answers = desirabilityQuestion.answers;
-
-        if (desirabilityQuestion.title === 'Floor area') {
-          if (floorSpaceVar === 3) {
-            desirabilityQuestion.url = `${urlPrefix}/floor-space-under100kg`
-          } else if (floorSpaceVar === 4) {
-            desirabilityQuestion.url = `${urlPrefix}/floor-space-100kg-150kg`
-          } else {
-            desirabilityQuestion.url = `${urlPrefix}/floor-space-over150kg`
-
-          }
-        }
-
-        return desirabilityQuestion
-      })
-
-      return h.view(scoreViewTemplate, createModel({
-        titleText: msgData.desirability.overallRating.band,
-        scoreData: msgData,
-        questions: questions.sort((a, b) => a.order - b.order),
-        scoreChance: scoreChance
-      }, backUrl, url))
+    return h.view(scoreViewTemplate, createModel({
+      titleText: msgData.desirability.overallRating.band,
+      scoreData: msgData,
+      questions: questions.sort((a, b) => a.order - b.order),
+      scoreChance: scoreChance
+    }, backUrl, url))
   }
+
   let confirmationId = ''
 
   if (question.grantInfo) {
@@ -146,7 +121,7 @@ const getPage = async (question, request, h) => {
       }
       confirmationId = getConfirmationId(request.yar.id)
       try {
-        const emailData = await emailFormatting({ body: createMsg.getAllDetails(request, confirmationId), scoring: getYarValue(request, "overAllScore") }, request.yar.id)
+        const emailData = await emailFormatting({ body: createMsg.getAllDetails(request, confirmationId), scoring: getYarValue(request, 'overAllScore') }, request.yar.id)
         await senders.sendDesirabilitySubmitted(emailData, request.yar.id) // replace with sendDesirabilitySubmitted, and replace first param with call to function in process-submission
         await gapiService.sendDimensionOrMetrics(request, [{
           dimensionOrMetric: gapiService.dimensions.CONFIRMATION,
@@ -238,8 +213,8 @@ const getPage = async (question, request, h) => {
       }
     }
     // case 'score':
-  
-      
+
+
     case 'business-details':
     case 'agent-details':
     case 'applicant-details': {
@@ -265,9 +240,9 @@ const showPostPage = (currentQuestion, request, h) => {
   }
   for (const [key, value] of Object.entries(payload)) {
     // if statement added for multi-input eligibility for non-eligible
-    if(typeof(value) === "object"){
+    if (typeof (value) === 'object') {
       thisAnswer = answers?.find(answer => (answer.value === value[0]))
-    }else{
+    }else {
       thisAnswer = answers?.find(answer => (answer.value === value))
     }
     // if (yarKey === 'cover' && thisAnswer.key === 'cover-A2') {
