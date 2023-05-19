@@ -18,7 +18,6 @@ const desirabilityAnswersSchema = Joi.object({
   calfGroupSize: Joi.string(),
   moistureControl: Joi.array().items(Joi.string()),
   permanentSickPen: Joi.array().items(Joi.string()),
-  floorSpace: Joi.number(),
   environmentalImpact: Joi.array().items(Joi.string()),
   sustainableMaterials: Joi.array().items(Joi.string()),
   introducingInnovation: Joi.array().items(Joi.string())
@@ -32,7 +31,6 @@ function getDesirabilityAnswers (request) {
       calfGroupSize: getYarValue(request, 'calfGroupSize'),
       moistureControl: getDataFromYarValue(request, 'moistureControl', 'multi-answer'),
       permanentSickPen: getDataFromYarValue(request, 'permanentSickPen', 'multi-answer'),
-      floorSpace: getYarValue(request, 'floorSpace'),
       environmentalImpact: getDataFromYarValue(request, 'environmentalImpact', 'multi-answer'),
       sustainableMaterials: getDataFromYarValue(request, 'sustainableMaterials', 'multi-answer'),
       introducingInnovation: getDataFromYarValue(request, 'introducingInnovation', 'multi-answer')
