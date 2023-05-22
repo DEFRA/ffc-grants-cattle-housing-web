@@ -29,6 +29,16 @@
         "postcode": "YO33 4FF"
     },
     "confirmationId": "12345678",
+    "applicantType": [
+        "Dairy (including calf rearing)",
+        "Pigs", 
+        "Sheep",
+        "Laying hens",
+        "Meat chickens",
+        "Aquaculture",
+        "Arable",
+        "Horticulture" 
+    ],
     "legalStatus": "Sole trader",
     "inEngland": "Yes",
     "planningPermission": "Yes",

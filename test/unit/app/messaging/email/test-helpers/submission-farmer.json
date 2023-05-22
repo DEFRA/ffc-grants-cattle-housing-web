@@ -31,6 +31,9 @@
         "calvingSystem":"Year round",
         "calvesNumber":30
     },
+    "applicantType": [
+        "Beef (including calf rearing)"
+    ],
     "projectType": "",
     "applicantBusiness": "",
     "project":"Building new calf housing",

@@ -133,7 +133,7 @@ describe('Create submission message', () => {
     expect(msg.spreadsheet.worksheets[0]).toHaveProperty('defaultColumnWidth')
     expect(msg.spreadsheet.worksheets[0]).toHaveProperty('protectPassword')
     expect(msg.spreadsheet.worksheets[0]).toHaveProperty('rows')
-    expect(msg.spreadsheet.worksheets[0].rows.length).toBe(82)
+    expect(msg.spreadsheet.worksheets[0].rows.length).toBe(91)
 })
 
   test('Protect password property should not be set if config is false', () => {
