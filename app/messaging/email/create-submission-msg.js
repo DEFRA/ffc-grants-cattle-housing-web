@@ -59,6 +59,8 @@ function getBusinessTypeC53 (businessType) {
   for (type in businessType) {
     type = 'Farmer with ' + type
   }
+  // capitalise laying hens and meat chicken second word
+  // None of the above = Other
   return businessType
 
   //if beef farmer, "Farmer with Beef (including calf rearing)"
@@ -130,7 +132,7 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(43, 'Theme', schemeName),
           generateRow(90, 'Sub-Theme / Project type', subScheme),
           generateRow(41, 'Owner', 'RD'),
-          generateRow(53, 'Business type (Plus animal numbers)', getBusinessTypeC53(submission.applicantType)), // design action
+          generateRow(53, 'Business type', getBusinessTypeC53(submission.applicantType)), // design action
           generateRow(341, 'Grant Launch Date', ''),
           generateRow(23, 'Business Form Classification (Status of Applicant)', submission.legalStatus),
           generateRow(405, 'Project Type', submission.project), // row 26 default value?
@@ -146,7 +148,7 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(415, 'Drainage', submission.drainageSlope),
           generateRow(416, 'Draught Protection', submission.draughtProtection),
           generateRow(417, 'Additional Items', submission.additionalItems),
-          generateRow(418, 'Lighting', submission.lighting), // new lighting page 
+          // generateRow(418, 'Lighting', submission.lighting), // new lighting page doesnt exist yet
           generateRow(419, 'Solar PV Panels', submission.roofSolarPV),
 
           generateRow(420, 'Moving from Individually Housed', submission.housing),
@@ -157,7 +159,7 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(427, 'Sustainable Materials', submission.sustainableMaterials),
           generateRow(428, 'Introducing Innovation', submission.introducingInnovation),
 
-          // 44 projecttype + buildingstructure + other building structure?  ROW 25
+          generateRow(44, 'Description of Project', submission.projectType + ',' + submission.structure + ',' + submission.structureEligibility), // check delimiter
 
           generateRow(431, 'Farmer with Beef (including calf rearing)'),
           generateRow(432, 'Farmer with Dairy (including calf rearing)'),
@@ -167,7 +169,7 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(437, 'Farmer with Meat Chickens'),
           generateRow(438, 'Farmer with Aquaculture'),
           generateRow(439, 'Farmer with Horticulture'),
-          generateRow(440, 'Other'),
+          generateRow(440, 'Farmer with Other'),
 
           generateRow(45, 'Location of project (postcode)', submission.farmerDetails.projectPostcode), 
           generateRow(376, 'Project Started', submission.projectStart),
