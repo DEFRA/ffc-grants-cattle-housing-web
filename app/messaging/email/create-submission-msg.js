@@ -57,10 +57,19 @@ function generateExcelFilename (scheme, projectName, businessName, referenceNumb
 }
 function getBusinessTypeC53 (businessType) {
   for (type in businessType) {
-    type = 'Farmer with ' + type
+    // set up for capitalising where necessary
+    if (businessType[type] === 'Laying hens') {
+      businessType[type] = 'Laying Hens'
+    } else if (businessType[type] === 'Meat chickens') {
+      businessType[type] = 'Meat Chickens'
+    } else if (businessType[type] === 'Arable') {
+      businessType[type] = 'Other'
+    }
+
+    // assign values for DORA
+    businessType[type] = 'Farmer with ' + businessType[type]
   }
-  // capitalise laying hens and meat chicken second word
-  // None of the above = Other
+  
   return businessType
 
   //if beef farmer, "Farmer with Beef (including calf rearing)"
@@ -109,6 +118,9 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
   const schemeName = 'Calf Housing for Health and Welfare'
   const subScheme = `FTF-${schemeName}`
 
+  // format array for applicantType field and individual fields
+  const businessTypeArray = getBusinessTypeC53(submission.applicantType)
+
   return {
     filename: generateExcelFilename(
       subScheme.trim(),
@@ -132,15 +144,15 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(43, 'Theme', schemeName),
           generateRow(90, 'Sub-Theme / Project type', subScheme),
           generateRow(41, 'Owner', 'RD'),
-          generateRow(53, 'Business type', getBusinessTypeC53(submission.applicantType)), // design action
+          generateRow(53, 'Business type', businessTypeArray), // design action
           generateRow(341, 'Grant Launch Date', ''),
           generateRow(23, 'Business Form Classification (Status of Applicant)', submission.legalStatus),
-          generateRow(405, 'Project Type', submission.project), // row 26 default value?
-          generateRow(406, 'Calf Weight', submission.calfWeight), // check if values still received
-          generateRow(407, 'Minimum floor area', submission.minimumFloorArea), // check once merge main
+          generateRow(405, 'Project Type', submission.project),
+          // generateRow(406, 'Calf Weight', submission.calfWeight),
+          generateRow(407, 'Minimum floor area', submission.minimumFloorArea),
           generateRow(408, 'Calves Housed Individually', submission.housedIndividually),
           generateRow(409, 'Isolate Sick Calves', submission.isolateCalves),
-          generateRow(410, 'Straw Bedding', subnmission.strawBedding),
+          generateRow(410, 'Straw Bedding', submission.strawBedding),
           generateRow(411, 'Flooring and Bedding', submission.concreteFlooring),
           generateRow(412, 'Enrichment', submission.enrichment),
           generateRow(413, 'Building Structure', submission.structure),
@@ -159,23 +171,24 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(427, 'Sustainable Materials', submission.sustainableMaterials),
           generateRow(428, 'Introducing Innovation', submission.introducingInnovation),
 
-          generateRow(44, 'Description of Project', submission.projectType + ',' + submission.structure + ',' + submission.structureEligibility), // check delimiter
+          generateRow(44, 'Description of Project', submission.project + ' , ' + submission.structure + ' , ' + submission.structureEligibility === 'Yes' ? submission.yesStructureEligibility : ''),
 
-          generateRow(431, 'Farmer with Beef (including calf rearing)'),
-          generateRow(432, 'Farmer with Dairy (including calf rearing)'),
-          generateRow(434, 'Farmer with Pigs'),
-          generateRow(435, 'Farmer with Sheep'),
-          generateRow(436, 'Farmer with Laying Hens'),
-          generateRow(437, 'Farmer with Meat Chickens'),
-          generateRow(438, 'Farmer with Aquaculture'),
-          generateRow(439, 'Farmer with Horticulture'),
-          generateRow(440, 'Farmer with Other'),
+          // If chosen say yes, else be blank
+          generateRow(431, 'Farmer with Beef (including calf rearing)', businessTypeArray.includes('Farmer with Beef (including calf rearing)') ? 'Yes' : ''),
+          generateRow(432, 'Farmer with Dairy (including calf rearing)', businessTypeArray.includes('Farmer with Dairy (including calf rearing)') ? 'Yes' : ''),
+          generateRow(434, 'Farmer with Pigs', businessTypeArray.includes('Farmer with Pigs') ? 'Yes' : ''),
+          generateRow(435, 'Farmer with Sheep', businessTypeArray.includes('Farmer with Sheep') ? 'Yes' : ''),
+          generateRow(436, 'Farmer with Laying Hens', businessTypeArray.includes('Farmer with Laying Hens') ? 'Yes' : ''),
+          generateRow(437, 'Farmer with Meat Chickens', businessTypeArray.includes('Farmer with Meat Chickens') ? 'Yes' : ''),
+          generateRow(438, 'Farmer with Aquaculture', businessTypeArray.includes('Farmer with Aquaculture') ? 'Yes' : ''),
+          generateRow(439, 'Farmer with Horticulture', businessTypeArray.includes('Farmer with Horticulture') ? 'Yes' : ''),
+          generateRow(440, 'Farmer with Other', businessTypeArray.includes('Farmer with Other') ? 'Yes' : ''),
 
           generateRow(45, 'Location of project (postcode)', submission.farmerDetails.projectPostcode), 
           generateRow(376, 'Project Started', submission.projectStart),
           generateRow(342, 'Land owned by Farm', submission.tenancy),
           generateRow(343, 'Tenancy for next 5 years', submission.tenancyLength ?? ''),
-          generateRow(55, 'Total project expenditure', String(submission.projectCost.toFixed(2))),
+          generateRow(55, 'Total project expenditure', String(Number(submission.projectCost).toFixed(2))),
           generateRow(57, 'Grant rate', '40'),
           generateRow(56, 'Grant amount requested', submission.calculatedGrant),
           generateRow(345, 'Remaining Cost to Farmer', submission.remainingCost),
