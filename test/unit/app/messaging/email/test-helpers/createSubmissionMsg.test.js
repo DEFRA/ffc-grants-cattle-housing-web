@@ -152,7 +152,7 @@ describe('Create submission message', () => {
     farmerSubmission.farmingType = 'bad value'
     const msg = createMsg(farmerSubmission, desirabilityScore)
 
-    expect(msg.spreadsheet.worksheets[0].rows.find(r => r.row === 53).values[2]).toBe('farmer with livestock')
+    expect(msg.spreadsheet.worksheets[0].rows.find(r => r.row === 53).values[2]).toBe("Farmer with Beef (including calf rearing)")
   })
 
   test('getscorechance function', () => {
