@@ -78,30 +78,6 @@
 				}
 			},
 			{
-				"title": "Floor area",
-				"url": "floor-space-under100kg",
-				"backUrl": "permanent-sick-pen",
-				"fundingPriorities": "Improve health/welfare",
-				"key": "floor-space-under100kg",
-				"answers": [
-					{
-						"key": "floor-space-under100kg",
-						"title": "How many calves will you have per automatic feeder?",
-						"input": [
-							{
-								"key": "automatic-calf-feeder",
-								"value": "5"
-							}
-						]
-					}
-				],
-				"rating": {
-					"score": 9,
-					"band": "Strong",
-					"importance": null
-				}
-			},
-			{
 				"title": "Environmental impact",
 				"url": "environmental-impact",
 				"backUrl": "housing",

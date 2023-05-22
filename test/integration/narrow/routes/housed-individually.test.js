@@ -6,7 +6,7 @@ describe('Page: /housed-individually', () => {
     projectType: 'fakeData',
     tenancy: 'Yes',
     tenancyLength: null,
-    calfWeight: '100kg or under'
+    minimumFloorArea: '100kg or under'
   }
 
   jest.mock('../../../../app/helpers/session', () => ({
@@ -67,37 +67,5 @@ describe('Page: /housed-individually', () => {
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
     expect(postResponse.headers.location).toBe('isolate-calves')
-  })
-
-  it('page loads with correct back link when calf-weight  page`s answer is 100kg or under', async () => {
-    varList.calfWeight = '100kg or under'
-    const options = {
-      method: 'GET',
-      url: `${global.__URLPREFIX__}/housed-individually`
-    }
-    const response = await global.__SERVER__.inject(options)
-    expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('<a href=\"living-space-3m2\" class=\"govuk-back-link\">Back</a>')
-  })
-
-  it('page loads with correct back link when calf-weight  page`s answer is Between 100kg and 150kg', async () => {
-    varList.calfWeight = 'Between 100kg and 150kg'
-    const options = {
-      method: 'GET',
-      url: `${global.__URLPREFIX__}/housed-individually`
-    }
-    const response = await global.__SERVER__.inject(options)
-    expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('<a href=\"living-space-4m2\" class=\"govuk-back-link\">Back</a>')
-  })
-  it('page loads with correct back link when calf-weight  page`s answer is Over 150kg', async () => {
-    varList.calfWeight = 'Over 150kg'
-    const options = {
-      method: 'GET',
-      url: `${global.__URLPREFIX__}/housed-individually`
-    }
-    const response = await global.__SERVER__.inject(options)
-    expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('<a href=\"living-space-5m2\" class=\"govuk-back-link\">Back</a>')
   })
 })

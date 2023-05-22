@@ -240,6 +240,17 @@ function getCurrencyFormat (amount) {
 //   return projectItems
 // }
 
+function getScoreChance (rating) {
+  switch (rating.toLowerCase()) {
+    case 'strong':
+      return 'seems likely to'
+    case 'average':
+      return 'might'
+    default:
+      return 'seems unlikely to'
+  }
+}
+
 function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail = false) {
   const email = isAgentEmail ? submission.agentsDetails.emailAddress : submission.farmerDetails.emailAddress
   return {
@@ -249,6 +260,8 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       firstName: isAgentEmail ? submission.agentsDetails.firstName : submission.farmerDetails.firstName,
       lastName: isAgentEmail ? submission.agentsDetails.lastName : submission.farmerDetails.lastName,
       referenceNumber: submission.confirmationId,
+      overallRating: desirabilityScore.desirability.overallRating.band,
+      scoreChance: getScoreChance(desirabilityScore.desirability.overallRating.band),
       legalStatus: submission.legalStatus,
       applicantType: submission.applicantType ? [submission.applicantType].flat().join(', ') : ' ',
       location: submission.inEngland,
@@ -258,8 +271,7 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       tenancy: submission.tenancy,
       tenancyAgreement: submission.tenancyLength ?? 'N/A',
       project: submission.project,
-      calfWeight: submission.calfWeight,
-      livingSpace: submission.livingSpace,
+      minimumFloorArea: submission.minimumFloorArea,
       housedIndividually: submission.housedIndividually,
       isolateCalves: submission.isolateCalves,
       strawBedding: submission.strawBedding,
@@ -267,7 +279,7 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       enrichment: submission.enrichment,
       structure: submission.structure,
       structureEligibility: submission.structureEligibility === 'Yes' ? submission.yesStructureEligibility : submission.structureEligibility ?? 'N/A',
-      draughtProtection:submission.draughtProtection,
+      draughtProtection: submission.draughtProtection,
       drainageSlope: submission.drainageSlope,
       additionalItems: submission.additionalItems,
       roofSolarPV: submission.roofSolarPV,
@@ -282,8 +294,6 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       moistureControlScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'moisture-control'),
       permanentSickPen: submission.permanentSickPen,
       permanentSickPenScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'permanent-sick-pen'),
-      floorSpace: submission.floorSpace,
-      floorSpaceScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'floor-space'),
       environmentalImpact: submission.environmentalImpact,
       environmentalImpactScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'environmental-impact'),
       sustainableMaterials: submission.sustainableMaterials,
@@ -292,16 +302,15 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       introducingInnovationScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'introducing-innovation'),
       projectName: submission.businessDetails.projectName,
       projectType: submission.projectType,
-      calvingSystem: submission.calvingSystem ?? 'N/A',
-      calvesNumber: submission.calvesNumber ?? 'N/A',
+      calvingSystem: submission.businessDetails.calvingSystem ? submission.businessDetails.calvingSystem : 'N/A',
+      calvesNumber: submission.businessDetails.calvesNumber ? submission.businessDetails.calvesNumber : 'N/A',
       businessName: submission.businessDetails.businessName,
       farmerName: submission.farmerDetails.firstName,
       farmerSurname: submission.farmerDetails.lastName,
       farmerEmail: submission.farmerDetails.emailAddress,
-      isAgent: submission.agentsDetails ? 'Yes' : 'No',
-      agentName: submission.agentsDetails?.firstName ?? ' ',
+      agentName: submission.agentsDetails?.firstName ?? 'N/A',
       agentSurname: submission.agentsDetails?.lastName ?? ' ',
-      agentBusinessName: submission.agentDetails?.businessName ?? 'N/A',
+      agentBusinessName: submission.agentsDetails?.businessName ?? 'N/A',
       agentEmail: submission.agentsDetails?.emailAddress ?? 'N/A',
       contactConsent: submission.consentOptional ? 'Yes' : 'No',
       scoreDate: new Date().toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' }),
@@ -315,11 +324,12 @@ function spreadsheet (submission, desirabilityScore) {
   return data
 }
 
-module.exports = function (submission, desirabilityScore) {
+module.exports = function (submission, desirabilityScore, rating='') {
   return {
     applicantEmail: getEmailDetails(submission, desirabilityScore, false),
     agentEmail: submission.applying === 'Agent' ? getEmailDetails(submission,desirabilityScore, false, true) : null,
     rpaEmail: spreadsheetConfig.sendEmailToRpa ? getEmailDetails(submission, desirabilityScore, spreadsheetConfig.rpaEmail) : null,
-    spreadsheet: spreadsheet(submission, desirabilityScore)
+    spreadsheet: spreadsheet(submission, desirabilityScore),
+    getScoreChance:getScoreChance(rating)
   }
 }

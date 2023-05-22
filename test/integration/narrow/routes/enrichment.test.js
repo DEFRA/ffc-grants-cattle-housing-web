@@ -6,7 +6,7 @@ describe('Page: /enrichment', () => {
     projectType: 'fakeData',
     tenancy: 'Yes',
     tenancyLength: null,
-    calfWeight: '100kg or under',
+    minimumFloorArea: '100kg or under',
     housedIndividually: 'Yes',
     isolateCalves: 'Yes'
   }
