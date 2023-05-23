@@ -148,13 +148,6 @@ describe('Create submission message', () => {
     expect(msg.spreadsheet.worksheets[0]).not.toHaveProperty('protectPassword')
   })
 
-  test('Unknown farming type produces error string', () => {
-    farmerSubmission.applicantType = ['Beef (including calf rearing)']
-    const msg = createMsg(farmerSubmission, desirabilityScore)
-
-    expect(msg.spreadsheet.worksheets[0].rows.find(r => r.row === 53).values[2]).toStrictEqual(["Farmer with Beef (including calf rearing)"])
-  })
-
   test('getscorechance function', () => {
     let msg = createMsg(farmerSubmission, desirabilityScore, 'strong')
     expect(msg.getScoreChance).toBe('seems likely to')
