@@ -149,9 +149,10 @@ describe('Create submission message', () => {
   })
 
   test('Unknown farming type produces error string', () => {
+    farmerSubmission.applicantType = ['Beef (including calf rearing)']
     const msg = createMsg(farmerSubmission, desirabilityScore)
 
-    expect(msg.spreadsheet.worksheets[0].rows.find(r => r.row === 53).values[2]).toBe(["Farmer with Beef (including calf rearing)"])
+    expect(msg.spreadsheet.worksheets[0].rows.find(r => r.row === 53).values[2]).toStrictEqual(["Farmer with Beef (including calf rearing)"])
   })
 
   test('getscorechance function', () => {

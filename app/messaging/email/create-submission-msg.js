@@ -56,6 +56,7 @@ function generateExcelFilename (scheme, projectName, businessName, referenceNumb
   return `${scheme}_${projectName}_${businessName}_${referenceNumber}_${dateTime}.xlsx`
 }
 function getBusinessTypeC53 (businessType) {
+  let returnArray = []
   for (type in businessType) {
     // set up for capitalising where necessary
     if (businessType[type] === 'Laying hens') {
@@ -67,10 +68,10 @@ function getBusinessTypeC53 (businessType) {
     }
 
     // assign values for DORA
-    businessType[type] = 'Farmer with ' + businessType[type]
+    returnArray.push('Farmer with ' + businessType[type])
   }
   
-  return businessType
+  return returnArray
 
   //if beef farmer, "Farmer with Beef (including calf rearing)"
   // if dairy farmer, "Farmer with Dairy (including calf rearing)"
