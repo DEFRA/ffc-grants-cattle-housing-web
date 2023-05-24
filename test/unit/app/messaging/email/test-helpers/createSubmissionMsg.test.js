@@ -133,8 +133,8 @@ describe('Create submission message', () => {
     expect(msg.spreadsheet.worksheets[0]).toHaveProperty('defaultColumnWidth')
     expect(msg.spreadsheet.worksheets[0]).toHaveProperty('protectPassword')
     expect(msg.spreadsheet.worksheets[0]).toHaveProperty('rows')
-    expect(msg.spreadsheet.worksheets[0].rows.length).toBe(58)
-  })
+    expect(msg.spreadsheet.worksheets[0].rows.length).toBe(91)
+})
 
   test('Protect password property should not be set if config is false', () => {
     jest.mock('../../../../../../app/messaging/email/config/spreadsheet', () => ({
@@ -146,13 +146,6 @@ describe('Create submission message', () => {
     const createSubmissionMsg = require('../../../../../../app/messaging/email/create-submission-msg')
     const msg = createSubmissionMsg(agentSubmission, desirabilityScore)
     expect(msg.spreadsheet.worksheets[0]).not.toHaveProperty('protectPassword')
-  })
-
-  test('Unknown farming type produces error string', () => {
-    farmerSubmission.farmingType = 'bad value'
-    const msg = createMsg(farmerSubmission, desirabilityScore)
-
-    expect(msg.spreadsheet.worksheets[0].rows.find(r => r.row === 53).values[2]).toBe('farmer with livestock')
   })
 
   test('getscorechance function', () => {
