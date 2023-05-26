@@ -120,7 +120,20 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
   const subScheme = `FTF-${schemeName}`
 
   // format array for applicantType field and individual fields
-  const businessTypeArray = getBusinessTypeC53(submission.applicantType)
+  let businessTypeArray
+  let applicantTypeArray = submission.applicantType
+
+  if (Array.isArray(applicantTypeArray)) {
+    businessTypeArray = getBusinessTypeC53(applicantTypeArray)
+  } else {
+    let tempArray = []
+    tempArray.push(applicantTypeArray)
+    console.log(Array.isArray(tempArray))
+    businessTypeArray = getBusinessTypeC53(tempArray)
+  }
+
+  let projectDescriptionString  = ''
+  projectDescriptionString = projectDescriptionString.concat(submission.project, ',', submission.structure, ',', submission.structureEligibility === 'Yes' ? submission.yesStructureEligibility : '')
 
   return {
     filename: generateExcelFilename(
@@ -172,7 +185,7 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(427, 'Sustainable Materials', submission.sustainableMaterials),
           generateRow(428, 'Introducing Innovation', submission.introducingInnovation),
 
-          generateRow(44, 'Description of Project', submission.project + ' , ' + submission.structure + ' , ' + submission.structureEligibility === 'Yes' ? submission.yesStructureEligibility : ''),
+          generateRow(44, 'Description of Project', projectDescriptionString),
 
           // If chosen say yes, else be blank
           generateRow(431, 'Farmer with Beef (including calf rearing)', businessTypeArray.includes('Farmer with Beef (including calf rearing)') ? 'Yes' : ''),
@@ -194,7 +207,7 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(56, 'Grant amount requested', submission.calculatedGrant),
           generateRow(345, 'Remaining Cost to Farmer', submission.remainingCost),
           generateRow(346, 'Planning Permission Status', getPlanningPermissionDoraValue(submission.planningPermission)),
-          generateRow(366, 'Date of OA decision', ''),
+          generateRow(366, 'Date of OA decision', (new Date(today.setMonth(today.getMonth() + 6))).toLocaleDateString('en-GB')),
           generateRow(42, 'Project name', submission.businessDetails.projectName),
           generateRow(4, 'Single business identifier (SBI)', submission.businessDetails.sbi || '000000000'), // sbi is '' if not set so use || instead of ??
           generateRow(429, 'Calving System', submission.businessDetails.calvingSystem ?? ''),
