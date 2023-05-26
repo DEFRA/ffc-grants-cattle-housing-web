@@ -207,7 +207,7 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(56, 'Grant amount requested', submission.calculatedGrant),
           generateRow(345, 'Remaining Cost to Farmer', submission.remainingCost),
           generateRow(346, 'Planning Permission Status', getPlanningPermissionDoraValue(submission.planningPermission)),
-          generateRow(366, 'Date of OA decision', (new Date(today.setMonth(today.getMonth() + 6))).toLocaleDateString('en-GB')),
+          generateRow(366, 'Date of OA decision', ''),
           generateRow(42, 'Project name', submission.businessDetails.projectName),
           generateRow(4, 'Single business identifier (SBI)', submission.businessDetails.sbi || '000000000'), // sbi is '' if not set so use || instead of ??
           generateRow(429, 'Calving System', submission.businessDetails.calvingSystem ?? ''),
