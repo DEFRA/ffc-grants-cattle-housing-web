@@ -72,20 +72,15 @@ function getBusinessTypeC53 (businessType) {
   }
   
   return returnArray
-
-  //if beef farmer, "Farmer with Beef (including calf rearing)"
-  // if dairy farmer, "Farmer with Dairy (including calf rearing)"
-  // if other, "Farmer with livestock" 
-
-  // set mapping  for other cells too? c431-440
 }
 
+// confirm following values and mapping
 const getPlanningPermissionDoraValue = (planningPermission) => {
   switch (planningPermission) {
-    case 'Applied for but not yet approved':
+    case 'Should be in place by 31 January 2024':
       return 'Applied for'
-    case 'Not yet applied for but expected to be in place by 31 December 2023':
-      return 'Not yet applied for'
+    case 'Not needed':
+      return 'Not needed'
     default:
       return 'Approved'
   }
@@ -120,7 +115,20 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
   const subScheme = `FTF-${schemeName}`
 
   // format array for applicantType field and individual fields
-  const businessTypeArray = getBusinessTypeC53(submission.applicantType)
+  let businessTypeArray
+  let applicantTypeArray = submission.applicantType
+
+  if (Array.isArray(applicantTypeArray)) {
+    businessTypeArray = getBusinessTypeC53(applicantTypeArray)
+  } else {
+    let tempArray = []
+    tempArray.push(applicantTypeArray)
+    console.log(Array.isArray(tempArray))
+    businessTypeArray = getBusinessTypeC53(tempArray)
+  }
+
+  let projectDescriptionString  = ''
+  projectDescriptionString = projectDescriptionString.concat(submission.project, ',', submission.structure, ',', submission.structureEligibility === 'Yes' ? submission.yesStructureEligibility : '')
 
   return {
     filename: generateExcelFilename(
@@ -143,10 +151,10 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(40, 'Scheme', 'Farming Transformation Fund'),
           generateRow(39, 'Sub scheme', subScheme),
           generateRow(43, 'Theme', schemeName),
-          generateRow(90, 'Sub-Theme / Project type', subScheme),
+          generateRow(90, 'Sub-Theme / Project type', schemeName),
           generateRow(41, 'Owner', 'RD'),
           generateRow(53, 'Business type', businessTypeArray), // design action
-          generateRow(341, 'Grant Launch Date', ''),
+          generateRow(341, 'Grant Launch Date', ''), // confirm
           generateRow(23, 'Business Form Classification (Status of Applicant)', submission.legalStatus),
           generateRow(405, 'Project Type', submission.project),
           // generateRow(406, 'Calf Weight', submission.calfWeight),
@@ -172,7 +180,7 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(427, 'Sustainable Materials', submission.sustainableMaterials),
           generateRow(428, 'Introducing Innovation', submission.introducingInnovation),
 
-          generateRow(44, 'Description of Project', submission.project + ' , ' + submission.structure + ' , ' + submission.structureEligibility === 'Yes' ? submission.yesStructureEligibility : ''),
+          generateRow(44, 'Description of Project', projectDescriptionString),
 
           // If chosen say yes, else be blank
           generateRow(431, 'Farmer with Beef (including calf rearing)', businessTypeArray.includes('Farmer with Beef (including calf rearing)') ? 'Yes' : ''),
@@ -181,7 +189,7 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(435, 'Farmer with Sheep', businessTypeArray.includes('Farmer with Sheep') ? 'Yes' : ''),
           generateRow(436, 'Farmer with Laying Hens', businessTypeArray.includes('Farmer with Laying Hens') ? 'Yes' : ''),
           generateRow(437, 'Farmer with Meat Chickens', businessTypeArray.includes('Farmer with Meat Chickens') ? 'Yes' : ''),
-          generateRow(438, 'Farmer with Aquaculture', businessTypeArray.includes('Farmer with Aquaculture') ? 'Yes' : ''),
+          generateRow(438, 'Farmer with Aquaculture', businessTypeArray.includes('Farmer with Aquaculture') ? 'Yes' : ''), // replace with arable and shift up
           generateRow(439, 'Farmer with Horticulture', businessTypeArray.includes('Farmer with Horticulture') ? 'Yes' : ''),
           generateRow(440, 'Farmer with Other', businessTypeArray.includes('Farmer with Other') ? 'Yes' : ''),
 
@@ -194,7 +202,7 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(56, 'Grant amount requested', submission.calculatedGrant),
           generateRow(345, 'Remaining Cost to Farmer', submission.remainingCost),
           generateRow(346, 'Planning Permission Status', getPlanningPermissionDoraValue(submission.planningPermission)),
-          generateRow(366, 'Date of OA decision', ''),
+          generateRow(366, 'Date of OA decision', ''), // confirm
           generateRow(42, 'Project name', submission.businessDetails.projectName),
           generateRow(4, 'Single business identifier (SBI)', submission.businessDetails.sbi || '000000000'), // sbi is '' if not set so use || instead of ??
           generateRow(429, 'Calving System', submission.businessDetails.calvingSystem ?? ''),

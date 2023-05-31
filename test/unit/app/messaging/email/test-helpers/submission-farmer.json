@@ -18,7 +18,7 @@
     "confirmationId": "12345678",
     "legalStatus": "Sole trader",
     "inEngland": "Yes",
-    "planningPermission": "Yes",
+    "planningPermission": "Not needed",
     "projectStart": "Yes, preparatory work",
     "tenancy": "No",
     "tenancyAgreement":"Yes",
@@ -31,9 +31,7 @@
         "calvingSystem":"Year round",
         "calvesNumber":30
     },
-    "applicantType": [
-        "Beef (including calf rearing)"
-    ],
+    "applicantType": "Beef (including calf rearing)",
     "projectType": "",
     "applicantBusiness": "",
     "project":"Building new calf housing",
