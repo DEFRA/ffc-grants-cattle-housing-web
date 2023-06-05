@@ -14,7 +14,7 @@ function guardPage (request, guardData, rule = null) {
   if (isServiceDecommissioned) return isServiceDecommissioned
   if (guardData) {
     if (rule) {
-      result = rule.condition === 'ANY' && !guardData.some(dependcyKey => getYarValue(request, dependcyKey) !== null)
+      result = rule.condition === 'ANY' && getYarValue(request, guardData) !== rule.dependency
     } else {
       result = guardData.filter(dependcyKey => getYarValue(request, dependcyKey) === null).length > 0
     }
