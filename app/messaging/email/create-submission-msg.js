@@ -16,15 +16,14 @@ function generateRow (rowNumber, name, value, bold = false) {
   }
 }
 
-function calculateBusinessSize (employees, turnover) {
+function calculateBusinessSize (employees) {
   const employeesNum = Number(employees)
-  const turnoverNum = Number(turnover)
 
-  if (employeesNum < microEmployeesNum && turnoverNum < microTurnover) { // €2m turnover
+  if (employeesNum < microEmployeesNum) { 
     return 'Micro'
-  } else if (employeesNum < smallEmployeesNum && turnoverNum < smallTurnover) { // €10m turnover
+  } else if (employeesNum < smallEmployeesNum) { 
     return 'Small'
-  } else if (employeesNum < mediumEmployeesNum && turnoverNum < mediumTurnover) { // €50m turnover
+  } else if (employeesNum < mediumEmployeesNum) {
     return 'Medium'
   } else {
     return 'Large'
@@ -210,7 +209,7 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(7, 'Business name', submission.businessDetails.businessName),
           generateRow(367, 'Annual Turnover', submission.businessDetails.businessTurnover),
           generateRow(22, 'Employees', submission.businessDetails.numberEmployees),
-          generateRow(20, 'Business size', calculateBusinessSize(submission.businessDetails.numberEmployees, submission.businessDetails.businessTurnover)),
+          generateRow(20, 'Business size', calculateBusinessSize(submission.businessDetails.numberEmployees)),
           generateRow(91, 'Are you an AGENT applying on behalf of your customer', submission.applying === 'Agent' ? 'Yes' : 'No'),
           generateRow(5, 'Surname', submission.farmerDetails.lastName),
           generateRow(6, 'Forename', submission.farmerDetails.firstName),
