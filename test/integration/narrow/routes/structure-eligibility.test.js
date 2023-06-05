@@ -3,7 +3,7 @@ const fakeDescription = 'fake description fake description fake description fake
 describe('Page: /structure-eligibility', () => {
   const varList = {
     legalStatus: 'randomData',
-    structure: 'Other', // A4 of structure page, required for accessing this page
+    structure: 'Other', // structure-A4 of structure page, required for accessing this page
     projectType: 'fakeData'
   }
 
