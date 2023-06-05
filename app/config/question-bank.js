@@ -1003,6 +1003,7 @@ const questionBank = {
           url: 'structure-eligibility',
           baseUrl: 'structure-eligibility',
           preValidationKeys: ['structure'],
+          preValidationKeysRule: { condition: 'ANY', dependency: 'Other' },
           ineligibleContent: {
             messageContent: `<p class="govuk-body">All buildings must:</p>
             <div class="govuk-list govuk-list--bullet">
