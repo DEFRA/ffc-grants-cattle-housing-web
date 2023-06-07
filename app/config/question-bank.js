@@ -1352,6 +1352,7 @@ const questionBank = {
                     <li>fixtures, including calf accommodation pens, calf isolation facilities, gates, draught protection, ventilation systems, washing facilities and automatic calf feeders</li>
                     <li>fittings, including temperature and humidity data loggers, heat lamps and enrichment items</li>
                     <li>one-off utility costs such as the alteration of electricity or water supply to allow the building installation or upgrade</li>
+                    <li>buying and installing rooftop solar PV panels</li>
                   </ul>
                   <p>Do not include VAT.<p/>
                   <p>Enter amount, for example 95,000<p/>
@@ -1389,6 +1390,9 @@ const questionBank = {
                 para: 'Movable items (for example buckets) and ongoing costs (for example straw) will not be funded.'
               }]
             }]
+          },
+          warning: {
+            text: 'You can use up to 40% of the total grant amount towards the cost of buying and installing rooftop solar PV panels.'
           },
           answers: [],
           yarKey: 'projectCost'
