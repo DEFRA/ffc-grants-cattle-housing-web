@@ -1245,7 +1245,7 @@ const questionBank = {
         {
           key: 'roof-solar-PV',
           order: 210,
-          title: 'Is the roof able to support solar PV panels?',
+          title: 'Will the roof be able to support solar PV panels?',
           hint: {
             html: `<div class:"govuk-hint">
             Your roof is exempt if:</br></br>
