@@ -1245,7 +1245,7 @@ const questionBank = {
         {
           key: 'roof-solar-PV',
           order: 210,
-          title: 'Is the roof able to support solar PV panels?',
+          title: 'Will the roof be able to support solar PV panels?',
           hint: {
             html: `<div class:"govuk-hint">
             Your roof is exempt if:</br></br>
@@ -1282,7 +1282,7 @@ const questionBank = {
                     <li>the building is listed or on a world heritage site</li>
                     <li>you're upgrading an existing building and would not otherwise make changes to the roof</li>
                     <li>the roof faces only north or is heavily shaded</li>
-                    <li>the roof does not have 20m<sup>2</sup> of clear roof space</li>
+                    <li>the roof does not have 20m² of clear roof space</li>
                     <li>the roof has a pitch less than 15 degrees or greater than 50 degrees</li>
                   </ul>
             </div>`,
@@ -1352,6 +1352,7 @@ const questionBank = {
                     <li>fixtures, including calf accommodation pens, calf isolation facilities, gates, draught protection, ventilation systems, washing facilities and automatic calf feeders</li>
                     <li>fittings, including temperature and humidity data loggers, heat lamps and enrichment items</li>
                     <li>one-off utility costs such as the alteration of electricity or water supply to allow the building installation or upgrade</li>
+                    <li>buying and installing rooftop solar PV panels</li>
                   </ul>
                   <p>Do not include VAT.<p/>
                   <p>Enter amount, for example 95,000<p/>
@@ -1389,6 +1390,9 @@ const questionBank = {
                 para: 'Movable items (for example buckets) and ongoing costs (for example straw) will not be funded.'
               }]
             }]
+          },
+          warning: {
+            text: 'You can use up to 40% of the total grant amount towards the cost of buying and installing rooftop solar PV panels.'
           },
           answers: [],
           yarKey: 'projectCost'

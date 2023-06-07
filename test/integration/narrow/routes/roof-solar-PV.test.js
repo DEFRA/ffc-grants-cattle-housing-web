@@ -22,7 +22,7 @@ describe('Page: /roof-solar-PV', () => {
 
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('Is the roof able to support solar PV panels?')
+    expect(response.payload).toContain('Will the roof be able to support solar PV panels?')
     expect(response.payload).toContain('Yes')
     expect(response.payload).toContain('No')
     expect(response.payload).toContain('My roof is exempt')
