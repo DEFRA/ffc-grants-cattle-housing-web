@@ -51,6 +51,11 @@ const getPage = async (question, request, h) => {
     return h.redirect(`${urlPrefix}/housing`)
   }
 
+  // reset environmentalImpact yar key if switching between pages
+  if (url === 'roof-solar-PV') { 
+    setYarValue(request, 'environmentalImpact', null)
+  }
+
   if (url === 'score') {
     const desirabilityAnswers = createMsg.getDesirabilityAnswers(request)
     console.log('here: ', 2, desirabilityAnswers)
