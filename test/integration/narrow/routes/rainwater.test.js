@@ -3,7 +3,7 @@ const { crumbToken } = require('./test-helper')
 describe('Page: /environmental-impact', () => {
     const varList = {
         legalStatus: 'randomData',
-        roofSolarPV: 'Yes',
+        roofSolarPV: 'My roof is exempt',
         projectType: 'fakeData'
     }
     
@@ -17,46 +17,34 @@ describe('Page: /environmental-impact', () => {
 it('page loads successfully, with all the options', async () => {
     const options = {
     method: 'GET',
-    url: `${global.__URLPREFIX__}/environmental-impact`
+    url: `${global.__URLPREFIX__}/rainwater`
     }
 
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('How will the building minimise environmental impact?')
-    expect(response.payload).toContain('Solar PV panels on the roof of the building')
-    expect(response.payload).toContain('Collect and store rainwater')
-    expect(response.payload).toContain('None of the above')
+    expect(response.payload).toContain('Will your building collect and store rainwater?')
+    expect(response.payload).toContain('Yes')
+    expect(response.payload).toContain('No')
 })
 it('no option selected -> show error message', async () => {
     const postOptions = {
     method: 'POST',
-    url: `${global.__URLPREFIX__}/environmental-impact`,
+    url: `${global.__URLPREFIX__}/rainwater`,
     headers: { cookie: 'crumb=' + crumbToken },
     payload: { environmentalImpact: '', crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Select how your building will minimise environmental impact')
+    expect(postResponse.payload).toContain('Select yes if your building will collect and store rainwater')
 })
-it(' \'None of the above\' selected with another option -> show error message', async () => {
-    const postOptions = {
-    method: 'POST',
-    url: `${global.__URLPREFIX__}/environmental-impact`,
-    headers: { cookie: 'crumb=' + crumbToken },
-    payload: { environmentalImpact: ['None of the above', 'Collect and store rainwater'], crumb: crumbToken }
-    }
 
-    const postResponse = await global.__SERVER__.inject(postOptions)
-    expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('You cannot select that combination of options')
-})
 it('user selects eligible option -> store user response and redirect to /sustainable-materials', async () => {
     const postOptions = {
     method: 'POST',
-    url: `${global.__URLPREFIX__}/environmental-impact`,
+    url: `${global.__URLPREFIX__}/rainwater`,
     headers: { cookie: 'crumb=' + crumbToken },
-    payload: { environmentalImpact: ['Solar PV panels on the roof of the building'], crumb: crumbToken }
+    payload: { environmentalImpact: 'Yes', crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
