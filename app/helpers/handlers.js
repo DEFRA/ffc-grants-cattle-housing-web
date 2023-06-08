@@ -59,10 +59,6 @@ const getPage = async (question, request, h) => {
 
   if (url === 'score') {
 
-    // check format of environmentalImpact yar value
-    // if not list, push to temp list and assign to environmentalImpact yar value
-    // make sure value is correct for scoring
-    console.log(getYarValue(request, 'environmentalImpact'), 'UUUUUUUUUUUUUUUUUUUUUUUU')
     const desirabilityAnswers = createMsg.getDesirabilityAnswers(request)
     console.log('here: ', 2, desirabilityAnswers)
     const formatAnswersForScoring = createDesirabilityMsg(desirabilityAnswers)
@@ -86,15 +82,10 @@ const getPage = async (question, request, h) => {
 
     setYarValue(request, 'overAllScore', msgData)
 
-    // check for environmentalImpact based on roofSolarPV answer
-    // if My roof is exempt, change title to 'Collect and store rainwater' and value to 'Yes'/'No'
-
     const questions = msgData.desirability.questions.map(desirabilityQuestion => {
 
       if (desirabilityQuestion.key === 'environmental-impact' && getYarValue(request, 'roofSolarPV') === 'My roof is exempt') {
         desirabilityQuestion.key = 'rainwater'
-        // desirabilityQuestion.answers[0]
-        console.log('here we are again', desirabilityQuestion.key, 'IIIIIIIIIIIIIIIII', desirabilityQuestion.answers[0].input)
         if (desirabilityQuestion.answers[0].input[0].value === 'None of the above'){
           desirabilityQuestion.answers[0].input[0].value = 'No'
         } else {
