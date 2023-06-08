@@ -200,6 +200,9 @@ describe('Get & Post Handlers', () => {
 
   test('Strong score - rainwater', async () => {
     scoreData.desirability.overallRating.band = 'Strong'
+    scoreData.desirability.questions[4].answers[0].input[0].key = 'environmental-impact-A3'
+    scoreData.desirability.questions[4].answers[0].input[0].value = 'None of the above'
+    
     question = {
       url: 'score',
       title: 'mock-title',
@@ -262,10 +265,6 @@ describe('Get & Post Handlers', () => {
     expect(getDesirabilityAnswersSpy).toHaveBeenCalledTimes(1)
     expect(getUserScoreSpy).toHaveBeenCalledTimes(1)
   });
-
-
-
-
 
   describe('Create Model', () => {
     test('it creates a model!', () => {
