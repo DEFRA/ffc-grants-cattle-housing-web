@@ -1269,11 +1269,7 @@ const questionBank = {
                 para: 'The roof must be able to support solar PV panels, allowing for potential use in the future.',
                 additionalPara: 'Structural calculations by a building expert, contractor or structural engineer need to be provided at full application.'
               }]
-            }],
-            details: {
-              summaryText: 'What the grant will fund',
-              html: '<p>The cost of purchasing or installing solar PV panels is not funded by this grant.</p> <p>Structural assessment and certification of a building’s capacity to structurally support solar panels is funded.</p>'
-            }
+            }]
           },
           ineligibleContent: {
             messageContent: `<p class="govuk-body">The roof must be able to support solar PV panels unless:</p>
