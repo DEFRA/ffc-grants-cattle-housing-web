@@ -153,7 +153,7 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(90, 'Sub-Theme / Project type', schemeName),
           generateRow(41, 'Owner', 'RD'),
           generateRow(53, 'Business type', businessTypeArray), // design action
-          generateRow(341, 'Grant Launch Date', ''), // confirm
+          generateRow(341, 'Grant Launch Date', '09/08/2023'),
           generateRow(23, 'Business Form Classification (Status of Applicant)', submission.legalStatus),
           generateRow(405, 'Project Type', submission.project),
           // generateRow(406, 'Calf Weight', submission.calfWeight),
