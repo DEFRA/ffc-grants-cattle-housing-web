@@ -122,6 +122,7 @@ describe('Create submission message', () => {
   })
 
   test('Spreadsheet part of message should have correct properties', () => {
+    agentSubmission.environmentalImpact = 'None of the above'
     const msg = createMsg(agentSubmission, desirabilityScore)
 
     expect(msg.spreadsheet).toHaveProperty('filename')
