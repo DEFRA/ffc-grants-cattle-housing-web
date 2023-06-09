@@ -235,9 +235,7 @@ describe('Get & Post Handlers', () => {
 
   test('Default score - rainwater', async () => {
     scoreData.desirability.overallRating.band = 'AAAARRRGGHH!!!'
-    scoreData.desirability.questions[4].answers[0].input[0].key = 'environmental-impact-A3'
-    scoreData.desirability.questions[4].answers[0].input[0].value = 'None of the above'
-
+    
     varList.roofSolarPV = 'My roof is exempt'
 
     question = {
