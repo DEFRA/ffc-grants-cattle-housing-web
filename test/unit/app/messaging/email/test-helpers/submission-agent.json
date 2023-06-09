@@ -62,7 +62,7 @@
     "structureEligibility": null,
     "drainageSlope":"Yes",
     "additionalItems":"Yes",
-    "roofSolarPV":"Yes",
+    "roofSolarPV":"My roof is exempt",
     "projectCost": 100000,
     "potentialFunding": "40000.00",
     "remainingCost": "60000.00",
@@ -70,7 +70,7 @@
     "calfGroupSize":"2 to 3",
     "moistureControl":["A drain or drainage channel inside the pen", "Positioning drinking areas near drainage and away from bedding"],
     "permanentSickPen":["A permanent sick pen", "A separate air space"],
-    "environmentalImpact":["Solar PV panels on the roof of the building", "Collect and store rainwater"],
+    "environmentalImpact":"Collect and store rainwater",
     "sustainableMaterials":["Low carbon concrete", "Steel replacement products"],
     "introducingInnovation":["Technology", "Collaboration"]
 
