@@ -3,6 +3,7 @@ const { crumbToken } = require('./test-helper')
 describe('Page: /sustainable-materials', () => {
   const varList = {
     legalStatus: 'randomData',
+    roofSolarPV: 'Yes',
     projectType: 'fakeData'
   }
 
@@ -68,4 +69,27 @@ describe('Page: /sustainable-materials', () => {
     expect(postResponse.statusCode).toBe(302)
     expect(postResponse.headers.location).toBe('introducing-innovation')
   })
+  
+  it('page loads with correct back link (environmental-impact)', async () => {
+    const options = {
+      method: 'GET',
+      url: `${global.__URLPREFIX__}/sustainable-materials`
+    }
+    const response = await global.__SERVER__.inject(options)
+    expect(response.statusCode).toBe(200)
+    expect(response.payload).toContain('<a href=\"environmental-impact\" class=\"govuk-back-link\">Back</a>')
+  })
+
+  it('page loads with correct back link (rainwater)', async () => {
+    varList.roofSolarPV = 'My roof is exempt'
+    const options = {
+      method: 'GET',
+      url: `${global.__URLPREFIX__}/sustainable-materials`
+    }
+    const response = await global.__SERVER__.inject(options)
+    expect(response.statusCode).toBe(200)
+    expect(response.payload).toContain('<a href=\"rainwater\" class=\"govuk-back-link\">Back</a>')
+  })
+
+
 })

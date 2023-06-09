@@ -29,6 +29,7 @@ const {
   getDataFromYarValue,
   getConsentOptionalData
 } = require('./pageHelpers')
+const desirability = require('./../messaging/scoring/create-desirability-msg')
 
 const scoreViewTemplate = 'score'
 
@@ -51,7 +52,13 @@ const getPage = async (question, request, h) => {
     return h.redirect(`${urlPrefix}/housing`)
   }
 
+  // reset environmentalImpact yar key if switching between pages
+  if (url === 'roof-solar-PV') { 
+    setYarValue(request, 'environmentalImpact', null)
+  }
+
   if (url === 'score') {
+
     const desirabilityAnswers = createMsg.getDesirabilityAnswers(request)
     console.log('here: ', 2, desirabilityAnswers)
     const formatAnswersForScoring = createDesirabilityMsg(desirabilityAnswers)
@@ -76,6 +83,16 @@ const getPage = async (question, request, h) => {
     setYarValue(request, 'overAllScore', msgData)
 
     const questions = msgData.desirability.questions.map(desirabilityQuestion => {
+
+      if (desirabilityQuestion.key === 'environmental-impact' && getYarValue(request, 'roofSolarPV') === 'My roof is exempt') {
+        desirabilityQuestion.key = 'rainwater'
+        if (desirabilityQuestion.answers[0].input[0].value === 'None of the above'){
+          desirabilityQuestion.answers[0].input[0].value = 'No'
+        } else {
+          desirabilityQuestion.answers[0].input[0].value = 'Yes'
+        }
+      }
+
       const tableQuestion = tableOrder.filter(tableQuestionD => tableQuestionD.key === desirabilityQuestion.key)[0]
       desirabilityQuestion.title = tableQuestion.title
       desirabilityQuestion.desc = tableQuestion.desc ?? ''
@@ -88,6 +105,7 @@ const getPage = async (question, request, h) => {
       return desirabilityQuestion
     })
 
+    
     return h.view(scoreViewTemplate, createModel({
       titleText: msgData.desirability.overallRating.band,
       scoreData: msgData,

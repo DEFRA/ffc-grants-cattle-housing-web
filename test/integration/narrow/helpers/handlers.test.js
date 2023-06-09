@@ -29,7 +29,8 @@ describe('Get & Post Handlers', () => {
     planningPermission: 'some fake value',
     gridReference: 'grid-ref-num',
     businessDetails: 'fake business',
-    applying: true
+    applying: true,
+    roofSolarPV: 'Yes'
   }
 
   jest.mock('../../../../app/helpers/page-guard', () => ({
@@ -81,7 +82,7 @@ describe('Get & Post Handlers', () => {
   // mock userScore function in handler.js
   describe('it handles the score results page: ', () => {
 
-    test('Average score', async () => {
+    test('Average score - environmental impact', async () => {
       question = {
         url: 'score',
         title: 'mock-title',
@@ -108,7 +109,7 @@ describe('Get & Post Handlers', () => {
 		  expect(getUserScoreSpy).toHaveBeenCalledTimes(1)
     });
 
-    test('Strong score', async () => {
+    test('Strong score - environmental impact', async () => {
       scoreData.desirability.overallRating.band = 'Strong'
       question = {
         url: 'score',
@@ -137,7 +138,7 @@ describe('Get & Post Handlers', () => {
 		  expect(getUserScoreSpy).toHaveBeenCalledTimes(1)
     });
 
-    test('Default score', async () => {
+    test('Default score - environmental impact', async () => {
       scoreData.desirability.overallRating.band = 'AAAARRRGGHH!!!'
       question = {
         url: 'score',
@@ -167,7 +168,102 @@ describe('Get & Post Handlers', () => {
     });
   })
 
+  test('Average score - rainwater', async () => {
+    scoreData.desirability.overallRating.band = 'Average'
+    varList.roofSolarPV = 'My roof is exempt'
 
+    question = {
+      url: 'score',
+      title: 'mock-title',
+      backUrl: 'test-back-link'
+    }
+    mockH = { view: jest.fn() }
+    mockRequest = { yar: {id: 2}}
+
+
+    jest.spyOn(newSender, 'getUserScore').mockImplementationOnce(() => {
+      console.log('Spy: Average', JSON.stringify(scoreData));
+      return scoreData;
+    })
+
+    await getHandler(question)(mockRequest, mockH)
+    expect(mockH.view).toHaveBeenCalledWith('score', {
+      titleText: scoreData.desirability.overallRating.band,
+      backLink: "test-back-link",
+      formActionPage: "score",
+      scoreChance: "might",
+      scoreData: scoreData,
+      questions: scoreData.desirability.questions,
+    })
+    expect(getDesirabilityAnswersSpy).toHaveBeenCalledTimes(1)
+    expect(getUserScoreSpy).toHaveBeenCalledTimes(1)
+  });
+
+  test('Strong score - rainwater', async () => {
+    scoreData.desirability.overallRating.band = 'Strong'
+    scoreData.desirability.questions[4].answers[0].input[0].key = 'environmental-impact-A3'
+    scoreData.desirability.questions[4].answers[0].input[0].value = 'None of the above'
+
+    varList.roofSolarPV = 'My roof is exempt'
+
+    question = {
+      url: 'score',
+      title: 'mock-title',
+      backUrl: 'test-back-link'
+    }
+    mockH = { view: jest.fn() }
+    mockRequest = { yar: {id: 2}}
+
+    jest.spyOn(newSender, 'getUserScore').mockImplementationOnce(() => {
+      console.log('Spy: stroong', JSON.stringify(scoreData));
+      return scoreData;
+    })
+
+    await getHandler(question)(mockRequest, mockH)
+    expect(mockH.view).toHaveBeenCalledWith('score', {
+      titleText: scoreData.desirability.overallRating.band,
+      backLink: "test-back-link",
+      formActionPage: "score",
+      scoreChance: "is likely to",
+      scoreData: scoreData,
+      questions: scoreData.desirability.questions,
+    })
+
+    expect(getDesirabilityAnswersSpy).toHaveBeenCalledTimes(1)
+    expect(getUserScoreSpy).toHaveBeenCalledTimes(1)
+  });
+
+  test('Default score - rainwater', async () => {
+    scoreData.desirability.overallRating.band = 'AAAARRRGGHH!!!'
+    
+    varList.roofSolarPV = 'My roof is exempt'
+
+    question = {
+      url: 'score',
+      title: 'mock-title',
+      backUrl: 'test-back-link'
+    }
+    mockH = { view: jest.fn() }
+    mockRequest = { yar: {id: 2}}
+
+    jest.spyOn(newSender, 'getUserScore').mockImplementationOnce(() => {
+      console.log('Spy: weakkk', JSON.stringify(scoreData));
+      return scoreData
+    })
+
+    await getHandler(question)(mockRequest, mockH)
+    expect(mockH.view).toHaveBeenCalledWith('score', {
+      titleText: scoreData.desirability.overallRating.band,
+      backLink: "test-back-link",
+      formActionPage: "score",
+      scoreChance: "is unlikely to",
+      scoreData: scoreData,
+      questions: scoreData.desirability.questions,
+    })
+
+    expect(getDesirabilityAnswersSpy).toHaveBeenCalledTimes(1)
+    expect(getUserScoreSpy).toHaveBeenCalledTimes(1)
+  });
 
   describe('Create Model', () => {
     test('it creates a model!', () => {

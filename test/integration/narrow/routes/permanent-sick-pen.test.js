@@ -4,6 +4,7 @@ describe('Page: /permanent-sick-pen', () => {
   const varList = {
     legalStatus: 'randomData',
     projectType: 'fakeData',
+    roofSolarPV: 'Yes',
     minimumFloorArea: '100kg or under'
   }
 

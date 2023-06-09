@@ -1269,11 +1269,7 @@ const questionBank = {
                 para: 'The roof must be able to support solar PV panels, allowing for potential use in the future.',
                 additionalPara: 'Structural calculations by a building expert, contractor or structural engineer need to be provided at full application.'
               }]
-            }],
-            details: {
-              summaryText: 'What the grant will fund',
-              html: '<p>The cost of purchasing or installing solar PV panels is not funded by this grant.</p> <p>Structural assessment and certification of a building’s capacity to structurally support solar panels is funded.</p>'
-            }
+            }]
           },
           ineligibleContent: {
             messageContent: `<p class="govuk-body">The roof must be able to support solar PV panels unless:</p>
@@ -1673,7 +1669,18 @@ const questionBank = {
           warning: {
             text: 'To create a separate air space, the area must have solid walls up to ceiling height blocking it from the calf housing.'
           },
-          nextUrl: 'environmental-impact',
+          // nextUrl: 'environmental-impact',
+          nextUrlObject: {
+            dependentQuestionYarKey: 'roofSolarPV',
+            dependentAnswerKeysArray: [
+              'roof-solar-PV-A1'
+            ],
+            urlOptions: {
+              thenUrl: 'environmental-impact',
+              elseUrl: 'rainwater'
+            }
+
+          },
           sidebar: {
             values: [{
               heading: 'Funding Priorities',
@@ -1791,6 +1798,51 @@ const questionBank = {
           yarKey: 'environmentalImpact'
         },
         {
+          key: 'rainwater',
+          order: 320,
+          title: 'Will your building collect and store rainwater?',
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
+          pageTitle: '',
+          url: 'rainwater',
+          baseUrl: 'rainwater',
+          preValidationKeys: ['permanentSickPen'],
+          backUrl: 'permanent-sick-pen',
+          nextUrl: 'sustainable-materials',
+          sidebar: {
+            values: [{
+              heading: 'Funding priorities',
+              content: [{
+                para: 'RPA wants to fund buildings that enhance environmental sustainability and help meet government environmental targets.'
+              }]
+            }]
+          },
+          fundingPriorities: '',
+          type: 'single-answer',
+          score: {
+            isScore: true
+          },
+          minAnswerCount: 1,
+          validate: [
+            { 
+              type: 'NOT_EMPTY',
+              error: 'Select yes if your building will collect and store rainwater'
+            }
+          ],
+          answers: [
+            {
+              key: 'environmental-impact-A2',
+              text: 'Yes',
+              value: 'Collect and store rainwater'
+            },
+            {
+              key: 'environmental-impact-A3',
+              text: 'No',
+              value: 'None of the above'
+            }
+          ],
+          yarKey: 'environmentalImpact'
+        },
+        {
           key: 'sustainable-materials',
           order: 330,
           title: 'Will your building use sustainable materials?',
@@ -1800,7 +1852,16 @@ const questionBank = {
           pageTitle: '',
           url: 'sustainable-materials',
           baseUrl: 'sustainable-materials',
-          backUrl: 'environmental-impact',
+          backUrlObject: {
+            dependentQuestionYarKey: 'roofSolarPV',
+            dependentAnswerKeysArray: [
+              'roof-solar-PV-A1'
+            ],
+            urlOptions: {
+              thenUrl: 'environmental-impact',
+              elseUrl: 'rainwater'
+            }
+          },
           nextUrl: 'introducing-innovation',
           preValidationKeys: ['environmentalImpact'],
           sidebar: {

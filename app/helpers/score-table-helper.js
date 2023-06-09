@@ -45,6 +45,15 @@ const tableOrder = [
     yarKey: 'environmentalImpact'
   },
   {
+    key: 'rainwater',
+    order: 8,
+    title: 'Collect and store rainwater',
+    pageTitle: 'Collect and store rainwate',
+    url: 'rainwater',
+    fundingPriorities: 'Improve the environment',
+    yarKey: 'environmentalImpact'
+  },
+  {
     key: 'sustainable-materials',
     order: 9,
     title: 'Sustainable materials',
