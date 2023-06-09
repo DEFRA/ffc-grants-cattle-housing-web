@@ -170,6 +170,8 @@ describe('Get & Post Handlers', () => {
 
   test('Average score - rainwater', async () => {
     scoreData.desirability.overallRating.band = 'Average'
+    varList.roofSolarPV = 'My roof is exempt'
+
     question = {
       url: 'score',
       title: 'mock-title',
@@ -178,7 +180,6 @@ describe('Get & Post Handlers', () => {
     mockH = { view: jest.fn() }
     mockRequest = { yar: {id: 2}}
 
-    varList.roofSolarPV = 'My roof is exempt'
 
     jest.spyOn(newSender, 'getUserScore').mockImplementationOnce(() => {
       console.log('Spy: Average', JSON.stringify(scoreData));
@@ -202,7 +203,9 @@ describe('Get & Post Handlers', () => {
     scoreData.desirability.overallRating.band = 'Strong'
     scoreData.desirability.questions[4].answers[0].input[0].key = 'environmental-impact-A3'
     scoreData.desirability.questions[4].answers[0].input[0].value = 'None of the above'
-    
+
+    varList.roofSolarPV = 'My roof is exempt'
+
     question = {
       url: 'score',
       title: 'mock-title',
@@ -210,8 +213,6 @@ describe('Get & Post Handlers', () => {
     }
     mockH = { view: jest.fn() }
     mockRequest = { yar: {id: 2}}
-
-    varList.roofSolarPV = 'My roof is exempt'
 
     jest.spyOn(newSender, 'getUserScore').mockImplementationOnce(() => {
       console.log('Spy: stroong', JSON.stringify(scoreData));
@@ -237,6 +238,8 @@ describe('Get & Post Handlers', () => {
     scoreData.desirability.questions[4].answers[0].input[0].key = 'environmental-impact-A3'
     scoreData.desirability.questions[4].answers[0].input[0].value = 'None of the above'
 
+    varList.roofSolarPV = 'My roof is exempt'
+
     question = {
       url: 'score',
       title: 'mock-title',
@@ -244,8 +247,6 @@ describe('Get & Post Handlers', () => {
     }
     mockH = { view: jest.fn() }
     mockRequest = { yar: {id: 2}}
-
-    varList.roofSolarPV = 'My roof is exempt'
 
     jest.spyOn(newSender, 'getUserScore').mockImplementationOnce(() => {
       console.log('Spy: weakkk', JSON.stringify(scoreData));
