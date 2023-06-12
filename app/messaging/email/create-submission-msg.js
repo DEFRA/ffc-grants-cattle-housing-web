@@ -72,7 +72,7 @@ function formatBusinessTypeC53 (businessType) {
 }
 
 function getBusinessTypeC53 (businessTypeArray) {
-  if (businessTypeArray.contains('Farmer with Horticulture') || businessTypeArray.contains('Farmer with Arable')) {
+  if (businessTypeArray.includes('Farmer with Horticulture') || businessTypeArray.includes('Farmer with Arable')) {
     return 'Mixed farming'
   } else if (businessTypeArray.length > 1 ) {
     return 'Farmer with livestock'
