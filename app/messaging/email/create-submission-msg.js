@@ -54,7 +54,7 @@ function generateExcelFilename (scheme, projectName, businessName, referenceNumb
   }).format(today).replace(/\//g, '-')
   return `${scheme}_${projectName}_${businessName}_${referenceNumber}_${dateTime}.xlsx`
 }
-function getBusinessTypeC53 (businessType) {
+function formatBusinessTypeC53 (businessType) {
   let returnArray = []
   for (type in businessType) {
     // set up for capitalising where necessary
@@ -62,8 +62,6 @@ function getBusinessTypeC53 (businessType) {
       businessType[type] = 'Laying Hens'
     } else if (businessType[type] === 'Meat chickens') {
       businessType[type] = 'Meat Chickens'
-    } else if (businessType[type] === 'Arable') {
-      businessType[type] = 'Other'
     }
 
     // assign values for DORA
@@ -71,6 +69,18 @@ function getBusinessTypeC53 (businessType) {
   }
   
   return returnArray
+}
+
+function getBusinessTypeC53 (businessTypeArray) {
+  if (businessTypeArray.contains('Farmer with Horticulture') || businessTypeArray.contains('Farmer with Arable')) {
+    return 'Mixed farming'
+  } else if (businessTypeArray.length > 1 ) {
+    return 'Farmer with livestock'
+  } else if (businessTypeArray[0] === 'Farmer with Beef (including calf rearing)') {
+    return 'Beef Farmer'
+  } else {
+    return 'Dairy farmer'
+  }
 }
 
 // confirm following values and mapping
@@ -118,16 +128,16 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
   let applicantTypeArray = submission.applicantType
 
   if (Array.isArray(applicantTypeArray)) {
-    businessTypeArray = getBusinessTypeC53(applicantTypeArray)
+    businessTypeArray = formatBusinessTypeC53(applicantTypeArray)
   } else {
     let tempArray = []
     tempArray.push(applicantTypeArray)
     console.log(Array.isArray(tempArray))
-    businessTypeArray = getBusinessTypeC53(tempArray)
+    businessTypeArray = formatBusinessTypeC53(tempArray)
   }
 
   let projectDescriptionString  = ''
-  projectDescriptionString = projectDescriptionString.concat(submission.project, ',', submission.structure, ',', submission.structureEligibility === 'Yes' ? submission.yesStructureEligibility : '')
+  projectDescriptionString = projectDescriptionString.concat(submission.project, '|', submission.structure, '|', submission.structureEligibility === 'Yes' ? submission.yesStructureEligibility : '')
 
   return {
     filename: generateExcelFilename(
@@ -152,7 +162,7 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(43, 'Theme', schemeName),
           generateRow(90, 'Sub-Theme / Project type', schemeName),
           generateRow(41, 'Owner', 'RD'),
-          generateRow(53, 'Business type', businessTypeArray), // design action
+          generateRow(53, 'Business type', getBusinessTypeC53(businessTypeArray)), // design action
           generateRow(341, 'Grant Launch Date', '09/08/2023'),
           generateRow(23, 'Business Form Classification (Status of Applicant)', submission.legalStatus),
           generateRow(405, 'Project Type', submission.project),
@@ -184,13 +194,13 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           // If chosen say yes, else be blank
           generateRow(431, 'Farmer with Beef (including calf rearing)', businessTypeArray.includes('Farmer with Beef (including calf rearing)') ? 'Yes' : ''),
           generateRow(432, 'Farmer with Dairy (including calf rearing)', businessTypeArray.includes('Farmer with Dairy (including calf rearing)') ? 'Yes' : ''),
-          generateRow(434, 'Farmer with Pigs', businessTypeArray.includes('Farmer with Pigs') ? 'Yes' : ''),
-          generateRow(435, 'Farmer with Sheep', businessTypeArray.includes('Farmer with Sheep') ? 'Yes' : ''),
-          generateRow(436, 'Farmer with Laying Hens', businessTypeArray.includes('Farmer with Laying Hens') ? 'Yes' : ''),
-          generateRow(437, 'Farmer with Meat Chickens', businessTypeArray.includes('Farmer with Meat Chickens') ? 'Yes' : ''),
-          generateRow(438, 'Farmer with Aquaculture', businessTypeArray.includes('Farmer with Aquaculture') ? 'Yes' : ''), // replace with arable and shift up
+          generateRow(433, 'Farmer with Pigs', businessTypeArray.includes('Farmer with Pigs') ? 'Yes' : ''),
+          generateRow(434, 'Farmer with Sheep', businessTypeArray.includes('Farmer with Sheep') ? 'Yes' : ''),
+          generateRow(435, 'Farmer with Laying Hens', businessTypeArray.includes('Farmer with Laying Hens') ? 'Yes' : ''),
+          generateRow(436, 'Farmer with Meat Chickens', businessTypeArray.includes('Farmer with Meat Chickens') ? 'Yes' : ''),
+          generateRow(437, 'Farmer with Aquaculture', businessTypeArray.includes('Farmer with Aquaculture') ? 'Yes' : ''), // replace with arable and shift up
           generateRow(439, 'Farmer with Horticulture', businessTypeArray.includes('Farmer with Horticulture') ? 'Yes' : ''),
-          generateRow(440, 'Farmer with Other', businessTypeArray.includes('Farmer with Other') ? 'Yes' : ''),
+          generateRow(448, 'Farmer with Arable', businessTypeArray.includes('Farmer with Arable') ? 'Yes' : ''),
 
           generateRow(45, 'Location of project (postcode)', submission.farmerDetails.projectPostcode), 
           generateRow(376, 'Project Started', submission.projectStart),
