@@ -54,6 +54,8 @@ function generateExcelFilename (scheme, projectName, businessName, referenceNumb
   }).format(today).replace(/\//g, '-')
   return `${scheme}_${projectName}_${businessName}_${referenceNumber}_${dateTime}.xlsx`
 }
+
+// Formats array of businessType for C430-440
 function formatBusinessTypeC53 (businessType) {
   let returnArray = []
   for (type in businessType) {
@@ -71,6 +73,7 @@ function formatBusinessTypeC53 (businessType) {
   return returnArray
 }
 
+// formats for business type dora field (single answer accepted)
 function getBusinessTypeC53 (businessTypeArray) {
   if (businessTypeArray.includes('Farmer with Horticulture') || businessTypeArray.includes('Farmer with Arable')) {
     return 'Mixed farming'
