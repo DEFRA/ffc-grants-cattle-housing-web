@@ -42,6 +42,9 @@ describe('Create submission message', () => {
       sendEmailToRpa: false,
       protectPassword: mockPassword
     }))
+
+    farmerSubmission.applicantType = ['Beef (including calf rearing)', 'Dairy (including calf rearing)']
+
     const msg = createMsg(farmerSubmission, desirabilityScore)
     expect(msg).toHaveProperty('agentEmail')
     expect(msg).toHaveProperty('applicantEmail')
@@ -52,6 +55,8 @@ describe('Create submission message', () => {
     expect(msg.agentEmail).toBe(null)
   })
   test('Email part of message should have correct properties', () => {
+    farmerSubmission.applicantType = 'Dairy (including calf rearing)'
+    
     const msg = createMsg(farmerSubmission, desirabilityScore)
 
     expect(msg.applicantEmail).toHaveProperty('notifyTemplate')
