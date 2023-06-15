@@ -1341,7 +1341,7 @@ const questionBank = {
           },
           hint: {
             html: `
-                  <p>You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £20,000 (40% of 50,000). The maximum grant is £500,000.<p/>
+                  <p>You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £15,000 (40% of 37,500). The maximum grant is £500,000.<p/>
                   The grant is for:<br/>
                   <ul class="govuk-list govuk-list--bullet govuk-hint">
                     <li>structures, including concrete flooring, walls, roofs, structural reinforcement and drainage facilities</li>
@@ -1373,7 +1373,7 @@ const questionBank = {
           ],
           ineligibleContent: {
             messageContent: 'You can only apply for a grant of up to 40% of the estimated costs.',
-            insertText: { text: 'The minimum grant you can apply for this project is £20,000 (40% of 50,000). The maximum grant is £500,000.' },
+            insertText: { text: 'The minimum grant you can apply for this project is £15,000 (40% of 37,500). The maximum grant is £500,000.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -1409,7 +1409,7 @@ const questionBank = {
           },
           ineligibleContent: {
             messageContent: 'You can only apply for a grant of up to 40% of the estimated costs.',
-            insertText: { text: 'The minimum grant you can apply for this project is £20,000 (40% of 50,000). The maximum grant is £500,000.' },
+            insertText: { text: 'The minimum grant you can apply for this project is £15,000 (40% of 37,500). The maximum grant is £500,000.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
