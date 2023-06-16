@@ -124,7 +124,7 @@ const getPage = async (question, request, h) => {
 
   if (url === 'potential-amount' && (!getGrantValues(getYarValue(request, 'projectCost'), question.grantInfo).isEligible)) {
     const NOT_ELIGIBLE = { ...question.ineligibleContent, backUrl }
-    gapiService.sendEligibilityEvent(request, 'true')
+    // gapiService.sendEligibilityEvent(request, 'true')
     return h.view('not-eligible', NOT_ELIGIBLE)
   }
 
@@ -140,20 +140,20 @@ const getPage = async (question, request, h) => {
       confirmationId = getConfirmationId(request.yar.id)
       try {
         const emailData = await emailFormatting({ body: createMsg.getAllDetails(request, confirmationId), scoring: getYarValue(request, 'overAllScore') }, request.yar.id)
-        await senders.sendDesirabilitySubmitted(emailData, request.yar.id) // replace with sendDesirabilitySubmitted, and replace first param with call to function in process-submission
-        await gapiService.sendDimensionOrMetrics(request, [{
-          dimensionOrMetric: gapiService.dimensions.CONFIRMATION,
-          value: confirmationId
-        }, {
-          dimensionOrMetric: gapiService.dimensions.FINALSCORE,
-          value: 'Eligible'
-        },
-        {
-          dimensionOrMetric: gapiService.metrics.CONFIRMATION,
-          value: 'TIME'
-        }
-        ])
-        console.log('Confirmation event sent')
+        // await senders.sendDesirabilitySubmitted(emailData, request.yar.id) // replace with sendDesirabilitySubmitted, and replace first param with call to function in process-submission
+        // await gapiService.sendDimensionOrMetrics(request, [{
+        //   dimensionOrMetric: gapiService.dimensions.CONFIRMATION,
+        //   value: confirmationId
+        // }, {
+        //   dimensionOrMetric: gapiService.dimensions.FINALSCORE,
+        //   value: 'Eligible'
+        // },
+        // {
+        //   dimensionOrMetric: gapiService.metrics.CONFIRMATION,
+        //   value: 'TIME'
+        // }
+        // ])
+        // console.log('Confirmation event sent')
       } catch (err) {
         console.log('ERROR: ', err)
       }
@@ -211,7 +211,7 @@ const getPage = async (question, request, h) => {
     )
   }
   if (question.ga) {
-    await gapiService.processGA(request, question.ga, confirmationId)
+    // await gapiService.processGA(request, question.ga, confirmationId)
   }
 
   switch (url) {
@@ -305,12 +305,12 @@ const showPostPage = (currentQuestion, request, h) => {
 
   const errors = checkErrors(payload, currentQuestion, h, request)
   if (errors) {
-    gapiService.sendValidationDimension(request)
+    // gapiService.sendValidationDimension(request)
     return errors
   }
 
   if (thisAnswer?.notEligible) {
-    gapiService.sendEligibilityEvent(request, !!thisAnswer?.notEligible)
+    // gapiService.sendEligibilityEvent(request, !!thisAnswer?.notEligible)
     // if (thisAnswer?.alsoMaybeEligible) {
     //   const {
     //     dependentQuestionKey,
@@ -351,7 +351,7 @@ const showPostPage = (currentQuestion, request, h) => {
   }
 
   if (thisAnswer?.notEligible || (yarKey === 'projectCost' ? !getGrantValues(payload[Object.keys(payload)[0]], currentQuestion.grantInfo).isEligible : null)) {
-    gapiService.sendEligibilityEvent(request, !!thisAnswer?.notEligible)
+    // gapiService.sendEligibilityEvent(request, !!thisAnswer?.notEligible)
 
     // if (thisAnswer?.alsoMaybeEligible) {
     //   const {

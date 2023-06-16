@@ -19,10 +19,10 @@ exports.plugin = {
         const response = request.response
         const statusFamily = Math.floor(response.statusCode / 100)
         if (statusFamily === 2 && response.variety === 'view' && !gapiService.isBlockDefaultPageView(request.url)) {
-          await gapiService.sendGAEvent(request, { name: gapiService.eventTypes.PAGEVIEW, params: { page_path: request.route.path, page_title: request.route.fingerprint} })
+          await request.ga.view(request, { name: gapiService.eventTypes.PAGEVIEW, params: { page_path: request.route.path, page_title: request.route.fingerprint} })
         }
         if (statusFamily === 5) {
-          await request.ga.event({ category: 'Exception', action: request.route.path, label: response.statusCode })
+          await request.ga.view({ name: gapiService.eventTypes.EXCEPTION, params: { page_path: request.route.path, page_title: request.route.fingerprint } })
         }
       } catch {
         // ignore any error
@@ -30,9 +30,9 @@ exports.plugin = {
       return h.continue
     })
 
-    server.ext('onPostStop', async () => {
-      await analytics.shutdown()
-      server.log(['hapi-gapi'], 'All buffered events sent to the Google Analytics Measurement Protocol API.')
-    })
+    // server.ext('onPostStop', async () => {
+    //   await analytics.shutdown()
+    //   server.log(['hapi-gapi'], 'All buffered events sent to the Google Analytics Measurement Protocol API.')
+    // })
   }
 }
