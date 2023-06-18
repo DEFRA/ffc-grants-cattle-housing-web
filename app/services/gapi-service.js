@@ -13,9 +13,9 @@ const isBlockDefaultPageView = (url) => {
 }
 
 
-const grant_type = 'Slurry Infrastructure'
+// const grant_type = 'Slurry Infrastructure'
 // or is it...?
-// const grant_type = 'Animal Health and Wellfare'
+const grant_type = 'Animal Health and Wellfare'
 
 const eventTypes = {
   PAGEVIEW: 'pageview',
@@ -46,7 +46,6 @@ const sendGAEvent = async (request, metrics) => {
     ...(params?.score_presented && { score_presented: params.score_presented }),
     grant_type,
     page_path,
-    test: 'v.1.0.1'
   }
   try {
     const event = { name, params: dmetrics }
@@ -66,6 +65,7 @@ const getTimeofJourneySinceStart = (request) => {
 }
 
 module.exports = {
+  getTimeofJourneySinceStart,
   isBlockDefaultPageView,
   sendGAEvent,
   eventTypes
