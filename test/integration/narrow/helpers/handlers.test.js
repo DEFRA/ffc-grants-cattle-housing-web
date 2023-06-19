@@ -149,7 +149,6 @@ describe('Get & Post Handlers', () => {
       mockRequest = { yar: {id: 2}}
 
       jest.spyOn(newSender, 'getUserScore').mockImplementationOnce(() => {
-        console.log('Spy: weakkk', JSON.stringify(scoreData));
         return scoreData
       })
   
