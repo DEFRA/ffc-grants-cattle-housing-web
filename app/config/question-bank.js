@@ -1248,6 +1248,7 @@ const questionBank = {
           title: 'Will the roof be able to support solar PV panels?',
           hint: {
             html: `<div class:"govuk-hint">
+            Confirmation by a building expert, contractor or structural engineer that your roof can support PV panels must be provided at full application.</br></br>
             Your roof is exempt if:</br></br>
             <li>the building is listed or on a world heritage site</li>
             <li> you're upgrading an existing building and would not otherwise make changes to the roof </li>
