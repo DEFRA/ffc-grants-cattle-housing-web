@@ -1,6 +1,5 @@
 const appInsights = require('./app-insights')
-const { getYarValue, setYarValue } = require('../helpers/session')
-// const protectiveMonitoringServiceSendEvent = require('../services/protective-monitoring-service')
+const { getYarValue } = require('../helpers/session')
 const blockDefaultPageViews = ['start', 'applying']
 // const blockDefaultPageViews = [
 //   'start', 'applying', 'confirmation', 'products-processed', 'remaining-costs',
@@ -65,7 +64,6 @@ const getTimeofJourneySinceStart = (request) => {
 }
 
 module.exports = {
-  getTimeofJourneySinceStart,
   isBlockDefaultPageView,
   sendGAEvent,
   eventTypes

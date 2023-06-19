@@ -70,7 +70,7 @@ describe('get gapiService setup', () => {
 
   test('custom event CONFIRMATION sent successfully', async () => {
     expect.assertions(5)
-    const result = await gapiService.sendGAEvent(request, { name: 'confirmation', pram: {} })
+    const result = await gapiService.sendGAEvent(request, { name: gapiService.eventTypes.CONFIRMATION, pram: {} })
     expect(result).toBe(undefined)
     expect(eventSuccess).toHaveBeenCalledTimes(1)
     expect(eventSuccess).toHaveBeenCalledWith(
@@ -94,7 +94,7 @@ describe('get gapiService setup', () => {
 
   test('custom event SCORE sent successfully', async () => {
     expect.assertions(5)
-    const result = await gapiService.sendGAEvent(request, { name: 'score', pram: { score_presented: 'fake score' } })
+    const result = await gapiService.sendGAEvent(request, { name: gapiService.eventTypes.SCORE, pram: { score_presented: 'fake score' } })
     expect(result).toBe(undefined)
     expect(eventSuccess).toHaveBeenCalledTimes(1)
     expect(eventSuccess).toHaveBeenCalledWith(
@@ -116,7 +116,7 @@ describe('get gapiService setup', () => {
 
   test('custom event ELIMINATION sent successfully', async () => {
     expect.assertions(5)
-    const result = await gapiService.sendGAEvent(request, { name: 'elimination', pram: {} })
+    const result = await gapiService.sendGAEvent(request, { name: gapiService.eventTypes.ELIMINATION, pram: {} })
     expect(result).toBe(undefined)
     expect(eventSuccess).toHaveBeenCalledTimes(1)
     expect(eventSuccess).toHaveBeenCalledWith(
@@ -138,7 +138,7 @@ describe('get gapiService setup', () => {
 
   test('custom event ELIGIBILITY PASSED sent successfully', async () => {
     expect.assertions(5)
-    const result = await gapiService.sendGAEvent(request, { name: 'eligibility_passed', pram: {} })
+    const result = await gapiService.sendGAEvent(request, { name: gapiService.eventTypes.ELIGIBILITY, pram: {} })
     expect(result).toBe(undefined)
     expect(eventSuccess).toHaveBeenCalledTimes(1)
     expect(eventSuccess).toHaveBeenCalledWith(
@@ -150,6 +150,27 @@ describe('get gapiService setup', () => {
             grant_type: "Animal Health and Wellfare",
             page_path: "somePath",
             eligibility_time: expect.any(String),
+          }
+        }
+      ]
+    )
+    expect(eventError).toHaveBeenCalledTimes(0)
+    expect(appInsights.logException).toHaveBeenCalledTimes(0)
+  })
+
+  test('custom event PAGEVIEW PASSED sent successfully', async () => {
+    expect.assertions(5)
+    const result = await gapiService.sendGAEvent(request, { name: gapiService.eventTypes.PAGEVIEW, pram: {} })
+    expect(result).toBe(undefined)
+    expect(eventSuccess).toHaveBeenCalledTimes(1)
+    expect(eventSuccess).toHaveBeenCalledWith(
+      request,
+      [
+        {
+          name: "pageview",
+          params: {
+            grant_type: "Animal Health and Wellfare",
+            page_path: "somePath",
           }
         }
       ]

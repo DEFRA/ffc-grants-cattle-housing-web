@@ -82,6 +82,7 @@ describe('Get & Post Handlers', () => {
   // mock userScore function in handler.js
   describe('it handles the score results page: ', () => {
 
+    mockRequest = { yar: {id: 2}, route: {path: 'score'}}
     test('Average score - environmental impact', async () => {
       question = {
         url: 'score',
@@ -89,7 +90,6 @@ describe('Get & Post Handlers', () => {
         backUrl: 'test-back-link'
       }
       mockH = { view: jest.fn() }
-      mockRequest = { yar: {id: 2}}
 
       jest.spyOn(newSender, 'getUserScore').mockImplementationOnce(() => {
         console.log('Spy: Average', JSON.stringify(scoreData));
@@ -117,7 +117,6 @@ describe('Get & Post Handlers', () => {
         backUrl: 'test-back-link'
       }
       mockH = { view: jest.fn() }
-      mockRequest = { yar: {id: 2}}
 
       jest.spyOn(newSender, 'getUserScore').mockImplementationOnce(() => {
         console.log('Spy: stroong', JSON.stringify(scoreData));
@@ -146,7 +145,6 @@ describe('Get & Post Handlers', () => {
         backUrl: 'test-back-link'
       }
       mockH = { view: jest.fn() }
-      mockRequest = { yar: {id: 2}}
 
       jest.spyOn(newSender, 'getUserScore').mockImplementationOnce(() => {
         return scoreData
@@ -177,7 +175,6 @@ describe('Get & Post Handlers', () => {
       backUrl: 'test-back-link'
     }
     mockH = { view: jest.fn() }
-    mockRequest = { yar: {id: 2}}
 
 
     jest.spyOn(newSender, 'getUserScore').mockImplementationOnce(() => {
@@ -211,7 +208,6 @@ describe('Get & Post Handlers', () => {
       backUrl: 'test-back-link'
     }
     mockH = { view: jest.fn() }
-    mockRequest = { yar: {id: 2}}
 
     jest.spyOn(newSender, 'getUserScore').mockImplementationOnce(() => {
       console.log('Spy: stroong', JSON.stringify(scoreData));
@@ -243,7 +239,6 @@ describe('Get & Post Handlers', () => {
       backUrl: 'test-back-link'
     }
     mockH = { view: jest.fn() }
-    mockRequest = { yar: {id: 2}}
 
     jest.spyOn(newSender, 'getUserScore').mockImplementationOnce(() => {
       console.log('Spy: weakkk', JSON.stringify(scoreData));

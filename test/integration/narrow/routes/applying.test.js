@@ -38,6 +38,7 @@ describe('Page: /applying', () => {
   })
 
   it('user selects \'Applicant\' -> store user response and redirect to /applicant-details', async () => {
+    expect.assertions(2)
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/applying`,
@@ -51,6 +52,7 @@ describe('Page: /applying', () => {
   })
 
   it('user selects \'Agent\' -> store user response and redirect to /agent-details', async () => {
+    expect.assertions(2)
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/applying`,

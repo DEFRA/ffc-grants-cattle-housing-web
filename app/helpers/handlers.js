@@ -6,7 +6,7 @@ const { formatUKCurrency } = require('../helpers/data-formats')
 const { SELECT_VARIABLE_TO_REPLACE, DELETE_POSTCODE_CHARS_REGEX } = require('../helpers/regex')
 const { getUrl } = require('../helpers/urls')
 const { guardPage } = require('../helpers/page-guard')
-// const { notUniqueSelection, uniqueSelection } = require('../helpers/utils')
+
 const senders = require('../messaging/senders')
 const createMsg = require('../messaging/create-msg')
 const createDesirabilityMsg = require('./../messaging/scoring/create-desirability-msg')
@@ -17,9 +17,7 @@ const gapiService = require('../services/gapi-service')
 const { startPageUrl, urlPrefix } = require('../config/server')
 
 const { tableOrder } = require('../helpers/score-table-helper')
-// const { ALL_QUESTIONS } = require('../config/question-bank')
-// const { formatOtherItems } = require('./../helpers/other-items-sizes')
-// const desirabilityData = require('./desirability-score.json')
+
 
 const {
   getConfirmationId,
@@ -60,7 +58,6 @@ const getPage = async (question, request, h) => {
   if (url === 'score') {
 
     const desirabilityAnswers = createMsg.getDesirabilityAnswers(request)
-    console.log('here: ', 2, desirabilityAnswers)
     const formatAnswersForScoring = createDesirabilityMsg(desirabilityAnswers)
     const msgData = await getUserScore(formatAnswersForScoring, request.yar.id)
 
@@ -105,7 +102,9 @@ const getPage = async (question, request, h) => {
       return desirabilityQuestion
     })
 
-    
+    await gapiService.sendGAEvent(request, { name: 'score', params: { score_presented: msgData.desirability.overallRating.band } })
+    setYarValue(request, 'onScorePage', true)
+
     return h.view(scoreViewTemplate, createModel({
       titleText: msgData.desirability.overallRating.band,
       scoreData: msgData,
@@ -124,7 +123,7 @@ const getPage = async (question, request, h) => {
 
   if (url === 'potential-amount' && (!getGrantValues(getYarValue(request, 'projectCost'), question.grantInfo).isEligible)) {
     const NOT_ELIGIBLE = { ...question.ineligibleContent, backUrl }
-    // gapiService.sendEligibilityEvent(request, 'true')
+    await gapiService.sendGAEvent(request, { name: gapiService.eventTypes.ELIGIBILITY, params: {} })
     return h.view('not-eligible', NOT_ELIGIBLE)
   }
 
@@ -140,20 +139,9 @@ const getPage = async (question, request, h) => {
       confirmationId = getConfirmationId(request.yar.id)
       try {
         const emailData = await emailFormatting({ body: createMsg.getAllDetails(request, confirmationId), scoring: getYarValue(request, 'overAllScore') }, request.yar.id)
-        // await senders.sendDesirabilitySubmitted(emailData, request.yar.id) // replace with sendDesirabilitySubmitted, and replace first param with call to function in process-submission
-        // await gapiService.sendDimensionOrMetrics(request, [{
-        //   dimensionOrMetric: gapiService.dimensions.CONFIRMATION,
-        //   value: confirmationId
-        // }, {
-        //   dimensionOrMetric: gapiService.dimensions.FINALSCORE,
-        //   value: 'Eligible'
-        // },
-        // {
-        //   dimensionOrMetric: gapiService.metrics.CONFIRMATION,
-        //   value: 'TIME'
-        // }
-        // ])
-        // console.log('Confirmation event sent')
+        await senders.sendDesirabilitySubmitted(emailData, request.yar.id) // replace with sendDesirabilitySubmitted, and replace first param with call to function in process-submission
+        await gapiService.sendGAEvent(request, { name: gapiService.eventTypes.CONFIRMATION, params: {} })
+        console.log('Confirmation event sent')
       } catch (err) {
         console.log('ERROR: ', err)
       }
@@ -210,7 +198,7 @@ const getPage = async (question, request, h) => {
       request
     )
   }
-  if (question.ga) {
+  if (question.ga) { // TODO think about cleaning this later
     // await gapiService.processGA(request, question.ga, confirmationId)
   }
 
@@ -249,7 +237,7 @@ const showPostPage = (currentQuestion, request, h) => {
   const { yarKey, answers, baseUrl, ineligibleContent, nextUrl, nextUrlObject, title, type } = currentQuestion
   const NOT_ELIGIBLE = { ...ineligibleContent, backUrl: baseUrl }
   const payload = request.payload
-
+  setYarValue(request, 'onScorePage', false)
   let thisAnswer
   let dataObject
 
@@ -263,10 +251,6 @@ const showPostPage = (currentQuestion, request, h) => {
     }else {
       thisAnswer = answers?.find(answer => (answer.value === value))
     }
-    // if (yarKey === 'cover' && thisAnswer.key === 'cover-A2') {
-    //   request.yar.set('coverType', '')
-    //   request.yar.set('coverSize', '')
-    // }
 
     if (type !== 'multi-input' && key !== 'secBtn') {
       setYarValue(request, key, key === 'projectPostcode' ? value.replace(DELETE_POSTCODE_CHARS_REGEX, '').split(/(?=.{3}$)/).join(' ').toUpperCase() : value)
@@ -274,9 +258,6 @@ const showPostPage = (currentQuestion, request, h) => {
   }
   if (type === 'multi-input') {
     const allFields = currentQuestion.allFields
-    // if (currentQuestion.costDataKey) {
-    //   allFields = formatOtherItems(request)
-    // }
     allFields.forEach(field => {
       const payloadYarVal = payload[field.yarKey]
         ? payload[field.yarKey].replace(DELETE_POSTCODE_CHARS_REGEX, '').split(/(?=.{3}$)/).join(' ').toUpperCase()
@@ -305,7 +286,6 @@ const showPostPage = (currentQuestion, request, h) => {
 
   const errors = checkErrors(payload, currentQuestion, h, request)
   if (errors) {
-    // gapiService.sendValidationDimension(request)
     return errors
   }
 
