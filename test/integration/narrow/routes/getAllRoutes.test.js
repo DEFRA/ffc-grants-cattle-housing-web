@@ -47,7 +47,6 @@ describe('All default GET routes', () => {
     it(`should load ${question.key} page successfully`, async () => {
       // for score page only
       jest.spyOn(newSender, 'getUserScore').mockImplementationOnce(() => {
-        console.log('Spy: weakkk', JSON.stringify(scoreData));
         return scoreData
       })
 
