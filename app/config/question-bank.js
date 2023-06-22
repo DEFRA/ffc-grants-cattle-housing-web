@@ -87,7 +87,7 @@ const questionBank = {
           order: 10,
           title: 'What type of farmer are you?',
           pageTitle: '',
-          ga: [{ journeyStart: true }],
+          ga: { journeyStart: true },
           url: 'applicant-type',
           baseUrl: 'applicant-type',
           backUrl: 'start',
@@ -825,7 +825,7 @@ const questionBank = {
           baseUrl: 'flooring-and-bedding',
           url: 'flooring-and-bedding',
           hint: {
-            text: "It cannot have slatted or hardcore flooring"
+            text: 'It cannot have slatted or hardcore flooring'
           },
           backUrl: 'isolate-calves',
           nextUrl: 'enrichment',
@@ -1505,6 +1505,7 @@ const questionBank = {
           title: 'Are you moving from individually housing calves over 7 days old to pair or group housing?',
           fundingPriorities: '',
           type: 'single-answer',
+          ga: { name: 'eligibility_passed', params: { } },
           score: {
             isScore: true
           },
@@ -2076,10 +2077,6 @@ const questionBank = {
           backUrl: 'score',
           nextUrl: 'applying',
           preValidationKeys: ['introducingInnovation'],
-          ga: [
-            { dimension: 'cd1', value: { type: 'score', value: 'Eligible' } },
-            { dimension: 'cm3', value: { type: 'journey-time' } }
-          ],
           fundingPriorities: '',
           type: 'multi-input',
           minAnswerCount: '',
@@ -2314,7 +2311,6 @@ const questionBank = {
           type: 'multi-input',
           minAnswerCount: '',
           maxAnswerCount: '',
-          ga: [{ dimension: 'cd3', value: { type: 'yar', key: 'applying' } }],
           hint: {
             text: 'Enter the farmer and farm business details'
           },
@@ -2958,11 +2954,7 @@ const questionBank = {
           url: 'confirmation',
           baseUrl: 'confirmation',
           preValidationKeys: ['farmerDetails'],
-          ga: [
-            { dimension: 'cd2', value: { type: 'score' } },
-            { dimension: 'cd5', value: { type: 'confirmationId' } },
-            { dimension: 'cm1', value: { type: 'journey-time' } }
-          ],
+          ga: { name: 'confirmation', params: { } },
           maybeEligible: true,
           maybeEligibleContent: {
             reference: {
