@@ -67,7 +67,7 @@ describe('get gapiService setup', () => {
   })
 
   test('custom event CONFIRMATION sent successfully', async () => {
-    expect.assertions(3)
+    expect.assertions(5)
     const result = await gapiService.sendGAEvent(request, { name: gapiService.eventTypes.CONFIRMATION, pram: {} })
     expect(result).toBe(undefined)
     expect(eventSuccess).toHaveBeenCalledTimes(1)
@@ -91,7 +91,7 @@ describe('get gapiService setup', () => {
   })
 
   test('custom event SCORE sent successfully', async () => {
-    expect.assertions(3)
+    expect.assertions(5)
     const result = await gapiService.sendGAEvent(request, { name: gapiService.eventTypes.SCORE, pram: { score_presented: 'fake score' } })
     expect(result).toBe(undefined)
     expect(eventSuccess).toHaveBeenCalledTimes(1)
@@ -113,7 +113,7 @@ describe('get gapiService setup', () => {
   })
 
   test('custom event ELIMINATION sent successfully', async () => {
-    expect.assertions(3)
+    expect.assertions(5)
     const result = await gapiService.sendGAEvent(request, { name: gapiService.eventTypes.ELIMINATION, pram: {} })
     expect(result).toBe(undefined)
     expect(eventSuccess).toHaveBeenCalledTimes(1)
@@ -135,7 +135,7 @@ describe('get gapiService setup', () => {
   })
 
   test('custom event ELIGIBILITY PASSED sent successfully', async () => {
-    expect.assertions(3)
+    expect.assertions(5)
     const result = await gapiService.sendGAEvent(request, { name: gapiService.eventTypes.ELIGIBILITY, pram: {} })
     expect(result).toBe(undefined)
     expect(eventSuccess).toHaveBeenCalledTimes(1)
@@ -157,7 +157,7 @@ describe('get gapiService setup', () => {
   })
 
   test('custom event PAGEVIEW PASSED sent successfully', async () => {
-    expect.assertions(3)
+    expect.assertions(5)
     const result = await gapiService.sendGAEvent(request, { name: gapiService.eventTypes.PAGEVIEW, pram: {} })
     expect(result).toBe(undefined)
     expect(eventSuccess).toHaveBeenCalledTimes(1)
