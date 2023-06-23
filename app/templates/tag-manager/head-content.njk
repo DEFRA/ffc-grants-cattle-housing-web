@@ -1,6 +1,6 @@
 {% if googleTagManagerKey %}
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{googleTagManagerKey}}"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{analyticsTagKey}}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     var referrer = document.referrer || 'direct';
@@ -10,7 +10,7 @@
       dataLayer.push(arguments);
     }
     gtag('js', new Date());
-    gtag('config', '{{googleTagManagerKey}}', {
+    gtag('config', '{{analyticsTagKey}}', {
       host_name: host,
       grant_type: grantType
     });
