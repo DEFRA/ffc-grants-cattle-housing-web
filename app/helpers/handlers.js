@@ -119,12 +119,6 @@ const getPage = async (question, request, h) => {
     setYarValue(request, 'remainingCost', remainingCost)
   }
 
-  // if (url === 'potential-amount' && (!getGrantValues(getYarValue(request, 'projectCost'), question.grantInfo).isEligible)) {
-  //   const NOT_ELIGIBLE = { ...question.ineligibleContent, backUrl }
-  //   await gapiService.sendGAEvent(request, { name: gapiService.eventTypes.ELIGIBILITY, params: {} })
-  //   return h.view('not-eligible', NOT_ELIGIBLE)
-  // }
-
   if (question.maybeEligible) {
     let { maybeEligibleContent } = question
     maybeEligibleContent.title = question.title
@@ -231,6 +225,7 @@ const showPostPage = (currentQuestion, request, h) => {
   const { yarKey, answers, baseUrl, ineligibleContent, nextUrl, nextUrlObject, title, type } = currentQuestion
   const NOT_ELIGIBLE = { ...ineligibleContent, backUrl: baseUrl }
   const payload = request.payload
+  
   setYarValue(request, 'onScorePage', false)
   let thisAnswer
   let dataObject
