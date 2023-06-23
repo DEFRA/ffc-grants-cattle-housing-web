@@ -2543,7 +2543,7 @@ const questionBank = {
                 {
                   type: 'REGEX',
                   regex: ONLY_TEXT_REGEX,
-                  error: 'Town must only include letters'
+                  error: 'Town must only include letters, hyphens and spaces'
                 }
               ]
             },
@@ -2861,7 +2861,7 @@ const questionBank = {
                 {
                   type: 'REGEX',
                   regex: ONLY_TEXT_REGEX,
-                  error: 'Town must only include letters'
+                  error: 'Town must only include letters, hyphens and spaces'
                 }
               ]
             },
