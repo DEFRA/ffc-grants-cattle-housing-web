@@ -1248,7 +1248,7 @@ const questionBank = {
           title: 'Will the roof be able to support solar PV panels?',
           hint: {
             html: `<div class:"govuk-hint">
-            Confirmation by a building expert, contractor or structural engineer that your roof can support PV panels must be provided at full application.</br></br>
+            You must provide confirmation from a building expert, contractor or structural engineer that your roof can support PV panels for your full application. Confirmation is not funded by this grant.</br></br>
             Your roof is exempt if:</br></br>
             <li>the building is listed or on a world heritage site</li>
             <li> you're upgrading an existing building and would not otherwise make changes to the roof </li>
@@ -1343,7 +1343,15 @@ const questionBank = {
           hint: {
             html: `
                   <p>You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £15,000 (40% of 37,500). The maximum grant is £500,000.<p/>
-                  The grant is for:<br/>
+                  <div class="govuk-warning-text">
+                    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                    <strong class="govuk-warning-text__text">
+                      <span class="govuk-warning-text__assistive"></span>
+                      You can use up to 40% of the total grant amount towards the cost of buying and installing rooftop solar PV panels.
+                    </strong>
+                  </div>
+                  <p>If the total grant amount is £100,000, you can use up to £40,000 of the grant for buying and installing rooftop solar PV panels.</p>
+                  The grant is for:<br/><br/>
                   <ul class="govuk-list govuk-list--bullet govuk-hint">
                     <li>structures, including concrete flooring, walls, roofs, structural reinforcement and drainage facilities</li>
                     <li>fixtures, including calf accommodation pens, calf isolation facilities, gates, draught protection, ventilation systems, washing facilities and automatic calf feeders</li>
@@ -1387,9 +1395,6 @@ const questionBank = {
                 para: 'Movable items (for example buckets) and ongoing costs (for example straw) will not be funded.'
               }]
             }]
-          },
-          warning: {
-            text: 'You can use up to 40% of the total grant amount towards the cost of buying and installing rooftop solar PV panels.'
           },
           answers: [],
           yarKey: 'projectCost'
