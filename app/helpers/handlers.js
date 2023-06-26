@@ -278,13 +278,6 @@ const showPostPage = (currentQuestion, request, h) => {
     return errors
   }
 
-  // if (thisAnswer?.notEligible) {
-
-  //   return h.view('not-eligible', NOT_ELIGIBLE)
-  // } else if (thisAnswer?.redirectUrl) {
-  //   return h.redirect(thisAnswer?.redirectUrl)
-  // }
-
   if (thisAnswer?.notEligible || (yarKey === 'projectCost' ? !getGrantValues(payload[Object.keys(payload)[0]], currentQuestion.grantInfo).isEligible : null)) {
     // if (thisAnswer?.alsoMaybeEligible) {
     //   const {
