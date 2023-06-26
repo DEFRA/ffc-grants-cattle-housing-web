@@ -18,7 +18,6 @@ const { startPageUrl, urlPrefix } = require('../config/server')
 
 const { tableOrder } = require('../helpers/score-table-helper')
 
-
 const {
   getConfirmationId,
   handleConditinalHtmlData,
@@ -51,12 +50,11 @@ const getPage = async (question, request, h) => {
   }
 
   // reset environmentalImpact yar key if switching between pages
-  if (url === 'roof-solar-PV') { 
+  if (url === 'roof-solar-PV') {
     setYarValue(request, 'environmentalImpact', null)
   }
 
   if (url === 'score') {
-
     const desirabilityAnswers = createMsg.getDesirabilityAnswers(request)
     const formatAnswersForScoring = createDesirabilityMsg(desirabilityAnswers)
     const msgData = await getUserScore(formatAnswersForScoring, request.yar.id)
@@ -80,10 +78,9 @@ const getPage = async (question, request, h) => {
     setYarValue(request, 'overAllScore', msgData)
 
     const questions = msgData.desirability.questions.map(desirabilityQuestion => {
-
       if (desirabilityQuestion.key === 'environmental-impact' && getYarValue(request, 'roofSolarPV') === 'My roof is exempt') {
         desirabilityQuestion.key = 'rainwater'
-        if (desirabilityQuestion.answers[0].input[0].value === 'None of the above'){
+        if (desirabilityQuestion.answers[0].input[0].value === 'None of the above') {
           desirabilityQuestion.answers[0].input[0].value = 'No'
         } else {
           desirabilityQuestion.answers[0].input[0].value = 'Yes'
@@ -114,17 +111,12 @@ const getPage = async (question, request, h) => {
   }
 
   let confirmationId = ''
+  await processGA(question, request)
 
   if (question.grantInfo) {
     const { calculatedGrant, remainingCost } = getGrantValues(getYarValue(request, 'projectCost'), question.grantInfo)
     setYarValue(request, 'calculatedGrant', calculatedGrant)
     setYarValue(request, 'remainingCost', remainingCost)
-  }
-
-  if (url === 'potential-amount' && (!getGrantValues(getYarValue(request, 'projectCost'), question.grantInfo).isEligible)) {
-    const NOT_ELIGIBLE = { ...question.ineligibleContent, backUrl }
-    await gapiService.sendGAEvent(request, { name: gapiService.eventTypes.ELIGIBILITY, params: {} })
-    return h.view('not-eligible', NOT_ELIGIBLE)
   }
 
   if (question.maybeEligible) {
@@ -198,9 +190,6 @@ const getPage = async (question, request, h) => {
       request
     )
   }
-  if (question.ga) { // TODO think about cleaning this later
-    // await gapiService.processGA(request, question.ga, confirmationId)
-  }
 
   switch (url) {
     case 'check-details': {
@@ -220,7 +209,6 @@ const getPage = async (question, request, h) => {
     }
     // case 'score':
 
-
     case 'business-details':
     case 'agent-details':
     case 'applicant-details': {
@@ -237,6 +225,7 @@ const showPostPage = (currentQuestion, request, h) => {
   const { yarKey, answers, baseUrl, ineligibleContent, nextUrl, nextUrlObject, title, type } = currentQuestion
   const NOT_ELIGIBLE = { ...ineligibleContent, backUrl: baseUrl }
   const payload = request.payload
+  
   setYarValue(request, 'onScorePage', false)
   let thisAnswer
   let dataObject
@@ -248,7 +237,7 @@ const showPostPage = (currentQuestion, request, h) => {
     // if statement added for multi-input eligibility for non-eligible
     if (typeof (value) === 'object') {
       thisAnswer = answers?.find(answer => (answer.value === value[0]))
-    }else {
+    } else {
       thisAnswer = answers?.find(answer => (answer.value === value))
     }
 
@@ -289,50 +278,7 @@ const showPostPage = (currentQuestion, request, h) => {
     return errors
   }
 
-  if (thisAnswer?.notEligible) {
-    // gapiService.sendEligibilityEvent(request, !!thisAnswer?.notEligible)
-    // if (thisAnswer?.alsoMaybeEligible) {
-    //   const {
-    //     dependentQuestionKey,
-    //     dependentQuestionYarKey,
-    //     uniqueAnswer,
-    //     notUniqueAnswer,
-    //     maybeEligibleContent
-    //   } = thisAnswer.alsoMaybeEligible
-
-    //   const prevAnswer = getYarValue(request, dependentQuestionYarKey)
-    //   const dependentQuestion = ALL_QUESTIONS.find(thisQuestion => (
-    //     thisQuestion.key === dependentQuestionKey &&
-    //     thisQuestion.yarKey === dependentQuestionYarKey
-    //   ))
-
-    //   let dependentAnswer
-    //   let openMaybeEligible
-
-    //   if (notUniqueAnswer) {
-    //     dependentAnswer = dependentQuestion.answers.find(({ key }) => (key === notUniqueAnswer)).value
-    //     openMaybeEligible = notUniqueSelection(prevAnswer, dependentAnswer)
-    //   } else if (uniqueAnswer) {
-    //     dependentAnswer = dependentQuestion.answers.find(({ key }) => (key === uniqueAnswer)).value
-    //     openMaybeEligible = uniqueSelection(prevAnswer, dependentAnswer)
-    //   }
-
-    //   if (openMaybeEligible) {
-    //     maybeEligibleContent.title = currentQuestion.title
-    //     const { url } = currentQuestion
-    //     const MAYBE_ELIGIBLE = { ...maybeEligibleContent, url, backUrl: baseUrl }
-    //     return h.view('maybe-eligible', MAYBE_ELIGIBLE)
-    //   }
-    // }
-
-    return h.view('not-eligible', NOT_ELIGIBLE)
-  } else if (thisAnswer?.redirectUrl) {
-    return h.redirect(thisAnswer?.redirectUrl)
-  }
-
   if (thisAnswer?.notEligible || (yarKey === 'projectCost' ? !getGrantValues(payload[Object.keys(payload)[0]], currentQuestion.grantInfo).isEligible : null)) {
-    // gapiService.sendEligibilityEvent(request, !!thisAnswer?.notEligible)
-
     // if (thisAnswer?.alsoMaybeEligible) {
     //   const {
     //     dependentQuestionKey,
@@ -367,7 +313,7 @@ const showPostPage = (currentQuestion, request, h) => {
     //     return h.view('maybe-eligible', MAYBE_ELIGIBLE)
     //   }
     // }
-
+    gapiService.sendGAEvent(request, { name: gapiService.eventTypes.ELIMINATION, params: {} })
     return h.view('not-eligible', NOT_ELIGIBLE)
   } else if (thisAnswer?.redirectUrl) {
     return h.redirect(thisAnswer?.redirectUrl)
@@ -384,6 +330,17 @@ const getHandler = (question) => {
 const getPostHandler = (currentQuestion) => {
   return (request, h) => {
     return showPostPage(currentQuestion, request, h)
+  }
+}
+
+const processGA = async (question, request) => {
+  if (question.ga) {
+    if (question.ga.journeyStart) {
+      setYarValue(request, 'journey-start-time', Date.now())
+      console.log('[JOURNEY STARTED] ')
+    } else {
+      await gapiService.sendGAEvent(request, question.ga)
+    }
   }
 }
 

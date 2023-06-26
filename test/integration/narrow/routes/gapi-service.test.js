@@ -13,7 +13,7 @@ jest.mock('../../../../app/helpers/session', () => {
     ...original,
     setYarValue: (request, key, value) => null,
     getYarValue: (request, key) => {
-      if (Object.keys(varList).includes(key)) return varList[ key ]
+      if (Object.keys(varList).includes(key)) return varList[key]
       else return 'Error'
     }
   }
@@ -57,8 +57,6 @@ const requestError = {
   }
 }
 
-
-
 describe('get gapiService setup', () => {
   afterEach(() => {
     jest.resetAllMocks()
@@ -77,12 +75,12 @@ describe('get gapiService setup', () => {
       request,
       [
         {
-          name: "confirmation",
+          name: 'confirmation',
           params: {
             confirmation_time: expect.any(String),
-            final_score: "some mock score",
-            grant_type: "Animal Health and Wellfare",
-            page_path: "somePath",
+            final_score: 'some mock score',
+            grant_type: 'Upgrading Calf Housing',
+            page_title: 'somePath',
             user_type: expect.any(String)
           }
         }
@@ -101,10 +99,10 @@ describe('get gapiService setup', () => {
       request,
       [
         {
-          name: "score",
+          name: 'score',
           params: {
-            grant_type: "Animal Health and Wellfare",
-            page_path: "somePath",
+            grant_type: 'Upgrading Calf Housing',
+            page_title: 'somePath',
             score_time: expect.anything() // Neat! No one man should have all that power!
           }
         }
@@ -123,10 +121,10 @@ describe('get gapiService setup', () => {
       request,
       [
         {
-          name: "elimination",
+          name: 'elimination',
           params: {
-            grant_type: "Animal Health and Wellfare",
-            page_path: "somePath",
+            grant_type: 'Upgrading Calf Housing',
+            page_title: 'somePath',
             elimination_time: expect.any(String) // it's better to use a type matcher for random strings, I used .everything() before purely for fun!
           }
         }
@@ -145,11 +143,11 @@ describe('get gapiService setup', () => {
       request,
       [
         {
-          name: "eligibility_passed",
+          name: 'eligibility_passed',
           params: {
-            grant_type: "Animal Health and Wellfare",
-            page_path: "somePath",
-            eligibility_time: expect.any(String),
+            grant_type: 'Upgrading Calf Housing',
+            page_title: 'somePath',
+            eligibility_time: expect.any(String)
           }
         }
       ]
@@ -165,15 +163,14 @@ describe('get gapiService setup', () => {
     expect(eventSuccess).toHaveBeenCalledTimes(1)
     expect(eventSuccess).toHaveBeenCalledWith(
       request,
-      [
-        {
-          name: "pageview",
-          params: {
-            grant_type: "Animal Health and Wellfare",
-            page_path: "somePath",
-          }
+      [{
+        name: 'pageview',
+        params: {
+          grant_type: 'Upgrading Calf Housing',
+          page_title: 'somePath'
         }
-      ]
+      }]
+
     )
     expect(eventError).toHaveBeenCalledTimes(0)
     expect(appInsights.logException).toHaveBeenCalledTimes(0)

@@ -56,6 +56,8 @@ container:
   protectiveMonitoringUrl:
   googleTagManagerKey: dummy
   googleTagManagerServerKey: dummy
+  analyticsPropertyApi: dummy
+  analyticsTagKey: dummy
   startPageUrl: dummy
   serviceEndDate: dummy
   serviceEndTime: dummy
