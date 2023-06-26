@@ -1350,7 +1350,7 @@ const questionBank = {
                       You can use up to 40% of the total grant amount towards the cost of buying and installing rooftop solar PV panels.
                     </strong>
                   </div>
-                  <p>If the total grant amount is £100,000, you can use up to £40,000 of the grant for buying and installing rooftop solar PV panels.</p>
+                  <p>For example, if the total grant amount is £100,000, you can use up to £40,000 of the grant for buying and installing rooftop solar PV panels.</p>
                   The grant is for:<br/><br/>
                   <ul class="govuk-list govuk-list--bullet govuk-hint">
                     <li>structures, including concrete flooring, walls, roofs, structural reinforcement and drainage facilities</li>
@@ -2543,7 +2543,7 @@ const questionBank = {
                 {
                   type: 'REGEX',
                   regex: ONLY_TEXT_REGEX,
-                  error: 'Town must only include letters'
+                  error: 'Town must only include letters, hyphens and spaces'
                 }
               ]
             },
@@ -2861,7 +2861,7 @@ const questionBank = {
                 {
                   type: 'REGEX',
                   regex: ONLY_TEXT_REGEX,
-                  error: 'Town must only include letters'
+                  error: 'Town must only include letters, hyphens and spaces'
                 }
               ]
             },
