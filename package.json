@@ -40,7 +40,7 @@
     "@hapi/vision": "^7.0.0",
     "@hapi/wreck": "^18.0.0",
     "@hapi/yar": "^11.0.0",
-    "applicationinsights": "^0.19.0",
+    "applicationinsights": "^2.1.6",
     "bcrypt": "^5.0.1",
     "dialog-polyfill": "^0.5.6",
     "dotenv": "^16.0.1",
@@ -54,7 +54,9 @@
   "overrides": {
     "@azure/identity": {
       "jsonwebtoken": "9.0.0"
-    }
+      
+    },
+    "semver": "7.5.3"
   },
   "devDependencies": {
     "@hapi/catbox-memory": "^5.0.1",
@@ -66,7 +68,7 @@
     "jest-environment-jsdom": "^29.5.0",
     "jest-junit": "^14.0.1",
     "mini-css-extract-plugin": "^2.6.1",
-    "nodemon": "^1.14.9",
+    "nodemon": "^2.0.22",
     "npm-run-all": "^4.1.2",
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.54.7",
