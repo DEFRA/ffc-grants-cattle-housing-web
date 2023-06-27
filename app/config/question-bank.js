@@ -1267,8 +1267,7 @@ const questionBank = {
             values: [{
               heading: 'Eligibility',
               content: [{
-                para: 'The roof must be able to support solar PV panels, allowing for potential use in the future.',
-                additionalPara: 'Structural calculations by a building expert, contractor or structural engineer need to be provided at full application.'
+                para: 'The roof must be able to support solar PV panels, allowing for potential use in the future.'
               }]
             }]
           },
