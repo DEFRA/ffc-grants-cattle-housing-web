@@ -123,8 +123,9 @@ const getPlanningPermissionDoraValue = (planningPermission) => {
 function getSpreadsheetDetails (submission, desirabilityScore) {
   const today = new Date()
   const todayStr = today.toLocaleDateString('en-GB')
-  const schemeName = 'Calf Housing for Health and Welfare'
-  const subScheme = `FTF-${schemeName}`
+  // const schemeName = 'Calf Housing for Health and Welfare'
+  const subScheme = `FTF-AHW-Calf Housing`
+  const subTheme = 'Calf housing for health and welfare'
 
   // format array for applicantType field and individual fields
   let businessTypeArray
@@ -162,8 +163,8 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(2, 'FA or OA(EOI):', 'Outline Application'),
           generateRow(40, 'Scheme', 'Farming Transformation Fund'),
           generateRow(39, 'Sub scheme', subScheme),
-          generateRow(43, 'Theme', schemeName),
-          generateRow(90, 'Sub-Theme / Project type', schemeName),
+          generateRow(43, 'Theme', subTheme),
+          generateRow(90, 'Sub-Theme / Project type', subTheme),
           generateRow(41, 'Owner', 'RD'),
           generateRow(53, 'Business type', getBusinessTypeC53(businessTypeArray)), // design action
           generateRow(341, 'Grant Launch Date', '09/08/2023'),
@@ -180,7 +181,7 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(414, 'Other Building Structure', submission.yesStructureEligibility ?? submission.structureEligibility),
           generateRow(415, 'Drainage', submission.drainageSlope),
           generateRow(416, 'Draught Protection', submission.draughtProtection),
-          generateRow(417, 'Additional Items', submission.additionalItems),
+          generateRow(417, 'Additional Required Items', submission.additionalItems),
           // generateRow(418, 'Lighting', submission.lighting), // new lighting page doesnt exist yet
           generateRow(419, 'Solar PV Panels', submission.roofSolarPV),
 
