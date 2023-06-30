@@ -1341,7 +1341,7 @@ const questionBank = {
           },
           hint: {
             html: `
-                  <p>You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £15,000 (40% of 37,500). The maximum grant is £500,000.<p/>
+                  <p>You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £15,000 (40% of £37,500). The maximum grant is £500,000.<p/>
                   <div class="govuk-warning-text">
                     <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
                     <strong class="govuk-warning-text__text">
@@ -1381,7 +1381,7 @@ const questionBank = {
           ],
           ineligibleContent: {
             messageContent: 'You can only apply for a grant of up to 40% of the estimated costs.',
-            insertText: { text: 'The minimum grant you can apply for this project is £15,000 (40% of 37,500). The maximum grant is £500,000.' },
+            insertText: { text: 'The minimum grant you can apply for this project is £15,000 (40% of £37,500). The maximum grant is £500,000.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -1414,7 +1414,7 @@ const questionBank = {
           },
           ineligibleContent: {
             messageContent: 'You can only apply for a grant of up to 40% of the estimated costs.',
-            insertText: { text: 'The minimum grant you can apply for this project is £15,000 (40% of 37,500). The maximum grant is £500,000.' },
+            insertText: { text: 'The minimum grant you can apply for this project is £15,000 (40% of £37,500). The maximum grant is £500,000.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
