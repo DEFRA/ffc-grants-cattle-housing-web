@@ -164,7 +164,7 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(40, 'Scheme', 'Farming Transformation Fund'),
           generateRow(39, 'Sub scheme', subScheme),
           generateRow(43, 'Theme', subTheme),
-          generateRow(90, 'Sub-Theme / Project type', subTheme),
+          generateRow(90, 'Sub-Theme / Project type', submission.project),
           generateRow(41, 'Owner', 'RD'),
           generateRow(53, 'Business type', getBusinessTypeC53(businessTypeArray)), // design action
           generateRow(341, 'Grant Launch Date', '09/08/2023'),
