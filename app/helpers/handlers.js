@@ -111,7 +111,9 @@ const getPage = async (question, request, h) => {
   }
 
   let confirmationId = ''
-  await processGA(question, request)
+  if (url != 'score') { // score is sending it's own 'confirmation' event, on line self:137 
+    await processGA(question, request)
+  }
 
   if (question.grantInfo) {
     const { calculatedGrant, remainingCost } = getGrantValues(getYarValue(request, 'projectCost'), question.grantInfo)
