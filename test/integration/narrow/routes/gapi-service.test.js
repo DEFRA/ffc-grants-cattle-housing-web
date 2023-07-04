@@ -44,7 +44,10 @@ const request = {
   yar: {
     id: 'Some ID',
     get: jest.fn()
-  }
+  },
+  info: {
+    host: 'someHost'
+  },
 }
 
 const requestError = {
@@ -54,7 +57,10 @@ const requestError = {
   yar: {
     id: 'Some ID',
     get: jest.fn()
-  }
+  },
+  info: {
+    host: 'someHost'
+  },
 }
 
 describe('get gapiService setup', () => {
