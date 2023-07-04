@@ -82,7 +82,7 @@ describe('Get & Post Handlers', () => {
   // mock userScore function in handler.js
   describe('it handles the score results page: ', () => {
 
-    mockRequest = { yar: {id: 2}, route: {path: 'score'}}
+    mockRequest = { yar: {id: 2}, route: {path: 'score'}, info: {host: 'hosty-host-host'} }
     test('Average score - environmental impact', async () => {
       question = {
         url: 'score',
