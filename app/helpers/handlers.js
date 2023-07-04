@@ -132,7 +132,6 @@ const getPage = async (question, request, h) => {
       try {
         const emailData = await emailFormatting({ body: createMsg.getAllDetails(request, confirmationId), scoring: getYarValue(request, 'overAllScore') }, request.yar.id)
         await senders.sendDesirabilitySubmitted(emailData, request.yar.id) // replace with sendDesirabilitySubmitted, and replace first param with call to function in process-submission
-        await gapiService.sendGAEvent(request, { name: gapiService.eventTypes.CONFIRMATION, params: {} })
         console.log('Confirmation event sent')
       } catch (err) {
         console.log('ERROR: ', err)
@@ -226,7 +225,7 @@ const showPostPage = (currentQuestion, request, h) => {
   const NOT_ELIGIBLE = { ...ineligibleContent, backUrl: baseUrl }
   const payload = request.payload
   
-  setYarValue(request, 'onScorePage', false)
+  // setYarValue(request, 'onScorePage', false)
   let thisAnswer
   let dataObject
 

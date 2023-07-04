@@ -21,6 +21,7 @@ const eventTypes = {
 const sendGAEvent = async (request, metrics) => {
   const timeSinceStart = getTimeofJourneySinceStart(request).toString()
   const pagePath = request.route.path
+  const host_name = request.info.hostname
   const { name, params } = metrics
   const isEliminationEvent = name === eventTypes.ELIMINATION
   const isEligibilityEvent = name === eventTypes.ELIGIBILITY
@@ -33,11 +34,13 @@ const sendGAEvent = async (request, metrics) => {
     ...(isScoreEvent && { score_time: timeSinceStart }),
     ...(isConfirmationEvent && { final_score: getYarValue(request, 'current-score'), user_type: getYarValue(request, 'applying'), confirmation_time: timeSinceStart }),
     ...(params?.score_presented && { score_presented: params.score_presented }),
+    ...(params?.scoreReached && { scoreReached: params.scoreReached }),
     grant_type,
-    page_title: pagePath
+    page_title: pagePath,
+    host_name
   }
   try {
-    console.log('dmetrics:::::: ', dmetrics)
+    console.log(name, 'dmetrics:::::: ', dmetrics)
     const event = { name, params: dmetrics }
     await request.ga.view(request, [event])
     console.log('Metrics Sending analytics %s for %s', name, request.route.path)
