@@ -1758,9 +1758,7 @@ const questionBank = {
             values: [{
               heading: 'Funding priorities',
               content: [{
-                para: `RPA wants to fund buildings that enhance environmental sustainability and help meet government environmental targets.
-
-                      Solar PV panels are not funded through the grant but applicants intending to use them will get a higher score.`
+                para: `RPA wants to fund buildings that enhance environmental sustainability and help meet government environmental targets.`
               }]
             }]
           },
