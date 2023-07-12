@@ -1,6 +1,6 @@
 const appInsights = require('./app-insights')
 const { getYarValue } = require('../helpers/session')
-const blockDefaultPageViews = ['start', 'applying']
+const blockDefaultPageViews = ['start', 'applying', 'login']
 
 const isBlockDefaultPageView = (url) => {
   const currentUrl = url.pathname.split('/').pop().toString().toLowerCase()
