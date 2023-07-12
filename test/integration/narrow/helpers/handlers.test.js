@@ -84,6 +84,8 @@ describe('Get & Post Handlers', () => {
 
     mockRequest = { yar: {id: 2}, route: {path: 'score'}, info: {host: 'hosty-host-host'} }
     test('Average score - environmental impact', async () => {
+      scoreData.desirability.overallRating.band = 'Average'
+
       question = {
         url: 'score',
         title: 'mock-title',
