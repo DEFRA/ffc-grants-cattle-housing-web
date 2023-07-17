@@ -87,7 +87,9 @@ async function createServer () {
         cookieOptions: {
           password: config.cookiePassword,
           isSecure: config.cookieOptions.isSecure,
-          ttl: cacheConfig.expiresIn
+          ttl: cacheConfig.expiresIn,
+          isSameSite: config.cookieOptions.isSameSite
+
         },
         customSessionIDGenerator: function (request) {
           const sessionID = Uuid.v4()
@@ -100,7 +102,8 @@ async function createServer () {
       plugin: crumb,
       options: {
         cookieOptions: {
-          isSecure: config.cookieOptions.isSecure
+          isSecure: config.cookieOptions.isSecure,
+          isSameSite: config.cookieOptions.isSameSite
         }
       }
     }]
