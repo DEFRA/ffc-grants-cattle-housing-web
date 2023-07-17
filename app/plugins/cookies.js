@@ -1,4 +1,4 @@
-const { cookieOptions, urlPrefix, surveyLink} = require('../config/server')
+const { cookieOptions, urlPrefix } = require('../config/server')
 const { ALL_URLS } = require('../config/question-bank')
 const { getCurrentPolicy, validSession, sessionIgnorePaths } = require('../cookies')
 const cacheConfig = require('../config/cache')

@@ -27,7 +27,8 @@ function createModel (errorMessage) {
       classes: 'govuk-input--width-10',
       id: 'password',
       name: 'password',
-      type: 'password'
+      type: 'password',
+      autocomplete: 'off'
     },
     errorMessage
   }
