@@ -50,7 +50,7 @@ const config = {
   cookieOptions: {
     ttl: process.env.COOKIE_TTL_IN_MILLIS,
     encoding: 'base64json',
-    isSecure: true,
+    isSecure: process.env.NODE_ENV === 'production',
     isHttpOnly: true,
     clearInvalid: false,
     strictHeader: true,
