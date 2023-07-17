@@ -18,13 +18,13 @@ exports.plugin = {
       try {
         const response = request.response
         const statusFamily = Math.floor(response.statusCode / 100)
-        if (statusFamily === 2 && response.variety === 'view' && !gapiService.isBlockDefaultPageView(request.url)) {
+        if (statusFamily === 2 && response.variety === 'view' && !gapiService.isBlockDefaultPageView(request.url.pathname)) {
           await gapiService.sendGAEvent(request, { name: gapiService.eventTypes.PAGEVIEW, params: { page_path: request.route.path, scoreReached: getYarValue(request, 'onScorePage') ? '/upgrading-calf-housing/score' : '0' } })
         }
         if (statusFamily === 5) {
           await request.ga.event({ category: 'Exception', action: request.route.path, label: response.statusCode })
         }
-      } catch (error){
+      } catch (error) {
         console.log(`[THIS IS GA ERROR: ${error}]`)
       }
       return h.continue
