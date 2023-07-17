@@ -25,7 +25,8 @@ const schema = Joi.object({
     isSecure: Joi.bool().default(true),
     isHttpOnly: Joi.bool().default(true),
     clearInvalid: Joi.bool().default(false),
-    strictHeader: Joi.bool().default(true)
+    strictHeader: Joi.bool().default(true),
+    isSameSite: Joi.string().valid('Strict').default('Strict')
   }),
   appInsights: {
     key: Joi.string(),
@@ -49,10 +50,11 @@ const config = {
   cookieOptions: {
     ttl: process.env.COOKIE_TTL_IN_MILLIS,
     encoding: 'base64json',
-    isSecure: process.env.NODE_ENV === 'production',
+    isSecure: true,
     isHttpOnly: true,
     clearInvalid: false,
-    strictHeader: true
+    strictHeader: true,
+    isSameSite: 'Strict'
   },
   appInsights: {
     key: process.env.APPINSIGHTS_INSTRUMENTATIONKEY,
