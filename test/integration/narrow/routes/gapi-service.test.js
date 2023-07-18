@@ -183,12 +183,12 @@ describe('get gapiService setup', () => {
   })
 
   test('test isBlockDefaultPageView() -> false', () => {
-    const result = gapiService.isBlockDefaultPageView({ pathname: '/water/country' })
+    const result = gapiService.isBlockDefaultPageView('/water/country')
     expect(result).toBe(false)
   })
 
   test('test isBlockDefaultPageView()-> true', () => {
-    const result = gapiService.isBlockDefaultPageView({ pathname: '/water/applying' })
+    const result = gapiService.isBlockDefaultPageView('/water/applying')
     expect(result).toBe(true)
   })
 

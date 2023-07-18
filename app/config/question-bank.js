@@ -92,11 +92,11 @@ const questionBank = {
           baseUrl: 'applicant-type',
           backUrl: 'start',
           nextUrl: 'legal-status',
-          hint:{
-            text:'Select all that apply'
+          hint: {
+            text: 'Select all that apply'
           },
           ineligibleContent: {
-            messageContent: `This grant is only for dairy and beef (including calf rearing) farmers.`,
+            messageContent: 'This grant is only for dairy and beef (including calf rearing) farmers.',
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
