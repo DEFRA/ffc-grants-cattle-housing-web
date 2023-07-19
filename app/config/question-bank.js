@@ -2143,6 +2143,7 @@ const questionBank = {
               yarKey: 'numberEmployees',
               type: 'number',
               classes: 'govuk-input--width-4',
+              inputmode: "numeric",
               label: {
                 text: 'Number of employees',
                 classes: 'govuk-label'
