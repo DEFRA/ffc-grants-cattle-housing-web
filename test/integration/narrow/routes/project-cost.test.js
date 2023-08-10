@@ -154,18 +154,18 @@ describe('Project cost page', () => {
     expect(postResponse.payload).toContain('You cannot apply for a grant from this scheme')
   })
 
-  it('should redirected to the Potential funding page if the cost entered is too high', async () => {
+  it('should redirected to the Potential amount capped page if the cost entered is too high', async () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/project-cost`,
-      payload: { projectCost: '9999999', crumb: crumbToken },
+      payload: { projectCost: '1350000', crumb: crumbToken },
       headers: { cookie: 'crumb=' + crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     console.log('payload: ', postResponse.payload)
     expect(postResponse.statusCode).toBe(302)
-    expect(postResponse.headers.location).toBe('potential-amount')
+    expect(postResponse.headers.location).toBe('/upgrading-calf-housing/potential-amount-capped')
   })
 
   it('should store valid user input and redirect to potential-amount page', async () => {

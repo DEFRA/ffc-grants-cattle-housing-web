@@ -119,11 +119,6 @@ const getPage = async (question, request, h) => {
   let confirmationId = ''
   await processGA(question, request)
 
-  if (question.grantInfo) {
-    const { calculatedGrant, remainingCost } = getGrantValues(getYarValue(request, 'projectCost'), question.grantInfo)
-    setYarValue(request, 'calculatedGrant', calculatedGrant)
-    setYarValue(request, 'remainingCost', remainingCost)
-  }
 
   if (question.maybeEligible) {
     let { maybeEligibleContent } = question
@@ -230,6 +225,8 @@ const showPostPage = (currentQuestion, request, h) => {
   const { yarKey, answers, baseUrl, ineligibleContent, nextUrl, nextUrlObject, title, type } = currentQuestion
   const NOT_ELIGIBLE = { ...ineligibleContent, backUrl: baseUrl }
   const payload = request.payload
+
+
   
   if (baseUrl != 'score') {
     setYarValue(request, 'onScorePage', false)
@@ -286,6 +283,12 @@ const showPostPage = (currentQuestion, request, h) => {
     return errors
   }
 
+  if (currentQuestion.grantInfo) {
+    const { calculatedGrant, remainingCost } = getGrantValues(getYarValue(request, 'projectCost'), currentQuestion.grantInfo)
+    setYarValue(request, 'calculatedGrant', calculatedGrant)
+    setYarValue(request, 'remainingCost', remainingCost)
+  }
+
   if (thisAnswer?.notEligible || (yarKey === 'projectCost' ? !getGrantValues(payload[Object.keys(payload)[0]], currentQuestion.grantInfo).isEligible : null)) {
     // if (thisAnswer?.alsoMaybeEligible) {
     //   const {
@@ -323,7 +326,9 @@ const showPostPage = (currentQuestion, request, h) => {
     // }
     gapiService.sendGAEvent(request, { name: gapiService.eventTypes.ELIMINATION, params: {} })
     return h.view('not-eligible', NOT_ELIGIBLE)
-  } else if (thisAnswer?.redirectUrl) {
+  }else if(baseUrl === 'project-cost' && payload[Object.keys(payload)[0]] > 1250000 ){
+    return h.redirect('/upgrading-calf-housing/potential-amount-capped')
+  }else if (thisAnswer?.redirectUrl) {
     return h.redirect(thisAnswer?.redirectUrl)
   }
   return h.redirect(getUrl(nextUrlObject, nextUrl, request, payload.secBtn, currentQuestion.url))
