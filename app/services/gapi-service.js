@@ -1,10 +1,10 @@
 const appInsights = require('./app-insights')
 const { getYarValue } = require('../helpers/session')
-const blockDefaultPageViews = ['start', 'applying', 'login']
+const blockDefaultPageViews = ['login', 'start', 'applying', 'session-timeout']
 
 const isBlockDefaultPageView = (url) => {
-  const currentUrl = url.pathname.split('/').pop().toString().toLowerCase()
-  return blockDefaultPageViews.indexOf(currentUrl) >= 0
+  const currentUrl = url.split('/').pop().toString().toLowerCase()
+  return blockDefaultPageViews.indexOf(currentUrl) >= 0 && !url.includes('assets')
 }
 
 const grant_type = 'Upgrading Calf Housing'

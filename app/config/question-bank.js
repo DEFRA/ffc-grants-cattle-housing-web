@@ -92,11 +92,11 @@ const questionBank = {
           baseUrl: 'applicant-type',
           backUrl: 'start',
           nextUrl: 'legal-status',
-          hint:{
-            text:'Select all that apply'
+          hint: {
+            text: 'Select all that apply'
           },
           ineligibleContent: {
-            messageContent: `This grant is only for dairy and beef (including calf rearing) farmers.`,
+            messageContent: 'This grant is only for dairy and beef (including calf rearing) farmers.',
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -661,9 +661,11 @@ const questionBank = {
           hint: {
             html: `<div class:"govuk-hint">
                     The minimum area must be:</br></br>
+                    <ul>
                     <li>3m² per calf for calves under 100kg</li>
                     <li>4m² per calf for calves between 100kg and 150kg</li>
-                    <li>5m² per calf for calves over 150kg</li></br>
+                    <li>5m² per calf for calves over 150kg</li>
+                    </ul></br>
 
                     This includes the lying, standing and feeding/drinking areas.
                   </div>`
@@ -992,9 +994,10 @@ const questionBank = {
           hint: {
             html: `<div class:"govuk-hint">
             All buildings must:</br></br>
+            <ul>
             <li>be permanent structures</li>
             <li>have adequate drainage</li>
-            <li>protect calves from draughts with solid walls/barriers to calf height</li>
+            <li>protect calves from draughts with solid walls/barriers to calf height</li></ul>
             </div>`
           },
           pageTitle: '',
@@ -1177,10 +1180,12 @@ const questionBank = {
           hint: {
             html: `<div class:"govuk-hint">
             The building must have:</br></br>
+            <ul>
             <li>access to a water supply</li>
             <li>at least 2 IP66 electrical sockets in the building</li>
             <li>fitted lighting of at least 50 lux (lux is equal to one lumen per square metre)</li>
             <li>temperature and humidity data loggers (capable of autonomously recording temperature/humidity over a defined period and storing data to view later)</li>
+            </ul>
             </div>`
           },
           pageTitle: '',
@@ -1250,11 +1255,13 @@ const questionBank = {
             html: `<div class:"govuk-hint">
             You must provide confirmation from a building expert, contractor or structural engineer that your roof can support PV panels for your full application. Confirmation is not funded by this grant.</br></br>
             Your roof is exempt if:</br></br>
+            <ul>
             <li>the building is listed or on a world heritage site</li>
             <li> you're upgrading an existing building and would not otherwise make changes to the roof </li>
             <li>the roof faces only north or is heavily shaded </li>
             <li>the roof does not have 20m² of clear roof space </li>
             <li>the roof has a pitch less than 15 degrees or greater than 50 degrees</li>
+            </ul>
             </div>`
           },
           pageTitle: '',
@@ -2134,8 +2141,9 @@ const questionBank = {
             },
             {
               yarKey: 'numberEmployees',
-              type: 'number',
+              type: 'text',
               classes: 'govuk-input--width-4',
+              inputmode: "numeric",
               label: {
                 text: 'Number of employees',
                 classes: 'govuk-label'
