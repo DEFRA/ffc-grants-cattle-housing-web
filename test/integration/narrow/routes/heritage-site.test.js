@@ -1,9 +1,9 @@
 const { crumbToken } = require('./test-helper')
 
-describe('Page: /roof-solar-PV', () => {
+describe('Page: /heritage-site', () => {
   const varList = {
     legalStatus: 'randomData',
-    projectType: 'fakeData'
+    upgradingExistingBuilding: 'fakeData'
   }
 
   jest.mock('../../../../app/helpers/session', () => ({
@@ -17,36 +17,35 @@ describe('Page: /roof-solar-PV', () => {
   it('page loads successfully, with all the options', async () => {
     const options = {
       method: 'GET',
-      url: `${global.__URLPREFIX__}/roof-solar-PV`
+      url: `${global.__URLPREFIX__}/heritage-site`
     }
 
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('Will the roof of the grant-funded calf housing be able to support solar PV panels?')
+    expect(response.payload).toContain('Is your building listed on a World Heritage Site?')
     expect(response.payload).toContain('Yes')
     expect(response.payload).toContain('No')
-    expect(response.payload).toContain('My roof is exempt')
   })
 
   it('no option selected -> show error message', async () => {
     const postOptions = {
       method: 'POST',
-      url: `${global.__URLPREFIX__}/roof-solar-PV`,
+      url: `${global.__URLPREFIX__}/heritage-site`,
       headers: { cookie: 'crumb=' + crumbToken },
       payload: { crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Select yes if the roof is able to support solar PV panels')
+    expect(postResponse.payload).toContain('Select if your building is listed or on a World Heritage Site')
   })
 
   it('user selects eligible option: \'Yes\' -> display solar-PV-system', async () => {
     const postOptions = {
       method: 'POST',
-      url: `${global.__URLPREFIX__}/roof-solar-PV`,
+      url: `${global.__URLPREFIX__}/heritage-site`,
       headers: { cookie: 'crumb=' + crumbToken },
-      payload: { roofSolarPV: 'Yes', crumb: crumbToken }
+      payload: { heritageSite: 'Yes', crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
@@ -54,39 +53,26 @@ describe('Page: /roof-solar-PV', () => {
     expect(postResponse.headers.location).toBe('solar-PV-system')
   })
 
-  it('user selects ineligible option: \'No\' -> display roof-solar-PV ineligible page', async () => {
+  it('user selects option: \'No\' -> display project-cost page', async () => {
     const postOptions = {
       method: 'POST',
-      url: `${global.__URLPREFIX__}/roof-solar-PV`,
+      url: `${global.__URLPREFIX__}/heritage-site`,
       headers: { cookie: 'crumb=' + crumbToken },
-      payload: { roofSolarPV: 'No', crumb: crumbToken }
-    }
-
-    const postResponse = await global.__SERVER__.inject(postOptions)
-    expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('You cannot apply for a grant from this scheme')
-  })
-
-  it('user selects ineligible option: \'My roof is exempt\' -> display roof-solar-PV ineligible page', async () => {
-    const postOptions = {
-      method: 'POST',
-      url: `${global.__URLPREFIX__}/roof-solar-PV`,
-      headers: { cookie: 'crumb=' + crumbToken },
-      payload: { roofSolarPV: 'My roof is exempt', crumb: crumbToken }
+      payload: { heritageSite: 'No', crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
-    expect(postResponse.headers.location).toBe('upgrading-existing-building')
+    expect(postResponse.headers.location).toBe('project-cost')
   })
 
   it('page loads with correct back link', async () => {
     const options = {
       method: 'GET',
-      url: `${global.__URLPREFIX__}/roof-solar-PV`
+      url: `${global.__URLPREFIX__}/heritage-site`
     }
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
-    expect(response.payload).toContain('<a href=\"additional-items\" class=\"govuk-back-link\">Back</a>')
+    expect(response.payload).toContain('<a href=\"upgrading-existing-building\" class=\"govuk-back-link\">Back</a>')
   })
 })
