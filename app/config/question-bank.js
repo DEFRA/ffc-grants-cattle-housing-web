@@ -1447,6 +1447,95 @@ const questionBank = {
           yarKey: 'solarPVSystem'
         },
         {
+          key: 'project-cost-solar',
+          order: 214,
+          pageTitle: '',
+          title: 'Estimated project costs',
+          classes: 'govuk-input--width-10',
+          url: 'project-cost-solar',
+          baseUrl: 'project-cost-solar',
+          backUrl: 'solar-PV-system',
+          nextUrl: 'potential-amount-solar',
+          fundingPriorities: '',
+          preValidationKeys: ['roofSolarPV'],
+          type: 'multi-input',
+          hint: {
+            html: `
+                  <p>You can only apply for a grant of up to:<p/>
+                  <ul>
+                    <li>40% of the estimated costs of calf housing</li>
+                    <li>25% of the estimated costs of buying and installing a solar PV system</li>
+                  </ul>
+                  <p>The minimum grant amount you can apply for the calf housing costs is £15,000 (40% of £37,5000). The maximum grant is £500,000.</p>
+                  <p>Do not include VAT<p/>
+                  <p>Enter amount, for example 95,000<p/>
+              `
+          },
+          
+          minAnswerCount: '',
+          maxAnswerCount: '',
+          allFields: [
+             {
+              yarKey: 'CalfHousingCost',
+              type: 'text',
+              classes: 'govuk-input--width-10',
+              label: {
+                text: 'Calf housing',
+                classes: 'govuk-label'
+              },
+              prefix: {
+                text: '£'
+              },
+              validate: [
+                {
+                  type: 'NOT_EMPTY',
+                  error: 'Enter a project name'
+                },
+                {
+                  type: 'MIN_MAX_CHARS',
+                  min: 0,
+                  max: 100,
+                  error: 'Name must be 100 characters or fewer'
+                }
+              ]
+            },
+             {
+              yarKey: 'SolarPVCost',
+              type: 'text',
+              classes: 'govuk-input--width-10',
+              label: {
+                text: 'Buying and installing solar PV system',
+                classes: 'govuk-label'
+              },
+              prefix: {
+                text: '£'
+              },
+              validate: [
+                {
+                  type: 'NOT_EMPTY',
+                  error: 'Enter a project name'
+                },
+                {
+                  type: 'MIN_MAX_CHARS',
+                  min: 0,
+                  max: 100,
+                  error: 'Name must be 100 characters or fewer'
+                }
+              ]
+            },
+          ],
+          ineligibleContent: {
+            messageContent: 'You cannot apply for a grant from this scheme',
+            insertText: { text: 'The minimum grant you can apply for the solar PV system is £15,000 (40% of £37,500). The maximum grant is £500,000.' },
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
+            }
+          },
+          // answers: [],
+          yarKey: 'projectCostSolar'
+        },
+        {
           key: 'project-cost',
           order: 220,
           pageTitle: '',
