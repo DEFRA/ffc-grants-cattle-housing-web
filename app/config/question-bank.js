@@ -1254,10 +1254,10 @@ const questionBank = {
           hint: {
             html: `<div class:"govuk-hint">
             You must provide confirmation from a building expert, contractor or structural engineer that your roof can support PV panels for your full application. Confirmation is not funded by this grant.</br></br>
-            Your roof is exempt if:</br></br>
+            Your roof is exempt if:</br>
             <ul>
             <li>the building is listed or on a World Heritage Site</li>
-            <li> you're upgrading an existing building and would not otherwise make changes to the roof </li>
+            <li> you've upgraded an existing building and would not otherwise make changes to the roof </li>
             <li>the roof faces only north or is heavily shaded </li>
             <li>the roof does not have 20m² of clear roof space </li>
             <li>the roof has a pitch less than 15 degrees or greater than 50 degrees</li>
