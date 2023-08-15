@@ -1457,7 +1457,7 @@ const questionBank = {
           backUrl: 'solar-PV-system',
           nextUrl: 'potential-amount-solar',
           fundingPriorities: '',
-          preValidationKeys: ['roofSolarPV'],
+          // preValidationKeys: ['roofSolarPV'],
           type: 'multi-input',
           hint: {
             html: `
@@ -1489,13 +1489,13 @@ const questionBank = {
               validate: [
                 {
                   type: 'NOT_EMPTY',
-                  error: 'Enter a project name'
+                  error: 'Enter a whole number with a maximum of 7 digits'
                 },
                 {
                   type: 'MIN_MAX_CHARS',
                   min: 0,
-                  max: 100,
-                  error: 'Name must be 100 characters or fewer'
+                  max: 7,
+                  error: 'Enter a whole number with a maximum of 7 digits'
                 }
               ]
             },
@@ -1513,13 +1513,13 @@ const questionBank = {
               validate: [
                 {
                   type: 'NOT_EMPTY',
-                  error: 'Enter a project name'
+                  error: 'Enter a whole number with a maximum of 7 digits'
                 },
                 {
                   type: 'MIN_MAX_CHARS',
                   min: 0,
-                  max: 100,
-                  error: 'Name must be 100 characters or fewer'
+                  max: 7,
+                  error: 'Enter a whole number with a maximum of 7 digits'
                 }
               ]
             },
@@ -1532,7 +1532,6 @@ const questionBank = {
               title: 'See other grants you may be eligible for.'
             }
           },
-          // answers: [],
           yarKey: 'projectCostSolar'
         },
         {
