@@ -52,6 +52,9 @@ const getPage = async (question, request, h) => {
   // reset environmentalImpact yar key if switching between pages
   if (url === 'roof-solar-PV') {
     setYarValue(request, 'environmentalImpact', null)
+    setYarValue(request, 'heritageSite', null)
+    setYarValue(request, 'upgradingExistingBuilding', null)
+    setYarValue(request, 'solarPVSystem', null)
   }
 
   if (url === 'score') {
