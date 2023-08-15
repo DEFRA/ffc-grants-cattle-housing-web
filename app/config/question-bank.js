@@ -1250,13 +1250,13 @@ const questionBank = {
         {
           key: 'roof-solar-PV',
           order: 210,
-          title: 'Will the roof be able to support solar PV panels?',
+          title: 'Will the roof of the grant-funded calf housing be able to support solar PV panels?',
           hint: {
             html: `<div class:"govuk-hint">
             You must provide confirmation from a building expert, contractor or structural engineer that your roof can support PV panels for your full application. Confirmation is not funded by this grant.</br></br>
             Your roof is exempt if:</br></br>
             <ul>
-            <li>the building is listed or on a world heritage site</li>
+            <li>the building is listed or on a World Heritage Site</li>
             <li> you're upgrading an existing building and would not otherwise make changes to the roof </li>
             <li>the roof faces only north or is heavily shaded </li>
             <li>the roof does not have 20m² of clear roof space </li>
@@ -1266,7 +1266,7 @@ const questionBank = {
           },
           pageTitle: '',
           backUrl: 'additional-items',
-          nextUrl: 'project-cost',
+          nextUrl: 'solar-PV-system',
           url: 'roof-solar-PV',
           baseUrl: 'roof-solar-PV',
           preValidationKeys: ['additionalItems'],
@@ -1282,8 +1282,8 @@ const questionBank = {
             messageContent: `<p class="govuk-body">The roof must be able to support solar PV panels unless:</p>
             <div class="govuk-list govuk-list--bullet">
                   <ul>
-                    <li>the building is listed or on a world heritage site</li>
-                    <li>you're upgrading an existing building and would not otherwise make changes to the roof</li>
+                    <li>the building is listed or on a World Heritage Site</li>
+                    <li>you've upgraded an existing building and would not otherwise make changes to the roof</li>
                     <li>the roof faces only north or is heavily shaded</li>
                     <li>the roof does not have 20m² of clear roof space</li>
                     <li>the roof has a pitch less than 15 degrees or greater than 50 degrees</li>
@@ -1315,10 +1315,136 @@ const questionBank = {
             },
             {
               key: 'roof-solar-PV-A3',
-              value: 'My roof is exempt'
+              value: 'My roof is exempt',
+              redirectUrl: 'upgrading-existing-building'
             }
           ],
           yarKey: 'roofSolarPV'
+        },
+        {
+          key: 'upgrading-existing-building',
+          order: 211,
+          title: 'Are you upgrading an existing building and not making changes to the roof?',
+          pageTitle: '',
+          backUrl: 'roof-solar-PV',
+          nextUrl: 'solar-PV-system',
+          url: 'upgrading-existing-building',
+          baseUrl: 'upgrading-existing-building',
+          preValidationKeys: ['roofSolarPV'],
+          fundingPriorities: '',
+          type: 'single-answer',
+          minAnswerCount: 1,
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select if you will use the grant for a solar PV system'
+            }
+          ],
+          answers: [
+            {
+              key: 'upgrading-existing-building-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'upgrading-existing-building-A2',
+              value: 'No',
+              redirectUrl: 'heritage-site'
+            }
+          ],
+          yarKey: 'upgradingExistingBuilding'
+        },
+        {
+          key: 'heritage-site',
+          order: 212,
+          title: 'Is your building listed on a World Heritage Site?',
+          pageTitle: '',
+          backUrl: 'upgrading-existing-building',
+          nextUrl: 'solar-PV-system',
+          url: 'heritage-site',
+          baseUrl: 'heritage-site',
+          preValidationKeys: ['upgradingExistingBuilding'],
+          fundingPriorities: '',
+          type: 'single-answer',
+          minAnswerCount: 1,
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select if your building is listed or on a World Heritage Site'
+            }
+          ],
+          answers: [
+            {
+              key: 'heritage-site-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'heritage-site-A2',
+              value: 'No',
+              redirectUrl: 'project-cost'
+            }
+          ],
+          yarKey: 'heritageSite'
+        },
+        {
+          key: 'solar-PV-system',
+          order: 213,
+          title: 'Will you buy a solar PV system with this grant?',
+          hint: {
+            html: `<div class:"govuk-hint">
+            You can choose to buy and install a solar PV system on the grant-funded calf housing as part of the grant.</br></br>
+            A solar PV system can include:</br></br>
+            <ul>
+            <li>an electrical grid connection (your housing must have an existing energy supply)</li>
+            <li>solar panels</li>
+            <li>an inverter</li>
+            <li>a utility meter</li>
+            <li>a battery</li>
+            </ul>
+            </div>`
+          },
+          pageTitle: '',
+          backUrlObject: {
+            dependentQuestionYarKey: 'upgradingExistingBuilding',
+            dependentAnswerKeysArray: ['upgrading-existing-building-A1'],
+            urlOptions: {
+              thenUrl: 'upgrading-existing-building',
+              elseUrl: 'heritage-site',
+              nonDependentUrl: 'roof-solar-PV'
+            }
+          },
+          nextUrl: 'project-cost-solar',
+          url: 'solar-PV-system',
+          baseUrl: 'solar-PV-system',
+          preValidationKeys: [],
+          sidebar: {
+            values: [{
+              heading: 'Eligibility',
+              content: [{
+                para: 'You do not have to buy and install a solar PV system to be eligible for this grant'
+              }]
+            }]
+          },
+          fundingPriorities: '',
+          type: 'single-answer',
+          minAnswerCount: 1,
+          validate: [
+            {
+              type: 'NOT_EMPTY',
+              error: 'Select if you will use the grant for a solar PV system'
+            }
+          ],
+          answers: [
+            {
+              key: 'solar-PV-system-A1',
+              value: 'Yes'
+            },
+            {
+              key: 'solar-PV-system-A2',
+              value: 'No',
+              redirectUrl: 'project-cost'
+            }
+          ],
+          yarKey: 'solarPVSystem'
         },
         {
           key: 'project-cost',
@@ -1327,7 +1453,15 @@ const questionBank = {
           classes: 'govuk-input--width-10',
           url: 'project-cost',
           baseUrl: 'project-cost',
-          backUrl: 'roof-solar-PV',
+          backUrlObject: {
+            dependentQuestionYarKey: 'heritageSite',
+            dependentAnswerKeysArray: ['heritage-site-A2'],
+            urlOptions: {
+              thenUrl: 'heritage-site',
+              elseUrl: 'solar-PV-system',
+              nonDependentUrl: 'solar-PV-system'
+            }
+          },
           nextUrl: 'potential-amount',
           fundingPriorities: '',
           preValidationKeys: ['roofSolarPV'],
@@ -1349,23 +1483,7 @@ const questionBank = {
           hint: {
             html: `
                   <p>You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £15,000 (40% of £37,500). The maximum grant is £500,000.<p/>
-                  <div class="govuk-warning-text">
-                    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-                    <strong class="govuk-warning-text__text">
-                      <span class="govuk-warning-text__assistive"></span>
-                      You can use up to 40% of the total grant amount towards the cost of buying and installing rooftop solar PV panels.
-                    </strong>
-                  </div>
-                  <p>For example, if the total grant amount is £100,000, you can use up to £40,000 of the grant for buying and installing rooftop solar PV panels.</p>
-                  The grant is for:<br/><br/>
-                  <ul class="govuk-list govuk-list--bullet govuk-hint">
-                    <li>structures, including concrete flooring, walls, roofs, structural reinforcement and drainage facilities</li>
-                    <li>fixtures, including calf accommodation pens, calf isolation facilities, gates, draught protection, ventilation systems, washing facilities and automatic calf feeders</li>
-                    <li>fittings, including temperature and humidity data loggers, heat lamps and enrichment items</li>
-                    <li>one-off utility costs such as the alteration of electricity or water supply to allow the building installation or upgrade</li>
-                    <li>buying and installing rooftop solar PV panels</li>
-                  </ul>
-                  <p>Do not include VAT.<p/>
+                  <p>Do not include VAT<p/>
                   <p>Enter amount, for example 95,000<p/>
               `
           },
@@ -1387,24 +1505,18 @@ const questionBank = {
             }
           ],
           ineligibleContent: {
-            messageContent: 'You can only apply for a grant of up to 40% of the estimated costs.',
-            insertText: { text: 'The minimum grant you can apply for this project is £15,000 (40% of £37,500). The maximum grant is £500,000.' },
+            messageContent: 'You cannot apply for a grant from this scheme',
+            insertText: { text: 'The minimum grant you can apply for the calf housing costs is £15,000 (40% of £37,500). The maximum grant is £500,000.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
             }
           },
-          sidebar: {
-            values: [{
-              heading: 'What the grant will not fund',
-              content: [{
-                para: 'Movable items (for example buckets) and ongoing costs (for example straw) will not be funded.'
-              }]
-            }]
-          },
           answers: [],
           yarKey: 'projectCost'
         },
+        // monolith page (new project cost)
+        // new project cost conditional
         {
           key: 'potential-amount',
           order: 230,
@@ -1413,20 +1525,6 @@ const questionBank = {
           backUrl: 'project-cost',
           nextUrl: 'remaining-costs',
           preValidationKeys: ['projectCost'],
-          grantInfo: {
-            minGrant: MIN_GRANT,
-            maxGrant: MAX_GRANT,
-            grantPercentage: GRANT_PERCENTAGE,
-            cappedGrant: true
-          },
-          ineligibleContent: {
-            messageContent: 'You can only apply for a grant of up to 40% of the estimated costs.',
-            insertText: { text: 'The minimum grant you can apply for this project is £15,000 (40% of £37,500). The maximum grant is £500,000.' },
-            messageLink: {
-              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
-              title: 'See other grants you may be eligible for.'
-            }
-          },
           maybeEligible: true,
           maybeEligibleContent: {
             messageHeader: 'Potential grant funding',
@@ -1437,13 +1535,43 @@ const questionBank = {
           }
         },
         {
+          key: 'potential-amount-capped',
+          order: 231,
+          url: 'potential-amount-capped',
+          baseUrl: 'potential-amount-capped',
+          // backUrlObject: {
+          //   dependentQuestionYarKey: 'solarPVSystem',
+          //   dependentAnswerKeysArray: ['solar-PV-system-A2'],
+          //   urlOptions: {
+          //     thenUrl: 'project-cost',
+          //     elseUrl: 'potential-amount-conditional',
+          //     nonDependentUrl: 'project-cost'
+          //   }
+          // }, // checking now
+          backUrl: 'project-cost',
+          nextUrl: 'remaining-costs',
+          preValidationKeys: ['projectCost'],
+          maybeEligible: true,
+          maybeEligibleContent: {
+            messageHeader: 'Potential grant funding',
+            messageContent: `The maximum grant you can apply for is £500,000.
+            You may be able to apply for a grant of up to £{{_calculatedGrant_}}, based on the estimated cost of £{{_projectCost_}}.`, // calculated grant is capped
+            warning: {
+              text: 'There’s no guarantee the project will receive a grant.'
+            }
+          }
+        },
+        // new potential amount (calf only over)
+        // new potential amount page (solar)
+        // new potential amount page 2 (solar capping)
+        {
           key: 'remaining-costs',
           order: 240,
           title: 'Can you pay the remaining costs of £{{_remainingCost_}}?',
           pageTitle: '',
           url: 'remaining-costs',
           baseUrl: 'remaining-costs',
-          backUrl: 'potential-amount',
+          backUrl: 'potential-amount', // update with ALL new potential amount back routes
           nextUrl: 'housing',
           preValidationKeys: ['projectCost'],
           ineligibleContent: {
