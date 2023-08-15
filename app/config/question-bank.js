@@ -1254,7 +1254,7 @@ const questionBank = {
           hint: {
             html: `<div class:"govuk-hint">
             You must provide confirmation from a building expert, contractor or structural engineer that your roof can support PV panels for your full application. Confirmation is not funded by this grant.</br></br>
-            Your roof is exempt if:</br>
+            Your roof is exempt if:
             <ul>
             <li>the building is listed or on a World Heritage Site</li>
             <li> you've upgraded an existing building and would not otherwise make changes to the roof </li>
@@ -1392,7 +1392,7 @@ const questionBank = {
           hint: {
             html: `<div class:"govuk-hint">
             You can choose to buy and install a solar PV system on the grant-funded calf housing as part of the grant.</br></br>
-            A solar PV system can include:</br></br>
+            A solar PV system can include:
             <ul>
             <li>an electrical grid connection (your housing must have an existing energy supply)</li>
             <li>solar panels</li>
@@ -1505,7 +1505,7 @@ const questionBank = {
             }
           ],
           ineligibleContent: {
-            messageContent: 'You cannot apply for a grant from this scheme',
+            messageContent: '',
             insertText: { text: 'The minimum grant you can apply for the calf housing costs is £15,000 (40% of £37,500). The maximum grant is £500,000.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
