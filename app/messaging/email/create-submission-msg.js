@@ -320,12 +320,12 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       drainageSlope: submission.drainageSlope,
       additionalItems: submission.additionalItems,
       roofSolarPV: submission.roofSolarPV,
-      // new questions
+      // New questions
       upgradingExistingBuilding: submission.upgradingExistingBuilding,
       heritageSite: submission.heritageSite,
       solarPVSystem: submission.solarPVSystem,
 
-      solarCost: solarCost ? getCurrencyFormat(submission.solarCost) : 'N/A',
+      solarCost: getCurrencyFormat(submission.solarCost) ?? 'N/A',
       calculatedGrantSolar: getCurrencyFormat(calculatedGrantSolar) ?? 'N/A' ,
       calfHousingCost: getCurrencyFormat(submission.calfHousingCost),
       calculatedGrantCalf: getCurrencyFormat(calculatedGrantCalf),
