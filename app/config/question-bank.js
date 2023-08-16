@@ -1565,6 +1565,24 @@ const questionBank = {
         // new potential amount page (solar)
         // new potential amount page 2 (solar capping)
         {
+            key: 'potential-amount-conditional',
+            order: 232,
+            url: 'potential-amount-conditional',
+            baseUrl: 'potential-amount-conditional',
+            backUrl: 'project-cost-solar',
+            nextUrl: 'remaining-costs',
+            preValidationKeys: ['projectCost'],
+            maybeEligible: true,
+            maybeEligibleContent: {
+              messageHeader: 'Potential grant funding',
+              messageContent: `You have requested the maximum grant amount of £500,000 for calf housing.`,
+              warning: {
+                text: 'You cannot apply for funding for a solar PV system if you have requested the maximum funding amount for calf housing.'
+              },
+            extraMessageContent: ` <p class="govuk-body">You can continue to check your eligibility for grant funding to build or upgrade calf housing.`
+            }
+        },
+        {
           key: 'remaining-costs',
           order: 240,
           title: 'Can you pay the remaining costs of £{{_remainingCost_}}?',
@@ -3111,7 +3129,7 @@ const questionBank = {
             <a class="govuk-link" title="Send email to RPA" target="_blank" rel="noopener noreferrer" href="mailto:ftf@rpa.gov.uk">FTF@rpa.gov.uk</a><br/><br/>
             
             <h2 class="govuk-heading-m">What happens next</h2>
-            <p>1. RPA will be in touch when the full application period opens to tell you if your project is invited to submit a full application form.</p>
+            <p>1. RPA will be in touch when the full application period opens to tell you if your project is invited to submit a full application. This will include an initial assessment of the ambient environment.</p>
             <p>2. If you submit an application, RPA will assess it against other projects and value for money. You will not automatically get a grant. The grant is expected to be highly competitive and you are competing against other projects.</p>
             <p>3. If your application is successful, you’ll be sent a funding agreement and can begin work on the project.</p>
             `,
