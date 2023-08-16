@@ -1505,8 +1505,7 @@ const questionBank = {
             }
           ],
           ineligibleContent: {
-            messageContent: '',
-            insertText: { text: 'The minimum grant you can apply for the calf housing costs is £15,000 (40% of £37,500). The maximum grant is £500,000.' },
+            messageContent: 'The minimum grant you can apply for the calf housing costs is £15,000 (40% of £37,500). The maximum grant is £500,000.',
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'

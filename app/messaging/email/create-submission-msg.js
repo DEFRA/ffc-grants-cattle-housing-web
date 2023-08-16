@@ -325,8 +325,10 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       heritageSite: submission.heritageSite,
       solarPVSystem: submission.solarPVSystem,
 
-
-
+      solarCost: solarCost ? getCurrencyFormat(submission.solarCost) : 'N/A',
+      calculatedGrantSolar: getCurrencyFormat(calculatedGrantSolar) ?? 'N/A' ,
+      calfHousingCost: getCurrencyFormat(submission.calfHousingCost),
+      calculatedGrantCalf: getCurrencyFormat(calculatedGrantCalf),
 
       projectCost: getCurrencyFormat(submission.projectCost),
       potentialFunding: getCurrencyFormat(submission.calculatedGrant),
