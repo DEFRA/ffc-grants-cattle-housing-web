@@ -341,24 +341,25 @@ const showPostPage = (currentQuestion, request, h) => {
     // }
     gapiService.sendGAEvent(request, { name: gapiService.eventTypes.ELIMINATION, params: {} })
     return h.view('not-eligible', NOT_ELIGIBLE)
-  }else if(baseUrl === 'project-cost' && payload[Object.keys(payload)[0]] > 1250000 ){
+  
+  } else if(baseUrl === 'project-cost' && payload[Object.keys(payload)[0]] > 1250000 ){
     return h.redirect('/upgrading-calf-housing/potential-amount-capped')
-  } else if (baseUrl === 'project-cost-solar' && getYarValue(request, 'calculatedGrantCalf') < 15000) { //calf
+  
+  } else if (baseUrl === 'project-cost-solar' && getYarValue(request, 'calculatedGrantCalf') < 15000) { //calf min
     return h.view('not-eligible', NOT_ELIGIBLE)
-  } else if (baseUrl === 'project-cost-solar' && getYarValue(request, 'calculatedGrantCalf') > 1250000) { //calf
-    console.log('here: -----Conditional', getYarValue(request, 'calculatedGrantCalf'), getYarValue(request, 'calculatedGrant'));
+  
+  } else if (baseUrl === 'project-cost-solar' && getYarValue(request, 'calculatedGrantCalf') === 500000) { // calf max
     setYarValue(request, 'calculatedGrant', 500000)
-    setYarValue(request, 'calculatedGrantCalf', 500000)
     
     return h.redirect('/upgrading-calf-housing/potential-amount-conditional')
-  } else if (baseUrl === 'project-cost-solar' && getYarValue(request, 'calculatedGrant') > 500000) { // overall
-    console.log('here: -----CAPPED', getYarValue(request, 'calculatedGrantCalf'), getYarValue(request, 'calculatedGrant'));
-    
+
+  } else if (baseUrl === 'project-cost-solar' && getYarValue(request, 'calculatedGrant') > 500000) { // overall both
     const newCap = 500000 - getYarValue(request, 'calculatedGrantCalf')
     setYarValue(request, 'calculatedGrantSolar', newCap)
     setYarValue(request, 'calculatedGrant', 500000)
     return h.redirect('/upgrading-calf-housing/potential-amount-solar-capped')
-  }else if (thisAnswer?.redirectUrl) {
+  
+  } else if (thisAnswer?.redirectUrl) {
     return h.redirect(thisAnswer?.redirectUrl)
   }
   return h.redirect(getUrl(nextUrlObject, nextUrl, request, payload.secBtn, currentQuestion.url))

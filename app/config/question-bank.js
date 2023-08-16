@@ -1525,7 +1525,7 @@ const questionBank = {
               validate: [
                 {
                   type: 'NOT_EMPTY',
-                  error: 'Enter the estimated total cost for the items'
+                  error: 'Enter the estimated total cost of buying and installing solar PV system'
                 },
                 {
                   type: 'MIN_MAX_CHARS',
@@ -1537,8 +1537,9 @@ const questionBank = {
             },
           ],
           ineligibleContent: {
-            messageContent: 'You cannot apply for a grant from this scheme',
-            insertText: { text: 'The minimum grant you can apply for the solar PV system is £15,000 (40% of £37,500). The maximum grant is £500,000.' },
+            messageHeader: 'You cannot apply for a grant from this scheme',
+            messageContent: 'The minimum grant you can apply for the solar PV system is £15,000 (40% of £37,500). The maximum grant is £500,000.',
+            insertText: { text: 'You cannot apply for a solar PV system if you have not requested the minimum funding amount for calf housing.' },
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -1605,8 +1606,8 @@ const questionBank = {
             }
           ],
           ineligibleContent: {
-            messageContent: 'You cannot apply for a grant from this scheme',
-            insertText: { text: 'The minimum grant you can apply for the calf housing costs is £15,000 (40% of £37,500). The maximum grant is £500,000.' },
+            messageHeader: 'You cannot apply for a grant from this scheme',
+            messageContent: 'The minimum grant you can apply for the calf housing costs is £15,000 (40% of £37,500). The maximum grant is £500,000.',
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -1615,8 +1616,6 @@ const questionBank = {
           answers: [],
           yarKey: 'projectCost'
         },
-        // monolith page (new project cost)
-        // new project cost conditional
         {
           key: 'potential-amount',
           order: 230,
@@ -1639,15 +1638,6 @@ const questionBank = {
           order: 231,
           url: 'potential-amount-capped',
           baseUrl: 'potential-amount-capped',
-          // backUrlObject: {
-          //   dependentQuestionYarKey: 'solarPVSystem',
-          //   dependentAnswerKeysArray: ['solar-PV-system-A2'],
-          //   urlOptions: {
-          //     thenUrl: 'project-cost',
-          //     elseUrl: 'potential-amount-conditional',
-          //     nonDependentUrl: 'project-cost'
-          //   }
-          // }, // checking now
           backUrl: 'project-cost',
           nextUrl: 'remaining-costs',
           preValidationKeys: ['projectCost'],
@@ -1661,8 +1651,7 @@ const questionBank = {
             }
           }
         },
-        // new potential amount (calf only over)
-        // new potential amount page (solar)
+        // new potential amount page (solar all fine)
         // new potential amount page 2 (solar capping)
         {
             key: 'potential-amount-conditional',
@@ -1671,7 +1660,7 @@ const questionBank = {
             baseUrl: 'potential-amount-conditional',
             backUrl: 'project-cost-solar',
             nextUrl: 'remaining-costs',
-            preValidationKeys: ['projectCost'],
+            preValidationKeys: [],
             maybeEligible: true,
             maybeEligibleContent: {
               messageHeader: 'Potential grant funding',
