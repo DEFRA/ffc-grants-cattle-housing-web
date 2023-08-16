@@ -37,7 +37,7 @@ describe('Page: /upgrading-existing-building', () => {
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Select if you will use the grant for a solar PV system')
+    expect(postResponse.payload).toContain('Select if you are upgrading an existing building and not making changes to the roof')
   })
 
   it('user selects eligible option: \'Yes\' -> display solar-PV-system', async () => {
