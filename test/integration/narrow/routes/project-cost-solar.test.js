@@ -31,7 +31,7 @@ describe('Project cost page', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
-  it.only('should load page successfully', async () => {
+  it('should load page successfully', async () => {
     const options = {
       method: 'GET',
       url: `${global.__URLPREFIX__}/project-cost-solar`
@@ -41,7 +41,7 @@ describe('Project cost page', () => {
     expect(response.statusCode).toBe(200)
   })
 
-  it.only('should load page successfully if no projectCostSolar', async () => {
+  it('should load page successfully if no projectCostSolar', async () => {
     varList = {
       legalStatus: 'fale status',
       inEngland: 'Yes',
@@ -73,14 +73,18 @@ describe('Project cost page', () => {
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
-    expect(postResponse.payload).toContain('Enter the estimated total cost for the items')
+    expect(postResponse.payload).toContain('Enter the estimated total cost of the calf housing')
+    expect(postResponse.payload).toContain('Enter the estimated total cost of buying and installing solar PV system')
   })
 
-  it('should return an error message if a string is typed in', async () => {
+  it.only('should return an error message if a string is typed in', async () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/project-cost-solar`,
-      payload: { projectCost: '1234s6', crumb: crumbToken },
+      payload: { projectCostSolar: {
+        SolarPVCost: 'abc',
+        CalfHousingCost: 'abc'
+      }, crumb: crumbToken },
       headers: { cookie: 'crumb=' + crumbToken }
     }
 

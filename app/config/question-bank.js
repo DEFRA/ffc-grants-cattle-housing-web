@@ -1466,7 +1466,7 @@ const questionBank = {
             cappedGrant: true
           },
           grantInfoSolar: {
-            minGrant: 0, // hardcoded for now
+            minGrant: 0,
             maxGrant: 485000,
             grantPercentage: 25,
             cappedGrant: true
@@ -1489,7 +1489,7 @@ const questionBank = {
           allFields: [
              {
               yarKey: 'CalfHousingCost',
-              type: 'text',
+              type: 'number',
               classes: 'govuk-input--width-10',
               label: {
                 text: 'Calf housing',
@@ -1513,7 +1513,7 @@ const questionBank = {
             },
              {
               yarKey: 'SolarPVCost',
-              type: 'text',
+              type: 'number',
               classes: 'govuk-input--width-10',
               label: {
                 text: 'Buying and installing solar PV system',
