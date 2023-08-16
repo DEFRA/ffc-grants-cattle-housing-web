@@ -320,6 +320,14 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       drainageSlope: submission.drainageSlope,
       additionalItems: submission.additionalItems,
       roofSolarPV: submission.roofSolarPV,
+      // new questions
+      upgradingExistingBuilding: submission.upgradingExistingBuilding,
+      heritageSite: submission.heritageSite,
+      solarPVSystem: submission.solarPVSystem,
+
+
+
+
       projectCost: getCurrencyFormat(submission.projectCost),
       potentialFunding: getCurrencyFormat(submission.calculatedGrant),
       remainingCost: submission.remainingCosts,
