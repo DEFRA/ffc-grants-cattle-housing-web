@@ -1459,6 +1459,18 @@ const questionBank = {
           fundingPriorities: '',
           // preValidationKeys: ['roofSolarPV'],
           type: 'multi-input',
+          grantInfo: {
+            minGrant: MIN_GRANT,
+            maxGrant: MAX_GRANT,
+            grantPercentage: GRANT_PERCENTAGE,
+            cappedGrant: true
+          },
+          grantInfoSolar: {
+            minGrant: 0, // hardcoded for now
+            maxGrant: 485000,
+            grantPercentage: 25,
+            cappedGrant: true
+          },
           hint: {
             html: `
                   <p>You can only apply for a grant of up to:<p/>
@@ -1489,7 +1501,7 @@ const questionBank = {
               validate: [
                 {
                   type: 'NOT_EMPTY',
-                  error: 'Enter a whole number with a maximum of 7 digits'
+                  error: 'Enter the estimated total cost of the calf housing'
                 },
                 {
                   type: 'MIN_MAX_CHARS',
@@ -1513,7 +1525,7 @@ const questionBank = {
               validate: [
                 {
                   type: 'NOT_EMPTY',
-                  error: 'Enter a whole number with a maximum of 7 digits'
+                  error: 'Enter the estimated total cost for the items'
                 },
                 {
                   type: 'MIN_MAX_CHARS',
@@ -3250,7 +3262,7 @@ questionBank.sections.forEach(({ questions }) => {
 const ALL_URLS = []
 ALL_QUESTIONS.forEach(item => ALL_URLS.push(item.url))
 
-const YAR_KEYS = ['itemsTotalValue', 'remainingCost', 'calculatedGrant', 'yesStructureEligibility']
+const YAR_KEYS = ['itemsTotalValue', 'remainingCost', 'calculatedGrant', 'remainingCostSolar', 'calculatedGrantSolar', 'remainingCostCalf', 'calculatedGrantCalf', 'yesStructureEligibility']
 ALL_QUESTIONS.forEach(item => YAR_KEYS.push(item.yarKey))
 module.exports = {
   questionBank,
