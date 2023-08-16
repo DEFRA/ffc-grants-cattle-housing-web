@@ -1331,13 +1331,13 @@ const questionBank = {
           url: 'upgrading-existing-building',
           baseUrl: 'upgrading-existing-building',
           preValidationKeys: ['roofSolarPV'],
-          fundingPriorities: '',
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           type: 'single-answer',
           minAnswerCount: 1,
           validate: [
             {
               type: 'NOT_EMPTY',
-              error: 'Select if you will use the grant for a solar PV system'
+              error: 'Select if you are upgrading an existing building and not making changes to the roof'
             }
           ],
           answers: [
@@ -1356,14 +1356,14 @@ const questionBank = {
         {
           key: 'heritage-site',
           order: 212,
-          title: 'Is your building listed on a World Heritage Site?',
+          title: 'Is your building listed or on a World Heritage Site?',
           pageTitle: '',
           backUrl: 'upgrading-existing-building',
           nextUrl: 'solar-PV-system',
           url: 'heritage-site',
           baseUrl: 'heritage-site',
           preValidationKeys: ['upgradingExistingBuilding'],
-          fundingPriorities: '',
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           type: 'single-answer',
           minAnswerCount: 1,
           validate: [
@@ -1424,7 +1424,7 @@ const questionBank = {
               }]
             }]
           },
-          fundingPriorities: '',
+          classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           type: 'single-answer',
           minAnswerCount: 1,
           validate: [
@@ -1565,22 +1565,22 @@ const questionBank = {
         // new potential amount page (solar)
         // new potential amount page 2 (solar capping)
         {
-            key: 'potential-amount-conditional',
-            order: 232,
-            url: 'potential-amount-conditional',
-            baseUrl: 'potential-amount-conditional',
-            backUrl: 'project-cost-solar',
-            nextUrl: 'remaining-costs',
-            preValidationKeys: ['projectCost'],
-            maybeEligible: true,
-            maybeEligibleContent: {
-              messageHeader: 'Potential grant funding',
-              messageContent: `You have requested the maximum grant amount of £500,000 for calf housing.`,
-              warning: {
-                text: 'You cannot apply for funding for a solar PV system if you have requested the maximum funding amount for calf housing.'
-              },
-            extraMessageContent: ` <p class="govuk-body">You can continue to check your eligibility for grant funding to build or upgrade calf housing.`
-            }
+          key: 'potential-amount-conditional',
+          order: 232,
+          url: 'potential-amount-conditional',
+          baseUrl: 'potential-amount-conditional',
+          backUrl: 'project-cost-solar',
+          nextUrl: 'remaining-costs',
+          preValidationKeys: ['projectCost'],
+          maybeEligible: true,
+          maybeEligibleContent: {
+            messageHeader: 'Potential grant funding',
+            messageContent: 'You have requested the maximum grant amount of £500,000 for calf housing.',
+            warning: {
+              text: 'You cannot apply for funding for a solar PV system if you have requested the maximum funding amount for calf housing.'
+            },
+            extraMessageContent: '<p class="govuk-body">You can continue to check your eligibility for grant funding to build or upgrade calf housing.'
+          }
         },
         {
           key: 'remaining-costs',
@@ -2140,7 +2140,7 @@ const questionBank = {
           },
           fundingPriorities: '',
           type: 'multi-answer',
-            score: {
+          score: {
             isScore: true
           },
           minAnswerCount: 1,
