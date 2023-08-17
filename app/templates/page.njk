@@ -7,7 +7,9 @@
 {% from "govuk/components/select/macro.njk" import govukSelect %}
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
-{% from "./components/macro.njk" import crumbToken, multiSideBar, conditionalButtons %}
+{% from "./components/macro.njk" import crumbToken,
+multiSideBar,
+conditionalButtons %}
 
 {% block pageTitle %}
   {% if errorList %}
@@ -45,17 +47,20 @@
           {{ govukCheckboxes(items) }}
         {% endif %}
 
-        {% if type ==='input' %}
+        {% if type === 'input' %}
           {{ govukInput(items) }}
         {% endif %}
 
-        {% if type ==='select' %}
+        {% if type === 'select' %}
           {{ govukSelect(items) }}
         {% endif %}
 
         {% if type === 'multi-input' %}
           <h1 class="govuk-heading-l">{{ title }}</h1>
           <span class="govuk-hint">{{ hint.text }}</span>
+          {% if hint.html %}
+            <span class="govuk-hint">{{ hint.html | safe }}</span>
+          {% endif %}
 
           {% for item in items %}
             {% if item.type ==='sub-heading' %}
@@ -74,45 +79,44 @@
                 {{ govukCheckboxes(item) }}
               {% endif %}
 
-              {% if item.type ==='text' or item.type ==='email' or item.type ==='tel' or item.type ==='number' %}
+              {% if item.type === 'text' or item.type === 'email' or item.type === 'tel' or item.type === 'number' %}
                 {{ govukInput(item) }}
               {% endif %}
 
-
-              {% if item.type ==='select' %}
+              {% if item.type === 'select' %}
                 {{ govukSelect(item) }}
               {% endif %}
 
               {% if item.endFieldset %}
-                </fieldset>
-              {% endif %}
-
-            {% endfor %}
-          {% endif %}
-
-          {% if warning %}
-            {{ govukWarningText(warning) }}
-          {% endif %}
-
-          <div class="govuk-!-padding-top-5">
-            {% set buttonText = 'Continue' %}
-            {% set secButtonText = 'Back to score' %}
-
-            {% if reachedCheckDetails %}
-              {% set diaplaySecondryBtn = true %}
-              {% set secButtonText = 'Back to details' %}
+              </fieldset>
             {% endif %}
-          </div>
-          {%if key === 'introducing-innovation' %}
-            {% set buttonText = 'Get your score'%}
-            {% set diaplaySecondryBtn = false %}
-          {% endif %}
-          {{ conditionalButtons(diaplaySecondryBtn, buttonText, secButtonText, mainButtonText) }}
-        </form>
-      </div>
 
-      {% if sideBarText %}
-        {{ multiSideBar(sideBarText) }}
-      {% endif %}
+          {% endfor %}
+        {% endif %}
+
+        {% if warning %}
+          {{ govukWarningText(warning) }}
+        {% endif %}
+
+        <div class="govuk-!-padding-top-5">
+          {% set buttonText = 'Continue' %}
+          {% set secButtonText = 'Back to score' %}
+
+          {% if reachedCheckDetails %}
+            {% set diaplaySecondryBtn = true %}
+            {% set secButtonText = 'Back to details' %}
+          {% endif %}
+        </div>
+        {%if key === 'introducing-innovation' %}
+          {% set buttonText = 'Get your score'%}
+          {% set diaplaySecondryBtn = false %}
+        {% endif %}
+        {{ conditionalButtons(diaplaySecondryBtn, buttonText, secButtonText, mainButtonText) }}
+      </form>
     </div>
-  {% endblock %}
+
+    {% if sideBarText %}
+      {{ multiSideBar(sideBarText) }}
+    {% endif %}
+  </div>
+{% endblock %}
