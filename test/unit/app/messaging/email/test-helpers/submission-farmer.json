@@ -49,6 +49,8 @@
     "upgradingExistingBuilding": "Yes",
     "heritageSite": "Yes",
     "solarPVSystem": "No",
+    "SolarPVCost": 37500,
+    "calculatedGrantSolar": 15000,
     "projectCost": 100000,
     "potentialFunding": "40000.00",
     "remainingCost": "60000.00",
