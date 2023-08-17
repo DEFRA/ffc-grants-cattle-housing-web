@@ -320,14 +320,18 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       drainageSlope: submission.drainageSlope,
       additionalItems: submission.additionalItems,
       roofSolarPV: submission.roofSolarPV,
-      // new questions
-      upgradingExistingBuilding: submission.upgradingExistingBuilding,
-      heritageSite: submission.heritageSite,
-      solarPVSystem: submission.solarPVSystem,
-
-
-
-
+      upgradingExistingBuilding: submission.upgradingExistingBuilding ? submission.upgradingExistingBuilding : '',
+      upgradingExistingBuildingTrue: submission.upgradingExistingBuilding ? true : false,
+      heritageSite: submission.heritageSite ?  submission.heritageSite : '',
+      heritageSiteTrue: submission.heritageSite ? true : false,
+      solarPVSystem: submission.solarPVSystem ? submission.solarPVSystem : '',
+      solarPVSystemTrue: submission.solarPVSystem ? true : false,
+      SolarPVCost: submission.SolarPVCost? getCurrencyFormat(submission.SolarPVCost) : '',
+      SolarPVCostTrue: submission.SolarPVCost? true : false,
+      calculatedGrantSolar: submission.calculatedGrantSolar ? getCurrencyFormat(submission.calculatedGrantSolar) : '' ,
+      calculatedGrantSolarTrue: submission.calculatedGrantSolar ? true : false,
+      calfHousingCost: submission.CalfHousingCost ? getCurrencyFormat(submission.CalfHousingCost) : getCurrencyFormat(submission.projectCost),
+      calculatedGrantCalf: submission.calculatedGrantCalf ?  getCurrencyFormat(submission.calculatedGrantCalf) : getCurrencyFormat(submission.calculatedGrant),
       projectCost: getCurrencyFormat(submission.projectCost),
       potentialFunding: getCurrencyFormat(submission.calculatedGrant),
       remainingCost: submission.remainingCosts,

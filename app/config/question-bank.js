@@ -1487,7 +1487,7 @@ const questionBank = {
           minAnswerCount: '',
           maxAnswerCount: '',
           allFields: [
-             {
+            {
               yarKey: 'CalfHousingCost',
               type: 'number',
               classes: 'govuk-input--width-10',
@@ -1511,7 +1511,7 @@ const questionBank = {
                 }
               ]
             },
-             {
+            {
               yarKey: 'SolarPVCost',
               type: 'number',
               classes: 'govuk-input--width-10',
@@ -1606,8 +1606,7 @@ const questionBank = {
             }
           ],
           ineligibleContent: {
-            messageContent: '',
-            insertText: { text: 'The minimum grant you can apply for the calf housing costs is £15,000 (40% of £37,500). The maximum grant is £500,000.' },
+            messageContent: 'The minimum grant you can apply for the calf housing costs is £15,000 (40% of £37,500). The maximum grant is £500,000.',
             messageLink: {
               url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
               title: 'See other grants you may be eligible for.'
@@ -3292,7 +3291,7 @@ questionBank.sections.forEach(({ questions }) => {
 const ALL_URLS = []
 ALL_QUESTIONS.forEach(item => ALL_URLS.push(item.url))
 
-const YAR_KEYS = ['itemsTotalValue', 'remainingCost', 'calculatedGrant', 'remainingCostSolar', 'calculatedGrantSolar', 'remainingCostCalf', 'calculatedGrantCalf', 'yesStructureEligibility']
+const YAR_KEYS = ['itemsTotalValue', 'remainingCost', 'calculatedGrant', 'remainingCostSolar', 'calculatedGrantSolar', 'remainingCostCalf', 'calculatedGrantCalf', 'yesStructureEligibility', 'CalfHousingCost', 'SolarPVCost']
 ALL_QUESTIONS.forEach(item => YAR_KEYS.push(item.yarKey))
 module.exports = {
   questionBank,
