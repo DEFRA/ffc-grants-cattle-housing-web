@@ -69,7 +69,6 @@ function formatBusinessTypeC53 (businessType) {
     // assign values for DORA
     returnArray.push('Farmer with ' + businessType[type])
   }
-  
   return returnArray
 }
 
@@ -77,7 +76,7 @@ function formatBusinessTypeC53 (businessType) {
 function getBusinessTypeC53 (businessTypeArray) {
   if (businessTypeArray.includes('Farmer with Horticulture') || businessTypeArray.includes('Farmer with Arable')) {
     return 'Mixed farming'
-  } else if (businessTypeArray.length > 1 ) {
+  } else if (businessTypeArray.length > 1) {
     return 'Farmer with livestock'
   } else if (businessTypeArray[0] === 'Farmer with Beef (including calf rearing)') {
     return 'Beef Farmer'
@@ -98,33 +97,11 @@ const getPlanningPermissionDoraValue = (planningPermission) => {
   }
 }
 
-// function getProjectItemsFormattedArray (itemSizeQuantities, otherItems, storageType, storageCapacity, coverType, coverSize) {
-//   const projectItems = []
-//   if (otherItems[0] !== 'None of the above') {
-//     let unit
-//     Object.values(itemSizeQuantities).forEach((itemSizeQuantity, index) => {
-//       unit = getItemUnit(otherItems[index].toLowerCase())
-//       projectItems.push(`${otherItems[index]}~${itemSizeQuantity}~${unit}`)
-//     })
-//   } else {
-//     projectItems.push('')
-//   }
-
-//   if (coverType && coverType !== 'Not needed') {
-//     projectItems.unshift(`${coverType}~${coverSize}`)
-//   } else {
-//     projectItems.unshift('')
-//   }
-
-//   projectItems.unshift(`${storageType}~${storageCapacity}`)
-//   return projectItems.join('|')
-// }
-
 function getSpreadsheetDetails (submission, desirabilityScore) {
   const today = new Date()
   const todayStr = today.toLocaleDateString('en-GB')
   // const schemeName = 'Calf Housing for Health and Welfare'
-  const subScheme = `FTF-AHW-Calf Housing`
+  const subScheme = 'FTF-AHW-Calf Housing'
   const subTheme = 'Calf housing for health and welfare'
 
   // format array for applicantType field and individual fields
@@ -134,7 +111,7 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
   if (Array.isArray(applicantTypeArray)) {
     businessTypeArray = formatBusinessTypeC53(applicantTypeArray)
   } else {
-    let tempArray = []
+    const tempArray = []
     tempArray.push(applicantTypeArray)
     console.log(Array.isArray(tempArray))
     businessTypeArray = formatBusinessTypeC53(tempArray)
@@ -204,9 +181,16 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(436, 'Farmer with Meat Chickens', businessTypeArray.includes('Farmer with Meat Chickens') ? 'Yes' : ''),
           generateRow(437, 'Farmer with Aquaculture', businessTypeArray.includes('Farmer with Aquaculture') ? 'Yes' : ''), // replace with arable and shift up
           generateRow(439, 'Farmer with Horticulture', businessTypeArray.includes('Farmer with Horticulture') ? 'Yes' : ''),
-          generateRow(448, 'Farmer with Arable', businessTypeArray.includes('Farmer with Arable') ? 'Yes' : ''),
 
-          generateRow(45, 'Location of project (postcode)', submission.farmerDetails.projectPostcode), 
+          generateRow(440, 'Solar exempt - Upgrade to existing', submission.tenancyLength ?? ''),
+          generateRow(410, 'Solar exempt - World Heritage Site', businessTypeArray.includes('Farmer with Arable') ? 'Yes' : ''),
+          generateRow(442, 'Buy Solar PV system', businessTypeArray.includes('Farmer with Arable') ? 'Yes' : ''),
+          generateRow(443, 'Calf housing cost', businessTypeArray.includes('Farmer with Arable') ? 'Yes' : ''),
+          generateRow(444, 'Calf housing grant amount', businessTypeArray.includes('Farmer with Arable') ? 'Yes' : ''),
+          generateRow(445, 'Solar cost', businessTypeArray.includes('Farmer with Arable') ? 'Yes' : ''),
+          generateRow(446, 'Solar grant amount', businessTypeArray.includes('Farmer with Arable') ? 'Yes' : ''),
+
+          generateRow(45, 'Location of project (postcode)', submission.farmerDetails.projectPostcode),
           generateRow(376, 'Project Started', submission.projectStart),
           generateRow(342, 'Land owned by Farm', submission.tenancy),
           generateRow(343, 'Tenancy for next 5 years', submission.tenancyLength ?? ''),
