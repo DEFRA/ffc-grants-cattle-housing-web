@@ -1457,7 +1457,7 @@ const questionBank = {
           backUrl: 'solar-PV-system',
           nextUrl: 'potential-amount-solar',
           fundingPriorities: '',
-          // preValidationKeys: ['roofSolarPV'],
+          preValidationKeys: ['solarPVSystem'],
           type: 'multi-input',
           grantInfo: {
             minGrant: MIN_GRANT,
@@ -1658,7 +1658,7 @@ const questionBank = {
           baseUrl: 'potential-amount-solar',
           backUrl: 'project-cost-solar',
           nextUrl: 'remaining-costs',
-          preValidationKeys: [],
+          preValidationKeys: ['projectCost'],
           maybeEligible: true,
           maybeEligibleContent: {
             messageHeader: 'Potential grant funding',
@@ -1680,7 +1680,7 @@ const questionBank = {
           baseUrl: 'potential-amount-solar-capped',
           backUrl: 'project-cost-solar',
           nextUrl: 'remaining-costs',
-          preValidationKeys: [],
+          preValidationKeys: ['projectCost'],
           maybeEligible: true,
           maybeEligibleContent: {
             messageHeader: 'Potential grant funding',
@@ -1694,7 +1694,6 @@ const questionBank = {
             
           }
         },
-        // new potential amount page 2 (solar capping)
         {
           key: 'potential-amount-conditional',
           order: 232,
