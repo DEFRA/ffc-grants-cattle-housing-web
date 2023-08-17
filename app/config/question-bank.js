@@ -1565,7 +1565,7 @@ const questionBank = {
           },
           nextUrl: 'potential-amount',
           fundingPriorities: '',
-          // preValidationKeys: ['roofSolarPV'],
+          preValidationKeys: ['roofSolarPV'],
           grantInfo: {
             minGrant: MIN_GRANT,
             maxGrant: MAX_GRANT,
