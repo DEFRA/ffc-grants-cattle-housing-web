@@ -69,7 +69,7 @@ describe('Create submission message', () => {
       'projectStarted', 'planningPermission', 'projectName', 'businessName',
       'farmerName', 'farmerSurname', 'agentName', 'agentSurname', 'farmerEmail', 'agentEmail',
       'contactConsent', 'scoreDate', 'introducingInnovation', 'sustainableMaterials', 'environmentalImpact',
-      'solarCost', 'calculatedGrantSolar', 'calfHousingCost', 'calculatedGrantCalf', 'upgradingExistingBuilding',
+      'SolarPVCost', 'calculatedGrantSolar', 'calfHousingCost', 'calculatedGrantCalf', 'upgradingExistingBuilding',
       'heritageSite', 'solarPVSystem', 'permanentSickPen', 'moistureControl', 'calfGroupSize', 'housing', 'calvingSystem', 'calvesNumber',
       'housingScore', 'calfGroupSizeScore', 'moistureControlScore', 'permanentSickPenScore', 'structureEligibility',
       'environmentalImpactScore', 'sustainableMaterialsScore', 'introducingInnovationScore',

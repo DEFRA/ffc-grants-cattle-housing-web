@@ -66,7 +66,7 @@
     "upgradingExistingBuilding": "",
     "heritageSite": "",
     "solarPVSystem": "Yes",
-    "solarCost": 37500,
+    "SolarPVCost": 37500,
     "calculatedGrantSolar": 15000,
     "calfHousingCost": 60000,
     "calculatedGrantCalf" : 15000,
