@@ -1447,6 +1447,107 @@ const questionBank = {
           yarKey: 'solarPVSystem'
         },
         {
+          key: 'project-cost-solar',
+          order: 214,
+          pageTitle: '',
+          title: 'Estimated project costs',
+          classes: 'govuk-input--width-10',
+          url: 'project-cost-solar',
+          baseUrl: 'project-cost-solar',
+          backUrl: 'solar-PV-system',
+          nextUrl: 'potential-amount-solar',
+          fundingPriorities: '',
+          // preValidationKeys: ['roofSolarPV'],
+          type: 'multi-input',
+          grantInfo: {
+            minGrant: MIN_GRANT,
+            maxGrant: MAX_GRANT,
+            grantPercentage: GRANT_PERCENTAGE,
+            cappedGrant: true
+          },
+          grantInfoSolar: {
+            minGrant: 0,
+            maxGrant: 485000,
+            grantPercentage: 25,
+            cappedGrant: true
+          },
+          hint: {
+            html: `
+                  <p>You can only apply for a grant of up to:<p/>
+                  <ul>
+                    <li>40% of the estimated costs of calf housing</li>
+                    <li>25% of the estimated costs of buying and installing a solar PV system</li>
+                  </ul>
+                  <p>The minimum grant amount you can apply for the calf housing costs is £15,000 (40% of £37,5000). The maximum grant is £500,000.</p>
+                  <p>Do not include VAT<p/>
+                  <p>Enter amount, for example 95,000<p/>
+              `
+          },
+          
+          minAnswerCount: '',
+          maxAnswerCount: '',
+          allFields: [
+             {
+              yarKey: 'CalfHousingCost',
+              type: 'number',
+              classes: 'govuk-input--width-10',
+              label: {
+                text: 'Calf housing',
+                classes: 'govuk-label'
+              },
+              prefix: {
+                text: '£'
+              },
+              validate: [
+                {
+                  type: 'NOT_EMPTY',
+                  error: 'Enter the estimated total cost of the calf housing'
+                },
+                {
+                  type: 'MIN_MAX_CHARS',
+                  min: 1,
+                  max: 7,
+                  error: 'Enter a whole number with a maximum of 7 digits'
+                }
+              ]
+            },
+             {
+              yarKey: 'SolarPVCost',
+              type: 'number',
+              classes: 'govuk-input--width-10',
+              label: {
+                text: 'Buying and installing solar PV system',
+                classes: 'govuk-label'
+              },
+              prefix: {
+                text: '£'
+              },
+              validate: [
+                {
+                  type: 'NOT_EMPTY',
+                  error: 'Enter the estimated total cost of buying and installing solar PV system'
+                },
+                {
+                  type: 'MIN_MAX_CHARS',
+                  min: 1,
+                  max: 7,
+                  error: 'Enter a whole number with a maximum of 7 digits'
+                }
+              ]
+            },
+          ],
+          ineligibleContent: {
+            messageHeader: 'You cannot apply for a grant from this scheme',
+            messageContent: 'The minimum grant you can apply for the solar PV system is £15,000 (40% of £37,500). The maximum grant is £500,000.',
+            insertText: { text: 'You cannot apply for a solar PV system if you have not requested the minimum funding amount for calf housing.' },
+            messageLink: {
+              url: 'https://www.gov.uk/government/collections/rural-payments-and-grants',
+              title: 'See other grants you may be eligible for.'
+            }
+          },
+          yarKey: 'projectCostSolar'
+        },
+        {
           key: 'project-cost',
           order: 220,
           pageTitle: '',
@@ -1515,8 +1616,6 @@ const questionBank = {
           answers: [],
           yarKey: 'projectCost'
         },
-        // monolith page (new project cost)
-        // new project cost conditional
         {
           key: 'potential-amount',
           order: 230,
@@ -1539,15 +1638,6 @@ const questionBank = {
           order: 231,
           url: 'potential-amount-capped',
           baseUrl: 'potential-amount-capped',
-          // backUrlObject: {
-          //   dependentQuestionYarKey: 'solarPVSystem',
-          //   dependentAnswerKeysArray: ['solar-PV-system-A2'],
-          //   urlOptions: {
-          //     thenUrl: 'project-cost',
-          //     elseUrl: 'potential-amount-conditional',
-          //     nonDependentUrl: 'project-cost'
-          //   }
-          // }, // checking now
           backUrl: 'project-cost',
           nextUrl: 'remaining-costs',
           preValidationKeys: ['projectCost'],
@@ -1561,8 +1651,7 @@ const questionBank = {
             }
           }
         },
-        // new potential amount (calf only over)
-        // new potential amount page (solar)
+        // new potential amount page (solar all fine)
         // new potential amount page 2 (solar capping)
         {
           key: 'potential-amount-conditional',
@@ -3162,7 +3251,7 @@ questionBank.sections.forEach(({ questions }) => {
 const ALL_URLS = []
 ALL_QUESTIONS.forEach(item => ALL_URLS.push(item.url))
 
-const YAR_KEYS = ['itemsTotalValue', 'remainingCost', 'calculatedGrant', 'yesStructureEligibility']
+const YAR_KEYS = ['itemsTotalValue', 'remainingCost', 'calculatedGrant', 'remainingCostSolar', 'calculatedGrantSolar', 'remainingCostCalf', 'calculatedGrantCalf', 'yesStructureEligibility']
 ALL_QUESTIONS.forEach(item => YAR_KEYS.push(item.yarKey))
 module.exports = {
   questionBank,

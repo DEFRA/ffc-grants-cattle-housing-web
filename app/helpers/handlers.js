@@ -1,7 +1,7 @@
 const { getYarValue, setYarValue } = require('../helpers/session')
 const { getModel } = require('../helpers/models')
 const { checkErrors } = require('../helpers/errorSummaryHandlers')
-const { getGrantValues } = require('../helpers/grants-info')
+const { getGrantValues, getGrantValuesSolar } = require('../helpers/grants-info')
 const { formatUKCurrency } = require('../helpers/data-formats')
 const { SELECT_VARIABLE_TO_REPLACE, DELETE_POSTCODE_CHARS_REGEX } = require('../helpers/regex')
 const { getUrl } = require('../helpers/urls')
@@ -56,6 +56,7 @@ const getPage = async (question, request, h) => {
     setYarValue(request, 'upgradingExistingBuilding', null)
     setYarValue(request, 'solarPVSystem', null)
   }
+    
 
   if (url === 'score') {
     const desirabilityAnswers = createMsg.getDesirabilityAnswers(request)
@@ -228,8 +229,6 @@ const showPostPage = (currentQuestion, request, h) => {
   const { yarKey, answers, baseUrl, ineligibleContent, nextUrl, nextUrlObject, title, type } = currentQuestion
   const NOT_ELIGIBLE = { ...ineligibleContent, backUrl: baseUrl }
   const payload = request.payload
-
-
   
   if (baseUrl != 'score') {
     setYarValue(request, 'onScorePage', false)
@@ -285,12 +284,28 @@ const showPostPage = (currentQuestion, request, h) => {
   if (errors) {
     return errors
   }
+  if (currentQuestion?.grantInfoSolar) { // double check
+    const projectCostSolar = getYarValue(request, 'projectCostSolar');
+    const calfHousingCost = projectCostSolar.CalfHousingCost;
+    const solarCost = projectCostSolar.SolarPVCost;
+    // calf housing
+    const { calculatedGrant, remainingCost } = getGrantValues(calfHousingCost, currentQuestion.grantInfo)
+    setYarValue(request, 'calculatedGrantCalf', calculatedGrant)
+    setYarValue(request, 'remainingCostCalf', remainingCost)
+    // Solar
+    const { calculatedGrantSolar, remainingCostSolar } = getGrantValuesSolar(solarCost, currentQuestion.grantInfoSolar)
+    setYarValue(request, 'calculatedGrantSolar', calculatedGrantSolar)
+    setYarValue(request, 'remainingCostSolar', remainingCostSolar)
+    // overall
+    setYarValue(request, 'calculatedGrant', calculatedGrant + calculatedGrantSolar)
+    setYarValue(request, 'remainingCost', remainingCost + remainingCostSolar)
 
-  if (currentQuestion.grantInfo) {
+  } else if (currentQuestion.grantInfo) {
     const { calculatedGrant, remainingCost } = getGrantValues(getYarValue(request, 'projectCost'), currentQuestion.grantInfo)
     setYarValue(request, 'calculatedGrant', calculatedGrant)
     setYarValue(request, 'remainingCost', remainingCost)
   }
+
 
   if (thisAnswer?.notEligible || (yarKey === 'projectCost' ? !getGrantValues(payload[Object.keys(payload)[0]], currentQuestion.grantInfo).isEligible : null)) {
     // if (thisAnswer?.alsoMaybeEligible) {
@@ -329,9 +344,25 @@ const showPostPage = (currentQuestion, request, h) => {
     // }
     gapiService.sendGAEvent(request, { name: gapiService.eventTypes.ELIMINATION, params: {} })
     return h.view('not-eligible', NOT_ELIGIBLE)
-  }else if(baseUrl === 'project-cost' && payload[Object.keys(payload)[0]] > 1250000 ){
+  
+  } else if(baseUrl === 'project-cost' && payload[Object.keys(payload)[0]] > 1250000 ){
     return h.redirect('/upgrading-calf-housing/potential-amount-capped')
-  }else if (thisAnswer?.redirectUrl) {
+  
+  } else if (baseUrl === 'project-cost-solar' && getYarValue(request, 'calculatedGrantCalf') < 15000) { //calf min
+    return h.view('not-eligible', NOT_ELIGIBLE)
+  
+  } else if (baseUrl === 'project-cost-solar' && getYarValue(request, 'calculatedGrantCalf') >= 500000) { // calf max
+    setYarValue(request, 'calculatedGrant', 500000)
+    
+    return h.redirect('/upgrading-calf-housing/potential-amount-conditional')
+
+  } else if (baseUrl === 'project-cost-solar' && getYarValue(request, 'calculatedGrant') > 500000) { // overall both
+    const newCap = 500000 - getYarValue(request, 'calculatedGrantCalf')
+    setYarValue(request, 'calculatedGrantSolar', newCap)
+    setYarValue(request, 'calculatedGrant', 500000)
+    return h.redirect('/upgrading-calf-housing/potential-amount-solar-capped')
+  
+  } else if (thisAnswer?.redirectUrl) {
     return h.redirect(thisAnswer?.redirectUrl)
   }
   return h.redirect(getUrl(nextUrlObject, nextUrl, request, payload.secBtn, currentQuestion.url))
