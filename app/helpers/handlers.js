@@ -49,75 +49,95 @@ const getPage = async (question, request, h) => {
     return h.redirect(`${urlPrefix}/housing`)
   }
 
+  switch (url) {
   // reset environmentalImpact yar key if switching between pages
-  if (url === 'roof-solar-PV') {
-    setYarValue(request, 'environmentalImpact', null)
-    setYarValue(request, 'heritageSite', null)
-    setYarValue(request, 'upgradingExistingBuilding', null)
-    setYarValue(request, 'solarPVSystem', null)
-  }
+    case 'roof-solar-PV':
+      setYarValue(request, 'environmentalImpact', null)
+      setYarValue(request, 'heritageSite', null)
+      setYarValue(request, 'upgradingExistingBuilding', null)
+      setYarValue(request, 'solarPVSystem', null)   
+      
+      break
     
+    case 'remaining-costs':
+      const SolarPVCost = getYarValue(request, 'SolarPVCost')
+      const calfGrant = getYarValue(request, 'calculatedGrantCalf')
+      const projectCost = getYarValue(request, 'projectCost')
 
-  if (url === 'score') {
-    const desirabilityAnswers = createMsg.getDesirabilityAnswers(request)
-    const formatAnswersForScoring = createDesirabilityMsg(desirabilityAnswers)
-    try {
-      const msgData = await getUserScore(formatAnswersForScoring, request.yar.id)
-
-      setYarValue(request, 'current-score', msgData.desirability.overallRating.band) // do we need this alongside overAllScore? Having both seems redundant
-
-      // Mocked score res
-      let scoreChance
-      switch (msgData.desirability.overallRating.band.toLowerCase()) {
-        case 'strong':
-          scoreChance = 'is likely to'
-          break
-        case 'average':
-          scoreChance = 'might'
-          break
-        default:
-          scoreChance = 'is unlikely to'
-          break
+      if (calfGrant && calfGrant >= 500000) {
+        question.backUrl = `${urlPrefix}/potential-amount-conditional` 
+      } else if (SolarPVCost && SolarPVCost > (500000 - calfGrant) / 0.25 ) {
+        question.backUrl = `${urlPrefix}/potential-amount-solar-capped`
+      } else if (SolarPVCost) {
+        question.backUrl = `${urlPrefix}/potential-amount-solar`
+      } else if (projectCost > 1250000) {
+        question.backUrl = `${urlPrefix}/potential-amount-capped`
+      } else {
+        question.backUrl = `${urlPrefix}/potential-amount`
       }
 
-      setYarValue(request, 'overAllScore', msgData)
+      break
 
-      const questions = msgData.desirability.questions.map(desirabilityQuestion => {
-        if (desirabilityQuestion.key === 'environmental-impact' && getYarValue(request, 'roofSolarPV') === 'My roof is exempt') {
-          desirabilityQuestion.key = 'rainwater'
-          if (desirabilityQuestion.answers[0].input[0].value === 'None of the above') {
-            desirabilityQuestion.answers[0].input[0].value = 'No'
-          } else {
-            desirabilityQuestion.answers[0].input[0].value = 'Yes'
-          }
+    case 'score':
+      const desirabilityAnswers = createMsg.getDesirabilityAnswers(request)
+      const formatAnswersForScoring = createDesirabilityMsg(desirabilityAnswers)
+      try {
+        const msgData = await getUserScore(formatAnswersForScoring, request.yar.id)
+
+        setYarValue(request, 'current-score', msgData.desirability.overallRating.band) // do we need this alongside overAllScore? Having both seems redundant
+
+        // Mocked score res
+        let scoreChance
+        switch (msgData.desirability.overallRating.band.toLowerCase()) {
+          case 'strong':
+            scoreChance = 'is likely to'
+            break
+          case 'average':
+            scoreChance = 'might'
+            break
+          default:
+            scoreChance = 'is unlikely to'
+            break
         }
 
-        const tableQuestion = tableOrder.filter(tableQuestionD => tableQuestionD.key === desirabilityQuestion.key)[0]
-        desirabilityQuestion.title = tableQuestion.title
-        desirabilityQuestion.desc = tableQuestion.desc ?? ''
-        desirabilityQuestion.url = `${urlPrefix}/${tableQuestion.url}`
-        desirabilityQuestion.order = tableQuestion.order
-        desirabilityQuestion.unit = tableQuestion?.unit
-        desirabilityQuestion.pageTitle = tableQuestion.pageTitle
-        desirabilityQuestion.fundingPriorities = tableQuestion.fundingPriorities
-        desirabilityQuestion.answers = desirabilityQuestion.answers
-        return desirabilityQuestion
-      })
+        setYarValue(request, 'overAllScore', msgData)
 
-      await gapiService.sendGAEvent(request, { name: 'score', params: { score_presented: msgData.desirability.overallRating.band } })
-      setYarValue(request, 'onScorePage', true)
+        const questions = msgData.desirability.questions.map(desirabilityQuestion => {
+          if (desirabilityQuestion.key === 'environmental-impact' && getYarValue(request, 'roofSolarPV') === 'My roof is exempt') {
+            desirabilityQuestion.key = 'rainwater'
+            if (desirabilityQuestion.answers[0].input[0].value === 'None of the above') {
+              desirabilityQuestion.answers[0].input[0].value = 'No'
+            } else {
+              desirabilityQuestion.answers[0].input[0].value = 'Yes'
+            }
+          }
 
-      return h.view(scoreViewTemplate, createModel({
-        titleText: msgData.desirability.overallRating.band,
-        scoreData: msgData,
-        questions: questions.sort((a, b) => a.order - b.order),
-        scoreChance: scoreChance
-      }, backUrl, url))
-    } catch (error) {
-      console.log(error)
-      await gapiService.sendGAEvent(request, { name: gapiService.eventTypes.EXCEPTION, params: { error: error.message } })
-      return h.view('500')
-    }
+          const tableQuestion = tableOrder.filter(tableQuestionD => tableQuestionD.key === desirabilityQuestion.key)[0]
+          desirabilityQuestion.title = tableQuestion.title
+          desirabilityQuestion.desc = tableQuestion.desc ?? ''
+          desirabilityQuestion.url = `${urlPrefix}/${tableQuestion.url}`
+          desirabilityQuestion.order = tableQuestion.order
+          desirabilityQuestion.unit = tableQuestion?.unit
+          desirabilityQuestion.pageTitle = tableQuestion.pageTitle
+          desirabilityQuestion.fundingPriorities = tableQuestion.fundingPriorities
+          desirabilityQuestion.answers = desirabilityQuestion.answers
+          return desirabilityQuestion
+        })
+
+        await gapiService.sendGAEvent(request, { name: 'score', params: { score_presented: msgData.desirability.overallRating.band } })
+        setYarValue(request, 'onScorePage', true)
+
+        return h.view(scoreViewTemplate, createModel({
+          titleText: msgData.desirability.overallRating.band,
+          scoreData: msgData,
+          questions: questions.sort((a, b) => a.order - b.order),
+          scoreChance: scoreChance
+        }, backUrl, url))
+      } catch (error) {
+        console.log(error)
+        await gapiService.sendGAEvent(request, { name: gapiService.eventTypes.EXCEPTION, params: { error: error.message } })
+        return h.view('500')
+      }
   }
 
   let confirmationId = ''
@@ -307,6 +327,7 @@ const showPostPage = (currentQuestion, request, h) => {
     const { calculatedGrant, remainingCost } = getGrantValues(getYarValue(request, 'projectCost'), currentQuestion.grantInfo)
     setYarValue(request, 'calculatedGrant', calculatedGrant)
     setYarValue(request, 'remainingCost', remainingCost)
+    console.log(getYarValue(request, 'projectCost'), calculatedGrant, remainingCost)
   }
 
 
@@ -348,33 +369,14 @@ const showPostPage = (currentQuestion, request, h) => {
     gapiService.sendGAEvent(request, { name: gapiService.eventTypes.ELIMINATION, params: {} })
     return h.view('not-eligible', NOT_ELIGIBLE)
   
-  } // else if(baseUrl === 'project-cost' && payload[Object.keys(payload)[0]] > 1250000 ){
-  //   return h.redirect('/upgrading-calf-housing/potential-amount-capped')
-  
-  // } else if (baseUrl === 'project-cost-solar' && getYarValue(request, 'calculatedGrantCalf') < 15000) { //calf min
-  //   return h.view('not-eligible', NOT_ELIGIBLE)
-  
-  // } else if (baseUrl === 'project-cost-solar' && getYarValue(request, 'calculatedGrantCalf') >= 500000) { // calf max
-  //   setYarValue(request, 'calculatedGrant', 500000)
-    
-  //   return h.redirect('/upgrading-calf-housing/potential-amount-conditional')
-
-  // } else if (baseUrl === 'project-cost-solar' && getYarValue(request, 'calculatedGrant') > 500000) { // overall both
-  //   const newCap = 500000 - getYarValue(request, 'calculatedGrantCalf')
-  //   setYarValue(request, 'calculatedGrantSolar', newCap)
-  //   setYarValue(request, 'calculatedGrant', 500000)
-  //   return h.redirect('/upgrading-calf-housing/potential-amount-solar-capped')
-  
-  // } else if (thisAnswer?.redirectUrl) {
-  //   return h.redirect(thisAnswer?.redirectUrl)
-  // }
-  // handle next and back urls for calf housing potential amount pages (based on financial values)
+  }
 
   switch (baseUrl) {
     case 'project-cost': 
       if (payload[Object.keys(payload)[0]] > 1250000) {
         return h.redirect('/upgrading-calf-housing/potential-amount-capped')
       }
+      break
     case 'project-cost-solar':
       const calculatedGrantCalfVar = getYarValue(request, 'calculatedGrantCalf')
       if (calculatedGrantCalfVar < 15000) {
@@ -391,14 +393,7 @@ const showPostPage = (currentQuestion, request, h) => {
         return h.redirect('/upgrading-calf-housing/potential-amount-solar-capped')
 
       }
-    case 'remaining-costs':
-      // CHECK FOR WHETHER PAGE IS GOING BACK OR FORWARD?
-      // order should be:
-      // 1. solar exists and calf capped
-      // 2. solar exists and solar capped
-      // 3. solar exists
-      // 4. calf capped
-      // 5th option is auto back route (calf only)
+    
   }
 
   if (thisAnswer?.redirectUrl) {
