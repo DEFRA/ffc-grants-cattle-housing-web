@@ -1487,7 +1487,7 @@ const questionBank = {
           minAnswerCount: '',
           maxAnswerCount: '',
           allFields: [
-             {
+            {
               yarKey: 'CalfHousingCost',
               type: 'number',
               classes: 'govuk-input--width-10',
@@ -1511,7 +1511,7 @@ const questionBank = {
                 }
               ]
             },
-             {
+            {
               yarKey: 'SolarPVCost',
               type: 'number',
               classes: 'govuk-input--width-10',
