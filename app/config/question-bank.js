@@ -1651,6 +1651,28 @@ const questionBank = {
             }
           }
         },
+        {
+          key: 'potential-amount-solar',
+          order: 232,
+          url: 'potential-amount-solar',
+          baseUrl: 'potential-amount-solar',
+          backUrl: 'project-cost-solar',
+          nextUrl: 'remaining-costs',
+          preValidationKeys: [],
+          maybeEligible: true,
+          maybeEligibleContent: {
+            messageHeader: 'Potential grant funding',
+            messageContent: `<p class="govuk-body">You may be able to apply for a grant of up to £{{_calculatedGrant_}}, based on the estimated cost of £{{_projectCost_}}</p>
+            <p class="govuk-body">This grant amount combines:<p>
+            <ul>
+            <li>£{{_calculatedGrantCalf_}} for calf housing costs (40% of £{{_CalfHousingCost_}})</li>
+            <li>£{{_calculatedGrantSolar_}} for solar PV costs (25% of £{{_SolarPVCost_}})</li>
+            </ul>`,
+            warning: {
+              text: `There's no guarantee the project will receive a grant.` 
+            }
+          }
+        },
         // new potential amount page (solar all fine)
         // new potential amount page 2 (solar capping)
         {

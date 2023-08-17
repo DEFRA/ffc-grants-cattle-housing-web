@@ -288,6 +288,9 @@ const showPostPage = (currentQuestion, request, h) => {
     const projectCostSolar = getYarValue(request, 'projectCostSolar');
     const calfHousingCost = projectCostSolar.CalfHousingCost;
     const solarCost = projectCostSolar.SolarPVCost;
+    setYarValue(request, 'CalfHousingCost', calfHousingCost)
+    setYarValue(request, 'SolarPVCost', solarCost)
+    setYarValue(request, 'projectCost', Number(calfHousingCost) + Number(solarCost))
     // calf housing
     const { calculatedGrant, remainingCost } = getGrantValues(calfHousingCost, currentQuestion.grantInfo)
     setYarValue(request, 'calculatedGrantCalf', calculatedGrant)
@@ -298,7 +301,7 @@ const showPostPage = (currentQuestion, request, h) => {
     setYarValue(request, 'remainingCostSolar', remainingCostSolar)
     // overall
     setYarValue(request, 'calculatedGrant', calculatedGrant + calculatedGrantSolar)
-    setYarValue(request, 'remainingCost', remainingCost + remainingCostSolar)
+    setYarValue(request, 'remainingCost', Number(remainingCost) + Number(remainingCostSolar))
 
   } else if (currentQuestion.grantInfo) {
     const { calculatedGrant, remainingCost } = getGrantValues(getYarValue(request, 'projectCost'), currentQuestion.grantInfo)
@@ -345,26 +348,63 @@ const showPostPage = (currentQuestion, request, h) => {
     gapiService.sendGAEvent(request, { name: gapiService.eventTypes.ELIMINATION, params: {} })
     return h.view('not-eligible', NOT_ELIGIBLE)
   
-  } else if(baseUrl === 'project-cost' && payload[Object.keys(payload)[0]] > 1250000 ){
-    return h.redirect('/upgrading-calf-housing/potential-amount-capped')
+  } // else if(baseUrl === 'project-cost' && payload[Object.keys(payload)[0]] > 1250000 ){
+  //   return h.redirect('/upgrading-calf-housing/potential-amount-capped')
   
-  } else if (baseUrl === 'project-cost-solar' && getYarValue(request, 'calculatedGrantCalf') < 15000) { //calf min
-    return h.view('not-eligible', NOT_ELIGIBLE)
+  // } else if (baseUrl === 'project-cost-solar' && getYarValue(request, 'calculatedGrantCalf') < 15000) { //calf min
+  //   return h.view('not-eligible', NOT_ELIGIBLE)
   
-  } else if (baseUrl === 'project-cost-solar' && getYarValue(request, 'calculatedGrantCalf') >= 500000) { // calf max
-    setYarValue(request, 'calculatedGrant', 500000)
+  // } else if (baseUrl === 'project-cost-solar' && getYarValue(request, 'calculatedGrantCalf') >= 500000) { // calf max
+  //   setYarValue(request, 'calculatedGrant', 500000)
     
-    return h.redirect('/upgrading-calf-housing/potential-amount-conditional')
+  //   return h.redirect('/upgrading-calf-housing/potential-amount-conditional')
 
-  } else if (baseUrl === 'project-cost-solar' && getYarValue(request, 'calculatedGrant') > 500000) { // overall both
-    const newCap = 500000 - getYarValue(request, 'calculatedGrantCalf')
-    setYarValue(request, 'calculatedGrantSolar', newCap)
-    setYarValue(request, 'calculatedGrant', 500000)
-    return h.redirect('/upgrading-calf-housing/potential-amount-solar-capped')
+  // } else if (baseUrl === 'project-cost-solar' && getYarValue(request, 'calculatedGrant') > 500000) { // overall both
+  //   const newCap = 500000 - getYarValue(request, 'calculatedGrantCalf')
+  //   setYarValue(request, 'calculatedGrantSolar', newCap)
+  //   setYarValue(request, 'calculatedGrant', 500000)
+  //   return h.redirect('/upgrading-calf-housing/potential-amount-solar-capped')
   
-  } else if (thisAnswer?.redirectUrl) {
+  // } else if (thisAnswer?.redirectUrl) {
+  //   return h.redirect(thisAnswer?.redirectUrl)
+  // }
+  // handle next and back urls for calf housing potential amount pages (based on financial values)
+
+  switch (baseUrl) {
+    case 'project-cost': 
+      if (payload[Object.keys(payload)[0]] > 1250000) {
+        return h.redirect('/upgrading-calf-housing/potential-amount-capped')
+      }
+    case 'project-cost-solar':
+      const calculatedGrantCalfVar = getYarValue(request, 'calculatedGrantCalf')
+      if (calculatedGrantCalfVar < 15000) {
+        return h.view('not-eligible', NOT_ELIGIBLE)
+
+      } else if (calculatedGrantCalfVar >= 500000) {
+        setYarValue(request, 'calculatedGrant', 500000)
+        return h.redirect('/upgrading-calf-housing/potential-amount-conditional')
+
+      } else if (getYarValue(request, 'calculatedGrant') > 500000) {
+        const newCap = 500000 - getYarValue(request, 'calculatedGrantCalf')
+        setYarValue(request, 'calculatedGrantSolar', newCap)
+        setYarValue(request, 'calculatedGrant', 500000)
+        return h.redirect('/upgrading-calf-housing/potential-amount-solar-capped')
+
+      }
+    case 'remaining-costs':
+      // CHECK FOR WHETHER PAGE IS GOING BACK OR FORWARD?
+      // order should be:
+      // 1. solar exists and calf capped
+      // 2. solar exists and solar capped
+      // 3. solar exists
+      // 4. calf capped
+      // 5th option is auto back route (calf only)
+  }
+
+  if (thisAnswer?.redirectUrl) {
     return h.redirect(thisAnswer?.redirectUrl)
   }
+
   return h.redirect(getUrl(nextUrlObject, nextUrl, request, payload.secBtn, currentQuestion.url))
 }
 
