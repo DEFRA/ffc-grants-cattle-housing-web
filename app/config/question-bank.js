@@ -1644,7 +1644,7 @@ const questionBank = {
           maybeEligibleContent: {
             messageHeader: 'Potential grant funding',
             messageContent: `The maximum grant you can apply for is £500,000.
-            You may be able to apply for a grant of up to £{{_calculatedGrant_}}, based on the estimated cost of £{{_projectCost_}}.`, // calculated grant is capped
+            You may be able to apply for a grant of up to £{{_calculatedGrant_}}, based on the estimated cost of £{{_projectCost_}}.`,
             warning: {
               text: 'There’s no guarantee the project will receive a grant.'
             }
@@ -1718,7 +1718,7 @@ const questionBank = {
           pageTitle: '',
           url: 'remaining-costs',
           baseUrl: 'remaining-costs',
-          backUrl: 'potential-amount', // update with ALL new potential amount back routes
+          backUrl: 'potential-amount',
           nextUrl: 'housing',
           preValidationKeys: ['projectCost'],
           ineligibleContent: {
@@ -1785,7 +1785,7 @@ const questionBank = {
           url: 'housing',
           baseUrl: 'housing',
           backUrl: 'remaining-costs',
-          nextUrl: 'group-size', // todo: change to disease-transmission later
+          nextUrl: 'group-size',
           preValidationKeys: ['remainingCosts'],
           pageTitle: '',
           title: 'Are you moving from individually housing calves over 7 days old to pair or group housing?',
