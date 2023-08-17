@@ -351,7 +351,7 @@ const showPostPage = (currentQuestion, request, h) => {
   } else if (baseUrl === 'project-cost-solar' && getYarValue(request, 'calculatedGrantCalf') < 15000) { //calf min
     return h.view('not-eligible', NOT_ELIGIBLE)
   
-  } else if (baseUrl === 'project-cost-solar' && getYarValue(request, 'calculatedGrantCalf') === 500000) { // calf max
+  } else if (baseUrl === 'project-cost-solar' && getYarValue(request, 'calculatedGrantCalf') >= 500000) { // calf max
     setYarValue(request, 'calculatedGrant', 500000)
     
     return h.redirect('/upgrading-calf-housing/potential-amount-conditional')

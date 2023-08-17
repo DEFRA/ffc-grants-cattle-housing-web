@@ -1505,7 +1505,7 @@ const questionBank = {
                 },
                 {
                   type: 'MIN_MAX_CHARS',
-                  min: 0,
+                  min: 1,
                   max: 7,
                   error: 'Enter a whole number with a maximum of 7 digits'
                 }
@@ -1529,7 +1529,7 @@ const questionBank = {
                 },
                 {
                   type: 'MIN_MAX_CHARS',
-                  min: 0,
+                  min: 1,
                   max: 7,
                   error: 'Enter a whole number with a maximum of 7 digits'
                 }
