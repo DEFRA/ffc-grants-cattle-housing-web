@@ -323,7 +323,7 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       upgradingExistingBuilding: submission.upgradingExistingBuilding,
       heritageSite: submission.heritageSite,
       solarPVSystem: submission.solarPVSystem,
-      solarCost: getCurrencyFormat(submission.SolarPVCost) ?? 'N/A',
+      SolarPVCost: getCurrencyFormat(submission.SolarPVCost) ?? 'N/A',
       calculatedGrantSolar: getCurrencyFormat(submission.calculatedGrantSolar) ?? 'N/A' ,
       calfHousingCost: getCurrencyFormat(submission.calfHousingCost),
       calculatedGrantCalf: getCurrencyFormat(submission.calculatedGrantCalf),
