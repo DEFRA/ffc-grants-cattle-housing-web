@@ -27,7 +27,6 @@ const PROJECT_COST_REGEX = /^[1-9]\d*$/
 const STRUCTURE_ELIGIBLITY_REGEX = /^[a-zA-Z0-9,.' -]*$/
 const TWO_DP_NUMBER = /^\d+(\.?)(\d{0,2})$/
 
-
 module.exports = {
   CURRENCY_FORMAT,
   CHARS_MAX_10,
