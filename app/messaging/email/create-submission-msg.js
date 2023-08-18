@@ -69,7 +69,6 @@ function formatBusinessTypeC53 (businessType) {
     // assign values for DORA
     returnArray.push('Farmer with ' + businessType[type])
   }
-  
   return returnArray
 }
 
@@ -77,7 +76,7 @@ function formatBusinessTypeC53 (businessType) {
 function getBusinessTypeC53 (businessTypeArray) {
   if (businessTypeArray.includes('Farmer with Horticulture') || businessTypeArray.includes('Farmer with Arable')) {
     return 'Mixed farming'
-  } else if (businessTypeArray.length > 1 ) {
+  } else if (businessTypeArray.length > 1) {
     return 'Farmer with livestock'
   } else if (businessTypeArray[0] === 'Farmer with Beef (including calf rearing)') {
     return 'Beef Farmer'
@@ -98,49 +97,27 @@ const getPlanningPermissionDoraValue = (planningPermission) => {
   }
 }
 
-// function getProjectItemsFormattedArray (itemSizeQuantities, otherItems, storageType, storageCapacity, coverType, coverSize) {
-//   const projectItems = []
-//   if (otherItems[0] !== 'None of the above') {
-//     let unit
-//     Object.values(itemSizeQuantities).forEach((itemSizeQuantity, index) => {
-//       unit = getItemUnit(otherItems[index].toLowerCase())
-//       projectItems.push(`${otherItems[index]}~${itemSizeQuantity}~${unit}`)
-//     })
-//   } else {
-//     projectItems.push('')
-//   }
-
-//   if (coverType && coverType !== 'Not needed') {
-//     projectItems.unshift(`${coverType}~${coverSize}`)
-//   } else {
-//     projectItems.unshift('')
-//   }
-
-//   projectItems.unshift(`${storageType}~${storageCapacity}`)
-//   return projectItems.join('|')
-// }
-
-function getSpreadsheetDetails (submission, desirabilityScore) {
+function getSpreadsheetDetails(submission, desirabilityScore) {
   const today = new Date()
   const todayStr = today.toLocaleDateString('en-GB')
   // const schemeName = 'Calf Housing for Health and Welfare'
-  const subScheme = `FTF-AHW-Calf Housing`
+  const subScheme = 'FTF-AHW-Calf Housing'
   const subTheme = 'Calf housing for health and welfare'
 
   // format array for applicantType field and individual fields
   let businessTypeArray
-  let applicantTypeArray = submission.applicantType
+  const applicantTypeArray = submission.applicantType
 
   if (Array.isArray(applicantTypeArray)) {
     businessTypeArray = formatBusinessTypeC53(applicantTypeArray)
   } else {
-    let tempArray = []
+    const tempArray = []
     tempArray.push(applicantTypeArray)
     console.log(Array.isArray(tempArray))
     businessTypeArray = formatBusinessTypeC53(tempArray)
   }
 
-  let projectDescriptionString  = ''
+  let projectDescriptionString = ''
   projectDescriptionString = projectDescriptionString.concat(submission.project, '|', submission.structure, '|', submission.structureEligibility === 'Yes' ? submission.yesStructureEligibility : '')
 
   return {
@@ -204,9 +181,16 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(436, 'Farmer with Meat Chickens', businessTypeArray.includes('Farmer with Meat Chickens') ? 'Yes' : ''),
           generateRow(437, 'Farmer with Aquaculture', businessTypeArray.includes('Farmer with Aquaculture') ? 'Yes' : ''), // replace with arable and shift up
           generateRow(439, 'Farmer with Horticulture', businessTypeArray.includes('Farmer with Horticulture') ? 'Yes' : ''),
-          generateRow(448, 'Farmer with Arable', businessTypeArray.includes('Farmer with Arable') ? 'Yes' : ''),
 
-          generateRow(45, 'Location of project (postcode)', submission.farmerDetails.projectPostcode), 
+          generateRow(440, 'Solar exempt - Upgrade to existing', submission.upgradingExistingBuilding ?? ''),
+          generateRow(410, 'Solar exempt - World Heritage Site', submission.heritageSite ?? ''),
+          generateRow(442, 'Buy Solar PV system', submission.solarPVSystem ?? ''),
+          generateRow(443, 'Calf housing cost', submission?.projectCostSolar?.CalfHousingCost ?? ''),
+          generateRow(444, 'Calf housing grant amount', submission.calculatedGrantCalf ?? ''),
+          generateRow(445, 'Solar cost', submission?.projectCostSolar?.SolarPVCost ?? ''),
+          generateRow(446, 'Solar grant amount', submission.calculatedGrantSolar ?? ''),
+
+          generateRow(45, 'Location of project (postcode)', submission.farmerDetails.projectPostcode),
           generateRow(376, 'Project Started', submission.projectStart),
           generateRow(342, 'Land owned by Farm', submission.tenancy),
           generateRow(343, 'Tenancy for next 5 years', submission.tenancyLength ?? ''),
@@ -257,26 +241,6 @@ function getCurrencyFormat (amount) {
   return Number(amount).toLocaleString('en-US', { minimumFractionDigits: 0, style: 'currency', currency: 'GBP' })
 }
 
-// const getItemUnit = (otherItem) => {
-//   if (otherItem.includes('pump') || otherItem.includes('slurry store')) {
-//     return 'item(s)'
-//   } else if (otherItem.includes('pipework') || otherItem.includes('channels') || otherItem.includes('below ground')) {
-//     return 'm'
-//   } else {
-//     return 'm³'
-//   }
-// }
-
-// function displayObject (itemSizeQuantities, otherItems) {
-//   let unit
-//   const projectItems = Object.values(itemSizeQuantities).map((itemSizeQuantity, index) => {
-//     unit = getItemUnit(otherItems[index].toLowerCase())
-//     return `${otherItems[index]}: ${itemSizeQuantity} ${unit}`
-//   })
-//   console.log(projectItems)
-//   return projectItems
-// }
-
 function getScoreChance (rating) {
   switch (rating.toLowerCase()) {
     case 'strong':
@@ -321,17 +285,17 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       additionalItems: submission.additionalItems,
       roofSolarPV: submission.roofSolarPV,
       upgradingExistingBuilding: submission.upgradingExistingBuilding ? submission.upgradingExistingBuilding : '',
-      upgradingExistingBuildingTrue: submission.upgradingExistingBuilding ? true : false,
-      heritageSite: submission.heritageSite ?  submission.heritageSite : '',
-      heritageSiteTrue: submission.heritageSite ? true : false,
+      upgradingExistingBuildingTrue: submission.upgradingExistingBuilding ? 'true' : 'false',
+      heritageSite: submission.heritageSite ? submission.heritageSite : '',
+      heritageSiteTrue: submission.heritageSite ? 'true' : 'false',
       solarPVSystem: submission.solarPVSystem ? submission.solarPVSystem : '',
-      solarPVSystemTrue: submission.solarPVSystem ? true : false,
-      SolarPVCost: submission.SolarPVCost? getCurrencyFormat(submission.SolarPVCost) : '',
-      SolarPVCostTrue: submission.SolarPVCost? true : false,
+      solarPVSystemTrue: submission.solarPVSystem ? 'true' : 'false',
+      SolarPVCost: submission.SolarPVCost ? getCurrencyFormat(submission.SolarPVCost) : '',
+      SolarPVCostTrue: submission.SolarPVCost ? 'true' : 'false',
       calculatedGrantSolar: submission.calculatedGrantSolar ? getCurrencyFormat(submission.calculatedGrantSolar) : '' ,
-      calculatedGrantSolarTrue: submission.calculatedGrantSolar ? true : false,
+      calculatedGrantSolarTrue: submission.calculatedGrantSolar ? 'true' : 'false',
       calfHousingCost: submission.CalfHousingCost ? getCurrencyFormat(submission.CalfHousingCost) : getCurrencyFormat(submission.projectCost),
-      calculatedGrantCalf: submission.calculatedGrantCalf ?  getCurrencyFormat(submission.calculatedGrantCalf) : getCurrencyFormat(submission.calculatedGrant),
+      calculatedGrantCalf: submission.calculatedGrantCalf ? getCurrencyFormat(submission.calculatedGrantCalf) : getCurrencyFormat(submission.calculatedGrant),
       projectCost: getCurrencyFormat(submission.projectCost),
       potentialFunding: getCurrencyFormat(submission.calculatedGrant),
       remainingCost: submission.remainingCosts,
@@ -343,14 +307,13 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       moistureControlScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'moisture-control'),
       permanentSickPen: submission.permanentSickPen,
       permanentSickPenScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'permanent-sick-pen'),
-      
-      environmentalImpact: submission.roofSolarPV == 'Yes',
-      rainwater: submission.roofSolarPV == 'My roof is exempt',
+      environmentalImpact: submission.roofSolarPV === 'Yes',
+      rainwater: submission.roofSolarPV === 'My roof is exempt',
 
       // notification service cant handle more than one variable in an if statement, so this is how to do it
-      environmentalImpactValue: submission.roofSolarPV == 'My roof is exempt' ? (submission.environmentalImpact == 'None of the above' ? 'No' : 'Yes') : submission.environmentalImpact,
+      environmentalImpactValue: submission.roofSolarPV === 'My roof is exempt' ? (submission.environmentalImpact === 'None of the above' ? 'No' : 'Yes') : submission.environmentalImpact,
 
-      environmentalImpactScore: submission.roofSolarPV == 'Yes' ? getQuestionScoreBand(desirabilityScore.desirability.questions, 'environmental-impact') : getQuestionScoreBand(desirabilityScore.desirability.questions, 'rainwater'),
+      environmentalImpactScore: submission.roofSolarPV === 'Yes' ? getQuestionScoreBand(desirabilityScore.desirability.questions, 'environmental-impact') : getQuestionScoreBand(desirabilityScore.desirability.questions, 'rainwater'),
 
       sustainableMaterials: submission.sustainableMaterials,
       sustainableMaterialsScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'sustainable-materials'),
@@ -386,6 +349,6 @@ module.exports = function (submission, desirabilityScore, rating='') {
     agentEmail: submission.applying === 'Agent' ? getEmailDetails(submission,desirabilityScore, false, true) : null,
     rpaEmail: spreadsheetConfig.sendEmailToRpa ? getEmailDetails(submission, desirabilityScore, spreadsheetConfig.rpaEmail) : null,
     spreadsheet: spreadsheet(submission, desirabilityScore),
-    getScoreChance:getScoreChance(rating)
+    getScoreChance: getScoreChance(rating)
   }
 }
