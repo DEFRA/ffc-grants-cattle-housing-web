@@ -97,7 +97,7 @@ const getPlanningPermissionDoraValue = (planningPermission) => {
   }
 }
 
-function getSpreadsheetDetails (submission, desirabilityScore) {
+function getSpreadsheetDetails(submission, desirabilityScore) {
   const today = new Date()
   const todayStr = today.toLocaleDateString('en-GB')
   // const schemeName = 'Calf Housing for Health and Welfare'
@@ -106,7 +106,7 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
 
   // format array for applicantType field and individual fields
   let businessTypeArray
-  let applicantTypeArray = submission.applicantType
+  const applicantTypeArray = submission.applicantType
 
   if (Array.isArray(applicantTypeArray)) {
     businessTypeArray = formatBusinessTypeC53(applicantTypeArray)
@@ -117,7 +117,7 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
     businessTypeArray = formatBusinessTypeC53(tempArray)
   }
 
-  let projectDescriptionString  = ''
+  let projectDescriptionString = ''
   projectDescriptionString = projectDescriptionString.concat(submission.project, '|', submission.structure, '|', submission.structureEligibility === 'Yes' ? submission.yesStructureEligibility : '')
 
   return {
@@ -182,13 +182,13 @@ function getSpreadsheetDetails (submission, desirabilityScore) {
           generateRow(437, 'Farmer with Aquaculture', businessTypeArray.includes('Farmer with Aquaculture') ? 'Yes' : ''), // replace with arable and shift up
           generateRow(439, 'Farmer with Horticulture', businessTypeArray.includes('Farmer with Horticulture') ? 'Yes' : ''),
 
-          generateRow(440, 'Solar exempt - Upgrade to existing', submission.tenancyLength ?? ''),
-          generateRow(410, 'Solar exempt - World Heritage Site', businessTypeArray.includes('Farmer with Arable') ? 'Yes' : ''),
-          generateRow(442, 'Buy Solar PV system', businessTypeArray.includes('Farmer with Arable') ? 'Yes' : ''),
-          generateRow(443, 'Calf housing cost', businessTypeArray.includes('Farmer with Arable') ? 'Yes' : ''),
-          generateRow(444, 'Calf housing grant amount', businessTypeArray.includes('Farmer with Arable') ? 'Yes' : ''),
-          generateRow(445, 'Solar cost', businessTypeArray.includes('Farmer with Arable') ? 'Yes' : ''),
-          generateRow(446, 'Solar grant amount', businessTypeArray.includes('Farmer with Arable') ? 'Yes' : ''),
+          generateRow(440, 'Solar exempt - Upgrade to existing', submission.upgradingExistingBuilding ?? ''),
+          generateRow(410, 'Solar exempt - World Heritage Site', submission.heritageSite ?? ''),
+          generateRow(442, 'Buy Solar PV system', submission.solarPVSystem ?? ''),
+          generateRow(443, 'Calf housing cost', submission?.projectCostSolar?.CalfHousingCost ?? ''),
+          generateRow(444, 'Calf housing grant amount', submission.calculatedGrantCalf ?? ''),
+          generateRow(445, 'Solar cost', submission?.projectCostSolar?.SolarPVCost ?? ''),
+          generateRow(446, 'Solar grant amount', submission.calculatedGrantSolar ?? ''),
 
           generateRow(45, 'Location of project (postcode)', submission.farmerDetails.projectPostcode),
           generateRow(376, 'Project Started', submission.projectStart),
@@ -241,26 +241,6 @@ function getCurrencyFormat (amount) {
   return Number(amount).toLocaleString('en-US', { minimumFractionDigits: 0, style: 'currency', currency: 'GBP' })
 }
 
-// const getItemUnit = (otherItem) => {
-//   if (otherItem.includes('pump') || otherItem.includes('slurry store')) {
-//     return 'item(s)'
-//   } else if (otherItem.includes('pipework') || otherItem.includes('channels') || otherItem.includes('below ground')) {
-//     return 'm'
-//   } else {
-//     return 'm³'
-//   }
-// }
-
-// function displayObject (itemSizeQuantities, otherItems) {
-//   let unit
-//   const projectItems = Object.values(itemSizeQuantities).map((itemSizeQuantity, index) => {
-//     unit = getItemUnit(otherItems[index].toLowerCase())
-//     return `${otherItems[index]}: ${itemSizeQuantity} ${unit}`
-//   })
-//   console.log(projectItems)
-//   return projectItems
-// }
-
 function getScoreChance (rating) {
   switch (rating.toLowerCase()) {
     case 'strong':
@@ -308,9 +288,6 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       upgradingExistingBuilding: submission.upgradingExistingBuilding,
       heritageSite: submission.heritageSite,
       solarPVSystem: submission.solarPVSystem,
-
-
-
 
       projectCost: getCurrencyFormat(submission.projectCost),
       potentialFunding: getCurrencyFormat(submission.calculatedGrant),
@@ -366,6 +343,6 @@ module.exports = function (submission, desirabilityScore, rating='') {
     agentEmail: submission.applying === 'Agent' ? getEmailDetails(submission,desirabilityScore, false, true) : null,
     rpaEmail: spreadsheetConfig.sendEmailToRpa ? getEmailDetails(submission, desirabilityScore, spreadsheetConfig.rpaEmail) : null,
     spreadsheet: spreadsheet(submission, desirabilityScore),
-    getScoreChance:getScoreChance(rating)
+    getScoreChance: getScoreChance(rating)
   }
 }
