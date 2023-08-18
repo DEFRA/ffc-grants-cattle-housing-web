@@ -381,13 +381,19 @@ const showPostPage = (currentQuestion, request, h) => {
       break
     case 'project-cost-solar':
       const calculatedGrantCalfVar = getYarValue(request, 'calculatedGrantCalf')
+      // ineligible as calf housing too low
       if (calculatedGrantCalfVar < 15000) {
         return h.view('not-eligible', NOT_ELIGIBLE)
+      //calf housing only 
       } else if (calculatedGrantCalfVar >= 500000) {
         setYarValue(request, 'calculatedGrant', 500000)
         return h.redirect('/upgrading-calf-housing/potential-amount-conditional')
+        // solar capping
       } else if (getYarValue(request, 'calculatedGrant') > 500000) {
         const newCap = 500000 - getYarValue(request, 'calculatedGrantCalf')
+        // store capped solar value for potential amount solar capped page
+        setYarValue(request, 'calculatedGrantSolarPreCap', getYarValue(request, 'calculatedGrantSolar'))
+        // set cap for solar and grant
         setYarValue(request, 'calculatedGrantSolar', newCap)
         setYarValue(request, 'calculatedGrant', 500000)
         return h.redirect('/upgrading-calf-housing/potential-amount-solar-capped')

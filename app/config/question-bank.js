@@ -1486,7 +1486,7 @@ const questionBank = {
                   </ul>
                   <p>The minimum grant amount you can apply for the calf housing costs is £15,000 (40% of £37,500). The maximum grant is £500,000.</p>
                   <p>Do not include VAT<p/>
-                  <p>Enter amount, for example 95,000<p/>
+                  <p>Enter total estimated amounts, for example 95,000<p/>
               `
           },
           minAnswerCount: '',
@@ -1497,7 +1497,7 @@ const questionBank = {
               type: 'number',
               classes: 'govuk-input--width-10',
               label: {
-                html: '<b>Calf housing</b>',
+                html: '<b>Calf housing costs</b>',
                 classes: 'govuk-label'
               },
               prefix: {
@@ -1526,7 +1526,7 @@ const questionBank = {
               type: 'number',
               classes: 'govuk-input--width-10',
               label: {
-                html: '<b>Buying and installing solar PV system</b>',
+                html: '<b>Solar PV system costs</b>',
                 classes: 'govuk-label'
               },
               prefix: {
@@ -1705,7 +1705,7 @@ const questionBank = {
             <p class="govuk-body">This grant amount combines:<p>
             <ul>
             <li>£{{_calculatedGrantCalf_}} for calf housing costs (40% of £{{_CalfHousingCost_}})</li>
-            <li>£{{_calculatedGrantSolar_}} for solar PV costs (25% of £{{_SolarPVCost_}}, capped at £{{_calculatedGrantSolar_}})</li>
+            <li>£{{_calculatedGrantSolar_}} for solar PV costs (25% of £{{_SolarPVCost_}} is £{{_calculatedGrantSolarPreCap_}}, capped at £{{_calculatedGrantSolar_}})</li>
             </ul>
             <p class="govuk-body">As calf housing costs take grant funding priority, you may be able to apply for a grant of up to £{{_SolarPVCost_}} for solar PV system costs. The maximum grant is £500,000.`
           }
@@ -3308,7 +3308,7 @@ questionBank.sections.forEach(({ questions }) => {
 const ALL_URLS = []
 ALL_QUESTIONS.forEach(item => ALL_URLS.push(item.url))
 
-const YAR_KEYS = ['itemsTotalValue', 'remainingCost', 'calculatedGrant', 'remainingCostSolar', 'calculatedGrantSolar', 'remainingCostCalf', 'calculatedGrantCalf', 'yesStructureEligibility', 'CalfHousingCost', 'SolarPVCost']
+const YAR_KEYS = ['itemsTotalValue', 'remainingCost', 'calculatedGrant', 'remainingCostSolar', 'calculatedGrantSolar', 'remainingCostCalf', 'calculatedGrantCalf', 'yesStructureEligibility', 'CalfHousingCost', 'SolarPVCost', 'calculatedGrantSolarPreCap']
 ALL_QUESTIONS.forEach(item => YAR_KEYS.push(item.yarKey))
 module.exports = {
   questionBank,
