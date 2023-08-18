@@ -1457,7 +1457,7 @@ const questionBank = {
           backUrl: 'solar-PV-system',
           nextUrl: 'potential-amount-solar',
           fundingPriorities: '',
-          // preValidationKeys: ['solarPVSystem'],
+          preValidationKeys: ['solarPVSystem'],
           type: 'multi-input',
           grantInfo: {
             minGrant: MIN_GRANT,
