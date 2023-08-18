@@ -1326,6 +1326,9 @@ const questionBank = {
           order: 211,
           title: 'Are you upgrading an existing building and not making changes to the roof?',
           pageTitle: '',
+          hint: {
+            text: 'You can apply for grant funding to buy and install a solar PV system if you are upgrading an existing building and not making changes to the roof.'
+          },
           backUrl: 'roof-solar-PV',
           nextUrl: 'solar-PV-system',
           url: 'upgrading-existing-building',
@@ -1358,6 +1361,9 @@ const questionBank = {
           order: 212,
           title: 'Is your building listed or on a World Heritage Site?',
           pageTitle: '',
+          hint: {
+            text: 'You can apply for grant funding to buy and install a solar PV system if your building is listed or on a World Heritage Site.'
+          },
           backUrl: 'upgrading-existing-building',
           nextUrl: 'solar-PV-system',
           url: 'heritage-site',
@@ -1698,7 +1704,10 @@ const questionBank = {
             <li>£{{_calculatedGrantCalf_}} for calf housing costs (40% of £{{_CalfHousingCost_}})</li>
             <li>£{{_calculatedGrantSolar_}} for solar PV costs (25% of £{{_SolarPVCost_}} is £{{_calculatedGrantSolarPreCap_}}, capped at £{{_calculatedGrantSolar_}})</li>
             </ul>
-            <p class="govuk-body">As calf housing costs take grant funding priority, you may be able to apply for a grant of up to £{{_SolarPVCost_}} for solar PV system costs. The maximum grant is £500,000.`
+            <p class="govuk-body">As calf housing costs take grant funding priority, you may be able to apply for a grant of up to £{{_SolarPVCost_}} for solar PV system costs. The maximum grant is £500,000.`,
+            warning: {
+              text: 'There’s no guarantee the project will receive a grant.'
+            }
           }
         },
         {
