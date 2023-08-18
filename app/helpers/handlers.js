@@ -385,7 +385,7 @@ const showPostPage = (currentQuestion, request, h) => {
         // solar capping
       } else if (getYarValue(request, 'calculatedGrant') > 500000) {
         const newCap = 500000 - getYarValue(request, 'calculatedGrantCalf')
-        // store capped solar value for potential amount solar capped page
+        // store capped solar value for potential amount page
         setYarValue(request, 'calculatedGrantSolarPreCap', getYarValue(request, 'calculatedGrantSolar'))
         // set cap for solar and grant
         setYarValue(request, 'calculatedGrantSolar', newCap)
