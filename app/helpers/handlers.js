@@ -55,18 +55,18 @@ const getPage = async (question, request, h) => {
       setYarValue(request, 'environmentalImpact', null)
       setYarValue(request, 'heritageSite', null)
       setYarValue(request, 'upgradingExistingBuilding', null)
-      setYarValue(request, 'solarPVSystem', null)   
-      
+      setYarValue(request, 'solarPVSystem', null)
+
       break
-    
+
     case 'remaining-costs':
       const SolarPVCost = getYarValue(request, 'SolarPVCost')
       const calfGrant = getYarValue(request, 'calculatedGrantCalf')
       const projectCost = getYarValue(request, 'projectCost')
 
       if (calfGrant && calfGrant >= 500000) {
-        question.backUrl = `${urlPrefix}/potential-amount-conditional` 
-      } else if (SolarPVCost && SolarPVCost > (500000 - calfGrant) / 0.25 ) {
+        question.backUrl = `${urlPrefix}/potential-amount-conditional`
+      } else if (SolarPVCost && SolarPVCost > (500000 - calfGrant) / 0.25) {
         question.backUrl = `${urlPrefix}/potential-amount-solar-capped`
       } else if (SolarPVCost) {
         question.backUrl = `${urlPrefix}/potential-amount-solar`
@@ -142,7 +142,6 @@ const getPage = async (question, request, h) => {
 
   let confirmationId = ''
   await processGA(question, request)
-
 
   if (question.maybeEligible) {
     let { maybeEligibleContent } = question
@@ -249,7 +248,7 @@ const showPostPage = (currentQuestion, request, h) => {
   const { yarKey, answers, baseUrl, ineligibleContent, nextUrl, nextUrlObject, title, type } = currentQuestion
   const NOT_ELIGIBLE = { ...ineligibleContent, backUrl: baseUrl }
   const payload = request.payload
-  
+
   if (baseUrl != 'score') {
     setYarValue(request, 'onScorePage', false)
   }
@@ -305,9 +304,9 @@ const showPostPage = (currentQuestion, request, h) => {
     return errors
   }
   if (currentQuestion?.grantInfoSolar) { // double check
-    const projectCostSolar = getYarValue(request, 'projectCostSolar');
-    const calfHousingCost = projectCostSolar.CalfHousingCost;
-    const solarCost = projectCostSolar.SolarPVCost;
+    const projectCostSolar = getYarValue(request, 'projectCostSolar')
+    const calfHousingCost = projectCostSolar.CalfHousingCost
+    const solarCost = projectCostSolar.SolarPVCost
     setYarValue(request, 'CalfHousingCost', calfHousingCost)
     setYarValue(request, 'SolarPVCost', solarCost)
     setYarValue(request, 'projectCost', Number(calfHousingCost) + Number(solarCost))
@@ -322,14 +321,12 @@ const showPostPage = (currentQuestion, request, h) => {
     // overall
     setYarValue(request, 'calculatedGrant', calculatedGrant + calculatedGrantSolar)
     setYarValue(request, 'remainingCost', Number(remainingCost) + Number(remainingCostSolar))
-
   } else if (currentQuestion.grantInfo) {
     const { calculatedGrant, remainingCost } = getGrantValues(getYarValue(request, 'projectCost'), currentQuestion.grantInfo)
     setYarValue(request, 'calculatedGrant', calculatedGrant)
     setYarValue(request, 'remainingCost', remainingCost)
     console.log(getYarValue(request, 'projectCost'), calculatedGrant, remainingCost)
   }
-
 
   if (thisAnswer?.notEligible || (yarKey === 'projectCost' ? !getGrantValues(payload[Object.keys(payload)[0]], currentQuestion.grantInfo).isEligible : null)) {
     // if (thisAnswer?.alsoMaybeEligible) {
@@ -368,11 +365,10 @@ const showPostPage = (currentQuestion, request, h) => {
     // }
     gapiService.sendGAEvent(request, { name: gapiService.eventTypes.ELIMINATION, params: {} })
     return h.view('not-eligible', NOT_ELIGIBLE)
-  
   }
 
   switch (baseUrl) {
-    case 'project-cost': 
+    case 'project-cost':
       if (payload[Object.keys(payload)[0]] > 1250000) {
         return h.redirect('/upgrading-calf-housing/potential-amount-capped')
       }
@@ -381,19 +377,15 @@ const showPostPage = (currentQuestion, request, h) => {
       const calculatedGrantCalfVar = getYarValue(request, 'calculatedGrantCalf')
       if (calculatedGrantCalfVar < 15000) {
         return h.view('not-eligible', NOT_ELIGIBLE)
-
       } else if (calculatedGrantCalfVar >= 500000) {
         setYarValue(request, 'calculatedGrant', 500000)
         return h.redirect('/upgrading-calf-housing/potential-amount-conditional')
-
       } else if (getYarValue(request, 'calculatedGrant') > 500000) {
         const newCap = 500000 - getYarValue(request, 'calculatedGrantCalf')
         setYarValue(request, 'calculatedGrantSolar', newCap)
         setYarValue(request, 'calculatedGrant', 500000)
         return h.redirect('/upgrading-calf-housing/potential-amount-solar-capped')
-
       }
-    
   }
 
   if (thisAnswer?.redirectUrl) {
