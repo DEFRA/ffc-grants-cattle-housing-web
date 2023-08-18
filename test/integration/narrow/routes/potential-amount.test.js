@@ -3,7 +3,8 @@ const { crumbToken } = require('./test-helper')
 describe('Page: /potential-amount', () => {
   const varList = {
     projectCost: 37500,
-    calculatedGrant: 15000
+    calculatedGrant: 15000,
+    calculatedGrantSolarPreCap: 34567
   }
   const eligiblePageText = 'You may be able to apply for a grant of up to £15,000, based on the estimated cost of £37,500.'
 
