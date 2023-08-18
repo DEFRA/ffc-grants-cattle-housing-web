@@ -1326,6 +1326,9 @@ const questionBank = {
           order: 211,
           title: 'Are you upgrading an existing building and not making changes to the roof?',
           pageTitle: '',
+          hint: {
+            text: 'You can apply for grant funding to buy and install a solar PV system if you are upgrading an existing building and not making changes to the roof.'
+          },
           backUrl: 'roof-solar-PV',
           nextUrl: 'solar-PV-system',
           url: 'upgrading-existing-building',
@@ -1358,6 +1361,9 @@ const questionBank = {
           order: 212,
           title: 'Is your building listed or on a World Heritage Site?',
           pageTitle: '',
+          hint: {
+            text: 'You can apply for grant funding to buy and install a solar PV system if your building is listed or on a World Heritage Site.'
+          },
           backUrl: 'upgrading-existing-building',
           nextUrl: 'solar-PV-system',
           url: 'heritage-site',
@@ -1650,6 +1656,9 @@ const questionBank = {
           nextUrl: 'remaining-costs',
           preValidationKeys: ['projectCost'],
           maybeEligible: true,
+          warning: {
+            text: 'There’s no guarantee the project will receive a grant.'
+          },
           maybeEligibleContent: {
             messageHeader: 'Potential grant funding',
             messageContent: `The maximum grant you can apply for is £500,000.
