@@ -284,11 +284,18 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       drainageSlope: submission.drainageSlope,
       additionalItems: submission.additionalItems,
       roofSolarPV: submission.roofSolarPV,
-      // new questions
-      upgradingExistingBuilding: submission.upgradingExistingBuilding,
-      heritageSite: submission.heritageSite,
-      solarPVSystem: submission.solarPVSystem,
-
+      upgradingExistingBuilding: submission.upgradingExistingBuilding ? submission.upgradingExistingBuilding : '',
+      upgradingExistingBuildingTrue: submission.upgradingExistingBuilding ? 'true' : 'false',
+      heritageSite: submission.heritageSite ? submission.heritageSite : '',
+      heritageSiteTrue: submission.heritageSite ? 'true' : 'false',
+      solarPVSystem: submission.solarPVSystem ? submission.solarPVSystem : '',
+      solarPVSystemTrue: submission.solarPVSystem ? 'true' : 'false',
+      SolarPVCost: submission.SolarPVCost ? getCurrencyFormat(submission.SolarPVCost) : '',
+      SolarPVCostTrue: submission.SolarPVCost ? 'true' : 'false',
+      calculatedGrantSolar: submission.calculatedGrantSolar ? getCurrencyFormat(submission.calculatedGrantSolar) : '' ,
+      calculatedGrantSolarTrue: submission.calculatedGrantSolar ? 'true' : 'false',
+      calfHousingCost: submission.CalfHousingCost ? getCurrencyFormat(submission.CalfHousingCost) : getCurrencyFormat(submission.projectCost),
+      calculatedGrantCalf: submission.calculatedGrantCalf ? getCurrencyFormat(submission.calculatedGrantCalf) : getCurrencyFormat(submission.calculatedGrant),
       projectCost: getCurrencyFormat(submission.projectCost),
       potentialFunding: getCurrencyFormat(submission.calculatedGrant),
       remainingCost: submission.remainingCosts,
@@ -300,14 +307,13 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       moistureControlScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'moisture-control'),
       permanentSickPen: submission.permanentSickPen,
       permanentSickPenScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'permanent-sick-pen'),
-      
-      environmentalImpact: submission.roofSolarPV == 'Yes',
-      rainwater: submission.roofSolarPV == 'My roof is exempt',
+      environmentalImpact: submission.roofSolarPV === 'Yes',
+      rainwater: submission.roofSolarPV === 'My roof is exempt',
 
       // notification service cant handle more than one variable in an if statement, so this is how to do it
-      environmentalImpactValue: submission.roofSolarPV == 'My roof is exempt' ? (submission.environmentalImpact == 'None of the above' ? 'No' : 'Yes') : submission.environmentalImpact,
+      environmentalImpactValue: submission.roofSolarPV === 'My roof is exempt' ? (submission.environmentalImpact === 'None of the above' ? 'No' : 'Yes') : submission.environmentalImpact,
 
-      environmentalImpactScore: submission.roofSolarPV == 'Yes' ? getQuestionScoreBand(desirabilityScore.desirability.questions, 'environmental-impact') : getQuestionScoreBand(desirabilityScore.desirability.questions, 'rainwater'),
+      environmentalImpactScore: submission.roofSolarPV === 'Yes' ? getQuestionScoreBand(desirabilityScore.desirability.questions, 'environmental-impact') : getQuestionScoreBand(desirabilityScore.desirability.questions, 'rainwater'),
 
       sustainableMaterials: submission.sustainableMaterials,
       sustainableMaterialsScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'sustainable-materials'),
