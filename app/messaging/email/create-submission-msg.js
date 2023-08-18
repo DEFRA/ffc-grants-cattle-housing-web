@@ -183,7 +183,7 @@ function getSpreadsheetDetails(submission, desirabilityScore) {
           generateRow(439, 'Farmer with Horticulture', businessTypeArray.includes('Farmer with Horticulture') ? 'Yes' : ''),
 
           generateRow(440, 'Solar exempt - Upgrade to existing', submission.upgradingExistingBuilding ?? ''),
-          generateRow(410, 'Solar exempt - World Heritage Site', submission.heritageSite ?? ''),
+          generateRow(441, 'Solar exempt - World Heritage Site', submission.heritageSite ?? ''),
           generateRow(442, 'Buy Solar PV system', submission.solarPVSystem ?? ''),
           generateRow(443, 'Calf housing cost', submission?.projectCostSolar?.CalfHousingCost ?? ''),
           generateRow(444, 'Calf housing grant amount', submission.calculatedGrantCalf ?? ''),
