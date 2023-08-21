@@ -1535,7 +1535,7 @@ const questionBank = {
               validate: [
                 {
                   type: 'NOT_EMPTY',
-                  error: 'Enter the estimated total cost of buying and installing solar PV system'
+                  error: 'Enter the estimated total cost of the solar PV system'
                 },
                 {
                   type: 'MIN_MAX',
