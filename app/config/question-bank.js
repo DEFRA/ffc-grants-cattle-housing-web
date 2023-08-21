@@ -1473,9 +1473,9 @@ const questionBank = {
           },
           grantInfoSolar: {
             minGrant: 0,
-            maxGrant: 9999999,
+            maxGrant: 485000,
             grantPercentage: 25,
-            cappedGrant: false
+            cappedGrant: true
           },
           hint: {
             html: `
