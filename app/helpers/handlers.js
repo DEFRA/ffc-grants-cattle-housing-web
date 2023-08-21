@@ -59,6 +59,7 @@ const getPage = async (question, request, h) => {
 
       break
     case 'solar-PV-system':
+    case 'project-cost':
       setYarValue(request, 'projectCost', null)
       setYarValue(request, 'CalfHousingCost', null)
       setYarValue(request, 'SolarPVCost', null)
@@ -66,7 +67,7 @@ const getPage = async (question, request, h) => {
       setYarValue(request, 'calculatedGrantSolar', null)
       setYarValue(request, 'calculatedGrantCalf', null)
 
-    break
+      break
     case 'remaining-costs':
       const SolarPVCost = getYarValue(request, 'SolarPVCost')
       const calfGrant = getYarValue(request, 'calculatedGrantCalf')
@@ -386,7 +387,7 @@ const showPostPage = (currentQuestion, request, h) => {
       // ineligible as calf housing too low
       if (calculatedGrantCalfVar < 15000) {
         return h.view('not-eligible', NOT_ELIGIBLE)
-      //calf housing only 
+      // calf housing only
       } else if (calculatedGrantCalfVar >= 500000) {
         setYarValue(request, 'calculatedGrant', 500000)
         return h.redirect('/upgrading-calf-housing/potential-amount-conditional')
