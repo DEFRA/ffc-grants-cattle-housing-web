@@ -185,7 +185,7 @@ function getSpreadsheetDetails(submission, desirabilityScore) {
           generateRow(440, 'Solar exempt - Upgrade to existing', submission.upgradingExistingBuilding ?? ''),
           generateRow(441, 'Solar exempt - World Heritage Site', submission.heritageSite ?? ''),
           generateRow(442, 'Buy Solar PV system', submission.solarPVSystem ?? ''),
-          generateRow(443, 'Calf housing cost', submission?.projectCostSolar?.CalfHousingCost ?? submission.projectCost),
+          generateRow(443, 'Calf housing cost', submission?.projectCostSolar?.CalfHousingCost ?? String(Number(submission.projectCost).toFixed(2))),
           generateRow(444, 'Calf housing grant amount', submission.calculatedGrantCalf ?? submission.calculatedGrant),
           generateRow(445, 'Solar cost', submission?.projectCostSolar?.SolarPVCost ?? ''),
           generateRow(446, 'Solar grant amount', submission.calculatedGrantSolar ?? ''),
