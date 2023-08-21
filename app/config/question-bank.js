@@ -1421,7 +1421,7 @@ const questionBank = {
           nextUrl: 'project-cost-solar',
           url: 'solar-PV-system',
           baseUrl: 'solar-PV-system',
-          preValidationKeys: [],
+          preValidationKeys: ['roofSolarPV'],
           sidebar: {
             values: [{
               heading: 'Eligibility',
