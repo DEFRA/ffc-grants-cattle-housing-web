@@ -50,12 +50,6 @@ const getPage = async (question, request, h) => {
   }
 
   switch (url) {
-  // reset environmentalImpact yar key if switching between pages
-
-    case 'project-cost':
-      //setYarValue(request, 'projectCostSolar', null)
-      break
-
     case 'remaining-costs':
       const SolarPVCost = getYarValue(request, 'SolarPVCost')
       const calfGrant = getYarValue(request, 'calculatedGrantCalf')
