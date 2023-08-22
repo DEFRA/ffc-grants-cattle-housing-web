@@ -246,8 +246,6 @@ const showPostPage = (currentQuestion, request, h) => {
   const NOT_ELIGIBLE = { ...ineligibleContent, backUrl: baseUrl }
   const payload = request.payload
 
-  console.log(payload,'PPPPPPPPPPAAAAAAAAYYYYYYYY')
-
   if (baseUrl !== 'score') {
     setYarValue(request, 'onScorePage', false)
   }
@@ -265,10 +263,11 @@ const showPostPage = (currentQuestion, request, h) => {
     } else {
       thisAnswer = answers?.find(answer => (answer.value === value))
     }
-    if (key === 'roofSolarPV' && value === 'Yes') {
-      console.log('[I AM INSIDE ROOF YES ]')
+    if ((key === 'roofSolarPV' && value === 'Yes') || key === 'projectCost') {
       setYarValue(request, 'heritageSite', null)
       setYarValue(request, 'upgradingExistingBuilding', null)
+      setYarValue(request, 'projectCostSolar', null)
+      setYarValue(request, 'calculatedGrantSolar', null)
     }
 
     if (type !== 'multi-input' && key !== 'secBtn') {
