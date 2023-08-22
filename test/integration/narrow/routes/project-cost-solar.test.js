@@ -77,7 +77,7 @@ describe('Project cost solar page', () => {
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(200)
     expect(postResponse.payload).toContain('Enter the estimated total cost of the calf housing')
-    expect(postResponse.payload).toContain('Enter the estimated total cost of buying and installing solar PV system')
+    expect(postResponse.payload).toContain('Enter the estimated total cost of the solar PV system')
   })
 
   // it('should return an error message if max 7 characters exceeded', async () => {

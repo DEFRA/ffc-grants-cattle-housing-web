@@ -1475,7 +1475,7 @@ const questionBank = {
             minGrant: 0,
             maxGrant: 485000,
             grantPercentage: 25,
-            cappedGrant: false
+            cappedGrant: true
           },
           hint: {
             html: `
@@ -1535,7 +1535,7 @@ const questionBank = {
               validate: [
                 {
                   type: 'NOT_EMPTY',
-                  error: 'Enter the estimated total cost of buying and installing solar PV system'
+                  error: 'Enter the estimated total cost of the solar PV system'
                 },
                 {
                   type: 'MIN_MAX',

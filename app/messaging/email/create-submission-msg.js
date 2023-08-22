@@ -290,6 +290,7 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       heritageSiteTrue: submission.heritageSite ? 'true' : 'false',
       solarPVSystem: submission.solarPVSystem ? submission.solarPVSystem : '',
       solarPVSystemTrue: submission.solarPVSystem ? 'true' : 'false',
+      grantRateSolarTrue: submission.solarPVSystem === 'Yes' ? 'true' : 'false',
       SolarPVCost: submission.SolarPVCost ? getCurrencyFormat(submission.SolarPVCost) : '',
       SolarPVCostTrue: submission.SolarPVCost ? 'true' : 'false',
       calculatedGrantSolar: submission.calculatedGrantSolar ? getCurrencyFormat(submission.calculatedGrantSolar) : '' ,
