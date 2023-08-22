@@ -80,57 +80,6 @@ describe('Project cost solar page', () => {
     expect(postResponse.payload).toContain('Enter the estimated total cost of the solar PV system')
   })
 
-  // it('should return an error message if max 7 characters exceeded', async () => {
-  //   const postOptions = {
-  //     method: 'POST',
-  //     url: `${global.__URLPREFIX__}/project-cost-solar`,
-  //     payload: { SolarPVCost: 12345678, CalfHousingCost: 12345678, crumb: crumbToken },
-  //     headers: { cookie: 'crumb=' + crumbToken }
-  //   }
-
-  //   const postResponse = await global.__SERVER__.inject(postOptions)
-  //   expect(postResponse.statusCode).toBe(200)
-  //   expect(postResponse.payload).toContain('Enter a whole number with a maximum of 7 digits')
-  // })
-
-  // it('should return an error message if number contains a space', async () => {
-  //   const postOptions = {
-  //     method: 'POST',
-  //     url: `${global.__URLPREFIX__}/project-cost-solar`,
-  //     payload: { SolarPVCost: '1234 6', crumb: crumbToken },
-  //     headers: { cookie: 'crumb=' + crumbToken }
-  //   }
-
-  //   const postResponse = await global.__SERVER__.inject(postOptions)
-  //   expect(postResponse.statusCode).toBe(200)
-  //   expect(postResponse.payload).toContain('Enter a whole number with a maximum of 7 digits')
-  // })
-
-  // it('should return an error message if number contains a comma "," ', async () => {
-  //   const postOptions = {
-  //     method: 'POST',
-  //     url: `${global.__URLPREFIX__}/project-cost-solar`,
-  //     payload: { projectCost: '123,456', crumb: crumbToken },
-  //     headers: { cookie: 'crumb=' + crumbToken }
-  //   }
-
-  //   const postResponse = await global.__SERVER__.inject(postOptions)
-  //   expect(postResponse.statusCode).toBe(200)
-  //   expect(postResponse.payload).toContain('Enter a whole number with a maximum of 7 digits')
-  // })
-
-  // it('should return an error message if a fraction is typed in - it contains a dot "." ', async () => {
-  //   const postOptions = {
-  //     method: 'POST',
-  //     url: `${global.__URLPREFIX__}/project-cost-solar`,
-  //     payload: { projectCost: '123.456', crumb: crumbToken },
-  //     headers: { cookie: 'crumb=' + crumbToken }
-  //   }
-
-  //   const postResponse = await global.__SERVER__.inject(postOptions)
-  //   expect(postResponse.statusCode).toBe(200)
-  //   expect(postResponse.payload).toContain('Enter a whole number with a maximum of 7 digits')
-  // })
 
   it('should return an error message if the number of digits typed exceed 7', async () => {
     const postOptions = {
@@ -155,10 +104,10 @@ describe('Project cost solar page', () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/project-cost-solar`,
-      payload: { 
-        CalfHousingCost: '12', 
-        SolarPVCost: '12345', 
-        crumb: crumbToken 
+      payload: {
+        CalfHousingCost: '12',
+        SolarPVCost: '12345',
+        crumb: crumbToken
       },
       headers: { cookie: 'crumb=' + crumbToken }
     }
@@ -189,14 +138,14 @@ describe('Project cost solar page', () => {
 
   it('should redirected to the Potential amount solar capped page if the solar grant entered is too high', async () => {
     varList.projectCostSolar = {
-      CalfHousingCost: '123000',
-      SolarPVCost: '9999999'
+      CalfHousingCost: '37500',
+      SolarPVCost: '2290000'
     }
     varList.calculatedGrant = '500001'
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/project-cost-solar`,
-      payload: { CalfHousingCost: '123000', SolarPVCost: '9999999', crumb: crumbToken },
+      payload: { CalfHousingCost: '37500', SolarPVCost: '2290000', crumb: crumbToken },
       headers: { cookie: 'crumb=' + crumbToken }
     }
 
@@ -206,7 +155,7 @@ describe('Project cost solar page', () => {
     expect(postResponse.headers.location).toBe('/upgrading-calf-housing/potential-amount-solar-capped')
   })
 
-  it('should redirected to the Potential amount solar page ifall values entered correctly', async () => {
+  it('should redirected to the Potential amount solar page if all values entered correctly', async () => {
     varList.projectCostSolar = {
       CalfHousingCost: '123456',
       SolarPVCost: '23456'

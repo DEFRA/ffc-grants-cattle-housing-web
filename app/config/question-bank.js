@@ -1475,7 +1475,7 @@ const questionBank = {
             minGrant: 0,
             maxGrant: 485000,
             grantPercentage: 25,
-            cappedGrant: true
+            cappedGrant: false
           },
           hint: {
             html: `
@@ -2057,7 +2057,7 @@ const questionBank = {
             values: [{
               heading: 'Funding priorities',
               content: [{
-                para: `RPA wants to fund buildings that enhance environmental sustainability and help meet government environmental targets.`
+                para: 'RPA wants to fund buildings that enhance environmental sustainability and help meet government environmental targets.'
               }]
             }]
           },
