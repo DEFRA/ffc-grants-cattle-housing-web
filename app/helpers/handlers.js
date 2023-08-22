@@ -387,11 +387,8 @@ const showPostPage = (currentQuestion, request, h) => {
         // store capped solar value for potential amount solar capped page
         setYarValue(request, 'calculatedGrantSolarPreCap', getYarValue(request, 'SolarPVCost') * 0.25)
         // set cap for solar and grant
-        if (getYarValue(request, 'calculatedGrantSolar') > solarCap) {
-          setYarValue(request, 'calculatedGrantSolar', solarCap)
-          setYarValue(request, 'calculatedGrant', 500000)
-        }
-        setYarValue(request, 'solarCap', solarCap)
+        setYarValue(request, 'calculatedGrantSolar', solarCap)
+        setYarValue(request, 'calculatedGrant', 500000)
         return h.redirect('/upgrading-calf-housing/potential-amount-solar-capped')
       }
   }
