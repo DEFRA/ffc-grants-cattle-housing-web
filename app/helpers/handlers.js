@@ -373,6 +373,7 @@ const showPostPage = (currentQuestion, request, h) => {
       }
       break
     case 'project-cost-solar':
+      console.log(getYarValue(request, 'calculatedGrant'),'LPLPLPLPLPLPLPLPL')
       // ineligible as calf housing too low
       if (getYarValue(request, 'calculatedGrantCalf') < 15000) {
         return h.view('not-eligible', NOT_ELIGIBLE)

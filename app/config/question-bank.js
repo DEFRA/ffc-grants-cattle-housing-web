@@ -1475,7 +1475,7 @@ const questionBank = {
             minGrant: 0,
             maxGrant: 485000,
             grantPercentage: 25,
-            cappedGrant: true
+            cappedGrant: false
           },
           hint: {
             html: `
