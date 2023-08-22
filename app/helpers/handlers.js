@@ -51,23 +51,11 @@ const getPage = async (question, request, h) => {
 
   switch (url) {
   // reset environmentalImpact yar key if switching between pages
-    case 'roof-solar-PV':
-      setYarValue(request, 'environmentalImpact', null)
-      setYarValue(request, 'heritageSite', null)
-      setYarValue(request, 'upgradingExistingBuilding', null)
-      setYarValue(request, 'solarPVSystem', null)
 
-      break
-    case 'solar-PV-system':
     case 'project-cost':
-      setYarValue(request, 'projectCost', null)
-      setYarValue(request, 'CalfHousingCost', null)
-      setYarValue(request, 'SolarPVCost', null)
-      setYarValue(request, 'projectCostSolar', null)
-      setYarValue(request, 'calculatedGrantSolar', null)
-      setYarValue(request, 'calculatedGrantCalf', null)
-
+      //setYarValue(request, 'projectCostSolar', null)
       break
+
     case 'remaining-costs':
       const SolarPVCost = getYarValue(request, 'SolarPVCost')
       const calfGrant = getYarValue(request, 'calculatedGrantCalf')
@@ -258,7 +246,9 @@ const showPostPage = (currentQuestion, request, h) => {
   const NOT_ELIGIBLE = { ...ineligibleContent, backUrl: baseUrl }
   const payload = request.payload
 
-  if (baseUrl != 'score') {
+  console.log(payload,'PPPPPPPPPPAAAAAAAAYYYYYYYY')
+
+  if (baseUrl !== 'score') {
     setYarValue(request, 'onScorePage', false)
   }
 
@@ -274,6 +264,11 @@ const showPostPage = (currentQuestion, request, h) => {
       thisAnswer = answers?.find(answer => (answer.value === value[0]))
     } else {
       thisAnswer = answers?.find(answer => (answer.value === value))
+    }
+    if (key === 'roofSolarPV' && value === 'Yes') {
+      console.log('[I AM INSIDE ROOF YES ]')
+      setYarValue(request, 'heritageSite', null)
+      setYarValue(request, 'upgradingExistingBuilding', null)
     }
 
     if (type !== 'multi-input' && key !== 'secBtn') {
@@ -328,7 +323,7 @@ const showPostPage = (currentQuestion, request, h) => {
     setYarValue(request, 'calculatedGrantSolar', calculatedGrantSolar)
     setYarValue(request, 'remainingCostSolar', remainingCostSolar)
     // overall
-    setYarValue(request, 'calculatedGrant', calculatedGrant + calculatedGrantSolar)
+    setYarValue(request, 'calculatedGrant', Number(calculatedGrant) + Number(calculatedGrantSolar))
     setYarValue(request, 'remainingCost', Number(remainingCost) + Number(remainingCostSolar))
   } else if (currentQuestion.grantInfo) {
     const { calculatedGrant, remainingCost } = getGrantValues(getYarValue(request, 'projectCost'), currentQuestion.grantInfo)
@@ -383,22 +378,24 @@ const showPostPage = (currentQuestion, request, h) => {
       }
       break
     case 'project-cost-solar':
-      const calculatedGrantCalfVar = getYarValue(request, 'calculatedGrantCalf')
       // ineligible as calf housing too low
-      if (calculatedGrantCalfVar < 15000) {
+      if (getYarValue(request, 'calculatedGrantCalf') < 15000) {
         return h.view('not-eligible', NOT_ELIGIBLE)
       // calf housing only
-      } else if (calculatedGrantCalfVar >= 500000) {
+      } else if (getYarValue(request, 'calculatedGrantCalf') >= 500000) {
         setYarValue(request, 'calculatedGrant', 500000)
         return h.redirect('/upgrading-calf-housing/potential-amount-conditional')
         // solar capping
       } else if (getYarValue(request, 'calculatedGrant') > 500000) {
-        const newCap = 500000 - getYarValue(request, 'calculatedGrantCalf')
+        const solarCap = 500000 - getYarValue(request, 'calculatedGrantCalf')
         // store capped solar value for potential amount solar capped page
-        setYarValue(request, 'calculatedGrantSolarPreCap', getYarValue(request, 'calculatedGrantSolar'))
+        setYarValue(request, 'calculatedGrantSolarPreCap', getYarValue(request, 'SolarPVCost') * 0.25)
         // set cap for solar and grant
-        setYarValue(request, 'calculatedGrantSolar', newCap)
-        setYarValue(request, 'calculatedGrant', 500000)
+        if (getYarValue(request, 'calculatedGrantSolar') > solarCap) {
+          setYarValue(request, 'calculatedGrantSolar', solarCap)
+          setYarValue(request, 'calculatedGrant', 500000)
+        }
+        setYarValue(request, 'solarCap', solarCap)
         return h.redirect('/upgrading-calf-housing/potential-amount-solar-capped')
       }
   }
