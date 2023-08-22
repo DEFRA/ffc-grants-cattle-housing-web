@@ -263,6 +263,7 @@ const showPostPage = (currentQuestion, request, h) => {
       setYarValue(request, 'projectCostSolar', null)
       setYarValue(request, 'calculatedGrantSolar', null)
       setYarValue(request, 'SolarPVCost', null)
+      setYarValue(request, 'calculatedGrantSolarPreCap', null)
     }
 
     if (type !== 'multi-input' && key !== 'secBtn') {
