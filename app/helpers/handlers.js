@@ -68,9 +68,14 @@ const getPage = async (question, request, h) => {
       setYarValue(request, 'solarPVSystem', null)
     break
     case 'project-cost':
+
+    // remove solar from projectCostSolar if it exists
+      let projectCostSolar = getYarValue(request, 'projectCostSolar')
+      projectCostSolar.SolarPVCost = null
+      console.log(projectCostSolar, 'WWWWWWWWWWWW')
       setYarValue(request, 'projectCost', null)
       setYarValue(request, 'calculatedGrant', null)
-      setYarValue(request, 'projectCostSolar', null)
+      setYarValue(request, 'projectCostSolar', projectCostSolar)
       setYarValue(request, 'calculatedGrantSolar', null)
       setYarValue(request, 'SolarPVCost', null)
       setYarValue(request, 'calculatedGrantSolarPreCap', null)
@@ -338,13 +343,13 @@ const showPostPage = (currentQuestion, request, h) => {
     setYarValue(request, 'calculatedGrant', Number(calculatedGrant) + Number(calculatedGrantSolar))
     setYarValue(request, 'remainingCost', Number(remainingCost) + Number(remainingCostSolar))
   } else if (currentQuestion.grantInfo) {
-    const { calculatedGrant, remainingCost } = getGrantValues(getYarValue(request, 'projectCost'), currentQuestion.grantInfo)
+    const { calculatedGrant, remainingCost } = getGrantValues(getYarValue(request, 'CalfHousingCost'), currentQuestion.grantInfo)
     setYarValue(request, 'calculatedGrant', calculatedGrant)
     setYarValue(request, 'remainingCost', remainingCost)
-    console.log(getYarValue(request, 'projectCost'), calculatedGrant, remainingCost)
+    setYarValue(request, 'projectCost', getYarValue(request, 'CalfHousingCost'))
   }
 
-  if (thisAnswer?.notEligible || (yarKey === 'projectCost' ? !getGrantValues(payload[Object.keys(payload)[0]], currentQuestion.grantInfo).isEligible : null)) {
+  if (thisAnswer?.notEligible || (yarKey === 'CalfHousingCost' ? !getGrantValues(payload[Object.keys(payload)[0]], currentQuestion.grantInfo).isEligible : null)) {
     // if (thisAnswer?.alsoMaybeEligible) {
     //   const {
     //     dependentQuestionKey,
