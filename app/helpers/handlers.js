@@ -72,7 +72,7 @@ const getPage = async (question, request, h) => {
     // remove solar from projectCostSolar if it exists
       let projectCostSolar = getYarValue(request, 'projectCostSolar')
       projectCostSolar.SolarPVCost = null
-      console.log(projectCostSolar, 'WWWWWWWWWWWW')
+
       setYarValue(request, 'projectCost', null)
       setYarValue(request, 'calculatedGrant', null)
       setYarValue(request, 'projectCostSolar', projectCostSolar)
