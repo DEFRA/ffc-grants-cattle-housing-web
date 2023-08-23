@@ -50,7 +50,7 @@ const getPage = async (question, request, h) => {
   }
 
   switch (url) {
-    case 'projectCost':
+    case 'project-cost':
       setYarValue(request, 'projectCostSolar', null)
       setYarValue(request, 'calculatedGrantSolar', null)
       setYarValue(request, 'SolarPVCost', null)
