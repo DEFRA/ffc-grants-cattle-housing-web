@@ -9,7 +9,10 @@ const varListTemplate = {
   projectItemsList: {
     projectEquipment: ['Boom', 'Trickle']
   },
-  projectCost: '12345678'
+  CalfHousingCost: '12345678',
+  projectCostSolar: {
+    SoalrPVCost: '13'
+  }
 }
 
 let varList
@@ -41,7 +44,7 @@ describe('Project cost page', () => {
     expect(response.statusCode).toBe(200)
   })
 
-  it('should load page successfully if no projectCost', async () => {
+  it('should load page successfully if no CalfHousingCost', async () => {
     varList = {
       legalStatus: 'fale status',
       inEngland: 'Yes',
@@ -50,7 +53,10 @@ describe('Project cost page', () => {
       projectItemsList: {
         projectEquipment: ['Boom', 'Trickle']
       },
-      projectCost: undefined
+      CalfHousingCost: undefined,
+      projectCostSolar: {
+        SoalrPVCost: '13'
+      }
     }
 
     const options = {
@@ -80,7 +86,7 @@ describe('Project cost page', () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/project-cost`,
-      payload: { projectCost: '1234s6', crumb: crumbToken },
+      payload: { CalfHousingCost: '1234s6', crumb: crumbToken },
       headers: { cookie: 'crumb=' + crumbToken }
     }
 
@@ -93,7 +99,7 @@ describe('Project cost page', () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/project-cost`,
-      payload: { projectCost: '1234 6', crumb: crumbToken },
+      payload: { CalfHousingCost: '1234 6', crumb: crumbToken },
       headers: { cookie: 'crumb=' + crumbToken }
     }
 
@@ -106,7 +112,7 @@ describe('Project cost page', () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/project-cost`,
-      payload: { projectCost: '123,456', crumb: crumbToken },
+      payload: { CalfHousingCost: '123,456', crumb: crumbToken },
       headers: { cookie: 'crumb=' + crumbToken }
     }
 
@@ -119,7 +125,7 @@ describe('Project cost page', () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/project-cost`,
-      payload: { projectCost: '123.456', crumb: crumbToken },
+      payload: { CalfHousingCost: '123.456', crumb: crumbToken },
       headers: { cookie: 'crumb=' + crumbToken }
     }
 
@@ -132,7 +138,7 @@ describe('Project cost page', () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/project-cost`,
-      payload: { projectCost: '12345678', crumb: crumbToken },
+      payload: { CalfHousingCost: '12345678', crumb: crumbToken },
       headers: { cookie: 'crumb=' + crumbToken }
     }
 
@@ -145,7 +151,7 @@ describe('Project cost page', () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/project-cost`,
-      payload: { projectCost: '12', crumb: crumbToken },
+      payload: { CalfHousingCost: '12', crumb: crumbToken },
       headers: { cookie: 'crumb=' + crumbToken }
     }
 
@@ -158,7 +164,7 @@ describe('Project cost page', () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/project-cost`,
-      payload: { projectCost: '1350000', crumb: crumbToken },
+      payload: { CalfHousingCost: '1350000', crumb: crumbToken },
       headers: { cookie: 'crumb=' + crumbToken }
     }
 
@@ -172,7 +178,7 @@ describe('Project cost page', () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/project-cost`,
-      payload: { projectCost: '1234567', crumb: crumbToken },
+      payload: { CalfHousingCost: '1234567', crumb: crumbToken },
       headers: { cookie: 'crumb=' + crumbToken }
     }
 
