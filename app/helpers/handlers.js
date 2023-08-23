@@ -64,6 +64,7 @@ const getPage = async (question, request, h) => {
       break
     case 'upgrading-existing-building': 
       setYarValue(request, 'heritageSite', null)
+      break
     case 'heritage-site':
       setYarValue(request, 'solarPVSystem', null)
     break
@@ -71,7 +72,9 @@ const getPage = async (question, request, h) => {
 
     // remove solar from projectCostSolar if it exists
       let projectCostSolar = getYarValue(request, 'projectCostSolar')
-      projectCostSolar.SolarPVCost = null
+      if (projectCostSolar?.SolarPVCost) {
+        projectCostSolar.SolarPVCost = null
+      }
 
       setYarValue(request, 'projectCost', null)
       setYarValue(request, 'calculatedGrant', null)
@@ -347,6 +350,7 @@ const showPostPage = (currentQuestion, request, h) => {
     setYarValue(request, 'calculatedGrant', calculatedGrant)
     setYarValue(request, 'remainingCost', remainingCost)
     setYarValue(request, 'projectCost', getYarValue(request, 'CalfHousingCost'))
+    setYarValue(request, 'projectCostSolar', { CalfHousingCost: getYarValue(request, 'CalfHousingCost')})
   }
 
   if (thisAnswer?.notEligible || (yarKey === 'CalfHousingCost' ? !getGrantValues(payload[Object.keys(payload)[0]], currentQuestion.grantInfo).isEligible : null)) {
