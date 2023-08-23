@@ -633,7 +633,7 @@ const questionBank = {
           answers: [
             {
               key: 'project-A1',
-              value: 'Building new calf housing '
+              value: 'Building new calf housing'
             },
             {
               key: 'project-A2',
