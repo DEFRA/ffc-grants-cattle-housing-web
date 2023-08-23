@@ -271,6 +271,9 @@ const showPostPage = (currentQuestion, request, h) => {
       setYarValue(request, 'SolarPVCost', null)
       setYarValue(request, 'calculatedGrantSolarPreCap', null)
     }
+    if (key === 'upgradingExistingBuilding' && value === 'Yes') {
+      setYarValue(request, 'heritageSite', null)
+    }
 
     if (type !== 'multi-input' && key !== 'secBtn') {
       setYarValue(request, key, key === 'projectPostcode' ? value.replace(DELETE_POSTCODE_CHARS_REGEX, '').split(/(?=.{3}$)/).join(' ').toUpperCase() : value)
