@@ -50,6 +50,31 @@ const getPage = async (question, request, h) => {
   }
 
   switch (url) {
+    case 'roof-solar-PV':
+      setYarValue(request, 'heritageSite', null)
+      setYarValue(request, 'upgradingExistingBuilding', null)
+      setYarValue(request, 'solarPVSystem', null)
+      setYarValue(request, 'projectCost', null)
+      setYarValue(request, 'calculatedGrant', null)
+      setYarValue(request, 'projectCostSolar', null)
+      setYarValue(request, 'calculatedGrantSolar', null)
+      setYarValue(request, 'SolarPVCost', null)
+      setYarValue(request, 'calculatedGrantSolarPreCap', null)
+
+      break
+    case 'upgrading-existing-building': 
+      setYarValue(request, 'heritageSite', null)
+    case 'heritage-site':
+      setYarValue(request, 'solarPVSystem', null)
+    break
+    case 'project-cost':
+      setYarValue(request, 'projectCost', null)
+      setYarValue(request, 'calculatedGrant', null)
+      setYarValue(request, 'projectCostSolar', null)
+      setYarValue(request, 'calculatedGrantSolar', null)
+      setYarValue(request, 'SolarPVCost', null)
+      setYarValue(request, 'calculatedGrantSolarPreCap', null)
+      break
     case 'remaining-costs':
       const SolarPVCost = getYarValue(request, 'SolarPVCost')
       const calfGrant = getYarValue(request, 'calculatedGrantCalf')
@@ -256,14 +281,6 @@ const showPostPage = (currentQuestion, request, h) => {
       thisAnswer = answers?.find(answer => (answer.value === value[0]))
     } else {
       thisAnswer = answers?.find(answer => (answer.value === value))
-    }
-    if ((key === 'roofSolarPV' && value === 'Yes') || key === 'projectCost') {
-      setYarValue(request, 'heritageSite', null)
-      setYarValue(request, 'upgradingExistingBuilding', null)
-      setYarValue(request, 'projectCostSolar', null)
-      setYarValue(request, 'calculatedGrantSolar', null)
-      setYarValue(request, 'SolarPVCost', null)
-      setYarValue(request, 'calculatedGrantSolarPreCap', null)
     }
 
     if (type !== 'multi-input' && key !== 'secBtn') {
