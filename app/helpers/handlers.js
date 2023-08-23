@@ -257,9 +257,15 @@ const showPostPage = (currentQuestion, request, h) => {
     } else {
       thisAnswer = answers?.find(answer => (answer.value === value))
     }
-    if ((key === 'roofSolarPV' && value === 'Yes') || key === 'projectCost') {
+    if (key === 'roofSolarPV' && value === 'Yes') {
       setYarValue(request, 'heritageSite', null)
       setYarValue(request, 'upgradingExistingBuilding', null)
+      setYarValue(request, 'projectCostSolar', null)
+      setYarValue(request, 'calculatedGrantSolar', null)
+      setYarValue(request, 'SolarPVCost', null)
+      setYarValue(request, 'calculatedGrantSolarPreCap', null)
+    }
+    if (key === 'projectCost') {
       setYarValue(request, 'projectCostSolar', null)
       setYarValue(request, 'calculatedGrantSolar', null)
       setYarValue(request, 'SolarPVCost', null)
