@@ -1424,11 +1424,11 @@ const questionBank = {
           },
           pageTitle: '',
           backUrlObject: {
-            dependentQuestionYarKey: 'upgradingExistingBuilding',
-            dependentAnswerKeysArray: ['upgrading-existing-building-A1'],
+            dependentQuestionYarKey: ['upgradingExistingBuilding', 'heritageSite'],
+            dependentAnswerKeysArray: ['upgrading-existing-building-A2', 'heritage-site-A1'],
             urlOptions: {
-              thenUrl: 'upgrading-existing-building',
-              elseUrl: 'heritage-site',
+              thenUrl: 'heritage-site',
+              elseUrl: 'upgrading-existing-building',
               nonDependentUrl: 'roof-solar-PV'
             }
           },
@@ -2139,7 +2139,7 @@ const questionBank = {
           },
           minAnswerCount: 1,
           validate: [
-            { 
+            {
               type: 'NOT_EMPTY',
               error: 'Select yes if your building will collect and store rainwater'
             }
