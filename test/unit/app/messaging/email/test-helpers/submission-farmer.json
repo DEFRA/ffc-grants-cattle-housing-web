@@ -47,6 +47,7 @@
     "additionalItems":"Yes",
     "roofSolarPV":"My roof is exempt",
     "projectCost": 100000,
+    "SolarPVCost": null, 
     "potentialFunding": "40000.00",
     "remainingCost": "60000.00",
     "housing":"Yes",

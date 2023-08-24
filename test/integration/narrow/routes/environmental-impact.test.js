@@ -3,7 +3,7 @@ const { crumbToken } = require('./test-helper')
 describe('Page: /environmental-impact', () => {
     const varList = {
         legalStatus: 'randomData',
-        roofSolarPV: 'Yes',
+        SolarPVCost: 12345,
         projectType: 'fakeData'
     }
     

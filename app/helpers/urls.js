@@ -16,6 +16,12 @@ const getUrl = (urlObject, url, request, secBtn, currentUrl) => {
 
   const dependentAnswer = getYarValue(request, dependentQuestionYarKey)
 
+  // handle unique input key (can be generalised later)
+  if (dependentQuestionYarKey === 'SolarPVCost') {
+    // if key is not null, show then page, otherwise show else
+    return  dependentAnswer != null ? thenUrl : elseUrl
+  }
+
   const selectThenUrl = checkAnswerExist(dependentQuestionYarKey, dependentAnswer, dependentAnswerKeysArray)
   const isNonDependantAnswer = checkAnswerExist(dependentQuestionYarKey, dependentAnswer, nonDependentAnswerKeysArray)
   const selectedElseUrl = (dependentAnswer && !isNonDependantAnswer) ? elseUrl : nonDependentUrl
@@ -33,6 +39,7 @@ const checkAnswerExist = (dependentQuestionYarKey, dependentAnswer, yarKeysToChe
       yarKeysToCheck.includes(answer.key) &&
       dependentAnswer.includes(answer.value)
     ))
+    
   ))
 }
 module.exports = {

@@ -1990,9 +1990,8 @@ const questionBank = {
           },
           // nextUrl: 'environmental-impact',
           nextUrlObject: {
-            dependentQuestionYarKey: 'roofSolarPV',
+            dependentQuestionYarKey: 'SolarPVCost',
             dependentAnswerKeysArray: [
-              'roof-solar-PV-A1'
             ],
             urlOptions: {
               thenUrl: 'environmental-impact',
@@ -2169,9 +2168,8 @@ const questionBank = {
           url: 'sustainable-materials',
           baseUrl: 'sustainable-materials',
           backUrlObject: {
-            dependentQuestionYarKey: 'roofSolarPV',
+            dependentQuestionYarKey: 'SolarPVCost',
             dependentAnswerKeysArray: [
-              'roof-solar-PV-A1'
             ],
             urlOptions: {
               thenUrl: 'environmental-impact',
