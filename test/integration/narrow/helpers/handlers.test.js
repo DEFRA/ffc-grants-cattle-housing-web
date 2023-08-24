@@ -29,7 +29,7 @@ describe('Get & Post Handlers', () => {
     gridReference: 'grid-ref-num',
     businessDetails: 'fake business',
     applying: true,
-    roofSolarPV: 'Yes'
+    SolarPVCost: 12345
   }
 
   jest.mock('../../../../app/helpers/page-guard', () => ({
@@ -167,7 +167,7 @@ describe('Get & Post Handlers', () => {
 
   test('Average score - rainwater', async () => {
     scoreData.desirability.overallRating.band = 'Average'
-    varList.roofSolarPV = 'My roof is exempt'
+    varList.SolarPVCost = null
 
     question = {
       url: 'score',
@@ -199,7 +199,7 @@ describe('Get & Post Handlers', () => {
     scoreData.desirability.questions[4].answers[0].input[0].key = 'environmental-impact-A3'
     scoreData.desirability.questions[4].answers[0].input[0].value = 'None of the above'
 
-    varList.roofSolarPV = 'My roof is exempt'
+    varList.SolarPVCost = null
 
     question = {
       url: 'score',
@@ -230,7 +230,7 @@ describe('Get & Post Handlers', () => {
   test('Default score - rainwater', async () => {
     scoreData.desirability.overallRating.band = 'AAAARRRGGHH!!!'
 
-    varList.roofSolarPV = 'My roof is exempt'
+    varList.SolarPVCost = null
 
     question = {
       url: 'score',

@@ -100,7 +100,7 @@ const getPage = async (question, request, h) => {
         setYarValue(request, 'overAllScore', msgData)
 
         const questions = msgData.desirability.questions.map(desirabilityQuestion => {
-          if (desirabilityQuestion.key === 'environmental-impact' && getYarValue(request, 'roofSolarPV') === 'My roof is exempt') {
+          if (desirabilityQuestion.key === 'environmental-impact' && getYarValue(request, 'SolarPVCost') === null) {
             desirabilityQuestion.key = 'rainwater'
             if (desirabilityQuestion.answers[0].input[0].value === 'None of the above') {
               desirabilityQuestion.answers[0].input[0].value = 'No'

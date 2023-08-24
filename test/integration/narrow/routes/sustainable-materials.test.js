@@ -3,7 +3,7 @@ const { crumbToken } = require('./test-helper')
 describe('Page: /sustainable-materials', () => {
   const varList = {
     legalStatus: 'randomData',
-    roofSolarPV: 'Yes',
+    SolarPVCost: 12345,
     projectType: 'fakeData'
   }
 
@@ -71,6 +71,8 @@ describe('Page: /sustainable-materials', () => {
   })
   
   it('page loads with correct back link (environmental-impact)', async () => {
+    varList.SolarPVCost = 12345
+
     const options = {
       method: 'GET',
       url: `${global.__URLPREFIX__}/sustainable-materials`
@@ -81,7 +83,8 @@ describe('Page: /sustainable-materials', () => {
   })
 
   it('page loads with correct back link (rainwater)', async () => {
-    varList.roofSolarPV = 'My roof is exempt'
+    varList.SolarPVCost = null
+
     const options = {
       method: 'GET',
       url: `${global.__URLPREFIX__}/sustainable-materials`
