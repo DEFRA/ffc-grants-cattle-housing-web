@@ -1,18 +1,28 @@
 const { crumbToken } = require('./test-helper')
+const varListTemplate = {
+  legalStatus: 'randomData',
+  upgradingExistingBuilding: 'fakeData',
+  project: 'some fake project'
+}
+let varList
+
+const mockSession = {
+  setYarValue: (request, key, value) => null,
+  getYarValue: (request, key) => {
+    if (Object.keys(varList).includes(key)) return varList[key]
+    else return undefined
+  }
+}
+jest.mock('../../../../app/helpers/session', () => mockSession)
 
 describe('Page: /heritage-site', () => {
-  const varList = {
-    legalStatus: 'randomData',
-    upgradingExistingBuilding: 'fakeData'
-  }
+  beforeEach(() => {
+    varList = { ...varListTemplate }
+  })
 
-  jest.mock('../../../../app/helpers/session', () => ({
-    setYarValue: (request, key, value) => null,
-    getYarValue: (request, key) => {
-      if (varList[key]) return varList[key]
-      else return undefined
-    }
-  }))
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
 
   it('page loads successfully, with all the options', async () => {
     const options = {
@@ -66,7 +76,7 @@ describe('Page: /heritage-site', () => {
     expect(postResponse.headers.location).toBe('project-cost')
   })
 
-  it('page loads with correct back link', async () => {
+  it('page loads with correct back link when user selected upgrading existing building in project page', async () => {
     const options = {
       method: 'GET',
       url: `${global.__URLPREFIX__}/heritage-site`
@@ -74,5 +84,16 @@ describe('Page: /heritage-site', () => {
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
     expect(response.payload).toContain('<a href=\"upgrading-existing-building\" class=\"govuk-back-link\">Back</a>')
+  })
+
+  it('page loads with correct back link when user selected new calf hosuing in project page', async () => {
+    varList = { project: 'Building new calf housing' }
+    const options = {
+      method: 'GET',
+      url: `${global.__URLPREFIX__}/heritage-site`
+    }
+    const response = await global.__SERVER__.inject(options)
+    expect(response.statusCode).toBe(200)
+    expect(response.payload).toContain('<a href=\"roof-solar-PV\" class=\"govuk-back-link\">Back</a>')
   })
 })
