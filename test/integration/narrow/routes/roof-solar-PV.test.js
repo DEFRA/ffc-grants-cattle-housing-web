@@ -1,19 +1,28 @@
 const { crumbToken } = require('./test-helper')
+const varListTemplate = {
+  legalStatus: 'randomData',
+  upgradingExistingBuilding: 'fakeData',
+  project: 'Refurbishing or extending existing calf housing'
+}
+let varList
+
+const mockSession = {
+  setYarValue: (request, key, value) => null,
+  getYarValue: (request, key) => {
+    if (Object.keys(varList).includes(key)) return varList[key]
+    else return undefined
+  }
+}
+jest.mock('../../../../app/helpers/session', () => mockSession)
 
 describe('Page: /roof-solar-PV', () => {
-  const varList = {
-    legalStatus: 'randomData',
-    projectType: 'fakeData'
-  }
+  beforeEach(() => {
+    varList = { ...varListTemplate }
+  })
 
-  jest.mock('../../../../app/helpers/session', () => ({
-    setYarValue: (request, key, value) => null,
-    getYarValue: (request, key) => {
-      if (varList[key]) return varList[key]
-      else return undefined
-    }
-  }))
-
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
   it('page loads successfully, with all the options', async () => {
     const options = {
       method: 'GET',
@@ -67,7 +76,7 @@ describe('Page: /roof-solar-PV', () => {
     expect(postResponse.payload).toContain('You cannot apply for a grant from this scheme')
   })
 
-  it('user selects ineligible option: \'My roof is exempt\' -> display roof-solar-PV ineligible page', async () => {
+  it('user selects option: \'My roof is exempt\' -> display upgrading existing building page if the user has selected upgrading existing building in project page', async () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/roof-solar-PV`,
@@ -78,6 +87,20 @@ describe('Page: /roof-solar-PV', () => {
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.statusCode).toBe(302)
     expect(postResponse.headers.location).toBe('upgrading-existing-building')
+  })
+
+  it('user selects option: \'My roof is exempt\' -> display heritage page if the user has selected building new housing in project page', async () => {
+    varList.project = 'Building new calf housing'
+    const postOptions = {
+      method: 'POST',
+      url: `${global.__URLPREFIX__}/roof-solar-PV`,
+      headers: { cookie: 'crumb=' + crumbToken },
+      payload: { roofSolarPV: 'My roof is exempt', crumb: crumbToken }
+    }
+
+    const postResponse = await global.__SERVER__.inject(postOptions)
+    expect(postResponse.statusCode).toBe(302)
+    expect(postResponse.headers.location).toBe('heritage-site')
   })
 
   it('page loads with correct back link', async () => {

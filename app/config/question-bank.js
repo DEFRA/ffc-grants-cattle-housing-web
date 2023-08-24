@@ -633,7 +633,7 @@ const questionBank = {
           answers: [
             {
               key: 'project-A1',
-              value: 'Building new calf housing '
+              value: 'Building new calf housing'
             },
             {
               key: 'project-A2',
@@ -1266,7 +1266,14 @@ const questionBank = {
           },
           pageTitle: '',
           backUrl: 'additional-items',
-          nextUrl: 'solar-PV-system',
+          nextUrlObject: {
+            dependentQuestionYarKey: 'project',
+            dependentAnswerKeysArray: ['project-A1'],
+            urlOptions: {
+              thenUrl: 'heritage-site',
+              elseUrl: 'upgrading-existing-building'
+            }
+          },
           url: 'roof-solar-PV',
           baseUrl: 'roof-solar-PV',
           preValidationKeys: ['additionalItems'],
@@ -1306,7 +1313,8 @@ const questionBank = {
           answers: [
             {
               key: 'roof-solar-PV-A1',
-              value: 'Yes'
+              value: 'Yes',
+              redirectUrl: 'solar-PV-system'
             },
             {
               key: 'roof-solar-PV-A2',
@@ -1315,8 +1323,7 @@ const questionBank = {
             },
             {
               key: 'roof-solar-PV-A3',
-              value: 'My roof is exempt',
-              redirectUrl: 'upgrading-existing-building'
+              value: 'My roof is exempt'
             }
           ],
           yarKey: 'roofSolarPV'
@@ -1364,11 +1371,18 @@ const questionBank = {
           hint: {
             text: 'You can apply for grant funding to buy and install a solar PV system if your building is listed or on a World Heritage Site.'
           },
-          backUrl: 'upgrading-existing-building',
+          backUrlObject: {
+            dependentQuestionYarKey: 'project',
+            dependentAnswerKeysArray: ['project-A1'],
+            urlOptions: {
+              thenUrl: 'roof-solar-PV',
+              elseUrl: 'upgrading-existing-building'
+            }
+          },
           nextUrl: 'solar-PV-system',
           url: 'heritage-site',
           baseUrl: 'heritage-site',
-          preValidationKeys: ['upgradingExistingBuilding'],
+          preValidationKeys: ['roofSolarPV'],
           classes: 'govuk-radios--inline govuk-fieldset__legend--l',
           type: 'single-answer',
           minAnswerCount: 1,
@@ -1983,7 +1997,6 @@ const questionBank = {
               thenUrl: 'environmental-impact',
               elseUrl: 'rainwater'
             }
-
           },
           sidebar: {
             values: [{
