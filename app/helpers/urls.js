@@ -14,6 +14,8 @@ const getUrl = (urlObject, url, request, secBtn, currentUrl) => {
   const { dependentQuestionYarKey, dependentAnswerKeysArray, urlOptions, nonDependentAnswerKeysArray = [] } = urlObject
   const { thenUrl, elseUrl, nonDependentUrl } = urlOptions
 
+  const dependentAnswer = getYarValue(request, dependentQuestionYarKey)
+
   if (dependentQuestionYarKey === 'SolarPVCost') {
     // if key is not null, show then page, otherwise show else
     return  dependentAnswer != null ? thenUrl : elseUrl
