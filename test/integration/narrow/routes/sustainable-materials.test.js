@@ -70,7 +70,7 @@ describe('Page: /sustainable-materials', () => {
     expect(postResponse.headers.location).toBe('introducing-innovation')
   })
   
-  xit('page loads with correct back link (environmental-impact)', async () => {
+  it('page loads with correct back link (environmental-impact)', async () => {
     varList.SolarPVCost = 12345
 
     const options = {

@@ -14,6 +14,11 @@ const getUrl = (urlObject, url, request, secBtn, currentUrl) => {
   const { dependentQuestionYarKey, dependentAnswerKeysArray, urlOptions, nonDependentAnswerKeysArray = [] } = urlObject
   const { thenUrl, elseUrl, nonDependentUrl } = urlOptions
 
+  if (dependentQuestionYarKey === 'SolarPVCost') {
+    // if key is not null, show then page, otherwise show else
+    return  dependentAnswer != null ? thenUrl : elseUrl
+  }
+
   const selectThenUrl = checkAnswerExist([dependentQuestionYarKey].flat(), request, dependentAnswerKeysArray)
   const isNonDependantAnswer = checkAnswerExist([dependentQuestionYarKey].flat(), request, nonDependentAnswerKeysArray)
   const selectedElseUrl = checkSelectElseUrl(request, [dependentQuestionYarKey].flat(), isNonDependantAnswer) ? elseUrl : nonDependentUrl
