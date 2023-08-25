@@ -31,17 +31,17 @@
     "confirmationId": "12345678",
     "applicantType": [
         "Dairy (including calf rearing)",
-        "Pigs", 
+        "Pigs",
         "Sheep",
         "Laying hens",
         "Meat chickens",
         "Aquaculture",
         "Arable",
-        "Horticulture" 
+        "Horticulture"
     ],
     "legalStatus": "Sole trader",
     "inEngland": "Yes",
-    "planningPermission": "Should be in place by 31 January 2024",
+    "planningPermission": "Should be in place by the time I make my full application",
     "projectStart": "Yes, preparatory work",
     "tenancy": "Yes",
     "tenancyAgreement": null,
@@ -51,34 +51,45 @@
     },
     "projectType": "",
     "applicantBusiness": "",
-    "project":"Building new calf housing",
-    "minimumFloorArea":"Yes",
-    "housedIndividually":"No",
-    "isolateCalves":"Yes",
-    "strawBedding":"Yes",
-    "concreteFlooring":"Yes",
-    "enrichment":"Yes",
-    "structure":"A-frame building",
+    "project": "Building new calf housing",
+    "minimumFloorArea": "Yes",
+    "housedIndividually": "No",
+    "isolateCalves": "Yes",
+    "strawBedding": "Yes",
+    "concreteFlooring": "Yes",
+    "enrichment": "Yes",
+    "structure": "A-frame building",
     "structureEligibility": null,
-    "drainageSlope":"Yes",
-    "additionalItems":"Yes",
-    "roofSolarPV":"Yes",
+    "drainageSlope": "Yes",
+    "additionalItems": "Yes",
+    "roofSolarPV": "Yes",
     "upgradingExistingBuilding": "Yes",
     "heritageSite": "Yes",
     "solarPVSystem": "Yes",
     "SolarPVCost": "37500",
     "calculatedGrantSolar": "15000",
     "calfHousingCost": 60000,
-    "calculatedGrantCalf" : 15000,
+    "calculatedGrantCalf": 15000,
     "projectCost": 100000,
     "potentialFunding": "40000.00",
     "remainingCost": "60000.00",
-    "housing":"Yes",
-    "calfGroupSize":"2 to 3",
-    "moistureControl":["A drain or drainage channel inside the pen", "Positioning drinking areas near drainage and away from bedding"],
-    "permanentSickPen":["A permanent sick pen", "A separate air space"],
-    "environmentalImpact":"Collect and store rainwater",
-    "sustainableMaterials":["Low carbon concrete", "Steel replacement products"],
-    "introducingInnovation":["Technology", "Collaboration"]
-
-}  
+    "housing": "Yes",
+    "calfGroupSize": "2 to 3",
+    "moistureControl": [
+        "A drain or drainage channel inside the pen",
+        "Positioning drinking areas near drainage and away from bedding"
+    ],
+    "permanentSickPen": [
+        "A permanent sick pen",
+        "A separate air space"
+    ],
+    "environmentalImpact": "Collect and store rainwater",
+    "sustainableMaterials": [
+        "Low carbon concrete",
+        "Steel replacement products"
+    ],
+    "introducingInnovation": [
+        "Technology",
+        "Collaboration"
+    ]
+}

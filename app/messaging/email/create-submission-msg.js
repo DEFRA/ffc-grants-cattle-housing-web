@@ -2,13 +2,13 @@ const emailConfig = require('./config/email')
 const spreadsheetConfig = require('./config/spreadsheet')
 const { microTurnover, smallTurnover, mediumTurnover, microEmployeesNum, smallEmployeesNum, mediumEmployeesNum } = require('./business-size-constants')
 
-function getQuestionScoreBand (questions, questionKey) {
+function getQuestionScoreBand(questions, questionKey) {
   return questions.filter(question => question.key === questionKey).length > 0
     ? questions.find(question => question.key === questionKey).rating.band
     : ''
 }
 
-function generateRow (rowNumber, name, value, bold = false) {
+function generateRow(rowNumber, name, value, bold = false) {
   return {
     row: rowNumber,
     values: ['', name, value],
@@ -16,12 +16,12 @@ function generateRow (rowNumber, name, value, bold = false) {
   }
 }
 
-function calculateBusinessSize (employees) {
+function calculateBusinessSize(employees) {
   const employeesNum = Number(employees)
 
-  if (employeesNum < microEmployeesNum) { 
+  if (employeesNum < microEmployeesNum) {
     return 'Micro'
-  } else if (employeesNum < smallEmployeesNum) { 
+  } else if (employeesNum < smallEmployeesNum) {
     return 'Small'
   } else if (employeesNum < mediumEmployeesNum) {
     return 'Medium'
@@ -30,7 +30,7 @@ function calculateBusinessSize (employees) {
   }
 }
 
-function addAgentDetails (agentsDetails) {
+function addAgentDetails(agentsDetails) {
   return [
     generateRow(26, 'Agent Surname', agentsDetails?.lastName ?? ''),
     generateRow(27, 'Agent Forename', agentsDetails?.firstName ?? ''),
@@ -46,7 +46,7 @@ function addAgentDetails (agentsDetails) {
   ]
 }
 
-function generateExcelFilename (scheme, projectName, businessName, referenceNumber, today) {
+function generateExcelFilename(scheme, projectName, businessName, referenceNumber, today) {
   const dateTime = new Intl.DateTimeFormat('en-GB', {
     timeStyle: 'short',
     dateStyle: 'short',
@@ -56,7 +56,7 @@ function generateExcelFilename (scheme, projectName, businessName, referenceNumb
 }
 
 // Formats array of businessType for C430-440
-function formatBusinessTypeC53 (businessType) {
+function formatBusinessTypeC53(businessType) {
   let returnArray = []
   for (type in businessType) {
     // set up for capitalising where necessary
@@ -73,7 +73,7 @@ function formatBusinessTypeC53 (businessType) {
 }
 
 // formats for business type dora field (single answer accepted)
-function getBusinessTypeC53 (businessTypeArray) {
+function getBusinessTypeC53(businessTypeArray) {
   if (businessTypeArray.includes('Farmer with Horticulture') || businessTypeArray.includes('Farmer with Arable')) {
     return 'Mixed farming'
   } else if (businessTypeArray.length > 1) {
@@ -88,7 +88,7 @@ function getBusinessTypeC53 (businessTypeArray) {
 // confirm following values and mapping
 const getPlanningPermissionDoraValue = (planningPermission) => {
   switch (planningPermission) {
-    case 'Should be in place by 31 January 2024':
+    case 'Should be in place by the time I make my full application':
       return 'Applied for'
     case 'Not needed':
       return 'Not needed'
@@ -237,11 +237,11 @@ function getSpreadsheetDetails(submission, desirabilityScore) {
   }
 }
 
-function getCurrencyFormat (amount) {
+function getCurrencyFormat(amount) {
   return Number(amount).toLocaleString('en-US', { minimumFractionDigits: 0, style: 'currency', currency: 'GBP' })
 }
 
-function getScoreChance (rating) {
+function getScoreChance(rating) {
   switch (rating.toLowerCase()) {
     case 'strong':
       return 'seems likely to'
@@ -252,7 +252,7 @@ function getScoreChance (rating) {
   }
 }
 
-function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail = false) {
+function getEmailDetails(submission, desirabilityScore, rpaEmail, isAgentEmail = false) {
   const email = isAgentEmail ? submission.agentsDetails.emailAddress : submission.farmerDetails.emailAddress
   return {
     notifyTemplate: emailConfig.notifyTemplate,
@@ -293,7 +293,7 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       grantRateSolarTrue: submission.solarPVSystem === 'Yes' ? 'true' : 'false',
       SolarPVCost: submission.SolarPVCost ? getCurrencyFormat(submission.SolarPVCost) : '',
       SolarPVCostTrue: submission.SolarPVCost ? 'true' : 'false',
-      calculatedGrantSolar: submission.calculatedGrantSolar ? getCurrencyFormat(submission.calculatedGrantSolar) : '' ,
+      calculatedGrantSolar: submission.calculatedGrantSolar ? getCurrencyFormat(submission.calculatedGrantSolar) : '',
       calculatedGrantSolarTrue: submission.calculatedGrantSolar ? 'true' : 'false',
       calfHousingCost: submission?.projectCostSolar?.CalfHousingCost ?? getCurrencyFormat(submission.projectCost),
       calculatedGrantCalf: submission.calculatedGrantCalf ? getCurrencyFormat(submission.calculatedGrantCalf) : getCurrencyFormat(submission.calculatedGrant),
@@ -339,15 +339,15 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
   }
 }
 
-function spreadsheet (submission, desirabilityScore) {
+function spreadsheet(submission, desirabilityScore) {
   const data = getSpreadsheetDetails(submission, desirabilityScore)
   return data
 }
 
-module.exports = function (submission, desirabilityScore, rating='') {
+module.exports = function (submission, desirabilityScore, rating = '') {
   return {
     applicantEmail: getEmailDetails(submission, desirabilityScore, false),
-    agentEmail: submission.applying === 'Agent' ? getEmailDetails(submission,desirabilityScore, false, true) : null,
+    agentEmail: submission.applying === 'Agent' ? getEmailDetails(submission, desirabilityScore, false, true) : null,
     rpaEmail: spreadsheetConfig.sendEmailToRpa ? getEmailDetails(submission, desirabilityScore, spreadsheetConfig.rpaEmail) : null,
     spreadsheet: spreadsheet(submission, desirabilityScore),
     getScoreChance: getScoreChance(rating)

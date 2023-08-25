@@ -55,6 +55,7 @@ const getPage = async (question, request, h) => {
       setYarValue(request, 'calculatedGrantSolar', null)
       setYarValue(request, 'SolarPVCost', null)
       setYarValue(request, 'calculatedGrantSolarPreCap', null)
+      setYarValue(request, 'calculatedGrantCalf', null)
       break
     case 'remaining-costs':
       const SolarPVCost = getYarValue(request, 'SolarPVCost')
