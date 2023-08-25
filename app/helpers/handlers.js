@@ -314,9 +314,9 @@ const showPostPage = (currentQuestion, request, h) => {
   }
   if (currentQuestion?.grantInfoSolar) { // double check
     const projectCostSolar = getYarValue(request, 'projectCostSolar')
-    const calfHousingCost = projectCostSolar.CalfHousingCost
+    const calfHousingCost = projectCostSolar.calfHousingCost
     const solarCost = projectCostSolar.SolarPVCost
-    setYarValue(request, 'CalfHousingCost', calfHousingCost)
+    setYarValue(request, 'calfHousingCost', calfHousingCost)
     setYarValue(request, 'SolarPVCost', solarCost)
     setYarValue(request, 'projectCost', Number(calfHousingCost) + Number(solarCost))
     // calf housing
@@ -385,13 +385,15 @@ const showPostPage = (currentQuestion, request, h) => {
       // ineligible as calf housing too low
       if (getYarValue(request, 'calculatedGrantCalf') < 15000) {
         return h.view('not-eligible', NOT_ELIGIBLE)
-      // calf housing only
+        // calf housing only
       } else if (getYarValue(request, 'calculatedGrantCalf') >= 500000) {
         setYarValue(request, 'calculatedGrant', 500000)
         // reset SolarPVCost value
         setYarValue(request, 'SolarPVCost', null)
+        setYarValue(request, 'calculatedGrantSolar', null)
         setYarValue(request, 'remainingCost', getYarValue(request, 'remainingCostCalf'))
         setYarValue(request, 'projectCost', getYarValue(request, 'calfHousingCost'))
+
         return h.redirect('/upgrading-calf-housing/potential-amount-conditional')
         // solar capping
       } else if (getYarValue(request, 'calculatedGrant') > 500000) {
