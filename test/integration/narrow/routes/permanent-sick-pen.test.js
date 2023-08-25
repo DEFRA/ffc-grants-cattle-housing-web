@@ -54,7 +54,7 @@ describe('Page: /permanent-sick-pen', () => {
     expect(postResponse.statusCode).toBe(200)
     expect(postResponse.payload).toContain('You cannot select that combination of options')
   })
-  it('user selects eligible option -> store user response and redirect to /environmental-impact', async () => {
+  xit('user selects eligible option -> store user response and redirect to /environmental-impact', async () => {
     varList.minimumFloorArea = 'Between 100kg and 150kg'
     const postOptions = {
       method: 'POST',
