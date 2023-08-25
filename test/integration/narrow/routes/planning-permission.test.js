@@ -43,7 +43,7 @@ describe('Page: /planning-permission', () => {
   })
 
 
-  it('user selects conditional option: \'Expected to have by 31 January 2024\' -> display conditional page', async () => {
+  it('user selects conditional option: \'Expected to have by 31 January 2025\' -> display conditional page', async () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/planning-permission`,
