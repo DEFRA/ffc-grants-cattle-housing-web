@@ -6,7 +6,7 @@ describe('Page: /potential-amount-solar-capped', () => {
     calculatedGrant: 500000,
     calculatedGrantCalf: 500000,
     calculatedGrantSolar: 500000,
-    CalfHousingCost: 3456,
+    calfHousingCost: 3456,
     SolarPVCost: 3532
   }
   const eligiblePageText = 'You may be able to apply for a grant'

@@ -1507,7 +1507,7 @@ const questionBank = {
           maxAnswerCount: '',
           allFields: [
             {
-              yarKey: 'CalfHousingCost',
+              yarKey: 'calfHousingCost',
               type: 'number',
               classes: 'govuk-input--width-10',
               label: {
@@ -3319,7 +3319,7 @@ questionBank.sections.forEach(({ questions }) => {
 const ALL_URLS = []
 ALL_QUESTIONS.forEach(item => ALL_URLS.push(item.url))
 
-const YAR_KEYS = ['itemsTotalValue', 'remainingCost', 'calculatedGrant', 'remainingCostSolar', 'calculatedGrantSolar', 'remainingCostCalf', 'calculatedGrantCalf', 'yesStructureEligibility', 'CalfHousingCost', 'SolarPVCost', 'calculatedGrantSolarPreCap']
+const YAR_KEYS = ['itemsTotalValue', 'remainingCost', 'calculatedGrant', 'remainingCostSolar', 'calculatedGrantSolar', 'remainingCostCalf', 'calculatedGrantCalf', 'yesStructureEligibility', 'calfHousingCost', 'SolarPVCost', 'calculatedGrantSolarPreCap']
 ALL_QUESTIONS.forEach(item => YAR_KEYS.push(item.yarKey))
 module.exports = {
   questionBank,

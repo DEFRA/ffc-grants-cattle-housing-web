@@ -10,7 +10,7 @@ const varListTemplate = {
     projectEquipment: ['Boom', 'Trickle']
   },
   projectCostSolar: {
-    CalfHousingCost: '12345',
+    calfHousingCost: '12345',
     SolarPVCost: '123445'
   }
 }
@@ -85,7 +85,7 @@ describe('Project cost solar page', () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/project-cost-solar`,
-      payload: { SolarPVCost: '12345678', CalfHousingCost: '12345678', crumb: crumbToken },
+      payload: { SolarPVCost: '12345678', calfHousingCost: '12345678', crumb: crumbToken },
       headers: { cookie: 'crumb=' + crumbToken }
     }
 
@@ -96,7 +96,7 @@ describe('Project cost solar page', () => {
 
   it('should eliminate user if the cost entered is too low', async () => {
     varList.projectCostSolar = {
-      CalfHousingCost: '12',
+      calfHousingCost: '12',
       SolarPVCost: '123445'
     }
     varList.calculatedGrantCalf = '12'
@@ -105,7 +105,7 @@ describe('Project cost solar page', () => {
       method: 'POST',
       url: `${global.__URLPREFIX__}/project-cost-solar`,
       payload: {
-        CalfHousingCost: '12',
+        calfHousingCost: '12',
         SolarPVCost: '12345',
         crumb: crumbToken
       },
@@ -119,14 +119,14 @@ describe('Project cost solar page', () => {
 
   it('should redirected to the Potential amount conditional page if the calf grant entered is too high', async () => {
     varList.projectCostSolar = {
-      CalfHousingCost: '1250000',
+      calfHousingCost: '1250000',
       SolarPVCost: '123445'
     }
     varList.calculatedGrantCalf = '500000'
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/project-cost-solar`,
-      payload: { CalfHousingCost: '1250000', SolarPVCost: '123445', crumb: crumbToken },
+      payload: { calfHousingCost: '1250000', SolarPVCost: '123445', crumb: crumbToken },
       headers: { cookie: 'crumb=' + crumbToken }
     }
 
@@ -138,14 +138,14 @@ describe('Project cost solar page', () => {
 
   it('should redirected to the Potential amount solar capped page if the solar grant entered is too high', async () => {
     varList.projectCostSolar = {
-      CalfHousingCost: '37500',
+      calfHousingCost: '37500',
       SolarPVCost: '2290000'
     }
     varList.calculatedGrant = '500001'
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/project-cost-solar`,
-      payload: { CalfHousingCost: '37500', SolarPVCost: '2290000', crumb: crumbToken },
+      payload: { calfHousingCost: '37500', SolarPVCost: '2290000', crumb: crumbToken },
       headers: { cookie: 'crumb=' + crumbToken }
     }
 
@@ -157,14 +157,14 @@ describe('Project cost solar page', () => {
 
   it('should redirected to the Potential amount solar page if all values entered correctly', async () => {
     varList.projectCostSolar = {
-      CalfHousingCost: '123456',
+      calfHousingCost: '123456',
       SolarPVCost: '23456'
     }
     varList.calculatedGrant = '350000'
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/project-cost-solar`,
-      payload: { CalfHousingCost: '123456', SolarPVCost: '23456', crumb: crumbToken },
+      payload: { calfHousingCost: '123456', SolarPVCost: '23456', crumb: crumbToken },
       headers: { cookie: 'crumb=' + crumbToken }
     }
 
@@ -174,7 +174,7 @@ describe('Project cost solar page', () => {
     expect(postResponse.headers.location).toBe('potential-amount-solar')
   })
 
- 
+
   it('should redirect to housing page if theres score', async () => {
     varList['current-score'] = true
     const options = {
