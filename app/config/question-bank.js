@@ -345,7 +345,7 @@ const questionBank = {
           nextUrl: 'project-started',
           preValidationKeys: ['inEngland'],
           ineligibleContent: {
-            messageContent: 'Any planning permission must be in place by 31 January 2024 (the end of the application window).',
+            messageContent: 'Any planning permission must be in place before you submit your full application.',
             messageLink: {
               url: 'https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments',
               title: 'See other grants you may be eligible for.'
@@ -360,7 +360,7 @@ const questionBank = {
               content: [{
                 para: `You must have secured planning permission before you submit a full application.
 
-                        Any planning permission must be in place by 31 January 2024.`
+                        The application deadline is 30 April 2025.`
               }]
             }]
           },
@@ -381,12 +381,12 @@ const questionBank = {
             },
             {
               key: 'planning-permission-A3',
-              value: 'Should be in place by 31 January 2024',
+              value: 'Should be in place by the time I make my full application',
               redirectUrl: 'planning-permission-condition'
             },
             {
               key: 'planning-permission-A4',
-              value: 'Will not have by 31 January 2024',
+              value: 'Will not be in place by the time I make my full application',
               notEligible: true
             }
           ],
@@ -402,7 +402,7 @@ const questionBank = {
           preValidationKeys: ['planningPermission'],
           maybeEligibleContent: {
             messageHeader: 'You may be able to apply for a grant from this scheme',
-            messageContent: 'Any planning permission must be in place by 31 January 2024 (the end of the application window).'
+            messageContent: 'Any planning permission must be in place before you submit your full application. The application deadline is 30 April 2024.'
           },
           yarKey: 'planningPermissionCondition'
         },
@@ -1822,7 +1822,7 @@ const questionBank = {
           title: 'Are you moving from individually housing calves over 7 days old to pair or group housing?',
           fundingPriorities: '',
           type: 'single-answer',
-          ga: { name: 'eligibility_passed', params: { } },
+          ga: { name: 'eligibility_passed', params: {} },
           score: {
             isScore: true
           },
@@ -3267,7 +3267,7 @@ const questionBank = {
           url: 'confirmation',
           baseUrl: 'confirmation',
           preValidationKeys: ['farmerDetails'],
-          ga: { name: 'confirmation', params: { } },
+          ga: { name: 'confirmation', params: {} },
           maybeEligible: true,
           maybeEligibleContent: {
             reference: {

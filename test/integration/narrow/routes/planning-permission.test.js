@@ -25,8 +25,8 @@ describe('Page: /planning-permission', () => {
     expect(response.payload).toContain('Does the project have planning permission?')
     expect(response.payload).toContain('Not needed')
     expect(response.payload).toContain('Secured')
-    expect(response.payload).toContain('Should be in place by 31 January 2024')
-    expect(response.payload).toContain('Will not have by 31 January 2024')
+    expect(response.payload).toContain('Should be in place by the time I make my full application')
+    expect(response.payload).toContain('Will not be in place by the time I make my full application')
   })
 
   it('no option selected -> show error message', async () => {
@@ -48,7 +48,7 @@ describe('Page: /planning-permission', () => {
       method: 'POST',
       url: `${global.__URLPREFIX__}/planning-permission`,
       headers: { cookie: 'crumb=' + crumbToken },
-      payload: { planningPermission: 'Should be in place by 31 January 2024', crumb: crumbToken }
+      payload: { planningPermission: 'Should be in place by the time I make my full application', crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
@@ -79,15 +79,15 @@ describe('Page: /planning-permission', () => {
     expect(postResponse.headers.location).toBe('project-started')
   })
 
-  it('user selects ineligible option `Will not have by 31 January 2024` and display ineligible page', async () => {
+  it('user selects ineligible option `Will not be in place by the time I make my full application` and display ineligible page', async () => {
     const postOptions = {
       method: 'POST',
       url: `${global.__URLPREFIX__}/planning-permission`,
       headers: { cookie: 'crumb=' + crumbToken },
-      payload: { planningPermission: 'Will not have by 31 January 2024', crumb: crumbToken }
+      payload: { planningPermission: 'Will not be in place by the time I make my full application', crumb: crumbToken }
     }
 
     const postResponse = await global.__SERVER__.inject(postOptions)
     expect(postResponse.payload).toContain('You cannot apply for a grant from this scheme')
-})
+  })
 })
