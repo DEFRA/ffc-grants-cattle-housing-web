@@ -308,13 +308,13 @@ function getEmailDetails (submission, desirabilityScore, rpaEmail, isAgentEmail 
       moistureControlScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'moisture-control'),
       permanentSickPen: submission.permanentSickPen,
       permanentSickPenScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'permanent-sick-pen'),
-      environmentalImpact: submission.roofSolarPV === 'Yes',
-      rainwater: submission.roofSolarPV === 'My roof is exempt',
+      environmentalImpact: submission.SolarPVCost != null,
+      rainwater: submission.SolarPVCost === null,
 
       // notification service cant handle more than one variable in an if statement, so this is how to do it
-      environmentalImpactValue: submission.roofSolarPV === 'My roof is exempt' ? (submission.environmentalImpact === 'None of the above' ? 'No' : 'Yes') : submission.environmentalImpact,
+      environmentalImpactValue: submission.SolarPVCost === null ? (submission.environmentalImpact === 'None of the above' ? 'No' : 'Yes') : submission.environmentalImpact,
 
-      environmentalImpactScore: submission.roofSolarPV === 'Yes' ? getQuestionScoreBand(desirabilityScore.desirability.questions, 'environmental-impact') : getQuestionScoreBand(desirabilityScore.desirability.questions, 'rainwater'),
+      environmentalImpactScore: submission.SolarPVCost != null ? getQuestionScoreBand(desirabilityScore.desirability.questions, 'environmental-impact') : getQuestionScoreBand(desirabilityScore.desirability.questions, 'rainwater'),
 
       sustainableMaterials: submission.sustainableMaterials,
       sustainableMaterialsScore: getQuestionScoreBand(desirabilityScore.desirability.questions, 'sustainable-materials'),
