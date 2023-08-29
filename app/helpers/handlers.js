@@ -403,6 +403,9 @@ const showPostPage = (currentQuestion, request, h) => {
         // set cap for solar and grant
         setYarValue(request, 'calculatedGrantSolar', solarCap)
         setYarValue(request, 'calculatedGrant', 500000)
+        const remaingCostSolar = (getYarValue(request, 'SolarPVCost') - solarCap)
+        setYarValue(request, 'remainingCost', Number(getYarValue(request, 'remainingCostCalf')) + remaingCostSolar)
+
         return h.redirect('/upgrading-calf-housing/potential-amount-solar-capped')
       }
   }

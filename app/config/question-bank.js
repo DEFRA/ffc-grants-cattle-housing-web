@@ -1693,7 +1693,7 @@ const questionBank = {
             messageContent: `<p class="govuk-body">You may be able to apply for a grant of up to £{{_calculatedGrant_}}, based on the estimated cost of £{{_projectCost_}}</p>
             <p class="govuk-body">This grant amount combines:<p>
             <ul>
-            <li>£{{_calculatedGrantCalf_}} for calf housing costs (40% of £{{_CalfHousingCost_}})</li>
+            <li>£{{_calculatedGrantCalf_}} for calf housing costs (40% of £{{_calfHousingCost_}})</li>
             <li>£{{_calculatedGrantSolar_}} for solar PV costs (25% of £{{_SolarPVCost_}})</li>
             </ul>`,
             warning: {
@@ -1715,7 +1715,7 @@ const questionBank = {
             messageContent: `<p class="govuk-body">You may be able to apply for a grant of up to £{{_calculatedGrant_}}, based on the estimated cost of £{{_projectCost_}}</p>
             <p class="govuk-body">This grant amount combines:<p>
             <ul>
-            <li>£{{_calculatedGrantCalf_}} for calf housing costs (40% of £{{_CalfHousingCost_}})</li>
+            <li>£{{_calculatedGrantCalf_}} for calf housing costs (40% of £{{_calfHousingCost_}})</li>
             <li>£{{_calculatedGrantSolar_}} for solar PV costs (25% of £{{_SolarPVCost_}} is £{{_calculatedGrantSolarPreCap_}}, capped at £{{_calculatedGrantSolar_}})</li>
             </ul>
             <p class="govuk-body">As calf housing costs take grant funding priority, you may be able to apply for a grant of up to £{{_calculatedGrantSolar_}} for solar PV system costs. The maximum grant is £500,000.`,
