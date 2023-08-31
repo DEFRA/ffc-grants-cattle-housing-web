@@ -389,10 +389,8 @@ const showPostPage = (currentQuestion, request, h) => {
       } else if (getYarValue(request, 'calculatedGrantCalf') >= 500000) {
         setYarValue(request, 'calculatedGrant', 500000)
         // reset SolarPVCost value
-        setYarValue(request, 'SolarPVCost', null)
         setYarValue(request, 'calculatedGrantSolar', null)
-        setYarValue(request, 'remainingCost', getYarValue(request, 'remainingCostCalf'))
-        setYarValue(request, 'projectCost', getYarValue(request, 'calfHousingCost'))
+        setYarValue(request, 'remainingCost', getYarValue(request, 'projectCost') - 500000)
 
         return h.redirect('/upgrading-calf-housing/potential-amount-conditional')
         // solar capping
