@@ -2,7 +2,7 @@ const { crumbToken } = require('./test-helper')
 const varListTemplate = {
   legalStatus: 'randomData',
   upgradingExistingBuilding: 'fakeData',
-  project: 'Refurbishing or extending existing calf housing'
+  project: 'Upgrade existing buildings to house calves'
 }
 let varList
 
