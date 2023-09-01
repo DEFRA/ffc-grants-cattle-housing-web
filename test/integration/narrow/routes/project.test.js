@@ -25,7 +25,7 @@ describe('Page: /project', () => {
     const response = await global.__SERVER__.inject(options)
     expect(response.statusCode).toBe(200)
     expect(response.payload).toContain('What is your project?')
-    expect(response.payload).toContain('Refurbishing or extending existing calf housing')
+    expect(response.payload).toContain('Upgrade existing buildings to house calves')
     expect(response.payload).toContain('Something else')
   })
 

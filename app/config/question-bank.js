@@ -605,7 +605,7 @@ const questionBank = {
                 <p class="govuk-body">This grant is for:</p>
                       <ul>
                         <li>building new calf housing</li>
-                        <li>refurbishing or extending existing calf housing</li>
+                        <li>upgrade existing buildings to house calves</li>
                       </ul>
                 </div>`,
             messageLink: {
@@ -620,7 +620,7 @@ const questionBank = {
               heading: 'Eligibility',
               content: [{
                 para: 'This grant is for:',
-                items: ['building new calf housing', 'refurbishing or extending existing calf housing']
+                items: ['building new calf housing', 'upgrade existing buildings to house calves']
               }]
             }]
           },
@@ -637,7 +637,7 @@ const questionBank = {
             },
             {
               key: 'project-A2',
-              value: 'Refurbishing or extending existing calf housing'
+              value: 'Upgrade existing buildings to house calves'
             },
             {
               value: 'divider'

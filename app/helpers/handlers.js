@@ -154,7 +154,7 @@ const getPage = async (question, request, h) => {
       try {
         const emailData = await emailFormatting({ body: createMsg.getAllDetails(request, confirmationId), scoring: getYarValue(request, 'overAllScore') }, request.yar.id)
         await senders.sendDesirabilitySubmitted(emailData, request.yar.id) // replace with sendDesirabilitySubmitted, and replace first param with call to function in process-submission
-        console.log('Confirmation event sent')
+        console.log('[CONFIRMATION EVENT SENT]')
       } catch (err) {
         console.log('ERROR: ', err)
       }
@@ -389,10 +389,8 @@ const showPostPage = (currentQuestion, request, h) => {
       } else if (getYarValue(request, 'calculatedGrantCalf') >= 500000) {
         setYarValue(request, 'calculatedGrant', 500000)
         // reset SolarPVCost value
-        setYarValue(request, 'SolarPVCost', null)
         setYarValue(request, 'calculatedGrantSolar', null)
-        setYarValue(request, 'remainingCost', getYarValue(request, 'remainingCostCalf'))
-        setYarValue(request, 'projectCost', getYarValue(request, 'calfHousingCost'))
+        setYarValue(request, 'remainingCost', getYarValue(request, 'projectCost') - 500000)
 
         return h.redirect('/upgrading-calf-housing/potential-amount-conditional')
         // solar capping
