@@ -29,7 +29,7 @@ async function sendMsg (sender, msgData, msgType, correlationId) {
       correlationId
     }
     await sender.sendMessage(msg)
-    console.log('sending message', msg)
+    console.log('[SENDING MESSAGE]', msg)
   } catch (e) {
     console.log('message', e)
   }
