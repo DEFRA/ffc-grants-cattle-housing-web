@@ -154,7 +154,7 @@ const getPage = async (question, request, h) => {
       try {
         const emailData = await emailFormatting({ body: createMsg.getAllDetails(request, confirmationId), scoring: getYarValue(request, 'overAllScore') }, request.yar.id)
         await senders.sendDesirabilitySubmitted(emailData, request.yar.id) // replace with sendDesirabilitySubmitted, and replace first param with call to function in process-submission
-        console.log('Confirmation event sent')
+        console.log('[CONFIRMATION EVENT SENT]')
       } catch (err) {
         console.log('ERROR: ', err)
       }
