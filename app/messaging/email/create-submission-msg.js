@@ -144,7 +144,7 @@ function getSpreadsheetDetails(submission, desirabilityScore) {
           generateRow(90, 'Sub-Theme / Project type', submission.project),
           generateRow(41, 'Owner', 'RD'),
           generateRow(53, 'Business type', getBusinessTypeC53(businessTypeArray)), // design action
-          generateRow(341, 'Grant Launch Date', '05/09/23'),
+          generateRow(341, 'Grant Launch Date', '07/09/2023'),
           generateRow(23, 'Business Form Classification (Status of Applicant)', submission.legalStatus),
           generateRow(405, 'Project Type', submission.project),
           // generateRow(406, 'Calf Weight', submission.calfWeight),
@@ -227,7 +227,7 @@ function getSpreadsheetDetails(submission, desirabilityScore) {
           generateRow(93, 'RAG date reviewed ', todayStr),
           generateRow(54, 'Electronic OA received date ', todayStr),
           generateRow(370, 'Status', 'Pending RPA review'),
-          generateRow(85, 'Full Application Submission Date', '30/04/25'),
+          generateRow(85, 'Full Application Submission Date', '30/04/2025'),
           generateRow(375, 'OA percent', String(desirabilityScore.desirability.overallRating.score)),
           generateRow(365, 'OA score', desirabilityScore.desirability.overallRating.band),
           ...addAgentDetails(submission.agentsDetails)
